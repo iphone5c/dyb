@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings moduleName="SYS_SETTING">
+    <!-- 客户端菜单配置 -->
+    <setting key="CLIENT_MENU">
+        <nodeValue>
+            <![CDATA[
+            { "type": "com.dyb.platforms.fixfunds.services.utils.core.configureations.Menu",  "list": [
+                { "text": "系统管理","expanded":"false","leaf":"false", "children":[
+                    { "text": "配置管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "用户管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                ] },
+                { "text": "业务管理","expanded":"false","leaf":"false", "children":[
+                    { "text": "会员管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "资金账户管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "产品管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                ] },
+            ] }
+        ]]>
+        </nodeValue>
+    </setting>
+    <!--模块配置-->
+    <setting key="MODEL_CONFIG">
+        <nodeValue>
+            <![CDATA[
+                {
+                    "type": "com.yc.coresystem.services.utils.core.configureations.ModelConfig",
+                    "list":[
+                                {'modelName':'yc-coresystem-account','modelAliasName':'ACCOUNT_SETTING'},
+                                {'modelName':'yc-coresystem-commons','modelAliasName':'COMMONS_SETTING'},
+                                {'modelName':'yc-coresystem-product','modelAliasName':'PRODUCT_SETTING'},
+                                {'modelName':'yc-coresystem-member','modelAliasName':'MEMBER_SETTING'}
+                            ]
+                }
+            ]]>
+        </nodeValue>
+    </setting>
+    <!--业务定义-->
+    <setting key="BUSINESS_DEFINEDS">
+        <nodeValue>
+            <![CDATA[
+                {
+                    "type": "com.yc.coresystem.services.utils.core.configureations.BusinessDefined",
+                    "list":[
+                                {
+                                    'businessType':1,'name':'开发商交款业务','moduleName':'','viewName':'','overdue':5,
+                                    'flowFile':'classpath:/flowFiles/SelfHelpBusiness.zip','flowKey':'SelfHelpBusiness',
+                                    'papers':[]
+                                },
+                            ]
+                }
+            ]]>
+        </nodeValue>
+    </setting>
+</settings>

@@ -52,7 +52,7 @@ Ext.define('DYB.menuPanel', {
     createStore: function () {
         var treeStore=Ext.appContext.invokeService('/commons','/getMenuList',{});
         if(treeStore.statusCode!=1000){
-            Ext.Msg.alert('操作失败',treeStore.result);
+            Ext.Msg.alert('操作失败',treeStore.errorMessage);
             return;
         }
         var store = Ext.create('Ext.data.TreeStore', {

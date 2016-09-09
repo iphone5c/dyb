@@ -1,8 +1,11 @@
 package com.dyb.platforms.fixfunds.common.controller;
 
+import com.dyb.platforms.fixfunds.services.business.user.service.IUserService;
+import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.configureations.SettingConfigureationFactory;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,9 +18,20 @@ public class CommonsController extends BaseController {
 
     public Logger log = Logger.getLogger(CommonsController.class);//日志
 
+    @Autowired
+    private IUserService userService;
+
     @RequestMapping(value = "/getMenuList")
     public Object getMenuList() {
         log.info("获取所有菜单列表");
         return result(SettingConfigureationFactory.getMenuList());
     }
+
+    @RequestMapping(value = "/getUserList")
+    public Object getUserList(int pageIndex,int pageSize){
+        log.info("获取用户列表");
+        QueryParams queryParams=new QueryParams();
+        return result(userService.getUserPageList(queryParams,pageIndex,pageSize,true));
+    }
+
 }

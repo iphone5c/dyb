@@ -49,9 +49,8 @@ Ext.define('DYB.utils.AppContext', {
             params: param,
             scope: this,
             callback:function(opts,flag,response){
-                console.log(response)
                 if(response.responseText==''){
-                    var info='{"statusCode":1000,"result":""}'
+                    var info='{"statusCode":1000,"errorMessage":"","result":""}'
                     result=Ext.util.JSON.decode(info);
                 }else{
                     result = Ext.util.JSON.decode(response.responseText);

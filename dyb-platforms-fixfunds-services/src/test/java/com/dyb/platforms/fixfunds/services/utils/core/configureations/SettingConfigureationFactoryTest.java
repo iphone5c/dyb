@@ -24,6 +24,7 @@ public class SettingConfigureationFactoryTest {
     @Test
     public void testGetBusinessDefinedList() throws Exception {
         List<Menu> menus= SettingConfigureationFactory.getMenuList();
+        System.out.println(menus);
     }
 
     @Test

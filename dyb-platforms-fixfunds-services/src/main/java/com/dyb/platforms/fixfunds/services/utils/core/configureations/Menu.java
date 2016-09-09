@@ -19,6 +19,18 @@ public class Menu {
     //子菜单
     private List<Menu> children;
 
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "text='" + text + '\'' +
+                ", module='" + module + '\'' +
+                ", url='" + url + '\'' +
+                ", expanded=" + expanded +
+                ", leaf=" + leaf +
+                ", children=" + children +
+                '}';
+    }
+
     public String getText() {
         return text;
     }

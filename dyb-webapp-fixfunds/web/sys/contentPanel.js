@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/2/26.
  */
-Ext.define('YC_CORESYSTEM.contentPanel',{
+Ext.define('DYB.contentPanel',{
     extend: 'Ext.tab.Panel',
     initComponent: function () {
         var me=this;

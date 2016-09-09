@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/3/1.
  */
-Ext.define('YC_CORESYSTEM.utils.AppContext', {
+Ext.define('DYB.utils.AppContext', {
 
     invokeSyncService: function (service, op, param, scope, successCallback, fiallCallback) {
         Ext.Ajax.request({

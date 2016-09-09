@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/2/26.
  */
-Ext.define('YC_CORESYSTEM.menuPanel', {
+Ext.define('DYB.menuPanel', {
     extend: 'Ext.tree.Panel',
     rootVisible:false,  // 显示root节点
     requires: [],

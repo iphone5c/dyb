@@ -2,10 +2,10 @@
  * Created by Administrator on 2016/2/26.
  */
 Ext.application({
-   name:'YCsys' ,
+   name:'DYBsys' ,
     launch:function(){
-        Ext['appContext'] = Ext.create('YC_CORESYSTEM.utils.AppContext');
-        Ext.create('YC_CORESYSTEM.application', {
+        Ext['appContext'] = Ext.create('DYB.utils.AppContext');
+        Ext.create('DYB.application', {
             renderTo: Ext.getBody()
         });
     }

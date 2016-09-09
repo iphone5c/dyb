@@ -12,9 +12,8 @@ import java.util.List;
  * Created by lenovo on 2016/9/8.
  */
 public class DybUtils {
-    public static String SETTING_PATH="yc-coresystem-services/conf/setting/settings-config.xml";
 
-    public static String MODEL_TARGET_PATH="_yc_resources";
+    public static String MODEL_TARGET_PATH="_dyb_resources";
 
     public static boolean isEmptyOrNull(String str) {
         return str == null || str.isEmpty();

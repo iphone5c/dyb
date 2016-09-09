@@ -51,7 +51,7 @@
                     <include>**/*.*</include>
                 </includes>
                 <filtering>false</filtering>
-                <targetPath>yc-coresystem-commons</targetPath>
+                <targetPath>dyb-platforms-fixfunds-common</targetPath>
             </resource>
         </resources>
     </build>

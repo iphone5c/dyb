@@ -5,15 +5,41 @@
         <nodeValue>
             <![CDATA[
             { "type": "com.dyb.platforms.fixfunds.services.utils.core.configureations.Menu",  "list": [
+                { "text": "会员管理","expanded":"false","leaf":"false", "children":[
+                    { "text": "信使管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "商家管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                ] },
+                { "text": "系统公共管理","expanded":"false","leaf":"false", "children":[
+                    { "text": "公告类型管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "公告管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
+                ] },
+                { "text": "商品管理","expanded":"false","leaf":"false", "children":[
+                    { "text": "商品列表", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
+                ] },
+                { "text": "业务订单管理","expanded":"false","leaf":"false", "children":[
+                    { "text": "信使消费登记订单", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "回购订单", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "信使豆转换订单", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
+                ] },
+                { "text": "资金管理","expanded":"false","leaf":"false", "children":[
+                    { "text": "爱心管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "信使豆管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
+                ] },
+                { "text": "报表统计","expanded":"false","leaf":"false", "children":[
+                    { "text": "统计1", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "统计2", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
+                ] },
                 { "text": "系统管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "配置管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "用户管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "系统参数配置", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "管理员列表", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "角色管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "权限列表", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
                 ] },
-                { "text": "业务管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "会员管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "资金账户管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "产品管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
-                ] },
+                { "text": "日志管理","expanded":"false","leaf":"false", "children":[
+                    { "text": "系统日志", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "管理员操作日志", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "会员操作日志", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
+                ] }
             ] }
         ]]>
         </nodeValue>

@@ -37,6 +37,7 @@ public class CommonsController extends BaseController {
     public Object getUserList(int pageIndex,int pageSize){
         log.info("获取用户列表");
         QueryParams queryParams=new QueryParams();
+        queryParams.addOrderBy("sequence",true);
         return result(userService.getUserPageList(queryParams,pageIndex,pageSize,true));
     }
 

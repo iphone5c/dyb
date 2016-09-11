@@ -25,6 +25,13 @@ public interface IUserService {
     public User modifyUser(User user);
 
     /**
+     * 根据用户登录名获取用户
+     * @param username
+     * @return
+     */
+    public User getUserByUserName(String username);
+
+    /**
      *获取用户分页列表
      * @param wheres    条件
      * @param pageIndex 返回的页码

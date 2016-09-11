@@ -14,6 +14,7 @@ Ext.define('DYB_COMMON.accountList',{
     frame: false,
     border: false,
     header: false,
+    columnLines:true,
 
     initComponent: function () {
         var me=this;
@@ -63,9 +64,13 @@ Ext.define('DYB_COMMON.accountList',{
                 ]
             },
             columns: [
-                { header: 'userCode',  dataIndex: 'userCode' },
-                { header: 'userName', dataIndex: 'userName' },
-                { header: 'userPassword', dataIndex: 'userPassword' },
+                { header: '用户编号',  dataIndex: 'userCode' },
+                { header: '排序',  dataIndex: 'sequence' },
+                { header: '登录名', dataIndex: 'userName' },
+                { header: '登陆密码', dataIndex: 'userPassword' },
+                { header: 'status', dataIndex: 'status' },
+                { header: '描述', dataIndex: 'description' },
+                { header: '注册时间', dataIndex: 'createTime' },
                 { flex: 1 }
             ],
             dockedItems: [

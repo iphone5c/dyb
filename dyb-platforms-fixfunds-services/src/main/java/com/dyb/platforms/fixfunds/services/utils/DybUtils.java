@@ -129,4 +129,23 @@ public class DybUtils {
         ISerialize serialize = new JsonSerialize();
         return serialize.deserializeListT(json, cls);
     }
+
+    /**
+     * 密码加密
+     * @param origPwd
+     * @return
+     */
+    public static String encryptPassword(String origPwd){
+        return MD5.MD5Encode(origPwd);
+    }
+
+    /**
+     * 密码验证
+     * @param encryptedPwd 加密后的密码
+     * @param origPwd 加密前的密码
+     * @return
+     */
+    public static boolean verifyPassword(String origPwd,String encryptedPwd){
+        return MD5.verify(origPwd,encryptedPwd);
+    }
 }

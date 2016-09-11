@@ -5,9 +5,6 @@
         <nodeValue>
             <![CDATA[
             { "type": "com.dyb.platforms.fixfunds.services.utils.core.configureations.Menu",  "list": [
-                { "text": "Demo测试样例","expanded":"false","leaf":"false", "children":[
-                    { "text": "用户信息管理", "module":"DYB_COMMON.accountList", "url":"commons/getUserList", "leaf":"true", }
-                ] },
                 { "text": "会员管理","expanded":"false","leaf":"false", "children":[
                     { "text": "信使管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
                     { "text": "商家管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
@@ -34,7 +31,7 @@
                 ] },
                 { "text": "系统管理","expanded":"false","leaf":"false", "children":[
                     { "text": "系统参数配置", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "管理员列表", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "管理员列表", "module":"DYB_COMMON.accountList", "url":"commons/getUserList", "leaf":"true", },
                     { "text": "角色管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
                     { "text": "权限列表", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
                 ] },

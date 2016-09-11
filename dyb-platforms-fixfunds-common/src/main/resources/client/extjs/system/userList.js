@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/2/26.
  */
-Ext.define('DYB_COMMON.accountList',{
+Ext.define('DYB_COMMON.system.userList',{
     extend: 'Ext.grid.Panel',
     // ====入口参数定义===================================================================
     /**
@@ -10,7 +10,7 @@ Ext.define('DYB_COMMON.accountList',{
     config: {},
 
     // ====基类属性重写、属性定义==========================================================
-    title: '用户列表',
+    title: '管理员列表',
     frame: false,
     border: false,
     header: false,
@@ -27,23 +27,39 @@ Ext.define('DYB_COMMON.accountList',{
                 xtype: 'toolbar', scope: me,
                 items:[
                     {
-                        xtype: 'button', text: '添加',  scope: me,
+                        xtype: 'button', text: '新增',  scope: me,
                         handler: function () {
-                            var results={
-                                user:{userCode:'123',userName:'123'},
-                                userList:[
-                                    {userCode:'123',userPassword:'123',userName:'123'},
-                                    {userCode:'456',userPassword:'456',userName:'456'},
-                                    {userCode:'789',userPassword:'789',userName:'789'}
-                                ],
-                                userCode:'userCode1'
-                            }
-                            var param={ params: Ext.util.JSON.encode(results)}
-                            var result=Ext.appContext.invokeService('/account','/addAccount',param);
-                            if(result.statusCode!=1000)
-                                Ext.Msg.alert('操作失败',result.result);
-                            else
-                                Ext.Msg.alert('操作成功',"添加成功");
+                            Ext.Msg.alert('操作成功',"新增成功");
+                        }
+                    },
+                    {
+                        xtype: 'button', text: '修改',  scope: me,
+                        handler: function () {
+                            Ext.Msg.alert('操作成功',"修改成功");
+                        }
+                    },
+                    {
+                        xtype: 'button', text: '禁用',  scope: me,
+                        handler: function () {
+                            Ext.Msg.alert('操作成功',"禁用成功");
+                        }
+                    },
+                    {
+                        xtype: 'button', text: '解除禁用',  scope: me,
+                        handler: function () {
+                            Ext.Msg.alert('操作成功',"操作成功");
+                        }
+                    },
+                    {
+                        xtype: 'button', text: '修改密码',  scope: me,
+                        handler: function () {
+                            Ext.Msg.alert('操作成功',"修改成功");
+                        }
+                    },
+                    {
+                        xtype: 'button', text: '修改角色',  scope: me,
+                        handler: function () {
+                            Ext.Msg.alert('操作成功',"修改成功");
                         }
                     }
                 ]
@@ -53,7 +69,7 @@ Ext.define('DYB_COMMON.accountList',{
                 { header: '排序',  dataIndex: 'sequence' },
                 { header: '登录名', dataIndex: 'userName' },
                 { header: '登陆密码', dataIndex: 'userPassword' },
-                { header: 'status', dataIndex: 'status' },
+                { header: '状态', dataIndex: 'status' },
                 { header: '描述', dataIndex: 'description' },
                 { header: '注册时间', dataIndex: 'createTime' },
                 { flex: 1 }

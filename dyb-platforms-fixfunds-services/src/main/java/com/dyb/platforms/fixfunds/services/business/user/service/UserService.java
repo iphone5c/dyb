@@ -8,6 +8,7 @@ import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
+import com.dyb.platforms.fixfunds.services.utils.core.service.BaseService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ import java.util.List;
  */
 @Transactional
 @Service("userService")
-public class UserService implements IUserService {
+public class UserService extends BaseService implements IUserService {
 
     public Logger log = Logger.getLogger(UserService.class);//日志
 

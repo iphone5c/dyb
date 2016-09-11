@@ -8,4 +8,8 @@ public enum ECodeType {
      * 用户编码
      */
     USER_CODE,
+    /**
+     * 系统参数编码
+     */
+    SYSTEMPARAMS_CODE,
 }

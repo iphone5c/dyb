@@ -11,4 +11,11 @@ public interface ICodeBuilder {
      */
     String getUserCode();
 
+    /**
+     * 获取一个新的系统参数配置编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的系统参数配置编码
+     */
+    String getSystemParamsCode();
+
 }

@@ -4,6 +4,7 @@ import com.dyb.platforms.fixfunds.services.business.serianum.dao.ISeriaNumDao;
 import com.dyb.platforms.fixfunds.services.business.serianum.entity.SeriaNum;
 import com.dyb.platforms.fixfunds.services.utils.DybConvert;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
+import com.dyb.platforms.fixfunds.services.utils.core.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +16,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 @Transactional
 @Service("seriaNumService")
-public class SeriaNumService implements ISeriaNumService {
+public class SeriaNumService extends BaseService implements ISeriaNumService {
 
     private static final ReentrantLock lock = new ReentrantLock();
 

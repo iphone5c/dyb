@@ -1,8 +1,7 @@
-package com.dyb.platforms.fixfunds.common.controller;
+package com.dyb.platforms.fixfunds.common.controller.commons;
 
 import com.dyb.platforms.fixfunds.services.business.user.service.IUserService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
-import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.configureations.ModelConfig;
 import com.dyb.platforms.fixfunds.services.utils.core.configureations.SettingConfigureationFactory;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
@@ -31,14 +30,6 @@ public class CommonsController extends BaseController {
     public Object getMenuList() {
         log.info("获取所有菜单列表");
         return result(SettingConfigureationFactory.getMenuList());
-    }
-
-    @RequestMapping(value = "/getUserList")
-    public Object getUserList(int pageIndex,int pageSize){
-        log.info("获取用户列表");
-        QueryParams queryParams=new QueryParams();
-        queryParams.addOrderBy("sequence",true);
-        return result(userService.getUserPageList(queryParams,pageIndex,pageSize,true));
     }
 
     @RequestMapping(value = "/refreshExtjs")

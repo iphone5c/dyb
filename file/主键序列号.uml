@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XPD:PROJECT xmlns:XPD="http://www.staruml.com" version="1">
+<XPD:HEADER>
+<XPD:SUBUNITS>
+</XPD:SUBUNITS>
+<XPD:PROFILES>
+<XPD:PROFILE>UMLStandard</XPD:PROFILE>
+</XPD:PROFILES>
+</XPD:HEADER>
+<XPD:BODY>
+<XPD:OBJ name="DocumentElement" type="UMLProject" guid="XI6lWRiB+kGVDzWjb3x7eQAA">
+<XPD:ATTR name="Title" type="string">project</XPD:ATTR>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLModel" guid="aFqdZntgp0aChWMJQrqsGwAA">
+<XPD:ATTR name="Name" type="string">com.dyb.platforms.fixfunds.services.business.serianum.entity</XPD:ATTR>
+<XPD:REF name="Namespace">XI6lWRiB+kGVDzWjb3x7eQAA</XPD:REF>
+<XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedDiagrams[0]" type="UMLClassDiagram" guid="mc4LpEhFZUywTnHbnR9atAAA">
+<XPD:ATTR name="Name" type="string">ProjectBaseData</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">用户组</XPD:ATTR>
+<XPD:REF name="DiagramOwner">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:OBJ name="DiagramView" type="UMLClassDiagramView" guid="3PJb1St5pUmxVXq+JTMrhQAA">
+<XPD:REF name="Diagram">mc4LpEhFZUywTnHbnR9atAAA</XPD:REF>
+<XPD:ATTR name="#OwnedViews" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedViews[0]" type="UMLClassView" guid="dLfI4mBdD0OlP/hK0s6E9wAA">
+<XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">496</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">248</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">148</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">121</XPD:ATTR>
+<XPD:REF name="Model">s5FPg8pigUu9Wl9F5wyxDwAA</XPD:REF>
+<XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="LQYFlR7zYU+ktinUhoEpWAAA">
+<XPD:OBJ name="NameLabel" type="LabelView" guid="VYvbTW3WsUC/kRTJXx3ppQAA">
+<XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">SeriaNum</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="StereotypeLabel" type="LabelView" guid="lOHAvLO+yUGYUjezFf6/agAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="PropertyLabel" type="LabelView" guid="WO2qFwpqr0aRcZLvYrPeyQAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="AttributeCompartment" type="UMLAttributeCompartmentView" guid="MVn1O8uYCEm8Ul9M1bfXAwAA">
+<XPD:REF name="Model">s5FPg8pigUu9Wl9F5wyxDwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OperationCompartment" type="UMLOperationCompartmentView" guid="Lfpbyku+pEigPGMtXwsiqQAA">
+<XPD:REF name="Model">s5FPg8pigUu9Wl9F5wyxDwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="TemplateParameterCompartment" type="UMLTemplateParameterCompartmentView" guid="lT7v5IFdAEensFrJQWS7ywAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+<XPD:REF name="Model">s5FPg8pigUu9Wl9F5wyxDwAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="s5FPg8pigUu9Wl9F5wyxDwAA">
+<XPD:ATTR name="Name" type="string">SeriaNum</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">主键序列号信息</XPD:ATTR>
+<XPD:REF name="Namespace">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
+<XPD:REF name="Views[0]">dLfI4mBdD0OlP/hK0s6E9wAA</XPD:REF>
+<XPD:REF name="Views[1]">MVn1O8uYCEm8Ul9M1bfXAwAA</XPD:REF>
+<XPD:REF name="Views[2]">Lfpbyku+pEigPGMtXwsiqQAA</XPD:REF>
+<XPD:REF name="Views[3]">lT7v5IFdAEensFrJQWS7ywAA</XPD:REF>
+<XPD:ATTR name="#Attributes" type="integer">4</XPD:ATTR>
+<XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="tc4EB63LkUiU8C04xDhMNQAA">
+<XPD:ATTR name="Name" type="string">keyName</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">序列号发送器的键</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">s5FPg8pigUu9Wl9F5wyxDwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="JzQvHrmgs0ScelJK/4tFJQAA">
+<XPD:ATTR name="Name" type="string">keyValue</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">当前已产生的最大序列号</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">int</XPD:ATTR>
+<XPD:REF name="Owner">s5FPg8pigUu9Wl9F5wyxDwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="Ai4pZwJdNUmwKh74f2rgngAA">
+<XPD:ATTR name="Name" type="string">description</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">描述</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">s5FPg8pigUu9Wl9F5wyxDwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="+0nMIkWtWEmiYEOfXqL7XgAA">
+<XPD:ATTR name="Name" type="string">createTime</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">创建时间</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Date</XPD:ATTR>
+<XPD:REF name="Owner">s5FPg8pigUu9Wl9F5wyxDwAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:BODY>
+</XPD:PROJECT>

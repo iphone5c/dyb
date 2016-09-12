@@ -89,6 +89,110 @@ Ext.define('DYB.utils.AppContext', {
         return result;
     },
 
+    /**
+     * 打开一个新窗口
+     * @param viewClsName @type String 视图类名称
+     * @param config 视图配置
+     * @param winConfig 窗口配置
+     * @return 打开的窗口对象，可通过innerView属性访问打开的视图
+     */
+    openWindow: function (viewClsName, config, winConfig) {
+        config = config || {};
+        winConfig = winConfig || {};
+
+        var newView = Ext.create(viewClsName, config);
+
+        var newWinConfig = {
+            title: '窗口',
+            height: 400,
+            //glyph: 0xf108,
+            width: 500,
+            modal: true,
+            maximizable: true,
+            minimizable: false,
+            closable: true,
+            resizable: true,
+            autoScroll:true,
+            bodyStyle: 'background-color: #ffffff; padding:0px;'
+        };
+
+        Ext.apply(newWinConfig, winConfig);
+        Ext.apply(newWinConfig, {items: newView, layout: 'fit', innerView: newView});
+
+        var win = Ext.create('Ext.window.Window', newWinConfig).show();
+        newView.meOwner = win;
+
+        var title = '';
+        if (typeof newView.getTitle === 'function')
+            title = newView.getTitle();
+        if ((title == null || title == '') && typeof newView.title !== 'undefined')
+            title = newView.title;
+        if (title != null && title != '')
+            win.setTitle(title);
+
+        return win;
+    },
+    /**
+     * 打开一个新视图
+     * @param viewClsName @type String 视图类名称
+     * @param config 视图配置
+     * @param onlyOne @type boolean 是否仅允许单实例，默认false
+     * @param closable @type boolean 是否允许关闭,默认true
+     * @return 打开的视图对象
+     */
+    openView: function (viewClsName, config, onlyOne, closable) {
+        config = config || {};
+        if (typeof closable === 'undefined')
+            closable = true;
+        var mainPanel = this.getMainPanel();
+        if (mainPanel) {
+            var v = this.__findView(viewClsName);
+            var newView = false;
+            var title = '';
+            if (!v || !onlyOne) {
+                newView = Ext.create(viewClsName, config);
+                if (typeof newView.getTitle === 'function')
+                    title = newView.getTitle();
+                if ((title == null || title == '') && typeof newView.title !== 'undefined')
+                    title = newView.title;
+            }
+            if (typeof mainPanel.setActiveTab === 'function') {//多文档
+                if (newView) {
+                    var tabView = {xtype: 'container', title: title, items: [newView], scrollable:true, closable: closable, layout: 'fit' };
+                    var tab = mainPanel.add(tabView);
+                    tab.innerView = newView;
+                    newView.meOwner = tab;
+                    mainPanel.setActiveTab(tab);
+                    mainPanel.doLayout();
+                    return newView;
+                }
+                else if (v) {
+                    mainPanel.setActiveTab(v);
+                    mainPanel.doLayout();
+                    return v.items.getAt(0);
+                }
+            }
+            else {//单文档
+                if (newView) {
+                    mainPanel.removeAll(true);
+                    mainPanel.add(newView);
+                    mainPanel.innerView = newView;
+                    newView.meOwner = mainPanel;
+                    if (title != null && title != '' && typeof mainPanel.setTitle === 'function')
+                        mainPanel.setTitle(title);
+                    if(typeof newView.setScrollable === 'function')
+                        newView.setScrollable(true);
+                    mainPanel.doLayout();
+                    return newView;
+                }
+                else if (v) {
+                    return v;
+                }
+            }
+        }
+        return false;
+    },
+
     getServiceUrl: function (service, op, param) {
         var url =  service +  op + "?v=" + (new Date()).valueOf();
         var params = this.getServiceParams(param);

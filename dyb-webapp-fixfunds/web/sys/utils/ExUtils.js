@@ -120,6 +120,18 @@ Ext.define('DYB.utils.ExUtils', {
             }
         }
         return newView;
+    },
+
+    /**
+     * 判空 true表示空否则表示非空
+     * @param info
+     */
+    isEmpty:function(info){
+        if(info=='' || info == null || info == undefined){
+            return true
+        }else{
+            return false;
+        }
     }
 })
 ;

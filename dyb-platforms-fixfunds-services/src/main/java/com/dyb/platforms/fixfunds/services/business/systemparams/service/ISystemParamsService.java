@@ -25,4 +25,25 @@ public interface ISystemParamsService {
      * @return 系统参数配置对象
      */
     public SystemParams getSystemParamsByCode(String systemParamsCode);
+
+    /**
+     * 添加系统参数配置信息
+     * @param systemParams 系统参数配置对象
+     * @return 系统参数配置对象
+     */
+    public SystemParams createSystemParams(SystemParams systemParams);
+
+    /**
+     * 修改系统参数配置信息
+     * @param systemParams 系统参数配置对象
+     * @return 系统参数配置对象
+     */
+    public SystemParams updateSystemParams(SystemParams systemParams);
+
+    /**
+     * 根据key获取系统参数配置信息
+     * @param systemParamsKey 系统参数配置key
+     * @return 系统参数配置
+     */
+    public SystemParams getSystemParamsByKey(String systemParamsKey);
 }

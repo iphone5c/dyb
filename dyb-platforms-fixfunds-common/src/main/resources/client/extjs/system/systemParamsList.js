@@ -24,29 +24,36 @@ Ext.define('DYB_COMMON.system.systemParamsList',{
 
         Ext.applyIf(me, {                             //如果指定对象不存在相同的属性，将配置的属性拷贝到指定对象
             store: store,
+            selModel: {
+                selType: 'checkboxmodel'
+            },
             tbar:{
                 xtype: 'toolbar', scope: me,
                 items:[
                     {
                         xtype: 'button', text: '新增',  scope: me,
                         handler: function () {
-                            Ext.Msg.alert('操作成功',"新增成功");
+                            me.showDetailWin();
                         }
                     },
                     {
                         xtype: 'button', text: '修改',  scope: me,
                         handler: function () {
-                            Ext.Msg.alert('操作成功',"修改成功");
+                            var list = me.getSelection();
+                            if (list.length != 1)
+                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
+                            else
+                                me.showDetailWin(list[0].data.systemParamsCode);
                         }
                     }
                 ]
             },
             columns: [
-                { header: 'CODE',  dataIndex: 'systemParamsCode' },
-                { header: '参数KEY',  dataIndex: 'systemParamsKey' },
-                { header: '参数值', dataIndex: 'systemParamsValue' },
-                { header: '描述', dataIndex: 'description' },
-                { header: '创建时间', dataIndex: 'createTime' },
+                { header: 'CODE',  dataIndex: 'systemParamsCode',width:153 },
+                { header: '参数KEY',  dataIndex: 'systemParamsKey',width:120 },
+                { header: '参数值', dataIndex: 'systemParamsValue',width:150 },
+                { header: '描述', dataIndex: 'description',width:180 },
+                { header: '创建时间', dataIndex: 'createTime',width:140 },
                 { flex: 1 }
             ],
             dockedItems: [
@@ -96,5 +103,12 @@ Ext.define('DYB_COMMON.system.systemParamsList',{
             }
         });
         return store;
+    },
+
+    showDetailWin: function (systemParamsCode) {
+        var win = Ext.appContext.openWindow("DYB_COMMON.system.form.systemParamsDetailForm",{systemParamsCode: systemParamsCode}, {width: 300, height: 215});
+        win.innerView.on('DataChanged', function (source, param) {
+            this.reload();
+        }, this);
     }
 })

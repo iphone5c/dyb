@@ -57,6 +57,12 @@ Ext.define('DYB_COMMON.system.userList',{
                         }
                     },
                     {
+                        xtype: 'button', text: '重置密码',  scope: me,
+                        handler: function () {
+                            Ext.Msg.alert('操作成功',"重置成功");
+                        }
+                    },
+                    {
                         xtype: 'button', text: '修改角色',  scope: me,
                         handler: function () {
                             Ext.Msg.alert('操作成功',"修改成功");
@@ -65,13 +71,13 @@ Ext.define('DYB_COMMON.system.userList',{
                 ]
             },
             columns: [
-                { header: '用户编号',  dataIndex: 'userCode' },
-                { header: '排序',  dataIndex: 'sequence' },
-                { header: '登录名', dataIndex: 'userName' },
-                { header: '登陆密码', dataIndex: 'userPassword' },
-                { header: '状态', dataIndex: 'status' },
-                { header: '描述', dataIndex: 'description' },
-                { header: '注册时间', dataIndex: 'createTime' },
+                { header: '用户编号',  dataIndex: 'userCode',width:153 },
+                { header: '排序',  dataIndex: 'sequence',width:50 },
+                { header: '登录名', dataIndex: 'userName',width:120 },
+                { header: '登陆密码', dataIndex: 'userPassword',width:120 },
+                { header: '状态', dataIndex: 'status',width:65 },
+                { header: '描述', dataIndex: 'description',width:180 },
+                { header: '注册时间', dataIndex: 'createTime',width:140 },
                 { flex: 1 }
             ],
             dockedItems: [

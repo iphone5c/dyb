@@ -31,8 +31,11 @@ public class PermissionsController extends BaseController {
     @RequestMapping(value = "/getPermissionsByCode")
     public Object getPermissionsByCode(String permissionsCode){
         if(DybUtils.isEmptyOrNull(permissionsCode))
-            return validationResult("获取权限时,permissionsCode不能为空或null");
-
+            return validationResult(1001,"获取权限时,permissionsCode不能为空或null");
+        Permissions permissions=permissionsService.getPermissionsByCode(permissionsCode);
+        if (permissions==null)
+            return validationResult(1001,"获取权限时，找不到此权限信息，code："+permissionsCode);
+        return result(permissions);
     }
 
 }

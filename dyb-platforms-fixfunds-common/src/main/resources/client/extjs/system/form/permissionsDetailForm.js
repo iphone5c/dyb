@@ -42,8 +42,8 @@ Ext.define('DYB_COMMON.system.form.permissionsDetailForm', {
     initComponent: function () {
         var me = this;
         var data = {};
-        if (!Ext.exUtils.isEmpty(me.config.systemParamsCode)) {
-            var result = Ext.appContext.invokeService("/systemparams","/getSystemParamsByCode", {systemParamsCode: me.config.systemParamsCode});
+        if (!Ext.exUtils.isEmpty(me.config.permissionsCode)) {
+            var result = Ext.appContext.invokeService("/permissions","/getPermissionsByCode", {permissionsCode: me.config.permissionsCode});
             if(result.statusCode!=1000){
                 Ext.Msg.alert('操作失败', result.errorMessage);
             }else{

@@ -2,6 +2,7 @@ package com.dyb.platforms.fixfunds.common.controller.permissions;
 
 import com.dyb.platforms.fixfunds.services.business.user.entity.Permissions;
 import com.dyb.platforms.fixfunds.services.business.user.service.IPermissionsService;
+import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,14 @@ public class PermissionsController extends BaseController {
     public Object getPermissionsList(){
         log.info("获取所有权限列表");
         Permissions permissions=permissionsService.getPermissions();
-
         return result(permissions);
+    }
+
+    @RequestMapping(value = "/getPermissionsByCode")
+    public Object getPermissionsByCode(String permissionsCode){
+        if(DybUtils.isEmptyOrNull(permissionsCode))
+            return validationResult("获取权限时,permissionsCode不能为空或null");
+
     }
 
 }

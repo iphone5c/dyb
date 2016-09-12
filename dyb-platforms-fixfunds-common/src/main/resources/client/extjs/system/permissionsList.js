@@ -92,10 +92,6 @@ Ext.define('DYB_COMMON.system.permissionsList', {
     //====方法定义=======================================================================
     createStore: function () {
         var m = Ext.appContext.invokeService("/permissions","/getPermissionsList", {});
-//        m.result.expanded = true;
-//        for (var i = 0; i < m.result.children.length; i++) {
-//            m.result.children[i].expanded = true;
-//        }
         this.setTreeExpanded(m.result);
         var treeStore = Ext.create('Ext.data.TreeStore', {
             root: m.result
@@ -125,20 +121,10 @@ Ext.define('DYB_COMMON.system.permissionsList', {
         this.unmask();
     },
     showDetailWin: function (rightId, parentId) {
-        var win = Ext.appContext.openWindow("YCBack.business.user.forms.RightDetailForm",
-            {rightId: rightId, parentId: parentId}, {width: 400, height: 210});
+        var win = Ext.appContext.openWindow("YCBack.business.user.forms.RightDetailForm",{rightId: rightId, parentId: parentId}, {width: 400, height: 210});
         win.innerView.on('DataChanged', function (source, param) {
             this.reload();
         }, this);
-    },
-    deleteRights: function (rightNames) {
-        var param = {rightNames: rightNames};
-        var result = Ext.appContext.invokeService("com.funi.core.modules.usermge.controllers.IUserMageController",
-            "deleteRights", param);
-        if (!result.success)
-            Ext.Msg.alert('错误', result.errorMessage);
-        else {
-            this.reload();
-        }
     }
+
 });

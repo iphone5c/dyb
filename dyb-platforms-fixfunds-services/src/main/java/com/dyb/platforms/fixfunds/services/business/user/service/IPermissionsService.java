@@ -13,4 +13,11 @@ public interface IPermissionsService {
      * @return
      */
     public Permissions getPermissions();
+
+    /**
+     * 根据code获取权限信息
+     * @param permissionsCode 权限主键
+     * @return 权限信息
+     */
+    public Permissions getPermissionsByCode(String permissionsCode);
 }

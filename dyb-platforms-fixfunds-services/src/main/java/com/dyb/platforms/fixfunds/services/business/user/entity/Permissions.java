@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 权限信息
@@ -39,8 +40,12 @@ public class Permissions implements java.io.Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
+    // 子菜单
+    private List<Permissions> children;
+    // 父级菜单
+    private Permissions parentPermissions;
 
-    /** 
+    /**
      * 获取权限Code [主键]
      * 
      * @return 权限Code
@@ -202,4 +207,19 @@ public class Permissions implements java.io.Serializable {
         this.parentCode = parentCode;
     }
 
+    public List<Permissions> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Permissions> children) {
+        this.children = children;
+    }
+
+    public Permissions getParentPermissions() {
+        return parentPermissions;
+    }
+
+    public void setParentPermissions(Permissions parentPermissions) {
+        this.parentPermissions = parentPermissions;
+    }
 }

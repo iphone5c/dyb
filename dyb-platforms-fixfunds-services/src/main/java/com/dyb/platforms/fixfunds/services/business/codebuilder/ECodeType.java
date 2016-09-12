@@ -12,4 +12,8 @@ public enum ECodeType {
      * 系统参数编码
      */
     SYSTEMPARAMS_CODE,
+    /**
+     * 权限编码
+     */
+    PERMISSIONS_CODE,
 }

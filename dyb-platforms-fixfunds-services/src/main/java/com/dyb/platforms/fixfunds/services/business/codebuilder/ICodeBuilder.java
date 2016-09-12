@@ -18,4 +18,11 @@ public interface ICodeBuilder {
      */
     String getSystemParamsCode();
 
+    /**
+     * 获取一个新的权限编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的权限编码
+     */
+    String getPermissionsCode();
+
 }

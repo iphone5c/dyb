@@ -116,7 +116,7 @@ Ext.define('DYB_COMMON.system.form.updateUserPasswordForm', {
                 Ext.Msg.alert('操作失败', result.errorMessage);
             else {
                 Ext.Msg.alert('成功', result.result);
-                me.onDataChangedEvent(me, roles);
+                me.onDataChangedEvent(me, userpassword);
                 me.up('window').close();
             }
         }

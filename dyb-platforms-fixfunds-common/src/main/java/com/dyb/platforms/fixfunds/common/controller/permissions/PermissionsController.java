@@ -48,7 +48,11 @@ public class PermissionsController extends BaseController {
             return validationResult(1001,"新建权限时，权限访问地址不能为空或null");
         if (DybUtils.isEmptyOrNull(permissions.getParentCode()))
             return validationResult(1001,"新建权限时，必须选择一项父级权限");
-        return result(permissionsService.createPermissions(permissions));
+        Permissions temp=permissionsService.createPermissions(permissions);
+        if (temp==null)
+            return validationResult(1001,"新建失败");
+        else
+            return result(temp);
     }
 
     @RequestMapping(value = "/updatePermissions")
@@ -61,13 +65,17 @@ public class PermissionsController extends BaseController {
             return validationResult(1001,"修改权限时，权限名称不能为空或null");
         if (DybUtils.isEmptyOrNull(permissions.getPermissionsUrl()))
             return validationResult(1001,"修改权限时，权限访问地址不能为空或null");
-        Permissions temp=permissionsService.getPermissionsByCode(permissions.getPermissionsCode());
-        if (temp==null)
+        Permissions updatePermissions=permissionsService.getPermissionsByCode(permissions.getPermissionsCode());
+        if (updatePermissions==null)
             return validationResult(1001,"修改权限时，找不到此权限信息，code："+permissions.getPermissionsCode());
-        temp.setPermissionsName(permissions.getPermissionsName());
-        temp.setPermissionsUrl(permissions.getPermissionsUrl());
-        temp.setDescription(permissions.getDescription());
-        return result(permissionsService.updatePermissions(temp));
+        updatePermissions.setPermissionsName(permissions.getPermissionsName());
+        updatePermissions.setPermissionsUrl(permissions.getPermissionsUrl());
+        updatePermissions.setDescription(permissions.getDescription());
+        Permissions temp=permissionsService.modifyPermissions(updatePermissions);
+        if (temp==null)
+            return validationResult(1001,"新建失败");
+        else
+            return result(temp);
     }
 
 }

@@ -20,8 +20,8 @@ public class UserController extends BaseController {
     @Autowired
     private IUserService userService;
 
-    @RequestMapping(value = "/getUserList")
-    public Object getUserList(int pageIndex,int pageSize){
+    @RequestMapping(value = "/getUserPageList")
+    public Object getUserPageList(int pageIndex,int pageSize){
         log.info("获取用户列表");
         QueryParams queryParams=new QueryParams();
         queryParams.addOrderBy("sequence",true);

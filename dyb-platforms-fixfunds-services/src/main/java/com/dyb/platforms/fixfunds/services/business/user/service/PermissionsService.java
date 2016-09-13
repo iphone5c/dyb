@@ -91,7 +91,7 @@ public class PermissionsService extends BaseService implements IPermissionsServi
      * @return 权限对象
      */
     @Override
-    public Permissions updatePermissions(Permissions permissions) {
+    public Permissions modifyPermissions(Permissions permissions) {
         if (permissions==null)
             throw new DybRuntimeException("修改权限时，权限对象不能为空或null");
         if (DybUtils.isEmptyOrNull(permissions.getPermissionsCode()))

@@ -25,4 +25,11 @@ public interface ICodeBuilder {
      */
     String getPermissionsCode();
 
+    /**
+     * 获取一个新的角色编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的角色编码
+     */
+    String getRoleCode();
+
 }

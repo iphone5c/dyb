@@ -16,4 +16,8 @@ public enum ECodeType {
      * 权限编码
      */
     PERMISSIONS_CODE,
+    /**
+     * 角色编码
+     */
+    ROLE_CODE,
 }

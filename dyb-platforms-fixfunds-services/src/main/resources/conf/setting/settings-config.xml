@@ -32,7 +32,7 @@
                 { "text": "系统管理","expanded":"false","leaf":"false", "children":[
                     { "text": "系统参数配置", "module":"DYB_COMMON.system.systemParamsList", "url":"systemparams/getSystemParamsList", "leaf":"true", },
                     { "text": "管理员列表", "module":"DYB_COMMON.system.userList", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "角色管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "角色管理", "module":"DYB_COMMON.system.roleList", "url":"role/getRolePageList", "leaf":"true", },
                     { "text": "权限列表", "module":"DYB_COMMON.system.permissionsList", "url":"permissions/getPermissionsList", "leaf":"true", }
                 ] },
                 { "text": "日志管理","expanded":"false","leaf":"false", "children":[

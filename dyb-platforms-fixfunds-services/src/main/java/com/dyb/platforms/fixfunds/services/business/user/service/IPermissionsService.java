@@ -33,5 +33,5 @@ public interface IPermissionsService {
      * @param permissions 权限对象
      * @return 权限对象
      */
-    public Permissions updatePermissions(Permissions permissions);
+    public Permissions modifyPermissions(Permissions permissions);
 }

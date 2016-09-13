@@ -29,37 +29,57 @@ Ext.define('DYB_COMMON.system.userList',{
                     {
                         xtype: 'button', text: '新增',  scope: me,
                         handler: function () {
-                            Ext.Msg.alert('操作成功',"新增成功");
+                            me.showDetailWin();
                         }
                     },
                     {
                         xtype: 'button', text: '修改',  scope: me,
                         handler: function () {
-                            Ext.Msg.alert('操作成功',"修改成功");
+                            var list = me.getSelection();
+                            if (list.length != 1)
+                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
+                            else
+                                me.showDetailWin(list[0].data.userCode);
                         }
                     },
                     {
                         xtype: 'button', text: '禁用',  scope: me,
                         handler: function () {
-                            Ext.Msg.alert('操作成功',"禁用成功");
+                            var list = me.getSelection();
+                            if (list.length != 1)
+                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
+                            else
+                                me.disableUser(list[0].data.userCode);
                         }
                     },
                     {
                         xtype: 'button', text: '解除禁用',  scope: me,
                         handler: function () {
-                            Ext.Msg.alert('操作成功',"操作成功");
+                            var list = me.getSelection();
+                            if (list.length != 1)
+                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
+                            else
+                                me.removeDisableUser(list[0].data.userCode);
                         }
                     },
                     {
                         xtype: 'button', text: '修改密码',  scope: me,
                         handler: function () {
-                            Ext.Msg.alert('操作成功',"修改成功");
+                            var list = me.getSelection();
+                            if (list.length != 1)
+                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
+                            else
+                                me.updateUserPassword(list[0].data.userCode);
                         }
                     },
                     {
                         xtype: 'button', text: '重置密码',  scope: me,
                         handler: function () {
-                            Ext.Msg.alert('操作成功',"重置成功");
+                            var list = me.getSelection();
+                            if (list.length != 1)
+                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
+                            else
+                                me.resetUserPassword(list[0].data.userCode);
                         }
                     },
                     {
@@ -127,5 +147,66 @@ Ext.define('DYB_COMMON.system.userList',{
             }
         });
         return store;
+    },
+
+    showDetailWin: function (userCode) {
+        var heigth=Ext.exUtils.isEmpty(userCode)? 255:185;
+        var win = Ext.appContext.openWindow("DYB_COMMON.system.form.userDetailForm",{userCode: userCode}, {width: 300, height: heigth});
+        win.innerView.on('DataChanged', function (source, param) {
+            this.reload();
+        }, this);
+    },
+
+    /**
+     * 禁用用户
+     * @param userCode 用户code
+     */
+    disableUser:function(userCode){
+        var result = Ext.appContext.invokeService("/user","/disableUser", {userCode: userCode});
+        if(result.statusCode!=1000){
+            Ext.Msg.alert('操作失败', result.errorMessage);
+        }else{
+            Ext.Msg.alert('成功', result.result);
+            this.reload();
+        }
+    },
+
+    /**
+     * 解除禁用
+     * @param userCode 用户code
+     */
+    removeDisableUser:function(userCode){
+        var result = Ext.appContext.invokeService("/user","/removeDisableUser", {userCode: userCode});
+        if(result.statusCode!=1000){
+            Ext.Msg.alert('操作失败', result.errorMessage);
+        }else{
+            Ext.Msg.alert('成功', result.result);
+            this.reload();
+        }
+    },
+
+    /**
+     * 重置密码
+     * @param userCode 用户code
+     */
+    resetUserPassword:function(userCode){
+        var result = Ext.appContext.invokeService("/user","/resetUserPassword", {userCode: userCode});
+        if(result.statusCode!=1000){
+            Ext.Msg.alert('操作失败', result.errorMessage);
+        }else{
+            Ext.Msg.alert('成功', result.result);
+            this.reload();
+        }
+    },
+
+    /**
+     *修改用户密码
+     * @param userCode
+     */
+    updateUserPassword: function (userCode) {
+        var win = Ext.appContext.openWindow("DYB_COMMON.system.form.updateUserPasswordForm",{userCode: userCode}, {width: 300, height: 185});
+        win.innerView.on('DataChanged', function (source, param) {
+            this.reload();
+        }, this);
     }
 })

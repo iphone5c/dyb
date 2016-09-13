@@ -89,6 +89,18 @@ public class UserService extends BaseService implements IUserService {
     }
 
     /**
+     * 根据code查询用户信息
+     * @param userCode 用户Code
+     * @return 用户信息
+     */
+    @Override
+    public User getUserByCode(String userCode) {
+        if (DybUtils.isEmptyOrNull(userCode))
+            throw new DybRuntimeException("查询用户信息时，code不能为空或null");
+        return userDao.getObject(userCode,true);
+    }
+
+    /**
      *获取用户分页列表
      * @param wheres    条件
      * @param pageIndex 返回的页码
@@ -99,5 +111,96 @@ public class UserService extends BaseService implements IUserService {
     @Override
     public PageList<User> getUserPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail) {
         return userDao.queryListForPaged(wheres,pageIndex,pageSize,detail);
+    }
+
+    /**
+     * 禁用指定用户
+     * @param userCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean disableUser(String userCode) {
+        if (DybUtils.isEmptyOrNull(userCode))
+            throw new DybRuntimeException("禁用指定用户时，code不能为空或null");
+        return this.operationUserStatus(userCode,UserStatus.禁用);
+    }
+
+    /**
+     * 将指定用户解除禁用
+     * @param userCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean removeDisableUser(String userCode) {
+        if (DybUtils.isEmptyOrNull(userCode))
+            throw new DybRuntimeException("解除指定用户的禁用状态时，code不能为空或null");
+        return this.operationUserStatus(userCode,UserStatus.正常);
+    }
+
+    /**
+     * 操作指定用户额状态
+     * @param userCode 用户code
+     * @param userStatus 用户状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean operationUserStatus(String userCode, UserStatus userStatus) {
+        if (DybUtils.isEmptyOrNull(userCode))
+            throw new DybRuntimeException("操作指定用户的状态时，code不能为空或null");
+        if (userStatus==null)
+            throw new DybRuntimeException("操作指定用户的状态时，修改的用户状态不能为空");
+        User user=userDao.getObject(userCode,true);
+        if (user==null)
+            throw new DybRuntimeException("操作指定用户的状态时，找不到此用户信息，code："+userCode);
+        user.setStatus(userStatus);
+        int info=userDao.updateObject(user);
+        return info>0?true:false;
+    }
+
+    /**
+     * 将指定用户重置密码
+     * @param userCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean resetUserPassword(String userCode) {
+        if (DybUtils.isEmptyOrNull(userCode))
+            throw new DybRuntimeException("指定用户重置密码时，code不能为空或null");
+        User user=userDao.getObject(userCode,true);
+        if (user==null)
+            throw new DybRuntimeException("指定用户重置密码时，找不到此用户信息，code："+userCode);
+        user.setUserPassword(DybUtils.encryptPassword("ABC123"));
+        int info=userDao.updateObject(user);
+        return info>0?true:false;
+    }
+
+    /**
+     * 指定用户修改密码
+     * @param userCode 用户code
+     * @param oldPassword 旧密码
+     * @param newPassword 新密码
+     * @param confirmPassword 确认密码
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean modifyUserPassword(String userCode, String oldPassword, String newPassword, String confirmPassword) {
+        if (DybUtils.isEmptyOrNull(userCode))
+            throw new DybRuntimeException("指定用户修改密码时，code不能为空或null");
+        if (DybUtils.isEmptyOrNull(oldPassword))
+            throw new DybRuntimeException("指定用户修改密码时，旧密码不能为空或null");
+        if (DybUtils.isEmptyOrNull(newPassword))
+            throw new DybRuntimeException("指定用户修改密码时，新密码不能为空或null");
+        if (DybUtils.isEmptyOrNull(confirmPassword))
+            throw new DybRuntimeException("指定用户修改密码时，确认密码不能为空或null");
+        User user=userDao.getObject(userCode,true);
+        if (user==null)
+            throw new DybRuntimeException("指定用户修改密码时，找不到此用户信息，code："+userCode);
+        if (!DybUtils.verifyPassword(oldPassword,user.getUserPassword()))
+            throw new DybRuntimeException("指定用户修改密码时，旧密码输出错误");
+        if (!newPassword.equals(confirmPassword))
+            throw new DybRuntimeException("指定用户修改密码时，新密码与确认密码输入不一致");
+        user.setUserPassword(DybUtils.encryptPassword(newPassword));
+        int info=userDao.updateObject(user);
+        return info>0?true:false;
     }
 }

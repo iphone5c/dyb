@@ -141,8 +141,8 @@ public class DybUtils {
 
     /**
      * 密码验证
-     * @param encryptedPwd 加密后的密码
      * @param origPwd 加密前的密码
+     * @param encryptedPwd 加密后的密码
      * @return
      */
     public static boolean verifyPassword(String origPwd,String encryptedPwd){

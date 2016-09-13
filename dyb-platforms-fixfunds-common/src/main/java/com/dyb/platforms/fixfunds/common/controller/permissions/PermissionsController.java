@@ -38,4 +38,36 @@ public class PermissionsController extends BaseController {
         return result(permissions);
     }
 
+    @RequestMapping(value = "/createPermissions")
+    public Object createPermissions(Permissions permissions){
+        if (permissions==null)
+            return validationResult(1001,"新建权限时，权限对象不能为空或null");
+        if(DybUtils.isEmptyOrNull(permissions.getPermissionsName()))
+            return validationResult(1001,"新建权限时，权限名称不能为空或null");
+        if (DybUtils.isEmptyOrNull(permissions.getPermissionsUrl()))
+            return validationResult(1001,"新建权限时，权限访问地址不能为空或null");
+        if (DybUtils.isEmptyOrNull(permissions.getParentCode()))
+            return validationResult(1001,"新建权限时，必须选择一项父级权限");
+        return result(permissionsService.createPermissions(permissions));
+    }
+
+    @RequestMapping(value = "/updatePermissions")
+    public Object updatePermissions(Permissions permissions){
+        if (permissions==null)
+            return validationResult(1001,"修改权限时，权限对象不能为空或null");
+        if (DybUtils.isEmptyOrNull(permissions.getPermissionsCode()))
+            return validationResult(1001,"修改权限时，必须选择一项需要修改的数据");
+        if(DybUtils.isEmptyOrNull(permissions.getPermissionsName()))
+            return validationResult(1001,"修改权限时，权限名称不能为空或null");
+        if (DybUtils.isEmptyOrNull(permissions.getPermissionsUrl()))
+            return validationResult(1001,"修改权限时，权限访问地址不能为空或null");
+        Permissions temp=permissionsService.getPermissionsByCode(permissions.getPermissionsCode());
+        if (temp==null)
+            return validationResult(1001,"修改权限时，找不到此权限信息，code："+permissions.getPermissionsCode());
+        temp.setPermissionsName(permissions.getPermissionsName());
+        temp.setPermissionsUrl(permissions.getPermissionsUrl());
+        temp.setDescription(permissions.getDescription());
+        return result(permissionsService.updatePermissions(temp));
+    }
+
 }

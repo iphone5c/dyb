@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,6 +52,63 @@ public class PermissionsService extends BaseService implements IPermissionsServi
         if (DybUtils.isEmptyOrNull(permissionsCode))
             throw new DybRuntimeException("查询权限时，permissionsCode不能为空或null");
         return permissionsDao.getObject(permissionsCode,true);
+    }
+
+    /**
+     * 新增权限信息
+     * @param permissions 权限对象
+     * @return 权限对象
+     */
+    @Override
+    public Permissions createPermissions(Permissions permissions) {
+        if (permissions==null)
+            throw new DybRuntimeException("新建权限时，权限对象不能为空或null");
+        if(DybUtils.isEmptyOrNull(permissions.getPermissionsName()))
+            throw new DybRuntimeException("新建权限时，权限名称不能为空或null");
+        if (DybUtils.isEmptyOrNull(permissions.getPermissionsUrl()))
+            throw new DybRuntimeException("新建权限时，权限访问地址不能为空或null");
+        if (DybUtils.isEmptyOrNull(permissions.getParentCode()))
+            throw new DybRuntimeException("新建权限时，必须选择一项父级权限");
+        Permissions parent=permissionsDao.getObject(permissions.getParentCode(),true);
+        if (parent==null)
+            throw new DybRuntimeException("新建权限时，找不到此父级菜单信息，parentCode："+permissions.getParentCode());
+        permissions.setPermissionsCode(codeBuilder.getPermissionsCode());
+        permissions.setCreateTime(new Date());
+        permissions.setLeaf(true);
+        int info=permissionsDao.insertObject(permissions);
+        if (info>0&&parent.isLeaf()){
+            parent.setLeaf(false);
+            permissionsDao.updateObject(parent);
+            return permissions;
+        }else{
+            return null;
+        }
+    }
+
+    /**
+     * 修改权限信息
+     * @param permissions 权限对象
+     * @return 权限对象
+     */
+    @Override
+    public Permissions updatePermissions(Permissions permissions) {
+        if (permissions==null)
+            throw new DybRuntimeException("修改权限时，权限对象不能为空或null");
+        if (DybUtils.isEmptyOrNull(permissions.getPermissionsCode()))
+            throw new DybRuntimeException("修改权限时，必须选择一项需要修改的数据");
+        if(DybUtils.isEmptyOrNull(permissions.getPermissionsName()))
+            throw new DybRuntimeException("修改权限时，权限名称不能为空或null");
+        if (DybUtils.isEmptyOrNull(permissions.getPermissionsUrl()))
+            throw new DybRuntimeException("修改权限时，权限访问地址不能为空或null");
+        if (DybUtils.isEmptyOrNull(permissions.getParentCode()))
+            throw new DybRuntimeException("修改权限时，必须选择一项父级权限");
+        Permissions temp=permissionsDao.getObject(permissions.getPermissionsCode(),true);
+        if (temp==null)
+            throw new DybRuntimeException("修改权限时，找不到此权限信息，code："+permissions.getPermissionsCode());
+        if(!temp.getParentCode().equals(permissions.getParentCode()))
+            throw new DybRuntimeException("修改权限时，不能修改父级权限");
+        int info=permissionsDao.updateObject(permissions);
+        return info>0?permissions:null;
     }
 
     private void getPermissionsTree(Permissions permissions){

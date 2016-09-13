@@ -20,4 +20,18 @@ public interface IPermissionsService {
      * @return 权限信息
      */
     public Permissions getPermissionsByCode(String permissionsCode);
+
+    /**
+     * 新增权限信息
+     * @param permissions 权限对象
+     * @return 权限对象
+     */
+    public Permissions createPermissions(Permissions permissions);
+
+    /**
+     * 修改权限信息
+     * @param permissions 权限对象
+     * @return 权限对象
+     */
+    public Permissions updatePermissions(Permissions permissions);
 }

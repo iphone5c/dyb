@@ -37,13 +37,23 @@ Ext.define('DYB_COMMON.system.permissionsList', {
                     {
                         xtype: 'button', text: '新增',  scope: me,
                         handler: function () {
-                            Ext.Msg.alert('操作成功',"新增成功");
+                            var treeSelected=me.getSelection();
+                            if(treeSelected.length!=1){
+                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
+                                return;
+                            }
+                            me.showDetailWin('',treeSelected[0].data.permissionsCode);
                         }
                     },
                     {
                         xtype: 'button', text: '修改',  scope: me,
                         handler: function () {
-                            Ext.Msg.alert('操作成功',"修改成功");
+                            var treeSelected=me.getSelection();
+                            if(treeSelected.length!=1){
+                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
+                                return;
+                            }
+                            me.showDetailWin(treeSelected[0].data.permissionsCode,'');
                         }
                     },
                     {
@@ -120,8 +130,8 @@ Ext.define('DYB_COMMON.system.permissionsList', {
         this.expandAll();
         this.unmask();
     },
-    showDetailWin: function (rightId, parentId) {
-        var win = Ext.appContext.openWindow("YCBack.business.user.forms.RightDetailForm",{rightId: rightId, parentId: parentId}, {width: 400, height: 210});
+    showDetailWin: function (permissionsCode,parentPermissionsCode) {
+        var win = Ext.appContext.openWindow("DYB_COMMON.system.form.permissionsDetailForm",{permissionsCode: permissionsCode,parentPermissionsCode:parentPermissionsCode}, {width: 400, height: 210});
         win.innerView.on('DataChanged', function (source, param) {
             this.reload();
         }, this);

@@ -16,7 +16,12 @@ Ext.define('DYB_COMMON.system.form.permissionsDetailForm', {
         /**
          * ｛String｝ 权限permissionsCode为空表示新增，否则就是修改
          */
-        permissionsCode: ''
+        permissionsCode: '',
+
+        /**
+         * 新增时的必传字段，新权限的父级权限的permissionsCode
+         */
+        parentPermissionsCode:''
     },
 
     // ====事件定义========================================================================
@@ -65,19 +70,19 @@ Ext.define('DYB_COMMON.system.form.permissionsDetailForm', {
                 }
             },
             items: [
-                {text:'参数KEY',islabel: true},
+                {text:'权限名称',islabel: true},
                 {
-                    xtype:'textfield',name: 'systemParamsKey', bind: '{systemParamsKey}',maxLength: 20, blankText:'角色名不许为空',maxLengthText: '最大长度是20',readOnly:Ext.exUtils.isEmpty(me.config.systemParamsCode)?false:true
+                    xtype:'textfield',name: 'permissionsName', bind: '{permissionsName}'
                 },
                {},
-                {text:'参数值',islabel: true},
+                {text:'访问地址',islabel: true},
                 {
-                    xtype:'textfield',name: 'systemParamsValue', bind: '{systemParamsValue}',maxLength: 20, blankText:'角色名不许为空',maxLengthText: '最大长度是20'
+                    xtype:'textfield',name: 'permissionsUrl', bind: '{permissionsUrl}'
                 },
                 {},
                 {text:'描述',islabel: true},
                 {
-                    xtype:'textfield',name: 'description', bind: '{description}',maxLength: 20, blankText:'角色名不许为空',maxLengthText: '最大长度是20'
+                    xtype:'textfield',name: 'description', bind: '{description}'
                 },
                 {}
 
@@ -87,7 +92,7 @@ Ext.define('DYB_COMMON.system.form.permissionsDetailForm', {
                     text: '确定', scope: this, width: 70, glyph: 0xf00c,
                     handler: function () {
                         var me = this;
-                        me.insertOrUpdateSystemParams(me.getForm());
+                        me.insertOrUpdatePermissions(me.getForm());
                     }
                 },
                 {
@@ -106,30 +111,31 @@ Ext.define('DYB_COMMON.system.form.permissionsDetailForm', {
     //====方法定义=======================================================================
 
     /**
-     * 新增或者修改系统参数配置
+     * 新增或者修改权限
      * @param form 提交表单数据
      */
-    insertOrUpdateSystemParams:function(form){
+    insertOrUpdatePermissions:function(form){
         var me = this;
         if (form.isValid()) {
             var info = form.getFieldValues();
-            var systemParams = {
-                systemParamsCode:me.config.systemParamsCode,
-                systemParamsKey:info.systemParamsKey,
-                systemParamsValue:info.systemParamsValue,
+            var permissions = {
+                permissionsCode:me.config.permissionsCode,
+                parentCode:me.config.parentPermissionsCode,
+                permissionsName:info.permissionsName,
+                permissionsUrl:info.permissionsUrl,
                 description:info.description
             }
             var result;
-            if(Ext.exUtils.isEmpty(me.config.systemParamsCode)){
-                result = Ext.appContext.invokeService('/systemparams', '/createSystemParams', systemParams);
+            if(Ext.exUtils.isEmpty(me.config.permissionsCode)){
+                result = Ext.appContext.invokeService('/permissions', '/createPermissions', permissions);
             }else{
-                result = Ext.appContext.invokeService('/systemparams', '/updateSystemParams', systemParams);
+                result = Ext.appContext.invokeService('/permissions', '/updatePermissions', permissions);
             }
             if (result.statusCode != 1000)
                 Ext.Msg.alert('操作失败', result.errorMessage);
             else {
                 Ext.Msg.alert('成功', "操作成功!");
-                me.onDataChangedEvent(me, systemParams);
+                me.onDataChangedEvent(me, permissions);
                 me.up('window').close();
             }
         }

@@ -18,7 +18,7 @@ import java.util.List;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/commons")
+@RequestMapping(value = "/back/commons/commons")
 public class CommonsController extends BaseController {
 
     public Logger log = Logger.getLogger(CommonsController.class);//日志

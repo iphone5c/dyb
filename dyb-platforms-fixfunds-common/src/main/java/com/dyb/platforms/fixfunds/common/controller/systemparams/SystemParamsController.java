@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/systemparams")
+@RequestMapping(value = "/back/commons/systemparams")
 public class SystemParamsController extends BaseController {
 
     public Logger log = Logger.getLogger(SystemParamsController.class);//日志

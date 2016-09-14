@@ -41,4 +41,11 @@
     </bean>
 
     <mvc:default-servlet-handler />
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/back/**"/>
+            <bean class="com.dyb.platforms.fixfunds.services.utils.core.InControllerFilterBack"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

@@ -48,7 +48,7 @@ Ext.define('DYB_COMMON.system.form.permissionsDetailForm', {
         var me = this;
         var data = {};
         if (!Ext.exUtils.isEmpty(me.config.permissionsCode)) {
-            var result = Ext.appContext.invokeService("/permissions","/getPermissionsByCode", {permissionsCode: me.config.permissionsCode});
+            var result = Ext.appContext.invokeService("/back/commons/permissions","/getPermissionsByCode", {permissionsCode: me.config.permissionsCode});
             if(result.statusCode!=1000){
                 Ext.Msg.alert('操作失败', result.errorMessage);
             }else{
@@ -127,9 +127,9 @@ Ext.define('DYB_COMMON.system.form.permissionsDetailForm', {
             }
             var result;
             if(Ext.exUtils.isEmpty(me.config.permissionsCode)){
-                result = Ext.appContext.invokeService('/permissions', '/createPermissions', permissions);
+                result = Ext.appContext.invokeService('/back/commons/permissions', '/createPermissions', permissions);
             }else{
-                result = Ext.appContext.invokeService('/permissions', '/updatePermissions', permissions);
+                result = Ext.appContext.invokeService('/back/commons/permissions', '/updatePermissions', permissions);
             }
             if (result.statusCode != 1000)
                 Ext.Msg.alert('操作失败', result.errorMessage);

@@ -43,7 +43,7 @@ Ext.define('DYB_COMMON.system.form.systemParamsDetailForm', {
         var me = this;
         var data = {};
         if (!Ext.exUtils.isEmpty(me.config.systemParamsCode)) {
-            var result = Ext.appContext.invokeService("/systemparams","/getSystemParamsByCode", {systemParamsCode: me.config.systemParamsCode});
+            var result = Ext.appContext.invokeService("/back/commons/systemparams","/getSystemParamsByCode", {systemParamsCode: me.config.systemParamsCode});
             if(result.statusCode!=1000){
                 Ext.Msg.alert('操作失败', result.errorMessage);
             }else{
@@ -121,9 +121,9 @@ Ext.define('DYB_COMMON.system.form.systemParamsDetailForm', {
             }
             var result;
             if(Ext.exUtils.isEmpty(me.config.systemParamsCode)){
-                result = Ext.appContext.invokeService('/systemparams', '/createSystemParams', systemParams);
+                result = Ext.appContext.invokeService('/back/commons/systemparams', '/createSystemParams', systemParams);
             }else{
-                result = Ext.appContext.invokeService('/systemparams', '/updateSystemParams', systemParams);
+                result = Ext.appContext.invokeService('/back/commons/systemparams', '/updateSystemParams', systemParams);
             }
             if (result.statusCode != 1000)
                 Ext.Msg.alert('操作失败', result.errorMessage);

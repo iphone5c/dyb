@@ -43,7 +43,7 @@ Ext.define('DYB_COMMON.system.form.roleDetailForm', {
         var me = this;
         var data = {};
         if (!Ext.exUtils.isEmpty(me.config.roleCode)) {
-            var result = Ext.appContext.invokeService("/role","/getRoleByCode", {roleCode: me.config.roleCode});
+            var result = Ext.appContext.invokeService("/back/commons/role","/getRoleByCode", {roleCode: me.config.roleCode});
             if(result.statusCode!=1000){
                 Ext.Msg.alert('操作失败', result.errorMessage);
             }else{
@@ -121,9 +121,9 @@ Ext.define('DYB_COMMON.system.form.roleDetailForm', {
             }
             var result;
             if(Ext.exUtils.isEmpty(me.config.roleCode)){
-                result = Ext.appContext.invokeService('/role', '/createRole', roles);
+                result = Ext.appContext.invokeService('/back/commons/role', '/createRole', roles);
             }else{
-                result = Ext.appContext.invokeService('/role', '/updateRole', roles);
+                result = Ext.appContext.invokeService('/back/commons/role', '/updateRole', roles);
             }
             if (result.statusCode != 1000)
                 Ext.Msg.alert('操作失败', result.errorMessage);

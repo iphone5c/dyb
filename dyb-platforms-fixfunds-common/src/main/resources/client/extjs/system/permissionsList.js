@@ -101,7 +101,7 @@ Ext.define('DYB_COMMON.system.permissionsList', {
 
     //====方法定义=======================================================================
     createStore: function () {
-        var m = Ext.appContext.invokeService("/permissions","/getPermissionsList", {});
+        var m = Ext.appContext.invokeService("/back/commons/permissions","/getPermissionsList", {});
         this.setTreeExpanded(m.result);
         var treeStore = Ext.create('Ext.data.TreeStore', {
             root: m.result

@@ -33,11 +33,11 @@
     </servlet-mapping>
 
     <filter>
-        <filter-name>ycServletCoreFilter</filter-name>
+        <filter-name>dybServletCoreFilter</filter-name>
         <filter-class>com.dyb.platforms.fixfunds.services.utils.core.DybServletCoreFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>ycServletCoreFilter</filter-name>
+        <filter-name>dybServletCoreFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 

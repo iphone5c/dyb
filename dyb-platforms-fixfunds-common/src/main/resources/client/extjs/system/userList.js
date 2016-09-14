@@ -134,7 +134,7 @@ Ext.define('DYB_COMMON.system.userList',{
             pageSize:20,
             fields: [],
             proxy: {
-                url: '/user/getUserPageList',
+                url: '/back/commons/user/getUserPageList',
                 type: 'ajax',
                 extraParams: {pageIndex:0,pageSize:20},
                 reader: {
@@ -162,7 +162,7 @@ Ext.define('DYB_COMMON.system.userList',{
      * @param userCode 用户code
      */
     disableUser:function(userCode){
-        var result = Ext.appContext.invokeService("/user","/disableUser", {userCode: userCode});
+        var result = Ext.appContext.invokeService("/back/commons/user","/disableUser", {userCode: userCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -176,7 +176,7 @@ Ext.define('DYB_COMMON.system.userList',{
      * @param userCode 用户code
      */
     removeDisableUser:function(userCode){
-        var result = Ext.appContext.invokeService("/user","/removeDisableUser", {userCode: userCode});
+        var result = Ext.appContext.invokeService("/back/commons/user","/removeDisableUser", {userCode: userCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -190,7 +190,7 @@ Ext.define('DYB_COMMON.system.userList',{
      * @param userCode 用户code
      */
     resetUserPassword:function(userCode){
-        var result = Ext.appContext.invokeService("/user","/resetUserPassword", {userCode: userCode});
+        var result = Ext.appContext.invokeService("/back/commons/user","/resetUserPassword", {userCode: userCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{

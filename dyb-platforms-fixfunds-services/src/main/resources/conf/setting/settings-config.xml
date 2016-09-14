@@ -30,10 +30,10 @@
                     { "text": "统计2", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
                 ] },
                 { "text": "系统管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "系统参数配置", "module":"DYB_COMMON.system.systemParamsList", "url":"systemparams/getSystemParamsList", "leaf":"true", },
-                    { "text": "管理员列表", "module":"DYB_COMMON.system.userList", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "角色管理", "module":"DYB_COMMON.system.roleList", "url":"role/getRolePageList", "leaf":"true", },
-                    { "text": "权限列表", "module":"DYB_COMMON.system.permissionsList", "url":"permissions/getPermissionsList", "leaf":"true", }
+                    { "text": "系统参数配置", "module":"DYB_COMMON.system.systemParamsList", "url":"back/commons/systemparams/getSystemParamsList", "leaf":"true", },
+                    { "text": "管理员列表", "module":"DYB_COMMON.system.userList", "url":"back/commons/user/getUserList", "leaf":"true", },
+                    { "text": "角色管理", "module":"DYB_COMMON.system.roleList", "url":"back/commons/role/getRolePageList", "leaf":"true", },
+                    { "text": "权限列表", "module":"DYB_COMMON.system.permissionsList", "url":"back/commons/permissions/getPermissionsList", "leaf":"true", }
                 ] },
                 { "text": "日志管理","expanded":"false","leaf":"false", "children":[
                     { "text": "系统日志", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
@@ -69,6 +69,30 @@
                                     'flowFile':'classpath:/flowFiles/SelfHelpBusiness.zip','flowKey':'SelfHelpBusiness',
                                     'papers':[]
                                 },
+                            ]
+                }
+            ]]>
+        </nodeValue>
+    </setting>
+    <!--后端管理员操作日志类型定义-->
+    <setting key="ADMIN_LOG">
+        <nodeValue>
+            <![CDATA[
+                {
+                    "type": "java.util.Map",
+                    "list":[
+                                {'/back/commons/permissions/createPermissions':'新增权限'},
+                                {'/back/commons/permissions/updatePermissions':'修改权限'},
+                                {'/back/commons/role/createRole':'新建角色'},
+                                {'/back/commons/role/updateRole':'更新角色'},
+                                {'/back/commons/systemparams/createSystemParams':'新建系统参数配置'},
+                                {'/back/commons/systemparams/updateSystemParams':'更新系统参数配置'},
+                                {'/back/commons/user/createUser':'新建用户'},
+                                {'/back/commons/user/updateUser':'修改用户'},
+                                {'/back/commons/user/disableUser':'禁用用户'},
+                                {'/back/commons/user/removeDisableUser':'用户解除禁用'},
+                                {'/back/commons/user/updateUserPassword':'用户密码修改'},
+                                {'/back/commons/user/resetUserPassword':'重置用户密码'},
                             ]
                 }
             ]]>

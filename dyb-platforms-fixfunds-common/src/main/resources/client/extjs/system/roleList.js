@@ -92,7 +92,7 @@ Ext.define('DYB_COMMON.system.roleList',{
             pageSize:20,
             fields: [],
             proxy: {
-                url: '/role/getRolePageList',
+                url: '/back/commons/role/getRolePageList',
                 type: 'ajax',
                 extraParams: {pageIndex:0,pageSize:20},
                 reader: {

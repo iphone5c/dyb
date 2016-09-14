@@ -90,7 +90,7 @@ Ext.define('DYB_COMMON.system.systemParamsList',{
             pageSize:20,
             fields: [],
             proxy: {
-                url: '/systemparams/getSystemParamsList',
+                url: '/back/commons/systemparams/getSystemParamsList',
                 type: 'ajax',
                 extraParams: {pageIndex:0,pageSize:20},
                 reader: {

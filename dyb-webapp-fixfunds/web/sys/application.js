@@ -6,7 +6,7 @@ Ext.define('DYB.application',{
     layout: 'border',
     initComponent:function(){
         //刷新Extjs缓存
-        Ext.appContext.invokeService('/commons','/refreshExtjs',{});
+        Ext.appContext.invokeService('/back/commons/commons','/refreshExtjs',{});
         //顶部
         var titlePanel=Ext.create('DYB.titlePanel',{
             title : "logo",

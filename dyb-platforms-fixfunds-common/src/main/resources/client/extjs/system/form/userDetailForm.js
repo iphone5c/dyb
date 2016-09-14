@@ -45,7 +45,7 @@ Ext.define('DYB_COMMON.system.form.userDetailForm', {
         var isHidden=false;
         if (!Ext.exUtils.isEmpty(me.config.userCode)) {
             isHidden=true;
-            var result = Ext.appContext.invokeService("/user","/getUserByCode", {userCode: me.config.userCode});
+            var result = Ext.appContext.invokeService("/back/commons/user","/getUserByCode", {userCode: me.config.userCode});
             if(result.statusCode!=1000){
                 Ext.Msg.alert('操作失败', result.errorMessage);
             }else{
@@ -135,9 +135,9 @@ Ext.define('DYB_COMMON.system.form.userDetailForm', {
             }
             var result;
             if(Ext.exUtils.isEmpty(me.config.userCode)){
-                result = Ext.appContext.invokeService('/user', '/createUser', roles);
+                result = Ext.appContext.invokeService('/back/commons/user', '/createUser', roles);
             }else{
-                result = Ext.appContext.invokeService('/user', '/updateUser', roles);
+                result = Ext.appContext.invokeService('/back/commons/user', '/updateUser', roles);
             }
             if (result.statusCode != 1000)
                 Ext.Msg.alert('操作失败', result.errorMessage);

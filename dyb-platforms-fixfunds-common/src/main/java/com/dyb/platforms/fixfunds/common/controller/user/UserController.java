@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/back/commons/user")
 public class UserController extends BaseController {
 
     public Logger log = Logger.getLogger(UserController.class);//日志

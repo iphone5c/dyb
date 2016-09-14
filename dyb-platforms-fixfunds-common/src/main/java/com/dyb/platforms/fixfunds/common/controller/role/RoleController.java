@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/role")
+@RequestMapping(value = "/back/commons/role")
 public class RoleController extends BaseController {
 
     public Logger log = Logger.getLogger(RoleController.class);//日志

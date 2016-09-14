@@ -29,6 +29,6 @@ public class SettingConfigureationFactoryTest {
 
     @Test
     public void testGetBusinessDefinedByBusinessType() throws Exception {
-
+        System.out.println(SettingConfigureationFactory.getAdminLogMap());
     }
 }

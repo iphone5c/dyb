@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/permissions")
+@RequestMapping(value = "/back/commons/permissions")
 public class PermissionsController extends BaseController {
 
     public Logger log = Logger.getLogger(PermissionsController.class);//日志

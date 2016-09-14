@@ -111,7 +111,7 @@ Ext.define('DYB_COMMON.system.form.updateUserPasswordForm', {
                 newPassword:info.newPassword,
                 confirmPassword:info.confirmPassword
             }
-            var result = Ext.appContext.invokeService('/user', '/updateUserPassword', userpassword);
+            var result = Ext.appContext.invokeService('/back/commons/user', '/updateUserPassword', userpassword);
             if (result.statusCode != 1000)
                 Ext.Msg.alert('操作失败', result.errorMessage);
             else {

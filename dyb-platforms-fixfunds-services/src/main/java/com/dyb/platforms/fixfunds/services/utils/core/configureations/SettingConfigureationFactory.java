@@ -1,9 +1,12 @@
 package com.dyb.platforms.fixfunds.services.utils.core.configureations;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -109,6 +112,48 @@ public class SettingConfigureationFactory {
                 return defined;
         }
         return null;
+    }
+
+    /**
+     * 获取管理员日志类型定义列表
+     * @return
+     */
+    public static Map<String,String> getAdminLogMap(){
+        Map<String,String> logDefined=new HashMap<>();
+        try {
+            String info="";
+            List<SettingConfigureation> settingConfigureationList= ConfigureationFactory.getSettingConfigureation("classpath*:**/settings-config.xml");
+            for (SettingConfigureation settingConfigureation:settingConfigureationList){
+                if (settingConfigureation.getModuleName().equals("SYS_SETTING")){
+                    for (SettingConfigureationItem settingConfigureationItem:settingConfigureation.getSettings()){
+                        if (settingConfigureationItem.getKey().equals("ADMIN_LOG")){
+                            info=settingConfigureationItem.getNodeValue();
+                        }
+                    }
+                }
+            }
+            Map temp= (Map) DybUtils.getJsonDeserialize(info,Map.class);
+
+            JSONArray list= (JSONArray) temp.get("list");
+            for (int i=0;i<list.size();i++){
+                JSONObject jsonObject= (JSONObject) list.get(i);
+                for (Map.Entry<String, Object> entry :jsonObject.entrySet()){
+                    logDefined.put(entry.getKey(),entry.getValue().toString());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return logDefined;
+    }
+
+    /**
+     * 根据key获取日志类型定义名字
+     * @param key
+     * @return
+     */
+    public static String getAdminLogNameByKey(String key){
+        return SettingConfigureationFactory.getAdminLogMap().get(key);
     }
 
 }

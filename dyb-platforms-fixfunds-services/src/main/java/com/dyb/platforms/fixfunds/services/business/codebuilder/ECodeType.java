@@ -20,4 +20,8 @@ public enum ECodeType {
      * 角色编码
      */
     ROLE_CODE,
+    /**
+     * 用户日志编码
+     */
+    USERLOG_CODE,
 }

@@ -32,4 +32,11 @@ public interface ICodeBuilder {
      */
     String getRoleCode();
 
+    /**
+     * 获取一个新的用户日志编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的用户日志编码
+     */
+    String getUserLogCode();
+
 }

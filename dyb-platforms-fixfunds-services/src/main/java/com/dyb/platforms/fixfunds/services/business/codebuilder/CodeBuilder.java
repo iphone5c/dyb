@@ -90,4 +90,17 @@ public class CodeBuilder extends BaseService implements ICodeBuilder
         builder.append(seriaNumService.getNewSerialNumByString(ECodeType.ROLE_CODE.name(),4));
         return builder.toString();
     }
+
+    /**
+     * 获取一个新的用户日志编码(规则：年月日时分秒+4位序列号)
+     *
+     * @return 新的用户日志编码
+     */
+    @Override
+    public String getUserLogCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(DybConvert.dateToString(new Date(),DybConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.USERLOG_CODE.name(),6));
+        return builder.toString();
+    }
 }

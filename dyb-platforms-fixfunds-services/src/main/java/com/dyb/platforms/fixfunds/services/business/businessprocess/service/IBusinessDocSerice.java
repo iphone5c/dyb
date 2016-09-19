@@ -88,15 +88,6 @@ public interface IBusinessDocSerice {
      BusinessDoc getBusinessDoc(String docCode, boolean detail);
 
     /**
-     * 根据工作流程实例ID获取业务单
-     *
-     * @param processId 工作流程ID
-     * @param detail    是否返回明细属性
-     * @return 业务单对象
-     */
-     BusinessDoc getBusinessDocByProcessId(String processId, boolean detail);
-
-    /**
      * 获取业务单数目(仅包含del=false)
      *
      * @param param 查询参数
@@ -164,14 +155,6 @@ public interface IBusinessDocSerice {
      * @return 业务单头对象
      */
     BusinessDocHead deleteBusinessDoc(String docCode, String runner);
-
-    /**
-     * 设置业务的工作流程实例ID
-     *
-     * @param docCode   业务单编号
-     * @param processId 流程实例ID
-     */
-    void setBusinessProcessId(String docCode, String processId);
 
     /**
      * 提交业务单，将业务单状态置为“审核中”
@@ -285,12 +268,10 @@ public interface IBusinessDocSerice {
      * @param docCode        业务单编号
      * @param runner         执行人
      * @param content        内容
-     * @param taskId         任务ID
-     * @param activityId     活动ID
      * @param businessStatus 业务状态
      * @return 业务操作记录对象
      */
-    BusinessRunRecord writeRunRecord(String docCode, String runner, String content, String taskId, String activityId, BusinessDocStatus businessStatus);
+    BusinessRunRecord writeRunRecord(String docCode, String runner, String content, BusinessDocStatus businessStatus);
 
     /**
      * 获取已提交的业务单要件列表

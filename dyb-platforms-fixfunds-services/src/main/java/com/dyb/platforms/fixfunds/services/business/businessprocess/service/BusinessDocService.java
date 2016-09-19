@@ -84,7 +84,7 @@ public class BusinessDocService implements IBusinessDocSerice {
         docHead.setCreateTime(new Date());
         businessDocHeadDao.insertObject(docHead);
 
-        writeRunRecord(docHead.getDocCode(), createPerson, "创建业务单", "", "", docHead.getBusinessDocStatus());
+        writeRunRecord(docHead.getDocCode(), createPerson, "创建业务单", docHead.getBusinessDocStatus());
 
         BusinessDoc result = new BusinessDoc();
         result.setDocCode(docHead.getDocCode());
@@ -219,7 +219,7 @@ public class BusinessDocService implements IBusinessDocSerice {
 
         docHead.setRunned(true);
         businessDocHeadDao.updateObject(docHead);
-        writeRunRecord(docHead.getDocCode(), runner, "执行业务单", "", "", docHead.getBusinessDocStatus());
+        writeRunRecord(docHead.getDocCode(), runner, "执行业务单",  docHead.getBusinessDocStatus());
     }
 
     /**
@@ -244,7 +244,7 @@ public class BusinessDocService implements IBusinessDocSerice {
 
         docHead.setConfirmed(true);
         businessDocHeadDao.updateObject(docHead);
-        writeRunRecord(docHead.getDocCode(), runner, "确认业务单", "", "", docHead.getBusinessDocStatus());
+        writeRunRecord(docHead.getDocCode(), runner, "确认业务单",  docHead.getBusinessDocStatus());
     }
 
     /**
@@ -264,23 +264,6 @@ public class BusinessDocService implements IBusinessDocSerice {
             result = newBusinessDoc(docHead, detail);
         }
         return result;
-    }
-
-    /**
-     * 根据工作流程实例ID获取业务单
-     *
-     * @param processId 工作流程ID
-     * @param detail    是否返回明细属性
-     * @return 业务单对象
-     */
-    @Override
-    public BusinessDoc getBusinessDocByProcessId(String processId, boolean detail) {
-        QueryParams param = new QueryParams();
-        param.addParameter("processId", processId);
-        List<BusinessDoc> docs = getBusinessDocList(param, 0, 1, detail);
-        if (docs.size() > 0)
-            return docs.get(0);
-        return null;
     }
 
     /**
@@ -408,26 +391,8 @@ public class BusinessDocService implements IBusinessDocSerice {
         docHead.setEnable(true);
         businessDocHeadDao.updateObject(docHead);
         //TODO: 删除与业务单关联的其它对象
-        writeRunRecord(docCode, runner, "删除业务单", "", "", docHead.getBusinessDocStatus());
+        writeRunRecord(docCode, runner, "删除业务单", docHead.getBusinessDocStatus());
         return docHead;
-    }
-
-    /**
-     * 设置业务的工作流程实例ID
-     *
-     * @param docCode   业务单编号
-     * @param processId 流程实例ID
-     */
-    @Override
-    public void setBusinessProcessId(String docCode, String processId) {
-        if (DybUtils.isEmptyOrNull(docCode))
-            throw new DybRuntimeException("docCode参数不能为null或empty.");
-        if (DybUtils.isEmptyOrNull(processId))
-            throw new DybRuntimeException("processId参数不能为null或empty.");
-        BusinessDocHead docHead = businessDocHeadDao.getObject(docCode, true);
-        if (docHead == null || docHead.getEnable())
-            throw new DybRuntimeException("未找到指定的业务单[" + docCode + "].");
-        businessDocHeadDao.updateObject(docHead);
     }
 
     /**
@@ -452,7 +417,7 @@ public class BusinessDocService implements IBusinessDocSerice {
         docHead.setBusinessDocStatus(BusinessDocStatus.受理中);
         businessDocHeadDao.updateObject(docHead);
 
-        writeRunRecord(docCode, runner, "提交业务单", "", "", docHead.getBusinessDocStatus());
+        writeRunRecord(docCode, runner, "提交业务单", docHead.getBusinessDocStatus());
 
         return docHead;
     }
@@ -482,9 +447,9 @@ public class BusinessDocService implements IBusinessDocSerice {
             docHead.setBusinessDocStatus(BusinessDocStatus.办理中);
             businessDocHeadDao.updateObject(docHead);
             setBusinessDocPapers(docCode, papers, runner);
-            writeRunRecord(docCode, runner, "业务单受理通过：" + opinion, "", "", docHead.getBusinessDocStatus());
+            writeRunRecord(docCode, runner, "业务单受理通过：" + opinion, docHead.getBusinessDocStatus());
         } else {
-            writeRunRecord(docCode, runner, "业务单受理不通过：" + opinion, "", "", docHead.getBusinessDocStatus());
+            writeRunRecord(docCode, runner, "业务单受理不通过：" + opinion,  docHead.getBusinessDocStatus());
             businessDocHeadDao.updateObject(docHead);
             setBusinessDocPapers(docCode, papers, runner);
             docHead = cancelBusinessDoc(docCode, "受理未通过", runner);
@@ -512,7 +477,7 @@ public class BusinessDocService implements IBusinessDocSerice {
         checkedBusinessStatus(docHead, true, BusinessDocStatus.办理中);
         docHead.setBusinessDocStatus(BusinessDocStatus.归档中);
         businessDocHeadDao.updateObject(docHead);
-        writeRunRecord(docCode, runner, "完成业务办理", "", "", docHead.getBusinessDocStatus());
+        writeRunRecord(docCode, runner, "完成业务办理",  docHead.getBusinessDocStatus());
         return docHead;
     }
 
@@ -537,7 +502,7 @@ public class BusinessDocService implements IBusinessDocSerice {
         setBusinessDocPapers(docCode, papers, runner);
         docHead.setBusinessDocStatus(BusinessDocStatus.已完成);
         businessDocHeadDao.updateObject(docHead);
-        writeRunRecord(docCode, runner, "业务单归档", "", "", docHead.getBusinessDocStatus());
+        writeRunRecord(docCode, runner, "业务单归档",docHead.getBusinessDocStatus());
         return docHead;
     }
 
@@ -566,7 +531,7 @@ public class BusinessDocService implements IBusinessDocSerice {
         //TODO:清除与此业务单相关的事项 caven
         businessDocHeadDao.updateObject(docHead);
 
-        writeRunRecord(docCode, runner, "撤销业务单：" + reason, "", "", docHead.getBusinessDocStatus());
+        writeRunRecord(docCode, runner, "撤销业务单：" + reason,  docHead.getBusinessDocStatus());
 
         return docHead;
     }
@@ -596,7 +561,7 @@ public class BusinessDocService implements IBusinessDocSerice {
         docHead.setBusinessDocStatus(BusinessDocStatus.已暂停);
         businessDocHeadDao.updateObject(docHead);
 
-        writeRunRecord(docCode, runner, "暂停业务单：" + reason, "", "", docHead.getBusinessDocStatus());
+        writeRunRecord(docCode, runner, "暂停业务单：" + reason,  docHead.getBusinessDocStatus());
 
         return docHead;
     }
@@ -626,7 +591,7 @@ public class BusinessDocService implements IBusinessDocSerice {
         docHead.setBusinessDocStatus(BusinessDocStatus.办理中);
         businessDocHeadDao.updateObject(docHead);
 
-        writeRunRecord(docCode, runner, "恢复业务单：" + reason, "", "", docHead.getBusinessDocStatus());
+        writeRunRecord(docCode, runner, "恢复业务单：" + reason, docHead.getBusinessDocStatus());
 
         return docHead;
     }
@@ -688,23 +653,17 @@ public class BusinessDocService implements IBusinessDocSerice {
      * @param docCode        业务单编号
      * @param runner         执行人
      * @param content        内容
-     * @param taskId         任务ID
-     * @param activityId     活动ID
      * @param businessStatus 业务状态
      * @return 业务操作记录对象
      */
     @Override
-    public BusinessRunRecord writeRunRecord(String docCode, String runner, String content, String taskId, String activityId, BusinessDocStatus businessStatus) {
+    public BusinessRunRecord writeRunRecord(String docCode, String runner, String content, BusinessDocStatus businessStatus) {
         if (DybUtils.isEmptyOrNull(docCode))
             throw new DybRuntimeException("docCode参数不能为null或empty.");
         if (DybUtils.isEmptyOrNull(runner))
             throw new DybRuntimeException("runner参数不能为null或empty.");
         if (DybUtils.isEmptyOrNull(content))
             throw new DybRuntimeException("content参数不能为null或empty.");
-        if (taskId == null)
-            taskId = "";
-        if (activityId == null)
-            activityId = "";
         BusinessRunRecord record = new BusinessRunRecord();
         record.setBusinessRunRecordCode(UUID.randomUUID().toString());
         record.setDocCode(docCode);

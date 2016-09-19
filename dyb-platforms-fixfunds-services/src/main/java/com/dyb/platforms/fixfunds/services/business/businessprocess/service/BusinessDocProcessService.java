@@ -42,34 +42,13 @@ public class BusinessDocProcessService implements IBusinessDocProcessService {
         if (defined == null)
             throw new DybRuntimeException("未找到指定的业务类型[" + doc.getHead().getBusinessType() + "]定义.");
         businessDocSerice.submitBusinessDoc(docCode, runner);
-        String processId = "";
         if (!DybUtils.isEmptyOrNull(defined.getFlowFile()) || !DybUtils.isEmptyOrNull(defined.getFlowKey())) {
             if (DybUtils.isEmptyOrNull(defined.getFlowFile()) || DybUtils.isEmptyOrNull(defined.getFlowKey()))
                 throw new DybRuntimeException("业务配置[" + defined.getBusinessType() + "]中未配置flowFile或flowKey.");
             //TODO 改变工作流，拿到工作流ID
 //            processId = workProcessMage.startProcess(FLOWTYPE_FIX_BUSINESS, defined.getFlowFile(), defined.getFlowKey(), runner, docCode, null);
         }
-        businessDocSerice.setBusinessProcessId(docCode, processId);
         return businessDocSerice.getBusinessDoc(docCode, false).getHead();
     }
 
-    @Override
-    public BusinessDocHead cancelBusinessDocProcess(String processId, String reason, String runner) {
-        return null;
-    }
-
-    @Override
-    public BusinessDocHead deleteBusinessDocProcess(String processId, String reason, String runner) {
-        return null;
-    }
-
-    @Override
-    public BusinessDocHead suspendBusinessDocProcess(String processId, String reason, String runner) {
-        return null;
-    }
-
-    @Override
-    public BusinessDocHead activateBusinessDocProcess(String processId, String reason, String runner) {
-        return null;
-    }
 }

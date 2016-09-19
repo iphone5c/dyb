@@ -17,43 +17,4 @@ public interface IBusinessDocProcessService {
      */
     BusinessDocHead submitBusinessDocProcess(String docCode, String runner);
 
-    /**
-     * 撤销业务单，将业务单状态置为“已撤销”,终止对应的工作流程
-     *
-     * @param processId 工作流程ID
-     * @param reason    原因
-     * @param runner    执行人
-     * @return 业务单头对象
-     */
-    BusinessDocHead cancelBusinessDocProcess(String processId, String reason, String runner);
-
-    /**
-     * 删除业务单(设置del=true),终止对应的工作流程
-     *
-     * @param processId 工作流程ID
-     * @param reason    原因
-     * @param runner    执行人
-     * @return 业务单头对象
-     */
-    BusinessDocHead deleteBusinessDocProcess(String processId, String reason, String runner);
-
-    /**
-     * 暂停业务单，将业务单状态置为“已暂停”,暂停对应的工作流程
-     *
-     * @param processId 流程实例ID,为null或empty则不使用此条件
-     * @param reason    原因
-     * @param runner    执行人
-     * @return 业务单头对象
-     */
-    BusinessDocHead suspendBusinessDocProcess(String processId, String reason, String runner);
-
-    /**
-     * 恢复暂停的业务单，将业务单状态置为“办理中”,恢复对应的工作流程
-     *
-     * @param processId 流程实例ID,为null或empty则不使用此条件
-     * @param reason    原因
-     * @param runner    执行人
-     * @return 业务单头对象
-     */
-    BusinessDocHead activateBusinessDocProcess(String processId, String reason, String runner);
 }

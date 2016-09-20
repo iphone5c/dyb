@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XPD:PROJECT xmlns:XPD="http://www.staruml.com" version="1">
+<XPD:HEADER>
+<XPD:SUBUNITS>
+</XPD:SUBUNITS>
+<XPD:PROFILES>
+<XPD:PROFILE>UMLStandard</XPD:PROFILE>
+</XPD:PROFILES>
+</XPD:HEADER>
+<XPD:BODY>
+<XPD:OBJ name="DocumentElement" type="UMLProject" guid="XI6lWRiB+kGVDzWjb3x7eQAA">
+<XPD:ATTR name="Title" type="string">project</XPD:ATTR>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLModel" guid="aFqdZntgp0aChWMJQrqsGwAA">
+<XPD:ATTR name="Name" type="string">com.dyb.platforms.fixfunds.services.business.recommended.entity</XPD:ATTR>
+<XPD:REF name="Namespace">XI6lWRiB+kGVDzWjb3x7eQAA</XPD:REF>
+<XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedDiagrams[0]" type="UMLClassDiagram" guid="mc4LpEhFZUywTnHbnR9atAAA">
+<XPD:ATTR name="Name" type="string">ProjectBaseData</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">用户组</XPD:ATTR>
+<XPD:REF name="DiagramOwner">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:OBJ name="DiagramView" type="UMLClassDiagramView" guid="3PJb1St5pUmxVXq+JTMrhQAA">
+<XPD:REF name="Diagram">mc4LpEhFZUywTnHbnR9atAAA</XPD:REF>
+<XPD:ATTR name="#OwnedViews" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedViews[0]" type="UMLClassView" guid="tlFYyLBWLkKMfNKGt78XzgAA">
+<XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">655</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">235</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">177</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">121</XPD:ATTR>
+<XPD:REF name="Model">F2wsQB9V6UynUsl6/x0PEwAA</XPD:REF>
+<XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="aKIvQktDN0G+1F2/mvdY2AAA">
+<XPD:OBJ name="NameLabel" type="LabelView" guid="dyKks9kK7EmmHp/xq7FP+gAA">
+<XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Recommended</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="StereotypeLabel" type="LabelView" guid="KSXYruawkkWArtbUjeXXxAAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="PropertyLabel" type="LabelView" guid="Y/NXLQiN0UWuFDvsQsgLtAAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="AttributeCompartment" type="UMLAttributeCompartmentView" guid="zhepmKT8YEm32PnkeFiwFAAA">
+<XPD:REF name="Model">F2wsQB9V6UynUsl6/x0PEwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OperationCompartment" type="UMLOperationCompartmentView" guid="0i/C+ZWXtEa7cVVZOAUgZQAA">
+<XPD:REF name="Model">F2wsQB9V6UynUsl6/x0PEwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="TemplateParameterCompartment" type="UMLTemplateParameterCompartmentView" guid="zrJ/UL2R1kawcRibmGQv0AAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+<XPD:REF name="Model">F2wsQB9V6UynUsl6/x0PEwAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="F2wsQB9V6UynUsl6/x0PEwAA">
+<XPD:ATTR name="Name" type="string">Recommended</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">推荐信息表</XPD:ATTR>
+<XPD:REF name="Namespace">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
+<XPD:REF name="Views[0]">tlFYyLBWLkKMfNKGt78XzgAA</XPD:REF>
+<XPD:REF name="Views[1]">zhepmKT8YEm32PnkeFiwFAAA</XPD:REF>
+<XPD:REF name="Views[2]">0i/C+ZWXtEa7cVVZOAUgZQAA</XPD:REF>
+<XPD:REF name="Views[3]">zrJ/UL2R1kawcRibmGQv0AAA</XPD:REF>
+<XPD:ATTR name="#Attributes" type="integer">6</XPD:ATTR>
+<XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="U8GhWabEJEujnODQoZ+YnAAA">
+<XPD:ATTR name="Name" type="string">recommendedCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">推荐编号code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">F2wsQB9V6UynUsl6/x0PEwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="D1gsHRQDV0+2645zBsMJTAAA">
+<XPD:ATTR name="Name" type="string">referrerCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">推荐人code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">F2wsQB9V6UynUsl6/x0PEwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="ojd5/ex+I0OyBRtzNpGpKwAA">
+<XPD:ATTR name="Name" type="string">referrerType</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">推荐人类型（1表示商家，2表示信使）</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">F2wsQB9V6UynUsl6/x0PEwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="5WzB9BSfSUmKx83YJl7ELQAA">
+<XPD:ATTR name="Name" type="string">btjrCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">被推荐人code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">F2wsQB9V6UynUsl6/x0PEwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="/ukr75n5nU2HpCGHowaCMwAA">
+<XPD:ATTR name="Name" type="string">btjrType</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">被推荐人类型（1表示商家，2表示信使）</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">F2wsQB9V6UynUsl6/x0PEwAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="1S8iNPxDyUCBQbks3orUfQAA">
+<XPD:ATTR name="Name" type="string">incentiveMessengerBean</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">激励信使豆</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
+<XPD:REF name="Owner">F2wsQB9V6UynUsl6/x0PEwAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:BODY>
+</XPD:PROJECT>

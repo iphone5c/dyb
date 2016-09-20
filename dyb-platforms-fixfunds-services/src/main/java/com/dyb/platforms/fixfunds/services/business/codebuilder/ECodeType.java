@@ -24,4 +24,16 @@ public enum ECodeType {
      * 用户日志编码
      */
     USERLOG_CODE,
+    /**
+     * 商家账户编码
+     */
+    MERCHANT_CODE,
+    /**
+     * 银行卡编码
+     */
+    BANKACCOUNT_CODE,
+    /**
+     * 推荐记录编号
+     */
+    RECOMMENDED_CODE,
 }

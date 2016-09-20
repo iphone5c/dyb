@@ -6,6 +6,8 @@
 package com.dyb.platforms.fixfunds.services.business.businessprocess.entity;
 
 import com.dyb.platforms.fixfunds.services.business.businessprocess.entity.em.BusinessDocStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -22,6 +24,8 @@ public class BusinessRunRecord implements java.io.Serializable {
     private String businessRunRecordCode;
     // 执行人
     private String runner;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 执行时间
     private Date runTime;
     // 执行内容

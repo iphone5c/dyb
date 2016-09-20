@@ -1,5 +1,6 @@
 package com.dyb.platforms.fixfunds.services.utils.core.configureations;
 
+import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -29,6 +30,7 @@ public class SettingConfigureationFactoryTest {
 
     @Test
     public void testGetBusinessDefinedByBusinessType() throws Exception {
-        System.out.println(SettingConfigureationFactory.getAdminLogMap());
+//        System.out.println(SettingConfigureationFactory.getAdminLogMap());
+        System.out.println(DybUtils.getRandomLetter(2));
     }
 }

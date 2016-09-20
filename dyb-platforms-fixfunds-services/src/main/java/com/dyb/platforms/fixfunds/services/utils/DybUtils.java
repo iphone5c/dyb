@@ -10,6 +10,7 @@ import java.io.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by lenovo on 2016/9/8.
@@ -18,8 +19,36 @@ public class DybUtils {
 
     public static String MODEL_TARGET_PATH="_dyb_resources";
 
+    public static String LETTER="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
     public static boolean isEmptyOrNull(String str) {
         return str == null || str.isEmpty();
+    }
+
+    /**
+     * 随机获取指定位数的字母
+     * @param len 字母位数
+     * @return
+     */
+    public static String getRandomLetter(int len){
+        StringBuffer info=new StringBuffer();
+        for (int i=0;i<len;i++){
+            int start=DybUtils.getRanDom(1, 26);
+            System.out.println(start);
+            info.append(DybUtils.LETTER.substring(start-1,start));
+        }
+        return info.toString();
+    }
+
+    /**
+     * 生成一个指定范围的随机数
+     * @param min
+     * @param max
+     * @return
+     */
+    public static int getRanDom(int min,int max){
+        Random random=new Random();
+        return random.nextInt(max-min+1)+min;
     }
 
     public static Date dateAddMinute(Date date, int minute) {

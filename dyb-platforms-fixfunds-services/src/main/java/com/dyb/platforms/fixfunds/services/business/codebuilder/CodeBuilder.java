@@ -2,6 +2,7 @@ package com.dyb.platforms.fixfunds.services.business.codebuilder;
 
 import com.dyb.platforms.fixfunds.services.business.serianum.service.ISeriaNumService;
 import com.dyb.platforms.fixfunds.services.utils.DybConvert;
+import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -101,6 +102,42 @@ public class CodeBuilder extends BaseService implements ICodeBuilder
         StringBuilder builder = new StringBuilder();
         builder.append(DybConvert.dateToString(new Date(),DybConvert.DATEFORMAT_DATA_EN_ALL));
         builder.append(seriaNumService.getNewSerialNumByString(ECodeType.USERLOG_CODE.name(),6));
+        return builder.toString();
+    }
+
+    /**
+     * 获取一个新的商户账户编码(规则：两位随机大写字母+4位序列号)
+     * @return 新的商户账户编码
+     */
+    @Override
+    public String getMerchantCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(DybUtils.getRandomLetter(2));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.MERCHANT_CODE.name(),4));
+        return builder.toString();
+    }
+
+    /**
+     * 获取一个新的银行卡编码(规则：年月日时分秒+4位序列号)
+     * @return 新的银行卡编码
+     */
+    @Override
+    public String getBankAccountCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(DybConvert.dateToString(new Date(),DybConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.BANKACCOUNT_CODE.name(),4));
+        return builder.toString();
+    }
+
+    /**
+     * 获取一个新的推荐记录编码(规则：年月日时分秒+4位序列号)
+     * @return 新的推荐记录编码
+     */
+    @Override
+    public String getRecommendedCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(DybConvert.dateToString(new Date(),DybConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.RECOMMENDED_CODE.name(),8));
         return builder.toString();
     }
 }

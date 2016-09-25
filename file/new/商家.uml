@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XPD:PROJECT xmlns:XPD="http://www.staruml.com" version="1">
+<XPD:HEADER>
+<XPD:SUBUNITS>
+</XPD:SUBUNITS>
+<XPD:PROFILES>
+<XPD:PROFILE>UMLStandard</XPD:PROFILE>
+</XPD:PROFILES>
+</XPD:HEADER>
+<XPD:BODY>
+<XPD:OBJ name="DocumentElement" type="UMLProject" guid="XI6lWRiB+kGVDzWjb3x7eQAA">
+<XPD:ATTR name="Title" type="string">project</XPD:ATTR>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLModel" guid="aFqdZntgp0aChWMJQrqsGwAA">
+<XPD:ATTR name="Name" type="string">com.dyb.platforms.fixfunds.services.business.merchant.entity</XPD:ATTR>
+<XPD:REF name="Namespace">XI6lWRiB+kGVDzWjb3x7eQAA</XPD:REF>
+<XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedDiagrams[0]" type="UMLClassDiagram" guid="mc4LpEhFZUywTnHbnR9atAAA">
+<XPD:ATTR name="Name" type="string">ProjectBaseData</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">用户组</XPD:ATTR>
+<XPD:REF name="DiagramOwner">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:OBJ name="DiagramView" type="UMLClassDiagramView" guid="3PJb1St5pUmxVXq+JTMrhQAA">
+<XPD:REF name="Diagram">mc4LpEhFZUywTnHbnR9atAAA</XPD:REF>
+<XPD:ATTR name="#OwnedViews" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedViews[0]" type="UMLClassView" guid="pgsv/mWRsUWtVakygkWwaQAA">
+<XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">484</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">112</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">178</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">342</XPD:ATTR>
+<XPD:REF name="Model">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+<XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="k7Z6aGeJTUi0Gwkc14BleAAA">
+<XPD:OBJ name="NameLabel" type="LabelView" guid="jQmzegwaH06Gu/VHhEKl4QAA">
+<XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Merchant</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="StereotypeLabel" type="LabelView" guid="qtK7o9bOskqBENWkl+d/lQAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="PropertyLabel" type="LabelView" guid="y0NcrkvmMEixeHF/2gULMQAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="AttributeCompartment" type="UMLAttributeCompartmentView" guid="UIZ/LKrQP0enV5444JoNlgAA">
+<XPD:REF name="Model">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OperationCompartment" type="UMLOperationCompartmentView" guid="c+XLMB7QskGN3KG0F/vzyAAA">
+<XPD:REF name="Model">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="TemplateParameterCompartment" type="UMLTemplateParameterCompartmentView" guid="++KEf5SdLUiTclaHT8nK9AAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+<XPD:REF name="Model">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="pDejjkequ0uKiT7nNULplAAA">
+<XPD:ATTR name="Name" type="string">Merchant</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">商家信息</XPD:ATTR>
+<XPD:REF name="Namespace">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
+<XPD:REF name="Views[0]">pgsv/mWRsUWtVakygkWwaQAA</XPD:REF>
+<XPD:REF name="Views[1]">UIZ/LKrQP0enV5444JoNlgAA</XPD:REF>
+<XPD:REF name="Views[2]">c+XLMB7QskGN3KG0F/vzyAAA</XPD:REF>
+<XPD:REF name="Views[3]">++KEf5SdLUiTclaHT8nK9AAA</XPD:REF>
+<XPD:ATTR name="#Attributes" type="integer">23</XPD:ATTR>
+<XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="at6ZRRuHGEekHlcIyYOHDQAA">
+<XPD:ATTR name="Name" type="string">merchantCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">商家Code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="n4nrkFJz00SFgraI165TCQAA">
+<XPD:ATTR name="Name" type="string">merchantName</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">商家名称</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="kMn2eB6qP0+Df12kgoU6GwAA">
+<XPD:ATTR name="Name" type="string">incentiveMode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">激励模式</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="y4qObhW/jU6aYX7I1sJaEwAA">
+<XPD:ATTR name="Name" type="string">shopName</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">店铺名称</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="hL6nsfINz0+eynMY/XEgfgAA">
+<XPD:ATTR name="Name" type="string">merchantType</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">商家类型</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="xoQ5pNZFK0SYHOPDMoYmsAAA">
+<XPD:ATTR name="Name" type="string">businessStartTime</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">营业开始时间</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="0GT8lcVznUqWV5tlt0alCAAA">
+<XPD:ATTR name="Name" type="string">businessEndTime</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">营业结束时间</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[7]" type="UMLAttribute" guid="CPNACtyciEm5ymaWjDSvGwAA">
+<XPD:ATTR name="Name" type="string">merchantAddress</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">商家地址</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[8]" type="UMLAttribute" guid="Og96+xSbtUi99nRJ//XT3AAA">
+<XPD:ATTR name="Name" type="string">province</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">省级代码</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[9]" type="UMLAttribute" guid="gYQtXqRXNEaq88p8NnKbywAA">
+<XPD:ATTR name="Name" type="string">city</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">市级代码</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[10]" type="UMLAttribute" guid="TNhG0gGc5ESxTKrdNbMeLAAA">
+<XPD:ATTR name="Name" type="string">mainBusiness</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">主营业务</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[11]" type="UMLAttribute" guid="EHIbbJVDeEK3AbyUdVDdugAA">
+<XPD:ATTR name="Name" type="string">industryType</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">行业类别</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[12]" type="UMLAttribute" guid="+NBwl+HSkUGIQwgS8kBN/AAA">
+<XPD:ATTR name="Name" type="string">industry</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">所在行业</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[13]" type="UMLAttribute" guid="ZJbtHMijEUSJ/ZKHbcmJqAAA">
+<XPD:ATTR name="Name" type="string">scale</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">商家规模</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[14]" type="UMLAttribute" guid="Rzf702d7lk6Zbia1uonsVwAA">
+<XPD:ATTR name="Name" type="string">countryPhone</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">企业电话</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[15]" type="UMLAttribute" guid="gZYyxfVlDUiMrETbWBVTZwAA">
+<XPD:ATTR name="Name" type="string">merchantDescription</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">商家简介</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[16]" type="UMLAttribute" guid="cbJOCUVbuUStTlANP2DKkwAA">
+<XPD:ATTR name="Name" type="string">principalName</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">负责人姓名</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[17]" type="UMLAttribute" guid="lhFZq2GV+EO0qitG8GU8rgAA">
+<XPD:ATTR name="Name" type="string">principalJobs</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">负责人岗位</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[18]" type="UMLAttribute" guid="fliLIYC840SsmIZ0t6S94gAA">
+<XPD:ATTR name="Name" type="string">principalSex</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">负责人性别</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[19]" type="UMLAttribute" guid="AYPp5LBL7EOtlkuO5sGwgwAA">
+<XPD:ATTR name="Name" type="string">principalIdCard</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">负责人身份证号</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[20]" type="UMLAttribute" guid="fbY3OC0A9kScp93/dFCO2QAA">
+<XPD:ATTR name="Name" type="string">principalEmail</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">负责人邮箱地址</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[21]" type="UMLAttribute" guid="SNVAb+yDn0CdTaPjwz6dAQAA">
+<XPD:ATTR name="Name" type="string">certificateFile</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">证件资料文件路径（营业执照照片、法人身份证照片、推荐人身份证照片、捐赠承诺书照片、店面门头照片）</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[22]" type="UMLAttribute" guid="qaVG+0D9DkKAujJVOlL1ogAA">
+<XPD:ATTR name="Name" type="string">accountCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">账户code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">pDejjkequ0uKiT7nNULplAAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:BODY>
+</XPD:PROJECT>

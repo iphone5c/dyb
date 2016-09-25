@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XPD:PROJECT xmlns:XPD="http://www.staruml.com" version="1">
+<XPD:HEADER>
+<XPD:SUBUNITS>
+</XPD:SUBUNITS>
+<XPD:PROFILES>
+<XPD:PROFILE>UMLStandard</XPD:PROFILE>
+</XPD:PROFILES>
+</XPD:HEADER>
+<XPD:BODY>
+<XPD:OBJ name="DocumentElement" type="UMLProject" guid="XI6lWRiB+kGVDzWjb3x7eQAA">
+<XPD:ATTR name="Title" type="string">project</XPD:ATTR>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLModel" guid="aFqdZntgp0aChWMJQrqsGwAA">
+<XPD:ATTR name="Name" type="string">com.dyb.platforms.fixfunds.services.business.account.entity</XPD:ATTR>
+<XPD:REF name="Namespace">XI6lWRiB+kGVDzWjb3x7eQAA</XPD:REF>
+<XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedDiagrams[0]" type="UMLClassDiagram" guid="mc4LpEhFZUywTnHbnR9atAAA">
+<XPD:ATTR name="Name" type="string">ProjectBaseData</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">用户组</XPD:ATTR>
+<XPD:REF name="DiagramOwner">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:OBJ name="DiagramView" type="UMLClassDiagramView" guid="3PJb1St5pUmxVXq+JTMrhQAA">
+<XPD:REF name="Diagram">mc4LpEhFZUywTnHbnR9atAAA</XPD:REF>
+<XPD:ATTR name="#OwnedViews" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedViews[0]" type="UMLClassView" guid="h2XDiV3sy0iQcLtjmbCOWQAA">
+<XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">580</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">500</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">154</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">212</XPD:ATTR>
+<XPD:REF name="Model">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+<XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="qS8YcQtObUSUQhat/mM7zAAA">
+<XPD:OBJ name="NameLabel" type="LabelView" guid="ZWNU7JUBwEm91WOZjtMwBwAA">
+<XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Account</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="StereotypeLabel" type="LabelView" guid="Q3buHm3MQE6yDfdBOmYIFgAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="PropertyLabel" type="LabelView" guid="ugULsguNLUCiwQbkZJ3XVgAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="AttributeCompartment" type="UMLAttributeCompartmentView" guid="YRQ/qCZYkkWdK1+9yG6CQQAA">
+<XPD:REF name="Model">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OperationCompartment" type="UMLOperationCompartmentView" guid="jRi0DKXTQEGTxWL6HvuJPgAA">
+<XPD:REF name="Model">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="TemplateParameterCompartment" type="UMLTemplateParameterCompartmentView" guid="bjS7sVz+1USTUKWizHwZlAAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+<XPD:REF name="Model">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="UQGDUtF4NkqQivINaPwGegAA">
+<XPD:ATTR name="Name" type="string">Account</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">账号信息</XPD:ATTR>
+<XPD:REF name="Namespace">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
+<XPD:REF name="Views[0]">h2XDiV3sy0iQcLtjmbCOWQAA</XPD:REF>
+<XPD:REF name="Views[1]">YRQ/qCZYkkWdK1+9yG6CQQAA</XPD:REF>
+<XPD:REF name="Views[2]">jRi0DKXTQEGTxWL6HvuJPgAA</XPD:REF>
+<XPD:REF name="Views[3]">bjS7sVz+1USTUKWizHwZlAAA</XPD:REF>
+<XPD:ATTR name="#Attributes" type="integer">13</XPD:ATTR>
+<XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="jJxvM+ShjESOZLoiNMljagAA">
+<XPD:ATTR name="Name" type="string">accountCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">账号code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="oOW9VffmlUu9ENxq0bIDEQAA">
+<XPD:ATTR name="Name" type="string">accountName</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">账户名</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="0BsXSkSfRE+IeYzgzZWlJQAA">
+<XPD:ATTR name="Name" type="string">password</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">账户密码</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="b8QH76f2tkaFxiQqgTbU2QAA">
+<XPD:ATTR name="Name" type="string">tradePassword</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">二级密码</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="xvfCiKo0vE6cqL4u+A+UAwAA">
+<XPD:ATTR name="Name" type="string">accountPhone</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">绑定手机号</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="Qf8LvM49uUSEVVWvjYJucAAA">
+<XPD:ATTR name="Name" type="string">accountStatus</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">账户状态</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="N9thvRhumE6wquXMabICagAA">
+<XPD:ATTR name="Name" type="string">accountType</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">账户类别</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[7]" type="UMLAttribute" guid="P0L7gFxK7EObuyVKHknO0AAA">
+<XPD:ATTR name="Name" type="string">accountForeignKey</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">账户详情信息外键</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[8]" type="UMLAttribute" guid="xVy0CxgD9Ey0DiTDntbVLAAA">
+<XPD:ATTR name="Name" type="string">referrerCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">推荐人code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[9]" type="UMLAttribute" guid="CZHRzZAt8EakrWX1tUVwRAAA">
+<XPD:ATTR name="Name" type="string">referrerLocation</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">推荐位置（格式：推荐人code+自己的coe）</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[10]" type="UMLAttribute" guid="jBRWaMFfZ02x+omCqn4EVgAA">
+<XPD:ATTR name="Name" type="string">registrationTime</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">注册时间</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Date</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[11]" type="UMLAttribute" guid="Rk3nld/VsUirdHzqZD4FwAAA">
+<XPD:ATTR name="Name" type="string">applyRegistrationTime</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">申请注册时间</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Date</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[12]" type="UMLAttribute" guid="UupKJwGG3ECjytT/gbEGOAAA">
+<XPD:ATTR name="Name" type="string">createTime</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">创建时间</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Date</XPD:ATTR>
+<XPD:REF name="Owner">UQGDUtF4NkqQivINaPwGegAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:BODY>
+</XPD:PROJECT>

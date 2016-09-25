@@ -50,7 +50,8 @@
                 {
                     "type": "com.dyb.platforms.fixfunds.services.utils.core.configureations.ModelConfig",
                     "list":[
-                                {'modelName':'dyb-platforms-fixfunds-common','modelAliasName':'COMMONS_SETTING'}
+                                {'modelName':'dyb-platforms-fixfunds-common','modelAliasName':'COMMONS_SETTING'},
+                                {'modelName':'dyb-platforms-fixfunds-merchant','modelAliasName':'MERCHANT_SETTING'}
                             ]
                 }
             ]]>

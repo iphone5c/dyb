@@ -132,7 +132,7 @@
 <XPD:REF name="Owner">hQzblUJ8r0mJX91ZBU5aKQAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="pArgBmeheUSGXnp5hni1HAAA">
-<XPD:ATTR name="Name" type="string">default</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">defaultChecked</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">默认设置选定</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">Boolean</XPD:ATTR>
 <XPD:REF name="Owner">hQzblUJ8r0mJX91ZBU5aKQAA</XPD:REF>

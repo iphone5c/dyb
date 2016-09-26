@@ -13,27 +13,11 @@ public enum ECodeType {
      */
     SYSTEMPARAMS_CODE,
     /**
-     * 权限编码
-     */
-    PERMISSIONS_CODE,
-    /**
-     * 角色编码
-     */
-    ROLE_CODE,
-    /**
      * 用户日志编码
      */
     USERLOG_CODE,
     /**
-     * 商家账户编码
+     * 账户编号
      */
-    MERCHANT_CODE,
-    /**
-     * 银行卡编码
-     */
-    BANKACCOUNT_CODE,
-    /**
-     * 推荐记录编号
-     */
-    RECOMMENDED_CODE,
+    ACCOUNT_CODE,
 }

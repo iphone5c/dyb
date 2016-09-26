@@ -14,4 +14,11 @@ public interface IMemberService {
      */
     public Member getMemberByCode(String memberCode);
 
+    /**
+     * 添加信使详情新
+     * @param member 信使对象
+     * @return 信使对象
+     */
+    public Member createMember(Member member);
+
 }

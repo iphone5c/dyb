@@ -1,4 +1,4 @@
-package com.dyb.platforms.fixfunds.services.business.merchant.entity.em;
+package com.dyb.platforms.fixfunds.services.business.account.entity.em;
 
 import com.dyb.platforms.fixfunds.services.utils.core.NameValue;
 
@@ -6,27 +6,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 负责人性别
+ * 账户类型
  * Created by lenovo on 2016/9/20.
  */
-public enum Sex {
+public enum AccountType {
     /**
-     * 男人
+     * 商家
      */
-    男,
+    商家,
     /**
-     * 女人
+     * 信使
      */
-    女,
+    信使,
     /**
-     * 保密
+     * 服务商
      */
-    保密;
+    服务商;
 
     public static List<NameValue> getAllConvertName(){
         List<NameValue> result = new ArrayList<>();
-        for (Sex sex : Sex.values()){
-            result.add(NameValue.create(sex.toString(), sex.toString()));
+        for (AccountType accountType : AccountType.values()){
+            result.add(NameValue.create(accountType.toString(), accountType.toString()));
         }
         return result;
     }

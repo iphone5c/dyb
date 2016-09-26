@@ -28,12 +28,12 @@
 <XPD:ATTR name="Left" type="integer">500</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">216</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">157</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">186</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">199</XPD:ATTR>
 <XPD:REF name="Model">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="MWzLm3uLXECeoi0GMCa9UgAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="PGSGN5v160i65VHHi0xj+gAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">serviceProviders</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">ServiceProviders</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="KdQ7aKRwCkmPyM9xFOSweAAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -57,7 +57,7 @@
 </XPD:OBJ>
 <XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="yRptwDVF8UGit83NxulY9AAA">
-<XPD:ATTR name="Name" type="string">serviceProviders</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">ServiceProviders</XPD:ATTR>
 <XPD:ATTR name="Documentation" type="string">服务商信息</XPD:ATTR>
 <XPD:REF name="Namespace">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
@@ -65,70 +65,76 @@
 <XPD:REF name="Views[1]">3PO1oQ7w1UinoUg+PXBxkwAA</XPD:REF>
 <XPD:REF name="Views[2]">nnQ9jrJ1xEezJuXLeKFpTQAA</XPD:REF>
 <XPD:REF name="Views[3]">bzhoWC8wk0OErdd4Y8gcpwAA</XPD:REF>
-<XPD:ATTR name="#Attributes" type="integer">11</XPD:ATTR>
+<XPD:ATTR name="#Attributes" type="integer">12</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="ZKtBWAg+LkuKAKbWkSjG/QAA">
 <XPD:ATTR name="Name" type="string">serviceProviderCode</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">信使编号code</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">服务商编号code</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="OmY4XK5oKUmfHhRDJv2FCQAA">
 <XPD:ATTR name="Name" type="string">serviceProviderName</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">真实姓名</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">姓名</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="2V7QZ+MsdUGgWTMETxNH6gAA">
 <XPD:ATTR name="Name" type="string">industry</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">性别</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">所属行业</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="j52HtmTSGUy/Dxq4T4a6hAAA">
 <XPD:ATTR name="Name" type="string">sex</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">籍贯</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">性别</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="T7VkDVrV80GNIW0XL+fhlQAA">
 <XPD:ATTR name="Name" type="string">birthday</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">省级代码</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">出生日期</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">Date</XPD:ATTR>
 <XPD:REF name="Owner">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="bqgACsrjVU+K1Lf+ySsACAAA">
 <XPD:ATTR name="Name" type="string">email</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">市级代码</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">邮箱地址</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="FlMsl9nanEeJwPSGZFwftwAA">
 <XPD:ATTR name="Name" type="string">address</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">证件类型</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">地址</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[7]" type="UMLAttribute" guid="VZExh7RCo06Zwn+YlrV5TgAA">
 <XPD:ATTR name="Name" type="string">province</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">证件号码</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">省级代码</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[8]" type="UMLAttribute" guid="b+HZdZmU6EeSfocNrtbg+wAA">
 <XPD:ATTR name="Name" type="string">city</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">所在行业</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">市级代码</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[9]" type="UMLAttribute" guid="vKmlDOOt2kOBdUbnnvqH+AAA">
 <XPD:ATTR name="Name" type="string">certificateFile</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">生日</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">证件资料</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[10]" type="UMLAttribute" guid="RYrOOlpyfk2of2yHes+VAgAA">
 <XPD:ATTR name="Name" type="string">accountCode</XPD:ATTR>
-<XPD:ATTR name="Documentation" type="string">账号外键</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">账户code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[11]" type="UMLAttribute" guid="X0hiMlbjUUC23ldpbV09pAAA">
+<XPD:ATTR name="Name" type="string">idCard</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">身份证号码</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">yRptwDVF8UGit83NxulY9AAA</XPD:REF>
 </XPD:OBJ>

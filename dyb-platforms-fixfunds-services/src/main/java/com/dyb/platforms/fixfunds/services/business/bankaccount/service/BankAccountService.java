@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by Administrator on 2016/2/23.
@@ -44,11 +45,9 @@ public class BankAccountService extends BaseService implements IBankAccountServi
             throw new DybRuntimeException("添加新的银行卡，开户名不能为空");
         if (DybUtils.isEmptyOrNull(bankAccount.getBankNum()))
             throw new DybRuntimeException("添加新的银行卡，银行账号不能为空");
-        if (DybUtils.isEmptyOrNull(bankAccount.getBankAccountPerson()))
+        if (DybUtils.isEmptyOrNull(bankAccount.getAccountCode()))
             throw new DybRuntimeException("添加新的银行卡，持卡账户不能为空");
-        if (bankAccount.getBankAccountType()==null)
-            throw new DybRuntimeException("添加新的银行卡，持卡账户类型不能为空");
-        bankAccount.setBankAccountCode(codeBuilder.getBankAccountCode());
+        bankAccount.setBankAccountCode(UUID.randomUUID().toString());
         bankAccount.setCreateTime(new Date());
         int info = bankAccountDao.insertObject(bankAccount);
         return info>0?bankAccount:null;

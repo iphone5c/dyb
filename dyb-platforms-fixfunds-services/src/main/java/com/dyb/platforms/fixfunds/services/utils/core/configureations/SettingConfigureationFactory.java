@@ -68,6 +68,33 @@ public class SettingConfigureationFactory {
     }
 
     /**
+     * 获取菜单列表
+     * @return 菜单列表
+     */
+    public static List<Menu> getMenuListByKey(String key)  {
+        try {
+            String info="";
+            List<SettingConfigureation> settingConfigureationList= ConfigureationFactory.getSettingConfigureation("classpath*:**/settings-config.xml");
+            for (SettingConfigureation settingConfigureation:settingConfigureationList){
+                if (settingConfigureation.getModuleName().equals("SYS_SETTING")){
+                    for (SettingConfigureationItem settingConfigureationItem:settingConfigureation.getSettings()){
+                        if (settingConfigureationItem.getKey().equals(key)){
+                            info=settingConfigureationItem.getNodeValue();
+                        }
+                    }
+                }
+            }
+            Map temp= (Map) DybUtils.getJsonDeserialize(info,Map.class);
+            List result= DybUtils.getJsonDeserializeListT(JSON.toJSONString(temp.get("list")),Class.forName((String) temp.get("type")));
+            return result;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
      * 获取业务定义列表
      * @return 业务定义列表
      */

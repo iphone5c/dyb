@@ -1,4 +1,4 @@
-package com.dyb.platforms.fixfunds.member.controller;
+package com.dyb.platforms.fixfunds.member.controller.web;
 
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/gyxm/member")
-public class MemberController extends BaseController {
+@RequestMapping(value = "/web/member")
+public class WebMemberController extends BaseController {
 
-    public Logger log = Logger.getLogger(MemberController.class);//日志
+    public Logger log = Logger.getLogger(WebMemberController.class);//日志
 
     @Autowired
     private IAccountService accountService;

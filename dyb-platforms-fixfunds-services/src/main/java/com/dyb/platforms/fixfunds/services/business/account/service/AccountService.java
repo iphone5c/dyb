@@ -50,10 +50,11 @@ public class AccountService extends BaseService implements IAccountService {
     /**
      * 根据账户code查找账户信息
      * @param accountCode 账户code
+     * @param detail 是否详情
      * @return 账户信息
      */
     @Override
-    public Account getAccountByCode(String accountCode) {
+    public Account getAccountByCode(String accountCode,boolean detail) {
         if (DybUtils.isEmptyOrNull(accountCode))
             throw new DybRuntimeException("根据code查找账户信息时，code不能为空");
         Account account = accountDao.getObject(accountCode,true);
@@ -61,9 +62,11 @@ public class AccountService extends BaseService implements IAccountService {
             throw new DybRuntimeException("根据code查找账户信息时，此账户没有其详情信息,code:"+accountCode);
         if (account.getAccountType()==null)
             throw new DybRuntimeException("根据code查找账户信息时，账户类型不能为空code:"+accountCode);
-        account.setMember(memberService.getMemberByCode(account.getAccountForeignKey()));
-        account.setMerchant(merchantService.getMerchantByCode(account.getAccountForeignKey()));
-        account.setServiceProviders(serviceProvidersService.getServiceProvidersByCode(account.getAccountForeignKey()));
+        if (detail){
+            account.setMember(memberService.getMemberByCode(account.getAccountForeignKey()));
+            account.setMerchant(merchantService.getMerchantByCode(account.getAccountForeignKey()));
+            account.setServiceProviders(serviceProvidersService.getServiceProvidersByCode(account.getAccountForeignKey()));
+        }
         return account;
     }
 
@@ -84,14 +87,14 @@ public class AccountService extends BaseService implements IAccountService {
             throw new DybRuntimeException("账户添加时，二级密码不能为空或null");
         if (account.getPassword().equals(account.getTradePassword()))
             throw new DybRuntimeException("账户添加时，二级密码与登陆密码不能相同");
+        if (account.getAccountType()==null)
+            throw new DybRuntimeException("账户添加时，账户类别不能为空或null");
         if (DybUtils.isEmptyOrNull(account.getAccountPhone()))
             throw new DybRuntimeException("账户添加时，手机号不能为空或null");
-        if (this.isExistPhone(account.getAccountPhone()))
+        if (this.isExistPhone(account.getAccountPhone(),account.getAccountType()))
             throw new DybRuntimeException("账户添加时，手机号已存在");
         if (account.getAccountStatus()==null)
             throw new DybRuntimeException("账户添加时，账户状态不能为空或null");
-        if (account.getAccountType()==null)
-            throw new DybRuntimeException("账户添加时，账户类别不能为空或null");
         if (DybUtils.isEmptyOrNull(account.getAccountForeignKey()))
             throw new DybRuntimeException("账户添加时，账户详情外键不能为空或null");
         if (DybUtils.isEmptyOrNull(account.getReferrerCode()))
@@ -101,6 +104,8 @@ public class AccountService extends BaseService implements IAccountService {
             accountCode=codeBuilder.getAccountCode();
         }
         account.setAccountCode(accountCode);
+        account.setPassword(DybUtils.encryptPassword(account.getPassword()));
+        account.setTradePassword(DybUtils.encryptPassword(account.getTradePassword()));
         account.setApplyRegistrationTime(new Date());
         account.setCreateTime(new Date());
         account.setReferrerLocation(account.getReferrerCode() + accountCode);
@@ -243,15 +248,47 @@ public class AccountService extends BaseService implements IAccountService {
     /**
      * 验证绑定手机号是否存在
      * @param phone 手机号
+     * @param accountType 账户类型
      * @return true表示存在 false表示不存在
      */
     @Override
-    public boolean isExistPhone(String phone) {
+    public boolean isExistPhone(String phone,AccountType accountType) {
         if (DybUtils.isEmptyOrNull(phone))
             throw new DybRuntimeException("验证手机不能为空");
         QueryParams queryParams = new QueryParams();
         queryParams.addParameter("accountPhone",phone);
+        queryParams.addParameter("accountType",accountType.name());
         List<Account> accountList=accountDao.queryList(queryParams,0,-1,true);
         return (accountList!=null&&accountList.size()>0)?true:false;
+    }
+
+    /**
+     * 移动端登陆
+     * @param accountCode 账户Code或者绑定手机
+     * @param password 账户密码
+     * @param accountType 账户类型
+     * @return 账户信息
+     */
+    @Override
+    public Account loginAccountForClient(String accountCode, String password, AccountType accountType) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("账户不能为空");
+        if (DybUtils.isEmptyOrNull(password))
+            throw new DybRuntimeException("账户密码不能为空");
+        if (accountType==null)
+            throw new DybRuntimeException("账户类型不能为空");
+        QueryParams queryParams = new QueryParams();
+        queryParams.addMulAttrParameter("accountCode",accountCode);
+        queryParams.addMulAttrParameter("accountPhone",accountCode);
+        queryParams.addParameter("accountType",accountType.name());
+        List<Account> accountList = accountDao.queryList(queryParams,0,-1,true);
+        Account account=(accountList!=null&&accountList.size()>0)?accountList.get(0):null;
+        if (account==null)
+            throw new DybRuntimeException("无此用户");
+        if (account.getAccountStatus()==AccountStatus.禁用)
+            throw new DybRuntimeException("此账户已被禁用，请联系管理员");
+        if (!DybUtils.verifyPassword(password,account.getPassword()))
+            throw new DybRuntimeException("账户密码输入错误");
+        return account;
     }
 }

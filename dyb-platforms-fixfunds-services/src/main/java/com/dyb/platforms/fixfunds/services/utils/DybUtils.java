@@ -1,5 +1,6 @@
 package com.dyb.platforms.fixfunds.services.utils;
 
+import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.user.entity.User;
 import com.dyb.platforms.fixfunds.services.utils.core.serializes.ISerialize;
 import com.dyb.platforms.fixfunds.services.utils.core.serializes.JsonSerialize;
@@ -189,6 +190,16 @@ public class DybUtils {
     public static User getCurrentUser(HttpServletRequest request){
         User user= (User) request.getSession().getAttribute("CURRENT_USER");
         return user;
+    }
+
+    /**
+     * 获取当前前端登陆用户
+     * @param request
+     * @return
+     */
+    public static Account getCurrentAccount(HttpServletRequest request){
+        Account account= (Account) request.getSession().getAttribute("CURRENT_ACCOUNT");
+        return account;
     }
 
     /**

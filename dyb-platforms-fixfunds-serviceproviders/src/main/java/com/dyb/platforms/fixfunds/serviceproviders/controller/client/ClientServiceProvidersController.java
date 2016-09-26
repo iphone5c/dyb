@@ -1,4 +1,4 @@
-package com.dyb.platforms.fixfunds.serviceproviders.controller;
+package com.dyb.platforms.fixfunds.serviceproviders.controller.client;
 
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/gyxm/serviceproviders")
-public class ServiceProvidersController extends BaseController {
+@RequestMapping(value = "/client/serviceproviders")
+public class ClientServiceProvidersController extends BaseController {
 
-    public Logger log = Logger.getLogger(ServiceProvidersController.class);//日志
+    public Logger log = Logger.getLogger(ClientServiceProvidersController.class);//日志
 
     @Autowired
     private IAccountService accountService;
@@ -33,7 +33,7 @@ public class ServiceProvidersController extends BaseController {
      */
     @RequestMapping(value = "/registerServiceProvidersAccount")
     public Object registerServiceProvidersAccount(Account account,ServiceProviders serviceProviders,BankAccount bankAccount,String tjrCode) {
-        log.info("商家注册");
+        log.info("移动端商家注册");
         if (account==null)
             return validationResult(1001,"商家注册时，账户信息不能为空");
         if (serviceProviders==null)

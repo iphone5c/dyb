@@ -1,9 +1,9 @@
-package com.dyb.platforms.fixfunds.merchant.controller;
+package com.dyb.platforms.fixfunds.serviceproviders.controller.web;
 
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.bankaccount.entity.BankAccount;
-import com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant;
+import com.dyb.platforms.fixfunds.services.business.serviceproviders.entity.ServiceProviders;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
@@ -15,35 +15,35 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/gyxm/merchant")
-public class MerchantController extends BaseController {
+@RequestMapping(value = "/web/serviceproviders")
+public class WebServiceProvidersController extends BaseController {
 
-    public Logger log = Logger.getLogger(MerchantController.class);//日志
+    public Logger log = Logger.getLogger(WebServiceProvidersController.class);//日志
 
     @Autowired
     private IAccountService accountService;
 
     /**
-     * 商户信息链接注册
+     * 服务商信息链接注册
      * @param account 账户对象
-     * @param merchant 商家账户对象
+     * @param serviceProviders 商家账户对象
      * @param bankAccount 银行账号信息
      * @param tjrCode 推荐人的code
      * @return 商家账户对象
      */
-    @RequestMapping(value = "/registerMerchantAccount")
-    public Object registerMerchantAccount(Account account,Merchant merchant,BankAccount bankAccount,String tjrCode) {
+    @RequestMapping(value = "/registerServiceProvidersAccount")
+    public Object registerServiceProvidersAccount(Account account,ServiceProviders serviceProviders,BankAccount bankAccount,String tjrCode) {
         log.info("商家注册");
         if (account==null)
             return validationResult(1001,"商家注册时，账户信息不能为空");
-        if (merchant==null)
+        if (serviceProviders==null)
             return validationResult(1001,"商家注册时，商家资料不能为空");
         if (bankAccount==null)
             return validationResult(1001,"商家注册时，银行账户信息不能为空");
         if (DybUtils.isEmptyOrNull(tjrCode))
             return validationResult(1001,"商家注册时，推荐人不能为空");
-        Account registerMerchantAccount=accountService.registerMerchant(account,merchant,bankAccount,tjrCode);
-        if (registerMerchantAccount==null){
+        Account registerServiceProvidersAccount=accountService.registerServiceProviders(account,serviceProviders,bankAccount,tjrCode);
+        if (registerServiceProvidersAccount==null){
             return validationResult(1001,"注册失败");
         }else {
             return result("注册成功");

@@ -15,6 +15,5 @@ public class AccountServiceTest {
 
     @Test
     public void testGetAccountByCode() throws Exception {
-        accountService.getAccountByCode("1");
     }
 }

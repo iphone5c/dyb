@@ -10,6 +10,8 @@ import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountTyp
 import com.dyb.platforms.fixfunds.services.business.member.entity.Member;
 import com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant;
 import com.dyb.platforms.fixfunds.services.business.serviceproviders.entity.ServiceProviders;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -42,10 +44,16 @@ public class Account implements java.io.Serializable {
     private String referrerCode;
     // 推荐位置（格式：推荐人code+自己的coe）
     private String referrerLocation;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 注册时间
     private Date registrationTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 申请注册时间
     private Date applyRegistrationTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 创建时间
     private Date createTime;
 

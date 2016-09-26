@@ -41,7 +41,7 @@ public class BankAccountService extends BaseService implements IBankAccountServi
             throw new DybRuntimeException("添加新的银行卡，开户行必须选择");
         if (DybUtils.isEmptyOrNull(bankAccount.getBankBranch()))
             throw new DybRuntimeException("添加新的银行卡，开户支行不能为空");
-        if (DybUtils.isEmptyOrNull(bankAccount.getAccountName()))
+        if (DybUtils.isEmptyOrNull(bankAccount.getBankAccountName()))
             throw new DybRuntimeException("添加新的银行卡，开户名不能为空");
         if (DybUtils.isEmptyOrNull(bankAccount.getBankNum()))
             throw new DybRuntimeException("添加新的银行卡，银行账号不能为空");

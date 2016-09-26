@@ -1,5 +1,6 @@
 package com.dyb.platforms.fixfunds.serviceproviders.controller.client;
 
+import com.dyb.platforms.fixfunds.serviceproviders.controller.web.model.ServiceProvidersParamModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.bankaccount.entity.BankAccount;
@@ -32,7 +33,7 @@ public class ClientServiceProvidersController extends BaseController {
      * @return 商家账户对象
      */
     @RequestMapping(value = "/registerServiceProvidersAccount")
-    public Object registerServiceProvidersAccount(Account account,ServiceProviders serviceProviders,BankAccount bankAccount,String tjrCode) {
+    public Object registerServiceProvidersAccount(Account account,ServiceProviders serviceProviders,BankAccount bankAccount,String tjrCode,ServiceProvidersParamModel serviceProvidersParamModel) {
         log.info("移动端商家注册");
         if (account==null)
             return validationResult(1001,"商家注册时，账户信息不能为空");

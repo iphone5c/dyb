@@ -6,6 +6,8 @@
 package com.dyb.platforms.fixfunds.services.business.merchant.entity;
 
 import com.dyb.platforms.fixfunds.services.business.merchant.entity.em.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -58,6 +60,8 @@ public class Merchant implements java.io.Serializable {
     private Sex principalSex;
     // 负责人身份证号
     private String principalIdCard;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     //负责人生日
     private Date birthday;
     // 负责人邮箱地址

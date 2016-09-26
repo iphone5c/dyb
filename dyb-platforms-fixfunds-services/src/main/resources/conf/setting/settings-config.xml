@@ -8,6 +8,7 @@
                 { "text": "会员管理","expanded":"false","leaf":"false", "children":[
                     { "text": "信使管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
                     { "text": "商家管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "服务商管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
                 ] },
                 { "text": "系统公共管理","expanded":"false","leaf":"false", "children":[
                     { "text": "公告类型管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },

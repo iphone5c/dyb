@@ -11,14 +11,14 @@
         <result property="bankName" column="bankname" />
         <result property="bankBranch" column="bankbranch" />
         <result property="bankNum" column="banknum" />
-        <result property="accountName" column="accountname" />
+        <result property="bankAccountName" column="bankaccountname" />
         <result property="defaultChecked" column="defaultchecked" />
         <result property="createTime" column="createtime" />
         <result property="accountCode" column="accountcode" />
     </resultMap>
 
     <sql id="baseCol">
-        bankaccountcode, bankname, bankbranch, banknum, accountname, defaultchecked, createtime, accountcode
+        bankaccountcode, bankname, bankbranch, banknum, bankaccountname, defaultchecked, createtime, accountcode
     </sql>
 
     <sql id="whereSql">
@@ -51,10 +51,10 @@
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
-            <if test="accountName != null"><![CDATA[ and accountname like #{accountName} ]]></if>
-            <if test="accountName_enum != null">
-                <![CDATA[ and accountname in ]]>
-                <foreach collection="accountName_enum" item="value" open="(" separator="," close=")">
+            <if test="bankAccountName != null"><![CDATA[ and bankaccountname like #{bankAccountName} ]]></if>
+            <if test="bankAccountName_enum != null">
+                <![CDATA[ and bankaccountname in ]]>
+                <foreach collection="bankAccountName_enum" item="value" open="(" separator="," close=")">
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
@@ -75,7 +75,7 @@
                     <if test="item.name == 'bankName'"><![CDATA[ bankname like #{item.value} ]]></if>
                     <if test="item.name == 'bankBranch'"><![CDATA[ bankbranch like #{item.value} ]]></if>
                     <if test="item.name == 'bankNum'"><![CDATA[ banknum like #{item.value} ]]></if>
-                    <if test="item.name == 'accountName'"><![CDATA[ accountname like #{item.value} ]]></if>
+                    <if test="item.name == 'bankAccountName'"><![CDATA[ bankaccountname like #{item.value} ]]></if>
                     <if test="item.name == 'accountCode'"><![CDATA[ accountcode like #{item.value} ]]></if>
                 </foreach>
             </if>
@@ -92,8 +92,8 @@
             <if test="_orderBy == 'bankBranch_asc'"><![CDATA[ bankbranch, ]]></if>
             <if test="_orderBy == 'bankNum_desc'"><![CDATA[ banknum desc, ]]></if>
             <if test="_orderBy == 'bankNum_asc'"><![CDATA[ banknum, ]]></if>
-            <if test="_orderBy == 'accountName_desc'"><![CDATA[ accountname desc, ]]></if>
-            <if test="_orderBy == 'accountName_asc'"><![CDATA[ accountname, ]]></if>
+            <if test="_orderBy == 'bankAccountName_desc'"><![CDATA[ bankaccountname desc, ]]></if>
+            <if test="_orderBy == 'bankAccountName_asc'"><![CDATA[ bankaccountname, ]]></if>
             <if test="_orderBy == 'defaultChecked_desc'"><![CDATA[ defaultchecked desc, ]]></if>
             <if test="_orderBy == 'defaultChecked_asc'"><![CDATA[ defaultchecked, ]]></if>
             <if test="_orderBy == 'createTime_desc'"><![CDATA[ createtime desc, ]]></if>
@@ -105,13 +105,13 @@
 
     <insert id="insertObject" parameterType="com.dyb.platforms.fixfunds.services.business.bankaccount.entity.BankAccount">
         insert into
-        dyb_bankaccount(bankaccountcode,bankname,bankbranch,banknum,accountname,defaultchecked,createtime,accountcode)
-        values(#{bankAccountCode},#{bankName},#{bankBranch},#{bankNum},#{accountName},#{defaultChecked},#{createTime},#{accountCode});
+        dyb_bankaccount(bankaccountcode,bankname,bankbranch,banknum,bankaccountname,defaultchecked,createtime,accountcode)
+        values(#{bankAccountCode},#{bankName},#{bankBranch},#{bankNum},#{bankAccountName},#{defaultChecked},#{createTime},#{accountCode});
     </insert>
 
     <update id="updateObject" parameterType="com.dyb.platforms.fixfunds.services.business.bankaccount.entity.BankAccount">
         update dyb_bankaccount
-        set bankname=#{bankName},bankbranch=#{bankBranch},banknum=#{bankNum},accountname=#{accountName},defaultchecked=#{defaultChecked},createtime=#{createTime},accountcode=#{accountCode}
+        set bankname=#{bankName},bankbranch=#{bankBranch},banknum=#{bankNum},bankaccountname=#{bankAccountName},defaultchecked=#{defaultChecked},createtime=#{createTime},accountcode=#{accountCode}
         where bankaccountcode=#{bankAccountCode};
     </update>
 

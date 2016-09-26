@@ -12,7 +12,7 @@
  * Date: 2015-07-18
  */
 /**
- * Compiled inline version. (Library mode)
+ * Compiled inline version. (Library model)
  */
 
 /*jshint smarttabs:true, undef:true, latedef:true, curly:true, bitwise:true, camelcase:true */
@@ -1581,7 +1581,7 @@ define('moxie/core/utils/Dom', ['moxie/core/utils/Env'], function(Env) {
 			};
 		}
 
-		// Use getBoundingClientRect on IE 6 and IE 7 but not on IE 8 in standards mode
+		// Use getBoundingClientRect on IE 6 and IE 7 but not on IE 8 in standards model
 		if (node && node.getBoundingClientRect && Env.browser === 'IE' && (!doc.documentMode || doc.documentMode < 8)) {
 			nodeRect = getIEPos(node);
 			rootRect = getIEPos(root);
@@ -2129,8 +2129,8 @@ define('moxie/runtime/Runtime', [
 	@param {Object} options
 	@param {String} type Sanitized name of the runtime
 	@param {Object} [caps] Set of capabilities that differentiate specified runtime
-	@param {Object} [modeCaps] Set of capabilities that do require specific operational mode
-	@param {String} [preferredMode='browser'] Preferred operational mode to choose if no required capabilities were requested
+	@param {Object} [modeCaps] Set of capabilities that do require specific operational model
+	@param {String} [preferredMode='browser'] Preferred operational model to choose if no required capabilities were requested
 	*/
 	function Runtime(options, type, caps, modeCaps, preferredMode) {
 		/**
@@ -2219,13 +2219,13 @@ define('moxie/runtime/Runtime', [
 		}, caps);
 			
 	
-		// default to the mode that is compatible with preferred caps
+		// default to the model that is compatible with preferred caps
 		if (options.preferred_caps) {
 			defaultMode = Runtime.getMode(modeCaps, options.preferred_caps, defaultMode);
 		}
 
 		if (MXI_DEBUG && Env.debug.runtime) {
-			Env.log("\tdefault mode: %s", defaultMode);	
+			Env.log("\tdefault model: %s", defaultMode);
 		}
 		
 		// small extension factory here (is meant to be extended with actual extensions constructors)
@@ -2291,11 +2291,11 @@ define('moxie/runtime/Runtime', [
 			type: type,
 
 			/**
-			Runtime (not native one) may operate in browser or client mode.
+			Runtime (not native one) may operate in browser or client model.
 
 			@property mode
 			@private
-			@type {String|Boolean} current mode or false, if none possible
+			@type {String|Boolean} current model or false, if none possible
 			*/
 			mode: Runtime.getMode(modeCaps, (options.required_caps), defaultMode),
 
@@ -2458,7 +2458,7 @@ define('moxie/runtime/Runtime', [
 			}
 		});
 
-		// once we got the mode, test against all caps
+		// once we got the model, test against all caps
 		if (this.mode && options.required_caps && !this.can(options.required_caps)) {
 			this.mode = false;
 		}	
@@ -2610,14 +2610,14 @@ define('moxie/runtime/Runtime', [
 
 
 	/**
-	Figure out an operational mode for the specified set of capabilities.
+	Figure out an operational model for the specified set of capabilities.
 
 	@method getMode
 	@static
-	@param {Object} modeCaps Set of capabilities that depend on particular runtime mode
-	@param {Object} [requiredCaps] Supplied set of capabilities to find operational mode for
-	@param {String|Boolean} [defaultMode='browser'] Default mode to use 
-	@return {String|Boolean} Compatible operational mode
+	@param {Object} modeCaps Set of capabilities that depend on particular runtime model
+	@param {Object} [requiredCaps] Supplied set of capabilities to find operational model for
+	@param {String|Boolean} [defaultMode='browser'] Default model to use
+	@return {String|Boolean} Compatible operational model
 	*/
 	Runtime.getMode = function(modeCaps, requiredCaps, defaultMode) {
 		var mode = null;
@@ -2627,7 +2627,7 @@ define('moxie/runtime/Runtime', [
 		}
 
 		if (requiredCaps && !Basic.isEmptyObj(modeCaps)) {
-			// loop over required caps and check if they do require the same mode
+			// loop over required caps and check if they do require the same model
 			Basic.each(requiredCaps, function(value, cap) {
 				if (modeCaps.hasOwnProperty(cap)) {
 					var capMode = modeCaps[cap](value);
@@ -2640,10 +2640,10 @@ define('moxie/runtime/Runtime', [
 					if (!mode) {
 						mode = capMode;						
 					} else if (!(mode = Basic.arrayIntersect(mode, capMode))) {
-						// if cap requires conflicting mode - runtime cannot fulfill required caps
+						// if cap requires conflicting model - runtime cannot fulfill required caps
 
 						if (MXI_DEBUG && Env.debug.runtime) {
-							Env.log("\t\t%c: %v (conflicting mode requested: %s)", cap, value, capMode);	
+							Env.log("\t\t%c: %v (conflicting model requested: %s)", cap, value, capMode);
 						}
 
 						return (mode = false);
@@ -2795,10 +2795,10 @@ define('moxie/runtime/RuntimeClient', [
 					/*runtime.bind('Exception', function() { });*/
 
 					if (MXI_DEBUG && Env.debug.runtime) {
-						Env.log("\tselected mode: %s", runtime.mode);	
+						Env.log("\tselected model: %s", runtime.mode);
 					}
 
-					// check if runtime managed to pick-up operational mode
+					// check if runtime managed to pick-up operational model
 					if (!runtime.mode) {
 						runtime.trigger('Error');
 						return;
@@ -5717,7 +5717,7 @@ define("moxie/image/Image", [
 
 			@method clone
 			@param {Image} src Source for the image
-			@param {Boolean} [exact=false] Whether to activate in-depth clone mode
+			@param {Boolean} [exact=false] Whether to activate in-depth clone model
 			*/
 			clone: function() {
 				this.load.apply(this, arguments);
@@ -7852,24 +7852,24 @@ define("moxie/runtime/html5/image/ExifParser", [
 				0x0001: 'Flash fired',
 				0x0005: 'Strobe return light not detected',
 				0x0007: 'Strobe return light detected',
-				0x0009: 'Flash fired, compulsory flash mode',
-				0x000D: 'Flash fired, compulsory flash mode, return light not detected',
-				0x000F: 'Flash fired, compulsory flash mode, return light detected',
-				0x0010: 'Flash did not fire, compulsory flash mode',
-				0x0018: 'Flash did not fire, auto mode',
-				0x0019: 'Flash fired, auto mode',
-				0x001D: 'Flash fired, auto mode, return light not detected',
-				0x001F: 'Flash fired, auto mode, return light detected',
+				0x0009: 'Flash fired, compulsory flash model',
+				0x000D: 'Flash fired, compulsory flash model, return light not detected',
+				0x000F: 'Flash fired, compulsory flash model, return light detected',
+				0x0010: 'Flash did not fire, compulsory flash model',
+				0x0018: 'Flash did not fire, auto model',
+				0x0019: 'Flash fired, auto model',
+				0x001D: 'Flash fired, auto model, return light not detected',
+				0x001F: 'Flash fired, auto model, return light detected',
 				0x0020: 'No flash function',
-				0x0041: 'Flash fired, red-eye reduction mode',
-				0x0045: 'Flash fired, red-eye reduction mode, return light not detected',
-				0x0047: 'Flash fired, red-eye reduction mode, return light detected',
-				0x0049: 'Flash fired, compulsory flash mode, red-eye reduction mode',
-				0x004D: 'Flash fired, compulsory flash mode, red-eye reduction mode, return light not detected',
-				0x004F: 'Flash fired, compulsory flash mode, red-eye reduction mode, return light detected',
-				0x0059: 'Flash fired, auto mode, red-eye reduction mode',
-				0x005D: 'Flash fired, auto mode, return light not detected, red-eye reduction mode',
-				0x005F: 'Flash fired, auto mode, return light detected, red-eye reduction mode'
+				0x0041: 'Flash fired, red-eye reduction model',
+				0x0045: 'Flash fired, red-eye reduction model, return light not detected',
+				0x0047: 'Flash fired, red-eye reduction model, return light detected',
+				0x0049: 'Flash fired, compulsory flash model, red-eye reduction model',
+				0x004D: 'Flash fired, compulsory flash model, red-eye reduction model, return light not detected',
+				0x004F: 'Flash fired, compulsory flash model, red-eye reduction model, return light detected',
+				0x0059: 'Flash fired, auto model, red-eye reduction model',
+				0x005D: 'Flash fired, auto model, return light not detected, red-eye reduction model',
+				0x005F: 'Flash fired, auto model, return light detected, red-eye reduction model'
 			},
 
 			'ExposureMode': {
@@ -9342,7 +9342,7 @@ define("moxie/runtime/flash/Runtime", [
 				return !Basic.arrayDiff(methods, ['GET', 'POST']);
 			}
 		}, { 
-			// capabilities that require specific mode
+			// capabilities that require specific model
 			access_binary: function(value) {
 				return value ? 'browser' : 'client';
 			},
@@ -9382,7 +9382,7 @@ define("moxie/runtime/flash/Runtime", [
 				Env.log("\tFlash didn't meet minimal version requirement (10).");	
 			}
 
-			this.mode = false; // with falsy mode, runtime won't operable, no matter what the mode was before
+			this.mode = false; // with falsy model, runtime won't operable, no matter what the model was before
 		}
 
 
@@ -9600,7 +9600,7 @@ define("moxie/runtime/flash/file/FileReader", [
 
 			comp.result = '';
 
-			// special prefix for DataURL read mode
+			// special prefix for DataURL read model
 			if (op === 'readAsDataURL') {
 				comp.result = 'data:' + (blob.type || '') + ';base64,';
 			}
@@ -9660,7 +9660,7 @@ define("moxie/runtime/flash/file/FileReaderSync", [
 				return null; // or throw ex
 			}
 
-			// special prefix for DataURL read mode
+			// special prefix for DataURL read model
 			if (op === 'readAsDataURL') {
 				result = 'data:' + (blob.type || '') + ';base64,' + result;
 			}
@@ -10080,7 +10080,7 @@ define("moxie/runtime/silverlight/Runtime", [
 				return I.mode === 'client' || !Basic.arrayDiff(methods, ['GET', 'POST']);
 			}
 		}, { 
-			// capabilities that require specific mode
+			// capabilities that require specific model
 			return_response_headers: function(value) {
 				return value ? 'client' : 'browser';
 			},

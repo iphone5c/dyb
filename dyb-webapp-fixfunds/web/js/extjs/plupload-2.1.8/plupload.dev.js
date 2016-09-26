@@ -1303,7 +1303,7 @@ plupload.Uploader = function(options) {
 			// Normalize the list of required capabilities
 			settings.required_features = normalizeCaps(plupload.extend({}, settings));
 
-			// Come up with the list of capabilities that can affect default mode in a multi-mode runtimes
+			// Come up with the list of capabilities that can affect default model in a multi-model runtimes
 			preferred_caps = normalizeCaps(plupload.extend({}, settings, {
 				required_features: true
 			}));
@@ -1437,7 +1437,7 @@ plupload.Uploader = function(options) {
 						responseHeaders: xhr.getAllResponseHeaders()
 					});
 
-					// stock Android browser doesn't fire upload progress events, but in chunking mode we can fake them
+					// stock Android browser doesn't fire upload progress events, but in chunking model we can fake them
 					if (o.Env.browser === 'Android Browser') {
 						// doesn't harm in general, but is not required anywhere else
 						up.trigger('UploadProgress', file);

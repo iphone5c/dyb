@@ -31,9 +31,9 @@ public class WebCommonsController extends BaseController {
      * @return 账户信息
      */
     @RequestMapping(value = "/loginAccount")
-    public Object loginAccount(HttpServletRequest request,String loginName,String password,AccountType accountType) {
+    public Object loginAccount(HttpServletRequest request,String loginName,String password,String accountType) {
         log.info("登陆验证");
-        Account account=accountService.loginAccountForClient(loginName, password, accountType);
+        Account account=accountService.loginAccountForClient(loginName, password, AccountType.getAccountTypeByName(accountType));
         if (account==null){
             return validationResult(1001,"登陆失败");
         }else {

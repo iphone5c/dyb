@@ -1,6 +1,7 @@
 package com.dyb.platforms.fixfunds.services.business.account.entity.em;
 
 import com.dyb.platforms.fixfunds.services.utils.core.NameValue;
+import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,18 @@ public enum AccountType {
      * 服务商
      */
     服务商;
+
+    public static AccountType getAccountTypeByName(String name){
+        AccountType result = null;
+        for (AccountType accountType : AccountType.values()){
+            if (name.equals(accountType.name())){
+                result=accountType;
+            }
+        }
+        if (result==null)
+            throw new DybRuntimeException("账户类型超出规定范围值");
+        return result;
+    }
 
     public static List<NameValue> getAllConvertName(){
         List<NameValue> result = new ArrayList<>();

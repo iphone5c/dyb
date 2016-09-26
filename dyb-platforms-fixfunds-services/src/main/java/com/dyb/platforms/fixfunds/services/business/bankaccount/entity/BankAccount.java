@@ -5,6 +5,9 @@
 
 package com.dyb.platforms.fixfunds.services.business.bankaccount.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -25,9 +28,11 @@ public class BankAccount implements java.io.Serializable {
     // 卡号
     private String bankNum;
     // 开户名称
-    private String accountName;
+    private String bankAccountName;
     // 默认设置选定
     private Boolean defaultChecked;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 创建时间
     private Date createTime;
     // 账户code
@@ -110,17 +115,17 @@ public class BankAccount implements java.io.Serializable {
      *
      * @return 开户名称
      */
-    public String getAccountName() {
-        return accountName;
+    public String getBankAccountName() {
+        return bankAccountName;
     }
 
     /**
      * 设置开户名称
      *
-     * @param accountName 开户名称
+     * @param bankAccountName 开户名称
      */
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
+    public void setBankAccountName(String bankAccountName) {
+        this.bankAccountName = bankAccountName;
     }
 
     /**

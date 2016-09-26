@@ -1,5 +1,6 @@
 package com.dyb.platforms.fixfunds.serviceproviders.controller.web;
 
+import com.dyb.platforms.fixfunds.serviceproviders.controller.web.model.ServiceProvidersParamModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.bankaccount.entity.BankAccount;
@@ -32,7 +33,7 @@ public class WebServiceProvidersController extends BaseController {
      * @return 商家账户对象
      */
     @RequestMapping(value = "/registerServiceProvidersAccount")
-    public Object registerServiceProvidersAccount(Account account,ServiceProviders serviceProviders,BankAccount bankAccount,String tjrCode) {
+    public Object registerServiceProvidersAccount(Account account,ServiceProviders serviceProviders,BankAccount bankAccount,String tjrCode,ServiceProvidersParamModel serviceProvidersParamModel) {
         log.info("商家注册");
         if (account==null)
             return validationResult(1001,"商家注册时，账户信息不能为空");
@@ -42,6 +43,7 @@ public class WebServiceProvidersController extends BaseController {
             return validationResult(1001,"商家注册时，银行账户信息不能为空");
         if (DybUtils.isEmptyOrNull(tjrCode))
             return validationResult(1001,"商家注册时，推荐人不能为空");
+        serviceProviders.setIndustry(serviceProvidersParamModel.getIndustry());
         Account registerServiceProvidersAccount=accountService.registerServiceProviders(account,serviceProviders,bankAccount,tjrCode);
         if (registerServiceProvidersAccount==null){
             return validationResult(1001,"注册失败");

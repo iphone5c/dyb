@@ -1,5 +1,6 @@
 package com.dyb.platforms.fixfunds.merchant.controller.client;
 
+import com.dyb.platforms.fixfunds.merchant.controller.web.model.MerchantParamModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.bankaccount.entity.BankAccount;
@@ -32,7 +33,7 @@ public class ClientMerchantController extends BaseController {
      * @return 商家账户对象
      */
     @RequestMapping(value = "/registerMerchantAccount")
-    public Object registerMerchantAccount(Account account,Merchant merchant,BankAccount bankAccount,String tjrCode) {
+    public Object registerMerchantAccount(Account account,Merchant merchant,BankAccount bankAccount,String tjrCode,MerchantParamModel merchantParamModel) {
         log.info("移动端商家注册");
         if (account==null)
             return validationResult(1001,"商家注册时，账户信息不能为空");
@@ -42,6 +43,11 @@ public class ClientMerchantController extends BaseController {
             return validationResult(1001,"商家注册时，银行账户信息不能为空");
         if (DybUtils.isEmptyOrNull(tjrCode))
             return validationResult(1001,"商家注册时，推荐人不能为空");
+        merchant.setMerchantType(merchantParamModel.getMerchantType());
+        merchant.setIndustryType(merchantParamModel.getIndustryType());
+        merchant.setIndustry(merchantParamModel.getIndustry());
+        merchant.setScale(merchantParamModel.getScale());
+        merchant.setPrincipalSex(merchantParamModel.getPrincipalSex());
         Account registerMerchantAccount=accountService.registerMerchant(account,merchant,bankAccount,tjrCode);
         if (registerMerchantAccount==null){
             return validationResult(1001,"注册失败");

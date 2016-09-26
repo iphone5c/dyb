@@ -29,9 +29,9 @@ public class ClientCommonsController extends BaseController {
      * @return 账户信息
      */
     @RequestMapping(value = "/loginClient")
-    public Object loginClient(String loginName,String password,AccountType accountType) {
+    public Object loginClient(String loginName,String password,String accountType) {
         log.info("移动端登陆验证");
-        Account account=accountService.loginAccountForClient(loginName, password, accountType);
+        Account account=accountService.loginAccountForClient(loginName, password, AccountType.getAccountTypeByName(accountType));
         if (account==null){
             return validationResult(1001,"登陆失败");
         }else {

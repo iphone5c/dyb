@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Created by Administrator on 2015/7/1.
  */
@@ -32,16 +35,16 @@ public class WebMerchantController extends BaseController {
      * @return 商家账户对象
      */
     @RequestMapping(value = "/registerMerchantAccount")
-    public Object registerMerchantAccount(Account account,Merchant merchant,BankAccount bankAccount,String referrerCode,MerchantParamModel merchantParamModel) {
+    public void registerMerchantAccount(HttpServletRequest request,HttpServletResponse response,Account account,Merchant merchant,BankAccount bankAccount,String referrerCode,MerchantParamModel merchantParamModel) {
         log.info("商家注册");
         if (account==null)
-            return validationResult(1001,"商家注册时，账户信息不能为空");
+            validationResultJSONP(request,response,1001,"账户信息不能为空");
         if (merchant==null)
-            return validationResult(1001,"商家注册时，商家资料不能为空");
+            validationResultJSONP(request,response,1001,"商家注册时，商家资料不能为空");
         if (bankAccount==null)
-            return validationResult(1001,"商家注册时，银行账户信息不能为空");
+            validationResultJSONP(request,response,1001,"商家注册时，银行账户信息不能为空");
         if (DybUtils.isEmptyOrNull(referrerCode))
-            return validationResult(1001,"商家注册时，推荐人不能为空");
+            validationResultJSONP(request,response,1001,"商家注册时，推荐人不能为空");
         merchant.setMerchantType(merchantParamModel.getMerchantType());
         merchant.setIndustryType(merchantParamModel.getIndustryType());
         merchant.setIndustry(merchantParamModel.getIndustry());
@@ -49,9 +52,9 @@ public class WebMerchantController extends BaseController {
         merchant.setPrincipalSex(merchantParamModel.getPrincipalSex());
         Account registerMerchantAccount=accountService.registerMerchant(account,merchant,bankAccount,referrerCode);
         if (registerMerchantAccount==null){
-            return validationResult(1001,"注册失败");
+            validationResultJSONP(request,response,1001,"注册失败");
         }else {
-            return result("注册成功");
+            resultJSONP(request,response,"注册成功");
         }
     }
 

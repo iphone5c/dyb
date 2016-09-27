@@ -2,16 +2,19 @@ package com.dyb.platforms.fixfunds.services.utils;
 
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.user.entity.User;
+import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
 import com.dyb.platforms.fixfunds.services.utils.core.serializes.ISerialize;
 import com.dyb.platforms.fixfunds.services.utils.core.serializes.JsonSerialize;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by lenovo on 2016/9/8.
@@ -224,5 +227,57 @@ public class DybUtils {
             return ip;
         }
         return request.getRemoteAddr();
+    }
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @param filePath
+     * @return
+     */
+    public static Map<String,Object> uploadFile(HttpServletRequest request,HttpServletResponse response,String filePath){
+        Map<String,Object> result = new HashMap<String,Object>();
+        String path = null;
+        if(DybUtils.isEmptyOrNull(filePath)){
+            path = request.getServletContext().getRealPath("/upload");
+        }else {
+            path = request.getServletContext().getRealPath(filePath);
+        }
+        File fPath = new File(path);
+        if (!fPath.exists()) {
+            fPath.mkdirs();
+        }
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
+        if (multipartResolver.isMultipart(request)){
+            MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request ;
+            Iterator<String> iter = multiRequest.getFileNames();
+            while (iter.hasNext()){
+                Map<String,Object> fileInfo = new HashMap<>();
+                MultipartFile file = multiRequest.getFile((String)iter.next());
+                //有上传文件的话，容量是大于0的。
+                if (file != null && file.getSize() > 0){
+                    String fieldName = ((CommonsMultipartFile)file).getFileItem().getFieldName();
+                    String fileName = file.getOriginalFilename();
+                    String ext = fileName.substring(fileName.lastIndexOf(".")) ;
+                    String fileReName = UUID.randomUUID().toString() + ext ;
+                    File localFile = new File(path,fileReName);
+                    try {
+                        file.transferTo(localFile);
+                        fileInfo.put("filePath",path +"/"+fileReName);
+                        fileInfo.put("path",filePath + "/" + fileReName);
+                        fileInfo.put("fileName",fileName);
+                        fileInfo.put("fileUploadTime", DybConvert.dateToString(new Date(),DybConvert.DATEFORMAT_DATETIME_EN_LONG));
+                        result.put(fieldName,fileInfo);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        throw new DybRuntimeException("文件上传失败");
+                    }
+                }
+            }
+        }else {
+            throw new DybRuntimeException("没有上传的文件");
+        }
+        return result;
     }
 }

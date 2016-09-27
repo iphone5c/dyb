@@ -32,13 +32,13 @@ public class ClientCommonsController extends BaseController {
      * @return 账户信息
      */
     @RequestMapping(value = "/loginClient")
-    public void loginClient(HttpServletRequest request,HttpServletResponse response,String loginName,String password,String accountType) {
+    public Object loginClient(HttpServletRequest request,HttpServletResponse response,String loginName,String password,String accountType) {
         log.info("移动端登陆验证");
         Account account=accountService.loginAccountForClient(loginName, password, AccountType.getAccountTypeByName(accountType));
         if (account==null){
-            validationResultJSONP(request,response,1001,"登陆失败");
+            return validationResult(1001,"登陆失败");
         }else {
-            resultJSONP(request,response,account);
+            return result(account);
         }
     }
 

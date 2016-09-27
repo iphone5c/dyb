@@ -103,7 +103,7 @@ public class BaseController {
      * @return
      */
     @ExceptionHandler
-    public void exception( HttpServletRequest request ,HttpServletResponse response, Exception ex ) {
+    public Object exception( HttpServletRequest request ,HttpServletResponse response, Exception ex ) {
         response.setContentType("text/plain");
         response.setCharacterEncoding("utf-8");
         String callbackFunName =request.getParameter("callbackparam");//得到js函数名称
@@ -120,11 +120,18 @@ public class BaseController {
             result.put("statusCode", DybExceptionCode.PROGRAM_EXCEPTION);
             log.error("异常状态码："+DybExceptionCode.PROGRAM_EXCEPTION+"，异常信息："+ex);
         }
-        try {
-            response.getWriter().write(callbackFunName + "("+ DybUtils.getJsonSerialize(result)+")"); //返回jsonp数据
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        if (DybUtils.isEmptyOrNull(callbackFunName)){
+            return result;
+        }else if (callbackFunName.equals("web")){
+            try {
+                response.getWriter().write(callbackFunName + "("+ DybUtils.getJsonSerialize(result)+")"); //返回jsonp数据
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
+        return result;
     }
 
 }

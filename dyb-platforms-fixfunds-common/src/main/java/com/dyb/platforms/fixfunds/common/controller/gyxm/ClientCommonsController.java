@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Created by Administrator on 2015/7/1.
  */
@@ -29,13 +32,13 @@ public class ClientCommonsController extends BaseController {
      * @return 账户信息
      */
     @RequestMapping(value = "/loginClient")
-    public Object loginClient(String loginName,String password,String accountType) {
+    public void loginClient(HttpServletRequest request,HttpServletResponse response,String loginName,String password,String accountType) {
         log.info("移动端登陆验证");
         Account account=accountService.loginAccountForClient(loginName, password, AccountType.getAccountTypeByName(accountType));
         if (account==null){
-            return validationResult(1001,"登陆失败");
+            validationResultJSONP(request,response,1001,"登陆失败");
         }else {
-            return result(account);
+            resultJSONP(request,response,account);
         }
     }
 

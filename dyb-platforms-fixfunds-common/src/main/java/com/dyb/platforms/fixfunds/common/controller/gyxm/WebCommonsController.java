@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Administrator on 2015/7/1.
@@ -34,14 +35,14 @@ public class WebCommonsController extends BaseController {
      * @return 账户信息
      */
     @RequestMapping(value = "/loginAccount")
-    public Object loginAccount(HttpServletRequest request,String loginName,String password,String accountType) {
+    public void loginAccount(HttpServletRequest request,HttpServletResponse response,String loginName,String password,String accountType) {
         log.info("登陆验证");
         Account account=accountService.loginAccountForClient(loginName, password, AccountType.getAccountTypeByName(accountType));
         if (account==null){
-            return validationResult(1001,"登陆失败");
+            validationResultJSONP(request,response,1001,"登陆失败");
         }else {
             request.getSession().setAttribute("CURRENT_ACCOUNT",account);
-            return result("登陆成功");
+            resultJSONP(request,response,"登陆成功");
         }
     }
 
@@ -51,19 +52,19 @@ public class WebCommonsController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getWebMenu")
-    public Object getWebMenu(String accountType){
+    public void getWebMenu(HttpServletRequest request,HttpServletResponse response,String accountType){
         log.info("获取账户菜单");
         if (DybUtils.isEmptyOrNull(accountType))
             throw new DybRuntimeException("获取菜单账户类型不能为空");
         AccountType menuType=AccountType.getAccountTypeByName(accountType);
         if (menuType==AccountType.信使){
-            return result(SettingConfigureationFactory.getMenuListByKey("MEMBER_MENU"));
+            resultJSONP(request,response,SettingConfigureationFactory.getMenuListByKey("MEMBER_MENU"));
         }else if (menuType==AccountType.商家){
-            return result(SettingConfigureationFactory.getMenuListByKey("MERCHANT_MENU"));
+            resultJSONP(request,response,SettingConfigureationFactory.getMenuListByKey("MERCHANT_MENU"));
         }else if (menuType==AccountType.服务商){
-            return result(SettingConfigureationFactory.getMenuListByKey("SERVICEPROVIDERS_MENU"));
+            resultJSONP(request,response,SettingConfigureationFactory.getMenuListByKey("SERVICEPROVIDERS_MENU"));
         }else
-            return validationResult(1001,"尚未定义此账户类型的菜单");
+            validationResultJSONP(request,response,1001,"尚未定义此账户类型的菜单");
     }
 
 }

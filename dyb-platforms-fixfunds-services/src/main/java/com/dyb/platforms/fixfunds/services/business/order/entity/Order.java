@@ -5,6 +5,8 @@
 
 package com.dyb.platforms.fixfunds.services.business.order.entity;
 
+import com.dyb.platforms.fixfunds.services.business.order.entity.em.OrderStatus;
+
 import java.util.Date;
 
 /**
@@ -29,7 +31,7 @@ public class Order implements java.io.Serializable {
     // 创建时间
     private Date createTime;
     // 订单状态
-    private String status;
+    private OrderStatus status;
     // 资料照片
     private String certificateFile;
 
@@ -146,7 +148,7 @@ public class Order implements java.io.Serializable {
      * 
      * @return 订单状态
      */
-    public String getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
@@ -155,7 +157,7 @@ public class Order implements java.io.Serializable {
      * 
      * @param status 订单状态
      */
-    public void setStatus(String status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 

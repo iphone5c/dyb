@@ -92,4 +92,16 @@ public class CodeBuilder extends BaseService implements ICodeBuilder
         return builder.toString();
     }
 
+    /**
+     * 获取一个新的订单编码（规则：年月日时分秒+4位序列号）
+     * @return 新的订单编码
+     */
+    @Override
+    public String getOrderCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(DybConvert.dateToString(new Date(),DybConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.SYSTEMPARAMS_CODE.name(),4));
+        return builder.toString();
+    }
+
 }

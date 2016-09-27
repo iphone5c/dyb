@@ -38,7 +38,6 @@ public class DybUtils {
         StringBuffer info=new StringBuffer();
         for (int i=0;i<len;i++){
             int start=DybUtils.getRanDom(1, 26);
-            System.out.println(start);
             info.append(DybUtils.LETTER.substring(start-1,start));
         }
         return info.toString();

@@ -31,4 +31,10 @@ public interface ICodeBuilder {
      */
     String getAccountCode();
 
+    /**
+     * 获取一个新的订单编码（规则：年月日时分秒+4位序列号）
+     * @return 新的订单编码
+     */
+    String getOrderCode();
+
 }

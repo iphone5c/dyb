@@ -49,8 +49,8 @@ public class MemberService extends BaseService implements IMemberService {
             throw new DybRuntimeException("信使添加时，真实姓名不能为空");
         if (member.getSex()==null)
             throw new DybRuntimeException("信使添加时，性别不能为空");
-        if (member.getBirthday()==null)
-            throw new DybRuntimeException("信使添加时，出生日期不能为空");
+//        if (member.getBirthday()==null)
+//            throw new DybRuntimeException("信使添加时，出生日期不能为空");
         if (DybUtils.isEmptyOrNull(member.getNativePlace()))
             throw new DybRuntimeException("信使添加时，籍贯不能为空");
         if (DybUtils.isEmptyOrNull(member.getProvince()))
@@ -61,8 +61,8 @@ public class MemberService extends BaseService implements IMemberService {
             throw new DybRuntimeException("信使添加时，证件类型不能为空");
         if (DybUtils.isEmptyOrNull(member.getCertificateNumber()))
             throw new DybRuntimeException("信使添加时，证件号码不能为空");
-        if (member.getIndustry()==null)
-            throw new DybRuntimeException("信使添加时，所属行业不能为空");
+//        if (member.getIndustry()==null)
+//            throw new DybRuntimeException("信使添加时，所属行业不能为空");
         if (DybUtils.isEmptyOrNull(member.getMemberEmail()))
             throw new DybRuntimeException("信使添加时，邮箱地址不能为空");
         if (DybUtils.isEmptyOrNull(member.getAccountCode()))

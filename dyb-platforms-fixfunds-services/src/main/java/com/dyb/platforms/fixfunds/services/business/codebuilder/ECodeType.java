@@ -20,4 +20,8 @@ public enum ECodeType {
      * 账户编号
      */
     ACCOUNT_CODE,
+    /**
+     * 订单编号
+     */
+    ORDER_CODE,
 }

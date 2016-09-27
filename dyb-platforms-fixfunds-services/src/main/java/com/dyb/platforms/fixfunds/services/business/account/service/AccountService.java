@@ -117,18 +117,15 @@ public class AccountService extends BaseService implements IAccountService {
      * 注册信使
      * @param account 账户对象
      * @param member 信使对象
-     * @param bankAccount 银行账号
      * @param referrerCode 推荐人Code
      * @return 账户信息
      */
     @Override
-    public Account registerMember(Account account, Member member,BankAccount bankAccount, String referrerCode) {
+    public Account registerMember(Account account, Member member , String referrerCode) {
         if (account==null)
             throw new DybRuntimeException("信使注册时，account对象不能为空或null");
         if (member==null)
             throw new DybRuntimeException("信使注册时，member对象不能为空或null");
-        if (bankAccount==null)
-            throw new DybRuntimeException("信使注册时，bankAccount对象不能为空或null");
         if (DybUtils.isEmptyOrNull(referrerCode))
             throw new DybRuntimeException("信使注册时，推荐人不能为空或null");
         String accountCode=codeBuilder.getAccountCode();
@@ -137,12 +134,6 @@ public class AccountService extends BaseService implements IAccountService {
         Member tempMember= memberService.createMember(member);
         if (tempMember==null)
             throw new DybRuntimeException("信使注册时，信使详情信息注册失败");
-
-        //添加账户银行信息
-        bankAccount.setAccountCode(accountCode);
-        BankAccount tempBankAccount=bankAccountService.createBankAccount(bankAccount);
-        if (tempBankAccount==null)
-            throw new DybRuntimeException("信使注册时，银行账号信息注册失败");
 
         //添加账户信息
         account.setAccountCode(accountCode);

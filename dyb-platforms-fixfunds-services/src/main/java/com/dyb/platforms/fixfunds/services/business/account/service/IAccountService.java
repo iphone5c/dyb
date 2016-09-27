@@ -31,11 +31,10 @@ public interface IAccountService {
      * 注册信使
      * @param account 账户对象
      * @param member 信使对象
-     * @param bankAccount 银行账号
      * @param referrerCode 推荐人Code
      * @return 账户信息
      */
-    public Account registerMember(Account account,Member member,BankAccount bankAccount,String referrerCode);
+    public Account registerMember(Account account,Member member ,String referrerCode);
 
     /**
      * 注册商家

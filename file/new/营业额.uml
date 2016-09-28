@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XPD:PROJECT xmlns:XPD="http://www.staruml.com" version="1">
+<XPD:HEADER>
+<XPD:SUBUNITS>
+</XPD:SUBUNITS>
+<XPD:PROFILES>
+<XPD:PROFILE>UMLStandard</XPD:PROFILE>
+</XPD:PROFILES>
+</XPD:HEADER>
+<XPD:BODY>
+<XPD:OBJ name="DocumentElement" type="UMLProject" guid="XI6lWRiB+kGVDzWjb3x7eQAA">
+<XPD:ATTR name="Title" type="string">project</XPD:ATTR>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLModel" guid="aFqdZntgp0aChWMJQrqsGwAA">
+<XPD:ATTR name="Name" type="string">com.dyb.platforms.fixfunds.services.business.turnover.entity</XPD:ATTR>
+<XPD:REF name="Namespace">XI6lWRiB+kGVDzWjb3x7eQAA</XPD:REF>
+<XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedDiagrams[0]" type="UMLClassDiagram" guid="mc4LpEhFZUywTnHbnR9atAAA">
+<XPD:ATTR name="Name" type="string">ProjectBaseData</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">用户组</XPD:ATTR>
+<XPD:REF name="DiagramOwner">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:OBJ name="DiagramView" type="UMLClassDiagramView" guid="3PJb1St5pUmxVXq+JTMrhQAA">
+<XPD:REF name="Diagram">mc4LpEhFZUywTnHbnR9atAAA</XPD:REF>
+<XPD:ATTR name="#OwnedViews" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedViews[0]" type="UMLClassView" guid="AKDEDvp3IkyTyRKNJbBu4QAA">
+<XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">937</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">234</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">150</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">160</XPD:ATTR>
+<XPD:REF name="Model">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+<XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="xqcXzFZzzECwHBAGXmypsgAA">
+<XPD:OBJ name="NameLabel" type="LabelView" guid="862Zb/88zEip0bqtrcdtHgAA">
+<XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Turnover</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="StereotypeLabel" type="LabelView" guid="HR0Hy529f0uuDrTZDl4ZhAAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="PropertyLabel" type="LabelView" guid="E1NUUykYjUa4FjxhyOB5lgAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="AttributeCompartment" type="UMLAttributeCompartmentView" guid="hGxuPwrbZkeOePqbu154vwAA">
+<XPD:REF name="Model">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OperationCompartment" type="UMLOperationCompartmentView" guid="c3kJHwEJW0+yvKoOcGhevAAA">
+<XPD:REF name="Model">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="TemplateParameterCompartment" type="UMLTemplateParameterCompartmentView" guid="oFyj8XkPSEuVzbXVVbOzrQAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+<XPD:REF name="Model">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="H0T15YpLsUyhJo6qXwjeUAAA">
+<XPD:ATTR name="Name" type="string">Turnover</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">营业额</XPD:ATTR>
+<XPD:REF name="Namespace">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
+<XPD:REF name="Views[0]">AKDEDvp3IkyTyRKNJbBu4QAA</XPD:REF>
+<XPD:REF name="Views[1]">hGxuPwrbZkeOePqbu154vwAA</XPD:REF>
+<XPD:REF name="Views[2]">c3kJHwEJW0+yvKoOcGhevAAA</XPD:REF>
+<XPD:REF name="Views[3]">oFyj8XkPSEuVzbXVVbOzrQAA</XPD:REF>
+<XPD:ATTR name="#Attributes" type="integer">9</XPD:ATTR>
+<XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="LUEWXUZ4bkCfMlFygS5hZAAA">
+<XPD:ATTR name="Name" type="string">turnoverCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">营业额编号</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="tY5XgrKNcEG5sIJgeQCmxAAA">
+<XPD:ATTR name="Name" type="string">turnoverTime</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">营业时间</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Date</XPD:ATTR>
+<XPD:REF name="Owner">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="Tp9LWqKr3EivmZJOpChViQAA">
+<XPD:ATTR name="Name" type="string">turnoverPrice</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">营业总额</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
+<XPD:REF name="Owner">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="gV9C2BhljEiW95AjAxAlzwAA">
+<XPD:ATTR name="Name" type="string">benefitPrice</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">应交让利款</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
+<XPD:REF name="Owner">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="TxUcm+j/OEK7PX+mWnFxuAAA">
+<XPD:ATTR name="Name" type="string">yetBenefitPrice</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">已交让利款</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
+<XPD:REF name="Owner">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="7Ja916scikC5hgIgDn8AvgAA">
+<XPD:ATTR name="Name" type="string">residueBenefitPrice</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">剩余待交让利款</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
+<XPD:REF name="Owner">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="6MRuEoZusEiUcSqwo3fzIQAA">
+<XPD:ATTR name="Name" type="string">benefitPriceStatus</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">让利状态</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[7]" type="UMLAttribute" guid="IgxtYMotF02V6lFqEFhnHQAA">
+<XPD:ATTR name="Name" type="string">createTime</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">创建时间</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Date</XPD:ATTR>
+<XPD:REF name="Owner">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[8]" type="UMLAttribute" guid="Yk0/BQzWxEKFWYnEN9gFcwAA">
+<XPD:ATTR name="Name" type="string">remark</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">备注</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">H0T15YpLsUyhJo6qXwjeUAAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:BODY>
+</XPD:PROJECT>

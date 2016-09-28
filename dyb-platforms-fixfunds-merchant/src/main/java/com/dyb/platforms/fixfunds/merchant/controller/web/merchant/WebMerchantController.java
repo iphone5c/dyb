@@ -1,4 +1,4 @@
-package com.dyb.platforms.fixfunds.merchant.controller.web;
+package com.dyb.platforms.fixfunds.merchant.controller.web.merchant;
 
 import com.dyb.platforms.fixfunds.merchant.controller.web.model.MerchantParamModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;

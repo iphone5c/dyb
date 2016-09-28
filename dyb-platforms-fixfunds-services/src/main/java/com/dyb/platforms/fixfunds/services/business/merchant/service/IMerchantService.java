@@ -20,4 +20,21 @@ public interface IMerchantService {
      * @return 商家信息
      */
     public Merchant getMerchantByCode(String merchantCode);
+
+    /**
+     * 根据商家code更新商家地理位置
+     * @param merchantCode 商家code
+     * @param address 地址
+     * @param longitude 经度
+     * @param latitude 纬度
+     * @return 商家信息
+     */
+    public Merchant updateMerchantAddressByCode(String merchantCode,String address,String longitude,String latitude);
+
+    /**
+     * 根据商家code 修改商家信息
+     * @param merchant 商家对象
+     * @return 商家对象
+     */
+    public Merchant updateMerchantByCode(Merchant merchant);
 }

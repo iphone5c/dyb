@@ -30,10 +30,12 @@
         <result property="principalEmail" column="principalemail" />
         <result property="certificateFile" column="certificatefile" />
         <result property="accountCode" column="accountcode" />
+        <result property="longitude" column="longitude" />
+        <result property="latitude" column="latitude" />
     </resultMap>
 
     <sql id="baseCol">
-        merchantcode, merchantname, incentivemode, shopname, merchanttype, businessstarttime, businessendtime, merchantaddress, province, city, mainbusiness, industrytype, industry, scale, countryphone, merchantdescription, principalname, principaljobs, principalsex, principalidcard, principalemail, certificatefile, accountcode
+        merchantcode, merchantname, incentivemode, shopname, merchanttype, businessstarttime, businessendtime, merchantaddress, province, city, mainbusiness, industrytype, industry, scale, countryphone, merchantdescription, principalname, principaljobs, principalsex, principalidcard, principalemail, certificatefile, accountcode, longitude, latitude
     </sql>
 
     <sql id="whereSql">
@@ -200,6 +202,20 @@
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
+            <if test="longitude != null"><![CDATA[ and longitude like #{longitude} ]]></if>
+            <if test="longitude_enum != null">
+                <![CDATA[ and longitude in ]]>
+                <foreach collection="longitude_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
+            <if test="latitude != null"><![CDATA[ and latitude like #{latitude} ]]></if>
+            <if test="latitude_enum != null">
+                <![CDATA[ and latitude in ]]>
+                <foreach collection="latitude_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
             <if test="_default_mulattr != null">
                 <![CDATA[ and ]]>
                 <foreach collection="_default_mulattr" item="item" open="(" separator=" or " close=")">
@@ -225,6 +241,8 @@
                     <if test="item.name == 'principalEmail'"><![CDATA[ principalemail like #{item.value} ]]></if>
                     <if test="item.name == 'certificateFile'"><![CDATA[ certificatefile like #{item.value} ]]></if>
                     <if test="item.name == 'accountCode'"><![CDATA[ accountcode like #{item.value} ]]></if>
+                    <if test="item.name == 'longitude'"><![CDATA[ longitude like #{item.value} ]]></if>
+                    <if test="item.name == 'latitude'"><![CDATA[ latitude like #{item.value} ]]></if>
                 </foreach>
             </if>
         </trim>
@@ -278,18 +296,22 @@
             <if test="_orderBy == 'certificateFile_asc'"><![CDATA[ certificatefile, ]]></if>
             <if test="_orderBy == 'accountCode_desc'"><![CDATA[ accountcode desc, ]]></if>
             <if test="_orderBy == 'accountCode_asc'"><![CDATA[ accountcode, ]]></if>
+            <if test="_orderBy == 'longitude_desc'"><![CDATA[ longitude desc, ]]></if>
+            <if test="_orderBy == 'longitude_asc'"><![CDATA[ longitude, ]]></if>
+            <if test="_orderBy == 'latitude_desc'"><![CDATA[ latitude desc, ]]></if>
+            <if test="_orderBy == 'latitude_asc'"><![CDATA[ latitude, ]]></if>
         </trim>
     </sql>
 
     <insert id="insertObject" parameterType="com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant">
         insert into
-        dyb_merchant(merchantcode,merchantname,incentivemode,shopname,merchanttype,businessstarttime,businessendtime,merchantaddress,province,city,mainbusiness,industrytype,industry,scale,countryphone,merchantdescription,principalname,principaljobs,principalsex,principalidcard,principalemail,certificatefile,accountcode)
-        values(#{merchantCode},#{merchantName},#{incentiveMode},#{shopName},#{merchantType},#{businessStartTime},#{businessEndTime},#{merchantAddress},#{province},#{city},#{mainBusiness},#{industryType},#{industry},#{scale},#{countryPhone},#{merchantDescription},#{principalName},#{principalJobs},#{principalSex},#{principalIdCard},#{principalEmail},#{certificateFile},#{accountCode});
+        dyb_merchant(merchantcode,merchantname,incentivemode,shopname,merchanttype,businessstarttime,businessendtime,merchantaddress,province,city,mainbusiness,industrytype,industry,scale,countryphone,merchantdescription,principalname,principaljobs,principalsex,principalidcard,principalemail,certificatefile,accountcode,longitude,latitude)
+        values(#{merchantCode},#{merchantName},#{incentiveMode},#{shopName},#{merchantType},#{businessStartTime},#{businessEndTime},#{merchantAddress},#{province},#{city},#{mainBusiness},#{industryType},#{industry},#{scale},#{countryPhone},#{merchantDescription},#{principalName},#{principalJobs},#{principalSex},#{principalIdCard},#{principalEmail},#{certificateFile},#{accountCode},#{longitude},#{latitude});
     </insert>
 
     <update id="updateObject" parameterType="com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant">
         update dyb_merchant
-        set merchantname=#{merchantName},incentivemode=#{incentiveMode},shopname=#{shopName},merchanttype=#{merchantType},businessstarttime=#{businessStartTime},businessendtime=#{businessEndTime},merchantaddress=#{merchantAddress},province=#{province},city=#{city},mainbusiness=#{mainBusiness},industrytype=#{industryType},industry=#{industry},scale=#{scale},countryphone=#{countryPhone},merchantdescription=#{merchantDescription},principalname=#{principalName},principaljobs=#{principalJobs},principalsex=#{principalSex},principalidcard=#{principalIdCard},principalemail=#{principalEmail},certificatefile=#{certificateFile},accountcode=#{accountCode}
+        set merchantname=#{merchantName},incentivemode=#{incentiveMode},shopname=#{shopName},merchanttype=#{merchantType},businessstarttime=#{businessStartTime},businessendtime=#{businessEndTime},merchantaddress=#{merchantAddress},province=#{province},city=#{city},mainbusiness=#{mainBusiness},industrytype=#{industryType},industry=#{industry},scale=#{scale},countryphone=#{countryPhone},merchantdescription=#{merchantDescription},principalname=#{principalName},principaljobs=#{principalJobs},principalsex=#{principalSex},principalidcard=#{principalIdCard},principalemail=#{principalEmail},certificatefile=#{certificateFile},accountcode=#{accountCode},latitude=#{latitude},longitude=#{longitude}
         where merchantcode=#{merchantCode};
     </update>
 

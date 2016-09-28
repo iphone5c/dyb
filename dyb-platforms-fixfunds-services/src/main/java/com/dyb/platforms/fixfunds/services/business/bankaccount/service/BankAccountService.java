@@ -4,6 +4,7 @@ import com.dyb.platforms.fixfunds.services.business.bankaccount.dao.IBankAccount
 import com.dyb.platforms.fixfunds.services.business.bankaccount.entity.BankAccount;
 import com.dyb.platforms.fixfunds.services.business.codebuilder.ICodeBuilder;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
+import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
 import com.dyb.platforms.fixfunds.services.utils.core.service.BaseService;
 import org.apache.log4j.Logger;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -50,6 +52,63 @@ public class BankAccountService extends BaseService implements IBankAccountServi
         bankAccount.setBankAccountCode(UUID.randomUUID().toString());
         bankAccount.setCreateTime(new Date());
         int info = bankAccountDao.insertObject(bankAccount);
+        return info>0?bankAccount:null;
+    }
+
+    /**
+     * 查询对象列表
+     *
+     * @param wheres 条件
+     * @param skip   在结果是跳过的数目
+     * @param size   返回的最大数目,小于0则返回所有记录
+     * @param detail 是还返回对象详细信息
+     * @return 对象列表
+     */
+    @Override
+    public List<BankAccount> getBankAccountList(QueryParams wheres, int skip, int size, boolean detail) {
+        return bankAccountDao.queryList(wheres,skip,size,detail);
+    }
+
+    /**
+     * 根据账户code获取默认的银行卡信息
+     * @param accountCode 账户code
+     * @return 银行卡信息
+     */
+    @Override
+    public BankAccount getBankAccountByDefaultChecked(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("根据账户code获取默认的银行卡信息时，账户code不能为空");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("accountCode",accountCode);
+        queryParams.addParameter("defaultChecked",true);
+        List<BankAccount> bankAccountList=bankAccountDao.queryList(queryParams,0,-1,true);
+        return (bankAccountList!=null&&bankAccountList.size()>0)?bankAccountList.get(0):null;
+    }
+
+    /**
+     * 修改银行卡新
+     * @param bankAccount 银行卡对象
+     * @return银行卡对象
+     */
+    @Override
+    public BankAccount updateBankAccount(BankAccount bankAccount) {
+        if (bankAccount==null)
+            throw new DybRuntimeException("修改银行卡信息时，bankAccount对象不能为空");
+        if (DybUtils.isEmptyOrNull(bankAccount.getBankAccountCode()))
+            throw new DybRuntimeException("修改银行卡信息时，bankAccountCode不能为空");
+        if (DybUtils.isEmptyOrNull(bankAccount.getBankName()))
+            throw new DybRuntimeException("修改银行卡信息时，开户行必须选择");
+        if (DybUtils.isEmptyOrNull(bankAccount.getBankBranch()))
+            throw new DybRuntimeException("修改银行卡信息时，开户支行不能为空");
+        if (DybUtils.isEmptyOrNull(bankAccount.getBankAccountName()))
+            throw new DybRuntimeException("修改银行卡信息时，开户名不能为空");
+        if (DybUtils.isEmptyOrNull(bankAccount.getBankNum()))
+            throw new DybRuntimeException("修改银行卡信息时，银行账号不能为空");
+        if (DybUtils.isEmptyOrNull(bankAccount.getAccountCode()))
+            throw new DybRuntimeException("修改银行卡信息时，持卡账户不能为空");
+        if (bankAccountDao.getObject(bankAccount.getBankAccountCode(),true)==null)
+            throw new DybRuntimeException("修改银行卡信息时，找不到此银行卡信息");
+        int info = bankAccountDao.updateObject(bankAccount);
         return info>0?bankAccount:null;
     }
 }

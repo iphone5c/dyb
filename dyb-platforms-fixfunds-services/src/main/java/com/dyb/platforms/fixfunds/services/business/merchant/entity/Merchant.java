@@ -70,6 +70,10 @@ public class Merchant implements java.io.Serializable {
     private String certificateFile;
     // 账户code
     private String accountCode;
+    // 经度
+    private String longitude;
+    // 纬度
+    private String latitude;
 
     /**
      * 获取商家Code [主键]
@@ -503,4 +507,39 @@ public class Merchant implements java.io.Serializable {
         this.accountCode = accountCode;
     }
 
+    /**
+     * 获取经度
+     *
+     * @return 经度
+     */
+    public String getLongitude() {
+        return longitude;
+    }
+
+    /**
+     * 设置经度
+     *
+     * @param longitude 经度
+     */
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    /**
+     * 获取纬度
+     *
+     * @return 纬度
+     */
+    public String getLatitude() {
+        return latitude;
+    }
+
+    /**
+     * 设置纬度
+     *
+     * @param latitude 纬度
+     */
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 }

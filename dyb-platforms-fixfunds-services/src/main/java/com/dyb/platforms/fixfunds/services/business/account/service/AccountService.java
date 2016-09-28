@@ -282,4 +282,38 @@ public class AccountService extends BaseService implements IAccountService {
             throw new DybRuntimeException("账户密码输入错误");
         return account;
     }
+
+    /**
+     * 商家资料修改
+     * @param account 账户信息
+     * @param merchant 商家详情
+     * @param bankAccount 默认银行卡信息
+     * @return 账户对象
+     */
+    @Override
+    public Account updateMerchant(Account account, Merchant merchant, BankAccount bankAccount) {
+        if (account==null)
+            throw new DybRuntimeException("修改商家资料时，account对象不能为空或null");
+        if (DybUtils.isEmptyOrNull(account.getAccountCode()))
+            throw new DybRuntimeException("修改商家资料时，accountCode不能为空或null");
+        if (merchant==null)
+            throw new DybRuntimeException("修改商家资料时，merchant对象不能为空或null");
+        if (bankAccount==null)
+            throw new DybRuntimeException("修改商家资料时，bankAccount对象不能为空或null");
+        if (accountDao.getObject(account.getAccountCode(),true)==null)
+            throw new DybRuntimeException("修改商家资料时，找不到此账户的信息");
+
+        //更新商家详情
+        Merchant tempMerchant= merchantService.updateMerchantByCode(merchant);
+        if (tempMerchant==null)
+            throw new DybRuntimeException("修改商家资料时，商家详情信息更新失败");
+
+        //添加账户银行信息
+        BankAccount tempBankAccount=bankAccountService.updateBankAccount(bankAccount);
+        if (tempBankAccount==null)
+            throw new DybRuntimeException("修改商家资料时，银行账号信息更新失败");
+
+        account.setMerchant(tempMerchant);
+        return account;
+    }
 }

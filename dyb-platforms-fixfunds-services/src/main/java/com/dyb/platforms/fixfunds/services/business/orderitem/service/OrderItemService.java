@@ -6,7 +6,6 @@ import com.dyb.platforms.fixfunds.services.business.order.service.IOrderService;
 import com.dyb.platforms.fixfunds.services.business.orderitem.dao.IOrderItemDao;
 import com.dyb.platforms.fixfunds.services.business.orderitem.entity.OrderItem;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
-import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
 import com.dyb.platforms.fixfunds.services.utils.core.service.BaseService;
@@ -16,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -77,16 +77,17 @@ public class OrderItemService extends BaseService implements IOrderItemService {
     }
 
     /**
-     *获取订单明细分页列表
-     * @param wheres    条件
-     * @param pageIndex 返回的页码
-     * @param pageSize  页大小
-     * @param detail    是否返回详细信息
-     * @return 对象分页列表
+     * 查询对象列表
+     *
+     * @param wheres 条件
+     * @param skip   在结果是跳过的数目
+     * @param size   返回的最大数目,小于0则返回所有记录
+     * @param detail 是还返回对象详细信息
+     * @return 对象列表
      */
     @Override
-    public PageList<OrderItem> getOrderItemPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail) {
-        return orderItemDao.queryListForPaged(wheres,pageIndex,pageSize,detail);
+    public List<OrderItem> getOrderItemList(QueryParams wheres, int skip, int size, boolean detail) {
+        return orderItemDao.queryList(wheres,skip,size,detail);
     }
 
 }

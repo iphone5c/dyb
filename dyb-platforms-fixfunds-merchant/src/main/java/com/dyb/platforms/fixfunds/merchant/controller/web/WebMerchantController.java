@@ -4,7 +4,9 @@ import com.dyb.platforms.fixfunds.merchant.controller.web.model.MerchantParamMod
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.bankaccount.entity.BankAccount;
+import com.dyb.platforms.fixfunds.services.business.bankaccount.service.IBankAccountService;
 import com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant;
+import com.dyb.platforms.fixfunds.services.business.merchant.service.IMerchantService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2015/7/1.
@@ -26,6 +30,10 @@ public class WebMerchantController extends BaseController {
 
     @Autowired
     private IAccountService accountService;
+    @Autowired
+    private IMerchantService merchantService;
+    @Autowired
+    private IBankAccountService bankAccountService;
 
     /**
      * 商户信息链接注册
@@ -56,6 +64,130 @@ public class WebMerchantController extends BaseController {
         }else {
             resultJSONP(request,response,"注册成功");
         }
+    }
+
+    /**
+     * 根据账户code获取商家地理位置信息
+     * @param request
+     * @param response
+     * @param accountCode 账户code
+     */
+    @RequestMapping(value = "/getMerchantAddressByCode")
+    public void getMerchantAddressByCode(HttpServletRequest request,HttpServletResponse response,String accountCode){
+        log.info("根据账户code获取商家地理位置信息");
+        if (DybUtils.isEmptyOrNull(accountCode))
+            validationResultJSONP(request,response,1001,"查询商家地理位置账户code不能为空");
+        Account account=accountService.getAccountByCode(accountCode,true);
+        if (account==null)
+            validationResultJSONP(request,response,1001,"找不到此账户信息");
+        if (account.getMerchant()==null)
+            validationResultJSONP(request,response,1001,"找不到此账户的详情信息");
+        Map<String,String> result=new HashMap<>();
+        result.put("address",account.getMerchant().getMerchantAddress());
+        result.put("longitude",account.getMerchant().getLongitude());
+        result.put("latitude",account.getMerchant().getLatitude());
+        resultJSONP(request,response,result);
+    }
+
+    /**
+     * 根据账户code修改商家地理位置
+     * @param request
+     * @param response
+     * @param accountCode 账户code
+     * @param address 地址
+     * @param longitude 经度
+     * @param latitude 纬度
+     */
+    @RequestMapping(value = "/modifyMerchantAddressByCode")
+    public void modifyMerchantAddressByCode(HttpServletRequest request,HttpServletResponse response,String accountCode,String address,String longitude,String latitude){
+        if (DybUtils.isEmptyOrNull(accountCode))
+            validationResultJSONP(request,response,1001,"修改商家地理位置，账户Code不能为空");
+        if (DybUtils.isEmptyOrNull(address))
+            validationResultJSONP(request,response,1001,"修改商家地理位置，地址不能为空");
+        if (DybUtils.isEmptyOrNull(longitude))
+            validationResultJSONP(request,response,1001,"修改商家地理位置，经度不能为空");
+        if (DybUtils.isEmptyOrNull(latitude))
+            validationResultJSONP(request,response,1001,"修改商家地理位置，纬度不能为空");
+        Account account=accountService.getAccountByCode(accountCode,true);
+        if (account==null)
+            validationResultJSONP(request,response,1001,"找不到此账户信息");
+        if (account.getMerchant()==null)
+            validationResultJSONP(request,response,1001,"找不到此账户的详情信息");
+        Merchant merchant = merchantService.updateMerchantAddressByCode(account.getMerchant().getMerchantCode(),address,longitude,latitude);
+        if (merchant==null)
+            validationResultJSONP(request,response,1001,"商家地理位置修改失败");
+        resultJSONP(request,response,"商家地理位置修改成功");
+    }
+
+    /**
+     * 根据账户code获取商家信息
+     * @param request
+     * @param response
+     * @param accountCode 账户code
+     */
+    @RequestMapping(value = "/getMerchantByCode")
+    public void getMerchantByCode(HttpServletRequest request,HttpServletResponse response,String accountCode){
+        log.info("根据账户code获取商家信息");
+        if (DybUtils.isEmptyOrNull(accountCode))
+            validationResultJSONP(request,response,1001,"查询商家账户code不能为空");
+        Account account=accountService.getAccountByCode(accountCode,true);
+        if (account==null)
+            validationResultJSONP(request,response,1001,"找不到此账户信息");
+        if (account.getMerchant()==null)
+            validationResultJSONP(request,response,1001,"找不到此账户的详情信息");
+        Map<String,Object> result=new HashMap<>();
+        result.put("merchant",account.getMerchant());
+        result.put("bank",bankAccountService.getBankAccountByDefaultChecked(account.getAccountCode()));
+        resultJSONP(request,response,result);
+    }
+
+    /**
+     *修改商户资料
+     * @param request
+     * @param response
+     * @param accountCode 账户code
+     * @param merchant 商户详情
+     * @param bankAccount 银行卡信息
+     */
+    @RequestMapping(value = "/modifyMerchant")
+    public void modifyMerchant(HttpServletRequest request,HttpServletResponse response,String accountCode,Merchant merchant,BankAccount bankAccount,MerchantParamModel merchantParamModel){
+        if (DybUtils.isEmptyOrNull(accountCode))
+            validationResultJSONP(request,response,1001,"修改商户资料，账户Code不能为空");
+        if (merchant==null)
+            validationResultJSONP(request,response,1001,"修改商户资料，商户详情信息不能为空");
+        if (bankAccount==null)
+            validationResultJSONP(request,response,1001,"修改商户资料，银行卡信息不能为空");
+        Account account=accountService.getAccountByCode(accountCode,true);
+        if (account==null)
+            validationResultJSONP(request,response,1001,"找不到此账户信息");
+        if (account.getMerchant()==null)
+            validationResultJSONP(request,response,1001,"找不到此账户的详情信息");
+        Merchant updateMerchant = account.getMerchant();
+        updateMerchant.setIndustry(merchantParamModel.getIndustry());
+        updateMerchant.setScale(merchantParamModel.getScale());
+        updateMerchant.setPrincipalSex(merchantParamModel.getPrincipalSex());
+        updateMerchant.setMainBusiness(merchant.getMainBusiness());
+        updateMerchant.setCountryPhone(merchant.getCountryPhone());
+        updateMerchant.setBusinessStartTime(merchant.getBusinessStartTime());
+        updateMerchant.setBusinessEndTime(merchant.getBusinessEndTime());
+        updateMerchant.setMerchantDescription(merchant.getMerchantDescription());
+        updateMerchant.setPrincipalName(merchant.getPrincipalName());
+        updateMerchant.setPrincipalJobs(merchant.getPrincipalJobs());
+        updateMerchant.setPrincipalIdCard(merchant.getPrincipalIdCard());
+        updateMerchant.setPrincipalEmail(merchant.getPrincipalEmail());
+
+        BankAccount updateBankAccount = bankAccountService.getBankAccountByDefaultChecked(account.getAccountCode());
+        if (updateBankAccount==null)
+            validationResultJSONP(request,response,1001,"尚未设置默认银行卡信息");
+        updateBankAccount.setBankName(bankAccount.getBankName());
+        updateBankAccount.setBankBranch(bankAccount.getBankBranch());
+        updateBankAccount.setBankAccountName(bankAccount.getBankAccountName());
+        updateBankAccount.setBankNum(bankAccount.getBankNum());
+
+        Account result=accountService.updateMerchant(account,merchant,bankAccount);
+        if (result==null)
+            validationResultJSONP(request,response,1001,"商户修改资料失败");
+        resultJSONP(request,response,"商户修改资料成功");
     }
 
 }

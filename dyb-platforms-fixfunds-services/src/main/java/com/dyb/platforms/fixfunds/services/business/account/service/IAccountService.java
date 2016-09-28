@@ -73,4 +73,13 @@ public interface IAccountService {
      */
     public Account loginAccountForClient(String accountCode,String password,AccountType accountType);
 
+    /**
+     * 商家资料修改
+     * @param account 账户信息
+     * @param merchant 商家详情
+     * @param bankAccount 默认银行卡信息
+     * @return 账户对象
+     */
+    public Account updateMerchant(Account account,Merchant merchant,BankAccount bankAccount);
+
 }

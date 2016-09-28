@@ -16,10 +16,11 @@
         <result property="benefitPriceStatus" column="benefitpricestatus" />
         <result property="createTime" column="createtime" />
         <result property="remark" column="remark" />
+        <result property="accountCode" column="accountcode" />
     </resultMap>
 
     <sql id="baseCol">
-        turnovercode, turnovertime, turnoverprice, benefitprice, yetbenefitprice, residuebenefitprice, benefitpricestatus, createtime, remark
+        turnovercode, turnovertime, turnoverprice, benefitprice, yetbenefitprice, residuebenefitprice, benefitpricestatus, createtime, remark, accountcode
     </sql>
 
     <sql id="whereSql">
@@ -81,12 +82,20 @@
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
+            <if test="accountCode != null"><![CDATA[ and accountcode like #{accountCode} ]]></if>
+            <if test="accountCode_enum != null">
+                <![CDATA[ and accountcode in ]]>
+                <foreach collection="accountCode_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
             <if test="_default_mulattr != null">
                 <![CDATA[ and ]]>
                 <foreach collection="_default_mulattr" item="item" open="(" separator=" or " close=")">
                     <if test="item.name == 'turnoverCode'"><![CDATA[ turnovercode like #{item.value} ]]></if>
                     <if test="item.name == 'benefitPriceStatus'"><![CDATA[ benefitpricestatus like #{item.value} ]]></if>
                     <if test="item.name == 'remark'"><![CDATA[ remark like #{item.value} ]]></if>
+                    <if test="item.name == 'accountCode'"><![CDATA[ accountcode like #{item.value} ]]></if>
                 </foreach>
             </if>
         </trim>
@@ -112,18 +121,20 @@
             <if test="_orderBy == 'createTime_asc'"><![CDATA[ createtime, ]]></if>
             <if test="_orderBy == 'remark_desc'"><![CDATA[ remark desc, ]]></if>
             <if test="_orderBy == 'remark_asc'"><![CDATA[ remark, ]]></if>
+            <if test="_orderBy == 'accountCode_desc'"><![CDATA[ accountcode desc, ]]></if>
+            <if test="_orderBy == 'accountCode_asc'"><![CDATA[ accountcode, ]]></if>
         </trim>
     </sql>
 
     <insert id="insertObject" parameterType="com.dyb.platforms.fixfunds.services.business.turnover.entity.Turnover">
         insert into
-        dyb_turnover(turnovercode,turnovertime,turnoverprice,benefitprice,yetbenefitprice,residuebenefitprice,benefitpricestatus,createtime,remark)
-        values(#{turnoverCode},#{turnoverTime},#{turnoverPrice},#{benefitPrice},#{yetBenefitPrice},#{residueBenefitPrice},#{benefitPriceStatus},#{createTime},#{remark});
+        dyb_turnover(turnovercode,turnovertime,turnoverprice,benefitprice,yetbenefitprice,residuebenefitprice,benefitpricestatus,createtime,remark,accountcode)
+        values(#{turnoverCode},#{turnoverTime},#{turnoverPrice},#{benefitPrice},#{yetBenefitPrice},#{residueBenefitPrice},#{benefitPriceStatus},#{createTime},#{remark},#{accountcode});
     </insert>
 
     <update id="updateObject" parameterType="com.dyb.platforms.fixfunds.services.business.turnover.entity.Turnover">
         update dyb_turnover
-        set turnovertime=#{turnoverTime},turnoverprice=#{turnoverPrice},benefitprice=#{benefitPrice},yetbenefitprice=#{yetBenefitPrice},residuebenefitprice=#{residueBenefitPrice},benefitpricestatus=#{benefitPriceStatus},createtime=#{createTime},remark=#{remark}
+        set turnovertime=#{turnoverTime},turnoverprice=#{turnoverPrice},benefitprice=#{benefitPrice},yetbenefitprice=#{yetBenefitPrice},residuebenefitprice=#{residueBenefitPrice},benefitpricestatus=#{benefitPriceStatus},createtime=#{createTime},remark=#{remark},accountcode=#{accountCode}
         where turnovercode=#{turnoverCode};
     </update>
 

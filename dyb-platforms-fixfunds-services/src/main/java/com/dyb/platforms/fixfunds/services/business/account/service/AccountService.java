@@ -316,4 +316,25 @@ public class AccountService extends BaseService implements IAccountService {
         account.setMerchant(tempMerchant);
         return account;
     }
+
+    /**
+     * 根据账户code或phone查找账户信息
+     * @param key 账户code或者phone
+     * @param accountType 账户类型
+     * @return 账户信息
+     */
+    @Override
+    public Account getAccountByCodeOrPhone(String key, AccountType accountType) {
+        if (DybUtils.isEmptyOrNull(key))
+            throw new DybRuntimeException("查找账户信息时，key不能为空");
+        QueryParams queryParams = new QueryParams();
+        queryParams.addMulAttrParameter("accountCode",key);
+        queryParams.addMulAttrParameter("accountPhone",key);
+        queryParams.addParameter("accountType", accountType.name());
+        List<Account> accountList = accountDao.queryList(queryParams,0,-1,true);
+        Account account=(accountList!=null&&accountList.size()>0)?accountList.get(0):null;
+        if (account==null)
+            throw new DybRuntimeException("找不到此账户信息");
+        return this.getAccountByCode(account.getAccountCode(),true);
+    }
 }

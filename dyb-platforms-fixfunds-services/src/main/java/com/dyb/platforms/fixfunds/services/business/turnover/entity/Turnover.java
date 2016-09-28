@@ -34,6 +34,8 @@ public class Turnover implements java.io.Serializable {
     private Date createTime;
     // 备注
     private String remark;
+    // 账户code
+    private String accountCode;
 
     /** 
      * 获取营业额编号 [主键]
@@ -197,4 +199,21 @@ public class Turnover implements java.io.Serializable {
         this.remark = remark;
     }
 
+    /**
+     * 获取账户code
+     *
+     * @return 账户code
+     */
+    public String getAccountCode() {
+        return accountCode;
+    }
+
+    /**
+     * 设置账户code
+     *
+     * @param accountCode 账户code
+     */
+    public void setAccountCode(String accountCode) {
+        this.accountCode = accountCode;
+    }
 }

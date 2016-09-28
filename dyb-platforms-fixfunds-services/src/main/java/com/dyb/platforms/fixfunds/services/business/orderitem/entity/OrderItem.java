@@ -23,7 +23,7 @@ public class OrderItem implements java.io.Serializable {
     // 商品编号
     private String commodityCode;
     // 交易数量
-    private Integer tradeAmount;
+    private Double tradeAmount;
     // 交易价格
     private Double tradePrice;
     // 创建时间
@@ -88,7 +88,7 @@ public class OrderItem implements java.io.Serializable {
      * 
      * @return 交易数量
      */
-    public Integer getTradeAmount() {
+    public Double getTradeAmount() {
         return tradeAmount;
     }
 
@@ -97,7 +97,7 @@ public class OrderItem implements java.io.Serializable {
      * 
      * @param tradeAmount 交易数量
      */
-    public void setTradeAmount(Integer tradeAmount) {
+    public void setTradeAmount(Double tradeAmount) {
         this.tradeAmount = tradeAmount;
     }
 

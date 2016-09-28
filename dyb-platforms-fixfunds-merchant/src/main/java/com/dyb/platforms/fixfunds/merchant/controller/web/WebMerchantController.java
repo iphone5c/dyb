@@ -1,7 +1,8 @@
-package com.dyb.platforms.fixfunds.merchant.controller.web.merchant;
+package com.dyb.platforms.fixfunds.merchant.controller.web;
 
 import com.dyb.platforms.fixfunds.merchant.controller.web.model.MerchantParamModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
+import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.bankaccount.entity.BankAccount;
 import com.dyb.platforms.fixfunds.services.business.bankaccount.service.IBankAccountService;
@@ -67,17 +68,14 @@ public class WebMerchantController extends BaseController {
     }
 
     /**
-     * 根据账户code获取商家地理位置信息
+     * 获取当前登陆商家地理位置信息
      * @param request
      * @param response
-     * @param accountCode 账户code
      */
-    @RequestMapping(value = "/getMerchantAddressByCode")
-    public void getMerchantAddressByCode(HttpServletRequest request,HttpServletResponse response,String accountCode){
-        log.info("根据账户code获取商家地理位置信息");
-        if (DybUtils.isEmptyOrNull(accountCode))
-            validationResultJSONP(request,response,1001,"查询商家地理位置账户code不能为空");
-        Account account=accountService.getAccountByCode(accountCode,true);
+    @RequestMapping(value = "/getMerchantAddressByCurrent")
+    public void getMerchantAddressByCode(HttpServletRequest request,HttpServletResponse response){
+        log.info("获取当前登陆商家地理位置信息");
+        Account account=accountService.getAccountByCode(DybUtils.getCurrentAccount(request).getAccountCode(),true);
         if (account==null)
             validationResultJSONP(request,response,1001,"找不到此账户信息");
         if (account.getMerchant()==null)
@@ -90,25 +88,23 @@ public class WebMerchantController extends BaseController {
     }
 
     /**
-     * 根据账户code修改商家地理位置
+     * 修改当前登陆商家地理位置
      * @param request
      * @param response
-     * @param accountCode 账户code
      * @param address 地址
      * @param longitude 经度
      * @param latitude 纬度
      */
-    @RequestMapping(value = "/modifyMerchantAddressByCode")
-    public void modifyMerchantAddressByCode(HttpServletRequest request,HttpServletResponse response,String accountCode,String address,String longitude,String latitude){
-        if (DybUtils.isEmptyOrNull(accountCode))
-            validationResultJSONP(request,response,1001,"修改商家地理位置，账户Code不能为空");
+    @RequestMapping(value = "/modifyMerchantAddressByCurrent")
+    public void modifyMerchantAddressByCurrent(HttpServletRequest request,HttpServletResponse response,String address,String longitude,String latitude){
+        log.info("修改当前登陆商家地理位置");
         if (DybUtils.isEmptyOrNull(address))
             validationResultJSONP(request,response,1001,"修改商家地理位置，地址不能为空");
         if (DybUtils.isEmptyOrNull(longitude))
             validationResultJSONP(request,response,1001,"修改商家地理位置，经度不能为空");
         if (DybUtils.isEmptyOrNull(latitude))
             validationResultJSONP(request,response,1001,"修改商家地理位置，纬度不能为空");
-        Account account=accountService.getAccountByCode(accountCode,true);
+        Account account=accountService.getAccountByCode(DybUtils.getCurrentAccount(request).getAccountCode(),true);
         if (account==null)
             validationResultJSONP(request,response,1001,"找不到此账户信息");
         if (account.getMerchant()==null)
@@ -120,44 +116,49 @@ public class WebMerchantController extends BaseController {
     }
 
     /**
-     * 根据账户code获取商家信息
+     * 获取当前登陆商家信息
      * @param request
      * @param response
-     * @param accountCode 账户code
      */
-    @RequestMapping(value = "/getMerchantByCode")
-    public void getMerchantByCode(HttpServletRequest request,HttpServletResponse response,String accountCode){
-        log.info("根据账户code获取商家信息");
-        if (DybUtils.isEmptyOrNull(accountCode))
-            validationResultJSONP(request,response,1001,"查询商家账户code不能为空");
-        Account account=accountService.getAccountByCode(accountCode,true);
+    @RequestMapping(value = "/getMerchantByCurrent")
+    public void getMerchantByCurrent(HttpServletRequest request,HttpServletResponse response){
+        log.info("获取当前登陆商家信息");
+        Account account=accountService.getAccountByCode(DybUtils.getCurrentAccount(request).getAccountCode(),true);
+        Account tjr=accountService.getAccountByCode(account.getReferrerCode(),true);
         if (account==null)
             validationResultJSONP(request,response,1001,"找不到此账户信息");
         if (account.getMerchant()==null)
             validationResultJSONP(request,response,1001,"找不到此账户的详情信息");
+
         Map<String,Object> result=new HashMap<>();
-        result.put("merchant",account.getMerchant());
+        result.put("merchant",account);
+        if (tjr.getAccountType()== AccountType.信使){
+            result.put("tjrRealName",tjr.getMember().getRealName());
+        }else if (tjr.getAccountType()== AccountType.商家){
+            result.put("tjrRealName",tjr.getMerchant().getPrincipalName());
+        }else if (tjr.getAccountType()== AccountType.服务商){
+            result.put("tjrRealName",tjr.getServiceProviders().getServiceProviderName());
+        }
+        result.put("tjrPhone",tjr.getAccountPhone());
         result.put("bank",bankAccountService.getBankAccountByDefaultChecked(account.getAccountCode()));
         resultJSONP(request,response,result);
     }
 
     /**
-     *修改商户资料
+     *修改当前登陆商家资料
      * @param request
      * @param response
-     * @param accountCode 账户code
      * @param merchant 商户详情
      * @param bankAccount 银行卡信息
      */
-    @RequestMapping(value = "/modifyMerchant")
-    public void modifyMerchant(HttpServletRequest request,HttpServletResponse response,String accountCode,Merchant merchant,BankAccount bankAccount,MerchantParamModel merchantParamModel){
-        if (DybUtils.isEmptyOrNull(accountCode))
-            validationResultJSONP(request,response,1001,"修改商户资料，账户Code不能为空");
+    @RequestMapping(value = "/modifyMerchantByCurrent")
+    public void modifyMerchantByCurrent(HttpServletRequest request,HttpServletResponse response ,Merchant merchant,BankAccount bankAccount,MerchantParamModel merchantParamModel){
+        log.info("修改当前登陆商家资料");
         if (merchant==null)
             validationResultJSONP(request,response,1001,"修改商户资料，商户详情信息不能为空");
         if (bankAccount==null)
             validationResultJSONP(request,response,1001,"修改商户资料，银行卡信息不能为空");
-        Account account=accountService.getAccountByCode(accountCode,true);
+        Account account=accountService.getAccountByCode(DybUtils.getCurrentAccount(request).getAccountCode(),true);
         if (account==null)
             validationResultJSONP(request,response,1001,"找不到此账户信息");
         if (account.getMerchant()==null)

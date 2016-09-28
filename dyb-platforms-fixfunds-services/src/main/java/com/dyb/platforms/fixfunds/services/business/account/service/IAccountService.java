@@ -82,4 +82,12 @@ public interface IAccountService {
      */
     public Account updateMerchant(Account account,Merchant merchant,BankAccount bankAccount);
 
+    /**
+     * 根据账户code或phone查找账户信息
+     * @param key 账户code或者phone
+     * @param accountType 账户类型
+     * @return 账户信息
+     */
+    public Account getAccountByCodeOrPhone(String key,AccountType accountType);
+
 }

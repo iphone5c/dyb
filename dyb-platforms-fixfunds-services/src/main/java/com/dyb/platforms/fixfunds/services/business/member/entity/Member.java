@@ -8,6 +8,8 @@ package com.dyb.platforms.fixfunds.services.business.member.entity;
 import com.dyb.platforms.fixfunds.services.business.member.entity.em.Certificate;
 import com.dyb.platforms.fixfunds.services.business.merchant.entity.em.Industry;
 import com.dyb.platforms.fixfunds.services.business.merchant.entity.em.Sex;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -38,6 +40,8 @@ public class Member implements java.io.Serializable {
     private String certificateNumber;
     // 所在行业
     private Industry industry;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     // 生日
     private Date birthday;
     // 个人邮箱

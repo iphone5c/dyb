@@ -25,7 +25,7 @@ public class Merchant implements java.io.Serializable {
     // 商家名称
     private String merchantName;
     // 激励模式
-    private Double incentiveMode;
+    private Integer incentiveMode;
     // 店铺名称
     private String shopName;
     // 商家类型
@@ -116,7 +116,7 @@ public class Merchant implements java.io.Serializable {
      *
      * @return 激励模式
      */
-    public Double getIncentiveMode() {
+    public Integer getIncentiveMode() {
         return incentiveMode;
     }
 
@@ -125,7 +125,7 @@ public class Merchant implements java.io.Serializable {
      *
      * @param incentiveMode 激励模式
      */
-    public void setIncentiveMode(Double incentiveMode) {
+    public void setIncentiveMode(Integer incentiveMode) {
         this.incentiveMode = incentiveMode;
     }
 

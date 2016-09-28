@@ -1,8 +1,9 @@
-package com.dyb.platforms.fixfunds.merchant.controller.web.commodity;
+package com.dyb.platforms.fixfunds.merchant.controller.web;
 
 import com.dyb.platforms.fixfunds.services.business.commodity.entity.Commodity;
 import com.dyb.platforms.fixfunds.services.business.commodity.service.ICommodityService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
+import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,6 +119,19 @@ public class WebCommodityController extends BaseController {
         if (commodity==null)
             validationResultJSONP(request,response,1001,"找不到此商品信息");
         resultJSONP(request,response,commodity);
+    }
+
+    /**
+     * 根据当前登陆商家获取分页商品列表
+     * @param request
+     * @param response
+     */
+    @RequestMapping(value = "/getCommodityPageList")
+    public void getCommodityPageList(HttpServletRequest request,HttpServletResponse response, int pageIndex, int pageSize){
+        log.info("根据当前登陆商家获取分页商品列表");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("accountCode",DybUtils.getCurrentAccount(request).getAccountCode());
+        resultJSONP(request,response,commodityService.getCommodityPageList(queryParams,pageIndex,pageIndex,true));
     }
 
 }

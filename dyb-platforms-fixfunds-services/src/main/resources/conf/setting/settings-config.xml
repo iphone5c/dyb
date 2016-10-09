@@ -93,42 +93,42 @@
             <![CDATA[
             { "type": "com.dyb.platforms.fixfunds.services.utils.core.configureations.Menu",  "list": [
                 { "text": "商家资料","expanded":"false","leaf":"false", "children":[
-                    { "text": "商家信息", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "修改密码",  "url":"user/getUserList", "leaf":"true", }
+                    { "text": "商家信息", "url":"./Merchant-sj/merchantInfo.html", "leaf":"true", },
+                    { "text": "修改密码",  "url":"./publicModule/modifypwd.html", "leaf":"true", }
                 ] },
                 { "text": "商家管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "商品管理", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "信使消费登记",  "url":"user/getUserList", "leaf":"true", },
-                    { "text": "订单管理",  "url":"user/getUserList", "leaf":"true", },
-                    { "text": "我的营业额",  "url":"user/getUserList", "leaf":"true", },
-                    { "text": "我的让利捐赠",  "url":"user/getUserList", "leaf":"true", },
-                    { "text": "我的激励",  "url":"user/getUserList", "leaf":"true", },
-                    { "text": "让利款发票申请",  "url":"user/getUserList", "leaf":"true", },
-                    { "text": "捐赠收据申请",  "url":"user/getUserList", "leaf":"true", },
-                    { "text": "寄送地址管理",  "url":"user/getUserList", "leaf":"true", }
+                    { "text": "商品管理", "url":"./Merchant-sj/productList.html", "leaf":"true", },
+                    { "text": "信使消费登记",  "url":"./Merchant-sj/transCheckIn.html", "leaf":"true", },
+                    { "text": "订单管理",  "url":"./Merchant-sj/industrySalesInfo.html", "leaf":"true", },
+                    { "text": "我的营业额",  "url":"./Merchant-sj/salesInfo.html", "leaf":"true", },
+                    { "text": "我的让利捐赠",  "url":"./Merchant-sj/donationList.html", "leaf":"true", },
+                    { "text": "我的激励",  "url":"./Merchant-sj/excitationList.html", "leaf":"true", },
+                    { "text": "让利款发票申请",  "url":"./Merchant-sj/receiptMange.html", "leaf":"true", },
+                    { "text": "捐赠收据申请",  "url":"./Merchant-sj/invoiceMange.html", "leaf":"true", },
+                    { "text": "寄送地址管理",  "url":"./Merchant-sj/postAddressMange.html", "leaf":"true", }
                 ] },
                 { "text": "推荐管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "我要推荐", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "推荐记录", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "推荐激励",  "url":"user/getUserList", "leaf":"true", }
+                    { "text": "我要推荐", "url":"./publicModule/recommend.html", "leaf":"true", },
+                    { "text": "推荐记录", "url":"./publicModule/recommendPage.html", "leaf":"true", },
+                    { "text": "推荐激励",  "url":"./publicModule/referrerflowpage.html", "leaf":"true", }
                 ] },
                 { "text": "直捐管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "我要直捐", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "直捐记录",  "url":"user/getUserList", "leaf":"true", }
+                    { "text": "我要直捐", "url":"./publicModule/donateForm.html", "leaf":"true", },
+                    { "text": "直捐记录",  "url":"./publicModule/donateList.html", "leaf":"true", }
                 ] },
                 { "text": "转增管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "获赠记录",  "url":"user/getUserList", "leaf":"true", }
+                    { "text": "获赠记录",  "url":"./publicModule/donationRecList.html", "leaf":"true", }
                 ] },
                 { "text": "回购管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "我要回购", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "回购记录", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "银行账号", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "转换信使豆", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "转换记录",  "url":"user/getUserList", "leaf":"true", },
-                    { "text": "转移记录",  "url":"user/getUserList", "leaf":"true", }
+                    { "text": "我要回购", "url":"./publicModule/dowithdraw.html", "leaf":"true", },
+                    { "text": "回购记录", "url":"./publicModule/withdrawrecord.html", "leaf":"true", },
+                    { "text": "银行账号", "url":"./publicModule/bankList.html", "leaf":"true", },
+                    { "text": "转换信使豆", "url":"./publicModule/switchdrawre.html", "leaf":"true", },
+                    { "text": "转换记录",  "url":"./publicModule/switchdrawrecord.html", "leaf":"true", },
+                    { "text": "转移记录",  "url":"./Merchant-sj/merchantInfo.html", "leaf":"true", }
                 ] },
                 { "text": "黑名单管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "黑名单查询", "url":"user/getUserList", "leaf":"true", }
+                    { "text": "黑名单查询", "url":"./publicModule/blacklist.html", "leaf":"true", }
                 ] }
             ] }
         ]]>

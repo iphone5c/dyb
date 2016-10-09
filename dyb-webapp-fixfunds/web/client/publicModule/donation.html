@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://www.51ydgy.com/index.html#publicModule/donation/donationForm -->
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一点公益</title>
+</head>
+
+<body id="ad-app" data-apptype="ad-app" class="relative">
+		<div id="content" class="ad-content2 sui-form relative">
+			<div class="table-title">您现在的位置:转赠管理 - 我要转赠</div>
+			<div class="ad-box">
+				<p style="color:#B63131; margin-bottom: 10px;font-size: 24px; line-height:50px;" align="center">爱心公益，信使传递</p></div>
+			<div class="ad-box">
+				<p style="margin-bottom: 10px;" align="center">您可将信使豆直接转赠给您的朋友，或者需要帮助的人，感谢您的爱心！</p></div>
+			<div id="donationForm" class="ad-pageCenter-father">
+				<form class="sui-form form-horizontal ad-pageCenter-child" style="width:420px;">
+					<div style="border:2px solid #eee;margin-bottom:20px;">
+						<p style="margin-left: 25px; line-height:35px;margin-bottom:10px;margin-top:6px;" align="left">您当前可转赠信使豆：
+							<span id="couriercount" style="margin-left: 5px;color:#B63131;font-size:18px;">0</span>颗</p>
+						<div class="control-group" align="left">
+							<label class="control-label">我要转赠(颗)：</label>
+							<div class="controls sui-validate" novalidate="novalidate">
+								<input type="text" id="beannum" placeholder="每日最多转赠50000颗" data-rules="required|number|digits|gt=0|lt=50001|maxlength=10" class="ad-widget167 input-xfat"></div>
+						</div>
+						<div class="control-group" align="left">
+							<label class="control-label">获赠人：</label>
+							<div class="controls sui-validate" novalidate="novalidate">
+								<input type="text" id="receiveusernumber" placeholder="获赠人ID" data-rules="required" class="ad-widget167 input-xfat"></div>
+						</div>
+						<div class="control-group sui-validate" align="left" novalidate="novalidate">
+							<label class="control-label">图形验证码：</label>
+							<div class="controls ad-box-auto">
+								<input name="validCode" id="imgCode" type="text" style="width:140px;" class="check_code_text input-xfat" maxlength="4" data-rules="required" data-empty-msg="请输入图形验证码" placeholder="请输入图形验证码">
+								<img src="../images/verifyCode.jpg" id="CreateCheckCode" align="middle" class="check_code_img" style="height: 30px;"></div>
+						</div>
+						<div class="control-group" align="left">
+							<label class="control-label">手机号码 ：</label>
+							<label class="control-label">
+								<span id="mobilenumber">186****6699</span></label>
+							<input type="button" id="sendMsgBtn" class="sui-btn ad-msg-btn" style="margin-left: 70px;" value="发送验证码"></div>
+						<div class="control-group" align="left">
+							<label class="control-label">验证码 ：</label>
+							<div class="controls sui-validate" novalidate="novalidate">
+								<input id="verifyCode" name="verifyCode" placeholder="请输入手机验证码" type="text" class="ad-widget167 input-xfat" maxlength="6" data-rules="required|number"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">输入二级密码：</label>
+							<div class="controls sui-validate" novalidate="novalidate">
+								<input type="password" id="password" data-rules="required" class="ad-widget167 input-xfat"></div>
+						</div>
+					</div>
+					<div align="left">
+						<button type="button" id="toDonationList" class="ad-btn ad-blue-btn" onclick="document.location='donationList.html';">我的转赠记录</button>
+						<button type="button" id="submitForm" class="ad-btn ad-blue-btn" style="margin-left: 40px;">确认转赠</button></div>
+				</form>
+			</div>
+		</div>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)http://www.51ydgy.com/index.html#member/member/memberdetailandedit -->
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="./css/style1.3.19.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一点公益</title>
+</head>
+
+<body id="ad-app" data-apptype="ad-app" class="relative">
+		<div id="content" class="ad-content2 sui-form relative">
+			<div class="table-title">您现在的位置:信使信息</div>
+			<div class="personalEdit-left text-center">
+				<img id="merchantHead" class="userIcon mt15 mauto" src="./images/head.png">
+				<div class="mauto mt15" id="wxQrCode">
+					<canvas width="120" height="130"></canvas>
+				</div>
+				<div class=" mt15 mauto">
+					<input type="button" class="ad-btn ad-blue-btn" value="修改信息"></div>
+				<br></div>
+			<div class="personalEdit-right">
+				<div class="table-title">
+					<span class="ad-red">基本信息</span></div>
+				<div class="ad-box">
+					<div class="spanTitle1">用户名:</div>
+					<div class="span1">
+						<p id="username">大奔</p></div>
+					<div class="spanTitle1">类别:</div>
+					<div class="span1">
+						<p id="username">信使</p></div>
+					<div class="clear"></div>
+					<div class="spanTitle1">ID号:</div>
+					<div class="span1">
+						<p id="usernumber">M315461</p></div>
+					<div class="spanTitle1">姓名:</div>
+					<div class="span1">
+						<p id="realname">李志鹏</p></div>
+					<div class="clear"></div>
+					<div class="spanTitle1">性别:</div>
+					<div class="span1">
+						<p id="sex">男</p></div>
+					<div class="spanTitle1">籍贯:</div>
+					<div class="span1">
+						<p id="jiguan">河南省-郑州市</p></div>
+					<div class="clear"></div>
+					<div class="spanTitle1">证照类型:</div>
+					<div class="span1">
+						<p id="idcardtype">大陆身份证</p></div>
+					<div class="spanTitle1">证照号码:</div>
+					<div class="span1">
+						<p id="idcard">411024199005010793</p></div>
+					<div class="clear"></div>
+					<div class="spanTitle1">手机号:</div>
+					<div class="">
+						<p id="mobilenumber">18683446699</p></div>
+					<input id="edit_mobilenumber" type="button" class="btn-fontBlue" value="变更手机">
+					<div class="clear"></div>
+					<div class="spanTitle1">所在行业:</div>
+					<div class="span1">
+						<p id="industry"></p>
+					</div>
+					<div class="spanTitle1">生日:</div>
+					<div class="span1">
+						<p id="birthday"></p>
+					</div>
+					<div class="clear"></div>
+					<div class="spanTitle1">个人邮箱:</div>
+					<div class="span1">
+						<p id="email">819148946@qq.com</p></div>
+					<div class="spanTitle1">注册时间:</div>
+					<div class="span1">
+						<p id="createtime">2016-08-27</p></div>
+					<div class="clear"></div>
+				</div>
+				<div class="table-title">
+					<span class="ad-red">推荐人信息</span></div>
+				<div class="ad-box">
+					<div class="spanTitle1">名字:</div>
+					<div class="span1">
+						<p id="referrer">王俊杰</p></div>
+					<div class="spanTitle1">手机号码:</div>
+					<div class="span1">
+						<p id="referrerphone">18523066694</p></div>
+				</div>
+			</div>
+		</div>
+<div class="sui-modal hide fade" tabindex="-1" role="dialog" id="1473317918251" data-hidetype="remove" style="width: 525px; margin-left: -257.5px; margin-top: -242px; display: block;" aria-hidden="false"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button><h4 class="modal-title">变更手机</h4></div><div class="modal-body no-foot" style="height: 320px;"><div id="changeMobile"><div id="firstPage">
+	<div class="register-tuijianren">
+		<div class="ml15">
+			原手机号：<span id="oldMobile">186****6699</span>
+			<input type="hidden" id="oldMobilenumber" value="18683446699">
+		</div>
+	</div>
+	<div class="clear"></div>
+	<form id="modifyMobile1" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate" novalidate="novalidate">
+		<div class="register-form-cell mt15">
+			<div class="register-form-cell-title mobiChangeExpTitle">
+				<span class="ad-red">*</span>
+				图文验证码:
+			</div>
+			<div class="register-form-cell-widget">
+				<input class="input-xfat ad-msg-ipt" title="图文验证码" maxlength="4" type="text" id="imgCode1" name="imgCode" data-rules="required|minlength=4|maxlength=4" data-empty-msg="图文验证码不能为空">
+				<img src="./images/verifyCode.jpg" style="height:32px;" id="CreateCheckCode1" align="middle" class="check_code_img float_left">
+			</div>
+		</div>
+
+		<div class="clear"></div>
+		<div class="register-form-cell mt15">
+			<div class="register-form-cell-title mobiChangeExpTitle">
+				<span class="ad-red">*</span>
+				验证码:
+			</div>
+			<div class="register-form-cell-widget">
+				<input id="verifyCode1" name="verifyCode1" type="text" class="input-xfat ad-msg-ipt" maxlength="6" data-rules="required|number|prefill=newmobilenumber|prefill=imgCode" data-empty-msg="手机验证码不能为空">
+				<button type="button" class="sui-btn ad-msg-btn" id="sendMsgBtn1">获取验证码</button>
+			</div>
+		</div>
+
+		<div style="margin:15px 0px 0px 80px;">
+			<button type="submit" class="sui-btn btn-primary btn-large ad-register-stp-btn " id="nextBtn">下一步</button>
+		</div>
+	</form>
+</div>
+
+
+	<div id="nextPage" style="display:none;">
+		<div class="clear"></div>
+		<form id="modifyMobile" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate" novalidate="novalidate">
+			<div class="register-form-cell mt15">
+				<div class="register-form-cell-title mobiChangeExpTitle">
+					<span class="ad-red">*</span>
+					新手机号码:
+				</div>
+				<div class="register-form-cell-widget">
+					<input type="text" id="newmobilenumber" title="手机号码" name="newmobilenumber" data-rules="required|mobile" data-error-msg="手机格式有误" data-empty-msg="手机号码不能为空" class="input-xfat">
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="register-form-cell mt15">
+				<div class="register-form-cell-title mobiChangeExpTitle">
+					<span class="ad-red">*</span>
+					图文验证码:
+				</div>
+				<div class="register-form-cell-widget">
+					<input class="input-xfat ad-msg-ipt" title="图文验证码" maxlength="4" type="text" id="imgCode" name="imgCode" data-rules="required|minlength=4|maxlength=4" data-empty-msg="图文验证码不能为空">
+					<img src="./images/verifyCode.jpg" id="CreateCheckCode" align="middle" class="check_code_img float_left">
+				</div>
+			</div>
+
+			<div class="clear"></div>
+			<div class="register-form-cell mt15">
+				<div class="register-form-cell-title mobiChangeExpTitle">
+					<span class="ad-red">*</span>
+					验证码:
+				</div>
+				<div class="register-form-cell-widget">
+					<input id="verifyCode" name="verifyCode" type="text" class="input-xfat ad-msg-ipt" maxlength="6" data-rules="required|number|prefill=newmobilenumber|prefill=imgCode" data-empty-msg="手机验证码不能为空">
+					<button type="button" class="sui-btn ad-msg-btn" id="sendMsgBtn">获取验证码</button>
+				</div>
+			</div>
+
+			<div class="mt15">
+				<button type="submit" class="sui-btn btn-primary btn-large ad-register-stp-btn " id="submitModify">完成</button>
+			</div>
+		</form>
+	</div>
+</div></div></div></div></div>
+<div class="sui-modal-backdrop fade" style="background:#123456;z-index:-1"></div>
+<script>
+	$(function(){
+		$(".btn-fontBlue").click(function(){
+			$(".sui-modal").addClass("in");
+			$(".sui-modal-backdrop").css("zIndex","1000").addClass("in");
+		});
+		$(".sui-close").click(function(){
+			$(".sui-modal").removeClass("in");
+			$(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
+		})
+		$(".ad-blue-btn").click(function(){
+			getpage1("./Merchant-xs/modifymember.html");
+		})
+		function getpage1(url){
+			$.get(url,function(data){
+				$("#ad-content").html(data);
+			})
+		}
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://www.51ydgy.com/index.html#member/excitation/excitationList -->
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一点公益</title>
+</head>
+<body id="ad-app" data-apptype="ad-app" class="relative">
+		<div id="content" class="ad-content2 sui-form relative">
+			<div class="table-title">您现在的位置:信使管理 - 我的激励</div>
+			<div class="clear"></div>
+			<div class="ad-box">
+				<div class="spanTitle">营业日期:</div>
+				<div class="">
+              <span class="sui-dropdown dropdown-bordered select1">
+                <span class="dropdown-inner">
+                  <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle">
+					  <input id="dateType" value="6" name="datetype" type="hidden">
+					  <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+					  <span>近一周</span></a>
+                  <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
+					  <li role="presentation" class="active">
+						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">近一周</a></li>
+					  <li role="presentation" class="">
+						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="3">近一月</a></li>
+					  <li role="presentation" class="">
+						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="4">近一季</a></li>
+					  <li role="presentation">
+						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="5">近半年</a></li>
+					  <li role="presentation">
+						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="6">自定义日期</a>
+					  </li>
+				  </ul>
+                </span>
+              </span>
+				</div>
+				<div id="datePicker1" class="spanTitle personalDatepicker" style="display: none;">自定义日期:</div>
+				<div id="datePicker" class="span1-1 personalDatepicker input-daterange" style="display: none;">
+					<input type="text" id="personalStartDate" class="input-medium input-date" data-toggle="datepicker" value="">
+					<input type="text" id="personalEndDate" class="input-medium input-date" data-toggle="datepicker" value=""></div>
+				<div class="spanTitle">激励模式:</div>
+				<div class="">
+              <span class="sui-dropdown dropdown-bordered select2">
+                <span class="dropdown-inner">
+                  <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle">
+					  <input id="driveType" value="24" name="driveType" type="hidden">
+					  <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+					  <span id="excitationType">24%</span></a>
+                  <ul id="dirverUl" role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu2">
+					  <li role="presentation">
+						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="6">6%</a></li>
+					  <li role="presentation">
+						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="12">12%</a></li>
+					  <li role="presentation" class="active">
+						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="24">24%</a></li>
+				  </ul>
+                </span>
+              </span>
+				</div>
+				<div class="spanTitle dataTypeDiv">消费来源:</div>
+				<div class="dataTypeDiv">
+              <span class="sui-dropdown dropdown-bordered select3">
+                <span class="dropdown-inner">
+                  <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle">
+					  <input id="dataType" value="" name="dataType" type="hidden">
+					  <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+					  <span>全部</span></a>
+                  <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu3">
+					  <li role="presentation" class="active">
+						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="">全部</a></li>
+					  <li role="presentation">
+						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">零售商</a></li>
+					  <li role="presentation">
+						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">商家</a></li>
+				  </ul>
+                </span>
+              </span>
+				</div>
+            <span class="ml15">
+              <input type="button" id="search" class="ad-btn ad-blue-btn" value="查询我的激励"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="ad-box">
+				<p style="color: #B63131;margin-bottom: 10px; margin-right: 10%" align="right">信使豆合计：
+					<span id="beanSum">0.00</span></p>
+			</div>
+			<div id="table">
+				<table class="sui-table table-vzebra ad-table">
+					<thead>
+					<tr>
+						<th style="max-width:1%;">激励日期</th>
+						<th style="max-width:1%;">消费来源</th>
+						<th style="max-width:1%;">我的爱心</th>
+						<th style="max-width:1%;">每颗爱心激励信使豆</th>
+						<th style="max-width:1%;">激励信使豆</th></tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+				<div class="sui-pagination pagination-small" style="text-align:left;">
+					<ul id="table-pagination">
+						<!-- 前半部分（包括当前） -->
+						<li id="prevBtn" class="prev disabled">
+							<a>«上一页</a>
+						</li>
+						<li class="pageBtn active" data-num="1">
+							<a>1</a>
+						</li>
+						<!-- 后半部分（当前之后） -->
+						<li id="nextBtn" class="next disabled">
+							<a>下一页»</a>
+						</li>
+					</ul>
+					<div>
+						<span>共1页&nbsp;</span>
+                <span>到
+                  <input id="selectPageNum" type="text" onkeyup="this.value=this.value.replace(/\D/g,&#39;&#39;)" onafterpaste="this.value=this.value.replace(/\D/g,&#39;&#39;)" class="page-num">
+                  <button id="selectPage" class="page-confirm">确定</button>页</span></div>
+				</div>
+			</div>
+		</div>
+<script>
+	$(function(){
+
+		$(".dropdown-toggle").eq(0).click(function(){
+			$(".select1").toggleClass("open");
+		});
+		$(".sui-dropdown-menu1 li").click(function(){
+			var i=$(".sui-dropdown-menu1 li").index(this);
+			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
+			$(".sui-dropdown-menu1 li").removeClass("active");
+			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
+			$(".select1 span span").html(x);
+			$(".select1").removeClass("open");
+		});
+		$(".dropdown-toggle").eq(1).click(function(){
+			$(".select2").toggleClass("open");
+		});
+		$(".sui-dropdown-menu2 li").click(function(){
+			var i=$(".sui-dropdown-menu2 li").index(this);
+			var x= $(".sui-dropdown-menu2 li a").eq(i).html();
+			$(".sui-dropdown-menu2 li").removeClass("active");
+			$(".sui-dropdown-menu2 li").eq(i).addClass("active");
+			$(".select2 span span").html(x);
+			$(".select2").removeClass("open");
+		});
+		$(".sui-dropdown-menu1 li").click(function(){
+			$("#datePicker").hide();
+			$("#datePicker1").hide();
+		})
+		$(".sui-dropdown-menu1 li:last").click(function(){
+			$("#datePicker").show();
+			$("#datePicker1").show();
+		})
+		$(".dropdown-toggle").eq(2).click(function(){
+			$(".select3").toggleClass("open");
+		});
+		$(".sui-dropdown-menu3 li").click(function(){
+			var i=$(".sui-dropdown-menu3 li").index(this);
+			var x= $(".sui-dropdown-menu3 li a").eq(i).html();
+			$(".sui-dropdown-menu3 li").removeClass("active");
+			$(".sui-dropdown-menu3 li").eq(i).addClass("active");
+			$(".select3 span span").html(x);
+			$(".select3").removeClass("open");
+		});
+		$('.dropdown-inner').mouseleave(function(){
+			$(".select1").removeClass("open");
+			$(".select2").removeClass("open");
+			$(".select3").removeClass("open");
+		});
+
+	})
+</script>
+</body>
+
+</html>

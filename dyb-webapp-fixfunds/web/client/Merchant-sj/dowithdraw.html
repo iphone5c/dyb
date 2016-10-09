@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://www.51ydgy.com/index.html#publicModule/withdraw/dowithdraw -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../css/style1.3.19.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>一点公益</title>
+</head>
+<body id="ad-app" data-apptype="ad-app" class="relative">
+        <div id="content" class="ad-content2 sui-form relative">
+            <div class="table-title">
+                您现在的位置:回购管理 - 我要回购
+            </div>
+            <ul class="sui-nav nav-tabs ad-label-nav">
+                <li class="active"> <a class="ad-label-nav-btn" id="tab1" data-id="1" href="http://www.51ydgy.com/index.html#ad-lable-one" data-toggle="tab">回购申请</a> </li>
+            </ul>
+            <div class="tab-content">
+                <div id="ad-lable-one" class="tab-pane active" style="max-width:1100px">
+                    <div class="table-crud">
+                        <p align="left" style="color:#707070;"> <span style="color:#B63131;padding:0px 15px 0px 22px; font-size: 22px;">信使豆回购申请</span>您可将信使豆直接转到您的银行账号 </p>
+                    </div>
+                    <div class="clear"></div>
+                    <div id="applywithdraw" class="sui-validate ad-box-auto" novalidate="novalidate">
+                        <input type="text" id="bankid" name="bankid" style="display: none" value="" />
+                        <input type="text" id="subbankname" name="subbankname" style="display: none" value="" />
+                        <div class="ad-box">
+                            <div class="spanTitle2" style="margin-left: 15px;">
+                                回购类型：
+                            </div>
+                            <div class="span1">
+          <span class="sui-dropdown dropdown-bordered select1 hAuto"> <span class="dropdown-inner">
+              <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                  <input id="withdrawtype" value="0" name="withdrawtype" type="hidden" />
+                  <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                  <span id="size_s">普通信使豆</span>
+              </a>
+            <ul id="withdrawtype-ul" role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
+                <li role="presentation">
+                    <a>普通信使豆</a>
+                </li>
+                <li role="presentation"><a>待提供发票信使豆</a></li>
+            </ul> </span> </span>
+                            </div>
+                            <div class="spanTitle1" style="margin-left: 15px;">
+                                当前可回购信使豆：
+                            </div>
+                            <div class="span1 span-line">
+                                <span id="couriercount" style="margin-left: 5px;color:rgb(182, 49, 49);font-size:18px;">0</span> (颗)
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="ad-box">
+                            <div class="spanTitle2" style="margin-left: 15px;">
+                                回购信使豆：
+                            </div>
+                            <div class="span1">
+                                <input type="text" value="" id="beannum" name="beannum" data-rules="required|number|digits|gt=99|lt=50001" placeholder="请输入100的整数倍" class="input-xfat" autocomplete="off" />
+                            </div>
+                            <div class="span2">
+                                <font style="color: gray;font-size: 12px;">（单笔最多回购50000颗）</font>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="ad-box">
+                            <div class="spanTitle2" id="spanTitle2" style="margin-left: 15px;">
+                                手续费：
+                            </div>
+                            <div class="span span-line" id="span-line">
+                                <span style="color:#f00;">5</span> (颗)
+                            </div>
+                            <div id="tax_tip1" class="spanTitle2" style="margin-left: 10px;display: none;">
+                                代扣税:
+                            </div>
+                            <div id="tax_tip2" class="span span-line" style="display: none;">
+                                <span id="taxbean" style="color:#f00;">0</span>(颗)
+                            </div>
+                            <div class="spanTitle2" style="margin-left: 10px;">
+                                可兑换金额:
+                            </div>
+                            <div class="span span-line">
+                                <span id="beanmoney" style="color:#f00;">0</span>(元)
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="ad-box">
+                            <div class="spanTitle2" style="margin-left: 10px;">
+                                银行类型:
+                            </div>
+                            <div class="span3 span-line">
+                                <span id="bankname" style="margin-left: 5px;">中国农业银行</span>
+                                <span id="showbranchBank" style="margin-left: 5px;">上海大连支行</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="ad-box">
+                            <div class="spanTitle2" style="margin-left: 10px;">
+                                户 名:
+                            </div>
+                            <div class="span3 span-line">
+                                <span id="accountname" style="margin-left: 5px;">上海银旋电器有限公司</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="ad-box">
+                            <div class="spanTitle2" style="margin-left: 10px;">
+                                账 号:
+                            </div>
+                            <div class="span1 span-line">
+                                <span id="bankacount" style="margin-left: 5px;">03349000040023777</span>
+                            </div>
+                            <div class="spanTitle2">
+                                <a class="btn-fontBlue1" type="button">选择账户</a>　　
+                                <a href="../publicModule/bankList.html" type="button" id="addbankbtn">账户管理</a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="ad-box">
+                            <div class="spanTitle2" style="margin-left: 15px;">
+                                二级密码：
+                            </div>
+                            <div class="span2 err-inline">
+                                <input type="password" id="password" name="password" data-rules="required|maxlength=6" class="input-xfat" style="width:41%;" autocomplete="off" />
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- 新增发票明细 -->
+                        <div id="Invoice-detail" style="display:none;">
+                            <div class="Invoice-detail-t">
+                                <p class="Invoice-detail-t-l">发票明细</p>
+                                <p class="Invoice-detail-t-r"><a id="Invoice-detail-add">增加</a></p>
+                            </div>
+                            <div class="Invoice-detail-b">
+                                <table class="sui-table table-bordered center" style="border-spacing: 0;">
+                                    <tbody id="tbody">
+                                    <tr>
+                                        <td>发票号</td>
+                                        <td>发票面额</td>
+                                        <td>操作</td>
+                                    </tr>
+                                    <tr id="Invoice-detail-form0" class="contentLine" data_id="0">
+                                        <td><input id="num0" type="text" /></td>
+                                        <td><input id="money0" type="text" /></td>
+                                        <td><a id="Invoice-delet"></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>合计</td>
+                                        <td id="Invoice-Total">0</td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div align="left">
+                            <input class="sui-btn btn-primary btn-xlarge ad-blue-btn" style="margin:15px 0px 20px 200px;" type="button" value="确认" id="submitForm" />
+                        </div>
+                        <div class="table-tip">
+                            温馨提示：
+                            <br /> 1、单笔最多回购50000颗；
+                            <br /> 2、回购类型允许选择：
+                            <br /> 　&nbsp;&nbsp;1) 普通信使豆：指不需缴税的信使豆，任意时间允许回购；
+                            <br /> 　&nbsp;&nbsp;2) 待缴税信使豆：指需缴税的信使豆，仅每月1-20号允许回购，其他时间不允许回购；
+                            <br /> 　&nbsp;&nbsp;3) 提供发票信使豆：指需要提供发票的信使豆，发票号总面额须大于或等于回购信使豆数量，仅每月1-20号允许回购，其他时间不允许回购。
+                            <br /> 　&nbsp;&nbsp; 发票仅接收
+                            <a style="color: red;">增值税专用发票</a>；发票寄送地址：深圳市南山区朗山路16号华翰科技园C座603室 ；收件人：陈玉珍；联系电话：0755-86703123 转 818
+                            <br /> 3、若回购待缴税信使豆，则扣取信使豆作为代扣税=回购信使豆*扣税比例（4.8%）；
+                            <br /> 4、无论回购哪类信使豆，每次回购将扣除5颗信使豆作为手续费；
+                            <br /> 5、回购申请单审核通过后，兑换金额将自动转入您的银行卡账户。
+                        </div>
+                    </div>
+                </div>
+                <div id="ad-lable-two" class="tab-pane" style="max-width:1100px">
+                </div>
+            </div>
+        </div>
+<div class="sui-modal hide fade" tabindex="-1" role="dialog" id="1474182206952" data-hidetype="remove" style="width: 280px; margin-left: -135px; margin-top: -261px; display: block;" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">我的账户</h4></div>
+            <div class="modal-body " style="height: 320px;">
+                <div id="alertTemp">
+                    <table id="bankTable" style="border-spacing: 0px; border: 1px solid rgb(240, 239, 232); height: 66px; background: rgb(249, 249, 246);">
+                        <tbody>
+                        <tr>
+                            <td rowspan="2" bgcolor="#87CEFF" align="center" style="width:40px;">1</td>
+                            <td style="width:210px;padding:6px">中国农业银行</td>
+                            <td rowspan="2">
+                                <input name="bank" type="radio" bankname="中国农业银行" subbankname="上海大连支行" bankid="10002" accountname="上海银旋电器有限公司" bankacount="03349000040023777" checked="checked"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:210px;padding:6px">03349000040023777</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="sui-btn btn-primary btn-large" data-ok="modal">确定</button></div>
+        </div>
+    </div>
+</div>
+<div class="sui-modal-backdrop fade" style="background:#123456;z-index:-1"></div>
+<script>
+    $(function(){
+        $(".dropdown-toggle").eq(0).click(function(){
+            $(".select1").toggleClass("open");
+        });
+        $(".sui-dropdown-menu1 li").click(function(){
+            var i=$(".sui-dropdown-menu1 li").index(this);
+            var x= $(".sui-dropdown-menu1 li a").eq(i).html();
+            $(".sui-dropdown-menu1 li").removeClass("active");
+            $(".sui-dropdown-menu1 li").eq(i).addClass("active");
+            $(".select1 span span").html(x);
+            $(".select1").removeClass("open");
+        });
+        $('.dropdown-inner').mouseleave(function(){
+            $(".select1").removeClass("open");
+        });
+        $(".btn-fontBlue1").click(function(){
+            $(".sui-modal").addClass("in");
+            $(".sui-modal-backdrop").css("zIndex","1").addClass("in");
+        });
+        $(".sui-close").click(function(){
+            $(".sui-modal").removeClass("in");
+            $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
+        })
+    })
+</script>
+</body>
+</html>

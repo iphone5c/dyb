@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://www.51ydgy.com/index.html#member/heart/myHeart -->
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一点公益</title>
+	<link rel="stylesheet" href="../css/sui.min.css">
+	<link rel="stylesheet" href="../css/sui-append.min.css">
+	<link rel="stylesheet" href="../css/adAlert.css">
+	<link rel="stylesheet" href="../css/cropper.css">
+	<link rel="stylesheet" href="../css/zTreeStyle.css">
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/side.css">
+	<link rel="stylesheet" href="../css/table.css">
+	<link href="../css/index.css" type="text/css" rel="stylesheet">
+	<script src="../js/jquery.min.js" type="text/javascript"></script>
+	<script src="../js/menu.js" type="text/javascript"></script>
+</head>
+
+<body id="ad-app" data-apptype="ad-app" class="relative">
+		<div id="content" class="ad-content2 sui-form relative">
+			<div class="table-title">您现在的位置:我的爱心</div>
+			<div class="content mt15" style="width:96%;margin-left:2%;">
+				<img class="fl mt15 ml15 mr15" src="../images/aixin.png">
+				<div class="fl">
+					<h1 style="padding-top:8px;">我的爱心构成</h1>
+					<p class="ad-gray1" style="font-size:14px;">注：您在我们公益商家消费每满500RMB将会产生一颗爱心</p></div>
+				<div class="clear"></div>
+				<div id="find" class="ad-box mt15">
+					<div class="spanTitle">消费来源:</div>
+					<div class="span1">
+                <span class="sui-dropdown dropdown-bordered select1">
+                  <span class="dropdown-inner">
+                    <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle">
+						<input id="dataType" value="1" name="dataType" type="hidden">
+						<i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+						<span id="name">商家</span></a>
+                    <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="">全部</a></li>
+						<li role="presentation" class="">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">零售商</a></li>
+						<li role="presentation" class="active">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">商家</a></li>
+					</ul>
+                  </span>
+                </span>
+					</div>
+					<div class="span1">
+						<input type="button" id="searchHeart" class="ad-btn ad-blue-btn" value="查询"></div>
+					<div class="clear"></div>
+				</div>
+				<table style="width:100%; margin-top:10px;" class="sui-table table-zebra center">
+					<thead style="background:#E8E7E7;">
+					<tr>
+						<th>激励模式</th>
+						<th>有效爱心数</th>
+						<th>激励完成爱心</th>
+						<th>激励信使豆</th>
+						<th>查 看</th></tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>6%</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+						<td>
+							<a class="heart" data-id="6">爱心明细</a></td>
+					</tr>
+					<tr style="background:#E8E7E7;">
+						<td>12%</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+						<td>
+							<a class="heart" data-id="12">爱心明细</a></td>
+					</tr>
+					<tr>
+						<td>24%</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+						<td>
+							<a class="heart" data-id="24">爱心明细</a></td>
+					</tr>
+					<tr style="background:#E8E7E7;">
+						<td>爱心合计</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+						<td></td>
+					</tr>
+					</tbody>
+				</table>
+				<div class="f2">
+					<p class="ad-gray1">汇总数据日期截止 2016-09-06</p></div>
+			</div>
+		</div>
+<script>
+	$(function(){
+		$(".dropdown-toggle").eq(0).click(function(){
+			$(".select1").toggleClass("open");
+		})
+		$(".sui-dropdown-menu1 li").click(function(){
+			var i=$(".sui-dropdown-menu1 li").index(this);
+			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
+			$(".sui-dropdown-menu1 li").removeClass("active");
+			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
+			$(".select1 span span").html(x);
+			$(".select1").removeClass("open");
+		})
+		$('.dropdown-inner').mouseleave(function(){
+			$(".select1").removeClass("open");
+		});
+	})
+</script>
+</body>
+
+</html>

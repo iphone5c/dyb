@@ -1,0 +1,343 @@
+
+@font-face {font-family: 'iconfont';
+	src: url('../fonts/iconfont.eot'); /* IE9*/
+	src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('../fonts/iconfont.woff') format('woff'), /* chrome、firefox */
+	url('../fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+	url('../fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{
+	font-family:"iconfont" !important;
+	font-size:16px;font-style:normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;}
+div{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+}
+.circle{
+	-moz-border-radius: 50%; /* Firefox */
+	-webkit-border-radius: 50%; /* Safari 和 Chrome */
+	border-radius: 50%; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+}
+.ad-register{
+  text-align: center;
+  overflow: hidden;
+}
+.register-centent{
+  margin: 20px auto;
+  min-width: 800px;
+  max-width: 1100px;
+  width: 820px;
+  background-color: #fff;
+  padding-bottom: 45px;
+}
+
+.register-nav{
+	width: 100%;
+	height: 68px;
+	font-size: 14px;
+	background-color:  #fff;
+	padding: 0 182px;
+	border-bottom: 2px solid #D8D8D8;
+}
+.register-nav2{
+	padding: 0 82px;
+}
+.register-nav-icon{
+	width: 18px;
+	height: 18px;
+	font-size: 14px;
+	background-color:  #D8D8D8;
+	color: #fff;
+	float: left;
+	margin-right: 6px;
+}
+.register-nav-title{
+	background-color:  #fff;
+	color: #D8D8D8;
+	float: left;
+	width:33%;
+	height: 68px;
+	padding: 3%;
+	padding-top: 40px;
+	padding-bottom: 9px;
+	font-size: 14px;
+	border-bottom: 2px solid #D8D8D8;
+}
+.register-nav-title2{
+	width:25%;
+}
+.register-nav-text{
+	float: left;
+}
+.register-nav-title.active{
+	border-bottom: 2px solid #B63131;
+}
+.register-nav-title.active>.register-nav-icon{
+	background-color:  #B63131;
+}
+.register-nav-title.active>.register-nav-text{
+	color:  #B63131;
+}
+.register-tuijianren{
+	margin: 40px 20.25%;
+	color:#999999;
+	font-size: 14px;
+	height: 17px;
+}
+.register-tuijianren>div{
+	float: left;
+	height: 17px;
+	width: 40%;
+	text-align: left;
+	margin-right:5%;
+}
+#referrerName{
+	line-height:22px;
+}
+#referrerMobile{
+	line-height:22px;
+}
+.register-form-cell{
+	width: 100%;
+	min-height: 64px;
+}
+.register-map-serch{
+	min-height:30px;
+	z-index: 9999; 
+	position: absolute;
+}
+.register-form-cell-title{
+	width: 40%;
+	text-align: right;
+	float: left;
+	line-height: 17px;
+	font-size: 14px;
+	height: 54px;
+	padding: 7px;
+}
+.register-form-cell-widget{
+	text-align: left;
+	width: 60%;
+	float: left;
+}
+/*验证输入框及按钮*/
+.ad-msg-img{
+	width: 104px;
+	height: 32px;
+}
+.sui-form .ad-msg-ipt{
+	width: 66px;
+	padding-top: 4px;
+}
+.ad-msg-btn{
+	width: 104px;
+	height: 32px;
+	margin-left:5px;
+	line-height: 12px;
+	background-color: #1AB2F8;
+	border:1px #1AB2F8 solid;
+	color: #fff;
+	padding: 0px;
+	text-align: center;
+}
+.ad-msg-btn:focus{
+	margin-left: 0px;
+	width: 104px;
+	height: 32px;
+	line-height: 12px;
+	background-color: #1AB2F8;
+	border:1px #1AB2F8 solid;
+	color: #fff;
+}
+.ad-msg-btn:hover{
+	width: 104px;
+	height: 32px;
+	line-height: 12px;
+	background-color:#30BCFD;
+	border:1px #30BCFD solid;
+	color: #fff;
+}
+.sui-form input[type="submit"].ad-register-stp-btn, 
+.sui-form input[type="button"].ad-register-stp-btn{
+	width: 132px;
+	height: 32px;
+	line-height: 12px;
+	background-color: #1AB2F8;
+	color: #fff;
+}
+.sui-form input[type="submit"].ad-register-stp-btn:focus,
+.sui-form input[type="button"].ad-register-stp-btn:focus{
+	margin-left: 0px;
+	width: 132px;
+	height: 32px;
+	line-height: 12px;
+	background-color: #1AB2F8;
+	color: #fff;
+}
+.sui-form input[type="submit"].ad-register-stp-btn:hover,
+.sui-form input[type="button"].ad-register-stp-btn:hover{
+	width: 132px;
+	height: 32px;
+	line-height: 12px;
+	background-color:#30BCFD;
+	color: #fff;
+}
+
+.ad-none-btn,.ad-none-btn:focus{
+	background-color: #98A5AB;
+	color: #fff;
+}
+.ad-none-btn:hover{
+	background-color:#90A2AB;
+	color: #fff;
+}
+.register-boxTitle{
+	height: 30px;
+	line-height: 35px;
+	margin: 0 70px;
+	border-bottom: 1px dashed #DCDCDC;
+	text-align: left;
+	color: #B63131;
+	margin-bottom: 20px;
+}
+.register-box{
+	margin: 0 70px;
+	height: 30px;
+}
+.register-form-cell-1{
+	width: 20%;
+	text-align: right;
+	height: 17px;
+	line-height: 17px;
+	font-size: 14px;
+	color: #B63131;
+	margin: 25px 5px;
+	margin-top: 5px;
+	float: left;
+}
+.register-form-cell-2{
+	float: left;
+	margin: 20px 0px;
+	margin-top: 0px;
+}
+.register-form-cell-3{
+	float: left;
+	height: 17px;
+	line-height: 17px;
+	margin: 25px 10px;
+	margin-top: 5px;
+	color: #1AB2F8;
+	width: 77px;
+}
+.register-form-cell-3>a{
+	color: #1AB2F8;
+}
+.register-form-cell-4{
+	float: left;
+	height: 17px;
+	width: 126px;
+	text-align:center;
+	line-height: 17px;
+	margin: 25px 10px;
+	margin-top: 5px;
+}
+.register-form-cell-5{
+	text-align: right;
+	height: 17px;
+	line-height: 17px;
+	font-size: 14px;
+	float: left;
+	margin: 25px 0px;
+	margin-top: 5px;
+}
+.register-form-cell-6{
+	float: left;
+	margin: 20px 0px;
+	margin-top: 0px;
+}
+.register-form-cell-7{
+	width: 20%;
+	text-align: right;
+	font-size: 14px;
+	float: left;
+	float: left;
+	margin: 10px 5px;
+}
+.register-form-cell-8{
+	width: 10%;
+	text-align: right;
+	font-size: 14px;
+	float: left;
+	float: left;
+	margin: 10px 5px;
+}
+.register-form-cell-hav-widget{
+	width: 20%;
+	float: left;
+	margin: 20px 0px;
+}
+.ad-widget222{
+	width:222px;
+}
+.ad-widget535{
+	width:545px;
+}
+.ad-widget335{
+	width:341px;
+}
+.ad-widget167{
+	width:167px;
+}
+.ad-widget228{
+	width:207px;
+}
+.ad-widget107{
+	width:107px;
+}
+.ad-widget69{
+	width:69px;
+}
+.ad-widget546{
+	width:546px;
+}
+.ad-widget275{
+	width:275px;
+}
+
+.register-form-cell-widget-30{
+	width: 30%;
+	float: left;
+	text-align: left;
+}
+.register-form-cell-widget-25{
+	width: 25%;
+	float: left;
+	text-align: left;
+}
+.register-form-cell-widget-15{
+	width: 15%;
+	float: left;
+	text-align: left;
+}
+.register-form-cell-widget-20{
+	width: 20%;
+	float: left;
+	text-align: left;
+}
+.register-form-cell-widget-45{
+	width: 45%;
+	float: left;
+	text-align: left;
+}
+.register-form-cell-text{
+	width: 100%;
+	height: 34px;
+	margin-left: 72px;
+	font-size: 12px;
+	color: #999;
+	text-align: left;
+}

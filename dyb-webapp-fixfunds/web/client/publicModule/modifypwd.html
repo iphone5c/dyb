@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://www.51ydgy.com/index.html#publicModule/modifypwd/modifypwd -->
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一点公益</title>
+</head>
+
+<body id="ad-app" data-apptype="ad-app" class="relative">
+		<div id="content" class="ad-content2 sui-form relative">
+			<div class="table-title">您现在的位置:修改密码</div>
+			<ul class="sui-nav nav-tabs ad-label-nav">
+				<li class="active">
+					<a class="ad-label-nav-btn">修改登录密码</a></li>
+				<li class="">
+					<a id="title2" class="ad-label-nav-btn">修改二级密码</a></li>
+			</ul>
+			<div class="tab-content">
+				<div id="ad-lable-one" class="tab-pane active">
+					<div class="center" style="width:100%;">
+						<div id="validLoginPwd" class="sui-validate mauto mt30" style="width:50%;" novalidate="novalidate">
+							<div class="ad-box" style="height:auto;">
+								<div class="spanTitle2">原登录密码：</div>
+								<div class="span4 controls err-inline">
+									<input type="password" id="oldpwd" name="oldpwd" placeholder="密码" data-rules="required" title="密码" style="width:140px; height:30px; padding: 0px 5px; " class="">
+									<div class="sui-msg msg-error help-inline" style="display: none">
+										<div class="msg-con">
+											<span>请填写</span></div>
+										<i class="iconfont" style="    display: inline-block;position: absolute;top: 3px;left: 6px;font-size: 14px">&#xf0054;</i>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="ad-box hAuto" style="height:auto;">
+								<div class="spanTitle2">新登录密码：</div>
+								<div class="span4 controls err-inline">
+									<input type="password" id="newpwd" placeholder="密码长度为6-16位。" data-error-msg="密码长度为6-16位。" data-empty-msg="密码不能为空" data-rules="required|minlength=6|maxlength=16" name="newpwd" style="width:140px; height:30px; padding: 0px 5px;" class="">
+									<div class="sui-msg msg-error help-inline" style="display: none">
+										<div class="msg-con">
+											<span>密码不能为空</span></div>
+										<i class="iconfont" style="    display: inline-block;position: absolute;top: 3px;left: 6px;font-size: 14px">&#xf0054;</i>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="ad-box hAuto" style="height:auto;">
+								<div class="spanTitle2">确认新密码：</div>
+								<div class="span4 controls err-inline">
+									<input type="password" id="newpwdagain" name="newpwdagain" placeholder="密码长度为6-16位。" data-error-msg="密码长度为6-16位。" data-empty-msg="密码不能为空" data-rules="required|minlength=6|maxlength=16" style="width:140px; height:30px; padding: 0px 5px;" class="">
+									<div class="sui-msg msg-error help-inline" style="display: none">
+										<div class="msg-con">
+											<span>密码不能为空</span></div>
+										<i class="iconfont" style="    display: inline-block;position: absolute;top: 3px;left: 6px;font-size: 14px">&#xf0054;</i>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="clear"></div>
+							<div class="ad-box mt15" style="height:auto;">
+								<div class="spanTitle"></div>
+								<input type="button" class="ad-btn ad-blue-btn" id="sureButton1" value="确定">
+								<input type="button" class="ad-btn ad-blue-btn" id="cancelButton1" value="取消"></div>
+						</div>
+					</div>
+				</div>
+				<div id="ad-lable-two" class="tab-pane">
+					<div class="center" style="width:100%;">
+						<div id="validTwoLevelPwd" class="sui-validate mauto mt30" style="width:50%;" novalidate="novalidate">
+							<div class="ad-box" style="height:auto;">
+								<div class="spanTitle4">手机号码：</div>
+								<div class="span2 controlss">
+									<span id="mobilenumber">186****6699</span></div>
+								<div class="clear"></div>
+							</div>
+							<div class="ad-box" style="height:auto;">
+								<div class="spanTitle4">图形验证码：</div>
+								<div class="controls err-inline">
+									<input name="validCode" id="imgCode" type="text" class="check_code_text float_left" maxlength="4" placeholder="请输入验证码" style="width:140px; height:30px; padding: 0px 5px;"></div>
+								<div class="controls" style="margin:4px 0px 4px 15px;">
+									<img src="../images/verifyCode.jpg" style="height:30px;" id="CreateCheckCode" align="middle" onclick="myReload()" class="check_code_img float_left"></div>
+								<div class="clear"></div>
+							</div>
+							<div class="ad-box" style="height:auto;">
+								<div class="spanTitle4">手机验证码：</div>
+								<div class="controls" style="height:auto;">
+									<input type="text" id="verifyCode" name="verifyCode" placeholder="六位验证码" data-rules="required|minlength=6|maxlength=6" title="验证码" style="width:140px; height:30px; padding: 0px 5px;"></div>
+								<div class="controls" style="margin:4px 0px 4px 15px;">
+									<input type="button" id="sendMsgBtn" class="sui-btn ad-msg-btn" value="发送验证码"></div>
+								<div class="clear"></div>
+							</div>
+							<div class="ad-box" style="height:auto;">
+								<div class="spanTitle4">原二级密码：</div>
+								<div class="controls" style="height:auto;">
+									<input type="password" id="oldtwopwd" name="oldtwopwd" placeholder="" data-rules="required" title="" style="width:140px; height:30px; padding: 0px 5px;"></div>
+								<div class="controls" style="margin:4px 0px 4px 15px;">
+									<a id="forgetpassword2">忘记二级密码？</a></div>
+								<div class="clear"></div>
+							</div>
+							<div class="ad-box" style="height:auto;">
+								<div class="spanTitle4">新二级密码：</div>
+								<div class="controls err-inline">
+									<input type="password" id="newtwopwd" name="newtwopwd" placeholder="六位纯数字组成" data-error-msg="密码由六位纯数字组成。" data-empty-msg="密码不能为空" data-rules="required|digits|minlength=6|maxlength=6" style="width:140px; height:30px; padding: 0px 5px;"></div>
+								<div class="clear"></div>
+							</div>
+							<div class="ad-box" style="height:auto;">
+								<div class="spanTitle4">确认二级密码：</div>
+								<div class="controls err-inline">
+									<input type="password" id="newtwopwdAgain" name="newtwopwdAgain" placeholder="六位纯数字组成" data-error-msg="密码由六位纯数字组成。" data-empty-msg="密码不能为空" data-rules="required|minlength=6|maxlength=6" style="width:140px; height:30px; padding: 0px 5px;"></div>
+								<div class="clear"></div>
+							</div>
+							<div class="clear"></div>
+							<div class="ad-box mt15" style="height:auto;">
+								<div class="spanTitle"></div>
+								<input type="button" class="ad-btn ad-blue-btn" id="sureButton2" value="确定">
+								<input type="button" class="ad-btn ad-blue-btn" id="cancelButton2" value="取消"></div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<script>
+	$(function(){
+		$(".sui-nav li").click(function(){
+			var i=$(".sui-nav li").index(this)
+			$(".sui-nav li").removeClass("active");
+			$(".sui-nav li").eq(i).addClass("active");
+			$(".tab-pane").removeClass("active");
+			$(".tab-pane").eq(i).addClass("active");
+		})
+	})
+</script>
+</body>
+
+</html>

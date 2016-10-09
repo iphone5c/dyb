@@ -1,0 +1,366 @@
+body{word-wrap:break-word; word-break:break-all;}
+.user-imgtable{
+	border: 1px solid #c8c8c8;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.nav-box{
+	height: 120px;
+	margin: 0 auto;
+	position: relative;
+	background-color: #dc0000;
+}
+.content{
+	background-color: #ffffff;
+	border-radius: 1px;
+}
+.info-box{
+	margin:25px auto;
+    width:80%;
+    min-width: 1015px;
+    text-align: center;
+}
+.user-info{
+    margin: 0 auto;
+    min-width: 1000px;
+}
+.user-img{
+	float: left;
+    width: 148px;
+    height: 170px;
+    margin-top: 35px;
+}
+.user-img1{
+    width: 144px;
+    height: 120px;
+    margin-top: 35px;
+}
+.user-img div{
+	
+	text-align: center;
+    font-size: 14px;
+    color: #333333;
+    height: 88px;
+    line-height: 29px;
+}
+.user-aside{
+    float:left;
+	min-height: 190px;
+    text-align: left;
+    font-size: 16px;
+    color: #333333;
+    padding-left: 30px;
+    /*max-width: 300px;
+    padding-top: 10px;
+    margin-top: 30px;*/
+    margin-top:25px;
+}
+.user-aside p{
+	height: 36px;
+	line-height: 36px;
+}
+.user-aside .val{
+	font-size: 18px;
+}
+.user-aside div{
+    /*margin-bottom: 35px;*/
+    line-height:36px;
+}
+.red{
+	color: #B63131;
+}
+.mg50{
+	margin: 40px 0;
+	margin-bottom:10px;
+}
+.user-table-sec{
+	float: right;
+    text-align: center;
+}
+.user-table-sec-box{ 
+    width: 560px;
+}
+.user-table-sec-box-sub{
+    width: 255px;
+    height: 105px;
+    border: 2px solid #E2E2E2;
+    float: left;
+    margin:10px; 
+    font-size: 14px;
+    text-align: center;
+    padding-top:10px;
+}
+.user-table-sec-box-sub>img{
+    width: 50px;
+    height: 50px;
+}
+.user-table-sec table{
+    width: 85%;
+    height: 156px;
+    
+}
+.user-table-sec table caption{
+	font-size: 16px;
+    color: #333333;
+    line-height: 44px;
+}
+.home-user-table-sec{
+	float:right;
+	margin-right:60px;
+	margin-top:45px;
+	font-size: 18px;
+    color: #333333;
+    text-align:center;
+}
+.home-user-table-sec>.cor48{
+	font-size:18px;
+}
+table td{
+    border-spacing: 0;
+    font-size: 14px;
+    color: #333333;
+}
+table.center tr td,table.center tr th{
+    text-align: center;
+}
+.cor48{
+	color: #0697fc;
+	font-size: 18px;
+}
+.bean{
+	border:1px solid #fcc3dc;
+	text-align: center;
+	float: left;
+	height:200px;
+	color: #333333;
+}
+
+
+.user-bean{
+    min-width: auto;
+
+	margin:70px auto;
+}
+.user-bean div{
+	float: left;
+}
+.balance_bean{
+	width:18%;
+}
+.total_bean{
+	width:18%;
+}
+.spend_bean{
+	width:41%;
+}
+.spend_bean p{
+	line-height: 45px;
+    width: 80%;
+    margin: 0 auto;
+}
+.equal{
+	background: url(../images/login/equal.png) no-repeat center center;
+	width: 35px;
+	height: 25px;
+    margin: 0 10px;
+    margin-top:86px;
+}
+.minus{
+	background: url(../images/login/minus.png) no-repeat center center;
+	width: 35px;
+	height: 7px;
+    margin: 0 10px;
+    margin-top:99px;
+}
+.size20{
+	font-size: 14px;
+}
+.bd-b1{
+	border-bottom:1px solid #fcc3dc;
+}
+.mg-t30{
+	margin-top: 30px;
+}
+.bal-num{
+	font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.pub-service {
+    margin-top: 30px;
+}
+.pub-service .lengend{
+	position: relative;
+    line-height: 16px;
+    height: 16px;
+    margin-bottom: 20px;
+}
+.pub-service .user-balance{
+	float: left;
+    width: 40%;
+    height: 136px;
+    border: 1px solid #c8c8c8;
+    text-align: center;
+    font-size: 16px;
+    color: #333333;
+    line-height: 136px;
+}
+.pub-service .user-balance1{
+	float: left;
+    width: 25%;
+    height: 136px;
+    border: 1px solid #c8c8c8;
+    text-align: left;
+    font-size: 14px;
+    color: #333333;
+    line-height: 30px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.user-balance-text{
+	text-align: center;
+    font-size: 14px;
+    color: #333333;
+    line-height: 136px;
+}
+.lengend label{
+	display: inline-block;
+    position: absolute;
+    top: -7px;
+    background: white;
+    padding-right: 10px;
+}
+.pub-service hr{
+	background-color: #c8c8c8;
+    border: none;
+    height: 1px;
+}
+.user-balance .num{
+	color: #0697fc;
+	font-size: 20px;
+}
+.user-balance1 .num{
+	color: #0697fc;
+	font-size: 20px;
+}
+.balance-tb{
+ 	position: absolute;
+ 	left:55%;
+ 	
+}
+.balance-tb1{
+ 	position: absolute;
+ 	left:60%;
+ 	
+}
+.balance-tb table{
+
+	width: 85%;
+    height: 136px;
+}
+.balance-tb1 table{
+	width: 85%;
+    height: 136px;
+}
+.bean.balance_bean>.bal-num {
+    margin-top: 66px;
+}
+.bean.total_bean>p:nth-child(2) {
+    border-bottom: 1px solid #fcc3dc;
+    width: 80%;
+    margin-left: 10%;
+    padding-bottom: 20px;
+}
+.bean.total_bean>p:nth-child(3) {
+    padding-top: 0px;
+}
+.hoverHand{
+	cursor:pointer;
+}
+.finance-tab-content{
+    width: 100%;
+}
+.finance-tab-content>.tab-pane{
+    width: 100%;
+}
+.finance-balance-box{
+    width: 22%;
+    min-width: 285px;
+    border:2px solid #E2E2E2;
+    text-align: center;
+}
+.finance-balance-box2{
+    width: 33%;
+    min-width: 285px;
+    border:2px solid #E2E2E2;
+    text-align: center;
+}
+.finance-balance-box3{
+    width: 22%;
+    min-width: 285px;
+    border:2px solid #E2E2E2;
+    text-align: center;
+}
+.finance-balance-box-tilte{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    color: #333;
+    border-bottom:1px solid #E2E2E2;
+}
+.finance-balance-box-cont{
+    width: 100%;
+    height: 30px;
+    line-height: 60px;
+    font-size: 18px;
+}
+.finance-balance-box-num{
+    width: 100%;
+    height: 130px;
+    line-height: 130px;
+}
+.finance-balance-box-cell{
+    width: 92%;
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    margin: 0 4%;
+    border-bottom: 1px dashed #E2E2E2;
+}
+.finance-balance-box-cell2{
+    width: 92%;
+    height: 43px;
+    line-height: 43px;
+    font-size: 16px;
+    margin: 0 4%;
+    border-bottom: 1px dashed #E2E2E2;
+}
+.finance-balance-box-cell3{
+    width: 92%;
+    height: 65px;
+    line-height: 65px;
+    font-size: 16px;
+    margin: 0 4%;
+    border-bottom: 1px dashed #E2E2E2;
+}
+.cell4{
+    font-size: 22px;
+}
+.cell5{
+	color:#999;
+    font-size: 22px;
+}
+.finance-balance-box-cell-left{
+    width: 50%;
+    white-space: nowrap;
+    text-align: left;
+}
+.finance-balance-box-cell-right{
+    width: 50%;
+    text-align: right;
+}
+.cell-lest{
+    border: 0;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://www.51ydgy.com/index.html#publicModule/feedback/userManger -->
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一点公益</title>
+</head>
+
+<body id="ad-app" data-apptype="ad-app" class="relative">
+		<div id="content" class="ad-content2 sui-form relative" style="margin-left: 230px;">
+			<div class="table-title">您现在的位置:意见反馈</div>
+			<ul class="sui-nav nav-tabs ad-label-nav">
+				<li class="active">
+					<a class="ad-label-nav-btn" id="commitOpinion">提意见</a></li>
+				<li>
+					<a class="ad-label-nav-btn" id="detailOpinion">已提意见</a></li>
+			</ul>
+			<div class="tab-content">
+				<div id="ad-lable-one" class="tab-pane active">
+					<form id="userForm" class="sui-form form-horizontal sui-validate mt30" novalidate="novalidate">
+						<div class="control-group">
+                  <span class="control-label">
+                    <font color="#B63131">*</font>意见类型：</span>
+							<div class="controls">
+                    <span class="sui-dropdown dropdown-bordered select1">
+                      <span class="dropdown-inner">
+                        <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle">
+							<input id="opiniontype" value="" name="opiniontype" type="hidden" data-rules="required" data-empty-msg="请选择意见类型">
+							<i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+							<span id="defaultval">请选择</span></a>
+                        <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">平台操作意见</a></li>
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">消费订单问题</a></li>
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="3">服务质量问题</a></li>
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="4">其他意见</a></li>
+						</ul>
+                      </span>
+                    </span>
+							</div>
+						</div>
+						<div class="control-group">
+                  <span class="control-label">
+                    <font color="#B63131">*</font>意见：</span>
+							<div class="controls">
+								<textarea id="remark" rows="3" style="height:140px;width:600px;" class="input-block-level" placeholder="限制250字以内" data-rules="required|maxlength=250" data-empty-msg="请填写意见内容"></textarea>
+							</div>
+						</div>
+						<div class="control-group">
+							<span class="control-label">附件：</span>
+							<div class="controls" id="fileImages">
+								<div id="image1" style="float: left;">
+									<input id="iput-image2" type="text" style="display:none">
+									<img class="ad-widget-img" src="../images/defaultImg.png" style="height:100px;width:100px;"></div>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label"></label>
+							<div class="controls">
+								<input id="commit" type="button" class="ad-btn ad-blue-btn" value="提交"></div>
+						</div>
+					</form>
+				</div>
+				<div id="ad-lable-two" class="tab-pane "></div>
+			</div>
+		</div>
+<script>
+	$(function(){
+		$(".sui-nav li").click(function(){
+			var i=$(".sui-nav li").index(this)
+			$(".sui-nav li").removeClass("active");
+			$(".sui-nav li").eq(i).addClass("active");
+		});
+		$(".dropdown-toggle").eq(0).click(function(){
+			$(".select1").toggleClass("open");
+		})
+		$(".sui-dropdown-menu1 li").click(function(){
+			var i=$(".sui-dropdown-menu1 li").index(this);
+			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
+			$(".sui-dropdown-menu1 li").removeClass("active");
+			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
+			$(".select1 span span").html(x);
+			$(".select1").removeClass("open");
+		})
+		$('.dropdown-inner').mouseleave(function(){
+			$(".select1").removeClass("open");
+		});
+	})
+</script>
+</body>
+
+</html>

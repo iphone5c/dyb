@@ -1,0 +1,96 @@
+@charset "utf-8";
+/*   
+	by tsz 2016.08.15
+*/
+.banner{position:relative; width:100%; height:538px; border-top:1px #D5D5D5 solid; border-bottom: 1px #D5D5D5 solid; overflow:hidden; zoom:1; z-index:5;}
+.banner .leftbtn,.banner .rightbtn{position:absolute; top:237px; background:url(../images/background.png) no-repeat; width:31px; height:64px; opacity:0; filter:alpha(opacity=0);}
+.banner .leftbtn{left:10%; background-position:0px -62px;}
+.banner .rightbtn{right:10%; background-position:-38px -62px;}
+.banner:hover .leftbtn,.banner:hover .rightbtn{opacity:1.0; filter:alpha(opacity=100);}
+.banner li{width:100%; height:100%;}
+.banner li span{width:100%; height:538px; display:inline-block;}
+.bannericon{position:absolute; bottom:10px; left:47%;}
+.bannericon span{float:left; margin-left:6px; width:14px; height:14px; background-color: #fff; opacity:0.5; filter:alpha(opacity=50); border-radius:7px; cursor:pointer; display:inline-block;}
+.bannericon span.on{opacity:1.0; filter:alpha(opacity=100);}
+
+.ensureList{padding: 45px 0px;}
+.ensureList li{float: left; width: 100px; text-align: center; margin-left: 85px; cursor: pointer; display: inline-block;}
+.ensureList li:hover i{transform:rotate(360deg);}
+.ensureList li i{width: 55px; height: 55px; -webkit-transition: transform .25s linear; -moz-transition: transform .25s linear; -o-transition: transform .25s linear; transition: transform .25s linear; margin-left: 22px; *margin-left: 0px; display: block;}
+.ensureList li .i1{background:url(../images/tran1.png) no-repeat; background-size: cover;}
+.ensureList li:hover .i1{background:url(../images/tran1_hover.png) no-repeat;}
+.ensureList li .i2{background:url(../images/tran2.png) no-repeat; background-size: cover;}
+.ensureList li:hover .i2{background:url(../images/tran2_hover.png) no-repeat;}
+.ensureList li .i3{background:url(../images/tran3.png) no-repeat; background-size: cover;}
+.ensureList li:hover .i3{background:url(../images/tran3_hover.png) no-repeat;}
+.ensureList li .i4{background:url(../images/tran4.png) no-repeat; background-size: cover;}
+.ensureList li:hover .i4{background:url(../images/tran4_hover.png) no-repeat;}
+.ensureList li .i5{background:url(../images/tran5.png) no-repeat; background-size: cover;}
+.ensureList li:hover .i5{background:url(../images/tran5_hover.png) no-repeat;}
+.ensureList li .i6{background:url(../images/tran6.png) no-repeat; background-size: cover;}
+.ensureList li:hover .i6{background:url(../images/tran6_hover.png) no-repeat;}
+.ensureList li .p1{padding-top: 25px; font-size: 16px; line-height: 16px;}
+.ensureList li .p2{padding-top: 7px; font-size: 12px; line-height: 18px;}
+
+.example{width: 100%; background: url(../images/example.jpg) bottom center no-repeat #f0eeeb; padding: 35px 0px;}
+.example .title,.commonweal .title,.news .title{width: 100%; text-align: center; font-size: 16px;}
+.example .title a{width: 300px; height: 47px; line-height: 47px; border-radius: 23px; background-color: #e0252f; font-size: 30px; text-align: center; color: #fff; display: inline-block;}
+.example .title label{display: block; padding-top: 15px;}
+.example ul{width: 1160px;}
+.example ul li{float: left; width: 250px; margin: 30px 40px 0px 0px; display: inline-block;}
+.example ul li dt,.example ul li dt img{width: 250px; height: 150px; overflow: hidden;-webkit-transition: all linear .1s;}
+.example ul li dt:hover img{transform: scale(1.2); transition: all 1s ease 0s; -webkit-transform: scale(1.2); -webkit-transition: all linear .2s;}
+.example ul li dd{background-color: #fff; font-size: 12px; line-height: 21px; padding: 0px 14px 14px 14px; border-radius: 0px 0px 5px 5px;}
+.example ul li dd .p1{width: 100%; text-align: center; height: 32px; line-height: 32px; font-size: 16px; border-bottom: 1px #D5D5D5 solid;}
+.example ul li dd .p2{padding-top: 5px; height: 105px; overflow: hidden;}
+.example ul li dd .p3 a{color: #556fb5;}
+.example ul li dd .p3 a:hover{color: #1E1E1E;}
+.example .moreBtn{width:100%; text-align: center; margin-top: 45px;}
+.example .moreBtn a{width: 152px; height: 32px; line-height: 32px; font-size: 18px; border: 1px #a79781 solid; background-color: #c6b8a1; border-radius: 5px; display: inline-block;}
+.example .moreBtn a,.example .moreBtn a:hover{color: #000;}
+
+.commonweal{padding: 60px 0px;}
+.commonweal .title a,.news .title a{font-size: 30px; line-height: 30px; color: #1E1E1E;}
+.commonweal .title label,.news .title label{padding-top: 10px; display: block;}
+.commonweal .commonwealL{width: 850px; position: relative;}
+.commonweal .commonwealL img{width: 850px; height: 410px;}
+.commonweal .commonwealL .bgcolor{position:absolute; left: 0px; bottom: 0px; background-color: #000; opacity:0.7; filter:alpha(opacity=70); padding:0px 30px; color: #fff;}
+.commonweal .commonwealL .bgcolor .p1{font-size: 16px; line-height: 32px;}
+.commonweal .commonwealL .bgcolor .p1 a,.commonweal .commonwealL .bgcolor .p1 a:hover{color: #fff;}
+.commonweal .commonwealL .bgcolor .p2{line-height: 21px; padding: 5px 0px 10px 0px; display: none;}
+.commonweal .commonwealL:hover .bgcolor .p2{display: inline-block;}
+.commonweal .commonwealR{width: 263px; height: 408px; border: 1px #B4B4B4 solid; border-bottom: none; font-size: 16px;}
+.commonweal .commonwealR .tips{width: 100%; background-color: #e6e6e6; border-bottom: 2px #b4b4b4 solid; text-align: center; line-height: 28px;}
+.commonweal .commonwealR .tips a,.commonweal .commonwealR .tips a:hover{color: #1E1E1E;}
+.commonwealR .tips + div{display: none;}
+.commonweal .commonwealR .tips + div{height: 0px; padding: 0px; overflow: hidden; display: block!important; -webkit-transform: translateZ(0); -webkit-transition: all 0.3s ease; -moz-transition: all 0.3s ease; -o-transition: all 0.3s ease; -ms-transition:all 0.3s ease; transition: all 0.3s ease;}
+.commonweal .commonwealR .tips + div ul{padding-top: 20px;}
+.commonweal .commonwealR .tips + div.tenline ul{padding-top: 5px;}
+.commonweal .commonwealR .tips + div li{width: 100%; line-height: 22px; background: url(../images/dottol.jpg) center bottom no-repeat; padding: 10px 0px;}
+.commonweal .commonwealR .tips + div.tenline li{width:auto; padding: 0px 20px; text-align: left; background: none;}
+.commonweal .commonwealR .tips + div li:last-child{background: none;}
+.commonweal .commonwealR .tips + div li span{color: #e0252f; display: block;}
+.commonweal .commonwealR .tips.open{background-color: #707070; border-bottom: none;}
+.commonweal .commonwealR .tips.open a{color: #fff; display: inline-block;}
+.commonweal .commonwealR .tips.open + div{width:100%; height: 229px!important; border-bottom: 1px #B4B4B4 solid; text-align: center;}
+
+.brankscroll{position:relative; width:1120px; height:150px;}
+.brankscroll .leftbtn,.brankscroll .rightbtn{background: url(../images/background.png) no-repeat; width: 20px; height: 37px; vertical-align: top; margin-top: 55px; display: inline-block;}
+.brankscroll .leftbtn{background-position: -80px -62px;}
+.brankscroll .rightbtn{background-position: -104px -62px;}
+.brankscroll .brankcont{position:relative; margin:0 auto; overflow:hidden;}
+.brankscroll .brankcont ul{position:relative;}
+.brankscroll .brankcont ul li{float: left; position: relative; width: 230px; font-size: 16px; text-align: center; margin: 0px 12px 0px 25px; display: inline-block;}
+.brankscroll .brankcont ul li img{width: 230px; height: 150px; margin-bottom: 10px;}
+
+.news{width: 100%; background: url(../images/newsbj.jpg) repeat; padding: 60px 0px 40px 0px;}
+.news dl{margin-top: 50px;}
+.news .dlone{width: 375px;}
+.news .dlone dt,.news .dltwo dt{width: 100%; font-size: 24px; line-height: 24px;}
+.news .dlone dd{padding: 10px 0px 0px 20px;}
+.news .dlone dd li{width: 100%; font-size: 12px; line-height: 16px; padding-top: 10px; list-style-type:disc;}
+.news .dltwo{width: 350px;}
+.news .dltwo dd{background-color: #fff; margin-top: 10px; height: 150px; padding: 25px 0px 0px 25px;}
+.news .dltwo dd li{float: left; width: 50%; *width: 45%; height: 50px; display: inline-block;}
+
+.footer{margin-top: 0px!important;}

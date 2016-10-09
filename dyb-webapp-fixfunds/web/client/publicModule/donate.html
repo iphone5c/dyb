@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)http://www.51ydgy.com/index.html#publicModule/donate/donateForm -->
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一点公益</title>
+</head>
+<body id="ad-app" data-apptype="ad-app" class="relative">
+		<div id="content" class="ad-content2 sui-form relative" style="margin-left: 230px;">
+			<div class="table-title">您现在的位置:直捐管理 - 我要直捐</div>
+			<div class="ad-box">
+				<p align="center">
+					<img class="ad-footer-img" src="../images/guanghua1.png"></p>
+			</div>
+			<div class="ad-box" style="margin-bottom: 5px;">
+				<p style="margin-bottom: 1px; font-size:14px; line-height:40px;" align="center">感谢您的捐赠，您所捐赠的信使豆将兑换为RMB（1颗信使豆=1元）直接进入一点公益基金会。</p></div>
+			<div id="donateForm" class="ad-pageCenter-father">
+				<form autocomplete="off" class="sui-form form-horizontal ad-pageCenter-child sui-validate" style="width:440px;" novalidate="novalidate">
+					<div style="border:2px solid #eee;margin-bottom:20px;">
+						<p style="margin-left: 25px;" align="left">
+							<span style="color:#B63131; font-size:18px; line-height:40px;">一点公益基金会</span></p>
+						<p style="margin-left: 25px; font-size:14px; line-height:40px;" align="left">开户行：
+							<span style="">中国工商银行北京北太平庄支行</span></p>
+						<p style="margin-left: 25px; font-size:14px; line-height:40px;" align="left">账号：
+							<span style="">0200010019200165335</span></p>
+						<div class="ad-box">
+							<div class="spanTitle2" style="width:17%;text-align:left;margin-left: 25px;margin-right:0px;">直捐类型：</div>
+							<div class="span1">
+                    <span class="sui-dropdown dropdown-bordered select1 hAuto">
+                      <span class="dropdown-inner">
+                        <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+							<input id="donatetype" value="0" name="donatetype" type="hidden">
+							<i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+							<span id="size_s">普通信使豆</span></a>
+                        <ul id="donateForm-u" role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">普通信使豆</a></li>
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">待缴税信使豆</a></li>
+						</ul>
+                      </span>
+                    </span>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<p style="margin-left: 25px; line-height:40px;margin-bottom:10px; font-size:14px;" align="left">您当前可捐赠信使豆：
+							<span id="couriercount" style="color:#B63131;font-size:18px;">0</span>颗</p>
+						<div class="control-group">
+							<label class="control-label" style="font-size:14px;">我要捐赠(颗)</label>
+							<div class="controls">
+								<input type="text" id="beannum" name="beannum" data-rules="required|number|digits|maxlength=10" class="ad-widget167 input-xfat"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" style="font-size:14px;">输入二级密码</label>
+							<div class="controls">
+								<input type="password" id="password" name="password" data-rules="required" class="ad-widget167 input-xfat"></div>
+						</div>
+					</div>
+					<div align="left">
+						<button type="button" id="toDonateList" class="ad-btn ad-blue-btn" onclick="document.location='donateList.html';">我的捐赠记录</button>
+						<button type="button" id="submitForm" class="ad-btn ad-blue-btn" style="margin-left: 60px;">确认捐赠</button></div>
+				</form>
+			</div>
+		</div>
+<script>
+	$(function(){
+		$(".dropdown-toggle").eq(0).click(function(){
+			$(".select1").toggleClass("open");
+		});
+		$(".sui-dropdown-menu1 li").click(function(){
+			var i=$(".sui-dropdown-menu1 li").index(this);
+			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
+			$(".sui-dropdown-menu1 li").removeClass("active");
+			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
+			$(".select1 span span").html(x);
+			$(".select1").removeClass("open");
+		});
+		$('.dropdown-inner').mouseleave(function(){
+			$(".select1").removeClass("open");
+		});
+	})
+</script>
+</body>
+
+</html>

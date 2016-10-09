@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)http://www.51ydgy.com/index.html#agent/agent/mySaleManIndex -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../css/style1.3.19.4.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>一点公益</title>
+</head>
+<style type="text/css">
+    .top{ margin:5px auto; color:#990000; text-align:center;}
+    .info select{  background:#FFFFFF;}
+    .info{
+        float: left;text-align:center;}
+    .info #show{ color:#3399FF; }
+    .bottom{ text-align:right; font-size:12px; color:#CCCCCC; width:1000px;}
+    select{
+        width: 155px;
+        height: 32px !important;
+        outline: none !important;
+        border: 1px solid #CCCCCC !important;
+        color: #555 !important;
+        font-size: 13px !important;
+        box-sizing: border-box;
+        appearance:none;
+        -moz-appearance:none;
+        -webkit-appearance:none;
+        -ms-appearance:none;
+        padding-top: 5px !important;
+    }
+    select a{
+        text-decoration:none;
+        box-sizing: border-box;
+        color: #555 !important;
+    }
+    select option{
+        text-decoration:none;
+        box-sizing: border-box;
+        color: #555 !important;
+    }
+    select a:hover{color:#28a3ef;}
+</style>
+
+<body id="ad-app" data-apptype="ad-app" class="relative">
+        <div id="content" class="ad-content2 sui-form relative">
+            <div class="table-title">您现在的位置:服务商管理 - 我的业务员</div>
+            <ul class="sui-nav nav-tabs ad-label-nav">
+                <li class="active">
+                    <a class="ad-label-nav-btn">添加业务员</a></li>
+                <li>
+                    <a class="ad-label-nav-btn">我的业务员</a></li>
+            </ul>
+            <div class="tab-content mt15">
+                <div id="ad-lable-one" class="tab-pane active">
+                    <div id="mySaleManForm" class="sui-validate ad-box-auto" novalidate="novalidate">
+                        <div class="table-title">
+                            <font color="blue">基本信息（默认密码：123456）</font></div>
+                        <div class="ad-box">
+                            <div class="spanTitle">
+                                <font color="red">*</font>姓名:</div>
+                            <div class="span1">
+                                <input id="realname" name="realname" type="text" data-rules="required|maxlength=20" placeholder="" class="input-xfat" /></div>
+                            <div class="spanTitle">
+                                <font color="red">*</font>用户名:</div>
+                            <div class="span1">
+                                <input id="username" name="username" type="text" data-rules="required|maxlength=20" placeholder="" class="input-xfat" /></div>
+                            <div class="spanTitle">
+                                <font color="red">*</font>手机号码:</div>
+                            <div class="span1">
+                                <input id="mobilenumber" name="mobilenumber" type="text" data-rules="required|mobile|maxlength=11" placeholder="" class="input-xfat" /></div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="ad-box ">
+                            <div class="spanTitle">
+                                <font color="red">*</font>身份证号:</div>
+                            <div class="span1">
+                                <input id="idcard" name="idcard" type="text" data-rules="required|number|maxlength=20" placeholder="" class="input-xfat" /></div>
+                            <div class="spanTitle">
+                                <font color="red">*</font>籍贯:</div>
+                            <div class="span2">
+                                <div id="city" class="city">
+                                    <div class="info" style="position: relative">
+                                        <div>
+                                            <select id="s_province" name="s_province"></select>  
+                                            <i class="iconfont" style=" position: absolute;left:135px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                                            <!--<i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>-->
+                                            <select id="s_city" name="s_city"></select>  
+                                            <i class="iconfont" style=" position: absolute;left:302px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                                            <select id="s_county" name="s_county" style="display: none"></select>
+                                            <script class="resources library" src="../js/area.js" type="text/javascript"></script>
+                                            <script type="text/javascript">_init_area();</script>
+                                        </div>
+                                        <div id="show"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="ad-box ">
+                            <div class="spanTitle">
+                                <font color="red">*</font>性别:</div>
+                            <div class="span1">
+                      <span class="sui-dropdown dropdown-bordered select1 hAuto">
+                        <span class="dropdown-inner">
+                          <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                              <input id="sex" name="sex" type="hidden" data-rules="required" data-empty-msg="请选择性别" />
+                              <i class="iconfont" style=" position: absolute;left:135px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                              <span id="sex_s">请选择</span></a>
+                          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">男</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">女</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">保密</a></li>
+                          </ul>
+                        </span>
+                      </span>
+                            </div>
+                            <div class="spanTitle">
+                                <font color="red">*</font>出生日期:</div>
+                            <div class="span1">
+                                <input type="text" id="birthday" name="birthday" class="ad-widget167 input-xfat input-date" data-rules="required|date" data-error-msg="出生日期格式错误" data-empty-msg="出生日期不能为空" data-toggle="datepicker" /></div>
+                            <div class="spanTitle">
+                                <font color="red">*</font>所在行业:</div>
+                            <div class="span1">
+                      <span class="sui-dropdown dropdown-bordered select2 hAuto">
+                        <span class="dropdown-inner">
+                          <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                              <input id="industry" value="" name="industry" type="hidden" data-rules="required" data-empty-msg="请选择行业" />
+                              <i class="iconfont" style=" position: absolute;left:135px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                              <span id="industry_s">请选择</span></a>
+                          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu">
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="计算机/互联网">计算机/互联网</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="通信/电子">通信/电子</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="金融">金融</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="贸易/制造">贸易/制造</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="医疗">医疗</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="广告/媒体">广告/媒体</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="房地产/建筑">房地产/建筑</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="教育/培训">游戏</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="旅游">旅游</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="娱乐">娱乐</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="餐饮">餐饮</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="休闲/服务业">休闲/服务业</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="物流/交通/航空">物流/交通/航空</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="能源/原材料">能源/原材料</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="政府/非盈利机构">政府/非盈利机构</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="其他">其他</a></li>
+                          </ul>
+                        </span>
+                      </span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="ad-box ">
+                            <div class="spanTitle">
+                                <font color="red">*</font>邮箱:</div>
+                            <div class="span1">
+                                <input id="email" name="email" type="text" data-rules="required|email|maxlength=30" placeholder="" class="input-xfat" /></div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="table-title">
+                            <font color="blue">激励比例（选择每种激励模式下可以给该业务员授权的激励比例）</font></div>
+                        <div class="ad-box">
+                            <div class="spanTitle">
+                                <font color="red">*</font>6%:</div>
+                            <div class="span1">
+                      <span class="sui-dropdown dropdown-bordered select3 hAuto">
+                        <span class="dropdown-inner">
+                          <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                              <input id="returnpercentage6" name="returnpercentage6" type="hidden" data-rules="required" data-empty-msg="请选择分配比例" />
+                              <i class="iconfont" style=" position: absolute;left:135px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                              <span>请选择</span></a>
+                          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu3" >
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.1">0.1</a></li>
+                          </ul>
+                        </span>
+                      </span>
+                            </div>
+                            <div class="spanTitle">
+                                <font color="red">*</font>12%:</div>
+                            <div class="span1">
+                      <span class="sui-dropdown dropdown-bordered select4 hAuto">
+                        <span class="dropdown-inner">
+                          <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                              <input id="returnpercentage12" name="returnpercentage12" type="hidden" data-rules="required" data-empty-msg="请选择分配比例" />
+                              <i class="iconfont" style=" position: absolute;left:135px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                              <span>请选择</span></a>
+                          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu4">
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.1">0.1</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.2">0.2</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.3">0.3</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.4">0.4</a></li>
+                          </ul>
+                        </span>
+                      </span>
+                            </div>
+                            <div class="spanTitle">
+                                <font color="red">*</font>24%:</div>
+                            <div class="span1">
+                      <span class="sui-dropdown dropdown-bordered select5 hAuto">
+                        <span class="dropdown-inner">
+                          <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                              <input id="returnpercentage24" name="returnpercentage24" type="hidden" data-rules="required" data-empty-msg="请选择分配比例" />
+                              <i class="iconfont" style=" position: absolute;left:135px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                              <span>请选择</span></a>
+                          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu5">
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.1">0.1</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.2">0.2</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.3">0.3</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.4">0.4</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.5">0.5</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.6">0.6</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.7">0.7</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.8">0.8</a></li>
+                              <li role="presentation">
+                                  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.9">0.9</a></li>
+                          </ul>
+                        </span>
+                      </span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div align="left" class="ad-box mt15">
+                            <div class="spanTitle">&nbsp;</div>
+                            <input class="sui-btn btn-primary btn-large ad-blue-btn" type="button" value="添加" id="submitForm" /></div>
+                    </div>
+                </div>
+                <div id="ad-lable-two" class="tab-pane">
+                    <div class="ad-box">
+                        <div class="spanTitle">业务员姓名:</div>
+                        <div class="">
+                            <input id="realname_v" name="realname_v" type="text" placeholder="" class="input-xfat" /></div>
+                        <div class="spanTitle">注册日期:</div>
+                        <div class="">
+                            <input type="text" id="createtime_v" class="ad-widget167 input-xfat input-date" data-toggle="datepicker" /></div>
+                        <div class="spanTitle">状态:</div>
+                        <div class="">
+                    <span class="sui-dropdown dropdown-bordered select6">
+                      <span class="dropdown-inner">
+                        <a role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle">
+                            <input id="userstatus" value="0" name="city" type="hidden" />
+                            <i class="iconfont" style=" position: absolute;left:135px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                            <span id="statusSpan">正常</span></a>
+                        <ul role="menu" aria-labelledby="drop4" class="sui-dropdown-menu sui-dropdown-menu6">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="-1">全部</a></li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">正常</a></li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">停用</a></li>
+                        </ul>
+                      </span>
+                    </span>
+                        </div>
+                        <div class="" style="margin-left:20px;">
+                            <input type="button" id="search" class="ad-btn ad-blue-btn" value="查询" /></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div id="table">
+                        <table class="sui-table table-vzebra ad-table">
+                            <thead>
+                            <tr>
+                                <th style="max-width:1%;">业务员姓名</th>
+                                <th style="max-width:1%;">ID</th>
+                                <th style="max-width:1%;">注册日期</th>
+                                <th style="max-width:1%;">所在地</th>
+                                <th style="max-width:1%;">联系电话</th>
+                                <th style="max-width:1%;">个人邮箱</th>
+                                <th style="max-width:1%;">查看业务员的商家</th>
+                                <th style="max-width:1%;">状态</th>
+                                <th style="max-width:1%;">操作</th>
+                                <th style="max-width:1%;">备注</th></tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td style="业务员姓名" data-key="realname" data-line="0" data-id="19070">刘文娇</td>
+                                <td style="ID" data-key="usernumber" data-line="0" data-id="19070">AE17275</td>
+                                <td style="注册日期" data-key="createtime" data-line="0" data-id="19070">2016-09-16</td>
+                                <td style="所在地" data-key="provinceid" data-line="0" data-id="19070">四川省-成都市</td>
+                                <td style="联系电话" data-key="mobilenumber" data-line="0" data-id="19070">15881054073</td>
+                                <td style="个人邮箱" data-key="email" data-line="0" data-id="19070">407867340@qq.com</td>
+                                <td style="查看业务员的商家" data-key="agentId" data-line="0" data-id="19070">
+                                    <a class="js-view" onclick="document.location='salesManMerchantlist.html';">查看业务员的商家</a></td>
+                                <td style="状态" data-key="userstatus" data-line="0" data-id="19070">正常</td>
+                                <td style="操作" data-key="id" data-line="0" data-id="19070">
+                                    <a class="js-eidt">修改</a>
+                                    <a class="click_stop" data-userid="566181" data-usernumber="AE17275">停用</a></td>
+                                <td style="备注" data-key="remark" data-line="0" data-id="19070"></td>
+                                <td id="table-line-0" class="dsn">{&quot;id&quot;:&quot;19070&quot;,&quot;realname&quot;:&quot;刘文娇&quot;,&quot;usernumber&quot;:&quot;AE17275&quot;,&quot;userstatus&quot;:&quot;0&quot;,&quot;provinceid&quot;:&quot;510000&quot;,&quot;cityid&quot;:&quot;241&quot;,&quot;mobilenumber&quot;:&quot;15881054073&quot;,&quot;createtime&quot;:&quot;2016-09-16&quot;,&quot;email&quot;:&quot;407867340@qq.com&quot;,&quot;userid&quot;:&quot;566181&quot;,&quot;username&quot;:&quot;15881054073&quot;,&quot;idcard&quot;:&quot;510122198809234128&quot;,&quot;doauditremark&quot;:&quot;&quot;,&quot;sex&quot;:&quot;1&quot;,&quot;birthday&quot;:&quot;1988-09-23&quot;,&quot;industry&quot;:&quot;计算机/互联网&quot;,&quot;returnpercentage6&quot;:&quot;0.1&quot;,&quot;returnpercentage12&quot;:&quot;0.3&quot;,&quot;returnpercentage24&quot;:&quot;0.6&quot;,&quot;agentId&quot;:&quot;19070&quot;,&quot;city&quot;:&quot;510000-241&quot;}</td></tr>
+                            <tr>
+                                <td style="业务员姓名" data-key="realname" data-line="1" data-id="18983">刘娟</td>
+                                <td style="ID" data-key="usernumber" data-line="1" data-id="18983">AE17194</td>
+                                <td style="注册日期" data-key="createtime" data-line="1" data-id="18983">2016-09-14</td>
+                                <td style="所在地" data-key="provinceid" data-line="1" data-id="18983">四川省-成都市</td>
+                                <td style="联系电话" data-key="mobilenumber" data-line="1" data-id="18983">13881787978</td>
+                                <td style="个人邮箱" data-key="email" data-line="1" data-id="18983">510667723@qq.com</td>
+                                <td style="查看业务员的商家" data-key="agentId" data-line="1" data-id="18983">
+                                    <a class="js-view" data-line="1" data-id="18983">查看业务员的商家</a></td>
+                                <td style="状态" data-key="userstatus" data-line="1" data-id="18983">正常</td>
+                                <td style="操作" data-key="id" data-line="1" data-id="18983">
+                                    <a class="js-eidt" data-line="1" data-id="18983">修改</a>
+                                    <a class="click_stop" data-userid="563117" data-usernumber="AE17194">停用</a></td>
+                                <td style="备注" data-key="remark" data-line="1" data-id="18983"></td>
+                                <td id="table-line-1" class="dsn">{&quot;id&quot;:&quot;18983&quot;,&quot;realname&quot;:&quot;刘娟&quot;,&quot;usernumber&quot;:&quot;AE17194&quot;,&quot;userstatus&quot;:&quot;0&quot;,&quot;provinceid&quot;:&quot;510000&quot;,&quot;cityid&quot;:&quot;241&quot;,&quot;mobilenumber&quot;:&quot;13881787978&quot;,&quot;createtime&quot;:&quot;2016-09-14&quot;,&quot;email&quot;:&quot;510667723@qq.com&quot;,&quot;userid&quot;:&quot;563117&quot;,&quot;username&quot;:&quot;13881787978&quot;,&quot;idcard&quot;:&quot;510107198101043429&quot;,&quot;doauditremark&quot;:&quot;&quot;,&quot;sex&quot;:&quot;1&quot;,&quot;birthday&quot;:&quot;1981-01-04&quot;,&quot;industry&quot;:&quot;金融&quot;,&quot;returnpercentage6&quot;:&quot;0.1&quot;,&quot;returnpercentage12&quot;:&quot;0.3&quot;,&quot;returnpercentage24&quot;:&quot;0.6&quot;,&quot;agentId&quot;:&quot;18983&quot;,&quot;city&quot;:&quot;510000-241&quot;}</td></tr>
+                            <tr>
+                                <td style="业务员姓名" data-key="realname" data-line="2" data-id="18849">宋芳</td>
+                                <td style="ID" data-key="usernumber" data-line="2" data-id="18849">AE17067</td>
+                                <td style="注册日期" data-key="createtime" data-line="2" data-id="18849">2016-09-12</td>
+                                <td style="所在地" data-key="provinceid" data-line="2" data-id="18849">贵州省-贵阳市</td>
+                                <td style="联系电话" data-key="mobilenumber" data-line="2" data-id="18849">13808001058</td>
+                                <td style="个人邮箱" data-key="email" data-line="2" data-id="18849">6051911@qq.com</td>
+                                <td style="查看业务员的商家" data-key="agentId" data-line="2" data-id="18849">
+                                    <a class="js-view" data-line="2" data-id="18849">查看业务员的商家</a></td>
+                                <td style="状态" data-key="userstatus" data-line="2" data-id="18849">正常</td>
+                                <td style="操作" data-key="id" data-line="2" data-id="18849">
+                                    <a class="js-eidt" data-line="2" data-id="18849">修改</a>
+                                    <a class="click_stop" data-userid="559498" data-usernumber="AE17067">停用</a></td>
+                                <td style="备注" data-key="remark" data-line="2" data-id="18849"></td>
+                                <td id="table-line-2" class="dsn">{&quot;id&quot;:&quot;18849&quot;,&quot;realname&quot;:&quot;宋芳&quot;,&quot;usernumber&quot;:&quot;AE17067&quot;,&quot;userstatus&quot;:&quot;0&quot;,&quot;provinceid&quot;:&quot;520000&quot;,&quot;cityid&quot;:&quot;262&quot;,&quot;mobilenumber&quot;:&quot;13808001058&quot;,&quot;createtime&quot;:&quot;2016-09-12&quot;,&quot;email&quot;:&quot;6051911@qq.com&quot;,&quot;userid&quot;:&quot;559498&quot;,&quot;username&quot;:&quot;13808001058&quot;,&quot;idcard&quot;:&quot;520113197906282069&quot;,&quot;doauditremark&quot;:&quot;&quot;,&quot;sex&quot;:&quot;1&quot;,&quot;birthday&quot;:&quot;1979-06-27&quot;,&quot;industry&quot;:&quot;房地产/建筑&quot;,&quot;returnpercentage6&quot;:&quot;0.1&quot;,&quot;returnpercentage12&quot;:&quot;0.3&quot;,&quot;returnpercentage24&quot;:&quot;0.6&quot;,&quot;agentId&quot;:&quot;18849&quot;,&quot;city&quot;:&quot;520000-262&quot;}</td></tr>
+                            <tr>
+                                <td style="业务员姓名" data-key="realname" data-line="3" data-id="18783">吴俊霖</td>
+                                <td style="ID" data-key="usernumber" data-line="3" data-id="18783">AE17007</td>
+                                <td style="注册日期" data-key="createtime" data-line="3" data-id="18783">2016-09-11</td>
+                                <td style="所在地" data-key="provinceid" data-line="3" data-id="18783">四川省-成都市</td>
+                                <td style="联系电话" data-key="mobilenumber" data-line="3" data-id="18783">15680968906</td>
+                                <td style="个人邮箱" data-key="email" data-line="3" data-id="18783">251527446@qq.com</td>
+                                <td style="查看业务员的商家" data-key="agentId" data-line="3" data-id="18783">
+                                    <a class="js-view" data-line="3" data-id="18783">查看业务员的商家</a></td>
+                                <td style="状态" data-key="userstatus" data-line="3" data-id="18783">正常</td>
+                                <td style="操作" data-key="id" data-line="3" data-id="18783">
+                                    <a class="js-eidt" data-line="3" data-id="18783">修改</a>
+                                    <a class="click_stop" data-userid="557641" data-usernumber="AE17007">停用</a></td>
+                                <td style="备注" data-key="remark" data-line="3" data-id="18783"></td>
+                                <td id="table-line-3" class="dsn">{&quot;id&quot;:&quot;18783&quot;,&quot;realname&quot;:&quot;吴俊霖&quot;,&quot;usernumber&quot;:&quot;AE17007&quot;,&quot;userstatus&quot;:&quot;0&quot;,&quot;provinceid&quot;:&quot;510000&quot;,&quot;cityid&quot;:&quot;241&quot;,&quot;mobilenumber&quot;:&quot;15680968906&quot;,&quot;createtime&quot;:&quot;2016-09-11&quot;,&quot;email&quot;:&quot;251527446@qq.com&quot;,&quot;userid&quot;:&quot;557641&quot;,&quot;username&quot;:&quot;九尾招财猫&quot;,&quot;idcard&quot;:&quot;513902198710201079&quot;,&quot;doauditremark&quot;:&quot;&quot;,&quot;sex&quot;:&quot;0&quot;,&quot;birthday&quot;:&quot;1987-10-20&quot;,&quot;industry&quot;:&quot;金融&quot;,&quot;returnpercentage6&quot;:&quot;0.1&quot;,&quot;returnpercentage12&quot;:&quot;0.3&quot;,&quot;returnpercentage24&quot;:&quot;0.6&quot;,&quot;agentId&quot;:&quot;18783&quot;,&quot;city&quot;:&quot;510000-241&quot;}</td></tr>
+                            <tr>
+                                <td style="业务员姓名" data-key="realname" data-line="4" data-id="18690">卢春宇</td>
+                                <td style="ID" data-key="usernumber" data-line="4" data-id="18690">AE16919</td>
+                                <td style="注册日期" data-key="createtime" data-line="4" data-id="18690">2016-09-09</td>
+                                <td style="所在地" data-key="provinceid" data-line="4" data-id="18690">四川省-成都市</td>
+                                <td style="联系电话" data-key="mobilenumber" data-line="4" data-id="18690">15892345677</td>
+                                <td style="个人邮箱" data-key="email" data-line="4" data-id="18690">651658571@qq.com</td>
+                                <td style="查看业务员的商家" data-key="agentId" data-line="4" data-id="18690">
+                                    <a class="js-view" data-line="4" data-id="18690">查看业务员的商家</a></td>
+                                <td style="状态" data-key="userstatus" data-line="4" data-id="18690">正常</td>
+                                <td style="操作" data-key="id" data-line="4" data-id="18690">
+                                    <a class="js-eidt" data-line="4" data-id="18690">修改</a>
+                                    <a class="click_stop" data-userid="553295" data-usernumber="AE16919">停用</a></td>
+                                <td style="备注" data-key="remark" data-line="4" data-id="18690"></td>
+                                <td id="table-line-4" class="dsn">{&quot;id&quot;:&quot;18690&quot;,&quot;realname&quot;:&quot;卢春宇&quot;,&quot;usernumber&quot;:&quot;AE16919&quot;,&quot;userstatus&quot;:&quot;0&quot;,&quot;provinceid&quot;:&quot;510000&quot;,&quot;cityid&quot;:&quot;241&quot;,&quot;mobilenumber&quot;:&quot;15892345677&quot;,&quot;createtime&quot;:&quot;2016-09-09&quot;,&quot;email&quot;:&quot;651658571@qq.com&quot;,&quot;userid&quot;:&quot;553295&quot;,&quot;username&quot;:&quot;l651658571&quot;,&quot;idcard&quot;:&quot;511023199305216627&quot;,&quot;doauditremark&quot;:&quot;&quot;,&quot;sex&quot;:&quot;1&quot;,&quot;birthday&quot;:&quot;1993-05-21&quot;,&quot;industry&quot;:&quot;计算机/互联网&quot;,&quot;returnpercentage6&quot;:&quot;0.1&quot;,&quot;returnpercentage12&quot;:&quot;0.3&quot;,&quot;returnpercentage24&quot;:&quot;0.6&quot;,&quot;agentId&quot;:&quot;18690&quot;,&quot;city&quot;:&quot;510000-241&quot;}</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="sui-pagination pagination-small" style="text-align:left;">
+                            <ul id="table-pagination">
+                                <!-- 前半部分（包括当前） -->
+                                <li id="prevBtn" class="prev disabled">
+                                    <a>&laquo;上一页</a>
+                                </li>
+                                <li class="pageBtn active" data-num="1">
+                                    <a>1</a>
+                                </li>
+                                <!-- 后半部分（当前之后） -->
+                                <li id="nextBtn" class="next disabled">
+                                    <a>下一页&raquo;</a>
+                                </li>
+                            </ul>
+                            <div>
+                                <span>共1页&nbsp;</span>
+                      <span>到
+                        <input id="selectPageNum" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" class="page-num" />
+                        <button id="selectPage" class="page-confirm">确定</button>页</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="sui-modal hide fade" tabindex="-1" role="dialog" id="1474872734393" data-hidetype="remove" style="width: 910px; margin-left: -450px; margin-top: -278px; display: block;" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">修改业务员信息</h4></div>
+            <div class="modal-body no-foot" style="height: 520px;">
+                <div id="mySaleManEdit" class="sui-form sui-validate ad-box-auto" novalidate="novalidate">
+                    <input id="id_e" name="id_e" type="hidden" value="19070">
+                    <input id="userid_e" name="userid_e" type="hidden" value="566181">
+                    <input id="edit6" name="edit6" type="hidden" value="0.1">
+                    <input id="edit12" name="edit12" type="hidden" value="0.3">
+                    <input id="edit24" name="edit24" type="hidden" value="0.6">
+                    <div class="table-title">
+                        <font color="blue">基本信息（默认密码：123456）</font></div>
+                    <div class="ad-box">
+                        <div class="spanTitle1">
+                            <font color="red">*</font>姓名:</div>
+                        <div class="span1">
+                            <input id="realname_e" name="realname_e" type="text" data-rules="required|maxlength=20" placeholder="" class="input-xfat"></div>
+                        <div class="spanTitle1">
+                            <font color="red">*</font>用户名:</div>
+                        <div class="span1">
+                            <input id="username_e" name="username_e" type="text" data-rules="required|maxlength=20" placeholder="" class="input-xfat"></div>
+                        <div class="spanTitle1">
+                            <font color="red">*</font>手机号码:</div>
+                        <div class="span1">
+                            <input id="mobilenumber_e" name="mobilenumber_e" type="text" data-rules="required|mobile|maxlength=11" placeholder="" class="input-xfat"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ad-box ">
+                        <div class="spanTitle1">
+                            <font color="red">*</font>身份证号:</div>
+                        <div class="span1">
+                            <input id="idcard_e" name="idcard_e" type="text" data-rules="required|number|maxlength=20" placeholder="" class="input-xfat"></div>
+                        <div class="spanTitle1">
+                            <font color="red">*</font>籍贯:</div>
+                        <div class="span2">
+                            <div id="city_e" class="city">
+                                <div class="info" style="position: relative">
+                                    <div>
+                                        <select id="s_province1" name="s_province"></select>  
+                                        <i class="iconfont" style=" position: absolute;left:135px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                                        <!--<i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>-->
+                                        <select id="s_city1" name="s_city"></select>  
+                                        <i class="iconfont" style=" position: absolute;left:302px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                                        <select id="s_county1" name="s_county" style="display: none"></select>
+                                        <script class="resources library" src="../js/area.js" type="text/javascript"></script>
+                                        <script type="text/javascript">_init_area1();</script>
+                                    </div>
+                                    <div id="show1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ad-box ">
+                        <div class="spanTitle1">
+                            <font color="red">*</font>性别:</div>
+                        <div class="span1">
+              <span class="sui-dropdown dropdown-bordered select7 hAuto">
+                <span class="dropdown-inner">
+                  <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                      <input id="sex_e" name="sex_e" type="hidden" data-rules="required" data-empty-msg="请选择性别" value="1">
+                      <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                      <span>女</span></a>
+                  <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu7">
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">男</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">女</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">保密</a></li>
+                  </ul>
+                </span>
+              </span>
+                        </div>
+                        <div class="spanTitle1">
+                            <font color="red">*</font>出生日期:</div>
+                        <div class="span1">
+                            <input type="text" id="birthday_e" name="birthday_e" class="ad-widget167 input-xfat input-date" data-rules="required|date" data-error-msg="出生日期格式错误" data-empty-msg="出生日期不能为空" data-toggle="datepicker"></div>
+                        <div class="spanTitle1">
+                            <font color="red">*</font>所在行业:</div>
+                        <div class="span1">
+              <span class="sui-dropdown dropdown-bordered select8 hAuto">
+                <span class="dropdown-inner">
+                  <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                      <input id="industry_e" name="industry_e" type="hidden" data-rules="required" data-empty-msg="请选择行业" value="计算机/互联网">
+                      <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                      <span>计算机/互联网</span></a>
+                  <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu8">
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="计算机/互联网">计算机/互联网</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="通信/电子">通信/电子</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="金融">金融</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="贸易/制造">贸易/制造</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="医疗">医疗</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="广告/媒体">广告/媒体</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="房地产/建筑">房地产/建筑</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="教育/培训">游戏</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="旅游">旅游</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="娱乐">娱乐</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="餐饮">餐饮</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="休闲/服务业">休闲/服务业</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="物流/交通/航空">物流/交通/航空</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="能源/原材料">能源/原材料</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="政府/非盈利机构">政府/非盈利机构</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="其他">其他</a></li>
+                  </ul>
+                </span>
+              </span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ad-box ">
+                        <div class="spanTitle1">
+                            <font color="red">*</font>邮箱:</div>
+                        <div class="span1">
+                            <input id="email_e" name="email_e" type="text" data-rules="required|email|maxlength=30" placeholder="" class="input-xfat"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="table-title">
+                        <font color="blue">激励比例（选择每种激励模式下可以给该业务员授权的激励比例）</font></div>
+                    <div class="ad-box">
+                        <div class="spanTitle1">
+                            <font color="red">*</font>6%:</div>
+                        <div class="span1">
+              <span class="sui-dropdown dropdown-bordered select9 hAuto">
+                <span class="dropdown-inner">
+                  <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                      <input id="returnpercentage6_e" name="returnpercentage6_e" type="hidden" data-rules="required" data-empty-msg="请选择分配比例" value="0.1">
+                      <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                      <span>0.1</span></a>
+                  <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu9">
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.1">0.1</a></li>
+                  </ul>
+                </span>
+              </span>
+                        </div>
+                        <div class="spanTitle1">
+                            <font color="red">*</font>12%:</div>
+                        <div class="span1">
+              <span class="sui-dropdown dropdown-bordered select10 hAuto">
+                <span class="dropdown-inner">
+                  <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                      <input id="returnpercentage12_e" name="returnpercentage12_e" type="hidden" data-rules="required" data-empty-msg="请选择分配比例" value="0.3">
+                      <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                      <span>0.3</span></a>
+                  <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu10">
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.1">0.1</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.2">0.2</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.3">0.3</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.4">0.4</a></li>
+                  </ul>
+                </span>
+              </span>
+                        </div>
+                        <div class="spanTitle1">
+                            <font color="red">*</font>24%:</div>
+                        <div class="span1">
+              <span class="sui-dropdown dropdown-bordered select11 hAuto">
+                <span class="dropdown-inner">
+                  <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                      <input id="returnpercentage24_e" name="returnpercentage24_e" type="hidden" data-rules="required" data-empty-msg="请选择分配比例" value="0.6">
+                      <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                      <span>0.6</span></a>
+                  <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu11">
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.1">0.1</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.2">0.2</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.3">0.3</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.4">0.4</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.5">0.5</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.6">0.6</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.7">0.7</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.8">0.8</a></li>
+                      <li role="presentation">
+                          <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0.9">0.9</a></li>
+                  </ul>
+                </span>
+              </span>
+                        </div>
+                    </div>
+                    <div align="left">
+                        <input class="sui-btn btn-primary btn-large ad-blue-btn" style="margin-left: 360px;margin-bottom: 10px;margin-top: 20px;" type="button" value="提交" id="editSave">
+                        <input class="sui-btn btn-primary btn-large ad-blue-btn" style="margin-left: 50px;margin-bottom: 10px;margin-top: 20px;" type="button" value="取消" id="editCancel"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sui-modal-backdrop fade" style="background:#123456;z-index:-1"></div>
+<div class="sui-modal hide fade" tabindex="-1" role="dialog" id="1474872834952" data-hidetype="remove" style="width: 710px; margin-left: -350px; margin-top: -163px; display: block;" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">业务员停用</h4></div>
+            <div class="modal-body no-foot" style="height: 220px;">
+                <div class="spanTitle">停用原因:</div>
+                <div class="span3">
+                    <textarea id="doauditremark" rows="4" cols="80"></textarea>
+                </div>
+                <div class="clear"></div>
+                <div class="spanTitle"></div>
+                <div class="span1" style="margin:10px 0px 0px 60px;">
+                    <input type="button" id="auditnotpass" class="ad-btn ad-blue-btn" value="停用"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".sui-nav li").click(function(){
+        var i=$(".sui-nav li").index(this)
+        $(".sui-nav li").removeClass("active");
+        $(".sui-nav li").eq(i).addClass("active");
+        $(".tab-pane").removeClass("active");
+        $(".tab-pane").eq(i).addClass("active");
+    });
+    $(".dropdown-toggle").eq(0).click(function(){
+        $(".select1").toggleClass("open");
+    });
+    $(".sui-dropdown-menu1 li").click(function(){
+        var i=$(".sui-dropdown-menu1 li").index(this);
+        var x= $(".sui-dropdown-menu1 li a").eq(i).html();
+        $(".sui-dropdown-menu1 li").removeClass("active");
+        $(".sui-dropdown-menu1 li").eq(i).addClass("active");
+        $(".select1 span span").html(x);
+        $(".select1").removeClass("open");
+    });
+    $(".dropdown-toggle").eq(1).click(function(){
+        $(".select2").toggleClass("open");
+    });
+    $(".sui-dropdown-menu2 li").click(function(){
+        var i=$(".sui-dropdown-menu2 li").index(this);
+        var x= $(".sui-dropdown-menu2 li a").eq(i).html();
+        $(".sui-dropdown-menu2 li").removeClass("active");
+        $(".sui-dropdown-menu2 li").eq(i).addClass("active");
+        $(".select2 span span").html(x);
+        $(".select2").removeClass("open");
+    });
+    $(".dropdown-toggle").eq(2).click(function(){
+        $(".select3").toggleClass("open");
+    });
+    $(".sui-dropdown-menu3 li").click(function(){
+        var i=$(".sui-dropdown-menu3 li").index(this);
+        var x= $(".sui-dropdown-menu3 li a").eq(i).html();
+        $(".sui-dropdown-menu3 li").removeClass("active");
+        $(".sui-dropdown-menu3 li").eq(i).addClass("active");
+        $(".select3 span span").html(x);
+        $(".select3").removeClass("open");
+    });
+    $(".dropdown-toggle").eq(3).click(function(){
+        $(".select4").toggleClass("open");
+    });
+    $(".sui-dropdown-menu4 li").click(function(){
+        var i=$(".sui-dropdown-menu4 li").index(this);
+        var x= $(".sui-dropdown-menu4 li a").eq(i).html();
+        $(".sui-dropdown-menu4 li").removeClass("active");
+        $(".sui-dropdown-menu4 li").eq(i).addClass("active");
+        $(".select4 span span").html(x);
+        $(".select4").removeClass("open");
+    });
+    $(".dropdown-toggle").eq(4).click(function(){
+        $(".select5").toggleClass("open");
+    });
+    $(".sui-dropdown-menu5 li").click(function(){
+        var i=$(".sui-dropdown-menu5 li").index(this);
+        var x= $(".sui-dropdown-menu5 li a").eq(i).html();
+        $(".sui-dropdown-menu5 li").removeClass("active");
+        $(".sui-dropdown-menu5 li").eq(i).addClass("active");
+        $(".select5 span span").html(x);
+        $(".select5").removeClass("open");
+    });
+    $(".dropdown-toggle").eq(5).click(function(){
+        $(".select6").toggleClass("open");
+    });
+    $(".sui-dropdown-menu6 li").click(function(){
+        var i=$(".sui-dropdown-menu6 li").index(this);
+        var x= $(".sui-dropdown-menu6 li a").eq(i).html();
+        $(".sui-dropdown-menu6 li").removeClass("active");
+        $(".sui-dropdown-menu6 li").eq(i).addClass("active");
+        $(".select6 span span").html(x);
+        $(".select6").removeClass("open");
+    });
+    $(".dropdown-toggle").eq(6).click(function(){
+        $(".select7").toggleClass("open");
+    });
+    $(".sui-dropdown-menu7 li").click(function(){
+        var i=$(".sui-dropdown-menu7 li").index(this);
+        var x= $(".sui-dropdown-menu7 li a").eq(i).html();
+        $(".sui-dropdown-menu7 li").removeClass("active");
+        $(".sui-dropdown-menu7 li").eq(i).addClass("active");
+        $(".select7 span span").html(x);
+        $(".select7").removeClass("open");
+    });
+    $(".dropdown-toggle").eq(7).click(function(){
+        $(".select8").toggleClass("open");
+    });
+    $(".sui-dropdown-menu8 li").click(function(){
+        var i=$(".sui-dropdown-menu8 li").index(this);
+        var x= $(".sui-dropdown-menu8 li a").eq(i).html();
+        $(".sui-dropdown-menu8 li").removeClass("active");
+        $(".sui-dropdown-menu8 li").eq(i).addClass("active");
+        $(".select8 span span").html(x);
+        $(".select8").removeClass("open");
+    });
+    $(".dropdown-toggle").eq(8).click(function(){
+        $(".select9").toggleClass("open");
+    });
+    $(".sui-dropdown-menu9 li").click(function(){
+        var i=$(".sui-dropdown-menu9 li").index(this);
+        var x= $(".sui-dropdown-menu9 li a").eq(i).html();
+        $(".sui-dropdown-menu9 li").removeClass("active");
+        $(".sui-dropdown-menu9 li").eq(i).addClass("active");
+        $(".select9 span span").html(x);
+        $(".select9").removeClass("open");
+    });
+    $(".dropdown-toggle").eq(9).click(function(){
+        $(".select10").toggleClass("open");
+    });
+    $(".sui-dropdown-menu10 li").click(function(){
+        var i=$(".sui-dropdown-menu10 li").index(this);
+        var x= $(".sui-dropdown-menu10 li a").eq(i).html();
+        $(".sui-dropdown-menu10 li").removeClass("active");
+        $(".sui-dropdown-menu10 li").eq(i).addClass("active");
+        $(".select10 span span").html(x);
+        $(".select10").removeClass("open");
+    });
+    $(".dropdown-toggle").eq(10).click(function(){
+        $(".select11").toggleClass("open");
+    });
+    $(".sui-dropdown-menu11 li").click(function(){
+        var i=$(".sui-dropdown-menu11 li").index(this);
+        var x= $(".sui-dropdown-menu11 li a").eq(i).html();
+        $(".sui-dropdown-menu11 li").removeClass("active");
+        $(".sui-dropdown-menu11 li").eq(i).addClass("active");
+        $(".select11 span span").html(x);
+        $(".select11").removeClass("open");
+    });
+    $('.dropdown-inner').mouseleave(function(){
+        $(".select1").removeClass("open");
+        $(".select2").removeClass("open");
+        $(".select3").removeClass("open");
+        $(".select4").removeClass("open");
+        $(".select5").removeClass("open");
+        $(".select6").removeClass("open");
+        $(".select7").removeClass("open");
+        $(".select8").removeClass("open");
+        $(".select9").removeClass("open");
+        $(".select10").removeClass("open");
+        $(".select11").removeClass("open");
+    });
+    $(".js-eidt").click(function(){
+        $(".sui-modal").eq(0).addClass("in");
+        $(".sui-modal-backdrop").css("zIndex","1").addClass("in");
+    });
+    $(".sui-close").click(function(){
+        $(".sui-modal").eq(0).removeClass("in");
+        $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
+    })
+    $(".click_stop").click(function(){
+        $(".sui-modal").eq(1).addClass("in");
+        $(".sui-modal-backdrop").css("zIndex","1").addClass("in");
+    });
+    $(".sui-close").click(function(){
+        $(".sui-modal").eq(1).removeClass("in");
+        $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
+    })
+
+</script>
+</body>
+
+</html>

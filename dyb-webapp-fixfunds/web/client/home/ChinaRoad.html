@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0039)http://www.1dotchina.com/ChinaRoad.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>
+    中国行
+</title><link rel="stylesheet" type="text/css" href="./css/common.css"><link rel="stylesheet" type="text/css" href="./css/page.css">
+    <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/bxslider.css">
+    <script type="text/javascript" src="./js/bxslider.js"></script>
+    <script src="./js/site.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var info, Result;
+            var array = new Array();
+            info = ajaxSync(('GetChinaRoadList'), array);
+            var listHtml = "";
+            if (info) {
+                Result = eval("(" + info + ")"); //转换为json对象;否则必须指定json类.trimBadWords("<p>","")
+                for (i = 0; i < Result.length; i++) {
+                    if (Result[i]) {
+                        listHtml += '<div class="commonweal">';
+
+                        listHtml += '<ul class="slides">';
+
+                        listHtml += '<li><img alt="" src="' + Result[i].ImageInfo + '" /></li>';
+
+                        listHtml += '</ul>';
+                        listHtml += '<div class="frcont">';
+                        listHtml += '<p class="p1">' + Result[i].Title + '</p>';
+                        listHtml += '<p class="p2">' + Result[i].Brief + '</p>';
+                         listHtml += '</div>';
+                        listHtml += '</div>';
+                    }
+                }
+            }
+            $("#content").html(listHtml);
+
+
+
+            $('.slides').bxSlider({
+                slideWidth: 660,
+                infiniteLoop: false,
+                hideControlOnEnd: true,
+                slideMargin: 10
+            });
+
+            $(".bx-controls-direction").remove();
+        });
+    </script>
+</head>
+<body>
+<form method="post" action="http://www.1dotchina.com/ChinaRoad.aspx" id="form1">
+    <div class="aspNetHidden">
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE1NjU3MTM2OTdkZFeG7BdzxWEWbRSlSM1PYWLH+dqwR4oSnbevLkRIURJX">
+    </div>
+
+    <div class="aspNetHidden">
+
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="438FA748">
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAJXuSu6s44ncYnFkMASFRBJHM7uG03lTmDLjCyZsdSaI7rSup9QBDoJ2ERed6BaNE3LmzbJm9KAUszmGGunvOG+">
+    </div>
+
+    <div class="headtop clearfix">
+        <div class="w_auto_small">
+            <div class="fr headtopR"><a href="login.html" target="_blank">登录</a></div>
+            <ul class="headtopL">
+                <li><a href="index.html">一点公益</a></li>
+                <li><a href="./ChinaRoad.html">中国行</a></li>
+                <li><a href="Education.html">一点学堂</a></li>
+                <li><a href="ensure.html">消费保障</a></li>
+                <li><a href="YDGYcourier.html">下载中心</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- header -->
+    <div class="header">
+        <div class="w_auto_small">
+            <div class="fr">
+                <input name="txtType" type="hidden" id="txtType" value="20">
+
+                <script type="text/javascript">
+                    function search() {
+                        var key = document.getElementById("txtKey").value;
+                        var type = "";
+                        if (document.getElementById("txtType")) {
+                            type = document.getElementById("txtType").value;
+                        }
+                        if (key == "") {
+                            alert("请输入查询内容！");
+                            return;
+                        }
+                        window.open("SearchList.aspx?key=" + key + "type=" + type + "");
+                    }
+                </script>
+                <input type="text" id="txtKey" class="searchText" placeholder="查找更多内容"><a href="javascript:search();" class="searchBtn"><i></i></a>
+                中国行</div>
+            <a href="index.html" class="logo"></a>
+        </div>
+    </div>
+    <div class="banner" style="background: url(./images/d6386138-c0cc-41fd-a1f8-c65e4a936dd9.jpg) top center no-repeat;
+        height: 538px;">
+    </div>
+    <div class="w_auto_small" id="content"><div class="commonweal"><div class="bx-wrapper" style="max-width: 660px;"><div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 320px;"><ul class="slides" style="width: 315%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);"><li style="float: left; list-style: none; position: relative; width: 660px; margin-right: 10px;"><img alt="" src="./images/42a8f5b7-014f-418b-af04-8a0eb9d3fe47.jpg"></li></ul></div><div class="bx-controls bx-has-pager bx-has-controls-direction"><div class="bx-pager bx-default-pager"><div class="bx-pager-item"><a href="http://www.1dotchina.com/ChinaRoad.aspx" data-slide-index="0" class="bx-pager-link active">1</a></div></div></div></div><div class="frcont"><p class="p1">一点公益中国行在重庆启航！</p><p class="p2">一点公益中国行在重庆启航！</p><p class="p3"><a href="http://www.1dotchina.com/details.aspx?NewsId=53" target="_blank">[详细]</a></p></div></div></div>
+    <!-- footer -->
+
+    <div class="footer" style="padding-top: 20px; height: 420px">
+        <div class="news1">
+        </div>
+        <div class="news2">
+            <a href="http://www.1dotchina.com/DongTaiDetails.aspx?TypeId=19" target="_blank">关于我们</a> <a href="http://www.1dotchina.com/DongTaiDetails.aspx?TypeId=18" target="_blank">联系方式</a>
+            <a href="http://www.1dotchina.com/DongTaiDetails.aspx?TypeId=16" target="_blank">隐私条款</a> <a href="http://www.1dotchina.com/DongTaiDetails.aspx?TypeId=15" target="_blank">免责声明</a> <a href="http://www.1dotchina.com/StaffSearch.aspx">员工查询</a>
+        </div>
+        <div class="news3">
+            <img src="./images/support.jpg"></div>
+        <ul class="news4 clearfix" style="margin-top: 30px; width: 440px">
+            <li class="fl" style="width: 200px">
+                <img width="190px;" height="190px;" src="./images/erweima01.jpg">
+                官方微博：一点公益运营中心 </li>
+            <li class="fr" style="width: 200px">
+                <img width="190px;" height="190px;" src="./images/erweima02.jpg">
+                官方微信：一点公益运营中心 </li>
+        </ul>
+    </div>
+    <!-- copyright -->
+    <div class="copyright">
+        2015-2016 © 1dotchina.com -深圳前海中盛一点科技有限公司版权所有 粤ICP备15082614号</div>
+
+</form>
+
+
+</body></html>

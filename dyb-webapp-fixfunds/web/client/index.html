@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/style1.3.19.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一点公益</title>
+	<link rel="stylesheet" href="css/sui.min.css">
+	<link rel="stylesheet" href="css/sui-append.min.css">
+	<link rel="stylesheet" href="css/adAlert.css">
+	<link rel="stylesheet" href="css/cropper.css">
+	<link rel="stylesheet" href="css/zTreeStyle.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/side.css">
+	<link rel="stylesheet" href="css/table.css">
+	<link href="css/index.css" type="text/css" rel="stylesheet">
+	<script src="./js/jquery.min.js" type="text/javascript"></script>
+	<script src="./js/commons.js" type="text/javascript"></script>
+	<script src="./js/menu.js" type="text/javascript"></script>
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=5b66ed3b0491028a420e742daf016e6d&callback=init"></script>
+</head>
+<body id="ad-app" data-apptype="ad-app" class="relative">
+<div id="head" class="ad-head">
+	<img class="logo" src="images/logo.png">
+	<div class="headMenu">
+		<div id="js-xtjc">
+			<!-- <div id="js-TopMenu-jc"><i class="sys"><img src="../images/sys.png"></i>系统集成<i class="fxs"><img src="../images/fxs.png"></i></div> -->
+			<div id="menu-jc-line">
+				<p>
+					<a>公益商城</a></p>
+				<p>
+					<a style="diaplay:block;">工单系统</a></p>
+			</div>
+		</div>
+		<div class="headMenu-msg" style="margin-top: 8px">
+			<i class="iconfont" id="MyMessage" style="font-size:32px;margin-top: 5px"  onclick="document.location='message.html';">&#xe673;</i>
+			<div class="headMenu-msg-no" id="unreadMsgCount" style=" width: 20px;height: 20px;background: red;-moz-border-radius: 10px;-webkit-border-radius: 10px; border-radius: 20px;right:-6px;top:-8px;">0</div>
+		</div>
+		<div id="headMenu-touxiang" class="headMenu-touxiang-box">
+          <span class="sui-dropdown dropdown-bordered">
+            <span class="dropdown-inner" style="border:0;">
+              <a role="button" href="javascript:void(0);" data-toggle="dropdown" data-trigger="hover" class="">
+				  <i class="iconfont" style="color:#f00;">&#xe60c;</i>
+			  </a>
+              <span id="indexusername">大奔</span>
+              <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu">
+				  <li role="presentation" class="divider"></li>
+				  <li id="logout" role="presentation">
+					  <a>退出</a>
+				  </li>
+			  </ul>
+            </span>
+          </span>
+		</div>
+		<select name="role" id="role1" onchange="changeRole();" style="width: 100px; display: none;"></select>
+	</div>
+	<ul id="nav" class="right_menu menu-nav">
+	<li class="js-TopMenuChange  z-crt" id="menu2">
+		<a href="./index.html">
+			<i class="iconfont">&#xe690;</i>
+			<div>首页</div></a>
+	</li>
+	<li class="js-TopMenuChange" id="menu4">
+		<a href="publicModule/donate.html">
+			<i class="iconfont">&#xe607;</i>
+			<div>我要直捐</div></a>
+	</li>
+	<li class="js-TopMenuChange" id="menu5">
+		<a href="publicModule/withdraw.html">
+			<i class="iconfont">&#xe603;</i>
+			<div>我要回购</div></a>
+	</li>
+	<li class="js-TopMenuChange" id="menu6">
+		<a href="publicModule/download.html">
+			<i class="iconfont">&#xe60a;</i>
+			<div>下载中心</div></a>
+	</li>
+	<li class="js-TopMenuChange" id="menu7">
+		<a href="publicModule/feedback.html">
+			<i class="iconfont" style="font-size: 22px">&#xe618;</i>
+			<div>意见反馈</div></a>
+	</li>
+	<li class="js-TopMenuChange" id="menu7">
+		<a href="publicModule/remark.html">
+			<i class="iconfont">&#xe680;</i>
+			<div>关于一点公益</div></a>
+	</li>
+	<li class="js-TopMenuChange" id="menu8" style="display: none;">
+		<a>
+			<div class="js-messenger-bg" style="float:left"></div>
+			<div style="float:left">进入信使中心</div></a>
+	</li>
+	<li class="js-TopMenuChange" id="menu9" style="display: none;">
+		<a>
+			<div class="js-Merchant-bg" style="float:left"></div>
+			<div style="float:left">进入商户中心</div></a>
+	</li>
+</ul>
+</div>
+<div class="clear"></div>
+<div id="ad-center">
+	<div id="menu" class="ad-menu">
+		<ul class="menu1">
+			<li class="menu1-btn" style="margin-left: 8px">
+				<i id="menuZoom" class="iconfont">&#xe6dc;</i>
+			</li>
+			<li class="menuCity">
+				<span class="js-adShowHide">城市：</span>
+				<a class="city">深圳</a></li>
+		</ul>
+		<ul class="menu" id="leftmenu" style="float:left">
+			<!-- 菜单模板 -->
+			<!--<li class="js-menu-parent-li" style="position: relative">-->
+				<!--<a class="js-menu-parent-li-a">-->
+					<!--<i class="ad-icon sui-icon iconfonts  icon-tb-emoji" style="margin-top:14px;"></i>-->
+					<!--<span class="ad-menu-parent js-adShowHide">信使资料</span>-->
+					<!--<i class="iconfont icons1" style="font-size: 16px">&#xe60b;</i>-->
+					<!--<i class="iconfont icons2" style="font-size: 16px;display: none">&#xe68b;</i>-->
+				<!--</a>-->
+				<!--<ul class="js-subMenu-absolute" style="display: none;">-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="Merchant-xs/member.html">信使信息</a>-->
+					<!--</li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive"  href="publicModule/modifypwd.html" >修改密码</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+			<!--<li class="js-menu-parent-li" style="position: relative;">-->
+				<!--<a class="js-menu-parent-li-a">-->
+					<!--<i class="ad-icon sui-icon iconfonts  icon-tb-emoji" style="margin-top:14px;"></i>-->
+					<!--<span class="ad-menu-parent js-adShowHide">信使管理</span>-->
+					<!--<i class="iconfont icons1" style="font-size: 16px">&#xe60b;</i>-->
+					<!--<i class="iconfont icons2" style="font-size: 16px;display: none">&#xe68b;</i>-->
+				<!--</a>-->
+				<!--<ul class="js-subMenu-absolute" style="display: none;">-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="publicModule/whitelist.html">商家查询</a></li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="Merchant-xs/expense.html">我的公益消费</a></li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="Merchant-xs/heart.html">我的爱心</a></li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive"  href="Merchant-xs/excitation.html">我的激励</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+			<!--<li class="js-menu-parent-li" style="position: relative;">-->
+				<!--<a class="js-menu-parent-li-a">-->
+					<!--<i class="ad-icon sui-icon iconfonts  icon-tb-emoji" style="margin-top:14px;"></i>-->
+					<!--<span class="ad-menu-parent js-adShowHide">推荐管理</span>-->
+					<!--<i class="iconfont icons1" style="font-size: 16px">&#xe60b;</i>-->
+					<!--<i class="iconfont icons2" style="font-size: 16px;display: none">&#xe68b;</i>-->
+				<!--</a>-->
+				<!--<ul class="js-subMenu-absolute" style="display: none;">-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="publicModule/recommendManage.html">我要推荐</a></li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="publicModule/recommendPage.html">推荐记录</a></li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive"  href="publicModule/personalreferrerflow.html">推荐激励</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+			<!--<li class="js-menu-parent-li" style="position: relative;">-->
+				<!--<a class="js-menu-parent-li-a">-->
+					<!--<i class="ad-icon sui-icon iconfonts  icon-tb-emoji" style="margin-top:14px;"></i>-->
+					<!--<span class="ad-menu-parent js-adShowHide">直捐管理</span>-->
+					<!--<i class="iconfont icons1" style="font-size: 16px">&#xe60b;</i>-->
+					<!--<i class="iconfont icons2" style="font-size: 16px;display: none">&#xe68b;</i>-->
+				<!--</a>-->
+				<!--<ul class="js-subMenu-absolute" style="display: none;">-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="publicModule/donate.html">我要直捐</a></li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="publicModule/donateList.html">直捐记录</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+			<!--<li class="js-menu-parent-li" style="position: relative;">-->
+				<!--<a class="js-menu-parent-li-a">-->
+					<!--<i class="ad-icon sui-icon iconfonts  icon-tb-emoji" style="margin-top:14px;"></i>-->
+					<!--<span class="ad-menu-parent js-adShowHide">转赠管理</span>-->
+					<!--<i class="iconfont icons1" style="font-size: 16px">&#xe60b;</i>-->
+					<!--<i class="iconfont icons2" style="font-size: 16px;display: none">&#xe68b;</i>-->
+				<!--</a>-->
+				<!--<ul class="js-subMenu-absolute" style="display: none;">-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="publicModule/donation.html">我要转赠</a></li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="publicModule/donationList.html">转赠记录</a></li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="publicModule/donationRecList.html">获赠记录</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+			<!--<li class="js-menu-parent-li" style="position: relative;">-->
+				<!--<a class="js-menu-parent-li-a">-->
+					<!--<i class="ad-icon sui-icon iconfonts  icon-tb-emoji" style="margin-top:14px;"></i>-->
+					<!--<span class="ad-menu-parent js-adShowHide">回购管理</span>-->
+					<!--<i class="iconfont icons1" style="font-size: 16px">&#xe60b;</i>-->
+					<!--<i class="iconfont icons2" style="font-size: 16px;display: none">&#xe68b;</i>-->
+				<!--</a>-->
+				<!--<ul class="js-subMenu-absolute" style="display: none;">-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="publicModule/withdraw.html">我要回购</a></li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive"  href="publicModule/withdrawrecord.html">回购记录</a></li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive"  href="publicModule/bankList.html">银行账号</a></li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive"  href="publicModule/switchdrawre.html">转换信使豆</a></li>-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive"  href="publicModule/switchdrawrecord.html">转换记录</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+			<!--<li class="js-menu-parent-li" style="position: relative;">-->
+				<!--<a class="js-menu-parent-li-a">-->
+					<!--<i class="ad-icon sui-icon iconfonts  icon-tb-emoji" style="margin-top:14px;"></i>-->
+					<!--<span class="ad-menu-parent js-adShowHide">黑名单管理</span>-->
+					<!--<i class="iconfont icons1" style="font-size: 16px">&#xe60b;</i>-->
+					<!--<i class="iconfont icons2" style="font-size: 16px;display: none">&#xe68b;</i>-->
+				<!--</a>-->
+				<!--<ul class="js-subMenu-absolute" style="display: none;">-->
+					<!--<li>-->
+						<!--<a class="can_dispatch js-subActive" href="publicModule/blacklist.html">黑名单查询</a></li>-->
+				<!--</ul>-->
+			<!--</li>-->
+		</ul>
+	</div>
+	<div id="ad-content" class="ad-content">
+
+	</div>
+
+	<input type='hidden' id='longitude' value=''>
+	<input type='hidden' id='latitude' value=''>
+	<input type='hidden' id='address' value=''>
+
+	<div class="clear"></div>
+</div>
+<div class="clear"></div>
+<!-- <div class="ad-foot-area"></div> -->
+<div id="footer" class="ad-foot">
+	<p>
+		<img class="ad-footer-img" src="images/footer1.png"></p>
+	<p>客服电话:400 666 3502 工作时间: 9:00-18:00(法定工作日)</p>
+	<p>Copyright©2015-2020 深圳前海中盛一点科技有限公司版权所有
+		<a>粤ICP备15082614号-2</a></p>
+</div>
+
+</body>
+<script>
+	function getpage(url){
+		$.get(url,function(data){
+			$("#ad-content").html(data)
+		})
+	}
+	getpage("./Merchant-sj/merchantInfo.html");
+//	$(".ad-blue-btn").click(function(){
+//		alert(11)
+//		getpage("./Merchant-xs/modifymember.html");
+//	})
+
+//	console.log(6/2*(1+2))
+</script>
+</html>

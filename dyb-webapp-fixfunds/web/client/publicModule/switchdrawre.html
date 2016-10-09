@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://www.51ydgy.com/index.html#publicModule/switch/switchdrawre -->
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一点公益</title>
+</head>
+
+<body id="ad-app" data-apptype="ad-app" class="relative">
+		<div id="content" class="ad-content2 sui-form relative">
+			<div class="table-crud">
+				<p style="color:#B63131;padding-left:22px; font-size: 22px;float: left;" align="left">信使豆转换申请</p>
+				<p style="padding-left:22px;padding-top:5px;color: gray;float: left;" align="left">您可将待缴税信使豆/待提供发票信使豆转换成普通信使豆</p></div>
+			<div class="clear"></div>
+			<div id="applywithdraw" class="sui-validate ad-box-auto" novalidate="novalidate">
+				<input type="text" id="bankid" name="bankid" style="display: none" value="">
+				<input type="text" id="subbankname" name="subbankname" style="display: none" value="">
+				<div class="ad-box">
+					<div class="spanTitle2">转换类型：</div>
+					<div class="span1">
+                <span class="sui-dropdown dropdown-bordered select hAuto">
+                  <span class="dropdown-inner">
+                    <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+						<input id="converttype" value="0" name="converttype" type="hidden">
+						<i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+						<span id="converttype-v">待缴税转普通</span></a>
+                  </span>
+                </span>
+					</div>
+					<div class="spanTitle1">当前可转换信使豆：</div>
+					<div class="span1 span-line">
+						<span id="nopaycount" style="color: rgb(182, 49, 49);font-size:18px;">0</span>(颗)</div>
+					<div class="clear"></div>
+				</div>
+				<div class="ad-box">
+					<div class="spanTitle2">转换信使豆：</div>
+					<div class="span1">
+						<input type="text" value="" id="beannum" name="beannum" data-rules="required|number|digits|gt=99|lt=50001" placeholder="请输入100的整数倍" class="input-xfat" autocomplete="off"></div>
+					<div class="span2">
+						<font style="color: gray;font-size: 12px;"></font>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="ad-box">
+					<div id="tax_tip1" class="spanTitle2">代扣税：</div>
+					<div id="tax_tip2" class="span span-line">
+						<span id="taxbean" style="margin-left: 5px;color:#f00;font-size:18px;">0</span>(颗)</div>
+					<div class="spanTitle1" id="spanTitle1" style="margin-left: 15px;">可转换为普通信使豆：</div>
+					<div class="span1 span-line">
+						<span id="switch_couriercount" style="margin-left: 5px;color:#f00;font-size:18px;">0</span>(颗)</div>
+					<div class="clear"></div>
+				</div>
+				<div class="ad-box">
+					<div class="spanTitle2">二级密码：</div>
+					<div class="span2 err-inline">
+						<input type="password" id="password" name="password" data-rules="required|maxlength=6" class="input-xfat" style="width:41%;" autocomplete="off"></div>
+					<div class="clear"></div>
+				</div>
+				<!-- 新增发票明细 -->
+				<div id="Invoice-detail" style="display:none;">
+					<div class="Invoice-detail-t">
+						<p class="Invoice-detail-t-l">发票明细</p>
+						<p class="Invoice-detail-t-r">
+							<a id="Invoice-detail-add">增加</a></p>
+					</div>
+					<div style="clear:both;"></div>
+					<div class="Invoice-detail-b">
+						<table class="sui-table table-bordered center">
+							<tbody id="tbody">
+							<tr>
+								<td style="width:60px;">发票号</td>
+								<td style="width:60px;">发票面额</td>
+								<td style="width:60px;">操作</td></tr>
+							<tr id="Invoice-detail-form0" class="contentLine" data_id="0">
+								<td>
+									<input id="num0" type="text"></td>
+								<td>
+									<input id="money0" type="text"></td>
+								<td>
+									<a id="Invoice-delet"></a>
+								</td>
+							</tr>
+							<tr>
+								<td>合计</td>
+								<td id="Invoice-Total">0</td>
+								<td></td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="ad-box mt10">
+					<div class="spanTitle2"></div>
+					<input class="sui-btn btn-primary btn-xlarge ad-blue-btn" type="button" value="确认" id="submitForm"></div>
+				<div class="table-tip">温馨提示：
+					<br>1、单笔最多转换50000颗；
+					<br>2、信使豆转换机制：
+					<br>　&nbsp;&nbsp;1）待缴税信使豆转换普通信使豆，则扣取信使豆作为代扣税=转换信使豆*扣税比例（4.8%），信使豆立即转换成功；
+					<br>　&nbsp;&nbsp;2）待提供发票信使豆转换成普通信使豆，无需扣税，但需要提供发票，发票号总面额须大于或等于转换信使豆数量，审核通过后，信使豆才转换成功。
+					<br>　&nbsp;&nbsp;发票仅接收
+					<a style="color: red;">增值税专用发票</a>；发票寄送地址：深圳市南山区朗山路16号华翰科技园C座603室 ；收件人：陈玉珍；联系电话：0755-86703123 转 818
+					<br>3、转换信使豆无需扣取手续费；
+					<br>4、每月1-20号允许转换信使豆，其他时间不允许转换。</div></div>
+		</div>
+</body>
+
+</html>

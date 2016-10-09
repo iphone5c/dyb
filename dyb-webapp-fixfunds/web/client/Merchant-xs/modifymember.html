@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="./css/style1.3.19.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一点公益</title>
+</head>
+
+<style type="text/css">
+	.top{ margin:5px auto; color:#990000; text-align:center;}
+	.info select{  background:#FFFFFF;}
+	.info{
+		float: left;text-align:center;}
+	.info #show{ color:#3399FF; }
+	.bottom{ text-align:right; font-size:12px; color:#CCCCCC; width:1000px;}
+	select{
+		width: 155px;
+		height: 32px !important;
+		outline: none !important;
+		border: 1px solid #CCCCCC !important;
+		color: #555 !important;
+		font-size: 13px !important;
+		box-sizing: border-box;
+		appearance:none;
+		-moz-appearance:none;
+		-webkit-appearance:none;
+		-ms-appearance:none;
+		padding-top: 5px !important;
+	}
+	select a{
+		text-decoration:none;
+		box-sizing: border-box;
+		color: #555 !important;
+	}
+	select option{
+		text-decoration:none;
+		box-sizing: border-box;
+		color: #555 !important;
+	}
+	select a:hover{color:#28a3ef;}
+</style>
+<body id="ad-app" data-apptype="ad-app" class="relative">
+		<div id="content" class="ad-content2 sui-form relative">
+			<div class="table-title">您现在的位置:信使信息 - 修改信息</div>
+			<div class="personalEdit-left text-center">
+				<div id="memberHeadDiv" class=" mt15 mauto">
+					<input id="edit_memberHead" type="hidden" value="">
+					<img class="ad-widget-img" src="./images/head.png" style="height:170px;width:148px;"></div>
+				<div class=" mt15 mauto">
+					<input type="button" id="modifypicture" class="ad-btn ad-blue-btn" value="修改我的头像"></div>
+			</div>
+			<div class="personalEdit-right">
+				<div class="ad-box">
+					<div class="spanTitle1">姓名:</div>
+					<div class="span1">
+						<p id="realname">李志鹏</p></div>
+					<div class="clear"></div>
+					<div class="spanTitle1">性别:</div>
+					<div class="span1">
+                <span class="sui-dropdown dropdown-bordered select1">
+                  <span class="dropdown-inner">
+                    <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+						<input id="sex" value="0" name="sex" data-rules="required" data-empty-msg="请选择性别" type="hidden">
+						<i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+						<span id="edit_sexSpan">男</span></a>
+                    <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">男</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">女</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">保密</a></li>
+					</ul>
+                  </span>
+                </span>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="ad-box">
+					<div class="spanTitle1">籍贯:</div>
+					<div class="span2">
+						<div id="subCity" data-city="410000,河南省" data-area="155,郑州市">
+							<div class="info" style="position: relative">
+								<div>
+									<select id="s_province" name="s_province"></select>  
+									<i class="iconfont" style=" position: absolute;left:135px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+									<!--<i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>-->
+									<select id="s_city" name="s_city"></select>  
+									<i class="iconfont" style=" position: absolute;left:302px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+									<select id="s_county" name="s_county" style="display: none"></select>
+									<script class="resources library" src="./js/area.js" type="text/javascript"></script>
+									<script type="text/javascript">_init_area();</script>
+								</div>
+								<div id="show"></div>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="spanTitle1">出生年月:</div>
+					<div class="span2">
+						<input id="birthday" type="text" class="input-medium input-date" data-toggle="datepicker" value=""></div>
+					<div class="clear"></div>
+				</div>
+				<div class="ad-box">
+					<div class="spanTitle1">证照号码:</div>
+					<div class="span1">
+						<p id="idcard" class="">411024199005010793</p></div>
+					<div class="clear"></div>
+				</div>
+				<div class="ad-box">
+					<div class="spanTitle1">个人邮箱:</div>
+					<div class="span1">
+						<p id="email">819148946@qq.com</p></div>
+					<div class="clear"></div>
+				</div>
+				<div class="ad-box">
+					<div class="spanTitle1">所在行业:</div>
+					<div class="span1">
+                <span class="sui-dropdown dropdown-bordered select4">
+                  <span class="dropdown-inner">
+                    <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+						<input id="industry" value="" name="business" type="hidden" data-rules="required" data-empty-msg="请选择行业">
+						<i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+						<span id="edit_businessSpan"></span>
+					</a>
+                    <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu4">
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="计算机/互联网">计算机/互联网</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="通信/电子">通信/电子</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="金融">金融</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="贸易/制造">贸易/制造</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="医疗">医疗</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="广告/媒体">广告/媒体</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="房地产/建筑">房地产/建筑</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="教育/培训">游戏</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="旅游">旅游</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="娱乐">娱乐</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="餐饮">餐饮</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="休闲/服务业">休闲/服务业</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="物流/交通/航空">物流/交通/航空</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="能源/原材料">能源/原材料</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="政府/非盈利机构">政府/非盈利机构</a></li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="其他">其他</a></li>
+					</ul>
+                  </span>
+                </span>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="ad-box mt30">
+					<div class="spanTitle1"></div>
+					<div class="">
+						<input type="button" id="modify" class="ad-btn ad-blue-btn" value="完成修改">
+						<input type="button" id="cancel" class="ad-btn ad-blue-btn" value="取消"></div>
+				</div>
+			</div>
+		</div>
+<div class="sui-modal hide fade" style="width: 810px; margin-left: -400px; margin-top: -288px; display: block;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">上传图片</h4>
+			</div>
+			<div class="modal-body no-foot" style="height: 440px;">
+				<style type="text/css">
+	#imghead {
+		max-height:300px;
+		z-index: 99;
+		filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
+	}
+	#imghead2 {
+		max-height:300px;
+		z-index: 99;
+		filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
+	}
+	#upLoad_file_btn{
+		height:170px;
+		width:148px;
+		position: absolute;
+		margin-left:auto;
+		margin-right: auto;
+		top: 10px;
+	}
+	#adUpLoadPreview{
+		float: left;
+		overflow:hidden;
+		z-index: 99;
+		width: 400px;
+		height: 400px;
+		border: 1px solid #aaa;
+	}
+	.adUpLoadPreview-right{
+		float: left;
+		padding: 20px;
+	}
+	#cropdeImg{
+		margin-left: 60px;
+	}
+	#id_form{
+		z-index: 999;
+		text-align: left;
+	}
+	.upImg-sui-progress{
+		width: 58px;
+		height: 28px;
+		line-height: 25px;
+		float: right;
+		border-radius: 2px;
+		overflow: hidden;
+		margin-bottom: 0px;
+	}
+	.upImg-sui-progress>div{
+		border-radius: 2px;
+		text-align: center;
+	}
+	.upLoad_btn_group{
+		margin-left: 35px;
+		margin-top: 31px;
+	}
+	.upLoad_btn_group>*{
+		float: left;
+		margin-left: 20px;
+	}
+	.upLoad_tip{
+		width: 240px;
+		margin-left:60px;
+		color: #999;
+		float: left;
+		height: auto;
+		text-align: right;
+		background-color: #fff;
+	}
+</style>
+	<img id="imghead" src="" class="dsn">
+	<div class="text-center">
+		<div id="adUpLoadPreview" class="cropper-bg">
+			<img id="imghead2" src="">
+		</div>
+		<div class="adUpLoadPreview-right">
+			<div id="loadingIcon" class="sui-loading loading-xxlarge dsn">
+				<i class="sui-icon icon-pc-loading"></i>
+			</div>
+			<!-- <form class="tr" id="id_form" name=""  target="id_iframe"  method="post" enctype="multipart/form-data" action="/admin/uploadpic64"> -->
+			<!-- 剪切后的图片 -->
+			<img id="cropdeImg" style="height:170px;width:148px;" src="http://www.51ydgy.com/images/login/head.png">
+			<!-- 图片上传控件，隐藏域 -->
+			<input id="upLoad_file" type="file" class="dsn"><br>
+			<!-- 上传按钮操作区域 -->
+			<div class="upLoad_btn_group">
+				<a id="chooseImg">
+					<input type="button" value="选择" class="sui-btn btn-primary btn-large">
+				</a>
+				<input id="cropperDo" type="button" value="剪切" class="sui-btn btn-primary btn-large">
+				<div id="upImg-sui-progress" class="sui-progress upImg-sui-progress dsn">
+					<div id="upImg-sui-progress-loading" style="width: 0%;" class="bar">......</div>
+				</div>
+				<!-- <input id="upLoadBtn" type="submit" name="Submit" value="上传" class="sui-btn btn-primary btn-large"/> -->
+				<input id="upLoadBtn" type="button" value="上传" class="sui-btn btn-primary btn-large">
+				<input id="okBtn" type="button" value="确定" class="sui-btn btn-primary btn-large dsn">
+			</div>
+			<!--    </form> -->
+			<iframe id="id_iframe" name="id_iframe" class="dsn"></iframe>
+		</div>
+		<div class="upLoad_tip">
+			<a id="upLoad_tip" href="javascript:void(0)" data-placement="top" data-trigger="hover" data-toggle="tooltip" data-align="right" data-original-title="" title="">如何上传?</a>
+		</div>
+		<!--  <div class="upLoad_tip">
+             上传说明:<br>
+             1.点击【选择】按钮,选择要上传的图片<br>
+             2.调整左侧选择框位置后,点击【剪切】按钮<br>
+             3.点击【上传】按钮将图片提交到系统中<br>
+             4.如遇失败,请检查网络或关闭对话框重试。
+         </div> -->
+		<div class="clear"></div>
+	</div>
+			</div></div></div></div>
+<div class="sui-modal-backdrop fade" style="background:#000;z-index:-1"></div>
+
+<script type="text/javascript">
+	$(function(){
+		$("#modifypicture").click(function(){
+			$(".sui-modal").addClass("in");
+			$(".sui-modal-backdrop").css("zIndex","1").addClass("in");
+		});
+		$(".sui-close").click(function(){
+			$(".sui-modal").removeClass("in");
+			$(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
+		})
+		$(".dropdown-toggle").eq(0).click(function(){
+			$(".select1").toggleClass("open");
+		});
+		$(".sui-dropdown-menu1 li").click(function(){
+			var i=$(".sui-dropdown-menu1 li").index(this);
+			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
+			$(".sui-dropdown-menu1 li").removeClass("active");
+			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
+			$(".select1 span span").html(x);
+			$(".select1").removeClass("open");
+		});
+		$(".dropdown-toggle").eq(1).click(function(){
+			$(".select4").toggleClass("open");
+		});
+		$(".sui-dropdown-menu4 li").click(function(){
+			var i=$(".sui-dropdown-menu4 li").index(this);
+			var x= $(".sui-dropdown-menu4 li a").eq(i).html();
+			$(".sui-dropdown-menu4 li").removeClass("active");
+			$(".sui-dropdown-menu4 li").eq(i).addClass("active");
+			$(".select4 span span").html(x);
+			$(".select4").removeClass("open");
+		});
+		$('.dropdown-inner').mouseleave(function(){
+			$(".select1").removeClass("open");
+			$(".select2").removeClass("open");
+		});
+	})
+</script>
+</body>
+
+</html>

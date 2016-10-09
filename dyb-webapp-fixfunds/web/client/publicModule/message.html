@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://www.51ydgy.com/index.html#publicModule/message/messageList -->
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一点公益</title>
+</head>
+
+<body id="ad-app" data-apptype="ad-app" class="relative">
+		<div id="content" class="ad-content2 sui-form relative">
+			<div class="table-title">您现在的位置:我的消息</div>
+			<ul class="sui-nav nav-tabs ad-label-nav">
+				<li  class="active">
+					<a class="ad-label-nav-btn">消费记录(
+						<span id="msgcount1">0</span>)</a></li>
+				<li>
+					<a class="ad-label-nav-btn">回购审核(
+						<span id="msgcount3">0</span>)</a></li>
+				<li>
+					<a class="ad-label-nav-btn">意见反馈(
+						<span id="msgcount4">0</span>)</a></li>
+				<li>
+					<a class="ad-label-nav-btn">转赠消息(
+						<span id="msgcount5">0</span>)</a></li>
+				<li>
+					<a class="ad-label-nav-btn">消息通知(
+						<span id="msgcount6">0</span>)</a></li>
+			</ul>
+			<div class="tab-content mt15">
+				<div id="ad-table" class="tab-pane active">
+					<table class="sui-table table-vzebra ad-table">
+						<thead>
+						<tr>
+							<th style="max-width:1%;">内容</th>
+							<th style="max-width:1%;">时间</th></tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+					<div class="sui-pagination pagination-small" style="text-align:left;">
+						<ul id="table-pagination">
+							<!-- 前半部分（包括当前） -->
+							<li id="prevBtn" class="prev disabled">
+								<a>«上一页</a>
+							</li>
+							<li class="pageBtn active" data-num="1">
+								<a>1</a>
+							</li>
+							<!-- 后半部分（当前之后） -->
+							<li id="nextBtn" class="next disabled">
+								<a>下一页»</a>
+							</li>
+						</ul>
+						<div>
+							<span>共1页&nbsp;</span>
+                  <span>到
+                    <input id="selectPageNum" type="text" onkeyup="this.value=this.value.replace(/\D/g,&#39;&#39;)" onafterpaste="this.value=this.value.replace(/\D/g,&#39;&#39;)" class="page-num">
+                    <button id="selectPage" class="page-confirm">确定</button>页</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+<div id="adAlertCover_layer" class="adCover_layer" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 9999999; display: none;"></div>
+<div class="Pop_layer" id="adAlert" style="width: 550px; z-index: 99999999; position: absolute; left: 677.5px; top: 188px; display: none;">
+	<div class="Pop_layer_box">
+		<!-- 弹出框标题 start -->
+		<div class="Pop_layer_box_top">
+			<span id="adAlertTitle">一点公益</span></div>
+		<!-- 弹出框标题 end -->
+		<!-- 弹出框内容 start -->
+		<div class="Pop_layer_box_center" id="adPop_context">
+			<div id="adAlertMsg" style="font-size: 22px; line-height: 25px; padding-top: 47.25px;">确认切换帐号吗?</div></div>
+		<!-- 弹出框内容 end -->
+		<!-- 弹出框按钮 start -->
+		<div class="Pop_layer_box_bottom">
+			<div>
+				<input id="adAlertOKBtn" class="Pop_layer_box_bottom_btn" type="button" value="确定">
+				<input id="adAlertCancelBtn" class=" Pop_layer_box_bottom_btn" type="button" value="取消"></div>
+		</div>
+	</div>
+</div>
+<script>
+	$(function(){
+		$(".sui-nav li").click(function(){
+			var i=$(".sui-nav li").index(this)
+			$(".sui-nav li").removeClass("active");
+			$(".sui-nav li").eq(i).addClass("active");
+			$(".tab-pane").removeClass("active");
+			$(".tab-pane").eq(i).addClass("active");
+		})
+	})
+</script>
+</body>
+
+</html>

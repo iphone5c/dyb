@@ -25,7 +25,7 @@ public class BaseController {
      */
     protected ResponseEntity<Object> result(Object obj) {
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.TEXT_PLAIN);
+        headers.setContentType(MediaType.APPLICATION_JSON);
         Dto result = new BaseDto();
         result.put("result", obj);
         result.put("errorMessage", "");
@@ -42,7 +42,7 @@ public class BaseController {
      */
     protected ResponseEntity<Object> validationResult(int statusCode,String info) {
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.TEXT_HTML);
+        headers.setContentType(MediaType.APPLICATION_JSON);
         Dto result = new BaseDto();
         result.put("result", "");
         result.put("errorMessage", info);

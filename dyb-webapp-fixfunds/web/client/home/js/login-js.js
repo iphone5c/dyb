@@ -7,14 +7,12 @@ $(function () {
         var username=$("#username").val();
         var password=$("#userpwd").val();
         var accountType=$("#usertypeSpan").text();
-
         var param={
             loginName:username,
             password:password,
             accountType:accountType
         };
         var result = invokeService('/web/commons/loginAccount',param);
-
         if(result.statusCode!=1000){
             alert(result.errorMessage);
             return;

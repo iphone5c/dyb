@@ -3,149 +3,230 @@
 <html lang="en">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>一点公益</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>一点公益</title>
 </head>
 
 <body id="ad-app" data-apptype="ad-app" class="relative">
-		<div id="content" class="ad-content2 sui-form relative" style="margin-left: 230px;">
-			<div class="table-title">您现在的位置:商家管理- 商品管理</div>
-			<div class="table-information">
-				<!-- 一个标题 + 组件 -->
-				<div class="table-information-cell">
-					<div class="table-information-cell-title">
-						<span class="ad-red">*</span>商品名称：</div>
-					<div class="table-information-cell-widget">
-						<!-- 美化选择框 id="xuanze" -->
+<div id="content" class="ad-content2 sui-form relative" style="margin-left: 230px;">
+    <div class="table-title">您现在的位置:商家管理- 商品管理</div>
+    <div class="table-information">
+        <!-- 一个标题 + 组件 -->
+        <div class="table-information-cell">
+            <div class="table-information-cell-title">
+                <span class="ad-red">*</span>商品名称：</div>
+            <div class="table-information-cell-widget">
+                <!-- 美化选择框 id="xuanze" -->
                 <span class="sui-form">
                   <input id="productname" type="text" placeholder="" maxlength="50" class="table-input"></span>
-						<!-- 美化输入框结束 --></div>
-				</div>
-				<!-- 一个标题 + 组件 结束 -->
-				<!-- 一个标题 + 组件 -->
-				<div class="table-information-cell">
-					<div class="table-information-cell-title">
-						<span class="ad-red">*</span>商品编码：</div>
-					<div class="table-information-cell-widget">
-						<!-- 美化选择框 id="xuanze" -->
+                <!-- 美化输入框结束 --></div>
+        </div>
+        <!-- 一个标题 + 组件 结束 -->
+        <!-- 一个标题 + 组件 -->
+        <div class="table-information-cell">
+            <div class="table-information-cell-title">
+                <span class="ad-red">*</span>商品编码：</div>
+            <div class="table-information-cell-widget">
+                <!-- 美化选择框 id="xuanze" -->
                 <span class="sui-form">
                   <input id="productID" type="text" placeholder="" maxlength="18" class="table-input"></span>
-						<!-- 美化输入框结束 --></div>
-				</div>
-				<!-- 一个标题 + 组件 结束 -->
-				<div class="clear"></div>
-				<!-- 一个标题 + 组件 -->
-				<div class="table-information-cell">
-					<div class="table-information-cell-title">
-						<span class="ad-red">*</span>型号/规格：</div>
-					<div class="table-information-cell-widget">
-						<!-- 美化选择框 id="xuanze" -->
+                <!-- 美化输入框结束 --></div>
+        </div>
+        <!-- 一个标题 + 组件 结束 -->
+        <div class="clear"></div>
+        <!-- 一个标题 + 组件 -->
+        <div class="table-information-cell">
+            <div class="table-information-cell-title">
+                <span class="ad-red">*</span>型号/规格：</div>
+            <div class="table-information-cell-widget">
+                <!-- 美化选择框 id="xuanze" -->
                 <span class="sui-form">
                   <input id="modelnumber" type="text" placeholder="" maxlength="100" class="table-input"></span>
-						<!-- 美化输入框结束 --></div>
-				</div>
-				<!-- 一个标题 + 组件 结束 -->
-				<!-- 一个标题 + 组件 -->
-				<div class="table-information-cell">
-					<div class="table-information-cell-title">
-						<span class="ad-red">*</span>单价：</div>
-					<div class="table-information-cell-widget">
-						<!-- 美化选择框 id="xuanze" -->
+                <!-- 美化输入框结束 --></div>
+        </div>
+        <!-- 一个标题 + 组件 结束 -->
+        <!-- 一个标题 + 组件 -->
+        <div class="table-information-cell">
+            <div class="table-information-cell-title">
+                <span class="ad-red">*</span>单价：</div>
+            <div class="table-information-cell-widget">
+                <!-- 美化选择框 id="xuanze" -->
                 <span class="sui-form">
                   <input id="price" type="text" placeholder="" maxlength="10" class="table-input"></span>
-						<!-- 美化输入框结束 --></div>
-				</div>
-				<!-- 一个标题 + 组件 结束 -->
-				<div class="clear"></div>
-			</div>
-			<div class="table-crud">
-				<a id="addProduct" class="ad-btn ad-blue-btn" style="padding:8px 20px;">添加</a>
-				<a id="searchProductList" class="ad-btn ad-blue-btn" style="padding:8px 20px;">查询</a>
-				<a id="deleteProduct" class="ad-btn ad-blue-btn" style="padding:8px 20px;">批量删除</a>
-				<a id="exportProductList" class="ad-btn ad-blue-btn" style="padding:8px 20px;">导出</a>
-				<a id="importProductList" class="ad-btn ad-blue-btn" style="padding:8px 20px;">导入</a>
-				<a class="js-checkName" style="padding-left: 10px;" href="http://www.51ydgy.com/product/downloadProductModel">下载导入模板</a></div>
-			<div id="productListTable">
-				<table class="sui-table table-vzebra ad-table">
-					<thead>
-					<tr>
-						<th>
-							<input id="selectAll" type="checkbox" name="checkboxTitle" data-id="-1" data-line="-1"></th>
-						<th style="max-width:1%;">商品名称</th>
-						<th style="max-width:1%;">商品编码</th>
-						<th style="max-width:1%;">型号/规格</th>
-						<th style="max-width:1%;">单价（元）</th>
-						<th style="max-width:1%;">操作</th></tr>
-					</thead>
-					<tbody>
-					<tr>
-						<td>
-							<input class="subSelect" type="checkbox" name="checkbox" data-id="182083" data-line="0"></td>
-						<td style="商品名称" data-key="productname" data-line="0" data-id="182083">加油卡</td>
-						<td style="商品编码" data-key="productID" data-line="0" data-id="182083">001</td>
-						<td style="型号/规格" data-key="modelnumber" data-line="0" data-id="182083">中石化</td>
-						<td style="单价（元）" data-key="price" data-line="0" data-id="182083">10000.00</td>
-						<td style="操作" data-key="handel" data-line="0" data-id="182083">
-							<a class="js-checkName" id="delete182083" data-id="182083">删除</a></td>
-						<td id="productListTable-line-0" class="dsn">{"id":"182083","userid":"415593","productID":"001","productname":"加油卡","modelnumber":"中石化","price":"10000.00","handel":"
-							<a class="js-checkName" id="delete182083" data-id="182083">删除</a>"}</td></tr>
-					</tbody>
-				</table>
-				<div class="sui-pagination pagination-small" style="text-align:left;">
-					<ul id="table-pagination">
-						<!-- 前半部分（包括当前） -->
-						<li id="prevBtn" class="prev disabled">
-							<a>«上一页</a>
-						</li>
-						<li class="pageBtn active" data-num="1">
-							<a>1</a>
-						</li>
-						<!-- 后半部分（当前之后） -->
-						<li id="nextBtn" class="next disabled">
-							<a>下一页»</a>
-						</li>
-					</ul>
-					<div>
-						<span>共1页&nbsp;</span>
-                <span>到
-                  <input id="selectPageNum" type="text" onkeyup="this.value=this.value.replace(/\D/g,&#39;&#39;)" onafterpaste="this.value=this.value.replace(/\D/g,&#39;&#39;)" class="page-num">
-                  <button id="selectPage" class="page-confirm">确定</button>页</span></div>
-				</div>
-			</div>
-		</div>
+                <!-- 美化输入框结束 --></div>
+        </div>
+        <!-- 一个标题 + 组件 结束 -->
+        <div class="clear"></div>
+    </div>
+    <div class="table-crud">
+        <a id="addProduct" class="ad-btn ad-blue-btn" style="padding:8px 20px;">添加</a>
+        <a id="searchProductList" class="ad-btn ad-blue-btn" style="padding:8px 20px;">查询</a>
+        <a id="deleteProduct" class="ad-btn ad-blue-btn" style="padding:8px 20px;">批量删除</a>
+        <a id="exportProductList" class="ad-btn ad-blue-btn" style="padding:8px 20px;">导出</a>
+        <a id="importProductList" class="ad-btn ad-blue-btn" style="padding:8px 20px;">导入</a>
+        <a class="js-checkName" style="padding-left: 10px;" href="http://www.51ydgy.com/product/downloadProductModel">下载导入模板</a></div>
+    <div id="productListTable">
+        <table class="sui-table table-vzebra ad-table">
+            <thead>
+            <tr>
+                <th>
+                    <input id="selectAll" type="checkbox" name="checkboxTitle" data-id="-1" data-line="-1"></th>
+                <th style="max-width:1%;">商品名称</th>
+                <th style="max-width:1%;">商品编码</th>
+                <th style="max-width:1%;">型号/规格</th>
+                <th style="max-width:1%;">单价（元）</th>
+                <th style="max-width:1%;">操作</th></tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <div class="sui-pagination pagination-small" style="text-align:left;">
+            <ul id="table-pagination">
+                <!-- 前半部分（包括当前） -->
+                <li id="prevBtn" class="  active">
+                    <a>«上一页</a>
+                </li>
+                <li class="pageBtn" data-num="1">
+                    <a id="onpage"></a>
+                    <style>
+                        #onpage{
+                            background: none !important;
+                            color: black !important;
+                            border: 1px solid white !important;
+                        }
+                        #onpage:hover{
+                            background: none !important;
+                            color: black !important;
+                            border: 1px solid white !important;
+                        }
+                    </style>
+                </li>
+                <!-- 后半部分（当前之后） -->
+                <li id="nextBtn" class="  active">
+                    <a>下一页»</a>
+                </li>
+            </ul>
+            <div>
+                <span id="xg_page"></span>
+                <!--<span>到-->
+                <!--<input id="selectPageNum" type="text"  class="page-num">-->
+                <!--<button id="selectPage" class="page-confirm">确定</button>页</span>-->
+            </div>
+        </div>
+    </div>
+</div>
 <div id="adAlertCover_layer" class="adCover_layer" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: -1; display: none;"></div>
 <div class="Pop_layer" id="adAlert" style="width: 550px; z-index: 99999999; position: absolute; left: 677.5px; top: 188px; display: none;">
-	<div class="Pop_layer_box">
-		<!-- 弹出框标题 start -->
-		<div class="Pop_layer_box_top">
-			<span id="adAlertTitle">一点公益</span></div>
-		<!-- 弹出框标题 end -->
-		<!-- 弹出框内容 start -->
-		<div class="Pop_layer_box_center" id="adPop_context">
-			<div id="adAlertMsg" style="font-size: 22px; line-height: 25px; padding-top: 47.3125px;">确认切换帐号吗?</div></div>
-		<!-- 弹出框内容 end -->
-		<!-- 弹出框按钮 start -->
-		<div class="Pop_layer_box_bottom">
-			<div>
-				<input id="adAlertOKBtn" class="Pop_layer_box_bottom_btn" type="button" value="确定">
-				<input id="adAlertCancelBtn" class=" Pop_layer_box_bottom_btn" type="button" value="取消"></div>
-		</div>
-	</div>
+    <div class="Pop_layer_box">
+        <!-- 弹出框标题 start -->
+        <div class="Pop_layer_box_top">
+            <span id="adAlertTitle">一点公益</span></div>
+        <!-- 弹出框标题 end -->
+        <!-- 弹出框内容 start -->
+        <div class="Pop_layer_box_center" id="adPop_context">
+            <div id="adAlertMsg" style="font-size: 22px; line-height: 25px; padding-top: 47.3125px;">确认切换帐号吗?</div></div>
+        <!-- 弹出框内容 end -->
+        <!-- 弹出框按钮 start -->
+        <div class="Pop_layer_box_bottom">
+            <div>
+                <input id="adAlertOKBtn" class="Pop_layer_box_bottom_btn" type="button" value="确定">
+                <input id="adAlertCancelBtn" class=" Pop_layer_box_bottom_btn" type="button" value="取消"></div>
+        </div>
+    </div>
 </div>
 <div class="sui-modal hide fade" tabindex="-1" role="dialog" id="1473838301234" data-hidetype="remove" aria-hidden="false" style="margin-top: -125px; display: block;">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h4 class="modal-title">注意</h4></div>
-			<div class="modal-body ">商品编码不能为空！</div>
-			<div class="modal-footer">
-				<button type="button" class="sui-btn btn-primary btn-large" data-ok="modal">确定</button></div>
-		</div>
-	</div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">注意</h4></div>
+            <div class="modal-body ">商品编码不能为空！</div>
+            <div class="modal-footer">
+                <button type="button"  class="sui-btn btn-primary btn-large" data-ok="modal">确定</button></div>
+        </div>
+    </div>
 </div>
+<div class="sui-modal hide fade" tabindex="-1" role="dialog" id="1475064896421" data-hidetype="remove" style="width: 600px; margin-left: -295px; margin-top: -269px; display: block;" aria-hidden="false">
+    <input type="hidden" id="commodityCode"/>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body " style="height: 320px;">
+                <div id="alertTemp">
+                    <div class="table-information">
+                        <div class="table-title">
+                            编辑商品
+                            <input id="idkey_1" type="hidden" placeholder="" value="225077" maxlength="10" class="table-input" />
+                        </div>
+                        <!-- 一个标题  +  组件 -->
+                        <div class="table-information-cell">
+                            <div class="table-information-cell-title">
+                                <span class="ad-red">*</span>商品名称：
+                            </div>
+                            <div class="table-information-cell-widget">
+                                <!-- 美化选择框  id="xuanze"  -->
+                                <span class="sui-form"> <input id="productname_1" type="text" value="电视挂架" placeholder="" maxlength="50" class="table-input" /> </span>
+                                <!-- 美化输入框结束 -->
+                            </div>
+                        </div>
+                        <!-- 一个标题  +  组件 结束 -->
+                        <!-- 一个标题  +  组件 -->
+                        <div class="table-information-cell">
+                            <div class="table-information-cell-title">
+                                <span class="ad-red">*</span>商品编码：
+                            </div>
+                            <div class="table-information-cell-widget">
+                                <!-- 美化选择框  id="xuanze"  -->
+                                <span class="sui-form"> <input id="productID_1" type="text" value="004" placeholder="" maxlength="18" class="table-input" /> </span>
+                                <!-- 美化输入框结束 -->
+                            </div>
+                        </div>
+                        <!-- 一个标题  +  组件 结束 -->
+                        <div class="clear"></div>
+                        <!-- 一个标题  +  组件 -->
+                        <div class="table-information-cell">
+                            <div class="table-information-cell-title">
+                                <span class="ad-red">*</span>型号/规格：
+                            </div>
+                            <div class="table-information-cell-widget">
+                                <!-- 美化选择框  id="xuanze"  -->
+                                <span class="sui-form"> <input id="modelnumber_1" type="text" placeholder="" value="伸缩" maxlength="100" class="table-input" /> </span>
+                                <!-- 美化输入框结束 -->
+                            </div>
+                        </div>
+                        <!-- 一个标题  +  组件 结束 -->
+                        <!-- 一个标题  +  组件 -->
+                        <div class="table-information-cell">
+                            <div class="table-information-cell-title">
+                                <span class="ad-red">*</span>单价：
+                            </div>
+                            <div class="table-information-cell-widget">
+                                <!-- 美化选择框  id="xuanze"  -->
+                                <span class="sui-form"> <input id="price_1" type="text" placeholder="" value="503" maxlength="10" class="table-input" /> </span>
+                                <!-- 美化输入框结束 -->
+                            </div>
+                        </div>
+                        <!-- 一个标题  +  组件 结束 -->
+                        <div class="clear"></div>
+                    </div>
+                    <input id="myroleid" type="text" style="display: none" value="" class="table-input" />
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="delete182082_btn" class="sui-btn btn-primary btn-large" data-ok="modal">确定</button>
+                <button type="button" class="sui-btn btn-default btn-large" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sui-modal-backdrop fade" style="background:#123456;z-index:-1"></div>
 </body>
-
+<script type="text/javascript" src="../js/productList.js"></script>
 </html>

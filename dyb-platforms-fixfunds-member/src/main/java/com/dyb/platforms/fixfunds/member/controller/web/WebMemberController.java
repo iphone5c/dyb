@@ -34,19 +34,19 @@ public class WebMemberController extends BaseController {
      * @param tjrCode 推荐人的code
      */
     @RequestMapping(value = "/registerMemberAccount")
-    public void registerMemberAccount(HttpServletRequest request,HttpServletResponse response,Account account,Member member ,String tjrCode,MemberParamModel memberParamModel) {
+    public Object registerMemberAccount(HttpServletRequest request,HttpServletResponse response,Account account,Member member ,String tjrCode,MemberParamModel memberParamModel) {
         log.info("信使注册");
         if (account==null)
-            validationResultJSONP(request,response,1001,"信使注册时，账户信息不能为空");
+            return validationResult(1001,"信使注册时，账户信息不能为空");
         if (member==null)
-            validationResultJSONP(request, response, 1001, "信使注册时，信使资料不能为空");
+            return validationResult(1001, "信使注册时，信使资料不能为空");
         if (DybUtils.isEmptyOrNull(tjrCode))
-            validationResultJSONP(request,response,1001,"信使注册时，推荐人不能为空");
+            return validationResult(1001,"信使注册时，推荐人不能为空");
         Account registerMemberAccount=accountService.registerMember(account,member,tjrCode);
         if (registerMemberAccount==null){
-            validationResultJSONP(request,response,1001,"注册失败");
+            return validationResult(1001,"注册失败");
         }else {
-            resultJSONP(request, response, "注册成功");
+            return result("注册成功");
         }
     }
 
@@ -57,15 +57,15 @@ public class WebMemberController extends BaseController {
      * @param accountKey 账户code或者phone
      */
     @RequestMapping(value = "/addCommodity")
-    public void getMemberByAccount(HttpServletRequest request,HttpServletResponse response,String accountKey) {
+    public Object getMemberByAccount(HttpServletRequest request,HttpServletResponse response,String accountKey) {
         log.info("查看信使资料");
         if (DybUtils.isEmptyOrNull(accountKey))
-            validationResultJSONP(request,response,1001,"查看信使资料，code或者电话不能为空");
+            return validationResult(1001,"查看信使资料，code或者电话不能为空");
         Account account=accountService.getAccountByCodeOrPhone(accountKey, AccountType.信使);
         if (account==null){
-            validationResultJSONP(request,response,1001,"找不到此账户信息");
+            return validationResult(1001,"找不到此账户信息");
         }else {
-            resultJSONP(request, response, account);
+            return result(account);
         }
     }
 

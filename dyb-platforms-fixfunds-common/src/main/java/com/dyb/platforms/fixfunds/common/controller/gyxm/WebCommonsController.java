@@ -49,14 +49,14 @@ public class WebCommonsController extends BaseController {
      * @return 账户信息
      */
     @RequestMapping(value = "/loginAccount")
-    public void loginAccount(HttpServletRequest request,HttpServletResponse response,String loginName,String password,String accountType) {
+    public Object loginAccount(HttpServletRequest request,HttpServletResponse response,String loginName,String password,String accountType) {
         log.info("登陆验证");
         Account account=accountService.loginAccountForClient(loginName, password, AccountType.getAccountTypeByName(accountType));
         if (account==null){
-            validationResultJSONP(request,response,1001,"登陆失败");
+            return validationResult(1001,"登陆失败");
         }else {
             request.getSession().setAttribute("CURRENT_ACCOUNT",account);
-            resultJSONP(request,response,"登陆成功");
+            return result("登陆成功");
         }
     }
 
@@ -66,19 +66,19 @@ public class WebCommonsController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getWebMenu")
-    public void getWebMenu(HttpServletRequest request,HttpServletResponse response,String accountType){
+    public Object getWebMenu(HttpServletRequest request,HttpServletResponse response,String accountType){
         log.info("获取账户菜单");
         if (DybUtils.isEmptyOrNull(accountType))
             throw new DybRuntimeException("获取菜单账户类型不能为空");
         AccountType menuType=AccountType.getAccountTypeByName(accountType);
         if (menuType==AccountType.信使){
-            resultJSONP(request,response,SettingConfigureationFactory.getMenuListByKey("MEMBER_MENU"));
+            return result(SettingConfigureationFactory.getMenuListByKey("MEMBER_MENU"));
         }else if (menuType==AccountType.商家){
-            resultJSONP(request,response,SettingConfigureationFactory.getMenuListByKey("MERCHANT_MENU"));
+            return result(SettingConfigureationFactory.getMenuListByKey("MERCHANT_MENU"));
         }else if (menuType==AccountType.服务商){
-            resultJSONP(request,response,SettingConfigureationFactory.getMenuListByKey("SERVICEPROVIDERS_MENU"));
+            return result(SettingConfigureationFactory.getMenuListByKey("SERVICEPROVIDERS_MENU"));
         }else
-            validationResultJSONP(request,response,1001,"尚未定义此账户类型的菜单");
+            return validationResult(1001,"尚未定义此账户类型的菜单");
     }
 
     @RequestMapping(value = "/getKaptchaImage")
@@ -121,32 +121,32 @@ public class WebCommonsController extends BaseController {
     }
 
     @RequestMapping(value = "/upload")
-    public void upload(HttpServletRequest request,HttpServletResponse response,String path){
+    public Object upload(HttpServletRequest request,HttpServletResponse response,String path){
         Map<String,Object> result= DybUtils.uploadFile(request,response,path);
         if (result==null||result.size()<0)
-            validationResultJSONP(request,response,1001,"上传失败");
+            return validationResult(1001,"上传失败");
         else
-            resultJSONP(request,response,result);
+            return result(result);
     }
 
     @RequestMapping(value = "/getIndustry")
-    public void getIndustry(HttpServletRequest request,HttpServletResponse response){
-        resultJSONP(request,response, Industry.getAllConvertName());
+    public Object getIndustry(HttpServletRequest request,HttpServletResponse response){
+        return result( Industry.getAllConvertName());
     }
 
     @RequestMapping(value = "/getIndustryType")
-    public void getIndustryType(HttpServletRequest request,HttpServletResponse response){
-        resultJSONP(request,response, IndustryType.getAllConvertName());
+    public Object getIndustryType(HttpServletRequest request,HttpServletResponse response){
+        return result( IndustryType.getAllConvertName());
     }
 
     @RequestMapping(value = "/getScale")
-    public void getScale(HttpServletRequest request,HttpServletResponse response){
-        resultJSONP(request,response, Scale.getAllConvertName());
+    public Object getScale(HttpServletRequest request,HttpServletResponse response){
+        return result( Scale.getAllConvertName());
     }
 
     @RequestMapping(value = "/getSex")
-    public void getSex(HttpServletRequest request,HttpServletResponse response){
-        resultJSONP(request,response, Sex.getAllConvertName());
+    public Object getSex(HttpServletRequest request,HttpServletResponse response){
+        return result( Sex.getAllConvertName());
     }
 
 }

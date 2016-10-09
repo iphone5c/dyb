@@ -31,12 +31,12 @@ public class WebTurnoverController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getTurnoverPageList")
-    public void getTurnoverPageList(HttpServletRequest request,HttpServletResponse response,int pageIndex,int pageSize){
+    public Object getTurnoverPageList(HttpServletRequest request,HttpServletResponse response,int pageIndex,int pageSize){
         log.info("获取营业额列表分页");
         QueryParams queryParams=new QueryParams();
         queryParams.addParameter("accountCode",DybUtils.getCurrentAccount(request).getAccountCode());
         queryParams.addOrderBy("turnoverTime",false);
-        resultJSONP(request, response, turnoverService.getTurnoverPageList(queryParams, pageIndex, pageSize, true));
+        return result(turnoverService.getTurnoverPageList(queryParams, pageIndex, pageSize, true));
     }
 
 }

@@ -33,21 +33,21 @@ public class WebSenAddressController extends BaseController {
      * @param sendAddress 寄送地址信息
      */
     @RequestMapping(value = "/addSendAddress")
-    public void addSendAddress(HttpServletRequest request,HttpServletResponse response,SendAddress sendAddress) {
+    public Object addSendAddress(HttpServletRequest request,HttpServletResponse response,SendAddress sendAddress) {
         log.info("寄送地址添加");
         QueryParams queryParams=new QueryParams();
         queryParams.addParameter("accountCode", DybUtils.getCurrentAccount(request).getAccountCode());
         List<SendAddress> sendAddressList=sendAddressService.getSendAddressList(queryParams,0,-1,true);
         if (sendAddressList!=null&&sendAddressList.size()>5)
-            validationResultJSONP(request,response,1001,"寄送地址已满，请先删除一些不常用的地址");
+            return validationResult(1001,"寄送地址已满，请先删除一些不常用的地址");
         if (sendAddress==null)
-            validationResultJSONP(request,response,1001,"寄送地址信息不能为空");
+            return validationResult(1001,"寄送地址信息不能为空");
         sendAddress.setAccountCode(DybUtils.getCurrentAccount(request).getAccountCode());
         SendAddress temp=sendAddressService.createSendAddress(sendAddress);
         if (temp==null){
-            validationResultJSONP(request,response,1001,"添加失败");
+            return validationResult(1001,"添加失败");
         }else {
-            resultJSONP(request,response,"添加成功");
+            return result("添加成功");
         }
     }
 
@@ -58,15 +58,15 @@ public class WebSenAddressController extends BaseController {
      * @param sendAddressCode 寄送地址code
      */
     @RequestMapping(value = "/deleteSendAddress")
-    public void deleteSendAddress(HttpServletRequest request,HttpServletResponse response,String sendAddressCode){
+    public Object deleteSendAddress(HttpServletRequest request,HttpServletResponse response,String sendAddressCode){
         log.info("寄送地址删除");
         if (DybUtils.isEmptyOrNull(sendAddressCode))
-            validationResultJSONP(request,response,1001,"寄送地址删除时，code不能为空");
+            return validationResult(1001,"寄送地址删除时，code不能为空");
         boolean flag=sendAddressService.deleteSendAddress(sendAddressCode);
         if (flag)
-            resultJSONP(request,response,"删除成功");
+            return result("删除成功");
         else
-            validationResultJSONP(request, response, 1001, "删除失败");
+            return validationResult(1001, "删除失败");
     }
 
     /**
@@ -75,11 +75,11 @@ public class WebSenAddressController extends BaseController {
      * @param response
      */
     @RequestMapping(value = "/getSendAddressListByCurrent")
-    public void getSendAddressPageList(HttpServletRequest request,HttpServletResponse response){
+    public Object getSendAddressPageList(HttpServletRequest request,HttpServletResponse response){
         log.info("根据当前登陆商家获取分页寄送地址列表");
         QueryParams queryParams=new QueryParams();
         queryParams.addParameter("accountCode", DybUtils.getCurrentAccount(request).getAccountCode());
-        resultJSONP(request,response,sendAddressService.getSendAddressList(queryParams, 0, -1, true));
+        return result(sendAddressService.getSendAddressList(queryParams, 0, -1, true));
     }
 
 }

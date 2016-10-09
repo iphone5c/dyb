@@ -36,22 +36,22 @@ public class WebServiceProvidersController extends BaseController {
      * @return 商家账户对象
      */
     @RequestMapping(value = "/registerServiceProvidersAccount")
-    public void registerServiceProvidersAccount(HttpServletRequest request,HttpServletResponse response,Account account,ServiceProviders serviceProviders,BankAccount bankAccount,String tjrCode,ServiceProvidersParamModel serviceProvidersParamModel) {
+    public Object registerServiceProvidersAccount(HttpServletRequest request,HttpServletResponse response,Account account,ServiceProviders serviceProviders,BankAccount bankAccount,String tjrCode,ServiceProvidersParamModel serviceProvidersParamModel) {
         log.info("商家注册");
         if (account==null)
-            validationResultJSONP(request,response,1001,"商家注册时，账户信息不能为空");
+            return validationResult(1001,"商家注册时，账户信息不能为空");
         if (serviceProviders==null)
-            validationResultJSONP(request,response,1001,"商家注册时，商家资料不能为空");
+            return validationResult(1001,"商家注册时，商家资料不能为空");
         if (bankAccount==null)
-            validationResultJSONP(request,response,1001,"商家注册时，银行账户信息不能为空");
+            return validationResult(1001,"商家注册时，银行账户信息不能为空");
         if (DybUtils.isEmptyOrNull(tjrCode))
-            validationResultJSONP(request,response,1001,"商家注册时，推荐人不能为空");
+            return validationResult(1001,"商家注册时，推荐人不能为空");
         serviceProviders.setIndustry(serviceProvidersParamModel.getIndustry());
         Account registerServiceProvidersAccount=accountService.registerServiceProviders(account,serviceProviders,bankAccount,tjrCode);
         if (registerServiceProvidersAccount==null){
-            validationResultJSONP(request,response,1001,"注册失败");
+            return validationResult(1001,"注册失败");
         }else {
-            resultJSONP(request,response,"注册成功");
+            return result("注册成功");
         }
     }
 

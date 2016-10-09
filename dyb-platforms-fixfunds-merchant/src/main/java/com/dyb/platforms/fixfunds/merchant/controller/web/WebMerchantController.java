@@ -44,16 +44,16 @@ public class WebMerchantController extends BaseController {
      * @return 商家账户对象
      */
     @RequestMapping(value = "/registerMerchantAccount")
-    public void registerMerchantAccount(HttpServletRequest request,HttpServletResponse response,Account account,Merchant merchant,BankAccount bankAccount,String referrerCode,MerchantParamModel merchantParamModel) {
+    public Object registerMerchantAccount(HttpServletRequest request,HttpServletResponse response,Account account,Merchant merchant,BankAccount bankAccount,String referrerCode,MerchantParamModel merchantParamModel) {
         log.info("商家注册");
         if (account==null)
-            validationResultJSONP(request,response,1001,"账户信息不能为空");
+            return validationResult(1001,"账户信息不能为空");
         if (merchant==null)
-            validationResultJSONP(request,response,1001,"商家注册时，商家资料不能为空");
+            return validationResult(1001,"商家注册时，商家资料不能为空");
         if (bankAccount==null)
-            validationResultJSONP(request,response,1001,"商家注册时，银行账户信息不能为空");
+            return validationResult(1001,"商家注册时，银行账户信息不能为空");
         if (DybUtils.isEmptyOrNull(referrerCode))
-            validationResultJSONP(request,response,1001,"商家注册时，推荐人不能为空");
+            return validationResult(1001,"商家注册时，推荐人不能为空");
         merchant.setMerchantType(merchantParamModel.getMerchantType());
         merchant.setIndustryType(merchantParamModel.getIndustryType());
         merchant.setIndustry(merchantParamModel.getIndustry());
@@ -61,9 +61,9 @@ public class WebMerchantController extends BaseController {
         merchant.setPrincipalSex(merchantParamModel.getPrincipalSex());
         Account registerMerchantAccount=accountService.registerMerchant(account,merchant,bankAccount,referrerCode);
         if (registerMerchantAccount==null){
-            validationResultJSONP(request,response,1001,"注册失败");
+            return validationResult(1001,"注册失败");
         }else {
-            resultJSONP(request,response,"注册成功");
+            return result("注册成功");
         }
     }
 
@@ -73,18 +73,18 @@ public class WebMerchantController extends BaseController {
      * @param response
      */
     @RequestMapping(value = "/getMerchantAddressByCurrent")
-    public void getMerchantAddressByCode(HttpServletRequest request,HttpServletResponse response){
+    public Object getMerchantAddressByCode(HttpServletRequest request,HttpServletResponse response){
         log.info("获取当前登陆商家地理位置信息");
         Account account=accountService.getAccountByCode(DybUtils.getCurrentAccount(request).getAccountCode(),true);
         if (account==null)
-            validationResultJSONP(request,response,1001,"找不到此账户信息");
+            return validationResult(1001,"找不到此账户信息");
         if (account.getMerchant()==null)
-            validationResultJSONP(request,response,1001,"找不到此账户的详情信息");
+            return validationResult(1001,"找不到此账户的详情信息");
         Map<String,String> result=new HashMap<>();
         result.put("address",account.getMerchant().getMerchantAddress());
         result.put("longitude",account.getMerchant().getLongitude());
         result.put("latitude",account.getMerchant().getLatitude());
-        resultJSONP(request,response,result);
+        return result(result);
     }
 
     /**
@@ -96,23 +96,23 @@ public class WebMerchantController extends BaseController {
      * @param latitude 纬度
      */
     @RequestMapping(value = "/modifyMerchantAddressByCurrent")
-    public void modifyMerchantAddressByCurrent(HttpServletRequest request,HttpServletResponse response,String address,String longitude,String latitude){
+    public Object modifyMerchantAddressByCurrent(HttpServletRequest request,HttpServletResponse response,String address,String longitude,String latitude){
         log.info("修改当前登陆商家地理位置");
         if (DybUtils.isEmptyOrNull(address))
-            validationResultJSONP(request,response,1001,"修改商家地理位置，地址不能为空");
+            return validationResult(1001,"修改商家地理位置，地址不能为空");
         if (DybUtils.isEmptyOrNull(longitude))
-            validationResultJSONP(request,response,1001,"修改商家地理位置，经度不能为空");
+            return validationResult(1001,"修改商家地理位置，经度不能为空");
         if (DybUtils.isEmptyOrNull(latitude))
-            validationResultJSONP(request,response,1001,"修改商家地理位置，纬度不能为空");
+            return validationResult(1001,"修改商家地理位置，纬度不能为空");
         Account account=accountService.getAccountByCode(DybUtils.getCurrentAccount(request).getAccountCode(),true);
         if (account==null)
-            validationResultJSONP(request,response,1001,"找不到此账户信息");
+            return validationResult(1001,"找不到此账户信息");
         if (account.getMerchant()==null)
-            validationResultJSONP(request,response,1001,"找不到此账户的详情信息");
+            return validationResult(1001,"找不到此账户的详情信息");
         Merchant merchant = merchantService.updateMerchantAddressByCode(account.getMerchant().getMerchantCode(),address,longitude,latitude);
         if (merchant==null)
-            validationResultJSONP(request,response,1001,"商家地理位置修改失败");
-        resultJSONP(request,response,"商家地理位置修改成功");
+            return validationResult(1001,"商家地理位置修改失败");
+        return result("商家地理位置修改成功");
     }
 
     /**
@@ -121,14 +121,14 @@ public class WebMerchantController extends BaseController {
      * @param response
      */
     @RequestMapping(value = "/getMerchantByCurrent")
-    public void getMerchantByCurrent(HttpServletRequest request,HttpServletResponse response){
+    public Object getMerchantByCurrent(HttpServletRequest request,HttpServletResponse response){
         log.info("获取当前登陆商家信息");
         Account account=accountService.getAccountByCode(DybUtils.getCurrentAccount(request).getAccountCode(),true);
         Account tjr=accountService.getAccountByCode(account.getReferrerCode(),true);
         if (account==null)
-            validationResultJSONP(request,response,1001,"找不到此账户信息");
+            return validationResult(1001,"找不到此账户信息");
         if (account.getMerchant()==null)
-            validationResultJSONP(request,response,1001,"找不到此账户的详情信息");
+            return validationResult(1001,"找不到此账户的详情信息");
 
         Map<String,Object> result=new HashMap<>();
         result.put("merchant",account);
@@ -141,7 +141,7 @@ public class WebMerchantController extends BaseController {
         }
         result.put("tjrPhone",tjr.getAccountPhone());
         result.put("bank",bankAccountService.getBankAccountByDefaultChecked(account.getAccountCode()));
-        resultJSONP(request,response,result);
+        return result(result);
     }
 
     /**
@@ -152,17 +152,17 @@ public class WebMerchantController extends BaseController {
      * @param bankAccount 银行卡信息
      */
     @RequestMapping(value = "/modifyMerchantByCurrent")
-    public void modifyMerchantByCurrent(HttpServletRequest request,HttpServletResponse response ,Merchant merchant,BankAccount bankAccount,MerchantParamModel merchantParamModel){
+    public Object modifyMerchantByCurrent(HttpServletRequest request,HttpServletResponse response ,Merchant merchant,BankAccount bankAccount,MerchantParamModel merchantParamModel){
         log.info("修改当前登陆商家资料");
         if (merchant==null)
-            validationResultJSONP(request,response,1001,"修改商户资料，商户详情信息不能为空");
+            return validationResult(1001,"修改商户资料，商户详情信息不能为空");
         if (bankAccount==null)
-            validationResultJSONP(request,response,1001,"修改商户资料，银行卡信息不能为空");
+            return validationResult(1001,"修改商户资料，银行卡信息不能为空");
         Account account=accountService.getAccountByCode(DybUtils.getCurrentAccount(request).getAccountCode(),true);
         if (account==null)
-            validationResultJSONP(request,response,1001,"找不到此账户信息");
+            return validationResult(1001,"找不到此账户信息");
         if (account.getMerchant()==null)
-            validationResultJSONP(request,response,1001,"找不到此账户的详情信息");
+            return validationResult(1001,"找不到此账户的详情信息");
         Merchant updateMerchant = account.getMerchant();
         updateMerchant.setIndustry(merchantParamModel.getIndustry());
         updateMerchant.setScale(merchantParamModel.getScale());
@@ -179,7 +179,7 @@ public class WebMerchantController extends BaseController {
 
         BankAccount updateBankAccount = bankAccountService.getBankAccountByDefaultChecked(account.getAccountCode());
         if (updateBankAccount==null)
-            validationResultJSONP(request,response,1001,"尚未设置默认银行卡信息");
+            return validationResult(1001,"尚未设置默认银行卡信息");
         updateBankAccount.setBankName(bankAccount.getBankName());
         updateBankAccount.setBankBranch(bankAccount.getBankBranch());
         updateBankAccount.setBankAccountName(bankAccount.getBankAccountName());
@@ -187,8 +187,8 @@ public class WebMerchantController extends BaseController {
 
         Account result=accountService.updateMerchant(account,updateMerchant,updateBankAccount);
         if (result==null)
-            validationResultJSONP(request,response,1001,"商户修改资料失败");
-        resultJSONP(request,response,"商户修改资料成功");
+            return validationResult(1001,"商户修改资料失败");
+        return result("商户修改资料成功");
     }
 
 }

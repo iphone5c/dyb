@@ -43,15 +43,15 @@ public class WebOrderController extends BaseController {
      * @return 商家账户对象
      */
     @RequestMapping(value = "/consumerRegistration")
-    public void consumerRegistration(HttpServletRequest request,HttpServletResponse response,String accountKey,List<OrderItem> orderItemList) {
+    public Object consumerRegistration(HttpServletRequest request,HttpServletResponse response,String accountKey,List<OrderItem> orderItemList) {
         log.info("信使消费登记");
         if (DybUtils.isEmptyOrNull(accountKey))
-            validationResultJSONP(request,response,1001,"信使消费登记时，信使的Code或绑定手机号不能为空");
+            return validationResult(1001,"信使消费登记时，信使的Code或绑定手机号不能为空");
         if (orderItemList==null||orderItemList.size()<=0)
-            validationResultJSONP(request,response,1001,"信使消费登记时，必须添加消费的商品");
+            return validationResult(1001,"信使消费登记时，必须添加消费的商品");
         Account account=accountService.getAccountByCodeOrPhone(accountKey, AccountType.信使);
         if (account==null)
-            validationResultJSONP(request,response,1001,"找不此信使信息");
+            return validationResult(1001,"找不此信使信息");
         Order order = new Order();
         order.setMemberCode(account.getAccountCode());
         order.setMerchantCode(DybUtils.getCurrentAccount(request).getAccountCode());
@@ -59,9 +59,9 @@ public class WebOrderController extends BaseController {
 
         Order temp=orderService.createOrder(order,orderItemList);
         if (temp==null){
-            validationResultJSONP(request,response,1001,"登记失败");
+            return validationResult(1001,"登记失败");
         }else {
-            resultJSONP(request,response,"登记成功");
+            return result("登记成功");
         }
     }
 
@@ -72,7 +72,7 @@ public class WebOrderController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getOrderPageList")
-    public void getOrderPageList(HttpServletRequest request,HttpServletResponse response,int pageIndex,int pageSize){
+    public Object getOrderPageList(HttpServletRequest request,HttpServletResponse response,int pageIndex,int pageSize){
         log.info("获取订单列表分页");
         PageList<OrderParamModel> orderParamModelPageList=new PageList<>();
         List<OrderParamModel> orderParamModelList=new ArrayList<>();
@@ -84,9 +84,9 @@ public class WebOrderController extends BaseController {
         for (Order order:orderPageList.getList()){
             Account account = accountService.getAccountByCode(order.getMemberCode(),true);
             if (account==null)
-                validationResultJSONP(request,response,1001,"此订单找不到对应的信使信息，orderCode："+order.getOrderCode());
+                return validationResult(1001,"此订单找不到对应的信使信息，orderCode："+order.getOrderCode());
             if (account.getMember()==null)
-                validationResultJSONP(request,response,1001,"此订单找不到对应的信使详情信息，orderCode："+order.getOrderCode());
+                return validationResult(1001,"此订单找不到对应的信使详情信息，orderCode："+order.getOrderCode());
             OrderParamModel orderParamModel=new OrderParamModel();
             orderParamModel.setOrder(order);
             orderParamModel.setAccount(account);
@@ -97,7 +97,7 @@ public class WebOrderController extends BaseController {
         orderParamModelPageList.setPageCount(orderPageList.getPageCount());
         orderParamModelPageList.setPageIndex(orderPageList.getPageIndex());
         orderParamModelPageList.setPageSize(orderPageList.getPageSize());
-        resultJSONP(request,response,orderParamModelPageList);
+        return result(orderParamModelPageList);
     }
 
 }

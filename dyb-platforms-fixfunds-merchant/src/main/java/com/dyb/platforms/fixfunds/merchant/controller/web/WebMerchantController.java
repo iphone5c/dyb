@@ -185,7 +185,7 @@ public class WebMerchantController extends BaseController {
         updateBankAccount.setBankAccountName(bankAccount.getBankAccountName());
         updateBankAccount.setBankNum(bankAccount.getBankNum());
 
-        Account result=accountService.updateMerchant(account,merchant,bankAccount);
+        Account result=accountService.updateMerchant(account,updateMerchant,updateBankAccount);
         if (result==null)
             validationResultJSONP(request,response,1001,"商户修改资料失败");
         resultJSONP(request,response,"商户修改资料成功");

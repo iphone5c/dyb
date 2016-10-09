@@ -62,7 +62,7 @@ public class BaseController {
     protected void resultJSONP(HttpServletRequest request,HttpServletResponse response,Object obj){
         response.setContentType("text/plain");
         response.setCharacterEncoding("utf-8");
-        String callbackFunName =request.getParameter("callbackparam");//得到js函数名称
+        String callbackFunName =request.getParameter("callback");//得到js函数名称
         try {
             Dto result = new BaseDto();
             result.put("result", obj);
@@ -83,7 +83,7 @@ public class BaseController {
     protected void validationResultJSONP(HttpServletRequest request,HttpServletResponse response,int statusCode,String info){
         response.setContentType("text/plain");
         response.setCharacterEncoding("utf-8");
-        String callbackFunName =request.getParameter("callbackparam");//得到js函数名称
+        String callbackFunName =request.getParameter("callback");//得到js函数名称
         try {
             Dto result = new BaseDto();
             result.put("result", "");
@@ -106,7 +106,7 @@ public class BaseController {
     public Object exception( HttpServletRequest request ,HttpServletResponse response, Exception ex ) {
         response.setContentType("text/plain");
         response.setCharacterEncoding("utf-8");
-        String callbackFunName =request.getParameter("callbackparam");//得到js函数名称
+        String callbackFunName =request.getParameter("callback");//得到js函数名称
 
         Dto result = new BaseDto();
         result.put("result", "");

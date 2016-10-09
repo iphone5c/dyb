@@ -5,6 +5,8 @@
 
 package com.dyb.platforms.fixfunds.services.business.turnover.entity;
 
+import com.dyb.platforms.fixfunds.services.business.turnover.entity.em.BenefitPriceStatus;
+
 import java.util.Date;
 
 /**
@@ -29,7 +31,7 @@ public class Turnover implements java.io.Serializable {
     // 剩余待交让利款
     private Double residueBenefitPrice;
     // 让利状态
-    private String benefitPriceStatus;
+    private BenefitPriceStatus benefitPriceStatus;
     // 创建时间
     private Date createTime;
     // 备注
@@ -150,7 +152,7 @@ public class Turnover implements java.io.Serializable {
      * 
      * @return 让利状态
      */
-    public String getBenefitPriceStatus() {
+    public BenefitPriceStatus getBenefitPriceStatus() {
         return benefitPriceStatus;
     }
 
@@ -159,7 +161,7 @@ public class Turnover implements java.io.Serializable {
      * 
      * @param benefitPriceStatus 让利状态
      */
-    public void setBenefitPriceStatus(String benefitPriceStatus) {
+    public void setBenefitPriceStatus(BenefitPriceStatus benefitPriceStatus) {
         this.benefitPriceStatus = benefitPriceStatus;
     }
 

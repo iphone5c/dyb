@@ -57,6 +57,8 @@ public class WebCommodityController extends BaseController {
         if (commodity==null)
             validationResultJSONP(request,response,1001,"商品信息不能为空");
         Commodity updateCommodity = commodityService.getCommodityByCode(commodity.getCommodityCode());
+        if (updateCommodity==null)
+            validationResultJSONP(request,response,1001,"没有找到此商品信息code:"+commodity.getCommodityCode());
         updateCommodity.setName(commodity.getName());
         updateCommodity.setCommodityNum(commodity.getCommodityNum());
         updateCommodity.setSpecifications(commodity.getSpecifications());
@@ -83,7 +85,8 @@ public class WebCommodityController extends BaseController {
         boolean flag=commodityService.deleteCommodity(commodityCode);
         if (flag)
             resultJSONP(request,response,"删除成功");
-        validationResultJSONP(request,response,1001,"删除失败");
+        else
+            validationResultJSONP(request,response,1001,"删除失败");
     }
 
     /**
@@ -101,7 +104,8 @@ public class WebCommodityController extends BaseController {
         boolean flag=commodityService.deleteCommodityList(commodityCodeList.split(","));
         if (flag)
             resultJSONP(request,response,"删除成功");
-        validationResultJSONP(request,response,1001,"删除失败");
+        else
+            validationResultJSONP(request,response,1001,"删除失败");
     }
 
     /**
@@ -118,7 +122,8 @@ public class WebCommodityController extends BaseController {
         Commodity commodity=commodityService.getCommodityByCode(commodityCode);
         if (commodity==null)
             validationResultJSONP(request,response,1001,"找不到此商品信息");
-        resultJSONP(request,response,commodity);
+        else
+            resultJSONP(request,response,commodity);
     }
 
     /**
@@ -131,7 +136,7 @@ public class WebCommodityController extends BaseController {
         log.info("根据当前登陆商家获取分页商品列表");
         QueryParams queryParams=new QueryParams();
         queryParams.addParameter("accountCode",DybUtils.getCurrentAccount(request).getAccountCode());
-        resultJSONP(request,response,commodityService.getCommodityPageList(queryParams,pageIndex,pageIndex,true));
+        resultJSONP(request,response,commodityService.getCommodityPageList(queryParams,pageIndex,pageSize,true));
     }
 
 }

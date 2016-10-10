@@ -44,7 +44,7 @@ public class BaseController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         Dto result = new BaseDto();
-        result.put("result", "");
+        result.put("result", null);
         result.put("errorMessage", info);
         result.put("statusCode", statusCode);
         ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(result,headers, HttpStatus.OK);

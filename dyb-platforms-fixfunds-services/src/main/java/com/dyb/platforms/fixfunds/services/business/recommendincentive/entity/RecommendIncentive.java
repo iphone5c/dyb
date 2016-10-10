@@ -5,6 +5,8 @@
 
 package com.dyb.platforms.fixfunds.services.business.recommendincentive.entity;
 
+import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
+
 import java.util.Date;
 
 /**
@@ -27,7 +29,7 @@ public class RecommendIncentive implements java.io.Serializable {
     // 激励类型
     private Integer incentiveType;
     // 激励来源
-    private String incentiveSources;
+    private AccountType incentiveSources;
     // 推荐人账户code
     private String accountCode;
 
@@ -126,7 +128,7 @@ public class RecommendIncentive implements java.io.Serializable {
      * 
      * @return 激励来源
      */
-    public String getIncentiveSources() {
+    public AccountType getIncentiveSources() {
         return incentiveSources;
     }
 
@@ -135,7 +137,7 @@ public class RecommendIncentive implements java.io.Serializable {
      * 
      * @param incentiveSources 激励来源
      */
-    public void setIncentiveSources(String incentiveSources) {
+    public void setIncentiveSources(AccountType incentiveSources) {
         this.incentiveSources = incentiveSources;
     }
 

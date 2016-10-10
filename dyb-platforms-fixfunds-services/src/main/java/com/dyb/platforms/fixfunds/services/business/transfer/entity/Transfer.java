@@ -5,6 +5,9 @@
 
 package com.dyb.platforms.fixfunds.services.business.transfer.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -26,6 +29,8 @@ public class Transfer implements java.io.Serializable {
     private Date transferTime;
     // 信使豆
     private Double messengerBean;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 创建时间
     private Date createTime;
 

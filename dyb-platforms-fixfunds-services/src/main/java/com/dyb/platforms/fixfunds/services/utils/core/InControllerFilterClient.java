@@ -29,7 +29,7 @@ public class InControllerFilterClient implements HandlerInterceptor {
             validationResultJSONP(request,response,1001,"当前会话是非法请求");
             return false;
         }
-        if (!token.equals(DybUtils.getCurrentAccountClient())){
+        if (DybUtils.getCurrentAccountClient(token)==null){
             validationResultJSONP(request,response,1001,"当前会话无效");
             return false;
         }

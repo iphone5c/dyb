@@ -43,7 +43,7 @@ public class ClientCommonsController extends BaseController {
             return validationResult(1001,"登陆失败");
         }else {
             String token=UUID.randomUUID().toString();
-            DybUtils.setCuurentAccountClient(token);
+            DybUtils.setCuurentAccountClient(token , account);
             Map<String,Object> map=new HashMap<>();
             map.put("token",token);
             map.put("account",account);

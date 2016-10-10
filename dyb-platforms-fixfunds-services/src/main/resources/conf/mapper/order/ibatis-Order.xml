@@ -15,10 +15,11 @@
         <result property="createTime" column="createtime" />
         <result property="status" column="status" />
         <result property="certificateFile" column="certificatefile" />
+        <result property="incentiveMode" column="incentivemode" />
     </resultMap>
 
     <sql id="baseCol">
-        ordercode, membercode, merchantcode, tradetime, price, createtime, status, certificatefile
+        ordercode, membercode, merchantcode, tradetime, price, createtime, status, certificatefile,incentivemode
     </sql>
 
     <sql id="whereSql">
@@ -70,6 +71,14 @@
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
+            <if test="incentiveMode != null"><![CDATA[ and incentivemode = #{incentiveMode} ]]></if>
+            <if test="incentiveMode_r_min != null"><![CDATA[ and incentivemode >= #{incentiveMode_r_min} and incentivemode <= #{incentiveMode_r_max} ]]></if>
+            <if test="incentiveMode_enum != null">
+                <![CDATA[ and incentivemode in ]]>
+                <foreach collection="incentiveMode_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
             <if test="_default_mulattr != null">
                 <![CDATA[ and ]]>
                 <foreach collection="_default_mulattr" item="item" open="(" separator=" or " close=")">
@@ -101,18 +110,20 @@
             <if test="_orderBy == 'status_asc'"><![CDATA[ status, ]]></if>
             <if test="_orderBy == 'certificateFile_desc'"><![CDATA[ certificatefile desc, ]]></if>
             <if test="_orderBy == 'certificateFile_asc'"><![CDATA[ certificatefile, ]]></if>
+            <if test="_orderBy == 'incentiveMode_desc'"><![CDATA[ incentivemode desc, ]]></if>
+            <if test="_orderBy == 'incentiveMode_asc'"><![CDATA[ incentivemode, ]]></if>
         </trim>
     </sql>
 
     <insert id="insertObject" parameterType="com.dyb.platforms.fixfunds.services.business.order.entity.Order">
         insert into
-        dyb_order(ordercode,membercode,merchantcode,tradetime,price,createtime,status,certificatefile)
-        values(#{orderCode},#{memberCode},#{merchantCode},#{tradeTime},#{price},#{createTime},#{status},#{certificateFile});
+        dyb_order(ordercode,membercode,merchantcode,tradetime,price,createtime,status,certificatefile,incentivemode)
+        values(#{orderCode},#{memberCode},#{merchantCode},#{tradeTime},#{price},#{createTime},#{status},#{certificateFile},#{incentiveMode});
     </insert>
 
     <update id="updateObject" parameterType="com.dyb.platforms.fixfunds.services.business.order.entity.Order">
         update dyb_order
-        set membercode=#{memberCode},merchantcode=#{merchantCode},tradetime=#{tradeTime},price=#{price},createtime=#{createTime},status=#{status},certificatefile=#{certificateFile}
+        set membercode=#{memberCode},merchantcode=#{merchantCode},tradetime=#{tradeTime},price=#{price},createtime=#{createTime},status=#{status},certificatefile=#{certificateFile},incentivemode=#{incentiveMode}
         where ordercode=#{orderCode};
     </update>
 

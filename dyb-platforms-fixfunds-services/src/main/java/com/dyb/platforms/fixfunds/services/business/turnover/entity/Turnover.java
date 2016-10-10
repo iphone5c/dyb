@@ -6,6 +6,8 @@
 package com.dyb.platforms.fixfunds.services.business.turnover.entity;
 
 import com.dyb.platforms.fixfunds.services.business.turnover.entity.em.BenefitPriceStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -20,6 +22,8 @@ public class Turnover implements java.io.Serializable {
 
     // 营业额编号 [主键]
     private String turnoverCode;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     // 营业时间
     private Date turnoverTime;
     // 营业总额
@@ -32,6 +36,8 @@ public class Turnover implements java.io.Serializable {
     private Double residueBenefitPrice;
     // 让利状态
     private BenefitPriceStatus benefitPriceStatus;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 创建时间
     private Date createTime;
     // 备注

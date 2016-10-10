@@ -3,145 +3,140 @@
 <html lang="en">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
-	<style type="text/css">.amap_lib_placeSearch{font-family:"Microsoft Yahei","Helvetica Neue",Helvetica,Arial,sans-serif;color:#565656;font-size:12px;line-height:22px;word-wrap:break-word;background-color:#fff;border:1px solid silver}.amap_lib_placeSearch .pageLink{cursor:pointer;text-decoration:underline}.amap_lib_placeSearch_list{background:#fff}.amap_lib_placeSearch .poibox .poibox-icon{margin-left:7px}.amap_lib_placeSearch_page{white-space:nowrap;text-align:right;background:#e5ecf9;margin-top:5px;padding:2px;overflow:hidden}.amap_lib_placeSearch_page>div{float:left;margin-right:5px}.amap_lib_placeSearch_page>div>p{margin:0;padding:0;white-space:nowrap}.amap_lib_placeSearch_ol{list-style:none;padding:0;margin:0}.amap_lib_placeSearch_li{margin:2px 0;padding:0 5px 5px 0;cursor:pointer;overflow:hidden;line-height:17px}.amap_lib_placeSearch_li .amap_lib_placeSearch_li_wrap{overflow:hidden;padding:0 5px}.amap_lib_placeSearch_li_wrap_selected{background-color:#f0f0f0}.amap_lib_placeSearch_li>div .amap_lib_placeSearch_li_title{line-height:20px;font-size:12px}.amap_lib_placeSearch_li>div .amap_lib_placeSearch_li_title span{color:#00c}.amap_lib_placeSearch_li>div .amap_lib_placeSearch_li_title a{margin-left:5px;font-size:12px;color:#3d6dcc;font-weight:400;text-decoration:none}.amap_lib_placeSearch_li>div .amap_lib_placeSearch_li_text{padding:2px 0;line-height:18px;overflow:hidden}.amap_lib_placeSearch_li>div .amap_lib_placeSearch_li_text b{float:left;font-weight:700;overflow:hidden;padding-right:5px}.amap_lib_placeSearch_li>div .amap_lib_placeSearch_li_text span{color:#666;display:block;zoom:1;overflow:hidden}.amap_lib_placeSearch_page span{margin-right:3px}.amap-lib-infowindow .amap-lib-infowindow-content-wrap{word-break:break-all;overflow:hidden;zoom:1}.amap-lib-infowindow{padding:0;position:relative;background-color:#fff;margin:8px}.amap-lib-infowindow-title{line-height:22px;font-size:14px;border-bottom:1px #99adce solid;padding-right:15px}.amap-lib-infowindow-content{padding-top:5px;overflow:hidden;font-size:12px;zoom:1}.amap_lib_placeSearch_poi{background:url(http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png) no-repeat;height:31px;width:19px;cursor:pointer;left:-1px;text-align:center;color:#fff;font:12px arial,simsun,sans-serif;padding-top:3px}.amap_lib_placeSearch .amap_lib_placeSearch_poi{position:absolute}.amap_lib_placeSearch ol,.amap_lib_placeSearch ul{list-style:none;margin:0;padding:0}.amap_lib_placeSearch .poibox{border-bottom:1px solid #eaeaea;cursor:pointer;padding:5px 0 0 10px;position:relative}.amap_lib_placeSearch .poibox .poi-title{margin-left:25px;font-size:13px;overflow:hidden}.amap_lib_placeSearch .poibox .poi-more{color:#0091ff;font-size:12px;line-height:22px;white-space:nowrap;vertical-align:baseline}.amap_lib_placeSearch .poibox .poi-info{word-break:break-all;margin:0 0 0 25px;overflow:hidden}.amap_lib_placeSearch .poibox .poi-info p{color:#999;font-family:Tahoma;line-height:20px}.amap_lib_placeSearch p{margin:0}.amap_lib_placeSearch h1,h2,h3,h4,h5{font-weight:400;margin:0}.amap_lib_placeSearch .poibox.active,.amap_lib_placeSearch .poibox.hover,.amap_lib_placeSearch .poibox:hover{background:#f6f6f6}.amap_lib_placeSearch .poibox .select-btn{margin-left:25px;margin-top:6px;border:0;color:#fff;cursor:pointer;padding:3px 6px;border-radius:2px;background-color:#0091ff}.amap-combo-close{position:absolute;top:11px;right:10px;background:url(http://webapi.amap.com/theme/v1.3/images/amap-info.png) -1px -151px no-repeat;width:12px;height:12px;cursor:pointer}.amap-content-body{min-width:200px;max-width:240px;font-family:Helvetica,"Hiragino Sans GB","Microsoft Yahei","微软雅黑",Arial,sans-serif;box-shadow:0 0 .5px rgba(0,0,100,.6);background:#fff;border-radius:2px;text-align:left;border:1px solid silver}.amap-combo-sharp{margin:0 auto;bottom:1px;position:relative;background:url(http://webapi.amap.com/theme/v1.3/images/amap-info.png) -5px -564px no-repeat;width:18px;height:9px}</style>
-	<style type="text/css">.amap-indoor-map .label-canvas{position:absolute;top:0;left:0}.amap-indoor-map .highlight-image-con *{pointer-events:none}.amap-indoormap-floorbar-control{position:absolute;margin:auto 0;bottom:165px;right:12px;width:35px;text-align:center;line-height:1.3em;overflow:hidden;padding:0 2px}.amap-indoormap-floorbar-control .panel-box{background-color:rgba(255,255,255,.9);border-radius:3px;border:1px solid #ccc}.amap-indoormap-floorbar-control .select-dock{position:absolute;top:0;left:0;width:100%;box-sizing:border-box;height:30px;border:solid #4196ff;border-width:0 2px;border-radius:2px;pointer-events:none;background:linear-gradient(to bottom,#f6f8f9 0,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%)}.amap-indoor-map .transition{transition:opacity .2s},.amap-indoormap-floorbar-control .transition{transition:top .2s,margin-top .2s}.amap-indoormap-floorbar-control .select-dock:after,.amap-indoormap-floorbar-control .select-dock:before{content:"";position:absolute;width:0;height:0;left:0;top:10px;border:solid transparent;border-width:4px;border-left-color:#4196ff}.amap-indoormap-floorbar-control .select-dock:after{right:0;left:auto;border-left-color:transparent;border-right-color:#4196ff}.amap-indoormap-floorbar-control.is-mobile{width:37px}.amap-indoormap-floorbar-control.is-mobile .floor-btn{height:35px;line-height:35px}.amap-indoormap-floorbar-control.is-mobile .select-dock{height:35px;top:36px}.amap-indoormap-floorbar-control.is-mobile .select-dock:after,.amap-indoormap-floorbar-control.is-mobile .select-dock:before{top:13px}.amap-indoormap-floorbar-control.is-mobile .floor-list-box{height:105px}.amap-indoormap-floorbar-control .floor-list-item .floor-btn{color:#555;font-family:"Times New Roman",sans-serif,"Microsoft Yahei";font-size:16px}.amap-indoormap-floorbar-control .floor-list-item.selected .floor-btn{color:#000}.amap-indoormap-floorbar-control .floor-btn{height:28px;line-height:28px;overflow:hidden;cursor:pointer;position:relative;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.amap-indoormap-floorbar-control .floor-btn:hover{background-color:rgba(221,221,221,.4)}.amap-indoormap-floorbar-control .floor-minus,.amap-indoormap-floorbar-control .floor-plus{position:relative;text-indent:-1000em}.amap-indoormap-floorbar-control .floor-minus:after,.amap-indoormap-floorbar-control .floor-plus:after{content:"";position:absolute;margin:auto;top:9px;left:0;right:0;width:0;height:0;border:solid transparent;border-width:10px 8px;border-top-color:#777}.amap-indoormap-floorbar-control .floor-minus.disabled,.amap-indoormap-floorbar-control .floor-plus.disabled{opacity:.3}.amap-indoormap-floorbar-control .floor-plus:after{border-bottom-color:#777;border-top-color:transparent;top:-3px}.amap-indoormap-floorbar-control .floor-list-box{max-height:153px;position:relative;overflow-y:hidden}.amap-indoormap-floorbar-control .floor-list{margin:0;padding:0;list-style:none}.amap-indoormap-floorbar-control .floor-list-item{position:relative}.amap-indoormap-floorbar-control .floor-btn.disabled,.amap-indoormap-floorbar-control .floor-btn.disabled *,.amap-indoormap-floorbar-control.with-indrm-loader *{-webkit-pointer-events:none!important;pointer-events:none!important}.amap-indoormap-floorbar-control .with-indrm-loader .floor-nonas{opacity:.5}.amap-indoor-map-moverf-marker{background-color:#FFFEEF;border:1px solid #7E7E7E;padding:3px 6px;font-size:12px;white-space:nowrap;display:inline-block;position:absolute;top:1em;left:1.2em}.amap-indoormap-floorbar-control .amap-indrm-loader{-moz-animation:amap-indrm-loader 1.25s infinite linear;-webkit-animation:amap-indrm-loader 1.25s infinite linear;animation:amap-indrm-loader 1.25s infinite linear;border:2px solid #91A3D8;border-right-color:transparent;box-sizing:border-box;display:inline-block;overflow:hidden;text-indent:-9999px;width:13px;height:13px;border-radius:7px;position:absolute;margin:auto;top:0;left:0;right:0;bottom:0}@-moz-keyframes amap-indrm-loader{0%{-moz-transform:rotate(0);transform:rotate(0)}100%{-moz-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes amap-indrm-loader{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes amap-indrm-loader{0%{-moz-transform:rotate(0);-ms-transform:rotate(0);-webkit-transform:rotate(0);transform:rotate(0)}100%{-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);-webkit-transform:rotate(360deg);transform:rotate(360deg)}}</style>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>一点公益</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">.amap_lib_placeSearch{font-family:"Microsoft Yahei","Helvetica Neue",Helvetica,Arial,sans-serif;color:#565656;font-size:12px;line-height:22px;word-wrap:break-word;background-color:#fff;border:1px solid silver}.amap_lib_placeSearch .pageLink{cursor:pointer;text-decoration:underline}.amap_lib_placeSearch_list{background:#fff}.amap_lib_placeSearch .poibox .poibox-icon{margin-left:7px}.amap_lib_placeSearch_page{white-space:nowrap;text-align:right;background:#e5ecf9;margin-top:5px;padding:2px;overflow:hidden}.amap_lib_placeSearch_page>div{float:left;margin-right:5px}.amap_lib_placeSearch_page>div>p{margin:0;padding:0;white-space:nowrap}.amap_lib_placeSearch_ol{list-style:none;padding:0;margin:0}.amap_lib_placeSearch_li{margin:2px 0;padding:0 5px 5px 0;cursor:pointer;overflow:hidden;line-height:17px}.amap_lib_placeSearch_li .amap_lib_placeSearch_li_wrap{overflow:hidden;padding:0 5px}.amap_lib_placeSearch_li_wrap_selected{background-color:#f0f0f0}.amap_lib_placeSearch_li>div .amap_lib_placeSearch_li_title{line-height:20px;font-size:12px}.amap_lib_placeSearch_li>div .amap_lib_placeSearch_li_title span{color:#00c}.amap_lib_placeSearch_li>div .amap_lib_placeSearch_li_title a{margin-left:5px;font-size:12px;color:#3d6dcc;font-weight:400;text-decoration:none}.amap_lib_placeSearch_li>div .amap_lib_placeSearch_li_text{padding:2px 0;line-height:18px;overflow:hidden}.amap_lib_placeSearch_li>div .amap_lib_placeSearch_li_text b{float:left;font-weight:700;overflow:hidden;padding-right:5px}.amap_lib_placeSearch_li>div .amap_lib_placeSearch_li_text span{color:#666;display:block;zoom:1;overflow:hidden}.amap_lib_placeSearch_page span{margin-right:3px}.amap-lib-infowindow .amap-lib-infowindow-content-wrap{word-break:break-all;overflow:hidden;zoom:1}.amap-lib-infowindow{padding:0;position:relative;background-color:#fff;margin:8px}.amap-lib-infowindow-title{line-height:22px;font-size:14px;border-bottom:1px #99adce solid;padding-right:15px}.amap-lib-infowindow-content{padding-top:5px;overflow:hidden;font-size:12px;zoom:1}.amap_lib_placeSearch_poi{background:url(http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png) no-repeat;height:31px;width:19px;cursor:pointer;left:-1px;text-align:center;color:#fff;font:12px arial,simsun,sans-serif;padding-top:3px}.amap_lib_placeSearch .amap_lib_placeSearch_poi{position:absolute}.amap_lib_placeSearch ol,.amap_lib_placeSearch ul{list-style:none;margin:0;padding:0}.amap_lib_placeSearch .poibox{border-bottom:1px solid #eaeaea;cursor:pointer;padding:5px 0 0 10px;position:relative}.amap_lib_placeSearch .poibox .poi-title{margin-left:25px;font-size:13px;overflow:hidden}.amap_lib_placeSearch .poibox .poi-more{color:#0091ff;font-size:12px;line-height:22px;white-space:nowrap;vertical-align:baseline}.amap_lib_placeSearch .poibox .poi-info{word-break:break-all;margin:0 0 0 25px;overflow:hidden}.amap_lib_placeSearch .poibox .poi-info p{color:#999;font-family:Tahoma;line-height:20px}.amap_lib_placeSearch p{margin:0}.amap_lib_placeSearch h1,h2,h3,h4,h5{font-weight:400;margin:0}.amap_lib_placeSearch .poibox.active,.amap_lib_placeSearch .poibox.hover,.amap_lib_placeSearch .poibox:hover{background:#f6f6f6}.amap_lib_placeSearch .poibox .select-btn{margin-left:25px;margin-top:6px;border:0;color:#fff;cursor:pointer;padding:3px 6px;border-radius:2px;background-color:#0091ff}.amap-combo-close{position:absolute;top:11px;right:10px;background:url(http://webapi.amap.com/theme/v1.3/images/amap-info.png) -1px -151px no-repeat;width:12px;height:12px;cursor:pointer}.amap-content-body{min-width:200px;max-width:240px;font-family:Helvetica,"Hiragino Sans GB","Microsoft Yahei","微软雅黑",Arial,sans-serif;box-shadow:0 0 .5px rgba(0,0,100,.6);background:#fff;border-radius:2px;text-align:left;border:1px solid silver}.amap-combo-sharp{margin:0 auto;bottom:1px;position:relative;background:url(http://webapi.amap.com/theme/v1.3/images/amap-info.png) -5px -564px no-repeat;width:18px;height:9px}</style>
+    <style type="text/css">.amap-indoor-map .label-canvas{position:absolute;top:0;left:0}.amap-indoor-map .highlight-image-con *{pointer-events:none}.amap-indoormap-floorbar-control{position:absolute;margin:auto 0;bottom:165px;right:12px;width:35px;text-align:center;line-height:1.3em;overflow:hidden;padding:0 2px}.amap-indoormap-floorbar-control .panel-box{background-color:rgba(255,255,255,.9);border-radius:3px;border:1px solid #ccc}.amap-indoormap-floorbar-control .select-dock{position:absolute;top:0;left:0;width:100%;box-sizing:border-box;height:30px;border:solid #4196ff;border-width:0 2px;border-radius:2px;pointer-events:none;background:linear-gradient(to bottom,#f6f8f9 0,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%)}.amap-indoor-map .transition{transition:opacity .2s},.amap-indoormap-floorbar-control .transition{transition:top .2s,margin-top .2s}.amap-indoormap-floorbar-control .select-dock:after,.amap-indoormap-floorbar-control .select-dock:before{content:"";position:absolute;width:0;height:0;left:0;top:10px;border:solid transparent;border-width:4px;border-left-color:#4196ff}.amap-indoormap-floorbar-control .select-dock:after{right:0;left:auto;border-left-color:transparent;border-right-color:#4196ff}.amap-indoormap-floorbar-control.is-mobile{width:37px}.amap-indoormap-floorbar-control.is-mobile .floor-btn{height:35px;line-height:35px}.amap-indoormap-floorbar-control.is-mobile .select-dock{height:35px;top:36px}.amap-indoormap-floorbar-control.is-mobile .select-dock:after,.amap-indoormap-floorbar-control.is-mobile .select-dock:before{top:13px}.amap-indoormap-floorbar-control.is-mobile .floor-list-box{height:105px}.amap-indoormap-floorbar-control .floor-list-item .floor-btn{color:#555;font-family:"Times New Roman",sans-serif,"Microsoft Yahei";font-size:16px}.amap-indoormap-floorbar-control .floor-list-item.selected .floor-btn{color:#000}.amap-indoormap-floorbar-control .floor-btn{height:28px;line-height:28px;overflow:hidden;cursor:pointer;position:relative;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.amap-indoormap-floorbar-control .floor-btn:hover{background-color:rgba(221,221,221,.4)}.amap-indoormap-floorbar-control .floor-minus,.amap-indoormap-floorbar-control .floor-plus{position:relative;text-indent:-1000em}.amap-indoormap-floorbar-control .floor-minus:after,.amap-indoormap-floorbar-control .floor-plus:after{content:"";position:absolute;margin:auto;top:9px;left:0;right:0;width:0;height:0;border:solid transparent;border-width:10px 8px;border-top-color:#777}.amap-indoormap-floorbar-control .floor-minus.disabled,.amap-indoormap-floorbar-control .floor-plus.disabled{opacity:.3}.amap-indoormap-floorbar-control .floor-plus:after{border-bottom-color:#777;border-top-color:transparent;top:-3px}.amap-indoormap-floorbar-control .floor-list-box{max-height:153px;position:relative;overflow-y:hidden}.amap-indoormap-floorbar-control .floor-list{margin:0;padding:0;list-style:none}.amap-indoormap-floorbar-control .floor-list-item{position:relative}.amap-indoormap-floorbar-control .floor-btn.disabled,.amap-indoormap-floorbar-control .floor-btn.disabled *,.amap-indoormap-floorbar-control.with-indrm-loader *{-webkit-pointer-events:none!important;pointer-events:none!important}.amap-indoormap-floorbar-control .with-indrm-loader .floor-nonas{opacity:.5}.amap-indoor-map-moverf-marker{background-color:#FFFEEF;border:1px solid #7E7E7E;padding:3px 6px;font-size:12px;white-space:nowrap;display:inline-block;position:absolute;top:1em;left:1.2em}.amap-indoormap-floorbar-control .amap-indrm-loader{-moz-animation:amap-indrm-loader 1.25s infinite linear;-webkit-animation:amap-indrm-loader 1.25s infinite linear;animation:amap-indrm-loader 1.25s infinite linear;border:2px solid #91A3D8;border-right-color:transparent;box-sizing:border-box;display:inline-block;overflow:hidden;text-indent:-9999px;width:13px;height:13px;border-radius:7px;position:absolute;margin:auto;top:0;left:0;right:0;bottom:0}@-moz-keyframes amap-indrm-loader{0%{-moz-transform:rotate(0);transform:rotate(0)}100%{-moz-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes amap-indrm-loader{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes amap-indrm-loader{0%{-moz-transform:rotate(0);-ms-transform:rotate(0);-webkit-transform:rotate(0);transform:rotate(0)}100%{-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);-webkit-transform:rotate(360deg);transform:rotate(360deg)}}</style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>一点公益</title>
 </head>
 <body id="ad-app" data-apptype="ad-app" class="relative">
-		<div id="content" class="ad-content2 sui-form relative" style="margin-left: 230px;">
-			<div class="table-title">您现在的位置:商家管理 - 信使消费登记</div>
-			<div id="transCheckInValidate" class="center">
-				<div class="tableForm xiaofeidengji-ipt-box" style="max-width:720px;">
-					<div class="xiaofeidengji-cell" style="text-align:center;">
-						<span class="ad-red2">信使消费登记</span></div>
-					<div class=" xiaofeidengji-cell">
-						<div class=" xiaofeidengji-cell-text">信使身份 :</div>
-						<div class="sui-validate" style="float:left; margin-top:5px;" novalidate="novalidate">
-							<input class="xiaofeidengji-ipt input-xfat input-error" style="width:300px;" data-rules="required" type="text" id="userNumber" value="" placeholder=" 扫描信使二维码/输入信使电话号码/ID">
-							<input id="queryMemberBtn" class="sui-btn btn-xlarge btn-primary xiaofeidengji-btn" type="button" value="查看信使资料">
-							<input id="queryMemberBtn_close" class="sui-btn btn-xlarge btn-primary xiaofeidengji-btn" type="button" value="收起" style="display: none;">
-							<div id="memberInfoTip" style="margin-top:10px;width:318px;" class="tooltip-only-arrow default bottom dsn">
-								<div class="tooltip-arrow">
-									<div class="tooltip-arrow cover"></div>
-								</div>
-								<div id="userNumberTooltip" class="tooltip-inner"></div>
-							</div>
-							<div class="sui-msg msg-error help-inline" style="display: none;">
-								<div class="msg-con">
-									<span>请填写</span></div>
-								<i class="iconfont" style="    display: inline-block;position: absolute;top: 3px;left: 6px;font-size: 14px">&#xf0054;</i>
-							</div>
-						</div>
-					</div>
-					<div class=" xiaofeidengji-cell">
-						<div class=" xiaofeidengji-cell-text">消费金额(元):</div>
-						<div class=" xiaofeidengji-cell-widget  sui-validate" novalidate="novalidate">
-							<input class="xiaofeidengji-ipt input-xfat" style="width:200px; border:none; cursor:text; font-size:16px; margin-top:3px; padding:0px;" data-rules="required|adAmt|maxlength=13|lt=10000000000" type="text" id="amount" disabled="disabled"></div>
-					</div>
-					<div class="xiaofeidengji-ipt-text2">提醒：请如实登记信使消费记录，如有虚假，违反《一点公益联盟商家合作协议》法律条款规定，承担违约责任。</div>
-					<div class="clear"></div>
-				</div>
-			</div>
-			<div class=" xiaofeidengji-cell-btn sui-form">
-				<input id="addGoods" class="sui-btn btn-xlarge btn-primary xiaofeidengji-btn btn-fontBlue1" type="button" value="添加商品">
-				<input id="transCheckIn" class="sui-btn btn-xlarge btn-primary xiaofeidengji-btn" type="button" value="提交订单"></div>
-			<div style="margin:10px 20px;">
-				<table id="goodsTable" class="sui-table table-vzebra ad-table">
-					<thead>
-					<tr>
-						<th>商品名称</th>
-						<th>商品编码</th>
-						<th>型号/规格</th>
-						<th>单价（元）</th>
-						<th>购买数量</th>
-						<th>总价（元）</th>
-						<th>操作</th></tr>
-					</thead>
-				</table>
-			</div>
-		</div>
+<div id="content" class="ad-content2 sui-form relative" style="margin-left: 230px;">
+    <div class="table-title">您现在的位置:商家管理 - 信使消费登记</div>
+    <div id="transCheckInValidate" class="center">
+        <div class="tableForm xiaofeidengji-ipt-box" style="max-width:720px;">
+            <div class="xiaofeidengji-cell" style="text-align:center;">
+                <span class="ad-red2">信使消费登记</span></div>
+            <div class=" xiaofeidengji-cell">
+                <div class=" xiaofeidengji-cell-text">信使身份 :</div>
+                <div class="sui-validate" style="float:left; margin-top:5px;" novalidate="novalidate">
+                    <input class="xiaofeidengji-ipt input-xfat" style="width:300px;" data-rules="required" type="text" id="userNumber" value="" placeholder=" 扫描信使二维码/输入信使电话号码/ID">
+                    <input id="queryMemberBtn" class="sui-btn btn-xlarge btn-primary xiaofeidengji-btn" type="button" value="查看信使资料">
+                    <input id="queryMemberBtn_close" class="sui-btn btn-xlarge btn-primary xiaofeidengji-btn" type="button" value="收起" style="display: none;">
+                    <div id="memberInfoTip" style="margin-top:10px;width:318px;" class="tooltip-only-arrow default bottom dsn">
+                        <div class="tooltip-arrow">
+                            <div class="tooltip-arrow cover"></div>
+                        </div>
+                        <div id="userNumberTooltip" class="tooltip-inner"></div>
+                    </div>
+                    <div class="sui-msg msg-error help-inline" style="display: none;">
+                        <div class="msg-con">
+                            <span>请填写</span></div>
+                        <i class="iconfont" style="    display: inline-block;position: absolute;top: 3px;left: 6px;font-size: 14px">&#xf0054;</i>
+                    </div>
+                </div>
+            </div>
+            <div class=" xiaofeidengji-cell">
+                <div class=" xiaofeidengji-cell-text">消费金额(元):</div>
+                <div class=" xiaofeidengji-cell-widget  sui-validate" novalidate="novalidate">
+                    <input class="xiaofeidengji-ipt" style="width:200px;padding:5px; cursor:text; font-size:16px; margin-top:3px" data-rules="required|adAmt|maxlength=13|lt=10000000000" type="text" id="amount"></div>
+            </div>
+            <div class="xiaofeidengji-ipt-text2">提醒：请如实登记信使消费记录，如有虚假，违反《一点公益联盟商家合作协议》法律条款规定，承担违约责任。</div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class=" xiaofeidengji-cell-btn sui-form">
+        <input id="addGoods" class="sui-btn btn-xlarge btn-primary xiaofeidengji-btn btn-fontBlue1" type="button" value="添加商品">
+        <input id="transCheckIn" class="sui-btn btn-xlarge btn-primary xiaofeidengji-btn" type="button" value="提交订单"></div>
+    <div style="margin:10px 20px;">
+        <table id="goodsTable" class="sui-table table-vzebra ad-table">
+            <thead>
+            <tr>
+                <th>商品名称</th>
+                <th>商品编码</th>
+                <th>型号/规格</th>
+                <th>单价（元）</th>
+                <th>购买数量</th>
+                <th>总价（元）</th>
+                <th>操作</th></tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
 <div class="sui-modal hide fade" tabindex="-1" role="dialog" id="1473839199619" data-hidetype="remove" style="width: 910px; margin-left: -450px; margin-top: -338px; display: block;" aria-hidden="false">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h4 class="modal-title">添加商品</h4></div>
-			<div class="modal-body no-foot" style="height: 570px;">
-				<div class="ad-box mt15">
-					<div class="spanTitle">商品名称:</div>
-					<div class="span1">
-						<input id="productName" type="text" placeholder="请输入商品名称" class="input-xfat"></div>
-					<div class="spanTitle">商品编号:</div>
-					<div class="span1">
-						<input id="productID" type="text" placeholder="请输入商品编号" class="input-xfat"></div>
-					<div class="">
-						<input type="button" id="searchProduct" class="ad-btn ad-blue-btn" value="检索">
-						<input type="button" id="submitGoods" class="ad-btn ad-blue-btn" value="确认选择"></div>
-					<div class="clear"></div>
-				</div>
-				<div id="productTable" style="margin-top:10px;">
-					<table class="sui-table table-vzebra ad-table">
-						<thead>
-						<tr>
-							<th>
-								<input id="selectAll" type="checkbox" name="checkboxTitle" data-id="-1" data-line="-1"></th>
-							<th style="max-width:1%;">商品名称</th>
-							<th style="max-width:1%;">商品编码</th>
-							<th style="max-width:1%;">型号/规格</th>
-							<th style="max-width:1%;">单价（元）</th></tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td>
-								<input class="subSelect" type="checkbox" name="checkbox" data-id="182083" data-line="0"></td>
-							<td style="" data-key="productname" data-line="0" data-id="182083">加油卡</td>
-							<td style="" data-key="productID" data-line="0" data-id="182083">001</td>
-							<td style="" data-key="modelnumber" data-line="0" data-id="182083">中石化</td>
-							<td style="" data-key="price" data-line="0" data-id="182083">10000.00</td>
-							<td id="productTable-line-0" class="dsn">{"id":"182083","productname":"加油卡","productID":"001","modelnumber":"中石化","price":"10000.00"}</td></tr>
-						</tbody>
-					</table>
-					<div class="sui-pagination pagination-small" style="text-align:left;">
-						<ul id="table-pagination">
-							<!-- 前半部分（包括当前） -->
-							<li id="prevBtn" class="prev disabled">
-								<a>«上一页</a>
-							</li>
-							<li class="pageBtn active" data-num="1">
-								<a>1</a>
-							</li>
-							<!-- 后半部分（当前之后） -->
-							<li id="nextBtn" class="next disabled">
-								<a>下一页»</a>
-							</li>
-						</ul>
-						<div>
-							<span>共1页&nbsp;</span>
-              <span>到
-                <input id="selectPageNum" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" class="page-num">
-                <button id="selectPage" class="page-confirm">确定</button>页</span></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">添加商品</h4></div>
+            <div class="modal-body no-foot" style="height: 570px;">
+                <div class="ad-box mt15">
+                    <div class="spanTitle">商品名称:</div>
+                    <div class="span1">
+                        <input id="productName" type="text" placeholder="请输入商品名称" class="input-xfat"></div>
+                    <div class="spanTitle">商品编号:</div>
+                    <div class="span1">
+                        <input id="productID" type="text" placeholder="请输入商品编号" class="input-xfat"></div>
+                    <div class="">
+                        <input type="button" id="searchProduct" class="ad-btn ad-blue-btn" value="检索">
+                        <input type="button" id="submitGoods" class="ad-btn ad-blue-btn" value="确认选择"></div>
+                    <div class="clear"></div>
+                </div>
+                <div id="productTable" style="margin-top:10px;">
+                    <table id="xg_table" class="sui-table table-vzebra ad-table">
+                        <thead>
+                        <tr>
+                            <th>
+                                <input id="selectAll" type="checkbox" name="checkboxTitle" data-id="-1" data-line="-1"></th>
+                            <th style="max-width:1%;">商品名称</th>
+                            <th style="max-width:1%;">商品编码</th>
+                            <th style="max-width:1%;">型号/规格</th>
+                            <th style="max-width:1%;">单价（元）</th></tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="sui-pagination pagination-small" style="text-align:left;">
+                        <ul id="table-pagination">
+                            <!-- 前半部分（包括当前） -->
+                            <li id="prevBtn" class="  active">
+                                <a>«上一页</a>
+                            </li>
+                            <li class="pageBtn" data-num="1">
+                                <a id="onpage"></a>
+                                <style>
+                                    #onpage{
+                                        background: none !important;
+                                        color: black !important;
+                                        border: 1px solid white !important;
+                                    }
+                                    #onpage:hover{
+                                        background: none !important;
+                                        color: black !important;
+                                        border: 1px solid white !important;
+                                    }
+                                </style>
+                            </li>
+                            <!-- 后半部分（当前之后） -->
+                            <li id="nextBtn" class=" active">
+                                <a>下一页»</a>
+                            </li>
+                        </ul>
+                        <div>
+                            <span id="xg_page"></span>
+                            <!--<span>到-->
+                            <!--<input id="selectPageNum" type="text"  class="page-num">-->
+                            <!--<button id="selectPage" class="page-confirm">确定</button>页</span>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="sui-modal-backdrop fade" style="background:#000;z-index:-1"></div>
-<script>
-	$(function(){
-		$(".btn-fontBlue1").click(function(){
-			$(".sui-modal").addClass("in");
-			$(".sui-modal-backdrop").css("zIndex","1000").addClass("in");
-		});
-		$(".sui-close").click(function(){
-			$(".sui-modal").removeClass("in");
-			$(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
-		})
-	})
-</script>
 </body>
-
+<script type="text/javascript" src="../js/transCheckIn.js"></script>
 </html>

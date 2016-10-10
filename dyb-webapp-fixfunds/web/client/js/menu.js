@@ -1,5 +1,11 @@
 
 $(function(){
+    function getpage(url){
+        $.get(url,function(data){
+            $("#ad-content").html(data)
+        })
+    }
+    getpage("./Merchant-sj/home.html");
     var s=true;
     $("#leftmenu").on("click",".js-menu-parent-li-a",function(){
         var i=$(".js-menu-parent-li-a").index(this);

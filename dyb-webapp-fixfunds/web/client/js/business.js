@@ -31,7 +31,7 @@ $(function(){
     $("#idcard").html(data.result.merchant.merchant.principalIdCard);
     $("#email").html(data.result.merchant.merchant.principalEmail);
     $("#spanTitle").html(data.result.merchant.merchant.accountPhone);
-    $("#longitude").val(data.result.merchant.merchant.longitude);
-    $("#latitude").val(data.result.merchant.merchant.latitude);
-    $("#address").val(data.result.merchant.merchant.merchantAddress);
+//    $("#longitude").val(data.result.merchant.merchant.longitude);
+//    $("#latitude").val(data.result.merchant.merchant.latitude);
+//    $("#address").val(data.result.merchant.merchant.merchantAddress);
 })

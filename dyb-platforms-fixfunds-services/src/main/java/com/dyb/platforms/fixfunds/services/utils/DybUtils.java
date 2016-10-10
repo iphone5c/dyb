@@ -6,6 +6,7 @@ import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeExcept
 import com.dyb.platforms.fixfunds.services.utils.core.serializes.ISerialize;
 import com.dyb.platforms.fixfunds.services.utils.core.serializes.JsonSerialize;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.context.ContextLoader;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
@@ -181,7 +182,7 @@ public class DybUtils {
      * @return
      */
     public static boolean verifyPassword(String origPwd,String encryptedPwd){
-        return MD5.verify(origPwd,encryptedPwd);
+        return MD5.verify(origPwd, encryptedPwd);
     }
 
     /**
@@ -202,6 +203,30 @@ public class DybUtils {
     public static Account getCurrentAccount(HttpServletRequest request){
         Account account= (Account) request.getSession().getAttribute("CURRENT_ACCOUNT");
         return account;
+    }
+
+    /**
+     * 获取当前前端登陆用户
+     * @param request
+     * @return
+     */
+    public static Account getCurrentAccountClient(HttpServletRequest request){
+        Account account= (Account) request.getSession().getAttribute("CURRENT_ACCOUNT_CLIENT");
+        return account;
+    }
+
+    /**
+     * 将令牌设置到应用上下文
+     * @param token 令牌
+     */
+    public static void setCuurentAccountClient(String token){
+//        request.getSession().getServletContext().setAttribute("CURRENT_ACCOUNT_CLIENT",token);
+        ContextLoader.getCurrentWebApplicationContext().getServletContext().setAttribute("CURRENT_ACCOUNT_CLIENT",token);
+    }
+
+    public static String getCurrentAccountClient(){
+        String token= (String) ContextLoader.getCurrentWebApplicationContext().getServletContext().getAttribute("CURRENT_ACCOUNT_CLIENT");
+        return token;
     }
 
     /**

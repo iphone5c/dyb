@@ -47,5 +47,9 @@
             <mvc:mapping path="/back/**"/>
             <bean class="com.dyb.platforms.fixfunds.services.utils.core.InControllerFilterBack"></bean>
         </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/client/**"/>
+            <bean class="com.dyb.platforms.fixfunds.services.utils.core.InControllerFilterClient"></bean>
+        </mvc:interceptor>
     </mvc:interceptors>
 </beans>

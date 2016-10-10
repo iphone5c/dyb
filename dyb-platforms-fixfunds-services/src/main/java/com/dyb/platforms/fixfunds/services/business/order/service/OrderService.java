@@ -59,7 +59,7 @@ public class OrderService extends BaseService implements IOrderService {
         if (order.getTradeTime()==null)
             throw new DybRuntimeException("新增订单时，登记时间不能为空");
         Account member=accountService.getAccountByCode(order.getMemberCode(), false);
-        Account merchant=accountService.getAccountByCode(order.getMerchantCode(), false);
+        Account merchant=accountService.getAccountByCode(order.getMerchantCode(), true);
         if (member==null||member.getAccountType()!= AccountType.信使)
             throw new DybRuntimeException("新增订单时，找不到此信使的信息");
         if (member==null||member.getAccountType()!= AccountType.商家)
@@ -68,6 +68,7 @@ public class OrderService extends BaseService implements IOrderService {
         order.setOrderCode(orderCode);
         order.setStatus(OrderStatus.待提交资料);
         order.setCreateTime(new Date());
+        order.setIncentiveMode(merchant.getMerchant().getIncentiveMode());
 
         for (OrderItem orderItem:orderItemList){
             OrderItem temp=orderItemService.createOrderItem(orderCode,orderItem);
@@ -102,6 +103,41 @@ public class OrderService extends BaseService implements IOrderService {
     @Override
     public PageList<Order> getOrderPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail) {
         return orderDao.queryListForPaged(wheres,pageIndex,pageSize,detail);
+    }
+
+    /**
+     * 根据商户账号code获取订单
+     * @param merchantAccount 商户账号code
+     * @return
+     */
+    @Override
+    public List<Order> getOrderByMerchantAccount(String merchantAccount) {
+        if(DybUtils.isEmptyOrNull(merchantAccount))
+            throw new DybRuntimeException("根据商户账号code获取订单时，账号code不能为空");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("merchantCode", merchantAccount);
+        return orderDao.queryList(queryParams,0,-1,true);
+    }
+
+    /**
+     * 根据商户账号code获取指定时间范围的订单
+     * @param merchantAccount 商户账号code
+     * @param min 最小日期
+     * @param max 最大日期
+     * @return
+     */
+    @Override
+    public List<Order> getOrderByMerchantAccount(String merchantAccount, Date min, Date max) {
+        if(DybUtils.isEmptyOrNull(merchantAccount))
+            throw new DybRuntimeException("根据商户账号code获取订单时，账号code不能为空");
+        if (min==null)
+            throw new DybRuntimeException("最小时间不能为空");
+        if (max==null)
+            throw new DybRuntimeException("最大时间不能为空");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("merchantCode", merchantAccount);
+        queryParams.addParameterByRange("tradeTime",min,max);
+        return orderDao.queryList(queryParams,0,-1,true);
     }
 
 }

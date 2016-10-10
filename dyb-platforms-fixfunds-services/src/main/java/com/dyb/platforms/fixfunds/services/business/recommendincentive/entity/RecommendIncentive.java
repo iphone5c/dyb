@@ -5,6 +5,10 @@
 
 package com.dyb.platforms.fixfunds.services.business.recommendincentive.entity;
 
+import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -18,6 +22,8 @@ public class RecommendIncentive implements java.io.Serializable {
 
     // 推荐编号code [主键]
     private String recommendIncentiveCode;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     // 激励日期
     private Date recommendIncentiveTime;
     // 被推荐人code
@@ -27,7 +33,7 @@ public class RecommendIncentive implements java.io.Serializable {
     // 激励类型
     private Integer incentiveType;
     // 激励来源
-    private String incentiveSources;
+    private AccountType incentiveSources;
     // 推荐人账户code
     private String accountCode;
 
@@ -126,7 +132,7 @@ public class RecommendIncentive implements java.io.Serializable {
      * 
      * @return 激励来源
      */
-    public String getIncentiveSources() {
+    public AccountType getIncentiveSources() {
         return incentiveSources;
     }
 
@@ -135,7 +141,7 @@ public class RecommendIncentive implements java.io.Serializable {
      * 
      * @param incentiveSources 激励来源
      */
-    public void setIncentiveSources(String incentiveSources) {
+    public void setIncentiveSources(AccountType incentiveSources) {
         this.incentiveSources = incentiveSources;
     }
 

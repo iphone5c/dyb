@@ -34,6 +34,8 @@ public class Order implements java.io.Serializable {
     private OrderStatus status;
     // 资料照片
     private String certificateFile;
+    // 激励模式
+    private Integer incentiveMode;
 
     /** 
      * 获取订单编号 [主键]
@@ -179,4 +181,21 @@ public class Order implements java.io.Serializable {
         this.certificateFile = certificateFile;
     }
 
+    /**
+     * 获取激励模式
+     *
+     * @return 激励模式
+     */
+    public Integer getIncentiveMode() {
+        return incentiveMode;
+    }
+
+    /**
+     * 设置激励模式
+     *
+     * @param incentiveMode 激励模式
+     */
+    public void setIncentiveMode(Integer incentiveMode) {
+        this.incentiveMode = incentiveMode;
+    }
 }

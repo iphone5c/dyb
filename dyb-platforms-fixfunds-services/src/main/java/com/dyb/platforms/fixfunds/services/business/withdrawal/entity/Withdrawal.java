@@ -5,6 +5,11 @@
 
 package com.dyb.platforms.fixfunds.services.business.withdrawal.entity;
 
+import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
+import com.dyb.platforms.fixfunds.services.business.withdrawal.entity.em.ApplyStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -19,7 +24,7 @@ public class Withdrawal implements java.io.Serializable {
     // 回购编号code [主键]
     private String withdrawalCode;
     // 回购类型
-    private String withdrawalType;
+    private MessengerBeanType withdrawalType;
     // 申请回购的信使豆
     private Double applyWithdrawalNum;
     // 实际回购的信使豆
@@ -41,7 +46,9 @@ public class Withdrawal implements java.io.Serializable {
     // 申请时间
     private Date applyTime;
     // 申请状态
-    private String applyStatus;
+    private ApplyStatus applyStatus;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 创建时间
     private Date createTime;
 
@@ -68,7 +75,7 @@ public class Withdrawal implements java.io.Serializable {
      * 
      * @return 回购类型
      */
-    public String getWithdrawalType() {
+    public MessengerBeanType getWithdrawalType() {
         return withdrawalType;
     }
 
@@ -77,7 +84,7 @@ public class Withdrawal implements java.io.Serializable {
      * 
      * @param withdrawalType 回购类型
      */
-    public void setWithdrawalType(String withdrawalType) {
+    public void setWithdrawalType(MessengerBeanType withdrawalType) {
         this.withdrawalType = withdrawalType;
     }
 
@@ -266,7 +273,7 @@ public class Withdrawal implements java.io.Serializable {
      * 
      * @return 申请状态
      */
-    public String getApplyStatus() {
+    public ApplyStatus getApplyStatus() {
         return applyStatus;
     }
 
@@ -275,7 +282,7 @@ public class Withdrawal implements java.io.Serializable {
      * 
      * @param applyStatus 申请状态
      */
-    public void setApplyStatus(String applyStatus) {
+    public void setApplyStatus(ApplyStatus applyStatus) {
         this.applyStatus = applyStatus;
     }
 

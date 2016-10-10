@@ -5,6 +5,10 @@
 
 package com.dyb.platforms.fixfunds.services.business.accountincentive.entity;
 
+import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -18,6 +22,8 @@ public class AccountIncentive implements java.io.Serializable {
 
     // 账户激励code [主键]
     private String accountIncentiveCode;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     // 激励日期
     private Date accountIncentiveTime;
     // 爱心数量
@@ -27,7 +33,7 @@ public class AccountIncentive implements java.io.Serializable {
     // 激励信使豆
     private Double messengerBean;
     // 消费来源
-    private String source;
+    private AccountType source;
     // 账户code
     private String accountCode;
     // 激励模式
@@ -128,7 +134,7 @@ public class AccountIncentive implements java.io.Serializable {
      * 
      * @return 消费来源
      */
-    public String getSource() {
+    public AccountType getSource() {
         return source;
     }
 
@@ -137,7 +143,7 @@ public class AccountIncentive implements java.io.Serializable {
      * 
      * @param source 消费来源
      */
-    public void setSource(String source) {
+    public void setSource(AccountType source) {
         this.source = source;
     }
 

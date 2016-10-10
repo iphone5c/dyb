@@ -5,6 +5,10 @@
 
 package com.dyb.platforms.fixfunds.services.business.donation.entity;
 
+import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -18,12 +22,16 @@ public class Donation implements java.io.Serializable {
 
     // 直捐编号code [主键]
     private String donationCode;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     // 直捐日期
     private Date donationTime;
     // 直捐信使豆
     private Double donationMessengerBean;
     // 信使豆类型
-    private String donationType;
+    private MessengerBeanType donationType;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 创建日期
     private Date createTime;
     // 直捐人code
@@ -88,7 +96,7 @@ public class Donation implements java.io.Serializable {
      * 
      * @return 信使豆类型
      */
-    public String getDonationType() {
+    public MessengerBeanType getDonationType() {
         return donationType;
     }
 
@@ -97,7 +105,7 @@ public class Donation implements java.io.Serializable {
      * 
      * @param donationType 信使豆类型
      */
-    public void setDonationType(String donationType) {
+    public void setDonationType(MessengerBeanType donationType) {
         this.donationType = donationType;
     }
 

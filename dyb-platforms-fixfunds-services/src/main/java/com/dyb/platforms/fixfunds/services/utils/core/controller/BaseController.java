@@ -1,5 +1,7 @@
 package com.dyb.platforms.fixfunds.services.utils.core.controller;
 
+import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
+import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.exception.DybExceptionCode;
 import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
 import org.apache.log4j.Logger;
@@ -60,7 +62,7 @@ public class BaseController {
     @ExceptionHandler
     public Object exception( HttpServletRequest request, Exception ex ) {
         Dto result = new BaseDto();
-        result.put("result", "");
+        result.put("result", null);
         if(ex instanceof DybRuntimeException){
             DybRuntimeException ycRuntimeException= (DybRuntimeException) ex;
             result.put("errorMessage", ycRuntimeException.getMessage());
@@ -73,6 +75,16 @@ public class BaseController {
         }
 
         return result;
+    }
+
+    /**
+     * 获取客户端当前有效登陆用户
+     * @param request
+     * @return
+     */
+    public Account getCurrentAccountClient(HttpServletRequest request){
+        String token = request.getParameter("token");
+        return DybUtils.getCurrentAccountClient(token);
     }
 
 }

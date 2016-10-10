@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XPD:PROJECT xmlns:XPD="http://www.staruml.com" version="1">
+<XPD:HEADER>
+<XPD:SUBUNITS>
+</XPD:SUBUNITS>
+<XPD:PROFILES>
+<XPD:PROFILE>UMLStandard</XPD:PROFILE>
+</XPD:PROFILES>
+</XPD:HEADER>
+<XPD:BODY>
+<XPD:OBJ name="DocumentElement" type="UMLProject" guid="XI6lWRiB+kGVDzWjb3x7eQAA">
+<XPD:ATTR name="Title" type="string">project</XPD:ATTR>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLModel" guid="aFqdZntgp0aChWMJQrqsGwAA">
+<XPD:ATTR name="Name" type="string">com.dyb.platforms.fixfunds.services.business.recommendincentive.entity</XPD:ATTR>
+<XPD:REF name="Namespace">XI6lWRiB+kGVDzWjb3x7eQAA</XPD:REF>
+<XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedDiagrams[0]" type="UMLClassDiagram" guid="mc4LpEhFZUywTnHbnR9atAAA">
+<XPD:ATTR name="Name" type="string">ProjectBaseData</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">用户组</XPD:ATTR>
+<XPD:REF name="DiagramOwner">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:OBJ name="DiagramView" type="UMLClassDiagramView" guid="3PJb1St5pUmxVXq+JTMrhQAA">
+<XPD:REF name="Diagram">mc4LpEhFZUywTnHbnR9atAAA</XPD:REF>
+<XPD:ATTR name="#OwnedViews" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedViews[0]" type="UMLClassView" guid="KpU4fa7Etkyv7b1/8DeaCwAA">
+<XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">434</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">189</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">178</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">134</XPD:ATTR>
+<XPD:REF name="Model">csU77k7QHES00/bctoCRDQAA</XPD:REF>
+<XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="V/25G+zQPEu5hfJxVEudOwAA">
+<XPD:OBJ name="NameLabel" type="LabelView" guid="uzG6ffS79UqKoAGMT4LtYQAA">
+<XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">RecommendIncentive</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="StereotypeLabel" type="LabelView" guid="EkuraP/Y6EG5iLvUAkKgwwAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="PropertyLabel" type="LabelView" guid="+aDhKizQx0SX3zsKdOiRzQAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="AttributeCompartment" type="UMLAttributeCompartmentView" guid="+HgUsAJMKUKp7tKC6Ze9AwAA">
+<XPD:REF name="Model">csU77k7QHES00/bctoCRDQAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OperationCompartment" type="UMLOperationCompartmentView" guid="0RhTWTrMQE6aCGla1/IEIwAA">
+<XPD:REF name="Model">csU77k7QHES00/bctoCRDQAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="TemplateParameterCompartment" type="UMLTemplateParameterCompartmentView" guid="xElaH23fHk2bM1Y0fBU3rAAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+<XPD:REF name="Model">csU77k7QHES00/bctoCRDQAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="csU77k7QHES00/bctoCRDQAA">
+<XPD:ATTR name="Name" type="string">RecommendIncentive</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">推荐激励信息</XPD:ATTR>
+<XPD:REF name="Namespace">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
+<XPD:REF name="Views[0]">KpU4fa7Etkyv7b1/8DeaCwAA</XPD:REF>
+<XPD:REF name="Views[1]">+HgUsAJMKUKp7tKC6Ze9AwAA</XPD:REF>
+<XPD:REF name="Views[2]">0RhTWTrMQE6aCGla1/IEIwAA</XPD:REF>
+<XPD:REF name="Views[3]">xElaH23fHk2bM1Y0fBU3rAAA</XPD:REF>
+<XPD:ATTR name="#Attributes" type="integer">7</XPD:ATTR>
+<XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="CTuXln9VJEqIuI8VMM9DcAAA">
+<XPD:ATTR name="Name" type="string">recommendIncentiveCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">推荐编号code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">csU77k7QHES00/bctoCRDQAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="X7g39hQgmUiVpsxUgVz2PQAA">
+<XPD:ATTR name="Name" type="string">recommendIncentiveTime</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">激励日期</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Date</XPD:ATTR>
+<XPD:REF name="Owner">csU77k7QHES00/bctoCRDQAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="w8oxaWzI/0+uhPoKKEiyXQAA">
+<XPD:ATTR name="Name" type="string">recommendAccountCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">被推荐人code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">csU77k7QHES00/bctoCRDQAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="zSWsv1hM8UmlTP9aKZRZBAAA">
+<XPD:ATTR name="Name" type="string">messengerBean</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">激励信使豆</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
+<XPD:REF name="Owner">csU77k7QHES00/bctoCRDQAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="2laQWHmqC0mUYCRKJSeh3gAA">
+<XPD:ATTR name="Name" type="string">incentiveType</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">激励类型</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Integer</XPD:ATTR>
+<XPD:REF name="Owner">csU77k7QHES00/bctoCRDQAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="bAbI02IlEEWKAssKU4z4mwAA">
+<XPD:ATTR name="Name" type="string">incentiveSources</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">激励来源</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">csU77k7QHES00/bctoCRDQAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="gJQos5zYa0G1IvoxxqXrrgAA">
+<XPD:ATTR name="Name" type="string">accountCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">推荐人账户code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">csU77k7QHES00/bctoCRDQAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:BODY>
+</XPD:PROJECT>

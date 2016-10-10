@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XPD:PROJECT xmlns:XPD="http://www.staruml.com" version="1">
+<XPD:HEADER>
+<XPD:SUBUNITS>
+</XPD:SUBUNITS>
+<XPD:PROFILES>
+<XPD:PROFILE>UMLStandard</XPD:PROFILE>
+</XPD:PROFILES>
+</XPD:HEADER>
+<XPD:BODY>
+<XPD:OBJ name="DocumentElement" type="UMLProject" guid="XI6lWRiB+kGVDzWjb3x7eQAA">
+<XPD:ATTR name="Title" type="string">project</XPD:ATTR>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLModel" guid="aFqdZntgp0aChWMJQrqsGwAA">
+<XPD:ATTR name="Name" type="string">com.dyb.platforms.fixfunds.services.business.invoiceapply.entity</XPD:ATTR>
+<XPD:REF name="Namespace">XI6lWRiB+kGVDzWjb3x7eQAA</XPD:REF>
+<XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedDiagrams[0]" type="UMLClassDiagram" guid="mc4LpEhFZUywTnHbnR9atAAA">
+<XPD:ATTR name="Name" type="string">ProjectBaseData</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">用户组</XPD:ATTR>
+<XPD:REF name="DiagramOwner">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:OBJ name="DiagramView" type="UMLClassDiagramView" guid="3PJb1St5pUmxVXq+JTMrhQAA">
+<XPD:REF name="Diagram">mc4LpEhFZUywTnHbnR9atAAA</XPD:REF>
+<XPD:ATTR name="#OwnedViews" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedViews[0]" type="UMLClassView" guid="wwIdL8fae0GWD40UVU7OgQAA">
+<XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">380</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">176</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">151</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">173</XPD:ATTR>
+<XPD:REF name="Model">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+<XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="SyfnmDbJ1U+gC8Ogz3pjKwAA">
+<XPD:OBJ name="NameLabel" type="LabelView" guid="Iw7T6cnR7UeCaLqpCBM3BAAA">
+<XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">InvoiceApply</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="StereotypeLabel" type="LabelView" guid="JRTGl7mkn0aqhjnGWlV40gAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+<XPD:OBJ name="PropertyLabel" type="LabelView" guid="iJ2XxR9BUkmuZTr2dPGjNwAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="AttributeCompartment" type="UMLAttributeCompartmentView" guid="tGMomPEd8kmBMhXGTzHJMgAA">
+<XPD:REF name="Model">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="OperationCompartment" type="UMLOperationCompartmentView" guid="7R851Awtj0u2vLX1cFkbWAAA">
+<XPD:REF name="Model">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="TemplateParameterCompartment" type="UMLTemplateParameterCompartmentView" guid="K9YR3yVbVkiRxmfgImXc2wAA">
+<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+<XPD:REF name="Model">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:ATTR name="#OwnedElements" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="kdzwN1Z8kEGH26R/I/5YqAAA">
+<XPD:ATTR name="Name" type="string">InvoiceApply</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">让利款发票申请</XPD:ATTR>
+<XPD:REF name="Namespace">aFqdZntgp0aChWMJQrqsGwAA</XPD:REF>
+<XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
+<XPD:REF name="Views[0]">wwIdL8fae0GWD40UVU7OgQAA</XPD:REF>
+<XPD:REF name="Views[1]">tGMomPEd8kmBMhXGTzHJMgAA</XPD:REF>
+<XPD:REF name="Views[2]">7R851Awtj0u2vLX1cFkbWAAA</XPD:REF>
+<XPD:REF name="Views[3]">K9YR3yVbVkiRxmfgImXc2wAA</XPD:REF>
+<XPD:ATTR name="#Attributes" type="integer">10</XPD:ATTR>
+<XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="Pm/rrd/7vE28RasYiJ4cewAA">
+<XPD:ATTR name="Name" type="string">invoiceApplyCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">让利款发票申请编号code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="ABwyJP1hK0mbvTGQT9uskAAA">
+<XPD:ATTR name="Name" type="string">invoiceTime</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">发票计算年月</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="aZ+sUNkkEku0im4wH5QCMgAA">
+<XPD:ATTR name="Name" type="string">turnoverPrice</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">营业总额</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
+<XPD:REF name="Owner">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="PNfpqx/zBEuAqHVwJopj+gAA">
+<XPD:ATTR name="Name" type="string">yetBenefitPrice</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">已交让利款</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
+<XPD:REF name="Owner">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="bODCs+4cmEaFec6NsY7A1wAA">
+<XPD:ATTR name="Name" type="string">applyInvoiceMoney</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">申请发票</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
+<XPD:REF name="Owner">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="6OtY/Ogjv02KckT+x45PMAAA">
+<XPD:ATTR name="Name" type="string">yetInvoiceMoney</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">已开发票</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
+<XPD:REF name="Owner">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="7qXa6YxAZkS18Ov5lx+NiAAA">
+<XPD:ATTR name="Name" type="string">poundage</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">快递费</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Double</XPD:ATTR>
+<XPD:REF name="Owner">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[7]" type="UMLAttribute" guid="hDaYasRy6EKgJ7IofIIPrQAA">
+<XPD:ATTR name="Name" type="string">InvoiceApplyStatus</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">状态</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[8]" type="UMLAttribute" guid="/JkZ3vyWXUiNk/m4R3qe4gAA">
+<XPD:ATTR name="Name" type="string">applyTime</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">申请时间</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Date</XPD:ATTR>
+<XPD:REF name="Owner">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[9]" type="UMLAttribute" guid="+VGmPSLeCEqROybheYYzvQAA">
+<XPD:ATTR name="Name" type="string">accountCode</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">商家账户code</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">kdzwN1Z8kEGH26R/I/5YqAAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:OBJ>
+</XPD:BODY>
+</XPD:PROJECT>

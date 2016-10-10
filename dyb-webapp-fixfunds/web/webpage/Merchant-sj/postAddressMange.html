@@ -52,7 +52,7 @@
 						<input type="button" id="insertAddress" class="ad-btn ad-blue-btn btn-fontBlue1" value="新增地址"></div>
 					<div class="clear"></div>
 				</div>
-				<table class="sui-table table-vzebra ad-table mt15">
+				<table class="sui-table table-vzebra ad-table mt15" id="addres">
 					<thead>
 					<tr>
 						<th>收件人姓名</th>
@@ -63,9 +63,9 @@
 					</thead>
 					<tbody></tbody>
 				</table>
-				<p style="color:gray;" align="right">最多添加11000个地址</p></div>
+				<p style="color:gray;" align="right">最多添加5个地址</p></div>
 		</div>
-<div class="sui-modal hide fade" tabindex="-1" role="dialog" id="1473840995249" data-hidetype="remove" style="width: 590px; margin-left: -290px; margin-top: -221px; display: block;" aria-hidden="false">
+<div class="sui-modal hide fade sui-modal1" tabindex="-1" role="dialog" id="1473840995249" data-hidetype="remove" style="width: 590px; margin-left: -290px; margin-top: -221px; display: block;" aria-hidden="false">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -76,7 +76,7 @@
 					<div class="control-group">
 						<label for="name" class="control-label">收件人姓名：</label>
 						<div class="controls">
-							<input type="text" id="name" data-rules="required|maxlength=30" data-empty-msg="请填写收件人名" class="input-xfat" name="name"></div>
+							<input type="text" id="name" class="input-xfat" name="name"></div>
 					</div>
 					<div class="control-group">
 						<label for="subCity1" class="control-label">所在地区：</label>
@@ -127,23 +127,41 @@
 		</div>
 	</div>
 </div>
+<div class="sui-modal hide fade sui-modal2" tabindex="-1" role="dialog" id="1476092968861" data-hidetype="remove" aria-hidden="false" style="margin-top: -182px; display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">提示</h4></div>
+            <div class="modal-body ">新增成功</div>
+            <div class="modal-footer">
+                <button id="confirm" type="button" class="sui-btn btn-primary btn-large">确定</button></div>
+        </div>
+    </div>
+</div>
+<div class="sui-modal hide fade sui-modal3" tabindex="-1" role="dialog" id="1476100316062" data-hidetype="remove" aria-hidden="false" style="margin-top: -132px; display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">提示</h4></div>
+            <div class="modal-body ">请确定是否删除收件地址?</div>
+            <div class="modal-footer">
+                <button id="rembutton" type="button" class="sui-btn btn-primary btn-large">确定</button>
+                <button id="closebutton" type="button" class="sui-btn btn-default btn-large">取消</button></div>
+        </div>
+    </div>
+</div>
+<div class="sui-modal hide fade sui-modal4" tabindex="-1" role="dialog" id="1476100399545" data-hidetype="remove" aria-hidden="false" style="margin-top: -132px; display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">提示</h4></div>
+            <div class="modal-body ">删除成功</div>
+            <div class="modal-footer">
+                <button id="closebutton1" type="button" class="sui-btn btn-primary btn-large">确定</button></div>
+        </div>
+    </div>
+</div>
 <div class="sui-modal-backdrop fade" style="background:#000;z-index:-1"></div>
 </body>
-<script>
-	$(".btn-fontBlue1").click(function(){
-		$(".sui-modal").addClass("in");
-		$(".sui-modal-backdrop").css("zIndex","1000").addClass("in");
-	});
-	$(".sui-close").click(function(){
-		$(".sui-modal").removeClass("in");
-		$(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
-	})
-//    var Gid  = document.getElementById ;
-//    var showArea = function(){
-//        Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
-//                Gid('s_city').value + " - 县/区" +
-//                Gid('s_county').value + "</h3>"
-//    }
-//    Gid('s_county').setAttribute('onchange','showArea()');
-</script>
+<script src="./js/postaddress.js"></script>
 </html>

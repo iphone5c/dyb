@@ -4,65 +4,128 @@
 
 var a = 0;
 var commodityCode="";
-//修改 → → → → → → 确定
-$("#delete182082_btn").click(function(){
-    $.ajax({
-        url:"http://192.168.0.186:8080/web/merchant/commodity/updateCommodity",
-        type:"post",
-        dataType: 'JSONP',
-        data:{
-            // 商品编号code [主键]
-            commodityCode:$("#commodityCode").val(),
-            // 商品名称
-            name:$("#productname_1").val(),
-            // 商品编号
-            commodityNum:$("#productID_1").val(),
-            // 型号/规格
-            specifications:$("#modelnumber_1").val(),
-            // 单价
-            price:$("#price_1").val()
-        },
-        success: function (data) {
-            window.location.href="http://localhost:63342/untitled/comm/client/index.html"
-        }
 
-    })
-});
+
 //添加
 $("#addProduct").click(function(){
-    $.ajax({
-        url:"http://192.168.0.186:8080/web/merchant/commodity/addCommodity",
-        type:"post",
-        dataType: 'JSONP',
-        data:{
-            // 商品名称
-            name:$("#productname").val(),
-            // 商品编号
-            commodityNum:$("#productID").val(),
-            // 型号/规格
-            specifications:$("#modelnumber").val(),
-            // 单价
-            price:$("#price").val()
-        },
-        success: function (data) {
-            window.location.href="http://localhost:63342/untitled/comm/client/index.html"
-        }
-    })
+    // 商品名称
+    var name=$("#productname").val();
+    // 商品编号
+    var commodityNum=$("#productID").val();
+    // 型号/规格
+    var specifications=$("#modelnumber").val();
+    // 单价
+    var price=$("#price").val();
+    var param={
+        name:name,
+        commodityNum:commodityNum,
+        specifications:specifications,
+        price:price
+    };
+    var result=invokeService('/web/merchant/commodity/addCommodity',param);
+    if(result.statusCode!=1000){
+        alert(result.errorMessage);
+        return;
+    }
+    var a = 0;
+    var param={
+        // 当前页
+        pageIndex:a,
+        //每页显示条数
+        pageSize:5
+    }
+    var result = invokeService('/web/merchant/commodity/getCommodityPageList',param);
+    if(result.statusCode!=1000){
+        alert(result.errorMessage);
+        return;
+    }
+    $("#xg_page").text("共 " +result.result.pageCount+ " 页");
+    $("#onpage").text("第 " +(a+1)+ " 页");
+    $(".sui-table>tbody").html("");
+    for(var i =0;i<result.result.list.length;i++){
+        $(".sui-table>tbody").html($(".sui-table>tbody").html()+
+                "<tr>"+
+                "<td>"+
+                "<input class='subSelect' type='checkbox' name='checkbox' value=\'"+result.result.list[i].commodityCode+"\'>"+
+                "</td>"+
+                "<td>" +
+                result.result.list[i].name+
+                "</td>"+
+                "<td>"+
+                result.result.list[i].commodityNum+
+                "</td>"+
+                "<td>"+
+                result.result.list[i].specifications+
+                "</td>"+
+                "<td>"+
+                result.result.list[i].price+
+                "</td>"+
+                "<td>"+
+                "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=updateCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
+                "修改"+
+                "</a>"+
+                "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=deleteCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
+                "删除"+
+                "</a>"+
+                "</td>"+
+                "</tr>"
+        )}
 });
 //删除
 function deleteCommodity(deleteCode){
-    $.ajax({
-        url:"http://192.168.0.186:8080/web/merchant/commodity/deleteCommodity",
-        type:"post",
-        dataType: 'JSONP',
-        data:{
-            // 商品编号code [主键]
-            commodityCode:deleteCode,
-        },
-        success: function (data) {
-            window.location.href="http://localhost:63342/untitled/comm/client/index.html"
-        }
-    })
+    // 商品编号code [主键]
+    var  commodityCode=deleteCode;
+    var param={
+        commodityCode:commodityCode
+    }
+    var result=invokeService('/web/merchant/commodity/deleteCommodity',param);
+    if(result.statusCode!=1000){
+        alert(result.errorMessage);
+        return;
+    }
+    var a = 0;
+    var param={
+        // 当前页
+        pageIndex:a,
+        //每页显示条数
+        pageSize:5
+    }
+    var result = invokeService('/web/merchant/commodity/getCommodityPageList',param);
+    if(result.statusCode!=1000){
+        alert(result.errorMessage);
+        return;
+    }
+    $("#xg_page").text("共 " +result.result.pageCount+ " 页");
+    $("#onpage").text("第 " +(a+1)+ " 页");
+    $(".sui-table>tbody").html("");
+    for(var i =0;i<result.result.list.length;i++){
+        $(".sui-table>tbody").html($(".sui-table>tbody").html()+
+                "<tr>"+
+                "<td>"+
+                "<input class='subSelect' type='checkbox' name='checkbox' value=\'"+result.result.list[i].commodityCode+"\'>"+
+                "</td>"+
+                "<td>" +
+                result.result.list[i].name+
+                "</td>"+
+                "<td>"+
+                result.result.list[i].commodityNum+
+                "</td>"+
+                "<td>"+
+                result.result.list[i].specifications+
+                "</td>"+
+                "<td>"+
+                result.result.list[i].price+
+                "</td>"+
+                "<td>"+
+                "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=updateCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
+                "修改"+
+                "</a>"+
+                "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=deleteCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
+                "删除"+
+                "</a>"+
+                "</td>"+
+                "</tr>"
+        )}
 }
 //批量删除
 $("#deleteProduct").click(function(){
@@ -73,46 +136,159 @@ $("#deleteProduct").click(function(){
             a+=code+",";
         }
     }
-
     if(a.length<=0){
         alert('请选择要删除记录前面的复选框')
         return  false;
     }
     a=a.substring(0,a.length-1);
-    $.ajax({
-        url:"http://192.168.0.186:8080/web/merchant/commodity/deleteCommodityList",
-        type:"post",
-        dataType: 'JSONP',
-        data:{
-            // 商品编号集合（多个用逗号隔开，格式：20108196,254135,65645,...）
-            commodityCodeList:a,
-        },
-        success: function (data) {
-            window.location.href="http://localhost:63342/untitled/comm/client/index.html"
-        }
-    });
+// 商品编号集合（多个用逗号隔开，格式：20108196,254135,65645,...）
+    var  commodityCodeList=a;
+    var param={
+        commodityCodeList:commodityCodeList
+    };
+    var result=invokeService('/web/merchant/commodity/deleteCommodityList',param)
+    if(result.statusCode!=1000){
+        alert(result.errorMessage);
+        return;
+    }
+    var a = 0;
+    var param={
+        // 当前页
+        pageIndex:a,
+        //每页显示条数
+        pageSize:5
+    }
+    var result = invokeService('/web/merchant/commodity/getCommodityPageList',param);
+    if(result.statusCode!=1000){
+        alert(result.errorMessage);
+        return;
+    }
+    $("#xg_page").text("共 " +result.result.pageCount+ " 页");
+    $("#onpage").text("第 " +(a+1)+ " 页");
+    $(".sui-table>tbody").html("");
+    for(var i =0;i<result.result.list.length;i++){
+        $(".sui-table>tbody").html($(".sui-table>tbody").html()+
+                "<tr>"+
+                "<td>"+
+                "<input class='subSelect' type='checkbox' name='checkbox' value=\'"+result.result.list[i].commodityCode+"\'>"+
+                "</td>"+
+                "<td>" +
+                result.result.list[i].name+
+                "</td>"+
+                "<td>"+
+                result.result.list[i].commodityNum+
+                "</td>"+
+                "<td>"+
+                result.result.list[i].specifications+
+                "</td>"+
+                "<td>"+
+                result.result.list[i].price+
+                "</td>"+
+                "<td>"+
+                "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=updateCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
+                "修改"+
+                "</a>"+
+                "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=deleteCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
+                "删除"+
+                "</a>"+
+                "</td>"+
+                "</tr>"
+        )}
 });
 //修改按钮
 function updateCommodity(commodityCode){
-    $(".sui-modal").addClass("in");
-    $(".sui-modal-backdrop").css("zIndex","1").addClass("in");
-    $.ajax({
-        url:"http://192.168.0.186:8080/web/merchant/commodity/getCommodityByCode",
-        type:"post",
-        dataType: 'JSONP',
-        data:{
-            // 商品编号code [主键]
-            commodityCode:commodityCode
-        },
-        success: function (data) {
+    var  commodityCode1=commodityCode;
+    var param={
+        commodityCode:commodityCode1
+    };
+    var result=invokeService('/web/merchant/commodity/getCommodityByCode',param);
+    if(result.statusCode!=1000){
+        alert(result.errorMessage)
+        return;
+    }
+    console.log(result.commodityCode);
+    //商品名称
+    $("#productname_1").val(result.result.name);
+    // 商品编号
+    $("#productID_1").val(result.result.commodityNum);
+    // 型号/规格
+    $("#modelnumber_1").val(result.result.specifications);
+    // 单价
+    $("#price_1").val(result.result.price);
 
-            $("#commodityCode").val(commodityCode);
-            $("#productname_1").val(data.result.name);
-            $("#productID_1").val(data.result.commodityNum);
-            $("#modelnumber_1").val(data.result.specifications);
-            $("#price_1").val(data.result.price);
+//修改 → → → → → → 确定
+    $("#delete182082_btn").click(function(){
+        // 商品编号code [主键]
+        var   commodityCode=commodityCode1;
+        // 商品名称
+        var  name=$("#productname_1").val();
+        // 商品编号
+        var  commodityNum=$("#productID_1").val();
+        // 型号/规格
+        var  specifications=$("#modelnumber_1").val();
+        // 单价
+        var  price=$("#price_1").val();
+
+        var param={
+            commodityCode:commodityCode,
+            name:name,
+            commodityNum:commodityNum,
+            specifications:specifications,
+            price:price
+        };
+        var result=invokeService('/web/merchant/commodity/updateCommodity',param);
+        if(result.statusCode!=1000){
+            alert(result.errorMessage);
+            return;
+        }
+        var param={
+            // 当前页
+            pageIndex:a,
+            //每页显示条数
+            pageSize:5
+        };
+        var result = invokeService('/web/merchant/commodity/getCommodityPageList',param);
+        if(result.statusCode!=1000){
+            alert(result.errorMessage);
+            return;
+        }
+        $("#xg_page").text("共 " +result.result.pageCount+ " 页");
+        $("#onpage").text("第 " +(a+1)+ " 页");
+        $(".sui-table>tbody").html("");
+        for(var i =0;i<result.result.list.length;i++){
+            $(".sui-table>tbody").html($(".sui-table>tbody").html()+
+                    "<tr>"+
+                    "<td>"+
+                    "<input class='subSelect' type='checkbox' name='checkbox' value=\'"+result.result.list[i].commodityCode+"\'>"+
+                    "</td>"+
+                    "<td>" +
+                    result.result.list[i].name+
+                    "</td>"+
+                    "<td>"+
+                    result.result.list[i].commodityNum+
+                    "</td>"+
+                    "<td>"+
+                    result.result.list[i].specifications+
+                    "</td>"+
+                    "<td>"+
+                    result.result.list[i].price+
+                    "</td>"+
+                    "<td>"+
+                    "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=updateCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
+                    "修改"+
+                    "</a>"+
+                    "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=deleteCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
+                    "删除"+
+                    "</a>"+
+                    "</td>"+
+                    "</tr>"
+            )
         }
     });
+
+
+    $(".sui-modal").addClass("in");
+    $(".sui-modal-backdrop").css("zIndex","1").addClass("in");
     $(".sui-close").click(function(){
         $(".sui-modal").removeClass("in");
         $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
@@ -124,43 +300,144 @@ function updateCommodity(commodityCode){
 }
 //当前登录商家获取分页商品列表     //第一次加载
 $(function(){
-    $.ajax({
-        url:"http://192.168.0.186:8080/web/merchant/commodity/getCommodityPageList",
-        type:"post",
-        dataType: 'JSONP',
-        data:{
+    var param={
+        // 当前页
+        pageIndex:a,
+        //每页显示条数
+        pageSize:5
+    };
+    var result = invokeService('/web/merchant/commodity/getCommodityPageList',param);
+    if(result.statusCode!=1000){
+        alert(result.errorMessage);
+        return;
+    }
+    $("#xg_page").text("共 " +result.result.pageCount+ " 页");
+    $("#onpage").text("第 " +(a+1)+ " 页");
+    for(var i =0;i<result.result.list.length;i++){
+        $(".sui-table>tbody").html($(".sui-table>tbody").html()+
+                "<tr>"+
+                "<td>"+
+                "<input class='subSelect' type='checkbox' name='checkbox' value=\'"+result.result.list[i].commodityCode+"\'>"+
+                "</td>"+
+                "<td>" +
+                result.result.list[i].name+
+                "</td>"+
+                "<td>"+
+                result.result.list[i].commodityNum+
+                "</td>"+
+                "<td>"+
+                result.result.list[i].specifications+
+                "</td>"+
+                "<td>"+
+                result.result.list[i].price+
+                "</td>"+
+                "<td>"+
+                "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=updateCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
+                "修改"+
+                "</a>"+
+                "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=deleteCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
+                "删除"+
+                "</a>"+
+                "</td>"+
+                "</tr>"
+        )
+    }
+//						下一頁
+    $("#nextBtn").click(function(){
+        a++;
+        var param={
             // 当前页
             pageIndex:a,
             //每页显示条数
-            pageSize:2
-        },
-        success: function (data) {
-            a=a+1;
-            $("#xg_page").text("共 " +data.result.pageCount+ " 页");
-            $("#onpage").text("第 " +a+ " 页");
-            for(var i =0;i<data.result.list.length;i++){
+            pageSize:5
+        };
+        var result = invokeService('/web/merchant/commodity/getCommodityPageList',param);
+        if(result.statusCode!=1000){
+            alert(result.errorMessage)
+            return;
+        }
+        if(a<result.result.pageCount){
+            $("#onpage").text("第 " +(a+1)+ " 页");
+            $(".sui-table>tbody").html("");
+            for(var i =0;i<result.result.list.length;i++){
                 $(".sui-table>tbody").html($(".sui-table>tbody").html()+
                         "<tr>"+
                         "<td>"+
-                        "<input class='subSelect' type='checkbox' name='checkbox' value=\'"+data.result.list[i].commodityCode+"\'>"+
+                        "<input class='subSelect' type='checkbox' name='checkbox' value=\'"+result.result.list[i].commodityCode+"\'>"+
                         "</td>"+
                         "<td>" +
-                        data.result.list[i].name+
+                        result.result.list[i].name+
                         "</td>"+
                         "<td>"+
-                        data.result.list[i].commodityNum+
+                        result.result.list[i].commodityNum+
                         "</td>"+
                         "<td>"+
-                        data.result.list[i].specifications+
+                        result.result.list[i].specifications+
                         "</td>"+
                         "<td>"+
-                        data.result.list[i].price+
+                        result.result.list[i].price+
                         "</td>"+
                         "<td>"+
-                        "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+data.result.list[i].commodityCode+"\' onclick=updateCommodity(\'"+data.result.list[i].commodityCode+"\')>"+
+                        "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=updateCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
                         "修改"+
                         "</a>"+
-                        "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+data.result.list[i].commodityCode+"\' onclick=deleteCommodity(\'"+data.result.list[i].commodityCode+"\')>"+
+                        "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=deleteCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
+                        "删除"+
+                        "</a>"+
+                        "</td>"+
+                        "</tr>"
+                )
+            }
+//											window.location.href="http://localhost:63342/untitled/comm/client/index.html"
+        }
+        else{
+            a=result.result.pageCount;
+            a--;
+        }
+    });
+//				//		上一页
+    $("#prevBtn").click(function(){
+        a--;
+        if(a<0){
+            a=0;
+        }
+        var param={
+            // 当前页
+            pageIndex:a,
+            //每页显示条数
+            pageSize:5
+        };
+        var result = invokeService('/web/merchant/commodity/getCommodityPageList',param);
+        if(result.statusCode!=1000){
+            alert(result.errorMessage)
+            return;
+        }
+        if(a>=0){
+            $("#onpage").text("第 " +(a+1)+ " 页");
+            $(".sui-table>tbody").html("");
+            for(var i =0;i<result.result.list.length;i++){
+                $(".sui-table>tbody").html($(".sui-table>tbody").html()+
+                        "<tr>"+
+                        "<td>"+
+                        "<input class='subSelect' type='checkbox' name='checkbox' value=\'"+result.result.list[i].commodityCode+"\'>"+
+                        "</td>"+
+                        "<td>" +
+                        result.result.list[i].name+
+                        "</td>"+
+                        "<td>"+
+                        result.result.list[i].commodityNum+
+                        "</td>"+
+                        "<td>"+
+                        result.result.list[i].specifications+
+                        "</td>"+
+                        "<td>"+
+                        result.result.list[i].price+
+                        "</td>"+
+                        "<td>"+
+                        "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=updateCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
+                        "修改"+
+                        "</a>"+
+                        "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+result.result.list[i].commodityCode+"\' onclick=deleteCommodity(\'"+result.result.list[i].commodityCode+"\')>"+
                         "删除"+
                         "</a>"+
                         "</td>"+
@@ -168,122 +445,11 @@ $(function(){
                 )
             }
         }
-    });
-});
-//						下一頁
-$("#nextBtn").click(function(){
-    $.ajax({
-        url:"http://192.168.0.186:8080/web/merchant/commodity/getCommodityPageList",
-        type:"post",
-        dataType: 'JSONP',
-        data:{
-            // 当前页
-            pageIndex:a,
-            //每页显示条数
-            pageSize:2
-        },
-        success: function (data) {
-            a++;
-            if(a<=data.result.pageCount){
-                $("#onpage").text("第 " +a+ " 页");
-                $(".sui-table>tbody").html("");
-                for(var i =0;i<data.result.list.length;i++){
-                    $(".sui-table>tbody").html($(".sui-table>tbody").html()+
-                            "<tr>"+
-                            "<td>"+
-                            "<input class='subSelect' type='checkbox' name='checkbox' value=\'"+data.result.list[i].commodityCode+"\'>"+
-                            "</td>"+
-                            "<td>" +
-                            data.result.list[i].name+
-                            "</td>"+
-                            "<td>"+
-                            data.result.list[i].commodityNum+
-                            "</td>"+
-                            "<td>"+
-                            data.result.list[i].specifications+
-                            "</td>"+
-                            "<td>"+
-                            data.result.list[i].price+
-                            "</td>"+
-                            "<td>"+
-                            "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+data.result.list[i].commodityCode+"\' onclick=updateCommodity(\'"+data.result.list[i].commodityCode+"\')>"+
-                            "修改"+
-                            "</a>"+
-                            "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+data.result.list[i].commodityCode+"\' onclick=deleteCommodity(\'"+data.result.list[i].commodityCode+"\')>"+
-                            "删除"+
-                            "</a>"+
-                            "</td>"+
-                            "</tr>"
-                    )
-                }
-//											window.location.href="http://localhost:63342/untitled/comm/client/index.html"
-            }
-            else{
-                a=4;
-            }
+        else{
+
         }
-    });
+    })
 });
-//				//		上一页
-$("#prevBtn").click(function(){
-    a=a-2;
-    if(a<0){
-        a=0
-    }
-    $.ajax({
-        url:"http://192.168.0.186:8080/web/merchant/commodity/getCommodityPageList",
-        type:"post",
-        dataType: 'JSONP',
-        data:{
-            // 当前页
-            pageIndex:a,
-            //每页显示条数
-            pageSize:2
-        },
-        success: function (data) {
-            a++;
-            if(a>=1){
-                $("#onpage").text("第 " +a+ " 页");
-                $(".sui-table>tbody").html("");
-                for(var i =0;i<data.result.list.length;i++){
-                    $(".sui-table>tbody").html($(".sui-table>tbody").html()+
-                            "<tr>"+
-                            "<td>"+
-                            "<input class='subSelect' type='checkbox' name='checkbox' value=\'"+data.result.list[i].commodityCode+"\'>"+
-                            "</td>"+
-                            "<td>" +
-                            data.result.list[i].name+
-                            "</td>"+
-                            "<td>"+
-                            data.result.list[i].commodityNum+
-                            "</td>"+
-                            "<td>"+
-                            data.result.list[i].specifications+
-                            "</td>"+
-                            "<td>"+
-                            data.result.list[i].price+
-                            "</td>"+
-                            "<td>"+
-                            "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+data.result.list[i].commodityCode+"\' onclick=updateCommodity(\'"+data.result.list[i].commodityCode+"\')>"+
-                            "修改"+
-                            "</a>"+
-                            "<a class='js-checkName' style='display: inline-block;width:30%;text-align:center' class=\'"+data.result.list[i].commodityCode+"\' onclick=deleteCommodity(\'"+data.result.list[i].commodityCode+"\')>"+
-                            "删除"+
-                            "</a>"+
-                            "</td>"+
-                            "</tr>"
-                    )
-                }
-//											window.location.href="http://localhost:63342/untitled/comm/client/index.html"
-            }
-            else{
-
-            }
-        }
-    });
-});
-
-
 //	查询商品信息
 //				$("#searchProductList").click(function(){
 //

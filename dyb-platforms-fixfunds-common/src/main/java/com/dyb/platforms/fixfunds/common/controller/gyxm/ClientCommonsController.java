@@ -38,6 +38,7 @@ public class ClientCommonsController extends BaseController {
         if (account==null){
             return validationResult(1001,"登陆失败");
         }else {
+            request.getSession().setAttribute("CURRENT_ACCOUNT_CLIENT",account);
             return result(account);
         }
     }

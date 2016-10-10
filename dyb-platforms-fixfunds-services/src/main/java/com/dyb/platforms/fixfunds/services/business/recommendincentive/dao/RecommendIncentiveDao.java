@@ -5,14 +5,12 @@
 
 package com.dyb.platforms.fixfunds.services.business.recommendincentive.dao;
 
-import java.util.*;
-import java.math.*;
+import com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.RecommendIncentive;
+import com.dyb.platforms.fixfunds.services.utils.core.dao.IbatisBaseStatement;
+import com.dyb.platforms.fixfunds.services.utils.core.dao.IbatisDataDAOImpl;
 import org.mybatis.spring.SqlSessionTemplate;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.RecommendIncentive;
 
 /**
  * 推荐激励信息 Ibatis Dao 实现
@@ -43,15 +41,15 @@ public class RecommendIncentiveDao extends IbatisDataDAOImpl<RecommendIncentive,
 	protected IbatisBaseStatement getIbatisBaseStatement() {
 		if (ibatisBaseStatement == null) {
 			ibatisBaseStatement = new IbatisBaseStatement();
-			ibatisBaseStatement.setInsertStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.daos.IRecommendIncentiveDao.insertObject");
-			ibatisBaseStatement.setUpdateStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.daos.IRecommendIncentiveDao.updateObject");
-			ibatisBaseStatement.setDeleteStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.daos.IRecommendIncentiveDao.deleteObject");
-			ibatisBaseStatement.setGetHasDetailStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.daos.IRecommendIncentiveDao.getDetailObject");
-			ibatisBaseStatement.setGetNoDetailStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.daos.IRecommendIncentiveDao.getBaseObject");
-			ibatisBaseStatement.setWhereDeleteStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.daos.IRecommendIncentiveDao.deleteObjectByWhere");
-			ibatisBaseStatement.setQueryCountStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.daos.IRecommendIncentiveDao.queryCount");
-			ibatisBaseStatement.setQueryHasDetailListStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.daos.IRecommendIncentiveDao.queryDetailList");
-			ibatisBaseStatement.setQueryNoDetailListStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.daos.IRecommendIncentiveDao.queryBaseList");
+			ibatisBaseStatement.setInsertStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.insertObject");
+			ibatisBaseStatement.setUpdateStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.updateObject");
+			ibatisBaseStatement.setDeleteStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.deleteObject");
+			ibatisBaseStatement.setGetHasDetailStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.getDetailObject");
+			ibatisBaseStatement.setGetNoDetailStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.getBaseObject");
+			ibatisBaseStatement.setWhereDeleteStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.deleteObjectByWhere");
+			ibatisBaseStatement.setQueryCountStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.queryCount");
+			ibatisBaseStatement.setQueryHasDetailListStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.queryDetailList");
+			ibatisBaseStatement.setQueryNoDetailListStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.queryBaseList");
 		}
 		return ibatisBaseStatement;
 	}

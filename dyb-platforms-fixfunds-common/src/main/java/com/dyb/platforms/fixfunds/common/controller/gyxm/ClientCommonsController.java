@@ -3,6 +3,7 @@ package com.dyb.platforms.fixfunds.common.controller.gyxm;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
+import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by Administrator on 2015/7/1.
@@ -38,8 +42,12 @@ public class ClientCommonsController extends BaseController {
         if (account==null){
             return validationResult(1001,"登陆失败");
         }else {
-            request.getSession().setAttribute("CURRENT_ACCOUNT_CLIENT",account);
-            return result(account);
+            String token=UUID.randomUUID().toString();
+            DybUtils.setCuurentAccountClient(token);
+            Map<String,Object> map=new HashMap<>();
+            map.put("token",token);
+            map.put("account",account);
+            return result(map);
         }
     }
 

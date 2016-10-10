@@ -60,7 +60,7 @@ public class BaseController {
     @ExceptionHandler
     public Object exception( HttpServletRequest request, Exception ex ) {
         Dto result = new BaseDto();
-        result.put("result", "");
+        result.put("result", null);
         if(ex instanceof DybRuntimeException){
             DybRuntimeException ycRuntimeException= (DybRuntimeException) ex;
             result.put("errorMessage", ycRuntimeException.getMessage());

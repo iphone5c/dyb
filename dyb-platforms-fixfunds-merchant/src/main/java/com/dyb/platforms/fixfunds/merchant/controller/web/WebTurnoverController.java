@@ -1,6 +1,7 @@
 package com.dyb.platforms.fixfunds.merchant.controller.web;
 
 import com.dyb.platforms.fixfunds.merchant.controller.client.model.TurnoverParamModel;
+import com.dyb.platforms.fixfunds.merchant.controller.web.model.TurnoverDetailsModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.order.entity.Order;
@@ -27,7 +28,7 @@ import java.util.List;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/web/merchant/commodity")
+@RequestMapping(value = "/web/merchant/turnover")
 public class WebTurnoverController extends BaseController {
 
     public Logger log = Logger.getLogger(WebTurnoverController.class);//日志
@@ -67,8 +68,8 @@ public class WebTurnoverController extends BaseController {
         if (turnover==null)
             return validationResult(1001,"找不到此营业信息");
 
-        PageList<TurnoverParamModel> turnoverParamModelPageList=new PageList<>();
-        List<TurnoverParamModel> turnoverParamModelList=new ArrayList<>();
+        PageList<TurnoverDetailsModel> turnoverDetailsModelPageList=new PageList<>();
+        List<TurnoverDetailsModel> turnoverDetailsModelList=new ArrayList<>();
         Date min = DybConvert.toDate(DybConvert.dateToString(turnover.getTurnoverTime(), DybConvert.DATEFORMAT_DATA_EN_LONG), DybConvert.DATEFORMAT_DATA_EN_LONG);
         Date max = DybConvert.toDate(DybConvert.dateToString(DybUtils.dateAddDay(turnover.getTurnoverTime(),1),DybConvert.DATEFORMAT_DATA_EN_LONG),DybConvert.DATEFORMAT_DATA_EN_LONG);
         QueryParams queryParams=new QueryParams();
@@ -76,24 +77,24 @@ public class WebTurnoverController extends BaseController {
         queryParams.addParameterByRange("tradeTime",min,max);
         PageList<Order> orderPageList=orderService.getOrderPageList(queryParams,pageIndex,pageSize,true);
         for (Order order:orderPageList.getList()){
-            TurnoverParamModel turnoverParamModel=new TurnoverParamModel();
+            TurnoverDetailsModel turnoverDetailsModel=new TurnoverDetailsModel();
             Account member = accountService.getAccountByCode(order.getMemberCode(),true);
             Account merchant = accountService.getAccountByCode(order.getMerchantCode(),true);
             if (member==null)
                 return validationResult(1001,"找不到此订单信使信息");
             if (merchant==null)
                 return validationResult(1001,"找不到此订单商家信息");
-            turnoverParamModel.setOrder(order);
-            turnoverParamModel.setMember(member);
-            turnoverParamModel.setMerchant(merchant);
-            turnoverParamModelList.add(turnoverParamModel);
+            turnoverDetailsModel.setOrder(order);
+            turnoverDetailsModel.setMember(member);
+            turnoverDetailsModel.setMerchant(merchant);
+            turnoverDetailsModelList.add(turnoverDetailsModel);
         }
-        turnoverParamModelPageList.setPageSize(orderPageList.getPageSize());
-        turnoverParamModelPageList.setPageIndex(orderPageList.getPageIndex());
-        turnoverParamModelPageList.setPageCount(orderPageList.getPageCount());
-        turnoverParamModelPageList.setTotalSize(orderPageList.getTotalSize());
-        turnoverParamModelPageList.setList(turnoverParamModelList);
-        return result(turnoverParamModelPageList);
+        turnoverDetailsModelPageList.setPageSize(orderPageList.getPageSize());
+        turnoverDetailsModelPageList.setPageIndex(orderPageList.getPageIndex());
+        turnoverDetailsModelPageList.setPageCount(orderPageList.getPageCount());
+        turnoverDetailsModelPageList.setTotalSize(orderPageList.getTotalSize());
+        turnoverDetailsModelPageList.setList(turnoverDetailsModelList);
+        return result(turnoverDetailsModelPageList);
     }
 
 }

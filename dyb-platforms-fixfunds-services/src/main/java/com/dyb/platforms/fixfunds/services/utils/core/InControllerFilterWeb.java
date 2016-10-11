@@ -1,5 +1,6 @@
 package com.dyb.platforms.fixfunds.services.utils.core;
 
+import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseDto;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.Dto;
@@ -13,26 +14,22 @@ import java.io.IOException;
 /**
  * Created by lenovo on 2016/10/10.
  */
-public class InControllerFilterClient implements HandlerInterceptor {
+public class InControllerFilterWeb implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         String requestPath = request.getRequestURI().toString();
         System.out.println("path:"+requestPath);
         if (
-                requestPath.startsWith("/client/commons")||
-                requestPath.startsWith("/client/member/registerMemberAccount")||
-                requestPath.startsWith("/client/merchant/registerMerchantAccount")||
-                requestPath.startsWith("/client/serviceproviders/registerServiceProvidersAccount")
+                requestPath.startsWith("/web/commons")||
+                requestPath.startsWith("/web/merchant/registerMerchantAccount")||
+                requestPath.startsWith("/web/member/registerMemberAccount")||
+                requestPath.startsWith("/web/serviceproviders/registerServiceProvidersAccount")
             ){
             return true;
         }
-        String token=request.getParameter("token");
-        if (DybUtils.isEmptyOrNull(token)){
-            validationResultJSONP(request,response,1001,"当前会话是非法请求");
-            return false;
-        }
-        if (DybUtils.getCurrentAccountClient(token)==null){
-            validationResultJSONP(request,response,9999,"当前会话无效");
+        Account account=DybUtils.getCurrentAccount(request);
+        if (account==null){
+            validationResultJSONP(request,response,9999,"账户未登录");
             return false;
         }
         return true;

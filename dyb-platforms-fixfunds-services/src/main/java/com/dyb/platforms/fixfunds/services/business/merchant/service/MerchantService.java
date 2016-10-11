@@ -76,10 +76,12 @@ public class MerchantService extends BaseService implements IMerchantService {
 //            throw new DybRuntimeException("商户添加时，营业结束时间的格式不正确");
         if (DybUtils.isEmptyOrNull(merchant.getMerchantDescription()))
             throw new DybRuntimeException("商户添加时，商家简介不能为空");
-//        if (DybUtils.isEmptyOrNull(merchant.getLongitude()))
-//            throw new DybRuntimeException("商户添加时，经度不能为空");
-//        if (DybUtils.isEmptyOrNull(merchant.getLatitude()))
-//            throw new DybRuntimeException("商户添加时，纬度不能为空");
+        if (DybUtils.isEmptyOrNull(merchant.getLongitude()))
+            throw new DybRuntimeException("商户添加时，经度不能为空");
+        if (DybUtils.isEmptyOrNull(merchant.getLatitude()))
+            throw new DybRuntimeException("商户添加时，纬度不能为空");
+        if (DybUtils.isEmptyOrNull(merchant.getBusinessCircle()))
+            throw new DybRuntimeException("商户添加时，商圈不能为空");
         if (DybUtils.isEmptyOrNull(merchant.getAccountCode()))
             throw new DybRuntimeException("商户添加时，关联的账户不能为空");
 

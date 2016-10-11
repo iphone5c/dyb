@@ -74,6 +74,8 @@ public class Merchant implements java.io.Serializable {
     private String longitude;
     // 纬度
     private String latitude;
+    // 商圈
+    private String businessCircle;
 
     /**
      * 获取商家Code [主键]
@@ -541,5 +543,23 @@ public class Merchant implements java.io.Serializable {
      */
     public void setLatitude(String latitude) {
         this.latitude = latitude;
+    }
+
+    /**
+     * 获取商圈
+     *
+     * @return 商圈
+     */
+    public String getBusinessCircle() {
+        return businessCircle;
+    }
+
+    /**
+     * 设置商圈
+     *
+     * @param businessCircle 商圈
+     */
+    public void setBusinessCircle(String businessCircle) {
+        this.businessCircle = businessCircle;
     }
 }

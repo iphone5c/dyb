@@ -33,7 +33,7 @@ public enum IndustryType {
     /**
      * 其它
      */
-    其它, Scale;
+    其它;
 
     public static List<NameValue> getAllConvertName(){
         List<NameValue> result = new ArrayList<>();

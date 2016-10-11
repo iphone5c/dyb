@@ -43,7 +43,7 @@ public class ClientTurnoverController extends BaseController {
     /**
      * 获取当前登陆账户营业额列表
      * @param request
-     * @param status 1:近7天 2：近一个月  2：近一个季度  3：近半年
+     * @param status 1:近7天 2：近一个月  3：近一个季度  4：近半年
      * @return
      * @throws ParseException
      */

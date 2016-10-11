@@ -4,6 +4,8 @@ import com.dyb.platforms.fixfunds.services.business.turnover.entity.Turnover;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 
+import java.util.List;
+
 /**
  * Created by 魏源 on 2015/6/30 0030.
  */
@@ -25,5 +27,13 @@ public interface ITurnoverService {
      * @return 对象分页列表
      */
     public PageList<Turnover> getTurnoverPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail);
+
+    /**
+     * 查询对象列表
+     *
+     * @param wheres 条件
+     * @return 对象列表
+     */
+    public List<Turnover> getTurnoverList(QueryParams wheres);
 
 }

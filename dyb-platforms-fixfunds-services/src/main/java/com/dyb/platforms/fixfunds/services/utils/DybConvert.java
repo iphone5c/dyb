@@ -34,6 +34,10 @@ public class DybConvert {
      */
     public static String DATEFORMAT_DATA_EN_LONG = "yyyy-MM-dd";
     /**
+     * 日期格式：yyyy-MM
+     */
+    public static String DATEFORMAT_DATA_EN_SHORT = "yyyy-MM";
+    /**
      * 日期格式：HH:mm
      */
     public static String DATEFORMAT_TIME_EN_SORT = "HH:mm";

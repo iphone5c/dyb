@@ -1,6 +1,5 @@
 package com.dyb.platforms.fixfunds.merchant.controller.web;
 
-import com.dyb.platforms.fixfunds.merchant.controller.client.model.TurnoverParamModel;
 import com.dyb.platforms.fixfunds.merchant.controller.web.model.TurnoverDetailsModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;

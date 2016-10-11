@@ -14,6 +14,7 @@ import com.dyb.platforms.fixfunds.services.business.merchant.service.IMerchantSe
 import com.dyb.platforms.fixfunds.services.business.serviceproviders.entity.ServiceProviders;
 import com.dyb.platforms.fixfunds.services.business.serviceproviders.service.IServiceProvidersService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
+import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
 import com.dyb.platforms.fixfunds.services.utils.core.service.BaseService;
@@ -336,5 +337,18 @@ public class AccountService extends BaseService implements IAccountService {
         if (account==null)
             throw new DybRuntimeException("找不到此账户信息");
         return this.getAccountByCode(account.getAccountCode(),true);
+    }
+
+    /**
+     *获取账户分页列表
+     * @param wheres    条件
+     * @param pageIndex 返回的页码
+     * @param pageSize  页大小
+     * @param detail    是否返回详细信息
+     * @return 对象分页列表
+     */
+    @Override
+    public PageList<Account> getAccountPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail) {
+        return accountDao.queryListForPaged(wheres,pageIndex,pageSize,detail);
     }
 }

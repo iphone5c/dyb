@@ -6,6 +6,7 @@ import com.dyb.platforms.fixfunds.services.business.orderitem.entity.OrderItem;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,5 +38,21 @@ public interface IOrderService {
      * @return 对象分页列表
      */
     public PageList<Order> getOrderPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail);
+
+    /**
+     * 根据商户账号code获取订单
+     * @param merchantAccount 商户账号code
+     * @return
+     */
+    public List<Order> getOrderByMerchantAccount(String merchantAccount);
+
+    /**
+     * 根据商户账号code获取指定时间范围的订单
+     * @param merchantAccount 商户账号code
+     * @param min 最小日期
+     * @param max 最大日期
+     * @return
+     */
+    public List<Order> getOrderByMerchantAccount(String merchantAccount,Date min,Date max);
 
 }

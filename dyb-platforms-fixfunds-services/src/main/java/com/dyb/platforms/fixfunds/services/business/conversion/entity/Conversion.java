@@ -5,6 +5,11 @@
 
 package com.dyb.platforms.fixfunds.services.business.conversion.entity;
 
+import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
+import com.dyb.platforms.fixfunds.services.business.withdrawal.entity.em.ApplyStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -19,7 +24,7 @@ public class Conversion implements java.io.Serializable {
     // 转换信使豆编号 [主键]
     private String conversionCode;
     // 转换类型
-    private String conversionType;
+    private MessengerBeanType conversionType;
     // 申请转换的信使豆数量
     private Double applyConversionNum;
     // 实际转换的信使豆
@@ -28,10 +33,14 @@ public class Conversion implements java.io.Serializable {
     private Double deductions;
     // 申请转换人code
     private String conversionAccount;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 申请时间
     private Date applyTime;
     // 申请状态
-    private String applyStatus;
+    private ApplyStatus applyStatus;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 创建时间
     private Date createTime;
 
@@ -58,7 +67,7 @@ public class Conversion implements java.io.Serializable {
      * 
      * @return 转换类型
      */
-    public String getConversionType() {
+    public MessengerBeanType getConversionType() {
         return conversionType;
     }
 
@@ -67,7 +76,7 @@ public class Conversion implements java.io.Serializable {
      * 
      * @param conversionType 转换类型
      */
-    public void setConversionType(String conversionType) {
+    public void setConversionType(MessengerBeanType conversionType) {
         this.conversionType = conversionType;
     }
 
@@ -166,7 +175,7 @@ public class Conversion implements java.io.Serializable {
      * 
      * @return 申请状态
      */
-    public String getApplyStatus() {
+    public ApplyStatus getApplyStatus() {
         return applyStatus;
     }
 
@@ -175,7 +184,7 @@ public class Conversion implements java.io.Serializable {
      * 
      * @param applyStatus 申请状态
      */
-    public void setApplyStatus(String applyStatus) {
+    public void setApplyStatus(ApplyStatus applyStatus) {
         this.applyStatus = applyStatus;
     }
 

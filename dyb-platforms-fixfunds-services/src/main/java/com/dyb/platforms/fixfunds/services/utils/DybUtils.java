@@ -6,6 +6,7 @@ import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeExcept
 import com.dyb.platforms.fixfunds.services.utils.core.serializes.ISerialize;
 import com.dyb.platforms.fixfunds.services.utils.core.serializes.JsonSerialize;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.context.ContextLoader;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
@@ -181,7 +182,7 @@ public class DybUtils {
      * @return
      */
     public static boolean verifyPassword(String origPwd,String encryptedPwd){
-        return MD5.verify(origPwd,encryptedPwd);
+        return MD5.verify(origPwd, encryptedPwd);
     }
 
     /**
@@ -202,6 +203,43 @@ public class DybUtils {
     public static Account getCurrentAccount(HttpServletRequest request){
         Account account= (Account) request.getSession().getAttribute("CURRENT_ACCOUNT");
         return account;
+    }
+
+    /**
+     * 获取当前前端登陆用户
+     * @param request
+     * @return
+     */
+    public static Account getCurrentAccountClient(HttpServletRequest request){
+        Account account= (Account) request.getSession().getAttribute("CURRENT_ACCOUNT_CLIENT");
+        return account;
+    }
+
+    /**
+     * 将令牌设置到应用上下文
+     * @param token 令牌
+     */
+    public static void setCuurentAccountClient(String token,Account account){
+        Map<String,Account> session=null;
+        Object obj=ContextLoader.getCurrentWebApplicationContext().getServletContext().getAttribute("CURRENT_ACCOUNT_CLIENT");
+        if (obj==null){
+            session=new HashMap<>();
+            session.put(token, account);
+        }else {
+            session= (Map<String, Account>) obj;
+            session.put(token, account);
+        }
+        ContextLoader.getCurrentWebApplicationContext().getServletContext().setAttribute("CURRENT_ACCOUNT_CLIENT",session);
+    }
+
+    /**
+     * 根据token找到当前有效用户
+     * @param token 令牌
+     * @return
+     */
+    public static Account getCurrentAccountClient(String token){
+        Map<String,Account> session= (Map<String, Account>) ContextLoader.getCurrentWebApplicationContext().getServletContext().getAttribute("CURRENT_ACCOUNT_CLIENT");
+        return session.get(token);
     }
 
     /**

@@ -5,6 +5,10 @@
 
 package com.dyb.platforms.fixfunds.services.business.invoiceapply.entity;
 
+import com.dyb.platforms.fixfunds.services.business.invoiceapply.entity.em.InvoiceApplyStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -31,7 +35,9 @@ public class InvoiceApply implements java.io.Serializable {
     // 快递费
     private Double poundage;
     // 状态
-    private String invoiceApplyStatus;
+    private InvoiceApplyStatus invoiceApplyStatus;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 申请时间
     private Date applyTime;
     // 商家账户code
@@ -168,7 +174,7 @@ public class InvoiceApply implements java.io.Serializable {
      * 
      * @return 状态
      */
-    public String getInvoiceApplyStatus() {
+    public InvoiceApplyStatus getInvoiceApplyStatus() {
         return invoiceApplyStatus;
     }
 
@@ -177,7 +183,7 @@ public class InvoiceApply implements java.io.Serializable {
      * 
      * @param invoiceApplyStatus 状态
      */
-    public void setInvoiceApplyStatus(String invoiceApplyStatus) {
+    public void setInvoiceApplyStatus(InvoiceApplyStatus invoiceApplyStatus) {
         this.invoiceApplyStatus = invoiceApplyStatus;
     }
 

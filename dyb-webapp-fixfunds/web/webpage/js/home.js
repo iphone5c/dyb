@@ -5,14 +5,13 @@ $(function(){
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return decodeURI(r[2]); return null;
     }
-    console.log(getQueryString("name"));
+//    console.log(getQueryString("name"));
     var param={
         accountType:getQueryString("name")
     };
     var data = invokeService('/web/commons/getWebMenu',param);
     var fhurl=new Array();
     var addi=0;
-    console.log(data);
     if (data.statusCode!=1000){
         alert(data.errorMessage);
         return;

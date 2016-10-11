@@ -94,7 +94,7 @@ public class ClientTurnoverController extends BaseController {
      * @throws ParseException
      */
     @RequestMapping(value = "/getBenefitTurnoverList")
-    public Object getBenefitTurnoverList(HttpServletRequest request,int pageIndex,int pageSize) throws ParseException {
+    public Object getBenefitTurnoverList(HttpServletRequest request,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize) throws ParseException {
         log.info("获取当前登陆账户我的让利列表");
         // 应交让利款
         Double benefitPrice=0d;

@@ -67,6 +67,13 @@ public class DybUtils {
         return dateAddMinute(date, minute);
     }
 
+    public static Date dateAddMonty(Date date,int month){
+        Calendar ca = Calendar.getInstance();
+        ca.setTime(date);
+        ca.add(Calendar.MONTH,month);
+        return ca.getTime();
+    }
+
     public static void copyFile(File sourcefile,File targetFile) throws IOException {
 
         //新建文件输入流并对它进行缓冲

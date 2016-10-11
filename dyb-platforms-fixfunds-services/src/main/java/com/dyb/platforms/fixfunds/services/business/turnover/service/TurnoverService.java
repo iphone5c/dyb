@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/2/23.
  */
@@ -50,5 +52,16 @@ public class TurnoverService extends BaseService implements ITurnoverService {
     @Override
     public PageList<Turnover> getTurnoverPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail) {
         return turnoverDao.queryListForPaged(wheres,pageIndex,pageSize,detail);
+    }
+
+    /**
+     * 查询对象列表
+     *
+     * @param wheres 条件
+     * @return 对象列表
+     */
+    @Override
+    public List<Turnover> getTurnoverList(QueryParams wheres) {
+        return turnoverDao.queryList(wheres,0,-1,true);
     }
 }

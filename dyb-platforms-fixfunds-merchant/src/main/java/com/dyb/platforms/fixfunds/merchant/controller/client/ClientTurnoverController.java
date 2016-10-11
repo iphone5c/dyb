@@ -10,6 +10,7 @@ import com.dyb.platforms.fixfunds.services.business.turnover.entity.Turnover;
 import com.dyb.platforms.fixfunds.services.business.turnover.service.ITurnoverService;
 import com.dyb.platforms.fixfunds.services.utils.DybConvert;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
+import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
@@ -27,7 +28,7 @@ import java.util.*;
  * Created by lenovo on 2016/10/10.
  */
 @RestController
-@RequestMapping(value = "/client/merchant")
+@RequestMapping(value = "/client/merchant/turnover")
 public class ClientTurnoverController extends BaseController {
 
     public Logger log = Logger.getLogger(ClientMerchantController.class);//日志
@@ -67,6 +68,51 @@ public class ClientTurnoverController extends BaseController {
         queryParams.addOrderBy("turnoverTime",false);
         List<Turnover> turnoverList=turnoverService.getTurnoverList(queryParams);
         return result(getDatasToTurnover(getCurrentAccountClient(request),turnoverList));
+    }
+
+    /**
+     * 获取当前登陆用户营业明细
+     * @return
+     */
+    @RequestMapping(value = "/getTurnoverDetailsList")
+    public Object getTurnoverDetailsList(HttpServletRequest request,String turnoverCode) throws ParseException {
+        log.info("移动端获取当前登陆用户营业明细");
+        if (DybUtils.isEmptyOrNull(turnoverCode))
+            return validationResult(1001,"营业额明细查询的code不能为空");
+        Turnover turnover = turnoverService.getTurnoverByCode(turnoverCode);
+        if (turnover==null)
+            return validationResult(1001,"找不到此营业信息");
+        Date min = DybConvert.toDate(DybConvert.dateToString(turnover.getTurnoverTime(), DybConvert.DATEFORMAT_DATA_EN_LONG), DybConvert.DATEFORMAT_DATA_EN_LONG);
+        Date max = DybConvert.toDate(DybConvert.dateToString(DybUtils.dateAddDay(turnover.getTurnoverTime(),1),DybConvert.DATEFORMAT_DATA_EN_LONG),DybConvert.DATEFORMAT_DATA_EN_LONG);
+        return result(orderService.getOrderByMerchantAccount(getCurrentAccountClient(request).getAccountCode(),min,max));
+    }
+
+    /**
+     * 获取当前登陆账户我的让利列表
+     * @param request
+     * @return
+     * @throws ParseException
+     */
+    @RequestMapping(value = "/getBenefitTurnoverList")
+    public Object getBenefitTurnoverList(HttpServletRequest request,int pageIndex,int pageSize) throws ParseException {
+        log.info("获取当前登陆账户我的让利列表");
+        // 应交让利款
+        Double benefitPrice=0d;
+        // 已交让利款
+        Double yetBenefitPrice=0d;
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("accountCode", getCurrentAccountClient(request).getAccountCode());
+        queryParams.addOrderBy("turnoverTime",false);
+        PageList<Turnover> turnoverPageList=turnoverService.getTurnoverPageList(queryParams,pageIndex,pageSize,true);
+        for (Turnover turnover:turnoverPageList.getList()){
+            benefitPrice+=turnover.getBenefitPrice();
+            yetBenefitPrice+=turnover.getYetBenefitPrice();
+        }
+        Map<String,Object> result=new HashMap<>();
+        result.put("benefitPrice",benefitPrice);
+        result.put("yetBenefitPrice",yetBenefitPrice);
+        result.put("datas",turnoverPageList);
+        return result(result);
     }
 
     /**

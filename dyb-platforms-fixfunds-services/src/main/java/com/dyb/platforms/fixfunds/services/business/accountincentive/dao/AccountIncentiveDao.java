@@ -41,15 +41,15 @@ public class AccountIncentiveDao extends IbatisDataDAOImpl<AccountIncentive, Str
 	protected IbatisBaseStatement getIbatisBaseStatement() {
 		if (ibatisBaseStatement == null) {
 			ibatisBaseStatement = new IbatisBaseStatement();
-			ibatisBaseStatement.setInsertStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.insertObject");
-			ibatisBaseStatement.setUpdateStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.updateObject");
-			ibatisBaseStatement.setDeleteStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.deleteObject");
-			ibatisBaseStatement.setGetHasDetailStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.getDetailObject");
-			ibatisBaseStatement.setGetNoDetailStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.getBaseObject");
-			ibatisBaseStatement.setWhereDeleteStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.deleteObjectByWhere");
-			ibatisBaseStatement.setQueryCountStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.queryCount");
-			ibatisBaseStatement.setQueryHasDetailListStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.queryDetailList");
-			ibatisBaseStatement.setQueryNoDetailListStatementId("com.dyb.platforms.fixfunds.services.business.recommendincentive.dao.IRecommendIncentiveDao.queryBaseList");
+			ibatisBaseStatement.setInsertStatementId("com.dyb.platforms.fixfunds.services.business.accountincentive.dao.IAccountIncentiveDao.insertObject");
+			ibatisBaseStatement.setUpdateStatementId("com.dyb.platforms.fixfunds.services.business.accountincentive.dao.IAccountIncentiveDao.updateObject");
+			ibatisBaseStatement.setDeleteStatementId("com.dyb.platforms.fixfunds.services.business.accountincentive.dao.IAccountIncentiveDao.deleteObject");
+			ibatisBaseStatement.setGetHasDetailStatementId("com.dyb.platforms.fixfunds.services.business.accountincentive.dao.IAccountIncentiveDao.getDetailObject");
+			ibatisBaseStatement.setGetNoDetailStatementId("com.dyb.platforms.fixfunds.services.business.accountincentive.dao.IAccountIncentiveDao.getBaseObject");
+			ibatisBaseStatement.setWhereDeleteStatementId("com.dyb.platforms.fixfunds.services.business.accountincentive.dao.IAccountIncentiveDao.deleteObjectByWhere");
+			ibatisBaseStatement.setQueryCountStatementId("com.dyb.platforms.fixfunds.services.business.accountincentive.dao.IAccountIncentiveDao.queryCount");
+			ibatisBaseStatement.setQueryHasDetailListStatementId("com.dyb.platforms.fixfunds.services.business.accountincentive.dao.IAccountIncentiveDao.queryDetailList");
+			ibatisBaseStatement.setQueryNoDetailListStatementId("com.dyb.platforms.fixfunds.services.business.accountincentive.dao.IAccountIncentiveDao.queryBaseList");
 		}
 		return ibatisBaseStatement;
 	}

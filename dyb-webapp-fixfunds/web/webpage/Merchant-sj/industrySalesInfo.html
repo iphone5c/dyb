@@ -267,33 +267,7 @@
 							<th style="max-width:1%;">总价(元)</th></tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td style="" data-key="seq_no" data-line="0" data-id="">1</td>
-							<td style="" data-key="pro_name" data-line="0" data-id="">电视挂架</td>
-							<td style="" data-key="pro_code" data-line="0" data-id="">004</td>
-							<td style="" data-key="modelnumber" data-line="0" data-id="">伸缩</td>
-							<td style="text-align:left;width: 12%;" data-key="pro_price" data-line="0" data-id="">503.00</td>
-							<td style="text-align:left;" data-key="cus_count" data-line="0" data-id="">1</td>
-							<td style="text-align:left;width: 15%;" data-key="cus_money" data-line="0" data-id="">503.00</td>
-							<td id="consumptionDetailtable-line-0" class="dsn">{"seq_no":"1","pro_name":"电视挂架","pro_code":"004","modelnumber":"伸缩","pro_price":"503.00","cus_count":"1","cus_money":"503.00"}</td></tr>
-						<tr>
-							<td style="" data-key="seq_no" data-line="1" data-id="">2</td>
-							<td style="" data-key="pro_name" data-line="1" data-id="">加油卡</td>
-							<td style="" data-key="pro_code" data-line="1" data-id="">003</td>
-							<td style="" data-key="modelnumber" data-line="1" data-id="">中石化</td>
-							<td style="text-align:left;width: 12%;" data-key="pro_price" data-line="1" data-id="">20,000.00</td>
-							<td style="text-align:left;" data-key="cus_count" data-line="1" data-id="">11</td>
-							<td style="text-align:left;width: 15%;" data-key="cus_money" data-line="1" data-id="">220,000.00</td>
-							<td id="consumptionDetailtable-line-1" class="dsn">{"seq_no":"2","pro_name":"加油卡","pro_code":"003","modelnumber":"中石化","pro_price":"20,000.00","cus_count":"11","cus_money":"220,000.00"}</td></tr>
-						<tr>
-							<td style="" data-key="seq_no" data-line="2" data-id="">3</td>
-							<td style="" data-key="pro_name" data-line="2" data-id="">加油卡</td>
-							<td style="" data-key="pro_code" data-line="2" data-id="">001</td>
-							<td style="" data-key="modelnumber" data-line="2" data-id="">中石化</td>
-							<td style="text-align:left;width: 12%;" data-key="pro_price" data-line="2" data-id="">10,000.00</td>
-							<td style="text-align:left;" data-key="cus_count" data-line="2" data-id="">1</td>
-							<td style="text-align:left;width: 15%;" data-key="cus_money" data-line="2" data-id="">10,000.00</td>
-							<td id="consumptionDetailtable-line-2" class="dsn">{"seq_no":"3","pro_name":"加油卡","pro_code":"001","modelnumber":"中石化","pro_price":"10,000.00","cus_count":"1","cus_money":"10,000.00"}</td></tr>
+
 						</tbody>
 					</table>
 					<div class="sui-pagination pagination-small" style="text-align:left;">
@@ -322,42 +296,7 @@
 	</div>
 </div>
 <div class="sui-modal-backdrop fade" style="background:#000;z-index:-1"></div>
-<script>
-	$(function(){
-		$(".dropdown-toggle").eq(0).click(function(){
-			$(".select1").toggleClass("open");
-		})
-		$(".sui-dropdown-menu1 li").click(function(){
-			var i=$(".sui-dropdown-menu1 li").index(this);
-			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
-			$(".sui-dropdown-menu1 li").removeClass("active");
-			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
-			$(".select1 span span").html(x);
-			$(".select1").removeClass("open");
-		})
-		$('.dropdown-inner').mouseleave(function(){
-			$(".select1").removeClass("open");
-		});
-		$(".sui-dropdown-menu1 li").click(function(){
-			$("#datePicker").hide();
-			$("#datePicker1").hide();
-			$(".zdydata").hide();
-		})
-		$(".sui-dropdown-menu1 li:last").click(function(){
-			$("#datePicker").show();
-			$("#datePicker1").show();
-			$(".zdydata").show();
-		})
-		$(".btn-fontBlue1").click(function(){
-			$(".sui-modal").addClass("in");
-			$(".sui-modal-backdrop").css("zIndex","1").addClass("in");
-		});
-		$(".sui-close").click(function(){
-			$(".sui-modal").removeClass("in");
-			$(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
-		})
-	})
-</script>
+<script type="text/javascript" src="/webpage/js/industrySalesInfo.js"></script>
 </body>
 
 </html>

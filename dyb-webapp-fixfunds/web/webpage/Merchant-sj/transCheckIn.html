@@ -21,12 +21,27 @@
                 <div class="sui-validate" style="float:left; margin-top:5px;" novalidate="novalidate">
                     <input class="xiaofeidengji-ipt input-xfat" style="width:300px;" data-rules="required" type="text" id="userNumber" value="" placeholder=" 扫描信使二维码/输入信使电话号码/ID">
                     <input id="queryMemberBtn" class="sui-btn btn-xlarge btn-primary xiaofeidengji-btn" type="button" value="查看信使资料">
-                    <input id="queryMemberBtn_close" class="sui-btn btn-xlarge btn-primary xiaofeidengji-btn" type="button" value="收起" style="display: none;">
+                    <input id="queryMemberBtn_close" class="sui-btn btn-xlarge btn-primary xiaofeidengji-btn" type="button" value="收起" style="display: none">
                     <div id="memberInfoTip" style="margin-top:10px;width:318px;" class="tooltip-only-arrow default bottom dsn">
                         <div class="tooltip-arrow">
                             <div class="tooltip-arrow cover"></div>
                         </div>
-                        <div id="userNumberTooltip" class="tooltip-inner"></div>
+                        <div id="userNumberTooltip" class="tooltip-inner">
+                            <table class="sui-table" style="margin-bottom: 0">
+                                <tbody>
+                                <tr>
+                                    <th>用户ID：</th>
+                                    <th>姓名：</th>
+                                    <th>手机号：</th>
+                                </tr>
+                                <tr>
+                                    <th>M315461</th>
+                                    <th>你管我</th>
+                                    <th>**********6699</th>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="sui-msg msg-error help-inline" style="display: none;">
                         <div class="msg-con">
@@ -138,5 +153,5 @@
 </div>
 <div class="sui-modal-backdrop fade" style="background:#000;z-index:-1"></div>
 </body>
-<script type="text/javascript" src="../js/transCheckIn.js"></script>
+<script type="text/javascript" src="/webpage/js/transCheckIn.js"></script>
 </html>

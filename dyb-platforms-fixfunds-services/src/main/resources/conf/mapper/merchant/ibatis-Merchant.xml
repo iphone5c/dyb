@@ -32,10 +32,11 @@
         <result property="accountCode" column="accountcode" />
         <result property="longitude" column="longitude" />
         <result property="latitude" column="latitude" />
+        <result property="businessCircle" column="businesscircle" />
     </resultMap>
 
     <sql id="baseCol">
-        merchantcode, merchantname, incentivemode, shopname, merchanttype, businessstarttime, businessendtime, merchantaddress, province, city, mainbusiness, industrytype, industry, scale, countryphone, merchantdescription, principalname, principaljobs, principalsex, principalidcard, principalemail, certificatefile, accountcode, longitude, latitude
+        merchantcode, merchantname, incentivemode, shopname, merchanttype, businessstarttime, businessendtime, merchantaddress, province, city, mainbusiness, industrytype, industry, scale, countryphone, merchantdescription, principalname, principaljobs, principalsex, principalidcard, principalemail, certificatefile, accountcode, longitude, latitude, businesscircle
     </sql>
 
     <sql id="whereSql">
@@ -216,6 +217,13 @@
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
+            <if test="businessCircle != null"><![CDATA[ and businesscircle like #{businessCircle} ]]></if>
+            <if test="businessCircle_enum != null">
+                <![CDATA[ and businesscircle in ]]>
+                <foreach collection="businessCircle_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
             <if test="_default_mulattr != null">
                 <![CDATA[ and ]]>
                 <foreach collection="_default_mulattr" item="item" open="(" separator=" or " close=")">
@@ -243,6 +251,7 @@
                     <if test="item.name == 'accountCode'"><![CDATA[ accountcode like #{item.value} ]]></if>
                     <if test="item.name == 'longitude'"><![CDATA[ longitude like #{item.value} ]]></if>
                     <if test="item.name == 'latitude'"><![CDATA[ latitude like #{item.value} ]]></if>
+                    <if test="item.name == 'businessCircle'"><![CDATA[ businesscircle like #{item.value} ]]></if>
                 </foreach>
             </if>
         </trim>
@@ -300,18 +309,20 @@
             <if test="_orderBy == 'longitude_asc'"><![CDATA[ longitude, ]]></if>
             <if test="_orderBy == 'latitude_desc'"><![CDATA[ latitude desc, ]]></if>
             <if test="_orderBy == 'latitude_asc'"><![CDATA[ latitude, ]]></if>
+            <if test="_orderBy == 'businessCircle_desc'"><![CDATA[ businesscircle desc, ]]></if>
+            <if test="_orderBy == 'businessCircle_asc'"><![CDATA[ businesscircle, ]]></if>
         </trim>
     </sql>
 
     <insert id="insertObject" parameterType="com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant">
         insert into
-        dyb_merchant(merchantcode,merchantname,incentivemode,shopname,merchanttype,businessstarttime,businessendtime,merchantaddress,province,city,mainbusiness,industrytype,industry,scale,countryphone,merchantdescription,principalname,principaljobs,principalsex,principalidcard,principalemail,certificatefile,accountcode,longitude,latitude)
-        values(#{merchantCode},#{merchantName},#{incentiveMode},#{shopName},#{merchantType},#{businessStartTime},#{businessEndTime},#{merchantAddress},#{province},#{city},#{mainBusiness},#{industryType},#{industry},#{scale},#{countryPhone},#{merchantDescription},#{principalName},#{principalJobs},#{principalSex},#{principalIdCard},#{principalEmail},#{certificateFile},#{accountCode},#{longitude},#{latitude});
+        dyb_merchant(merchantcode,merchantname,incentivemode,shopname,merchanttype,businessstarttime,businessendtime,merchantaddress,province,city,mainbusiness,industrytype,industry,scale,countryphone,merchantdescription,principalname,principaljobs,principalsex,principalidcard,principalemail,certificatefile,accountcode,longitude,latitude,businesscircle)
+        values(#{merchantCode},#{merchantName},#{incentiveMode},#{shopName},#{merchantType},#{businessStartTime},#{businessEndTime},#{merchantAddress},#{province},#{city},#{mainBusiness},#{industryType},#{industry},#{scale},#{countryPhone},#{merchantDescription},#{principalName},#{principalJobs},#{principalSex},#{principalIdCard},#{principalEmail},#{certificateFile},#{accountCode},#{longitude},#{latitude},#{businessCircle});
     </insert>
 
     <update id="updateObject" parameterType="com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant">
         update dyb_merchant
-        set merchantname=#{merchantName},incentivemode=#{incentiveMode},shopname=#{shopName},merchanttype=#{merchantType},businessstarttime=#{businessStartTime},businessendtime=#{businessEndTime},merchantaddress=#{merchantAddress},province=#{province},city=#{city},mainbusiness=#{mainBusiness},industrytype=#{industryType},industry=#{industry},scale=#{scale},countryphone=#{countryPhone},merchantdescription=#{merchantDescription},principalname=#{principalName},principaljobs=#{principalJobs},principalsex=#{principalSex},principalidcard=#{principalIdCard},principalemail=#{principalEmail},certificatefile=#{certificateFile},accountcode=#{accountCode},latitude=#{latitude},longitude=#{longitude}
+        set merchantname=#{merchantName},incentivemode=#{incentiveMode},shopname=#{shopName},merchanttype=#{merchantType},businessstarttime=#{businessStartTime},businessendtime=#{businessEndTime},merchantaddress=#{merchantAddress},province=#{province},city=#{city},mainbusiness=#{mainBusiness},industrytype=#{industryType},industry=#{industry},scale=#{scale},countryphone=#{countryPhone},merchantdescription=#{merchantDescription},principalname=#{principalName},principaljobs=#{principalJobs},principalsex=#{principalSex},principalidcard=#{principalIdCard},principalemail=#{principalEmail},certificatefile=#{certificateFile},accountcode=#{accountCode},latitude=#{latitude},longitude=#{longitude},businesscircle=#{businessCircle}
         where merchantcode=#{merchantCode};
     </update>
 

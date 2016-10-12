@@ -81,24 +81,34 @@
 							<tbody></tbody>
 						</table>
 						<div class="sui-pagination pagination-small" style="text-align:left;">
-							<ul id="table-pagination">
-								<!-- 前半部分（包括当前） -->
-								<li id="prevBtn" class="prev disabled">
-									<a>«上一页</a>
-								</li>
-								<li class="pageBtn active" data-num="1">
-									<a>1</a>
-								</li>
-								<!-- 后半部分（当前之后） -->
-								<li id="nextBtn" class="next disabled">
-									<a>下一页»</a>
-								</li>
-							</ul>
-							<div>
-								<span>共1页&nbsp;</span>
-                    <span>到
-                      <input id="selectPageNum" type="text" onkeyup="this.value=this.value.replace(/\D/g,&#39;&#39;)" onafterpaste="this.value=this.value.replace(/\D/g,&#39;&#39;)" class="page-num">
-                      <button id="selectPage" class="page-confirm">确定</button>页</span></div>
+                            <ul id="table-pagination">
+                                <!-- 前半部分（包括当前） -->
+                                <li id="prevBtn" class="  active">
+                                    <a>«上一页</a>
+                                </li>
+                                <li class="pageBtn" data-num="1">
+                                    <a id="onpage"></a>
+                                    <style>
+                                        #onpage{
+                                            background: none !important;
+                                            color: black !important;
+                                            border: 1px solid white !important;
+                                        }
+                                        #onpage:hover{
+                                            background: none !important;
+                                            color: black !important;
+                                            border: 1px solid white !important;
+                                        }
+                                    </style>
+                                </li>
+                                <!-- 后半部分（当前之后） -->
+                                <li id="nextBtn" class="  active">
+                                    <a>下一页»</a>
+                                </li>
+                            </ul>
+                            <div>
+                                <span id="xg_page"></span>
+                            </div>
 						</div>
 					</div>
 				</div>
@@ -156,36 +166,7 @@
 				</div>
 			</div>
 		</div>
-<script>
-	$(function(){
-		$(".dropdown-toggle").eq(0).click(function(){
-			$(".select1").toggleClass("open");
-		});
-		$(".sui-dropdown-menu1 li").click(function(){
-			var i=$(".sui-dropdown-menu1 li").index(this);
-			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
-			$(".sui-dropdown-menu1 li").removeClass("active");
-			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
-			$(".select1 span span").html(x);
-			$(".select1").removeClass("open");
-		});
-		$(".dropdown-toggle").eq(1).click(function(){
-			$(".select2").toggleClass("open");
-		});
-		$(".sui-dropdown-menu2 li").click(function(){
-			var i=$(".sui-dropdown-menu2 li").index(this);
-			var x= $(".sui-dropdown-menu2 li a").eq(i).html();
-			$(".sui-dropdown-menu2 li").removeClass("active");
-			$(".sui-dropdown-menu2 li").eq(i).addClass("active");
-			$(".select2 span span").html(x);
-			$(".select2").removeClass("open");
-		});
-		$('.dropdown-inner').mouseleave(function(){
-			$(".select1").removeClass("open");
-			$(".select2").removeClass("open");
-		});
-	})
-</script>
+<script type="text/javascript" src="/webpage/js/personalreferrerflow.js"></script>
 </body>
 
 </html>

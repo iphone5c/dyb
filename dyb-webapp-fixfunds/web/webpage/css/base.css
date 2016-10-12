@@ -276,7 +276,7 @@ body,html{
 	padding:200px 40%;
 }
 .ad-withdraw {
-    background: url(/images/draw/bdraw1.jpg) no-repeat top center;
+    background: url(../images/bdraw1.jpg) no-repeat top center;
     padding-top: 90px;
     height: 100%;
     padding-left:80px;

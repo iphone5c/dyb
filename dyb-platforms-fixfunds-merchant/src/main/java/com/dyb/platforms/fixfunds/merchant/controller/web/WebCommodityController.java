@@ -8,6 +8,7 @@ import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -132,7 +133,7 @@ public class WebCommodityController extends BaseController {
      * @param response
      */
     @RequestMapping(value = "/getCommodityPageList")
-    public Object getCommodityPageList(HttpServletRequest request,HttpServletResponse response, int pageIndex, int pageSize){
+    public Object getCommodityPageList(HttpServletRequest request,HttpServletResponse response, @RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
         log.info("根据当前登陆商家获取分页商品列表");
         QueryParams queryParams=new QueryParams();
         queryParams.addParameter("accountCode",DybUtils.getCurrentAccount(request).getAccountCode());

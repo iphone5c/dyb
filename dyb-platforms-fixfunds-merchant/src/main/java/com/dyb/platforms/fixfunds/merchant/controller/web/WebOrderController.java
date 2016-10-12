@@ -14,6 +14,7 @@ import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,7 +73,7 @@ public class WebOrderController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getOrderPageList")
-    public Object getOrderPageList(HttpServletRequest request,HttpServletResponse response,int pageIndex,int pageSize){
+    public Object getOrderPageList(HttpServletRequest request,HttpServletResponse response,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
         log.info("获取订单列表分页");
         PageList<OrderParamModel> orderParamModelPageList=new PageList<>();
         List<OrderParamModel> orderParamModelList=new ArrayList<>();

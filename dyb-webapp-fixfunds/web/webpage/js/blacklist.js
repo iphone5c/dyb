@@ -6,12 +6,10 @@ $(function(){
         var i=$(".sui-nav li").index(this)
         $(".sui-nav li").removeClass("active");
         $(".sui-nav li").eq(i).addClass("active");
-        $(".tab-pane").removeClass("active");
-        $(".tab-pane").eq(i).addClass("active");
     });
     $(".dropdown-toggle").eq(0).click(function(){
         $(".select1").toggleClass("open");
-    });
+    })
     $(".sui-dropdown-menu1 li").click(function(){
         var i=$(".sui-dropdown-menu1 li").index(this);
         var x= $(".sui-dropdown-menu1 li a").eq(i).html();
@@ -19,10 +17,10 @@ $(function(){
         $(".sui-dropdown-menu1 li").eq(i).addClass("active");
         $(".select1 span span").html(x);
         $(".select1").removeClass("open");
-    });
-    $(".dropdown-toggle").eq(1).click(function(){
+    })
+    $(".dropdown-toggles").click(function(){
         $(".select2").toggleClass("open");
-    });
+    })
     $(".sui-dropdown-menu2 li").click(function(){
         var i=$(".sui-dropdown-menu2 li").index(this);
         var x= $(".sui-dropdown-menu2 li a").eq(i).html();
@@ -30,66 +28,47 @@ $(function(){
         $(".sui-dropdown-menu2 li").eq(i).addClass("active");
         $(".select2 span span").html(x);
         $(".select2").removeClass("open");
-    });
+    })
     $('.dropdown-inner').mouseleave(function(){
         $(".select1").removeClass("open");
         $(".select2").removeClass("open");
     });
-    $(".sui-dropdown-menu1 li").click(function(){
-        $("#datePicker1").hide();
-        $("#datePicker2").hide();
-    })
-    $(".sui-dropdown-menu1 li:last").click(function(){
-        $("#datePicker1").show();
-        $("#datePicker2").show();
-    })
-    $(".sui-dropdown-menu2 li").click(function(){
-        $("#datePicker3").hide();
-        $("#datePicker4").hide();
-    })
-    $(".sui-dropdown-menu2 li:last").click(function(){
-        $("#datePicker3").show();
-        $("#datePicker4").show();
-    })
 
 
-//    我要推荐   推荐记录表
-    var a =0;
+    var a=0;
     var param={
 //        当前页
         pageIndex:a,
-//        请求数据条数
+//        请求条数
         pageSize:5
     };
-    var result=invokeService('/web/merchant/recommend/getRecommendRecordPageList',param);
-
+    var result=invokeService('/web/blacklist/getBlacklistPageList',param);
     if(result.statusCode!=1000){
-        alert(result.errorMessage);
-        return;
-    };
+        alert(result.errorMessage)
+    }
 //    console.log(result);
     $("#xg_page").text("共 " +result.result.pageCount+ " 页");
     $("#onpage").text("第 " +(a+1)+ " 页");
     for(var i =0;i<result.result.list.length;i++){
-        $("#table1>table>tbody").html($("#table1>table>tbody").html()+
+        $("#table>table>tbody").html($("#table>table>tbody").html()+
                 "<tr>"+
                 "<td>"+
-                result.result.list[i].realName+
+                result.result.list[i].merchant.merchantName+
                 "</td>"+
                 "<td>" +
-                result.result.list[i].account.accountPhone+
+                result.result.list[i].merchant.incentiveMode+"%"+
                 "</td>"+
                 "<td>"+
-                result.result.list[i].address+
+                result.result.list[i].merchant.industryType+
                 "</td>"+
                 "<td>"+
-                result.result.list[i].industry+
+                result.result.list[i].merchant.province+
                 "</td>"+
                 "<td>"+
-                result.result.list[i].account.createTime+
+                result.result.list[i].merchant.merchantAddress+
                 "</td>"+
                 "<td>"+
-                result.result.list[i].email+
+                result.result.list[i].blacklist.blackDescption+
                 "</td>"+
                 "</tr>"
         )}
@@ -103,37 +82,38 @@ $(function(){
             //每页显示条数
             pageSize:5
         };
-        var result = invokeService('/web/merchant/recommend/getRecommendRecordPageList',param);
+        var result = invokeService('/web/blacklist/getBlacklistPageList',param);
         if(result.statusCode!=1000){
             alert(result.errorMessage)
             return;
         }
         if(a<result.result.pageCount){
             $("#onpage").text("第 " +(a+1)+ " 页");
-            $("#table1>table>tbody").html("");
+            $("#table>table>tbody").html("");
             for(var i =0;i<result.result.list.length;i++){
-                $("#table1>table>tbody").html($("#table1>table>tbody").html()+
+                $("#table>table>tbody").html($("#table>table>tbody").html()+
                         "<tr>"+
                         "<td>"+
-                        result.result.list[i].realName+
+                        result.result.list[i].merchant.merchantName+
                         "</td>"+
                         "<td>" +
-                        result.result.list[i].account.accountPhone+
+                        result.result.list[i].merchant.incentiveMode+"%"+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].address+
+                        result.result.list[i].merchant.industryType+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].industry+
+                        result.result.list[i].merchant.province+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].account.createTime+
+                        result.result.list[i].merchant.merchantAddress+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].email+
+                        result.result.list[i].blacklist.blackDescption+
                         "</td>"+
                         "</tr>"
                 )}
+
         }
         else{
             a=result.result.pageCount;
@@ -152,34 +132,34 @@ $(function(){
             //每页显示条数
             pageSize:5
         };
-        var result = invokeService('/web/merchant/recommend/getRecommendRecordPageList',param);
+        var result = invokeService('/web/blacklist/getBlacklistPageList',param);
         if(result.statusCode!=1000){
-            alert(result.errorMessage)
+            alert(result.errorMessage);
             return;
         }
         if(a>=0){
             $("#onpage").text("第 " +(a+1)+ " 页");
-            $("#table1>table>tbody").html("");
+            $("#table>table>tbody").html("");
             for(var i =0;i<result.result.list.length;i++){
-                $("#table1>table>tbody").html($("#table1>table>tbody").html()+
+                $("#table>table>tbody").html($("#table>table>tbody").html()+
                         "<tr>"+
                         "<td>"+
-                        result.result.list[i].realName+
+                        result.result.list[i].merchant.merchantName+
                         "</td>"+
                         "<td>" +
-                        result.result.list[i].account.accountPhone+
+                        result.result.list[i].merchant.incentiveMode+"%"+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].address+
+                        result.result.list[i].merchant.industryType+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].industry+
+                        result.result.list[i].merchant.province+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].account.createTime+
+                        result.result.list[i].merchant.merchantAddress+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].email+
+                        result.result.list[i].blacklist.blackDescption+
                         "</td>"+
                         "</tr>"
                 )}
@@ -188,6 +168,16 @@ $(function(){
 
         }
     })
+
+
+
+
+
+
+
+
+
+
 
 
 

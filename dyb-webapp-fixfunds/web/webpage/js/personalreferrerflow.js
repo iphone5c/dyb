@@ -2,13 +2,6 @@
  * Created by aaa on 2016/10/12.
  */
 $(function(){
-    $(".sui-nav li").click(function(){
-        var i=$(".sui-nav li").index(this)
-        $(".sui-nav li").removeClass("active");
-        $(".sui-nav li").eq(i).addClass("active");
-        $(".tab-pane").removeClass("active");
-        $(".tab-pane").eq(i).addClass("active");
-    });
     $(".dropdown-toggle").eq(0).click(function(){
         $(".select1").toggleClass("open");
     });
@@ -35,38 +28,19 @@ $(function(){
         $(".select1").removeClass("open");
         $(".select2").removeClass("open");
     });
-    $(".sui-dropdown-menu1 li").click(function(){
-        $("#datePicker1").hide();
-        $("#datePicker2").hide();
-    })
-    $(".sui-dropdown-menu1 li:last").click(function(){
-        $("#datePicker1").show();
-        $("#datePicker2").show();
-    })
-    $(".sui-dropdown-menu2 li").click(function(){
-        $("#datePicker3").hide();
-        $("#datePicker4").hide();
-    })
-    $(".sui-dropdown-menu2 li:last").click(function(){
-        $("#datePicker3").show();
-        $("#datePicker4").show();
-    })
 
-
-//    我要推荐   推荐记录表
-    var a =0;
+    var a=0;
     var param={
 //        当前页
         pageIndex:a,
-//        请求数据条数
+//        请求条数
         pageSize:5
     };
-    var result=invokeService('/web/merchant/recommend/getRecommendRecordPageList',param);
-
+    var result=invokeService('/web/merchant/recommend/getRecommendIncentivePageList',param);
     if(result.statusCode!=1000){
         alert(result.errorMessage);
         return;
-    };
+    }
 //    console.log(result);
     $("#xg_page").text("共 " +result.result.pageCount+ " 页");
     $("#onpage").text("第 " +(a+1)+ " 页");
@@ -74,22 +48,22 @@ $(function(){
         $("#table1>table>tbody").html($("#table1>table>tbody").html()+
                 "<tr>"+
                 "<td>"+
-                result.result.list[i].realName+
+                result.result.list[i].recommendIncentive.recommendIncentiveTime+
                 "</td>"+
                 "<td>" +
-                result.result.list[i].account.accountPhone+
+                result.result.list[i].name+
                 "</td>"+
                 "<td>"+
-                result.result.list[i].address+
+                result.result.list[i].recommendIncentive.recommendAccountCode+
                 "</td>"+
                 "<td>"+
-                result.result.list[i].industry+
+                result.result.list[i].recommendIncentive.messengerBean+
                 "</td>"+
                 "<td>"+
-                result.result.list[i].account.createTime+
+                result.result.list[i].recommendIncentive.incentiveType+
                 "</td>"+
                 "<td>"+
-                result.result.list[i].email+
+                result.result.list[i].recommendIncentive.incentiveSources+
                 "</td>"+
                 "</tr>"
         )}
@@ -103,7 +77,7 @@ $(function(){
             //每页显示条数
             pageSize:5
         };
-        var result = invokeService('/web/merchant/recommend/getRecommendRecordPageList',param);
+        var result = invokeService('/web/merchant/recommend/getRecommendIncentivePageList',param);
         if(result.statusCode!=1000){
             alert(result.errorMessage)
             return;
@@ -115,25 +89,26 @@ $(function(){
                 $("#table1>table>tbody").html($("#table1>table>tbody").html()+
                         "<tr>"+
                         "<td>"+
-                        result.result.list[i].realName+
+                        result.result.list[i].recommendIncentive.recommendIncentiveTime+
                         "</td>"+
                         "<td>" +
-                        result.result.list[i].account.accountPhone+
+                        result.result.list[i].name+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].address+
+                        result.result.list[i].recommendIncentive.recommendAccountCode+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].industry+
+                        result.result.list[i].recommendIncentive.messengerBean+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].account.createTime+
+                        result.result.list[i].recommendIncentive.incentiveType+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].email+
+                        result.result.list[i].recommendIncentive.incentiveSources+
                         "</td>"+
                         "</tr>"
                 )}
+
         }
         else{
             a=result.result.pageCount;
@@ -152,7 +127,7 @@ $(function(){
             //每页显示条数
             pageSize:5
         };
-        var result = invokeService('/web/merchant/recommend/getRecommendRecordPageList',param);
+        var result = invokeService('/web/merchant/recommend/getRecommendIncentivePageList',param);
         if(result.statusCode!=1000){
             alert(result.errorMessage)
             return;
@@ -164,34 +139,31 @@ $(function(){
                 $("#table1>table>tbody").html($("#table1>table>tbody").html()+
                         "<tr>"+
                         "<td>"+
-                        result.result.list[i].realName+
+                        result.result.list[i].recommendIncentive.recommendIncentiveTime+
                         "</td>"+
                         "<td>" +
-                        result.result.list[i].account.accountPhone+
+                        result.result.list[i].name+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].address+
+                        result.result.list[i].recommendIncentive.recommendAccountCode+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].industry+
+                        result.result.list[i].recommendIncentive.messengerBean+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].account.createTime+
+                        result.result.list[i].recommendIncentive.incentiveType+
                         "</td>"+
                         "<td>"+
-                        result.result.list[i].email+
+                        result.result.list[i].recommendIncentive.incentiveSources+
                         "</td>"+
                         "</tr>"
                 )}
+
         }
         else{
 
         }
     })
-
-
-
-
 
 
 

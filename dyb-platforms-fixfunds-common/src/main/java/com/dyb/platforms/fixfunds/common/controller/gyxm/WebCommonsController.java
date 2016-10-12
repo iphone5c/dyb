@@ -3,10 +3,7 @@ package com.dyb.platforms.fixfunds.common.controller.gyxm;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
-import com.dyb.platforms.fixfunds.services.business.merchant.entity.em.Industry;
-import com.dyb.platforms.fixfunds.services.business.merchant.entity.em.IndustryType;
-import com.dyb.platforms.fixfunds.services.business.merchant.entity.em.Scale;
-import com.dyb.platforms.fixfunds.services.business.merchant.entity.em.Sex;
+import com.dyb.platforms.fixfunds.services.business.merchant.entity.em.*;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.configureations.SettingConfigureationFactory;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
@@ -147,6 +144,11 @@ public class WebCommonsController extends BaseController {
     @RequestMapping(value = "/getSex")
     public Object getSex(HttpServletRequest request,HttpServletResponse response){
         return result( Sex.getAllConvertName());
+    }
+
+    @RequestMapping(value = "/getBusinessCircle")
+    public Object getBusinessCircle(HttpServletRequest request,HttpServletResponse response){
+        return result( BusinessCircle.getAllConvertName());
     }
 
 }

@@ -53,7 +53,7 @@ public class InControllerFilterClient implements HandlerInterceptor {
         response.setCharacterEncoding("utf-8");
         try {
             Dto result = new BaseDto();
-            result.put("result", "");
+            result.put("result", null);
             result.put("errorMessage", info);
             result.put("statusCode", statusCode);
             response.getWriter().write(DybUtils.getJsonSerialize(result)); //返回json数据

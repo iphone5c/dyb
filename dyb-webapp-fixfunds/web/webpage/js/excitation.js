@@ -30,6 +30,7 @@ $(function(){
     var pageIndex=0;
     var pageCount = getexcitation(pageIndex);
     page("excit",pageCount,pageIndex);
+    // 下一頁
         $("#excit").on("click","#nextBtn",function(){
             if(pageIndex+1 >= pageCount){
                 return;
@@ -37,8 +38,8 @@ $(function(){
             pageIndex++;
             getexcitation(pageIndex);
             page("excit",pageCount,pageIndex);
-
         })
+    // 上一頁
     $("#excit").on("click","#prevBtn",function(){
         if(pageIndex == 0){
             return;
@@ -47,4 +48,6 @@ $(function(){
         getexcitation(pageIndex);
         page("excit",pageCount,pageIndex);
     })
+    // 點擊調頁
+
 })

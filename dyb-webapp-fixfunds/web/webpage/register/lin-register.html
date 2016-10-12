@@ -1043,10 +1043,9 @@
                                     }
                                 </style>
                                 <li>
-                                    <form id="form1" method="post" action="http://127.0.0.1:8080/web/commons/upload" enctype="multipart/form-data">
-                                        <img id="imgShow_WU_FILE_0" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
-                                        <input type="file" id="up_img_WU_FILE_0" class="xg-input" />
-                                    </form>
+                                    <img id="imgShow_WU_FILE_0" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
+                                    <input type="file" id="up_img_WU_FILE_0" class="xg-input" />
+                                    <input type="hidden" id="businessLicensePhoto1">
                                 </li>
                                 <div class="">
                                     <div id="businesslicenceDiv" style="display:none">
@@ -1076,12 +1075,9 @@
                         <div class="" style="margin-top:10px;">
                             <div id="idcardPicDiv" class="licenceDiv">
                                 <li>
-                                    <form id="form2" method="post" action="http://127.0.0.1:8080/web/commons/upload" enctype="multipart/form-data">
-                                        <img id="imgShow_WU_FILE_1" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
-                                        <input type="file" id="up_img_WU_FILE_1" name="frsfz" class="xg-input" />
-                                        <!--<input type="file" name="frsfz"/>-->
-                                        <!--<input type="submit" value="upload" style="margin-top: 100px;margin-left: 200px">-->
-                                    </form>
+                                    <img id="imgShow_WU_FILE_1" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
+                                    <input type="file" id="up_img_WU_FILE_1" name="frsfz" class="xg-input" />
+                                    <input type="hidden" id="legalPersonPhoto"/>
                                 </li>
                                 <input id="idcardPicSrc" type="hidden" value="" />
                                 <div id="idcardPicTips" class="sui-msg msg-error" style="display: none;">
@@ -1101,10 +1097,9 @@
                         <div class="" style="margin-top:10px;">
                             <div id="idthreeDiv" class="licenceDiv">
                                 <li>
-                                    <form id="form3" method="post" action="/web/commons/upload" enctype="multipart/form-data">
-                                        <img id="imgShow_WU_FILE_2" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
-                                        <input type="file" id="up_img_WU_FILE_2" class="xg-input" />
-                                    </form>
+                                    <img id="imgShow_WU_FILE_2" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
+                                    <input type="file" id="up_img_WU_FILE_2" class="xg-input" />
+                                    <input type="hidden" id="recommendPersonPhoto" />
                                 </li>
                                 <input id="idthreePicSrc" type="hidden" value="" />
                                 <div id="idthreeTips" class="sui-msg msg-error" style="display: none;">
@@ -1123,10 +1118,9 @@
                         <div class="" style="margin-top:10px;">
                             <div id="idfourDiv" class="licenceDiv">
                                 <li>
-                                    <form id="form4" method="post" action="/web/commons/upload" enctype="multipart/form-data">
-                                        <img id="imgShow_WU_FILE_3" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
-                                        <input type="file" id="up_img_WU_FILE_3" class="xg-input" />
-                                    </form>
+                                    <img id="imgShow_WU_FILE_3" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
+                                    <input type="file" id="up_img_WU_FILE_3" class="xg-input" />
+                                    <input type="hidden" id="donationPhoto" />
                                 </li>
                                 <input id="idfourPicSrc" type="hidden" value="" />
                                 <div id="idfourTips" class="sui-msg msg-error" style="display: none;">
@@ -1145,11 +1139,9 @@
                         <div class="" style="margin-top:10px;">
                             <div id="imgUrlDiv" class="licenceDiv">
                                 <li>
-                                    <form id="form5" method="post" action="/web/commons/upload" enctype="multipart/form-data">
-                                        <img id="imgShow_WU_FILE_4" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
-                                        <input type="file" id="up_img_WU_FILE_4" class="xg-input" />
-                                    </form>
-
+                                    <img id="imgShow_WU_FILE_4" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
+                                    <input type="file" id="up_img_WU_FILE_4" class="xg-input" />
+                                    <input type="hidden" id="storePhoto" />
                                 </li>
                                 <input id="imgUrlSrc" type="hidden" value="" />
                             </div>
@@ -1581,11 +1573,37 @@
             $(".ad-register3").css({"display":"block"})
         });
         $("#nextReg3").click(function(){
-            var s=$("#form2");
-            console.log(s);
-            $("#form2").submit(function(data){
-                console.log(data)
-            });
+            var businessLicensePhoto1=uploadService('/web/commons/upload','up_img_WU_FILE_0','businessLicensePhoto1');
+            if(businessLicensePhoto1.statusCode!=1000){
+                alert("营业执照图片必须上传");
+                return;
+            }
+            var legalPersonPhoto=uploadService('/web/commons/upload','up_img_WU_FILE_1','legalPersonPhoto');
+            if(legalPersonPhoto.statusCode!=1000){
+                alert("法人身份证照片必须上传");
+                return;
+            }
+            var recommendPersonPhoto=uploadService('/web/commons/upload','up_img_WU_FILE_2','recommendPersonPhoto');
+            if(recommendPersonPhoto.statusCode!=1000){
+                alert("推荐人身份证照片必须上传");
+                return;
+            }
+            var donationPhoto=uploadService('/web/commons/upload','up_img_WU_FILE_3','donationPhoto');
+            if(donationPhoto.statusCode!=1000){
+                alert("捐赠承诺书照片必须上传");
+                return;
+            }
+            var storePhoto=uploadService('/web/commons/upload','up_img_WU_FILE_4','storePhoto');
+            if(storePhoto.statusCode!=1000){
+                alert("店面门头照片必须上传");
+                return;
+            }
+            $("#businessLicensePhoto1").val(businessLicensePhoto1.result.businessLicensePhoto1.path);
+            $("#legalPersonPhoto").val(legalPersonPhoto.result.legalPersonPhoto.path);
+            $("#recommendPersonPhoto").val(recommendPersonPhoto.result.recommendPersonPhoto.path);
+            $("#donationPhoto").val(donationPhoto.result.donationPhoto.path);
+            $("#storePhoto").val(storePhoto.result.storePhoto.path);
+
             $(".ad-register1").css({"display":"none"});
             $(".ad-register2").css({"display":"none"});
             $(".ad-register3").css({"display":"none"});

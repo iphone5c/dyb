@@ -73,7 +73,21 @@ $(function(){
             // 开户名称
             bankAccountName:$("#acountname").val(),
             // 默认设置选定
-            defaultChecked:true
+            defaultChecked:true,
+            //执照类型1：表示新版  2：表示旧版
+            flag:1,
+            //营业执照第一张
+            businessLicensePhoto1:$("#businessLicensePhoto1").val(),
+            //营业执照第二张
+            businessLicensePhoto2:$("#businessLicensePhoto2").val(),
+            //法人身份证照片
+            legalPersonPhoto:$("#legalPersonPhoto").val(),
+            //推荐人身份证照片
+            recommendPersonPhoto:$("#recommendPersonPhoto").val(),
+            //捐赠承诺书照片
+            donationPhoto:$("#donationPhoto").val(),
+            //店面门头照照片
+            storePhoto:$("#storePhoto").val()
         }
         var data = invokeService('/web/merchant/registerMerchantAccount',param);
 //    console.log(data)

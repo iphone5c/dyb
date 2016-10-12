@@ -121,7 +121,7 @@ public class WebCommonsController extends BaseController {
     @RequestMapping(value = "/upload")
     public Object upload(HttpServletRequest request,HttpServletResponse response,@RequestParam(required=false,defaultValue="/upload")String path){
         Map<String,Object> result= DybUtils.uploadFile(request,response,path);
-        if (result==null||result.size()<0)
+        if (result==null||result.size()<=0)
             return validationResult(1001,"上传失败");
         else
             return result(result);

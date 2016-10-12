@@ -38,7 +38,7 @@ public class ClientDonationController extends BaseController {
     public Object getDonationPageList(HttpServletRequest request,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize,@RequestParam(required=false,defaultValue="1")int status) throws ParseException {
         log.info("移动端获取直捐记录表分页");
         QueryParams queryParams=new QueryParams();
-        queryParams.addParameter("donationAccount",DybUtils.getCurrentAccount(request).getAccountCode());
+        queryParams.addParameter("donationAccount",getCurrentAccountClient(request).getAccountCode());
         if (status==1){
             Date min = DybConvert.toDate(DybConvert.dateToString(DybUtils.dateAddDay(new Date(),-7),DybConvert.DATEFORMAT_DATA_EN_LONG)+" 00:00:00",DybConvert.DATEFORMAT_DATETIME_EN_LONG);
             queryParams.addParameterByRange("donationTime",min,new Date());

@@ -20,7 +20,8 @@ function invokeService(url,param){
         success: function (data) {
             if(data.statusCode==9999){
                 //跳转登录页面
-                window.location.href='';
+                window.location.href='./home/login.html';
+                return;
             }
             result=data;
         }

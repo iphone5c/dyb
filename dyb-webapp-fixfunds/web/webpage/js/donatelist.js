@@ -6,7 +6,7 @@ function getdonatelist(pageIndex){
         pageSize:1
     }
     var data = invokeService('/web/merchant/donation/getDonationPageList',param);
-    console.log(data)
+//    console.log(data)
     if (data.statusCode!=1000){
         alert(data.errorMessage);
         return;

@@ -6,7 +6,7 @@ function getdonationreclist(pageIndex){
         pageSize:1
     }
     var data = invokeService('/web/merchant/transfer/getTransferPageList',param);
-    console.log(data)
+//    console.log(data)
     if (data.statusCode!=1000){
         alert(data.errorMessage);
         return;
@@ -16,11 +16,11 @@ function getdonationreclist(pageIndex){
     for(var i=0;i<data.result.list.length;i++){
         $("#table tbody").html( $("#table tbody").html()+
                 "<tr>" +
-                "<td>"+data.result.list[i].transferTime+"</td>"+
-                "<td>"+data.result.list[i].transferAccount+"</td>"+
-                "<td>"+data.result.list[i].donationType+"</td>"+
-                "<td>"+data.result.list[i].donationType+"</td>"+
-                "<td>"+data.result.list[i].donationType+"</td>"+
+                "<td>"+data.result.list[i].transfer.transferTime+"</td>"+
+                "<td>"+data.result.list[i].transferAccountName+"</td>"+
+                "<td>"+data.result.list[i].transfer.transferAccount+"</td>"+
+                "<td>"+data.result.list[i].transferAccountPhone+"</td>"+
+                "<td>"+data.result.list[i].transfer.messengerBean+"</td>"+
                 "</tr>"
         )
     }

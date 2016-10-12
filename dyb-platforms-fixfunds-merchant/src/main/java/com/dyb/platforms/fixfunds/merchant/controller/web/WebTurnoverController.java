@@ -15,6 +15,7 @@ import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +47,7 @@ public class WebTurnoverController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getTurnoverPageList")
-    public Object getTurnoverPageList(HttpServletRequest request,int pageIndex,int pageSize){
+    public Object getTurnoverPageList(HttpServletRequest request,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
         log.info("获取营业额列表分页");
         QueryParams queryParams=new QueryParams();
         queryParams.addParameter("accountCode",DybUtils.getCurrentAccount(request).getAccountCode());
@@ -59,7 +60,7 @@ public class WebTurnoverController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getTurnoverDetailsPageList")
-    public Object getTurnoverDetailsPageList(HttpServletRequest request,String turnoverCode,int pageIndex,int pageSize) throws ParseException {
+    public Object getTurnoverDetailsPageList(HttpServletRequest request,String turnoverCode,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize) throws ParseException {
         log.info("获取营业明细");
         if (DybUtils.isEmptyOrNull(turnoverCode))
             return validationResult(1001,"营业额明细查询的code不能为空");

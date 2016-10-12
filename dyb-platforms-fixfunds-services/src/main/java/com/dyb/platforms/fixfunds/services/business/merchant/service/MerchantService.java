@@ -84,6 +84,8 @@ public class MerchantService extends BaseService implements IMerchantService {
             throw new DybRuntimeException("商户添加时，商圈不能为空");
         if (DybUtils.isEmptyOrNull(merchant.getAccountCode()))
             throw new DybRuntimeException("商户添加时，关联的账户不能为空");
+        if (DybUtils.isEmptyOrNull(merchant.getCertificateFile()))
+            throw new DybRuntimeException("商户添加时，证件资料必须上传图片");
 
         //负责人信息验证
         if (DybUtils.isEmptyOrNull(merchant.getPrincipalName()))

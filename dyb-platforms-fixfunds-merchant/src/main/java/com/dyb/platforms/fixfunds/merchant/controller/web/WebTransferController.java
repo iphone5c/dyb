@@ -13,6 +13,7 @@ import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,7 @@ public class WebTransferController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getTransferPageList")
-    public Object getTransferPageList(HttpServletRequest request,int pageIndex,int pageSize){
+    public Object getTransferPageList(HttpServletRequest request,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
         log.info("获取获赠记录表分页");
         PageList<TransferModel> transferModelPageList=new PageList<>();
         List<TransferModel> transferModelList=new ArrayList<>();

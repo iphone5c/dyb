@@ -1,6 +1,5 @@
 package com.dyb.platforms.fixfunds.merchant.controller.client;
 
-import com.dyb.platforms.fixfunds.merchant.controller.web.model.RecommendIncentiveModel;
 import com.dyb.platforms.fixfunds.merchant.controller.web.model.RecommendRecordModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
@@ -44,43 +43,43 @@ public class ClientRecommendController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getRecommendRecordPageList")
-    public Object getRecommendRecordPageList(HttpServletRequest request,int pageIndex,int pageSize){
+    public Object getRecommendRecordPageList(HttpServletRequest request,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
         log.info("移动端获取当前登录用户推荐记录列表分页");
-//        PageList<RecommendRecordModel> recommendRecordModelPageList=new PageList<>();
-//        List<RecommendRecordModel> recommendRecordModelList=new ArrayList<>();
-//        QueryParams queryParams=new QueryParams();
-//        queryParams.addParameter("referrerCode",DybUtils.getCurrentAccount(request).getAccountCode());
-//        PageList<Account> accountPageList=accountService.getAccountPageList(queryParams,pageIndex,pageSize,true);
-//        for (Account account:accountPageList.getList()){
-//            Account temp=accountService.getAccountByCode(account.getAccountCode(),true);
-//            if (temp==null)
-//                return validationResult(1001,"找不到此被推荐人信息");
-//            RecommendRecordModel recommendRecordModel=new RecommendRecordModel();
-//            if (account.getAccountType()== AccountType.信使){
-//                recommendRecordModel.setRealName(account.getMember().getRealName());
-//                recommendRecordModel.setAddress(account.getMember().getNativePlace());
-//                recommendRecordModel.setEmail(account.getMember().getMemberEmail());
-//                recommendRecordModel.setIndustry(account.getMember().getIndustry());
-//            }else if (account.getAccountType()== AccountType.商家){
-//                recommendRecordModel.setRealName(account.getMerchant().getPrincipalName());
-//                recommendRecordModel.setAddress(account.getMerchant().getMerchantAddress());
-//                recommendRecordModel.setEmail(account.getMerchant().getPrincipalEmail());
-//                recommendRecordModel.setIndustry(account.getMerchant().getIndustry());
-//            }else if (account.getAccountType()== AccountType.服务商){
-//                recommendRecordModel.setRealName(account.getServiceProviders().getServiceProviderName());
-//                recommendRecordModel.setAddress(account.getServiceProviders().getAddress());
-//                recommendRecordModel.setEmail(account.getServiceProviders().getEmail());
-//                recommendRecordModel.setIndustry(account.getServiceProviders().getIndustry());
-//            }
-//            recommendRecordModel.setAccount(account);
-//            recommendRecordModelList.add(recommendRecordModel);
-//        }
-//        recommendRecordModelPageList.setPageSize(accountPageList.getPageSize());
-//        recommendRecordModelPageList.setPageIndex(accountPageList.getPageIndex());
-//        recommendRecordModelPageList.setPageCount(accountPageList.getPageCount());
-//        recommendRecordModelPageList.setTotalSize(accountPageList.getTotalSize());
-//        recommendRecordModelPageList.setList(recommendRecordModelList);
-        return result("");
+        PageList<RecommendRecordModel> recommendRecordModelPageList=new PageList<>();
+        List<RecommendRecordModel> recommendRecordModelList=new ArrayList<>();
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("referrerCode",getCurrentAccountClient(request).getAccountCode());
+        PageList<Account> accountPageList=accountService.getAccountPageList(queryParams,pageIndex,pageSize,true);
+        for (Account account:accountPageList.getList()){
+            Account temp=accountService.getAccountByCode(account.getAccountCode(),true);
+            if (temp==null)
+                return validationResult(1001,"找不到此被推荐人信息");
+            RecommendRecordModel recommendRecordModel=new RecommendRecordModel();
+            if (account.getAccountType()== AccountType.信使){
+                recommendRecordModel.setRealName(account.getMember().getRealName());
+                recommendRecordModel.setAddress(account.getMember().getNativePlace());
+                recommendRecordModel.setEmail(account.getMember().getMemberEmail());
+                recommendRecordModel.setIndustry(account.getMember().getIndustry());
+            }else if (account.getAccountType()== AccountType.商家){
+                recommendRecordModel.setRealName(account.getMerchant().getPrincipalName());
+                recommendRecordModel.setAddress(account.getMerchant().getMerchantAddress());
+                recommendRecordModel.setEmail(account.getMerchant().getPrincipalEmail());
+                recommendRecordModel.setIndustry(account.getMerchant().getIndustry());
+            }else if (account.getAccountType()== AccountType.服务商){
+                recommendRecordModel.setRealName(account.getServiceProviders().getServiceProviderName());
+                recommendRecordModel.setAddress(account.getServiceProviders().getAddress());
+                recommendRecordModel.setEmail(account.getServiceProviders().getEmail());
+                recommendRecordModel.setIndustry(account.getServiceProviders().getIndustry());
+            }
+            recommendRecordModel.setAccount(account);
+            recommendRecordModelList.add(recommendRecordModel);
+        }
+        recommendRecordModelPageList.setPageSize(accountPageList.getPageSize());
+        recommendRecordModelPageList.setPageIndex(accountPageList.getPageIndex());
+        recommendRecordModelPageList.setPageCount(accountPageList.getPageCount());
+        recommendRecordModelPageList.setTotalSize(accountPageList.getTotalSize());
+        recommendRecordModelPageList.setList(recommendRecordModelList);
+        return result(recommendRecordModelPageList);
     }
 
     /**

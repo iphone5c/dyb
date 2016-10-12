@@ -1,6 +1,5 @@
 package com.dyb.platforms.fixfunds.merchant.controller.web;
 
-import com.dyb.platforms.fixfunds.services.business.accountincentive.service.IAccountIncentiveService;
 import com.dyb.platforms.fixfunds.services.business.invoiceapply.service.IInvoiceApplyService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
@@ -8,6 +7,7 @@ import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +31,7 @@ public class WebInvoiceApplyController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getAccountIncentivePageList")
-    public Object getAccountIncentivePageList(HttpServletRequest request,int pageIndex,int pageSize){
+    public Object getAccountIncentivePageList(HttpServletRequest request,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
         log.info("获取让利款发票申请列表分页");
         QueryParams queryParams=new QueryParams();
         queryParams.addParameter("accountCode",DybUtils.getCurrentAccount(request).getAccountCode());

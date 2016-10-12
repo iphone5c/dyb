@@ -7,6 +7,7 @@ import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +31,7 @@ public class WebWithdrawalController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getWithdrawalPageList")
-    public Object getWithdrawalPageList(HttpServletRequest request,int pageIndex,int pageSize){
+    public Object getWithdrawalPageList(HttpServletRequest request,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
         log.info("获取当前登陆用户回购记录表分页");
         QueryParams queryParams=new QueryParams();
         queryParams.addParameter("withdrawalAccount", DybUtils.getCurrentAccount(request).getAccountCode());

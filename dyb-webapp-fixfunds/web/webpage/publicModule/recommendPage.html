@@ -4,7 +4,6 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>一点公益</title>
 </head>
@@ -14,11 +13,8 @@
 			<div class="table-title">您现在的位置:我要推荐 - 推荐记录</div>
 			<ul id="dirverUl" class="sui-nav nav-tabs ad-label-nav" style="margin-bottom:10px;">
 				<li class="active">
-					<a class="ad-label-nav-btn">我推荐的信使</a></li>
-				<li id="showPage">
-					<a class="ad-label-nav-btn">我推荐的服务商</a></li>
-				<li>
-					<a class="ad-label-nav-btn">我推荐的管理中心</a></li>
+					<a class="ad-label-nav-btn">我推荐的信使</a>
+                </li>
 			</ul>
 			<div class="tab-content">
 				<div id="ad-lable-one" class="tab-pane active">
@@ -75,218 +71,43 @@
 								<th style="max-width:1%;">个人邮箱</th></tr>
 							</thead>
 							<tbody>
-							<tr>
-								<td style="信使姓名" data-key="realname" data-line="0" data-id="">屈爽顺</td>
-								<td style="手机号码" data-key="mobilenumber" data-line="0" data-id="">13981963439</td>
-								<td style="所在地" data-key="city" data-line="0" data-id="">北京市-北京</td>
-								<td style="所在行业" data-key="industry" data-line="0" data-id="">计算机/互联网</td>
-								<td style="注册时间" data-key="createtime" data-line="0" data-id="">2016-09-07</td>
-								<td style="个人邮箱" data-key="email" data-line="0" data-id="">623340786@qq.com</td>
-								<td id="table1-line-0" class="dsn">{"realname":"屈爽顺","mobilenumber":"13981963439","city":"110000-1","industry":"计算机/互联网","createtime":"2016-09-07","email":"623340786@qq.com"}</td></tr>
+
 							</tbody>
 						</table>
 						<div class="sui-pagination pagination-small" style="text-align:left;">
-							<ul id="table-pagination">
-								<!-- 前半部分（包括当前） -->
-								<li id="prevBtn" class="prev disabled">
-									<a>«上一页</a>
-								</li>
-								<li class="pageBtn active" data-num="1">
-									<a>1</a>
-								</li>
-								<!-- 后半部分（当前之后） -->
-								<li id="nextBtn" class="next disabled">
-									<a>下一页»</a>
-								</li>
-							</ul>
-							<div>
-								<span>共1页&nbsp;</span>
-                    <span>到
-                      <input id="selectPageNum" type="text" onkeyup="this.value=this.value.replace(/\D/g,&#39;&#39;)" onafterpaste="this.value=this.value.replace(/\D/g,&#39;&#39;)" class="page-num">
-                      <button id="selectPage" class="page-confirm">确定</button>页</span></div>
-						</div>
-					</div>
-				</div>
-				<div id="ad-lable-two" class="tab-pane">
-					<div class="ad-box">
-						<div class="spanTitle">注册时间:</div>
-						<div class="span1">
-                  <span class="sui-dropdown dropdown-bordered select2">
-                    <span class="dropdown-inner">
-                      <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle">
-						  <input id="datetype2" value="2" name="datetype" type="hidden">
-						  <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
-						  <span>近1周</span></a>
-                      <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu2">
-						  <li role="presentation">
-							  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">选择日期</a></li>
-						  <li role="presentation">
-							  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">近1周</a></li>
-						  <li role="presentation">
-							  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="3">近1月</a></li>
-						  <li role="presentation">
-							  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="4">近1季</a></li>
-						  <li role="presentation">
-							  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="5">近6个月</a></li>
-						  <li role="presentation">
-							  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="6">自定义日期</a></li>
-					  </ul>
-                    </span>
-                  </span>
-						</div>
-						<div id="datePicker3" class="spanTitle personalDatepicker" style="display: none;">自定义日期:</div>
-						<div id="datePicker4" class="span1 personalDatepicker input-daterange" style="display: none;">
-							<input type="text" id="personalStartDate2" class="input-medium input-date" data-toggle="datepicker" value="">
-							<input type="text" id="personalEndDate2" class="input-medium input-date" data-toggle="datepicker" value=""></div>
-						<div class="clear"></div>
-						<div class="spanTitle">服务商:</div>
-						<div class="span1">
-							<input type="text" id="agentinfo" placeholder="服务商姓名/手机号" class="input-xfat"></div>
-						<div class="span1">
-							<input id="search2" type="button" class="ad-btn ad-blue-btn" value="查询"></div>
-						<div class="clear"></div>
-					</div>
-					<div class="table-tip">温馨提示：本系统暂只提供近半年的历史数据供查询；若需更多历史数据，请联系系统管理员处理，谢谢！</div>
-					<div class="table-totleNum">推荐服务商合计：
-						<span id="agentSize" style="margin-left: 5px;">0</span></div>
-					<div id="table2">
-						<table class="sui-table table-vzebra ad-table">
-							<thead>
-							<tr>
-								<th style="max-width:1%;">服务商姓名</th>
-								<th style="max-width:1%;">手机号码</th>
-								<th style="max-width:1%;">所在地</th>
-								<th style="max-width:1%;">所在行业</th>
-								<th style="max-width:1%;">注册时间</th>
-								<th style="max-width:1%;">个人邮箱</th></tr>
-							</thead>
-							<tbody></tbody>
-						</table>
-						<div class="sui-pagination pagination-small" style="text-align:left;">
-							<ul id="table-pagination">
-								<!-- 前半部分（包括当前） -->
-								<li id="prevBtn" class="prev disabled">
-									<a>«上一页</a>
-								</li>
-								<li class="pageBtn active" data-num="1">
-									<a>1</a>
-								</li>
-								<!-- 后半部分（当前之后） -->
-								<li id="nextBtn" class="next disabled">
-									<a>下一页»</a>
-								</li>
-							</ul>
-							<div>
-								<span>共1页&nbsp;</span>
-                    <span>到
-                      <input id="selectPageNum" type="text" onkeyup="this.value=this.value.replace(/\D/g,&#39;&#39;)" onafterpaste="this.value=this.value.replace(/\D/g,&#39;&#39;)" class="page-num">
-                      <button id="selectPage" class="page-confirm">确定</button>页</span></div>
-						</div>
-					</div>
-				</div>
-				<div id="ad-lable-three" class="tab-pane">
-					<div class="ad-box">
-						<div class="spanTitle">管理中心:</div>
-						<div class="span1">
-							<input type="text" id="popularizeinfo" placeholder="企业姓名/联系电话" class="input-xfat"></div>
-						<div class="span1">
-							<input id="search4" type="button" class="ad-btn ad-blue-btn" value="查询"></div>
-						<div class="clear"></div>
-					</div>
-					<div class="table-totleNum">推荐管理中心合计：
-						<span id="popularizeSize" style="margin-left: 5px;">0</span></div>
-					<div id="table3">
-						<table class="sui-table table-vzebra ad-table">
-							<thead>
-							<tr>
-								<th style="max-width:1%;">管理中心</th>
-								<th style="max-width:1%;">级别</th>
-								<th style="max-width:1%;">ID</th>
-								<th style="max-width:1%;">企业名称</th>
-								<th style="max-width:1%;">联系电话</th>
-								<th style="max-width:1%;">负责人</th>
-								<th style="max-width:1%;">负责人手机</th>
-								<th style="max-width:1%;">企业邮箱</th></tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-						<div class="sui-pagination pagination-small" style="text-align:left;">
-							<ul id="table-pagination">
-								<!-- 前半部分（包括当前） -->
-								<li id="prevBtn" class="prev disabled">
-									<a>«上一页</a>
-								</li>
-								<li class="pageBtn active" data-num="1">
-									<a>1</a>
-								</li>
-								<!-- 后半部分（当前之后） -->
-								<li id="nextBtn" class="next disabled">
-									<a>下一页»</a>
-								</li>
-							</ul>
-							<div>
-								<span>共1页&nbsp;</span>
-                    <span>到
-                      <input id="selectPageNum" type="text" onkeyup="this.value=this.value.replace(/\D/g,&#39;&#39;)" onafterpaste="this.value=this.value.replace(/\D/g,&#39;&#39;)" class="page-num">
-                      <button id="selectPage" class="page-confirm">确定</button>页</span></div>
+                            <ul id="table-pagination">
+                                <!-- 前半部分（包括当前） -->
+                                <li id="prevBtn" class="  active">
+                                    <a>«上一页</a>
+                                </li>
+                                <li class="pageBtn" data-num="1">
+                                    <a id="onpage"></a>
+                                    <style>
+                                        #onpage{
+                                            background: none !important;
+                                            color: black !important;
+                                            border: 1px solid white !important;
+                                        }
+                                        #onpage:hover{
+                                            background: none !important;
+                                            color: black !important;
+                                            border: 1px solid white !important;
+                                        }
+                                    </style>
+                                </li>
+                                <!-- 后半部分（当前之后） -->
+                                <li id="nextBtn" class="  active">
+                                    <a>下一页»</a>
+                                </li>
+                            </ul>
+                            <div>
+                                <span id="xg_page"></span>
+                            </div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-<script>
-	$(function(){
-		$(".sui-nav li").click(function(){
-			var i=$(".sui-nav li").index(this)
-			$(".sui-nav li").removeClass("active");
-			$(".sui-nav li").eq(i).addClass("active");
-			$(".tab-pane").removeClass("active");
-			$(".tab-pane").eq(i).addClass("active");
-		});
-		$(".dropdown-toggle").eq(0).click(function(){
-			$(".select1").toggleClass("open");
-		});
-		$(".sui-dropdown-menu1 li").click(function(){
-			var i=$(".sui-dropdown-menu1 li").index(this);
-			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
-			$(".sui-dropdown-menu1 li").removeClass("active");
-			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
-			$(".select1 span span").html(x);
-			$(".select1").removeClass("open");
-		});
-		$(".dropdown-toggle").eq(1).click(function(){
-			$(".select2").toggleClass("open");
-		});
-		$(".sui-dropdown-menu2 li").click(function(){
-			var i=$(".sui-dropdown-menu2 li").index(this);
-			var x= $(".sui-dropdown-menu2 li a").eq(i).html();
-			$(".sui-dropdown-menu2 li").removeClass("active");
-			$(".sui-dropdown-menu2 li").eq(i).addClass("active");
-			$(".select2 span span").html(x);
-			$(".select2").removeClass("open");
-		});
-		$('.dropdown-inner').mouseleave(function(){
-			$(".select1").removeClass("open");
-			$(".select2").removeClass("open");
-		});
-		$(".sui-dropdown-menu1 li").click(function(){
-			$("#datePicker1").hide();
-			$("#datePicker2").hide();
-		})
-		$(".sui-dropdown-menu1 li:last").click(function(){
-			$("#datePicker1").show();
-			$("#datePicker2").show();
-		})
-		$(".sui-dropdown-menu2 li").click(function(){
-			$("#datePicker3").hide();
-			$("#datePicker4").hide();
-		})
-		$(".sui-dropdown-menu2 li:last").click(function(){
-			$("#datePicker3").show();
-			$("#datePicker4").show();
-		})
-	})
-</script>
+<script type="text/javascript" src="/webpage/js/recommendPage.js"></script>
 </body>
 </html>

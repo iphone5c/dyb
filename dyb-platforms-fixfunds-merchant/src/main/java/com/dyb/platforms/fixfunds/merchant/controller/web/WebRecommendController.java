@@ -14,6 +14,7 @@ import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +42,7 @@ public class WebRecommendController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getRecommendIncentivePageList")
-    public Object getRecommendIncentivePageList(HttpServletRequest request,int pageIndex,int pageSize){
+    public Object getRecommendIncentivePageList(HttpServletRequest request,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
         log.info("获取当前登录用户推荐激励列表分页");
         PageList<RecommendIncentiveModel> recommendIncentiveModelPageList=new PageList<>();
         List<RecommendIncentiveModel> recommendIncentiveModelList=new ArrayList<>();
@@ -79,7 +80,7 @@ public class WebRecommendController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getRecommendRecordPageList")
-    public Object getRecommendRecordPageList(HttpServletRequest request,int pageIndex,int pageSize){
+    public Object getRecommendRecordPageList(HttpServletRequest request,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
         log.info("获取当前登录用户推荐记录列表分页");
         PageList<RecommendRecordModel> recommendRecordModelPageList=new PageList<>();
         List<RecommendRecordModel> recommendRecordModelList=new ArrayList<>();

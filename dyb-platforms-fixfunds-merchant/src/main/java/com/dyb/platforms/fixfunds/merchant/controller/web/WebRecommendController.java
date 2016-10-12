@@ -5,14 +5,12 @@ import com.dyb.platforms.fixfunds.merchant.controller.web.model.RecommendRecordM
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
-import com.dyb.platforms.fixfunds.services.business.accountincentive.service.IAccountIncentiveService;
 import com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.RecommendIncentive;
 import com.dyb.platforms.fixfunds.services.business.recommendincentive.service.IRecommendIncentiveService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
-import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -93,23 +91,23 @@ public class WebRecommendController extends BaseController {
             if (temp==null)
                 return validationResult(1001,"找不到此被推荐人信息");
             RecommendRecordModel recommendRecordModel=new RecommendRecordModel();
-            if (account.getAccountType()== AccountType.信使){
-                recommendRecordModel.setRealName(account.getMember().getRealName());
-                recommendRecordModel.setAddress(account.getMember().getNativePlace());
-                recommendRecordModel.setEmail(account.getMember().getMemberEmail());
-                recommendRecordModel.setIndustry(account.getMember().getIndustry());
-            }else if (account.getAccountType()== AccountType.商家){
-                recommendRecordModel.setRealName(account.getMerchant().getPrincipalName());
-                recommendRecordModel.setAddress(account.getMerchant().getMerchantAddress());
-                recommendRecordModel.setEmail(account.getMerchant().getPrincipalEmail());
-                recommendRecordModel.setIndustry(account.getMerchant().getIndustry());
-            }else if (account.getAccountType()== AccountType.服务商){
-                recommendRecordModel.setRealName(account.getServiceProviders().getServiceProviderName());
-                recommendRecordModel.setAddress(account.getServiceProviders().getAddress());
-                recommendRecordModel.setEmail(account.getServiceProviders().getEmail());
-                recommendRecordModel.setIndustry(account.getServiceProviders().getIndustry());
+            if (temp.getAccountType()== AccountType.信使){
+                recommendRecordModel.setRealName(temp.getMember().getRealName());
+                recommendRecordModel.setAddress(temp.getMember().getNativePlace());
+                recommendRecordModel.setEmail(temp.getMember().getMemberEmail());
+                recommendRecordModel.setIndustry(temp.getMember().getIndustry());
+            }else if (temp.getAccountType()== AccountType.商家){
+                recommendRecordModel.setRealName(temp.getMerchant().getPrincipalName());
+                recommendRecordModel.setAddress(temp.getMerchant().getMerchantAddress());
+                recommendRecordModel.setEmail(temp.getMerchant().getPrincipalEmail());
+                recommendRecordModel.setIndustry(temp.getMerchant().getIndustry());
+            }else if (temp.getAccountType()== AccountType.服务商){
+                recommendRecordModel.setRealName(temp.getServiceProviders().getServiceProviderName());
+                recommendRecordModel.setAddress(temp.getServiceProviders().getAddress());
+                recommendRecordModel.setEmail(temp.getServiceProviders().getEmail());
+                recommendRecordModel.setIndustry(temp.getServiceProviders().getIndustry());
             }
-            recommendRecordModel.setAccount(account);
+            recommendRecordModel.setAccount(temp);
             recommendRecordModelList.add(recommendRecordModel);
         }
         recommendRecordModelPageList.setPageSize(accountPageList.getPageSize());

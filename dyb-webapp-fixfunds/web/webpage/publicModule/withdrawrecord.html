@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
+	<link rel="stylesheet" type="text/css" href="./css/style1.3.19.css">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>一点公益</title>
 </head>
@@ -81,59 +81,58 @@
 					</thead>
 					<tbody></tbody>
 				</table>
-				<div class="sui-pagination pagination-small" style="text-align:left;">
-					<ul id="table-pagination">
-						<!-- 前半部分（包括当前） -->
-						<li id="prevBtn" class="prev disabled">
-							<a>«上一页</a>
-						</li>
-						<li class="pageBtn active" data-num="1">
-							<a>1</a>
-						</li>
-						<!-- 后半部分（当前之后） -->
-						<li id="nextBtn" class="next disabled">
-							<a>下一页»</a>
-						</li>
-					</ul>
-					<div>
-						<span>共1页&nbsp;</span>
-                <span>到
-                  <input id="selectPageNum" type="text" onkeyup="this.value=this.value.replace(/\D/g,&#39;&#39;)" onafterpaste="this.value=this.value.replace(/\D/g,&#39;&#39;)" class="page-num">
-                  <button id="selectPage" class="page-confirm">确定</button>页</span></div>
+				<div id="excit" class="sui-pagination pagination-small" style="text-align:left;">
+
 				</div>
 			</div>
 		</div>
-<script>
-	$(function(){
-		$(".dropdown-toggle").eq(0).click(function(){
-			$(".select1").toggleClass("open");
-		});
-		$(".sui-dropdown-menu1 li").click(function(){
-			var i=$(".sui-dropdown-menu1 li").index(this);
-			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
-			$(".sui-dropdown-menu1 li").removeClass("active");
-			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
-			$(".select1 span span").html(x);
-			$(".select1").removeClass("open");
-		});
-		$(".dropdown-toggle").eq(1).click(function(){
-			$(".select2").toggleClass("open");
-		});
-		$(".sui-dropdown-menu2 li").click(function(){
-			var i=$(".sui-dropdown-menu2 li").index(this);
-			var x= $(".sui-dropdown-menu2 li a").eq(i).html();
-			$(".sui-dropdown-menu2 li").removeClass("active");
-			$(".sui-dropdown-menu2 li").eq(i).addClass("active");
-			$(".select2 span span").html(x);
-			$(".select2").removeClass("open");
-		});
-		$('.dropdown-inner').mouseleave(function(){
-			$(".select1").removeClass("open");
-			$(".select2").removeClass("open");
-		});
+        <div class="sui-modal hide fade" tabindex="-1" role="dialog" id="1476257315986" data-hidetype="remove" style="width: 810px; margin-left: -400px; margin-top: -314px; display: block;" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">提示</h4></div>
+                    <div class="modal-body no-foot" style="height: 620px;">
+                        <div id="withdrawinfodiv" class="ad-draw ad-withdraw">
+                            <div class="ad-box ">
+                                <div class="spanTitle3 height25">申请人：</div>
+                                <div class="span3-2 span-line height25">上海银旋电器有限公司</div>
+                                <div class="clear"></div>
+                                <div class="spanTitle3 height25">申请日期：</div>
+                                <div class="span1-1 span-line height25">2016-10-09</div>
+                                <div class="clear"></div>
+                                <div class="spanTitle3 height25">开户行：</div>
+                                <div class="span2 span-line height25">中国农业银行</div>
+                                <div class="clear"></div>
+                                <div class="spanTitle3 height25">支行：</div>
+                                <div class="span2 span-line height25">上海大连支行</div>
+                                <div class="clear"></div>
+                                <div class="spanTitle3 height25">银行账号：</div>
+                                <div class="span2 span-line height25">03349000040023777</div>
+                                <div class="clear"></div>
+                                <div class="spanTitle3 height25">申请回购信使豆：</div>
+                                <div class="span3 span-line height25">15,700 颗
+                                    <span class="ad-gray3"></span></div>
+                                <div class="clear"></div>
+                                <div class="spanTitle3 height25">实际回购信使豆：</div>
+                                <div class="span3 span-line height25">15,695 颗
+                                    <span class="ad-gray3">（手续费：5 元,代扣税：0 元）</span></div>
+                                <div class="clear"></div>
+                                <div class="spanTitle3 height25">审核意见：</div>
+                                <div class="span3-2 span-line" style="line-height:30px;"></div>
+                                <div class="clear"></div>
+                                <div style="margin-left: 400px;">
+                                    <img alt="审核通过" src="./images/adraw.png"></div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sui-modal-backdrop fade" style="background:#123456;z-index:-1"></div>
 
-	})
-</script>
+<script type="text/javascript" src="./js/withdrawrecord.js"></script>
 </body>
 
 </html>

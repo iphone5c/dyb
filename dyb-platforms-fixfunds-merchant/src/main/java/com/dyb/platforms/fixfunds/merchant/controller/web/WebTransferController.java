@@ -73,6 +73,7 @@ public class WebTransferController extends BaseController {
             }
             transferModel.setTransferAccountPhone(transferAccount.getAccountPhone());
             transferModel.setGainAccountPhone(gainAccount.getAccountPhone());
+            transferModel.setTransfer(transfer);
             transferModelList.add(transferModel);
         }
         transferModelPageList.setPageSize(transferPageList.getPageSize());

@@ -1,12 +1,12 @@
-    // 獲取我的激勵
-function getexcitation(pageIndex){
+// 獲取直捐記錄
+function getdonatelist(pageIndex){
 //    var pageArray=[];
     var param={
         pageIndex:pageIndex,
         pageSize:1
     }
-    var data = invokeService('/web/merchant/accountincentive/getAccountIncentivePageList',param);
-//    console.log(data)
+    var data = invokeService('/web/merchant/donation/getDonationPageList',param);
+    console.log(data)
     if (data.statusCode!=1000){
         alert(data.errorMessage);
         return;
@@ -16,36 +16,34 @@ function getexcitation(pageIndex){
     for(var i=0;i<data.result.list.length;i++){
         $("#table tbody").html( $("#table tbody").html()+
                 "<tr>" +
-                "<td>"+data.result.list[i].accountIncentiveTime+"</td>"+
-                "<td>"+data.result.list[i].loveNum+"</td>"+
-                "<td>"+data.result.list[i].lovePrice+"</td>"+
-                "<td>"+data.result.list[i].messengerBean+"</td>"+
+                "<td>"+data.result.list[i].donationTime+"</td>"+
+                "<td>"+data.result.list[i].donationMessengerBean+"</td>"+
+                "<td>"+data.result.list[i].donationType+"</td>"+
                 "</tr>"
         )
     }
     return pageCount;
-
 }
 $(function(){
     var pageIndex=0;
-    var pageCount = getexcitation(pageIndex);
+    var pageCount = getdonatelist(pageIndex);
     page("excit",pageCount,pageIndex);
     // 下一頁
-        $("#excit").on("click","#nextBtn",function(){
-            if(pageIndex+1 >= pageCount){
-                return;
-            }
-            pageIndex++;
-            getexcitation(pageIndex);
-            page("excit",pageCount,pageIndex);
-        })
+    $("#excit").on("click","#nextBtn",function(){
+        if(pageIndex+1 >= pageCount){
+            return;
+        }
+        pageIndex++;
+        getdonatelist(pageIndex);
+        page("excit",pageCount,pageIndex);
+    })
     // 上一頁
     $("#excit").on("click","#prevBtn",function(){
         if(pageIndex == 0){
             return;
         }
         pageIndex--;
-        getexcitation(pageIndex);
+        getdonatelist(pageIndex);
         page("excit",pageCount,pageIndex);
     })
     // 點擊調頁
@@ -53,7 +51,7 @@ $(function(){
         var valIndex=$("#selectPageNum").val()-1;
         if(valIndex >= 0 && valIndex+1 <= pageCount){
             pageIndex=valIndex;
-            getexcitation(pageIndex);
+            getdonatelist(pageIndex);
             page("excit",pageCount,pageIndex);
         }else{
             $("#selectPageNum").val("");

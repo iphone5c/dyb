@@ -55,25 +55,8 @@
 					</thead>
 					<tbody></tbody>
 				</table>
-				<div class="sui-pagination pagination-small" style="text-align:left;">
-					<ul id="table-pagination">
-						<!-- 前半部分（包括当前） -->
-						<li id="prevBtn" class="prev disabled">
-							<a>«上一页</a>
-						</li>
-						<li class="pageBtn active" data-num="1">
-							<a>1</a>
-						</li>
-						<!-- 后半部分（当前之后） -->
-						<li id="nextBtn" class="next disabled">
-							<a>下一页»</a>
-						</li>
-					</ul>
-					<div>
-						<span>共1页&nbsp;</span>
-                <span>到
-                  <input id="selectPageNum" type="text" onkeyup="this.value=this.value.replace(/\D/g,&#39;&#39;)" onafterpaste="this.value=this.value.replace(/\D/g,&#39;&#39;)" class="page-num">
-                  <button id="selectPage" class="page-confirm">确定</button>页</span></div>
+				<div id="excit" class="sui-pagination pagination-small" style="text-align:left;">
+
 				</div>
 			</div>
 		</div>
@@ -95,6 +78,7 @@
 		});
 	})
 </script>
+<script type="text/javascript" src="./js/donatelist.js"></script>
 </body>
 
 </html>

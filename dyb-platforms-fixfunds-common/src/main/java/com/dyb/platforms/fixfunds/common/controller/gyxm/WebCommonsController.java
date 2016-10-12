@@ -13,6 +13,7 @@ import com.google.code.kaptcha.Producer;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
@@ -118,7 +119,7 @@ public class WebCommonsController extends BaseController {
     }
 
     @RequestMapping(value = "/upload")
-    public Object upload(HttpServletRequest request,HttpServletResponse response,String path){
+    public Object upload(HttpServletRequest request,HttpServletResponse response,@RequestParam(required=false,defaultValue="/upload")String path){
         Map<String,Object> result= DybUtils.uploadFile(request,response,path);
         if (result==null||result.size()<0)
             return validationResult(1001,"上传失败");

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -54,11 +55,40 @@ public class WebMerchantController extends BaseController {
             return validationResult(1001,"商家注册时，银行账户信息不能为空");
         if (DybUtils.isEmptyOrNull(referrerCode))
             return validationResult(1001,"商家注册时，推荐人不能为空");
+        if (merchantParamModel.getFlag()==1){
+            //新版营业执照
+            if (DybUtils.isEmptyOrNull(merchantParamModel.getBusinessLicensePhoto1()))
+                return validationResult(1001,"营业执照必须上传图片");
+        }else {
+            //老版营业执照
+            if (DybUtils.isEmptyOrNull(merchantParamModel.getBusinessLicensePhoto1()))
+                return validationResult(1001,"营业执照必须上传图片");
+            if (DybUtils.isEmptyOrNull(merchantParamModel.getBusinessLicensePhoto2()))
+                return validationResult(1001,"税务登记证必须上传图片");
+        }
+        if (DybUtils.isEmptyOrNull(merchantParamModel.getLegalPersonPhoto()))
+            return validationResult(1001,"法人身份证必须上传图片");
+        if (DybUtils.isEmptyOrNull(merchantParamModel.getRecommendPersonPhoto()))
+            return validationResult(1001,"推荐人身份证必须上传图片");
+        if (DybUtils.isEmptyOrNull(merchantParamModel.getDonationPhoto()))
+            return validationResult(1001,"捐赠承诺书必须上传图片");
+        if (DybUtils.isEmptyOrNull(merchantParamModel.getStorePhoto()))
+            return validationResult(1001,"店面门头照必须上传图片");
+        Map<String,Object> file=new LinkedHashMap<>();
+        file.put("flag",merchantParamModel.getFlag());
+        file.put("businessLicensePhoto1",merchantParamModel.getBusinessLicensePhoto1());
+        file.put("businessLicensePhoto2",merchantParamModel.getBusinessLicensePhoto2());
+        file.put("legalPersonPhoto",merchantParamModel.getLegalPersonPhoto());
+        file.put("recommendPersonPhoto",merchantParamModel.getRecommendPersonPhoto());
+        file.put("donationPhoto",merchantParamModel.getDonationPhoto());
+        file.put("storePhoto",merchantParamModel.getStorePhoto());
+
         merchant.setMerchantType(merchantParamModel.getMerchantType());
         merchant.setIndustryType(merchantParamModel.getIndustryType());
         merchant.setIndustry(merchantParamModel.getIndustry());
         merchant.setScale(merchantParamModel.getScale());
         merchant.setPrincipalSex(merchantParamModel.getPrincipalSex());
+        merchant.setCertificateFile(DybUtils.getJsonSerialize(file));
         Account registerMerchantAccount=accountService.registerMerchant(account,merchant,bankAccount,referrerCode);
         if (registerMerchantAccount==null){
             return validationResult(1001,"注册失败");

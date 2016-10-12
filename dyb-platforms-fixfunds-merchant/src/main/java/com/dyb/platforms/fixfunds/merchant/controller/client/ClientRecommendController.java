@@ -55,23 +55,23 @@ public class ClientRecommendController extends BaseController {
             if (temp==null)
                 return validationResult(1001,"找不到此被推荐人信息");
             RecommendRecordModel recommendRecordModel=new RecommendRecordModel();
-            if (account.getAccountType()== AccountType.信使){
-                recommendRecordModel.setRealName(account.getMember().getRealName());
-                recommendRecordModel.setAddress(account.getMember().getNativePlace());
-                recommendRecordModel.setEmail(account.getMember().getMemberEmail());
-                recommendRecordModel.setIndustry(account.getMember().getIndustry());
-            }else if (account.getAccountType()== AccountType.商家){
-                recommendRecordModel.setRealName(account.getMerchant().getPrincipalName());
-                recommendRecordModel.setAddress(account.getMerchant().getMerchantAddress());
-                recommendRecordModel.setEmail(account.getMerchant().getPrincipalEmail());
-                recommendRecordModel.setIndustry(account.getMerchant().getIndustry());
-            }else if (account.getAccountType()== AccountType.服务商){
-                recommendRecordModel.setRealName(account.getServiceProviders().getServiceProviderName());
-                recommendRecordModel.setAddress(account.getServiceProviders().getAddress());
-                recommendRecordModel.setEmail(account.getServiceProviders().getEmail());
-                recommendRecordModel.setIndustry(account.getServiceProviders().getIndustry());
+            if (temp.getAccountType()== AccountType.信使){
+                recommendRecordModel.setRealName(temp.getMember().getRealName());
+                recommendRecordModel.setAddress(temp.getMember().getNativePlace());
+                recommendRecordModel.setEmail(temp.getMember().getMemberEmail());
+                recommendRecordModel.setIndustry(temp.getMember().getIndustry());
+            }else if (temp.getAccountType()== AccountType.商家){
+                recommendRecordModel.setRealName(temp.getMerchant().getPrincipalName());
+                recommendRecordModel.setAddress(temp.getMerchant().getMerchantAddress());
+                recommendRecordModel.setEmail(temp.getMerchant().getPrincipalEmail());
+                recommendRecordModel.setIndustry(temp.getMerchant().getIndustry());
+            }else if (temp.getAccountType()== AccountType.服务商){
+                recommendRecordModel.setRealName(temp.getServiceProviders().getServiceProviderName());
+                recommendRecordModel.setAddress(temp.getServiceProviders().getAddress());
+                recommendRecordModel.setEmail(temp.getServiceProviders().getEmail());
+                recommendRecordModel.setIndustry(temp.getServiceProviders().getIndustry());
             }
-            recommendRecordModel.setAccount(account);
+            recommendRecordModel.setAccount(temp);
             recommendRecordModelList.add(recommendRecordModel);
         }
         recommendRecordModelPageList.setPageSize(accountPageList.getPageSize());

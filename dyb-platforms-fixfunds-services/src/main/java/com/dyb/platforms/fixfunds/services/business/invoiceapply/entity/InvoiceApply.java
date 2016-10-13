@@ -42,7 +42,7 @@ public class InvoiceApply implements java.io.Serializable {
     private Date applyTime;
     // 商家账户code
     private String accountCode;
-    //纳税人识别号
+    // 纳税人识别号
     private String taxpayers;
     // 开户行
     private String bankName;
@@ -52,6 +52,12 @@ public class InvoiceApply implements java.io.Serializable {
     private String bankNum;
     // 开户名称
     private String bankAccountName;
+    // 收件人
+    private String receiver;
+    // 收件地址
+    private String address;
+    // 手机号码
+    private String phone;
 
     /** 
      * 获取让利款发票申请编号code [主键]
@@ -321,5 +327,59 @@ public class InvoiceApply implements java.io.Serializable {
      */
     public void setBankAccountName(String bankAccountName) {
         this.bankAccountName = bankAccountName;
+    }
+
+    /**
+     * 获取收件人
+     *
+     * @return 收件人
+     */
+    public String getReceiver() {
+        return receiver;
+    }
+
+    /**
+     * 设置收件人
+     *
+     * @param receiver 收件人
+     */
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    /**
+     * 获取收件地址
+     *
+     * @return 收件地址
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * 设置收件地址
+     *
+     * @param address 收件地址
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * 获取手机号码
+     *
+     * @return 手机号码
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * 设置手机号码
+     *
+     * @param phone 手机号码
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

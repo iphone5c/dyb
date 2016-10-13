@@ -41,4 +41,11 @@ public interface IBankAccountService {
      * @return银行卡对象
      */
     public BankAccount updateBankAccount(BankAccount bankAccount);
+
+    /**
+     * 根据code查找银行卡信息
+     * @param bankAccountCode 银行卡code
+     * @return 银行卡对象
+     */
+    public BankAccount getBankAccountByCode(String bankAccountCode);
 }

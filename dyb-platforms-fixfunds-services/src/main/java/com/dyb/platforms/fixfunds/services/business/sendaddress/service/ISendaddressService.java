@@ -42,4 +42,11 @@ public interface ISendAddressService {
      * @return 寄送地址
      */
     public SendAddress getSendAddressByDefaultChecked(String accountCode);
+
+    /**
+     * 根据code获取寄送地址信息
+     * @param sendAddressCode 寄送地址code
+     * @return 寄送地址
+     */
+    public SendAddress getSendAddressByCode(String sendAddressCode);
 }

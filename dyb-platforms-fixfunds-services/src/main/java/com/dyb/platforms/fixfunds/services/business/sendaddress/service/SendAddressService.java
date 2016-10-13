@@ -105,4 +105,16 @@ public class SendAddressService extends BaseService implements ISendAddressServi
         return (sendAddresses!=null&&sendAddresses.size()>0)?sendAddresses.get(0):null;
     }
 
+    /**
+     * 根据code获取寄送地址信息
+     * @param sendAddressCode 寄送地址code
+     * @return 寄送地址
+     */
+    @Override
+    public SendAddress getSendAddressByCode(String sendAddressCode) {
+        if (DybUtils.isEmptyOrNull(sendAddressCode))
+            throw new DybRuntimeException("根据code获取寄送地址信息时，sendAddressCode不能为空");
+        return sendAddressDao.getObject(sendAddressCode,true);
+    }
+
 }

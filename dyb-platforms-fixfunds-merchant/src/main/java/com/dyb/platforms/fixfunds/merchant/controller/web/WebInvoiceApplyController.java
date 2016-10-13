@@ -99,10 +99,10 @@ public class WebInvoiceApplyController extends BaseController {
             return validationResult(1001,"银行编号不能为空");
         if (DybUtils.isEmptyOrNull(sendAddressCode))
             return validationResult(1001,"寄送地址编号不能为空");
-        InvoiceApply invoiceApply=invoiceApplyService.getInvoiceApplyByCode(invoiceApplyCode);
-        if (invoiceApply==null)
-            return validationResult(1001,"没有找到此申请发票信息");
-        return null;
+        boolean flag=invoiceApplyService.invoiceApply(invoiceApplyCode,countryPhone,taxpayers,bankAccountCode,sendAddressCode);
+        if (flag)
+            return validationResult(1001,"申请失败");
+        return result("申请成功");
     }
 
 }

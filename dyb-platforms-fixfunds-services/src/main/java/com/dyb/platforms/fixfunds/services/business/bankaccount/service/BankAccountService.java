@@ -111,4 +111,16 @@ public class BankAccountService extends BaseService implements IBankAccountServi
         int info = bankAccountDao.updateObject(bankAccount);
         return info>0?bankAccount:null;
     }
+
+    /**
+     * 根据code查找银行卡信息
+     * @param bankAccountCode 银行卡code
+     * @return 银行卡对象
+     */
+    @Override
+    public BankAccount getBankAccountByCode(String bankAccountCode) {
+        if (DybUtils.isEmptyOrNull(bankAccountCode))
+            throw new DybRuntimeException("根据code查找银行卡信息时，bankAccountCode不能为空");
+        return bankAccountDao.getObject(bankAccountCode,true);
+    }
 }

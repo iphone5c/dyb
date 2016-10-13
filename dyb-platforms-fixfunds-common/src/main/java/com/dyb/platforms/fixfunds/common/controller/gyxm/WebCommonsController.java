@@ -4,7 +4,11 @@ import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.merchant.entity.em.*;
+import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
+import com.dyb.platforms.fixfunds.services.business.systemparams.entity.SystemParams;
+import com.dyb.platforms.fixfunds.services.business.systemparams.service.ISystemParamsService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
+import com.dyb.platforms.fixfunds.services.utils.core.NameValue;
 import com.dyb.platforms.fixfunds.services.utils.core.configureations.SettingConfigureationFactory;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
@@ -23,6 +27,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,6 +45,8 @@ public class WebCommonsController extends BaseController {
     private IAccountService accountService;
     @Autowired
     private Producer captchaProducer = null;
+    @Autowired
+    private ISystemParamsService systemParamsService;
 
     /**
      * web登陆验证
@@ -128,28 +137,46 @@ public class WebCommonsController extends BaseController {
     }
 
     @RequestMapping(value = "/getIndustry")
-    public Object getIndustry(HttpServletRequest request,HttpServletResponse response){
+    public Object getIndustry(){
         return result( Industry.getAllConvertName());
     }
 
     @RequestMapping(value = "/getIndustryType")
-    public Object getIndustryType(HttpServletRequest request,HttpServletResponse response){
+    public Object getIndustryType(){
         return result( IndustryType.getAllConvertName());
     }
 
     @RequestMapping(value = "/getScale")
-    public Object getScale(HttpServletRequest request,HttpServletResponse response){
+    public Object getScale(){
         return result( Scale.getAllConvertName());
     }
 
     @RequestMapping(value = "/getSex")
-    public Object getSex(HttpServletRequest request,HttpServletResponse response){
+    public Object getSex(){
         return result( Sex.getAllConvertName());
     }
 
     @RequestMapping(value = "/getBusinessCircle")
-    public Object getBusinessCircle(HttpServletRequest request,HttpServletResponse response){
+    public Object getBusinessCircle(){
         return result( BusinessCircle.getAllConvertName());
+    }
+
+    @RequestMapping(value = "/getFoundation")
+    public Object getFoundation(){
+        SystemParams systemParams=systemParamsService.getSystemParamsByKey("FOUNDATION");
+        Map<String,String> foundation=new HashMap<>();
+        String[] temp= systemParams.getSystemParamsValue().split(",");
+        foundation.put("bankName",temp[0]);
+        foundation.put("bankNum",temp[1]);
+        return result(foundation);
+    }
+
+    @RequestMapping(value = "/getFoundation")
+    public Object getDonationType(){
+        List<NameValue> nameValueList=new ArrayList<>();
+        nameValueList.add(NameValue.create(MessengerBeanType.普通信使豆.toString(),MessengerBeanType.普通信使豆.toString()));
+        nameValueList.add(NameValue.create(MessengerBeanType.待提供发票.toString(),MessengerBeanType.待提供发票.toString()));
+        return result(nameValueList);
     }
 
 }

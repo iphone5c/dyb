@@ -94,6 +94,7 @@ public class DonationService extends BaseService implements IDonationService {
             throw new DybRuntimeException("二级密码不能为空");
         if (!DybUtils.verifyPassword(tradePassword,account.getTradePassword()))
             throw new DybRuntimeException("二级密码输入错误");
+        //TODO 直捐余额判断
         Donation donation=new Donation();
         donation.setDonationType(messengerBeanType);
         donation.setDonationMessengerBean(donationMessengerBean);

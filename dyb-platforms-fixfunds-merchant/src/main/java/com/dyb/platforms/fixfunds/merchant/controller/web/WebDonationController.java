@@ -1,5 +1,6 @@
 package com.dyb.platforms.fixfunds.merchant.controller.web;
 
+import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.donation.service.IDonationService;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
@@ -62,7 +63,13 @@ public class WebDonationController extends BaseController {
         }
         if (donationTypeUpdate==null)
             return validationResult(1001,"直捐类型超出指定范围");
-        return result("");
+        if (DybUtils.isEmptyOrNull(tradePassword))
+            return validationResult(1001,"二级密码不能为空");
+        Account account=DybUtils.getCurrentAccount(request);
+        boolean flag=donationService.donation(account,donationTypeUpdate,donationMessengerBean,tradePassword);
+        if (!flag)
+            return validationResult(1001,"直捐操作失败");
+        return result("直捐成功");
     }
 
 }

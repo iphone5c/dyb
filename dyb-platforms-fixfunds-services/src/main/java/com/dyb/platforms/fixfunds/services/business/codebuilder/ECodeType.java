@@ -24,4 +24,8 @@ public enum ECodeType {
      * 订单编号
      */
     ORDER_CODE,
+    /**
+     * 直捐编号
+     */
+    DONATION_CODE,
 }

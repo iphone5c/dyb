@@ -171,7 +171,7 @@ public class WebCommonsController extends BaseController {
         return result(foundation);
     }
 
-    @RequestMapping(value = "/getFoundation")
+    @RequestMapping(value = "/getDonationType")
     public Object getDonationType(){
         List<NameValue> nameValueList=new ArrayList<>();
         nameValueList.add(NameValue.create(MessengerBeanType.普通信使豆.toString(),MessengerBeanType.普通信使豆.toString()));

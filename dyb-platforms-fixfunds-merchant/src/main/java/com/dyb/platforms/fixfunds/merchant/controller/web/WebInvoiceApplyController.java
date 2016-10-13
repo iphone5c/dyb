@@ -100,7 +100,7 @@ public class WebInvoiceApplyController extends BaseController {
         if (DybUtils.isEmptyOrNull(sendAddressCode))
             return validationResult(1001,"寄送地址编号不能为空");
         boolean flag=invoiceApplyService.invoiceApply(invoiceApplyCode,countryPhone,taxpayers,bankAccountCode,sendAddressCode);
-        if (flag)
+        if (!flag)
             return validationResult(1001,"申请失败");
         return result("申请成功");
     }

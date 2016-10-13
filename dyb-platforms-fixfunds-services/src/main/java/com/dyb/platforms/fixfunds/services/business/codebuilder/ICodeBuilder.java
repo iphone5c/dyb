@@ -37,4 +37,10 @@ public interface ICodeBuilder {
      */
     String getOrderCode();
 
+    /**
+     * 获取一个新的直捐编码（规则：年月日时分秒+6位序列号）
+     * @return 新的直捐编码
+     */
+    String getDonationCode();
+
 }

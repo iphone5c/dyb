@@ -171,6 +171,18 @@ public class WebCommonsController extends BaseController {
         return result(foundation);
     }
 
+    @RequestMapping(value = "/getBankList")
+    public Object getBankList(){
+        SystemParams systemParams=systemParamsService.getSystemParamsByKey("BANK");
+        Map<String,String> foundation=new HashMap<>();
+        String[] temp= systemParams.getSystemParamsValue().split(",");
+        List<NameValue> nameValueList=new ArrayList<>();
+        for (String bank:temp){
+            nameValueList.add(NameValue.create(bank,bank));
+        }
+        return result(nameValueList);
+    }
+
     @RequestMapping(value = "/getDonationType")
     public Object getDonationType(){
         List<NameValue> nameValueList=new ArrayList<>();

@@ -22,6 +22,13 @@ div{
 	-webkit-border-radius: 50%; /* Safari 和 Chrome */
 	border-radius: 50%; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
 }
+.meridian{
+    display: none;
+}
+.btn_timepicki{
+    padding:8px 5px;
+    width:250px;border-radius:3px;border:1px solid #ddd;outline:none;text-align:center;color:#666;box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.35);}
+.btn_timepicki:focus{border-color:#ccc;color:#333;}
 .ad-register{
   text-align: center;
   overflow: hidden;

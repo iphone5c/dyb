@@ -4,7 +4,7 @@
 
 
 $(function(){
-
+    $(".btn_timepicki").timepicki();
     //$(".register-form-cell-widget").click(function(){
     //    alert(111)
     //});

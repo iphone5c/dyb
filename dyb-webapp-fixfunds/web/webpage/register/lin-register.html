@@ -14,10 +14,12 @@
 <link rel="stylesheet" href="./css/base.css" />
 <link rel="stylesheet" href="./css/side.css" />
 <link rel="stylesheet" href="./css/register.css" />
+<link rel="stylesheet" href="./css/timepicki.css" />
 <script type="text/javascript" src="./js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="../js/commons.js"></script>
 <script type="text/javascript" src="../js/verification.js"></script>
 <script type="text/javascript" src="./js/uploadPreview.js"></script>
+<script type="text/javascript" src="./js/timepicki.js"></script>
 <style>
     .xg-input{
         cursor: pointer;
@@ -650,8 +652,11 @@
                     <span class="ad-red">*</span> 营业时间:
                 </div>
                 <div class="register-form-cell-widget-25">
-                    <input type="datetime" id="startBusinessTime" name="startBusinessTime" data-rules="required|time" data-toggle="timepicker" data-empty-msg="请填写" class="ad-widget69 input-xfat" /> -
-                    <input type="datetime" id="endBusinessTime" name="endBusinessTime" data-rules="required|time" data-toggle="timepicker" data-empty-msg="请填写" class="ad-widget69 input-xfat" />
+                    <!--<input type="datetime" id="startBusinessTime" name="startBusinessTime" data-rules="required|time" data-toggle="timepicker" data-empty-msg="请填写" class="ad-widget69 input-xfat" /> --->
+                    <input id="startBusinessTime" type="text" name="time" value="开始时间!" class="btn_timepicki ad-widget69 input-xfat"/><span style="float: left;display: inline-block;width:20px;line-height: 32px;text-align: center"> - </span>
+
+                    <!--<input type="datetime" id="endBusinessTime" name="endBusinessTime" data-rules="required|time" data-toggle="timepicker" data-empty-msg="请填写" class="ad-widget69 input-xfat" />-->
+                    <input id="endBusinessTime" type="text" name="time" value="结束时间" class="btn_timepicki ad-widget69 input-xfat"/>
                 </div>
             </div>
             <div class="clear"></div>

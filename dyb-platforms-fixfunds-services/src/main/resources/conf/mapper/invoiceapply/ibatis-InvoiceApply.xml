@@ -17,10 +17,11 @@
         <result property="invoiceApplyStatus" column="invoiceapplystatus" />
         <result property="applyTime" column="applytime" />
         <result property="accountCode" column="accountcode" />
+        <result property="taxpayers" column="taxpayers" />
     </resultMap>
 
     <sql id="baseCol">
-        invoiceapplycode, invoicetime, turnoverprice, yetbenefitprice, applyinvoicemoney, yetinvoicemoney, poundage, invoiceapplystatus, applytime, accountcode
+        invoiceapplycode, invoicetime, turnoverprice, yetbenefitprice, applyinvoicemoney, yetinvoicemoney, poundage, invoiceapplystatus, applytime, accountcode,taxpayers
     </sql>
 
     <sql id="whereSql">
@@ -95,6 +96,13 @@
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
+            <if test="taxpayers != null"><![CDATA[ and taxpayers like #{taxpayers} ]]></if>
+            <if test="taxpayers_enum != null">
+                <![CDATA[ and taxpayers in ]]>
+                <foreach collection="taxpayers_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
             <if test="_default_mulattr != null">
                 <![CDATA[ and ]]>
                 <foreach collection="_default_mulattr" item="item" open="(" separator=" or " close=")">
@@ -102,6 +110,7 @@
                     <if test="item.name == 'invoiceTime'"><![CDATA[ invoicetime like #{item.value} ]]></if>
                     <if test="item.name == 'invoiceApplyStatus'"><![CDATA[ invoiceapplystatus like #{item.value} ]]></if>
                     <if test="item.name == 'accountCode'"><![CDATA[ accountcode like #{item.value} ]]></if>
+                    <if test="item.name == 'taxpayers'"><![CDATA[ taxpayers like #{item.value} ]]></if>
                 </foreach>
             </if>
         </trim>
@@ -129,18 +138,20 @@
             <if test="_orderBy == 'applyTime_asc'"><![CDATA[ applytime, ]]></if>
             <if test="_orderBy == 'accountCode_desc'"><![CDATA[ accountcode desc, ]]></if>
             <if test="_orderBy == 'accountCode_asc'"><![CDATA[ accountcode, ]]></if>
+            <if test="_orderBy == 'taxpayers_desc'"><![CDATA[ taxpayers desc, ]]></if>
+            <if test="_orderBy == 'taxpayers_asc'"><![CDATA[ taxpayers, ]]></if>
         </trim>
     </sql>
 
     <insert id="insertObject" parameterType="com.dyb.platforms.fixfunds.services.business.invoiceapply.entity.InvoiceApply">
         insert into
-        dyb_invoiceapply(invoiceapplycode,invoicetime,turnoverprice,yetbenefitprice,applyinvoicemoney,yetinvoicemoney,poundage,invoiceapplystatus,applytime,accountcode)
-        values(#{invoiceApplyCode},#{invoiceTime},#{turnoverPrice},#{yetBenefitPrice},#{applyInvoiceMoney},#{yetInvoiceMoney},#{poundage},#{invoiceApplyStatus},#{applyTime},#{accountCode});
+        dyb_invoiceapply(invoiceapplycode,invoicetime,turnoverprice,yetbenefitprice,applyinvoicemoney,yetinvoicemoney,poundage,invoiceapplystatus,applytime,accountcode,taxpayers)
+        values(#{invoiceApplyCode},#{invoiceTime},#{turnoverPrice},#{yetBenefitPrice},#{applyInvoiceMoney},#{yetInvoiceMoney},#{poundage},#{invoiceApplyStatus},#{applyTime},#{accountCode},#{taxpayers});
     </insert>
 
     <update id="updateObject" parameterType="com.dyb.platforms.fixfunds.services.business.invoiceapply.entity.InvoiceApply">
         update dyb_invoiceapply
-        set invoicetime=#{invoiceTime},turnoverprice=#{turnoverPrice},yetbenefitprice=#{yetBenefitPrice},applyinvoicemoney=#{applyInvoiceMoney},yetinvoicemoney=#{yetInvoiceMoney},poundage=#{poundage},invoiceapplystatus=#{invoiceApplyStatus},applytime=#{applyTime},accountcode=#{accountCode}
+        set invoicetime=#{invoiceTime},turnoverprice=#{turnoverPrice},yetbenefitprice=#{yetBenefitPrice},applyinvoicemoney=#{applyInvoiceMoney},yetinvoicemoney=#{yetInvoiceMoney},poundage=#{poundage},invoiceapplystatus=#{invoiceApplyStatus},applytime=#{applyTime},accountcode=#{accountCode},taxpayers=#{taxpayers}
         where invoiceapplycode=#{invoiceApplyCode};
     </update>
 

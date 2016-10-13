@@ -75,7 +75,7 @@ $(function(){
             // 默认设置选定
             defaultChecked:true,
             //执照类型1：表示新版  2：表示旧版
-            flag:1,
+            flag:$("#sub_xg_ul .active>a").attr("value"),
             //营业执照第一张
             businessLicensePhoto1:$("#businessLicensePhoto1").val(),
             //营业执照第二张
@@ -95,6 +95,7 @@ $(function(){
             alert(data.errorMessage);
             return;
         }
+        alert(data.flag)
     }
     $(".lin_submit").click(function(){
             submit();

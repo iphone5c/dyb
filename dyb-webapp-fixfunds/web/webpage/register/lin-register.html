@@ -1012,6 +1012,7 @@
     <div class="fl" style="width:330px;">
                     <span class="fl sui-dropdown dropdown-bordered select10" style="margin-bottom:10px;">
                         <span class="dropdown-inner">
+                            <input type="hidden" id="flag" value="1">
                             <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
                                 <input id="businesslicenceType" value="2" name="businesslicenceType" type="hidden" />
                                 <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i>
@@ -1063,7 +1064,7 @@
             <img id="imgShow_WU_FILE_0" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
             <input type="file" id="up_img_WU_FILE_0" class="xg-input" />
             <input type="hidden" id="businessLicensePhoto1">
-        </li>>
+        </li>
             <div class="">
                 <div id="businesslicenceDiv" style="display:none">
                     <input id="businesslicence" type="hidden" />
@@ -1127,7 +1128,7 @@
             <img id='imgShow_WU_FILE_5' width='100' height='100' class='xg-img' src='./images/sc.png' />
             <br/>
             <input type='file' id='up_img_WU_FILE_5' class='xg-input' />
-            <input type='hidden' id='businessLicensePhoto1'>
+            <input type='hidden' id='oldBusinessLicensePhoto1'>
             </li>
         </div>
     </div>
@@ -1136,14 +1137,14 @@
         <span class='ad-red'>
                         *
                         </span>
-        旧版营业执照
+        税务登记证
         </div>
     <div id='newBusinesslicenceDiv' class='licenceDiv' style='margin-top:10px;'>
         <li>
             <img id='imgShow_WU_FILE_6' width='100' height='100' class='xg-img' src='./images/sc.png' />
             <br />
             <input type='file' id='up_img_WU_FILE_6' class='xg-input' />
-            <input type='hidden' id='businessLicensePhoto1'>
+            <input type='hidden' id='oldBusinessLicensePhoto2'>
             </li>
         </div>
     </div>
@@ -1743,11 +1744,31 @@ $(function(){
         $(".ad-register3").css({"display":"block"})
     });
     $("#nextReg3").click(function(){
-        var businessLicensePhoto1=uploadService('/web/commons/upload','up_img_WU_FILE_0','businessLicensePhoto1');
-        if(businessLicensePhoto1.statusCode!=1000){
-            alert("营业执照图片必须上传");
-            return;
+
+        var flag=$("#flag").val();
+        if(flag==1){
+            var businessLicensePhoto1=uploadService('/web/commons/upload','up_img_WU_FILE_0','businessLicensePhoto1');
+            if(businessLicensePhoto1.statusCode!=1000){
+                alert("新版营业执照图片必须上传");
+                return;
+            }
+            $("#businessLicensePhoto1").val(businessLicensePhoto1.result.businessLicensePhoto1.path);
+        }else if(flag==2){
+            var oldBusinessLicensePhoto1=uploadService('/web/commons/upload','up_img_WU_FILE_5','oldBusinessLicensePhoto1');
+            if(oldBusinessLicensePhoto1.statusCode!=1000){
+                alert("旧版营业执照图片必须上传");
+                return;
+            }
+            var oldBusinessLicensePhoto2=uploadService('/web/commons/upload','up_img_WU_FILE_6','oldBusinessLicensePhoto2');
+            if(oldBusinessLicensePhoto2.statusCode!=1000){
+                alert("税务登记证图片必须上传");
+                return;
+            }
+            $("#oldBusinessLicensePhoto1").val(oldBusinessLicensePhoto1.result.oldBusinessLicensePhoto1.path);
+            $("#oldBusinessLicensePhoto2").val(oldBusinessLicensePhoto2.result.oldBusinessLicensePhoto2.path);
         }
+
+
         var legalPersonPhoto=uploadService('/web/commons/upload','up_img_WU_FILE_1','legalPersonPhoto');
         if(legalPersonPhoto.statusCode!=1000){
             alert("法人身份证照片必须上传");
@@ -1768,7 +1789,6 @@ $(function(){
             alert("店面门头照片必须上传");
             return;
         }
-        $("#businessLicensePhoto1").val(businessLicensePhoto1.result.businessLicensePhoto1.path);
         $("#legalPersonPhoto").val(legalPersonPhoto.result.legalPersonPhoto.path);
         $("#recommendPersonPhoto").val(recommendPersonPhoto.result.recommendPersonPhoto.path);
         $("#donationPhoto").val(donationPhoto.result.donationPhoto.path);
@@ -1988,10 +2008,12 @@ $(function(){
     });
 //    新旧版切换
     $(".btn_old").click(function(){
+        $("#flag").val($("#sub_xg_ul .active>a").attr("value"));
         $(".div_new").hide();
         $(".div_old").show()
     });
     $(".btn_new").click(function(){
+        $("#flag").val($("#sub_xg_ul .active>a").attr("value"));
         $(".div_old").hide()
         $(".div_new").show()
     })

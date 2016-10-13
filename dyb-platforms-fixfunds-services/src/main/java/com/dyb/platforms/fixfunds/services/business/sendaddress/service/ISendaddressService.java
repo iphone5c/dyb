@@ -36,4 +36,10 @@ public interface ISendAddressService {
      */
     public List<SendAddress> getSendAddressList(QueryParams wheres, int skip, int size, boolean detail);
 
+    /**
+     * 根据账户code获取默认的寄送地址信息
+     * @param accountCode 账户code
+     * @return 寄送地址
+     */
+    public SendAddress getSendAddressByDefaultChecked(String accountCode);
 }

@@ -5,7 +5,9 @@ import com.dyb.platforms.fixfunds.services.business.account.service.IAccountServ
 import com.dyb.platforms.fixfunds.services.business.codebuilder.ICodeBuilder;
 import com.dyb.platforms.fixfunds.services.business.donation.dao.IDonationDao;
 import com.dyb.platforms.fixfunds.services.business.donation.entity.Donation;
+import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.MessengerBean;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
+import com.dyb.platforms.fixfunds.services.business.messengerbean.service.IMessengerBeanService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
@@ -34,6 +36,8 @@ public class DonationService extends BaseService implements IDonationService {
     private IAccountService accountService;
     @Autowired
     private ICodeBuilder codeBuilder;
+    @Autowired
+    private IMessengerBeanService messengerBeanService;
 
     /**
      * 查询对象列表
@@ -94,11 +98,18 @@ public class DonationService extends BaseService implements IDonationService {
             throw new DybRuntimeException("二级密码不能为空");
         if (!DybUtils.verifyPassword(tradePassword,account.getTradePassword()))
             throw new DybRuntimeException("二级密码输入错误");
-        //TODO 直捐余额判断
+        MessengerBean messengerBean=messengerBeanService.getMessengerBeanByAccountCodeAndMessengerType(account.getAccountCode(), messengerBeanType);
+        if (messengerBean==null)
+            throw new DybRuntimeException("找不到此用户的信使豆信息");
+        if (donationMessengerBean>messengerBean.getMessengerBean())
+            throw new DybRuntimeException(messengerBeanType+"余额不足");
+        messengerBean.setMessengerBean(messengerBean.getMessengerBean()-donationMessengerBean);
+
         Donation donation=new Donation();
         donation.setDonationType(messengerBeanType);
         donation.setDonationMessengerBean(donationMessengerBean);
         Donation temp=this.createDonation(donation);
+        messengerBeanService.updateMessengerBean(messengerBean);
         return temp!=null?true:false;
     }
 

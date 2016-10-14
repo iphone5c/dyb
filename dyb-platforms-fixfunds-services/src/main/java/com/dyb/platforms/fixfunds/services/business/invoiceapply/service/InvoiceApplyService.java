@@ -86,24 +86,22 @@ public class InvoiceApplyService extends BaseService implements IInvoiceApplySer
      * @param invoiceApplyCode 发票申请code
      * @param countryPhone 公司座机
      * @param taxpayers 纳税人识别号
-     * @param bankAccountCode 银行编号
-     * @param sendAddressCode 寄送地址编号
      * @return true表示操作成功 false表示操作失败
      */
     @Override
-    public boolean invoiceApply(String invoiceApplyCode, String countryPhone, String taxpayers, String bankAccountCode, String sendAddressCode) {
+    public boolean invoiceApply(String invoiceApplyCode, String countryPhone, String taxpayers) {
         InvoiceApply invoiceApply=invoiceApplyDao.getObject(invoiceApplyCode, true);
         if (invoiceApply==null)
             throw new DybRuntimeException("没有找到此申请发票信息");
         Account merchant=accountService.getAccountByCode(invoiceApply.getAccountCode(),true);
         if (merchant==null)
             throw new DybRuntimeException("找不到此商家账户信息");
-        BankAccount bankAccount=bankAccountService.getBankAccountByCode(bankAccountCode);
+        BankAccount bankAccount=bankAccountService.getBankAccountByDefaultChecked(merchant.getAccountCode());
         if (bankAccount==null)
-            throw new DybRuntimeException("找不到此银行卡信息");
-        SendAddress sendAddress=sendAddressService.getSendAddressByCode(sendAddressCode);
+            throw new DybRuntimeException("银行卡信息不能为空");
+        SendAddress sendAddress=sendAddressService.getSendAddressByDefaultChecked(merchant.getAccountCode());
         if (sendAddress==null)
-            throw new DybRuntimeException("找不到此寄送地址信息");
+            throw new DybRuntimeException("寄送地址信息不能为空");
         //设置银行卡信息
         invoiceApply.setBankName(bankAccount.getBankName());
         invoiceApply.setBankBranch(bankAccount.getBankBranch());

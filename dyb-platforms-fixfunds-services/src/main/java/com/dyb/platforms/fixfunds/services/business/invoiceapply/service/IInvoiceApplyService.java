@@ -38,4 +38,15 @@ public interface IInvoiceApplyService {
      * @return 对象分页列表
      */
     public PageList<InvoiceApply> getInvoiceApplyPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail);
+
+    /**
+     * 申请发票
+     * @param invoiceApplyCode 发票申请code
+     * @param countryPhone 公司座机
+     * @param taxpayers 纳税人识别号
+     * @param bankAccountCode 银行编号
+     * @param sendAddressCode 寄送地址编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean invoiceApply(String invoiceApplyCode,String countryPhone,String taxpayers,String bankAccountCode,String sendAddressCode);
 }

@@ -89,4 +89,32 @@ public class SendAddressService extends BaseService implements ISendAddressServi
         return sendAddressDao.queryList(wheres,skip,size,detail);
     }
 
+    /**
+     * 根据账户code获取默认的寄送地址信息
+     * @param accountCode 账户code
+     * @return 寄送地址
+     */
+    @Override
+    public SendAddress getSendAddressByDefaultChecked(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("根据账户code获取默认的寄送地址信息时，账户code不能为空");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("accountCode",accountCode);
+        queryParams.addParameter("defaultChecked",true);
+        List<SendAddress> sendAddresses=sendAddressDao.queryList(queryParams,0,-1,true);
+        return (sendAddresses!=null&&sendAddresses.size()>0)?sendAddresses.get(0):null;
+    }
+
+    /**
+     * 根据code获取寄送地址信息
+     * @param sendAddressCode 寄送地址code
+     * @return 寄送地址
+     */
+    @Override
+    public SendAddress getSendAddressByCode(String sendAddressCode) {
+        if (DybUtils.isEmptyOrNull(sendAddressCode))
+            throw new DybRuntimeException("根据code获取寄送地址信息时，sendAddressCode不能为空");
+        return sendAddressDao.getObject(sendAddressCode,true);
+    }
+
 }

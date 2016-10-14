@@ -24,7 +24,7 @@ public class SendAddress implements java.io.Serializable {
     private String province;
     // 市区
     private String city;
-    // 详细地址（除去省市）
+    // 详细地址
     private String address;
     // 邮政编码
     private String postalcode;
@@ -110,18 +110,18 @@ public class SendAddress implements java.io.Serializable {
     }
 
     /**
-     * 获取详细地址（除去省市）
+     * 获取详细地址
      *
-     * @return 详细地址（除去省市）
+     * @return 详细地址
      */
     public String getAddress() {
         return address;
     }
 
     /**
-     * 设置详细地址（除去省市）
+     * 设置详细地址
      *
-     * @param address 详细地址（除去省市）
+     * @param address 详细地址
      */
     public void setAddress(String address) {
         this.address = address;

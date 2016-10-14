@@ -1,9 +1,15 @@
+/**
+ * Created by aaa on 2016/9/26.
+ */
+
 
 $(function(){
+    $(".btn_timepicki").timepicki();
+    //$(".register-form-cell-widget").click(function(){
+    //    alert(111)
+    //});
     function submit(){
-//        console.log(provinceVal);
-//        console.log(cityVal);
-//        return;
+        var flag=$("#flag").val();
         var param={
             // 账户名
             accountName:$("#username").val(),
@@ -70,11 +76,11 @@ $(function(){
             // 默认设置选定
             defaultChecked:true,
             //执照类型1：表示新版  2：表示旧版
-            flag:1,
+            flag:flag,
             //营业执照第一张
-            businessLicensePhoto1:$("#businessLicensePhoto1").val(),
+            businessLicensePhoto1:flag==1?$("#businessLicensePhoto1").val():$("#oldBusinessLicensePhoto1").val(),
             //营业执照第二张
-            businessLicensePhoto2:$("#businessLicensePhoto2").val(),
+            businessLicensePhoto2:flag==1?"":$("#oldBusinessLicensePhoto2").val(),
             //法人身份证照片
             legalPersonPhoto:$("#legalPersonPhoto").val(),
             //推荐人身份证照片
@@ -91,11 +97,11 @@ $(function(){
             businessCircle :$("#category input").val()
         }
         var data = invokeService('/web/merchant/registerMerchantAccount',param);
-//    console.log(data)
         if (data.statusCode!=1000){
             alert(data.errorMessage);
             return;
         }
+        alert(data.flag)
     }
     $(".lin_submit").click(function(){
             submit();

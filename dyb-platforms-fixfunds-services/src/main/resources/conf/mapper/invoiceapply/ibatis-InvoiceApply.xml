@@ -17,10 +17,18 @@
         <result property="invoiceApplyStatus" column="invoiceapplystatus" />
         <result property="applyTime" column="applytime" />
         <result property="accountCode" column="accountcode" />
+        <result property="taxpayers" column="taxpayers" />
+        <result property="bankName" column="bankname" />
+        <result property="bankBranch" column="bankbranch" />
+        <result property="bankNum" column="banknum" />
+        <result property="bankAccountName" column="bankaccountname" />
+        <result property="receiver" column="receiver" />
+        <result property="address" column="address" />
+        <result property="phone" column="phone" />
     </resultMap>
 
     <sql id="baseCol">
-        invoiceapplycode, invoicetime, turnoverprice, yetbenefitprice, applyinvoicemoney, yetinvoicemoney, poundage, invoiceapplystatus, applytime, accountcode
+        invoiceapplycode, invoicetime, turnoverprice, yetbenefitprice, applyinvoicemoney, yetinvoicemoney, poundage, invoiceapplystatus, applytime, accountcode,taxpayers, bankname, bankbranch, banknum, bankaccountname, receiver, address, phone
     </sql>
 
     <sql id="whereSql">
@@ -95,6 +103,62 @@
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
+            <if test="taxpayers != null"><![CDATA[ and taxpayers like #{taxpayers} ]]></if>
+            <if test="taxpayers_enum != null">
+                <![CDATA[ and taxpayers in ]]>
+                <foreach collection="taxpayers_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
+            <if test="bankName != null"><![CDATA[ and bankname like #{bankName} ]]></if>
+            <if test="bankName_enum != null">
+                <![CDATA[ and bankname in ]]>
+                <foreach collection="bankName_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
+            <if test="bankBranch != null"><![CDATA[ and bankbranch like #{bankBranch} ]]></if>
+            <if test="bankBranch_enum != null">
+                <![CDATA[ and bankbranch in ]]>
+                <foreach collection="bankBranch_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
+            <if test="bankNum != null"><![CDATA[ and banknum like #{bankNum} ]]></if>
+            <if test="bankNum_enum != null">
+                <![CDATA[ and banknum in ]]>
+                <foreach collection="bankNum_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
+            <if test="bankAccountName != null"><![CDATA[ and bankaccountname like #{bankAccountName} ]]></if>
+            <if test="bankAccountName_enum != null">
+                <![CDATA[ and bankaccountname in ]]>
+                <foreach collection="bankAccountName_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
+            <if test="receiver != null"><![CDATA[ and receiver like #{receiver} ]]></if>
+            <if test="receiver_enum != null">
+                <![CDATA[ and receiver in ]]>
+                <foreach collection="receiver_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
+            <if test="address != null"><![CDATA[ and address like #{address} ]]></if>
+            <if test="address_enum != null">
+                <![CDATA[ and address in ]]>
+                <foreach collection="address_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
+            <if test="phone != null"><![CDATA[ and phone like #{phone} ]]></if>
+            <if test="phone_enum != null">
+                <![CDATA[ and phone in ]]>
+                <foreach collection="phone_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
             <if test="_default_mulattr != null">
                 <![CDATA[ and ]]>
                 <foreach collection="_default_mulattr" item="item" open="(" separator=" or " close=")">
@@ -102,6 +166,14 @@
                     <if test="item.name == 'invoiceTime'"><![CDATA[ invoicetime like #{item.value} ]]></if>
                     <if test="item.name == 'invoiceApplyStatus'"><![CDATA[ invoiceapplystatus like #{item.value} ]]></if>
                     <if test="item.name == 'accountCode'"><![CDATA[ accountcode like #{item.value} ]]></if>
+                    <if test="item.name == 'taxpayers'"><![CDATA[ taxpayers like #{item.value} ]]></if>
+                    <if test="item.name == 'bankName'"><![CDATA[ bankname like #{item.value} ]]></if>
+                    <if test="item.name == 'bankBranch'"><![CDATA[ bankbranch like #{item.value} ]]></if>
+                    <if test="item.name == 'bankNum'"><![CDATA[ banknum like #{item.value} ]]></if>
+                    <if test="item.name == 'bankAccountName'"><![CDATA[ bankaccountname like #{item.value} ]]></if>
+                    <if test="item.name == 'receiver'"><![CDATA[ receiver like #{item.value} ]]></if>
+                    <if test="item.name == 'address'"><![CDATA[ address like #{item.value} ]]></if>
+                    <if test="item.name == 'phone'"><![CDATA[ phone like #{item.value} ]]></if>
                 </foreach>
             </if>
         </trim>
@@ -129,18 +201,34 @@
             <if test="_orderBy == 'applyTime_asc'"><![CDATA[ applytime, ]]></if>
             <if test="_orderBy == 'accountCode_desc'"><![CDATA[ accountcode desc, ]]></if>
             <if test="_orderBy == 'accountCode_asc'"><![CDATA[ accountcode, ]]></if>
+            <if test="_orderBy == 'taxpayers_desc'"><![CDATA[ taxpayers desc, ]]></if>
+            <if test="_orderBy == 'taxpayers_asc'"><![CDATA[ taxpayers, ]]></if>
+            <if test="_orderBy == 'bankName_desc'"><![CDATA[ bankname desc, ]]></if>
+            <if test="_orderBy == 'bankName_asc'"><![CDATA[ bankname, ]]></if>
+            <if test="_orderBy == 'bankBranch_desc'"><![CDATA[ bankbranch desc, ]]></if>
+            <if test="_orderBy == 'bankBranch_asc'"><![CDATA[ bankbranch, ]]></if>
+            <if test="_orderBy == 'bankNum_desc'"><![CDATA[ banknum desc, ]]></if>
+            <if test="_orderBy == 'bankNum_asc'"><![CDATA[ banknum, ]]></if>
+            <if test="_orderBy == 'bankAccountName_desc'"><![CDATA[ bankaccountname desc, ]]></if>
+            <if test="_orderBy == 'bankAccountName_asc'"><![CDATA[ bankaccountname, ]]></if>
+            <if test="_orderBy == 'receiver_desc'"><![CDATA[ receiver desc, ]]></if>
+            <if test="_orderBy == 'receiver_asc'"><![CDATA[ receiver, ]]></if>
+            <if test="_orderBy == 'address_desc'"><![CDATA[ address desc, ]]></if>
+            <if test="_orderBy == 'address_asc'"><![CDATA[ address, ]]></if>
+            <if test="_orderBy == 'phone_desc'"><![CDATA[ phone desc, ]]></if>
+            <if test="_orderBy == 'phone_asc'"><![CDATA[ phone, ]]></if>
         </trim>
     </sql>
 
     <insert id="insertObject" parameterType="com.dyb.platforms.fixfunds.services.business.invoiceapply.entity.InvoiceApply">
         insert into
-        dyb_invoiceapply(invoiceapplycode,invoicetime,turnoverprice,yetbenefitprice,applyinvoicemoney,yetinvoicemoney,poundage,invoiceapplystatus,applytime,accountcode)
-        values(#{invoiceApplyCode},#{invoiceTime},#{turnoverPrice},#{yetBenefitPrice},#{applyInvoiceMoney},#{yetInvoiceMoney},#{poundage},#{invoiceApplyStatus},#{applyTime},#{accountCode});
+        dyb_invoiceapply(invoiceapplycode,invoicetime,turnoverprice,yetbenefitprice,applyinvoicemoney,yetinvoicemoney,poundage,invoiceapplystatus,applytime,accountcode,taxpayers,bankname,bankbranch,banknum,bankaccountname,receiver,address,phone)
+        values(#{invoiceApplyCode},#{invoiceTime},#{turnoverPrice},#{yetBenefitPrice},#{applyInvoiceMoney},#{yetInvoiceMoney},#{poundage},#{invoiceApplyStatus},#{applyTime},#{accountCode},#{taxpayers},#{bankName},#{bankBranch},#{bankNum},#{bankAccountName},#{receiver},#{address},#{phone});
     </insert>
 
     <update id="updateObject" parameterType="com.dyb.platforms.fixfunds.services.business.invoiceapply.entity.InvoiceApply">
         update dyb_invoiceapply
-        set invoicetime=#{invoiceTime},turnoverprice=#{turnoverPrice},yetbenefitprice=#{yetBenefitPrice},applyinvoicemoney=#{applyInvoiceMoney},yetinvoicemoney=#{yetInvoiceMoney},poundage=#{poundage},invoiceapplystatus=#{invoiceApplyStatus},applytime=#{applyTime},accountcode=#{accountCode}
+        set invoicetime=#{invoiceTime},turnoverprice=#{turnoverPrice},yetbenefitprice=#{yetBenefitPrice},applyinvoicemoney=#{applyInvoiceMoney},yetinvoicemoney=#{yetInvoiceMoney},poundage=#{poundage},invoiceapplystatus=#{invoiceApplyStatus},applytime=#{applyTime},accountcode=#{accountCode},taxpayers=#{taxpayers},bankname=#{bankName},bankbranch=#{bankBranch},banknum=#{bankNum},bankaccountname=#{bankAccountName},receiver=#{receiver},address=#{address},phone=#{phone}
         where invoiceapplycode=#{invoiceApplyCode};
     </update>
 

@@ -1,5 +1,7 @@
 package com.dyb.platforms.fixfunds.services.business.bankaccount.service;
 
+import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
+import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.bankaccount.dao.IBankAccountDao;
 import com.dyb.platforms.fixfunds.services.business.bankaccount.entity.BankAccount;
 import com.dyb.platforms.fixfunds.services.business.codebuilder.ICodeBuilder;
@@ -29,6 +31,8 @@ public class BankAccountService extends BaseService implements IBankAccountServi
     private ICodeBuilder codeBuilder;
     @Autowired
     private IBankAccountDao bankAccountDao;
+    @Autowired
+    private IAccountService accountService;
 
     /**
      * 添加一张银行卡
@@ -110,5 +114,62 @@ public class BankAccountService extends BaseService implements IBankAccountServi
             throw new DybRuntimeException("修改银行卡信息时，找不到此银行卡信息");
         int info = bankAccountDao.updateObject(bankAccount);
         return info>0?bankAccount:null;
+    }
+
+    /**
+     * 根据code查找银行卡信息
+     * @param bankAccountCode 银行卡code
+     * @return 银行卡对象
+     */
+    @Override
+    public BankAccount getBankAccountByCode(String bankAccountCode) {
+        if (DybUtils.isEmptyOrNull(bankAccountCode))
+            throw new DybRuntimeException("根据code查找银行卡信息时，bankAccountCode不能为空");
+        return bankAccountDao.getObject(bankAccountCode,true);
+    }
+
+    /**
+     * 根据code删除银行卡信息
+     * @param bankAccountCode 银行卡code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean deleteBankAccount(String bankAccountCode) {
+        if (DybUtils.isEmptyOrNull(bankAccountCode))
+            throw new DybRuntimeException("删除银行卡信息时，code不能为空");
+        int info=bankAccountDao.deleteObject(bankAccountCode);
+        return info>0?true:false;
+    }
+
+    /**
+     * 设置指定账户code的默认选中银行卡
+     * @param accountCode 账户code
+     * @param bankAccountCode 银行卡code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean setDefaultBankAccountByCode(String accountCode, String bankAccountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("账户code不能为空");
+        if (DybUtils.isEmptyOrNull(bankAccountCode))
+            throw new DybRuntimeException("设置默认选中的银行卡code不能为空");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("accountCode",accountCode);
+        List<BankAccount> bankAccountList=bankAccountDao.queryList(queryParams,0,-1,true);
+        if (bankAccountList==null||bankAccountList.size()<=0)
+            throw new DybRuntimeException("此账户目前尚未添加银行卡信息，请添加至少一张银行卡信息");
+        boolean flag=false;
+        for (BankAccount bankAccount:bankAccountList){
+            if (bankAccount.getBankAccountCode().equals(bankAccountCode)){
+                bankAccount.setDefaultChecked(true);
+                flag=true;
+            }else {
+                bankAccount.setDefaultChecked(false);
+            }
+        }
+        if (!flag)
+            throw new DybRuntimeException("没有找到此卡信息");
+        int info=bankAccountDao.updateList((BankAccount[]) bankAccountList.toArray());
+        return info>0?true:false;
     }
 }

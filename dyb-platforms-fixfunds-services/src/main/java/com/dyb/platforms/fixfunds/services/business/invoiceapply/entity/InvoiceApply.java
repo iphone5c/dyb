@@ -42,6 +42,22 @@ public class InvoiceApply implements java.io.Serializable {
     private Date applyTime;
     // 商家账户code
     private String accountCode;
+    // 纳税人识别号
+    private String taxpayers;
+    // 开户行
+    private String bankName;
+    // 开户支行
+    private String bankBranch;
+    // 卡号
+    private String bankNum;
+    // 开户名称
+    private String bankAccountName;
+    // 收件人
+    private String receiver;
+    // 收件地址
+    private String address;
+    // 手机号码
+    private String phone;
 
     /** 
      * 获取让利款发票申请编号code [主键]
@@ -223,4 +239,147 @@ public class InvoiceApply implements java.io.Serializable {
         this.accountCode = accountCode;
     }
 
+    /**
+     * 获取纳税人识别号
+     *
+     * @return 纳税人识别号
+     */
+    public String getTaxpayers() {
+        return taxpayers;
+    }
+
+    /**
+     * 设置纳税人识别号
+     *
+     * @param taxpayers 纳税人识别号
+     */
+    public void setTaxpayers(String taxpayers) {
+        this.taxpayers = taxpayers;
+    }
+
+    /**
+     * 获取开户行
+     *
+     * @return 开户行
+     */
+    public String getBankName() {
+        return bankName;
+    }
+
+    /**
+     * 设置开户行
+     *
+     * @param bankName 开户行
+     */
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    /**
+     * 获取开户支行
+     *
+     * @return 开户支行
+     */
+    public String getBankBranch() {
+        return bankBranch;
+    }
+
+    /**
+     * 设置开户支行
+     *
+     * @param bankBranch 开户支行
+     */
+    public void setBankBranch(String bankBranch) {
+        this.bankBranch = bankBranch;
+    }
+
+    /**
+     * 获取卡号
+     *
+     * @return 卡号
+     */
+    public String getBankNum() {
+        return bankNum;
+    }
+
+    /**
+     * 设置卡号
+     *
+     * @param bankNum 卡号
+     */
+    public void setBankNum(String bankNum) {
+        this.bankNum = bankNum;
+    }
+
+    /**
+     * 获取开户名称
+     *
+     * @return 开户名称
+     */
+    public String getBankAccountName() {
+        return bankAccountName;
+    }
+
+    /**
+     * 设置开户名称
+     *
+     * @param bankAccountName 开户名称
+     */
+    public void setBankAccountName(String bankAccountName) {
+        this.bankAccountName = bankAccountName;
+    }
+
+    /**
+     * 获取收件人
+     *
+     * @return 收件人
+     */
+    public String getReceiver() {
+        return receiver;
+    }
+
+    /**
+     * 设置收件人
+     *
+     * @param receiver 收件人
+     */
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    /**
+     * 获取收件地址
+     *
+     * @return 收件地址
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * 设置收件地址
+     *
+     * @param address 收件地址
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * 获取手机号码
+     *
+     * @return 手机号码
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * 设置手机号码
+     *
+     * @param phone 手机号码
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }

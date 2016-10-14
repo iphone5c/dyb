@@ -67,17 +67,17 @@ Ext.define('DYB_COMMON.system.form.systemParamsDetailForm', {
             items: [
                 {text:'参数KEY',islabel: true},
                 {
-                    xtype:'textfield',name: 'systemParamsKey', bind: '{systemParamsKey}',maxLength: 20, blankText:'角色名不许为空',maxLengthText: '最大长度是20',readOnly:Ext.exUtils.isEmpty(me.config.systemParamsCode)?false:true
+                    xtype:'textfield',name: 'systemParamsKey', bind: '{systemParamsKey}',readOnly:Ext.exUtils.isEmpty(me.config.systemParamsCode)?false:true
                 },
                {},
                 {text:'参数值',islabel: true},
                 {
-                    xtype:'textfield',name: 'systemParamsValue', bind: '{systemParamsValue}',maxLength: 20, blankText:'角色名不许为空',maxLengthText: '最大长度是20'
+                    xtype:'textfield',name: 'systemParamsValue', bind: '{systemParamsValue}'
                 },
                 {},
                 {text:'描述',islabel: true},
                 {
-                    xtype:'textfield',name: 'description', bind: '{description}',maxLength: 20, blankText:'角色名不许为空',maxLengthText: '最大长度是20'
+                    xtype:'textfield',name: 'description', bind: '{description}'
                 },
                 {}
 

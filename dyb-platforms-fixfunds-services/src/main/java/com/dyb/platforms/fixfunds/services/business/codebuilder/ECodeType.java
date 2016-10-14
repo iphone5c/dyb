@@ -28,4 +28,12 @@ public enum ECodeType {
      * 直捐编号
      */
     DONATION_CODE,
+    /**
+     * 收据申请编号
+     */
+    DONATIONRECEIPTAPPLY_CODE,
+    /**
+     * 转换信使豆申请编号
+     */
+    CONVERSION_CODE,
 }

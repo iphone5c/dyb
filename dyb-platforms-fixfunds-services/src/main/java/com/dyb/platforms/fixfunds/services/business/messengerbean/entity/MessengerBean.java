@@ -24,6 +24,8 @@ public class MessengerBean implements java.io.Serializable {
     private MessengerBeanType messengerBeanType;
     // 账户code
     private String accountCode;
+    //冻结数
+    private Double freeze;
 
     /** 
      * 获取信使豆编号 [主键]
@@ -97,4 +99,21 @@ public class MessengerBean implements java.io.Serializable {
         this.accountCode = accountCode;
     }
 
+    /**
+     * 获取冻结数量
+     *
+     * @return 冻结数量
+     */
+    public Double getFreeze() {
+        return freeze;
+    }
+
+    /**
+     * 设置冻结数量
+     *
+     * @param freeze 冻结数量
+     */
+    public void setFreeze(Double freeze) {
+        this.freeze = freeze;
+    }
 }

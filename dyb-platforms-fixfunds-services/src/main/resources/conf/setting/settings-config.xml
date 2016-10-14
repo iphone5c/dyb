@@ -117,7 +117,9 @@
                     { "text": "直捐记录",  "url":"./publicModule/donateList.html", "leaf":"true", }
                 ] },
                 { "text": "转增管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "获赠记录",  "url":"./publicModule/donationRecList.html", "leaf":"true", }
+                    { "text": "我要转赠",  "url":"", "leaf":"true", },
+                    { "text": "转赠记录",  "url":"", "leaf":"true", },
+                    { "text": "获赠记录",  "url":"./publicModule/donationRecList.html", "leaf":"true", },
                 ] },
                 { "text": "回购管理","expanded":"false","leaf":"false", "children":[
                     { "text": "我要回购", "url":"./publicModule/withdraw.html", "leaf":"true", },

@@ -116,4 +116,28 @@ public class CodeBuilder extends BaseService implements ICodeBuilder
         return builder.toString();
     }
 
+    /**
+     * 获取一个新的收据申请编码（规则：年月日时分秒+6位序列号）
+     * @return 新的收据申请编码
+     */
+    @Override
+    public String getDonationReceiptApplyCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(DybConvert.dateToString(new Date(),DybConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.DONATIONRECEIPTAPPLY_CODE.name(),6));
+        return builder.toString();
+    }
+
+    /**
+     * 获取一个新的转换信使豆申请编码（规则：年月日时分秒+6位序列号）
+     * @return 新的转换信使豆申请
+     */
+    @Override
+    public String getConversionCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(DybConvert.dateToString(new Date(),DybConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.CONVERSION_CODE.name(),6));
+        return builder.toString();
+    }
+
 }

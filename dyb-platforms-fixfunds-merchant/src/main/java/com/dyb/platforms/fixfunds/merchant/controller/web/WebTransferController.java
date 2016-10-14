@@ -47,7 +47,58 @@ public class WebTransferController extends BaseController {
         List<TransferModel> transferModelList=new ArrayList<>();
 
         QueryParams queryParams=new QueryParams();
-        queryParams.addParameter("donationAccount",DybUtils.getCurrentAccount(request).getAccountCode());
+        queryParams.addParameter("gainAccount",DybUtils.getCurrentAccount(request).getAccountCode());
+        queryParams.addOrderBy("donationTime",false);
+        PageList<Transfer> transferPageList=transferService.getTransferPageList(queryParams, pageIndex, pageSize, true);
+        for (Transfer transfer:transferPageList.getList()){
+            Account transferAccount=accountService.getAccountByCode(transfer.getTransferAccount(),true);
+            Account gainAccount=accountService.getAccountByCode(transfer.getGainAccount(),true);
+            if (transferAccount==null)
+                return validationResult(1001,"找不到此转赠人信息");
+            if (gainAccount==null)
+                return validationResult(1001,"找不到此获赠人信息");
+            TransferModel transferModel=new TransferModel();
+            if (transferAccount.getAccountType()== AccountType.信使){
+                transferModel.setTransferAccountName(transferAccount.getMember().getRealName());
+            }else if (transferAccount.getAccountType()== AccountType.商家){
+                transferModel.setTransferAccountName(transferAccount.getMerchant().getPrincipalName());
+            }else if (transferAccount.getAccountType()== AccountType.服务商){
+                transferModel.setTransferAccountName(transferAccount.getServiceProviders().getServiceProviderName());
+            }
+            if (gainAccount.getAccountType()== AccountType.信使){
+                transferModel.setGainAccountName(gainAccount.getMember().getRealName());
+            }else if (gainAccount.getAccountType()== AccountType.商家){
+                transferModel.setGainAccountName(gainAccount.getMerchant().getPrincipalName());
+            }else if (gainAccount.getAccountType()== AccountType.服务商){
+                transferModel.setGainAccountName(gainAccount.getServiceProviders().getServiceProviderName());
+            }
+            transferModel.setTransferAccountPhone(transferAccount.getAccountPhone());
+            transferModel.setGainAccountPhone(gainAccount.getAccountPhone());
+            transferModel.setTransfer(transfer);
+            transferModelList.add(transferModel);
+        }
+        transferModelPageList.setPageSize(transferPageList.getPageSize());
+        transferModelPageList.setPageIndex(transferPageList.getPageIndex());
+        transferModelPageList.setPageCount(transferPageList.getPageCount());
+        transferModelPageList.setTotalSize(transferPageList.getTotalSize());
+        transferModelPageList.setList(transferModelList);
+        return result(transferModelPageList);
+    }
+
+    /**
+     * 获取转记录表分页
+     * @param pageIndex 当前页
+     * @param pageSize 页大小
+     * @return
+     */
+    @RequestMapping(value = "/getTransferGivingPageList")
+    public Object getTransferGivingPageList(HttpServletRequest request,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
+        log.info("获取转记录表分页");
+        PageList<TransferModel> transferModelPageList=new PageList<>();
+        List<TransferModel> transferModelList=new ArrayList<>();
+
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("transferAccount",DybUtils.getCurrentAccount(request).getAccountCode());
         queryParams.addOrderBy("donationTime",false);
         PageList<Transfer> transferPageList=transferService.getTransferPageList(queryParams, pageIndex, pageSize, true);
         for (Transfer transfer:transferPageList.getList()){

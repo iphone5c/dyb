@@ -43,4 +43,16 @@ public interface ICodeBuilder {
      */
     String getDonationCode();
 
+    /**
+     * 获取一个新的收据申请编码（规则：年月日时分秒+6位序列号）
+     * @return 新的收据申请编码
+     */
+    String getDonationReceiptApplyCode();
+
+    /**
+     * 获取一个新的转换信使豆申请编码（规则：年月日时分秒+6位序列号）
+     * @return 新的转换信使豆申请
+     */
+    String getConversionCode();
+
 }

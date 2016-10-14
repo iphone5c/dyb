@@ -11,6 +11,7 @@
         <result property="messengerBean" column="messengerbean" />
         <result property="messengerBeanType" column="messengerbeantype" />
         <result property="accountCode" column="accountcode" />
+        <result property="freeze" column="freeze" />
     </resultMap>
 
     <sql id="baseCol">
@@ -31,6 +32,14 @@
             <if test="messengerBean_enum != null">
                 <![CDATA[ and messengerbean in ]]>
                 <foreach collection="messengerBean_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
+            <if test="freeze != null"><![CDATA[ and freeze = #{freeze} ]]></if>
+            <if test="freeze_r_min != null"><![CDATA[ and freeze >= #{freeze_r_min} and freeze <= #{freeze_r_max} ]]></if>
+            <if test="freeze_enum != null">
+                <![CDATA[ and freeze in ]]>
+                <foreach collection="freeze_enum" item="value" open="(" separator="," close=")">
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
@@ -69,18 +78,20 @@
             <if test="_orderBy == 'messengerBeanType_asc'"><![CDATA[ messengerbeantype, ]]></if>
             <if test="_orderBy == 'accountCode_desc'"><![CDATA[ accountcode desc, ]]></if>
             <if test="_orderBy == 'accountCode_asc'"><![CDATA[ accountcode, ]]></if>
+            <if test="_orderBy == 'freeze_desc'"><![CDATA[ freeze desc, ]]></if>
+            <if test="_orderBy == 'freeze_asc'"><![CDATA[ freeze, ]]></if>
         </trim>
     </sql>
 
     <insert id="insertObject" parameterType="com.dyb.platforms.fixfunds.services.business.messengerbean.entity.MessengerBean">
         insert into
-        dyb_messengerbean(messengerbeancode,messengerbean,messengerbeantype,accountcode)
-        values(#{messengerBeanCode},#{messengerBean},#{messengerBeanType},#{accountCode});
+        dyb_messengerbean(messengerbeancode,messengerbean,messengerbeantype,accountcode,freeze)
+        values(#{messengerBeanCode},#{messengerBean},#{messengerBeanType},#{accountCode},#{freeze});
     </insert>
 
     <update id="updateObject" parameterType="com.dyb.platforms.fixfunds.services.business.messengerbean.entity.MessengerBean">
         update dyb_messengerbean
-        set messengerbean=#{messengerBean},messengerbeantype=#{messengerBeanType},accountcode=#{accountCode}
+        set messengerbean=#{messengerBean},messengerbeantype=#{messengerBeanType},accountcode=#{accountCode},freeze=#{freeze}
         where messengerbeancode=#{messengerBeanCode};
     </update>
 

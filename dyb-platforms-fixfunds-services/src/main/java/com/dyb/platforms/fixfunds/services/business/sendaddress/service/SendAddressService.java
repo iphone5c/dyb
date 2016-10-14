@@ -1,5 +1,6 @@
 package com.dyb.platforms.fixfunds.services.business.sendaddress.service;
 
+import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.sendaddress.dao.ISendAddressDao;
 import com.dyb.platforms.fixfunds.services.business.sendaddress.entity.SendAddress;
@@ -52,12 +53,20 @@ public class SendAddressService extends BaseService implements ISendAddressServi
             throw new DybRuntimeException("新增寄送地址时，联系电话不能为空");
         if (DybUtils.isEmptyOrNull(sendAddress.getAccountCode()))
             throw new DybRuntimeException("新增寄送地址时，关联账户code不能为空");
-        if (accountService.getAccountByCode(sendAddress.getAccountCode(), false)==null)
+        Account account=accountService.getAccountByCode(sendAddress.getAccountCode(), false);
+        if (account==null)
             throw new DybRuntimeException("新增寄送地址时，找不到此账户的信息");
+
         sendAddress.setSendAddressCode(UUID.randomUUID().toString());
         sendAddress.setCreateTime(new Date());
         int info=sendAddressDao.insertObject(sendAddress);
-        return info>0?sendAddress:null;
+        if (info>0){
+            if (sendAddress.isDefaultChecked()){
+                this.setSendAddressByDefaultChecked(account.getAccountCode(),sendAddress.getSendAddressCode());
+            }
+            return sendAddress;
+        }
+        return null;
     }
 
     /**
@@ -115,6 +124,42 @@ public class SendAddressService extends BaseService implements ISendAddressServi
         if (DybUtils.isEmptyOrNull(sendAddressCode))
             throw new DybRuntimeException("根据code获取寄送地址信息时，sendAddressCode不能为空");
         return sendAddressDao.getObject(sendAddressCode,true);
+    }
+
+    /**
+     * 给指定用户设置默认寄送地址
+     * @param accountCode 账户code
+     * @param sendAddressCode 寄送地址code
+     * @return true表示操作成功 false表示操作成功
+     */
+    @Override
+    public boolean setSendAddressByDefaultChecked(String accountCode, String sendAddressCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("账户code不能为空");
+        if (DybUtils.isEmptyOrNull(sendAddressCode))
+            throw new DybRuntimeException("设置默认选中的寄送地址code不能为空");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("accountCode",accountCode);
+        List<SendAddress> sendAddressList=sendAddressDao.queryList(queryParams,0,-1,true);
+        if (sendAddressList==null||sendAddressList.size()<=0)
+            throw new DybRuntimeException("此账户目前尚未添加寄送地址信息，请添加至少一张寄送地址信息");
+        boolean flag=false;
+        SendAddress[] updateSendAddress=new SendAddress[sendAddressList.size()];
+        int i=0;
+        for (SendAddress sendAddress:sendAddressList){
+            updateSendAddress[i]=sendAddress;
+            i++;
+            if (sendAddress.getSendAddressCode().equals(sendAddressCode)){
+                sendAddress.setDefaultChecked(true);
+                flag=true;
+            }else {
+                sendAddress.setDefaultChecked(false);
+            }
+        }
+        if (!flag)
+            throw new DybRuntimeException("没有找到此卡信息");
+        int info=sendAddressDao.updateList(updateSendAddress);
+        return info>0?true:false;
     }
 
 }

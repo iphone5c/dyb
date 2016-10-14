@@ -14,10 +14,12 @@
 <link rel="stylesheet" href="./css/base.css" />
 <link rel="stylesheet" href="./css/side.css" />
 <link rel="stylesheet" href="./css/register.css" />
+<link rel="stylesheet" href="./css/timepicki.css" />
 <script type="text/javascript" src="./js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="../js/commons.js"></script>
 <script type="text/javascript" src="../js/verification.js"></script>
 <script type="text/javascript" src="./js/uploadPreview.js"></script>
+<script type="text/javascript" src="./js/timepicki.js"></script>
 <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=5b66ed3b0491028a420e742daf016e6d&callback=init"></script>
 <style>
     /*地图*/
@@ -749,15 +751,19 @@
         <span class="ad-red">*</span> 企业电话:
     </div>
     <div class="register-form-cell-widget-25">
-        <input type="text" id="phone" name="phone" maxlength="13" class="ad-widget167 input-xfat" />
+        <input type="text" id="phone" name="phone" maxlength="13" data-rules="required|tel|maxlength=13|minlength=6" onkeyup="value=value.replace(/\s/g,'')" data-error-msg="企业电话格式有误" data-empty-msg="企业电话不能为空" class="ad-widget167 input-xfat" />
         <label class="yz-error"></label>
     </div>
     <div class="register-form-cell-7">
         <span class="ad-red">*</span> 营业时间:
     </div>
     <div class="register-form-cell-widget-25">
-        <input type="datetime" id="startBusinessTime" name="startBusinessTime" class="ad-widget69 input-xfat" /> -
-        <input type="datetime" id="endBusinessTime" name="endBusinessTime" class="ad-widget69 input-xfat" />
+        <!--<input type="datetime" id="startBusinessTime" name="startBusinessTime" data-rules="required|time" data-toggle="timepicker" data-empty-msg="请填写" class="ad-widget69 input-xfat" /> --->
+        <input id="startBusinessTime" type="text" name="time" placeholder="开始时间" class="btn_timepicki ad-widget69 input-xfat"/>
+        <span style="float: left;display: inline-block;width:20px;line-height: 32px;text-align: center"> - </span>
+
+        <!--<input type="datetime" id="endBusinessTime" name="endBusinessTime" data-rules="required|time" data-toggle="timepicker" data-empty-msg="请填写" class="ad-widget69 input-xfat" />-->
+        <input id="endBusinessTime" type="text" name="time" placeholder="结束时间" class="btn_timepicki ad-widget69 input-xfat"/>
         <label class="yz-error"></label>
         <label class="yz-error" style="margin-left: 50px"></label>
     </div>
@@ -1002,320 +1008,485 @@
 </form>
 </div>
 <div id="ad-content" class="ad-register ad-register3">
-    <ul id="warp">
-        <form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate">
-            <div class="register-nav" id="step3" style="display: none;">
-                <div class="register-nav-title">
-                    <div class="circle register-nav-icon">
-                        1
-                    </div>
-                    <div class="register-nav-text">
-                        获得链接注册
-                    </div>
-                </div>
-                <div class="register-nav-title">
-                    <div class="circle register-nav-icon">
-                        2
-                    </div>
-                    <div class="register-nav-text">
-                        完善资料
-                    </div>
-                </div>
-                <div class="register-nav-title active">
-                    <div class="circle register-nav-icon">
-                        3
-                    </div>
-                    <div class="register-nav-text">
-                        完成注册
-                    </div>
-                </div>
+<ul id="warp">
+<form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate">
+<div class="register-nav" id="step3" style="display: none;">
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            1
+        </div>
+        <div class="register-nav-text">
+            获得链接注册
+        </div>
+    </div>
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            2
+        </div>
+        <div class="register-nav-text">
+            完善资料
+        </div>
+    </div>
+    <div class="register-nav-title active">
+        <div class="circle register-nav-icon">
+            3
+        </div>
+        <div class="register-nav-text">
+            完成注册
+        </div>
+    </div>
+</div>
+<div class="register-nav register-nav2" id="step5" style="padding: 0px 20px;">
+    <div class="register-nav-title register-nav-title2" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            1
+        </div>
+        <div class="register-nav-text">
+            获得链接注册
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            2
+        </div>
+        <div class="register-nav-text">
+            完善资料
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title2 active" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            3
+        </div>
+        <div class="register-nav-text">
+            上传证照
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            4
+        </div>
+        <div class="register-nav-text">
+            设置地址
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            5
+        </div>
+        <div class="register-nav-text">
+            完成注册
+        </div>
+    </div>
+</div>
+<div class="register-nav" id="step4" style="display: none; padding:0px 20px;">
+    <div class="register-nav-title register-nav-title3" style="width: 25%;">
+        <div class="circle register-nav-icon">
+            1
+        </div>
+        <div class="register-nav-text">
+            获得链接注册
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title3" style="width: 25%;">
+        <div class="circle register-nav-icon">
+            2
+        </div>
+        <div class="register-nav-text">
+            完善资料
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title3 active" style="width: 25%;">
+        <div class="circle register-nav-icon">
+            3
+        </div>
+        <div class="register-nav-text">
+            上传证照
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title3" style="width: 25%;">
+        <div class="circle register-nav-icon">
+            4
+        </div>
+        <div class="register-nav-text">
+            完成注册
+        </div>
+    </div>
+</div>
+<div class="register-nav" id="perfect" style="display: none;">
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            1
+        </div>
+        <div class="register-nav-text">
+            获得链接注册
+        </div>
+    </div>
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            2
+        </div>
+        <div class="register-nav-text">
+            完善资料
+        </div>
+    </div>
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            3
+        </div>
+        <div class="register-nav-text">
+            完成注册
+        </div>
+    </div>
+</div>
+<div id="register-content">
+<div class="register-boxTitle" style="margin:10px 30px 20px 30px;">
+    证照资料
+</div>
+<div class="register-form-cell clearfix">
+    <div class="fl" style="margin:0px 0px 30px 30px;">
+        <div class="fl" style="line-height:32px; font-size:14px;&gt;&lt;span class=" ad-red"="">
+        *执照类型：
+    </div>
+    <div class="fl" style="width:330px;">
+                    <span class="fl sui-dropdown dropdown-bordered select10" style="margin-bottom:10px;">
+                        <span class="dropdown-inner">
+                            <input type="hidden" id="flag" value="1">
+                            <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                                <input id="businesslicenceType" value="2" name="businesslicenceType" type="hidden" />
+                                <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i>
+                                <span id="businesslicenceTypeSpan">新版营业执照</span>
+                            </a>
+                                    <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu10"  id="sub_xg_ul">
+                                        <li role="presentation" class="btn_old sub_val"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">旧版营业执照</a></li>
+                                        <li role="presentation" class="btn_new sub_val"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">新版营业执照</a></li>
+                                    </ul> </span> </span>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="fl div_new" style="width:270px; text-align:left;margin-left:50px">
+    <script type="text/javascript" src="./js/uploadPreview.js"></script>
+    <style>
+        .xg-input{
+            cursor: pointer;
+            display: block;
+            width: 160px !important;
+            height: 160px !important;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        .xg-img{
+            cursor: pointer;
+            width: 160px;
+            height: 160px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .licenceDiv{
+            position: relative;
+            width:160px;
+            height: 160px;
+        }
+        li{
+            list-style: none;
+        }
+    </style>
+    <div class="" style="line-height:32px; font-size:14px;width:160px;text-align: center">
+        <span class="ad-red">*</span>新版营业执照
+    </div>
+    <div id="newBusinesslicenceDiv" class="licenceDiv" style="margin-top: 10px;">
+        <li>
+            <img id="imgShow_WU_FILE_0" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
+            <input type="file" id="up_img_WU_FILE_0" class="xg-input" />
+            <input type="hidden" id="businessLicensePhoto1">
+        </li>
+        <div class="">
+            <div id="businesslicenceDiv" style="display:none">
+                <input id="businesslicence" type="hidden" />
+                <img class="ad-widget-img" src="" style="height:87px;width:125px;" />
             </div>
-            <div class="register-nav register-nav2" id="step5" style="padding: 0px 20px;">
-                <div class="register-nav-title register-nav-title2" style="width: 20%;">
-                    <div class="circle register-nav-icon">
-                        1
-                    </div>
-                    <div class="register-nav-text">
-                        获得链接注册
-                    </div>
-                </div>
-                <div class="register-nav-title register-nav-title2" style="width: 20%;">
-                    <div class="circle register-nav-icon">
-                        2
-                    </div>
-                    <div class="register-nav-text">
-                        完善资料
-                    </div>
-                </div>
-                <div class="register-nav-title register-nav-title2 active" style="width: 20%;">
-                    <div class="circle register-nav-icon">
-                        3
-                    </div>
-                    <div class="register-nav-text">
-                        上传证照
-                    </div>
-                </div>
-                <div class="register-nav-title register-nav-title2" style="width: 20%;">
-                    <div class="circle register-nav-icon">
-                        4
-                    </div>
-                    <div class="register-nav-text">
-                        设置地址
-                    </div>
-                </div>
-                <div class="register-nav-title register-nav-title2" style="width: 20%;">
-                    <div class="circle register-nav-icon">
-                        5
-                    </div>
-                    <div class="register-nav-text">
-                        完成注册
-                    </div>
-                </div>
+            <div id="taxregistrationDiv" style="display:none">
+                <input id="taxregistration" type="hidden" />
+                <img class="ad-widget-img" src="" style="height:89px;width:125px;" />
             </div>
-            <div class="register-nav" id="step4" style="display: none; padding:0px 20px;">
-                <div class="register-nav-title register-nav-title3" style="width: 25%;">
-                    <div class="circle register-nav-icon">
-                        1
-                    </div>
-                    <div class="register-nav-text">
-                        获得链接注册
-                    </div>
-                </div>
-                <div class="register-nav-title register-nav-title3" style="width: 25%;">
-                    <div class="circle register-nav-icon">
-                        2
-                    </div>
-                    <div class="register-nav-text">
-                        完善资料
-                    </div>
-                </div>
-                <div class="register-nav-title register-nav-title3 active" style="width: 25%;">
-                    <div class="circle register-nav-icon">
-                        3
-                    </div>
-                    <div class="register-nav-text">
-                        上传证照
-                    </div>
-                </div>
-                <div class="register-nav-title register-nav-title3" style="width: 25%;">
-                    <div class="circle register-nav-icon">
-                        4
-                    </div>
-                    <div class="register-nav-text">
-                        完成注册
-                    </div>
-                </div>
+            <input id="businesslicenceSrc" type="hidden" />
+            <input id="taxregistrationSrc" type="hidden" />
+        </div>
+        <div id="businesslicenceTips" class="sui-msg msg-error" style="display: none;">
+            <div class="msg-con">
+                <span>请上传营业执照</span>
             </div>
-            <div class="register-nav" id="perfect" style="display: none;">
-                <div class="register-nav-title">
-                    <div class="circle register-nav-icon">
-                        1
-                    </div>
-                    <div class="register-nav-text">
-                        获得链接注册
-                    </div>
+            <i class="msg-icon"></i>
+        </div>
+    </div>
+</div>
+<div class="fl div_old" style="width:500px; text-align:left;display: none">
+    <script type="text/javascript" src="./js/uploadPreview.js"></script>
+    <style>
+        .xg-input{
+            cursor: pointer;
+            display: block;
+            width: 160px !important;
+            height: 160px !important;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        .xg-img{
+            cursor: pointer;
+            width: 160px;
+            height: 160px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .licenceDiv{
+            position: relative;
+            width:160px;
+            height: 160px;
+        }
+        li{
+            list-style: none;
+        }
+    </style>
+    <div style='float: left;margin-left:50px;'>
+        <div class='' style='line-height:32px; font-size:14px;width:160px;text-align: center;'>
+        <span class='ad-red'>
+                        *
+                        </span>
+            旧版营业执照
+        </div>
+        <div id='newBusinesslicenceDiv' class='licenceDiv' style='margin-top:10px;'>
+            <li>
+                <img id='imgShow_WU_FILE_5' width='100' height='100' class='xg-img' src='./images/sc.png' />
+                <br/>
+                <input type='file' id='up_img_WU_FILE_5' class='xg-input' />
+                <input type='hidden' id='oldBusinessLicensePhoto1'>
+            </li>
+        </div>
+    </div>
+    <div  style='float: left;margin-left: 30px'>
+        <div class='' style='line-height:32px; font-size:14px;width:160px;text-align: center'>
+        <span class='ad-red'>
+                        *
+                        </span>
+            税务登记证
+        </div>
+        <div id='newBusinesslicenceDiv' class='licenceDiv' style='margin-top:10px;'>
+            <li>
+                <img id='imgShow_WU_FILE_6' width='100' height='100' class='xg-img' src='./images/sc.png' />
+                <br />
+                <input type='file' id='up_img_WU_FILE_6' class='xg-input' />
+                <input type='hidden' id='oldBusinessLicensePhoto2'>
+            </li>
+        </div>
+    </div>
+</div>
+<div class="fl" style="margin:0px 0px 30px 30px;">
+    <div class="" style="line-height:32px; font-size:14px;width:160px;text-align: center">
+        <span class="ad-red">*</span>法人身份证
+    </div>
+    <div class="" style="margin-top:10px;">
+        <div id="idcardPicDiv" class="licenceDiv">
+            <li>
+                <img id="imgShow_WU_FILE_1" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
+                <input type="file" id="up_img_WU_FILE_1" name="frsfz" class="xg-input" />
+                <input type="hidden" id="legalPersonPhoto"/>
+            </li>
+            <input id="idcardPicSrc" type="hidden" value="" />
+            <div id="idcardPicTips" class="sui-msg msg-error" style="display: none;">
+                <div class="msg-con">
+                    <span>请上传法人身份证</span>
                 </div>
-                <div class="register-nav-title">
-                    <div class="circle register-nav-icon">
-                        2
-                    </div>
-                    <div class="register-nav-text">
-                        完善资料
-                    </div>
-                </div>
-                <div class="register-nav-title">
-                    <div class="circle register-nav-icon">
-                        3
-                    </div>
-                    <div class="register-nav-text">
-                        完成注册
-                    </div>
-                </div>
+                <i class="msg-icon"></i>
             </div>
-            <div id="register-content">
-                <div class="register-boxTitle" style="margin:10px 30px 20px 30px;">
-                    证照资料
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="fl" style="width:220px; margin:0px 0px 30px 50px;">
+    <script type="text/javascript" src="./js/uploadPreview.js"></script>
+    <style>
+        .xg-input{
+            cursor: pointer;
+            display: block;
+            width: 160px !important;
+            height: 160px !important;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        .xg-img{
+            cursor: pointer;
+            width: 160px;
+            height: 160px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .licenceDiv{
+            position: relative;
+            width:160px;
+            height: 160px;
+        }
+        li{
+            list-style: none;
+        }
+    </style>
+    <div class="" style="line-height:32px; font-size:14px;width:160px">
+        <span class="ad-red">*</span>推荐人身份证
+    </div>
+    <div class="" style="margin-top:10px;">
+        <div id="idthreeDiv" class="licenceDiv">
+            <li>
+                <img id="imgShow_WU_FILE_2" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
+                <input type="file" id="up_img_WU_FILE_2" class="xg-input" />
+                <input type="hidden" id="recommendPersonPhoto" />
+            </li>
+            <input id="idthreePicSrc" type="hidden" value="" />
+            <div id="idthreeTips" class="sui-msg msg-error" style="display: none;">
+                <div class="msg-con">
+                    <span>请上传推荐人身份证</span>
                 </div>
-                <div class="register-form-cell clearfix">
-                    <div class="fl" style="margin:0px 0px 30px 30px;">
-                        <div class="fl" style="line-height:32px; font-size:14px;&gt;&lt;span class=">
-                        *执照类型：
-                    </div>
-                    <div class="fl" style="width:330px;">
-         <span class="fl sui-dropdown dropdown-bordered select10" style="margin-bottom:10px;"> <span class="dropdown-inner"><a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle"> <input id="businesslicenceType" value="2" name="businesslicenceType" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="businesslicenceTypeSpan">新版营业执照</span></a> 
-           <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu10">
-               <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">旧版营业执照</a></li>
-               <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">新版营业执照</a></li>
-           </ul> </span> </span>
-                        <div class="fl" style="width:100%; text-align:left;">
-                            <div id="newBusinesslicenceDiv" class="licenceDiv">
-                                <script type="text/javascript" src="./js/uploadPreview.js"></script>
-                                <style>
-                                    .xg-input{
-                                        cursor: pointer;
-                                        display: block;
-                                        width: 160px !important;
-                                        height: 160px !important;
-                                        background: red;
-                                        position: absolute;
-                                        left: 0;
-                                        top: 0;
-                                        opacity: 0;
-                                    }
-                                    .xg-img{
-                                        cursor: pointer;
-                                        width: 160px;
-                                        height: 160px;
-                                        position: absolute;
-                                        left: 0;
-                                        top: 0;
-                                    }
-                                    .licenceDiv{
-                                        position: relative;
-                                        width:160px;
-                                        height: 160px;
-                                    }
-                                    li{
-                                        list-style: none;
-                                    }
-                                </style>
-                                <li>
-                                    <img id="imgShow_WU_FILE_0" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
-                                    <input type="file" id="up_img_WU_FILE_0" class="xg-input" />
-                                    <input type="hidden" id="businessLicensePhoto1">
-                                </li>
-                                <div class="">
-                                    <div id="businesslicenceDiv" style="display:none">
-                                        <input id="businesslicence" type="hidden" />
-                                        <img class="ad-widget-img" src="" style="height:87px;width:125px;" />
-                                    </div>
-                                    <div id="taxregistrationDiv" style="display:none">
-                                        <input id="taxregistration" type="hidden" />
-                                        <img class="ad-widget-img" src="" style="height:89px;width:125px;" />
-                                    </div>
-                                    <input id="businesslicenceSrc" type="hidden" />
-                                    <input id="taxregistrationSrc" type="hidden" />
-                                </div>
-                                <div id="businesslicenceTips" class="sui-msg msg-error" style="display: none;">
-                                    <div class="msg-con">
-                                        <span>请上传营业执照</span>
-                                    </div>
-                                    <i class="msg-icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="fl" style="margin:0px 0px 30px 10px;">
-                        <div class="" style="line-height:32px; font-size:14px;width:160px">
-                            <span class="ad-red">*</span>法人身份证
-                        </div>
-                        <div class="" style="margin-top:10px;">
-                            <div id="idcardPicDiv" class="licenceDiv">
-                                <li>
-                                    <img id="imgShow_WU_FILE_1" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
-                                    <input type="file" id="up_img_WU_FILE_1" name="frsfz" class="xg-input" />
-                                    <input type="hidden" id="legalPersonPhoto"/>
-                                </li>
-                                <input id="idcardPicSrc" type="hidden" value="" />
-                                <div id="idcardPicTips" class="sui-msg msg-error" style="display: none;">
-                                    <div class="msg-con">
-                                        <span>请上传法人身份证</span>
-                                    </div>
-                                    <i class="msg-icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="fl" style="width:220px; margin:0px 0px 30px 50px;">
-                        <div class="" style="line-height:32px; font-size:14px;width:160px">
-                            <span class="ad-red">*</span>推荐人身份证
-                        </div>
-                        <div class="" style="margin-top:10px;">
-                            <div id="idthreeDiv" class="licenceDiv">
-                                <li>
-                                    <img id="imgShow_WU_FILE_2" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
-                                    <input type="file" id="up_img_WU_FILE_2" class="xg-input" />
-                                    <input type="hidden" id="recommendPersonPhoto" />
-                                </li>
-                                <input id="idthreePicSrc" type="hidden" value="" />
-                                <div id="idthreeTips" class="sui-msg msg-error" style="display: none;">
-                                    <div class="msg-con">
-                                        <span>请上传推荐人身份证</span>
-                                    </div>
-                                    <i class="msg-icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="fl" style="width:220px; margin-left:40px;">
-                        <div class="" style="line-height:32px; font-size:14px;width:160px;">
-                            <span class="ad-red">*</span>捐赠承诺书（签字版）
-                        </div>
-                        <div class="" style="margin-top:10px;">
-                            <div id="idfourDiv" class="licenceDiv">
-                                <li>
-                                    <img id="imgShow_WU_FILE_3" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
-                                    <input type="file" id="up_img_WU_FILE_3" class="xg-input" />
-                                    <input type="hidden" id="donationPhoto" />
-                                </li>
-                                <input id="idfourPicSrc" type="hidden" value="" />
-                                <div id="idfourTips" class="sui-msg msg-error" style="display: none;">
-                                    <div class="msg-con">
-                                        <span>请上传捐赠承诺书</span>
-                                    </div>
-                                    <i class="msg-icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="fl" style="margin-left:40px;">
-                        <div class="" style="line-height:32px; font-size:14px;width:160px">
-                            <span class="ad-red">*</span>店面门头照
-                        </div>
-                        <div class="" style="margin-top:10px;">
-                            <div id="imgUrlDiv" class="licenceDiv">
-                                <li>
-                                    <img id="imgShow_WU_FILE_4" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
-                                    <input type="file" id="up_img_WU_FILE_4" class="xg-input" />
-                                    <input type="hidden" id="storePhoto" />
-                                </li>
-                                <input id="imgUrlSrc" type="hidden" value="" />
-                            </div>
-                            <div id="imgUrlTips" class="sui-msg msg-error" style="display: none;">
-                                <div class="msg-con">
-                                    <span>请上传店面门头照</span>
-                                </div>
-                                <i class="msg-icon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="clear: both"></div>
-                <div class="register-form-cell" style="margin-top:40px;">
-                    <div class="register-form-cell-text">
-                        提示：
-                    </div>
-                    <div class="register-form-cell-text">
-                        1.若您持有的是三证合一的新版营业执照，只需上传一张执照即可。
-                    </div>
-                    <div class="register-form-cell-text">
-                        2.若您持有的是旧版营业执照，请务必上传营业执照、税务登记证两个证件照。
-                    </div>
-                    <!--<div class="register-form-cell-text">3.身份证上传请上传手持人身份证照片。</div>-->
-                    <div class="register-form-cell-text">
-                        3.以上所有图片都需要上传彩色照片。
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div>
-                    <br />
-                    <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="上一步" id="lastReg3" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="下一步" id="nextReg3" />
-                </div>
+                <i class="msg-icon"></i>
             </div>
-        </form>
-    </ul>
+        </div>
+    </div>
+</div>
+<div class="fl" style="width:220px; margin-left:40px;">
+    <script type="text/javascript" src="./js/uploadPreview.js"></script>
+    <style>
+        .xg-input{
+            cursor: pointer;
+            display: block;
+            width: 160px !important;
+            height: 160px !important;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        .xg-img{
+            cursor: pointer;
+            width: 160px;
+            height: 160px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .licenceDiv{
+            position: relative;
+            width:160px;
+            height: 160px;
+        }
+        li{
+            list-style: none;
+        }
+    </style>
+    <div class="" style="line-height:32px; font-size:14px;width:160px;">
+        <span class="ad-red">*</span>捐赠承诺书（签字版）
+    </div>
+    <div class="" style="margin-top:10px;">
+        <div id="idfourDiv" class="licenceDiv">
+            <li>
+                <img id="imgShow_WU_FILE_3" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
+                <input type="file" id="up_img_WU_FILE_3" class="xg-input" />
+                <input type="hidden" id="donationPhoto" />
+            </li>
+            <input id="idfourPicSrc" type="hidden" value="" />
+            <div id="idfourTips" class="sui-msg msg-error" style="display: none;">
+                <div class="msg-con">
+                    <span>请上传捐赠承诺书</span>
+                </div>
+                <i class="msg-icon"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fl" style="margin-left:40px;">
+    <script type="text/javascript" src="./js/uploadPreview.js"></script>
+    <style>
+        .xg-input{
+            cursor: pointer;
+            display: block;
+            width: 160px !important;
+            height: 160px !important;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        .xg-img{
+            cursor: pointer;
+            width: 160px;
+            height: 160px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .licenceDiv{
+            position: relative;
+            width:160px;
+            height: 160px;
+        }
+        li{
+            list-style: none;
+        }
+    </style>
+    <div class="" style="line-height:32px; font-size:14px;width:160px">
+        <span class="ad-red">*</span>店面门头照
+    </div>
+    <div class="" style="margin-top:10px;">
+        <div id="imgUrlDiv" class="licenceDiv">
+            <li>
+                <img id="imgShow_WU_FILE_4" width="100" height="100" class="xg-img" src="./images/sc.png" /><br />
+                <input type="file" id="up_img_WU_FILE_4" class="xg-input" />
+                <input type="hidden" id="storePhoto"/>
+            </li>
+            <input id="imgUrlSrc" type="hidden" value="" />
+        </div>
+        <div id="imgUrlTips" class="sui-msg msg-error" style="display: none;">
+            <div class="msg-con">
+                <span>请上传店面门头照</span>
+            </div>
+            <i class="msg-icon"></i>
+        </div>
+    </div>
+</div>
+</div>
+<div style="clear: both"></div>
+<div class="register-form-cell" style="margin-top:40px;">
+    <div class="register-form-cell-text">
+        提示：
+    </div>
+    <div class="register-form-cell-text">
+        1.若您持有的是三证合一的新版营业执照，只需上传一张执照即可。
+    </div>
+    <div class="register-form-cell-text">
+        2.若您持有的是旧版营业执照，请务必上传营业执照、税务登记证两个证件照。
+    </div>
+    <!--<div class="register-form-cell-text">3.身份证上传请上传手持人身份证照片。</div>-->
+    <div class="register-form-cell-text">
+        3.以上所有图片都需要上传彩色照片。
+    </div>
+    <div class="clear"></div>
+</div>
+<div>
+    <br />
+    <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="上一步" id="lastReg3" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="下一步" id="nextReg3" />
+</div>
+</form>
+</ul>
 </div>
 <div id="ad-content" class="ad-register ad-register4">
     <form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate">
@@ -1646,11 +1817,30 @@
     $(function(){
 //        下一步
         $("#nextReg3").click(function(){
-            var businessLicensePhoto1=uploadService('/web/commons/upload','up_img_WU_FILE_0','businessLicensePhoto1');
-            if(businessLicensePhoto1.statusCode!=1000){
-                alert("营业执照图片必须上传");
-                return;
+            var flag=$("#flag").val();
+            if(flag==1){
+                var businessLicensePhoto1=uploadService('/web/commons/upload','up_img_WU_FILE_0','businessLicensePhoto1');
+                if(businessLicensePhoto1.statusCode!=1000){
+                    alert("新版营业执照图片必须上传");
+                    return;
+                }
+                $("#businessLicensePhoto1").val(businessLicensePhoto1.result.businessLicensePhoto1.path);
+            }else if(flag==2){
+                var oldBusinessLicensePhoto1=uploadService('/web/commons/upload','up_img_WU_FILE_5','oldBusinessLicensePhoto1');
+                if(oldBusinessLicensePhoto1.statusCode!=1000){
+                    alert("旧版营业执照图片必须上传");
+                    return;
+                }
+                var oldBusinessLicensePhoto2=uploadService('/web/commons/upload','up_img_WU_FILE_6','oldBusinessLicensePhoto2');
+                if(oldBusinessLicensePhoto2.statusCode!=1000){
+                    alert("税务登记证图片必须上传");
+                    return;
+                }
+                $("#oldBusinessLicensePhoto1").val(oldBusinessLicensePhoto1.result.oldBusinessLicensePhoto1.path);
+                $("#oldBusinessLicensePhoto2").val(oldBusinessLicensePhoto2.result.oldBusinessLicensePhoto2.path);
             }
+
+
             var legalPersonPhoto=uploadService('/web/commons/upload','up_img_WU_FILE_1','legalPersonPhoto');
             if(legalPersonPhoto.statusCode!=1000){
                 alert("法人身份证照片必须上传");
@@ -1671,25 +1861,18 @@
                 alert("店面门头照片必须上传");
                 return;
             }
-            $("#businessLicensePhoto1").val(businessLicensePhoto1.result.businessLicensePhoto1.path);
             $("#legalPersonPhoto").val(legalPersonPhoto.result.legalPersonPhoto.path);
             $("#recommendPersonPhoto").val(recommendPersonPhoto.result.recommendPersonPhoto.path);
             $("#donationPhoto").val(donationPhoto.result.donationPhoto.path);
             $("#storePhoto").val(storePhoto.result.storePhoto.path);
-            console.log($("#storePhoto").val(storePhoto.result.storePhoto.path))
+
             $(".ad-register1").css({"display":"none"});
             $(".ad-register2").css({"display":"none"});
             $(".ad-register3").css({"display":"none"});
             $(".ad-register5").css({"display":"none"});
             $(".ad-register4").css({"display":"block"})
         });
-        $("#nextReg4").click(function(){
-            $(".ad-register1").css({"display":"none"});
-            $(".ad-register2").css({"display":"none"});
-            $(".ad-register3").css({"display":"none"});
-            $(".ad-register4").css({"display":"none"});
-            $(".ad-register5").css({"display":"block"})
-        });
+
 
 //        上一步
         $("#lastReg2").click(function(){
@@ -1889,6 +2072,17 @@
         $('.dropdown-inner').mouseleave(function(){
             $(".select10").removeClass("open");
         });
+        //    新旧版切换
+        $(".btn_old").click(function(){
+            $("#flag").val($("#sub_xg_ul .active>a").attr("value"));
+            $(".div_new").hide();
+            $(".div_old").show()
+        });
+        $(".btn_new").click(function(){
+            $("#flag").val($("#sub_xg_ul .active>a").attr("value"));
+            $(".div_old").hide()
+            $(".div_new").show()
+        })
 
     })
 </script>

@@ -5,9 +5,6 @@
 
 $(function(){
     $(".btn_timepicki").timepicki();
-    //$(".register-form-cell-widget").click(function(){
-    //    alert(111)
-    //});
     function submit(){
         var flag=$("#flag").val();
         var param={
@@ -101,13 +98,17 @@ $(function(){
             alert(data.errorMessage);
             return;
         }
-        alert(data.flag)
+//        alert(data.flag)
+        $(".ad-register1").css({"display":"none"});
+        $(".ad-register2").css({"display":"none"});
+        $(".ad-register3").css({"display":"none"});
+        $(".ad-register4").css({"display":"none"});
+        $(".ad-register5").css({"display":"block"});
     }
-    $(".lin_submit").click(function(){
-            submit();
-        }
-    )
+    $("#nextReg4").click(function(){
+        submit();
 
+    });
     $('#s_province').on('change',function() {
         var i=$("#s_province").index(this);
         provinceVal = $('#s_province').eq(i).val();

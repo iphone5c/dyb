@@ -24,14 +24,25 @@ $(function(){
     }
     if(data.statusCode==1000){
         for(var i=0;i<data.result.length;i++){
-           $("#addres tbody").html( $("#addres tbody").html()+
-                "<tr>" +
-               "<td>"+data.result[i].receiver+"</td>" +
-               "<td>"+data.result[i].phone+"</td>" +
-               "<td>"+data.result[i].province+""+data.result[i].city+""+data.result[i].address+"</td>" +
-               "<td>"+data.result[i].postalcode+"</td>" +
-               "<td><a class='defaultAddress'>设为默认地址</a>&nbsp;<a class='deleteAddress' id="+data.result[i].sendAddressCode+">删除</a></td>" +
-               "</tr>")
+            if(data.result[i].defaultChecked == false){
+                $("#addres tbody").html( $("#addres tbody").html()+
+                    "<tr>" +
+                    "<td>"+data.result[i].receiver+"</td>" +
+                    "<td>"+data.result[i].phone+"</td>" +
+                    "<td>"+data.result[i].province+""+data.result[i].city+""+data.result[i].address+"</td>" +
+                    "<td>"+data.result[i].postalcode+"</td>" +
+                    "<td><a class='defaultAddress'>设为默认地址</a>&nbsp;<a class='deleteAddress' id="+data.result[i].sendAddressCode+">删除</a></td>" +
+                    "</tr>")
+            }else if(data.result[i].defaultChecked == true){
+                $("#addres tbody").html( $("#addres tbody").html()+
+                    "<tr>" +
+                    "<td>"+data.result[i].receiver+"</td>" +
+                    "<td>"+data.result[i].phone+"</td>" +
+                    "<td>"+data.result[i].province+""+data.result[i].city+""+data.result[i].address+"</td>" +
+                    "<td>"+data.result[i].postalcode+"</td>" +
+                    "<td><a class='defaultAddress'>默认地址</a>&nbsp;<a class='deleteAddress' id="+data.result[i].sendAddressCode+">删除</a></td>" +
+                    "</tr>")
+            }
         }
     }
     $("#insertButton").click(function(){

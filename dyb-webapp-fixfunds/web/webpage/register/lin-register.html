@@ -18,7 +18,109 @@
 <script type="text/javascript" src="../js/commons.js"></script>
 <script type="text/javascript" src="../js/verification.js"></script>
 <script type="text/javascript" src="./js/uploadPreview.js"></script>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=5b66ed3b0491028a420e742daf016e6d&callback=init"></script>
 <style>
+    /*地图*/
+    li{
+        list-style: none;
+    }
+    .info {
+        border: solid 1px silver;
+    }
+    div.info-top {
+        position: relative;
+        background: none repeat scroll 0 0 #F9F9F9;
+        border-bottom: 1px solid #CCC;
+        border-radius: 0 !important;
+    }
+    div.info-top div {
+        display: inline-block;
+        color: #333333;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 31px;
+        padding: 0 10px;
+    }
+    div.info-top img {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        transition-duration: 0.25s;
+    }
+    div.info-top img:hover {
+        box-shadow: 0px 0px 5px #000;
+    }
+    div.info-middle img{
+        float: left;
+        width: 160px;
+        height: 120px;
+    }
+    div.info-middle div{
+        margin-top: -20px;
+        float: left;
+        width: 200px;
+        text-align: left;
+    }
+    div.info-middle div span{
+        text-align: left;
+    }
+    div.info-middle {
+        width: 100%;
+        font-size: 12px;
+        height: 150px;
+        padding-top: 15px;
+        border-radius: 0 !important;
+    }
+    div.info-bottom {
+        height: 0px;
+        width: 50%;
+        clear: both;
+        text-align: center;
+    }
+    div.info-bottom img {
+        position: relative;
+        z-index: 104;
+    }
+    /*span {*/
+    /*margin-left: 5px;*/
+    /*font-size: 11px;*/
+    /*}*/
+    .info-middle img {
+        float: left;
+        margin-right: 6px;
+    }
+    /*省市*/
+    .top{ margin:5px auto; color:#990000; text-align:center;}
+    .info select{  background:#FFFFFF;}
+    .info{
+        float: left;text-align:center;}
+    .info #show{ color:#3399FF; }
+    .bottom{ text-align:right; font-size:12px; color:#CCCCCC; width:1000px;}
+    select{
+        width: 155px;
+        height: 32px !important;
+        outline: none !important;
+        border: 1px solid #CCCCCC !important;
+        color: #555 !important;
+        font-size: 13px !important;
+        box-sizing: border-box;
+        appearance:none;
+        -moz-appearance:none;
+        -webkit-appearance:none;
+        -ms-appearance:none;
+        padding-top: 5px !important;
+    }
+    select a{
+        text-decoration:none;
+        box-sizing: border-box;
+        color: #555 !important;
+    }
+    select option{
+        text-decoration:none;
+        box-sizing: border-box;
+        color: #555 !important;
+    }
+    select a:hover{color:#28a3ef;}
     .xg-input{
         cursor: pointer;
         display: block;
@@ -74,513 +176,494 @@
     </div>
 </div>
 <div id="ad-content" class="ad-register ad-register1">
-    <form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate">
-        <div class="register-nav" id="step3" style="display: none;">
-            <div class="register-nav-title active">
-                <div class="circle register-nav-icon">
-                    1
-                </div>
-                <div class="register-nav-text">
-                    获得链接注册
-                </div>
-            </div>
-            <div class="register-nav-title">
-                <div class="circle register-nav-icon">
-                    2
-                </div>
-                <div class="register-nav-text">
-                    完善资料
-                </div>
-            </div>
-            <div class="register-nav-title">
-                <div class="circle register-nav-icon">
-                    3
-                </div>
-                <div class="register-nav-text">
-                    完成注册
-                </div>
-            </div>
+<form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate">
+<div class="register-nav" id="step3" style="display: none;">
+    <div class="register-nav-title active">
+        <div class="circle register-nav-icon">
+            1
         </div>
-        <div class="register-nav register-nav2" id="step5" style="padding: 0px 20px;">
-            <div class="register-nav-title register-nav-title2 active" style="width: 20%;">
-                <div class="circle register-nav-icon">
-                    1
-                </div>
-                <div class="register-nav-text">
-                    获得链接注册
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title2" style="width: 20%;">
-                <div class="circle register-nav-icon">
-                    2
-                </div>
-                <div class="register-nav-text">
-                    完善资料
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title2" style="width: 20%;">
-                <div class="circle register-nav-icon">
-                    3
-                </div>
-                <div class="register-nav-text">
-                    上传证照
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title2" style="width: 20%;">
-                <div class="circle register-nav-icon">
-                    4
-                </div>
-                <div class="register-nav-text">
-                    设置地址
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title2" style="width: 20%;">
-                <div class="circle register-nav-icon">
-                    5
-                </div>
-                <div class="register-nav-text">
-                    完成注册
-                </div>
-            </div>
+        <div class="register-nav-text">
+            获得链接注册
         </div>
-        <div class="register-nav" id="step4" style="display: none; padding:0px 20px;">
-            <div class="register-nav-title register-nav-title3 active" style="width: 25%;">
-                <div class="circle register-nav-icon">
-                    1
-                </div>
-                <div class="register-nav-text">
-                    获得链接注册
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title3" style="width: 25%;">
-                <div class="circle register-nav-icon">
-                    2
-                </div>
-                <div class="register-nav-text">
-                    完善资料
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title3" style="width: 25%;">
-                <div class="circle register-nav-icon">
-                    3
-                </div>
-                <div class="register-nav-text">
-                    上传证照
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title3" style="width: 25%;">
-                <div class="circle register-nav-icon">
-                    4
-                </div>
-                <div class="register-nav-text">
-                    完成注册
-                </div>
-            </div>
+    </div>
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            2
         </div>
-        <div class="register-nav" id="perfect" style="display: none;">
-            <div class="register-nav-title">
-                <div class="circle register-nav-icon">
-                    1
-                </div>
-                <div class="register-nav-text">
-                    获得链接注册
-                </div>
-            </div>
-            <div class="register-nav-title active">
-                <div class="circle register-nav-icon">
-                    2
-                </div>
-                <div class="register-nav-text">
-                    完善资料
-                </div>
-            </div>
-            <div class="register-nav-title">
-                <div class="circle register-nav-icon">
-                    3
-                </div>
-                <div class="register-nav-text">
-                    完成注册
-                </div>
-            </div>
+        <div class="register-nav-text">
+            完善资料
         </div>
-        <div id="register-content">
-            <div class="register-tuijianren">
-                <div>
-                    推荐人：
-                    <span id="referrerName">常颉</span>
-                </div>
-                <input type="hidden" id="referrer" name="referrer" value="364427" />
-                <input type="hidden" id="referrerType" name="referrerType" value="2" />
-                <div>
-                    推荐人手机号：
-                    <span id="referrerMobile">18683446699</span>
-                </div>
-            </div>
-            <div id="topageDiv" style="display: none;">
-                <input type="button" id="topage" value="跳转" />
-            </div>
-            <div class="register-form-cell regAgentType" style="display: none;">
-                <div class="register-form-cell-title">
-                    <span class="ad-red">*</span> 服务商分类:
-                </div>
-                <div class="register-form-cell-widget controls">
+    </div>
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            3
+        </div>
+        <div class="register-nav-text">
+            完成注册
+        </div>
+    </div>
+</div>
+<div class="register-nav register-nav2" id="step5" style="padding: 0px 20px;">
+    <div class="register-nav-title register-nav-title2 active" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            1
+        </div>
+        <div class="register-nav-text">
+            获得链接注册
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            2
+        </div>
+        <div class="register-nav-text">
+            完善资料
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            3
+        </div>
+        <div class="register-nav-text">
+            上传证照
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            4
+        </div>
+        <div class="register-nav-text">
+            设置地址
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            5
+        </div>
+        <div class="register-nav-text">
+            完成注册
+        </div>
+    </div>
+</div>
+<div class="register-nav" id="step4" style="display: none; padding:0px 20px;">
+    <div class="register-nav-title register-nav-title3 active" style="width: 25%;">
+        <div class="circle register-nav-icon">
+            1
+        </div>
+        <div class="register-nav-text">
+            获得链接注册
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title3" style="width: 25%;">
+        <div class="circle register-nav-icon">
+            2
+        </div>
+        <div class="register-nav-text">
+            完善资料
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title3" style="width: 25%;">
+        <div class="circle register-nav-icon">
+            3
+        </div>
+        <div class="register-nav-text">
+            上传证照
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title3" style="width: 25%;">
+        <div class="circle register-nav-icon">
+            4
+        </div>
+        <div class="register-nav-text">
+            完成注册
+        </div>
+    </div>
+</div>
+<div class="register-nav" id="perfect" style="display: none;">
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            1
+        </div>
+        <div class="register-nav-text">
+            获得链接注册
+        </div>
+    </div>
+    <div class="register-nav-title active">
+        <div class="circle register-nav-icon">
+            2
+        </div>
+        <div class="register-nav-text">
+            完善资料
+        </div>
+    </div>
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            3
+        </div>
+        <div class="register-nav-text">
+            完成注册
+        </div>
+    </div>
+</div>
+<div id="register-content">
+    <div class="register-tuijianren">
+        <div>
+            推荐人：
+            <span id="referrerName">常颉</span>
+        </div>
+        <input type="hidden" id="referrer" name="referrer" value="364427" />
+        <input type="hidden" id="referrerType" name="referrerType" value="2" />
+        <div>
+            推荐人手机号：
+            <span id="referrerMobile">18683446699</span>
+        </div>
+    </div>
+    <div id="topageDiv" style="display: none;">
+        <input type="button" id="topage" value="跳转" />
+    </div>
+    <div class="register-form-cell regAgentType" style="display: none;">
+        <div class="register-form-cell-title">
+            <span class="ad-red">*</span> 服务商分类:
+        </div>
+        <div class="register-form-cell-widget controls">
        <span class="sui-dropdown dropdown-bordered select"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget110 input-xfat dropdown-toggle" style="width: 146px;"> <input id="ispersonal" value="" name="ispersonal" data-rules="required" data-empty-msg="请选择类别" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="ispersonalSapn">请选择类别</span></a> 
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu">
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">企业服务商</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">个人服务商</a></li>
          </ul> </span> </span>
-                    <span class="help-inline1" style="display: none; white-space:nowrap; color:#999; padding-left:10px; max-width:500px;">注:若选择企业服务商需提供营业执照、身份证照片</span>
-                </div>
-            </div>
-            <div class="register-form-cell regMerchantType" style="">
-                <div class="register-form-cell-title">
-                    <span class="ad-red">*</span> 商户分类:
-                </div>
-                <div class="register-form-cell-widget controls">
+            <span class="help-inline1" style="display: none; white-space:nowrap; color:#999; padding-left:10px; max-width:500px;">注:若选择企业服务商需提供营业执照、身份证照片</span>
+        </div>
+    </div>
+    <div class="register-form-cell regMerchantType" style="">
+        <div class="register-form-cell-title">
+            <span class="ad-red">*</span> 商户分类:
+        </div>
+        <div class="register-form-cell-widget controls">
        <span class="sui-dropdown dropdown-bordered select1"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget110 input-xfat dropdown-toggle" style="width: 146px;"> <input id="merchantType" value="29" name="merchantType" data-rules="required" data-empty-msg="请选择类别" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="merchantTypeSapn">零售商</span></a> 
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="29">零售商</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="28">贸易商</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="27">制造商</a></li>
          </ul> </span> </span>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-title">
-                    <span class="ad-red">*</span> 用户名:
-                </div>
-                <div class="register-form-cell-widget">
-                    <input type="text" placeholder="请输入用户名" id="username" name="accountName" class="input-xfat" />
-                    <label class="yz-error"></label>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-title">
-                    <span class="ad-red">*</span> 密码:
-                </div>
-                <div class="register-form-cell-widget">
-                    <input type="password" placeholder="请输入6-16位密码" id="userpwd" name="password" data-rules="required|minlength=6|maxlength=16" data-error-msg="密码必须是6-16位" data-empty-msg="密码不能为空" class="input-xfat" />
-                    <label class="yz-error"></label>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-title">
-                    <span class="ad-red">*</span> 再次输入密码:
-                </div>
-                <div class="register-form-cell-widget">
-                    <input type="password" placeholder="请再次输入密码" id="password" name="password" data-rules="required|match=userpwd" data-error-msg="密码不一致" data-empty-msg="密码不能为空" class="input-xfat" />
-                    <label class="yz-error"></label>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-title">
-                    <span class="ad-red">*</span> 手机号码:
-                </div>
-                <div class="register-form-cell-widget">
-                    <input type="text" placeholder="请输入手机号码" id="mobilenumber" maxlength="11" title="手机号码" name="accountPhone" data-rules="required|mobile|maxlength=11" data-error-msg="手机格式有误" data-empty-msg="手机号码不能为空" class="input-xfat" />
-                    <label class="yz-error"></label>
-                    <div id="mobileError" class="sui-msg msg-error" style="display: none;">
-                        <div class="msg-con">
-                            <span id="mobileErrorTip"></span>
-                        </div>
-                        <i class="msg-icon"></i>
-                    </div>
-                    <!-- <div id="businesslicenceTips" class="sui-msg msg-error" style="display: none;">
-                                    <div class="msg-con">
-                                        <span>请上传营业执照</span>
-                                    </div>   <i class="msg-icon"></i>
-                                </div> -->
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-title">
-                    <span class="ad-red">*</span> 图文验证码:
-                </div>
-                <div class="register-form-cell-widget">
-                    <input class="input-xfat ad-msg-ipt" placeholder="验证码" title="图文验证码" maxlength="4" type="text" id="imgCode" name="imgCode"/>
-                    <img src="" id="CreateCheckCode" style="height:32px;" align="middle" class="check_code_img float_left" />
-                    <label class="yz-error"></label>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-title">
-                    <span class="ad-red">*</span> 验证码:
-                </div>
-                <div class="register-form-cell-widget">
-                    <input id="verifyCode" placeholder="验证码" name="verifyCode" type="text" class="input-xfat ad-msg-ipt" maxlength="6"/>
-                    <button type="button" class="sui-btn ad-msg-btn" id="sendMsgBtn">获取验证码</button>
-                    <label class="yz-error"></label>
-                </div>
-            </div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-title">
-                    &nbsp;
-                </div>
-                <div class="register-form-cell-widget">
-                    <input type="checkbox" id="readProtocol" name="readProtocol" data-rules="required" />&nbsp;&nbsp;
-                    <label for="readProtocol">我已阅读并同意<a href="javascript:void(0);" id="protocol">《一点公益联盟商注册协议》</a></label>
-                    <label class="yz-error"></label>
-                </div>
-            </div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-title">
-                    &nbsp;
-                </div>
-                <div class="register-form-cell-widget">
-                    <button type="submit" class="sui-btn btn-primary btn-large ad-register-stp-btn ad-none-btn" id="nextReg1" style="width:120px;">下一步</button>
-                </div>
-            </div>
         </div>
-    </form>
+    </div>
+    <div class="clear"></div>
+    <div class="register-form-cell">
+        <div class="register-form-cell-title">
+            <span class="ad-red">*</span> 用户名:
+        </div>
+        <div class="register-form-cell-widget">
+            <input type="text" placeholder="请输入用户名" id="username" name="accountName" class="input-xfat" />
+            <label class="yz-error"></label>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="register-form-cell">
+        <div class="register-form-cell-title">
+            <span class="ad-red">*</span> 密码:
+        </div>
+        <div class="register-form-cell-widget">
+            <input type="password" placeholder="请输入6-16位密码" id="userpwd" name="password" data-rules="required|minlength=6|maxlength=16" data-error-msg="密码必须是6-16位" data-empty-msg="密码不能为空" class="input-xfat" />
+            <label class="yz-error"></label>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="register-form-cell">
+        <div class="register-form-cell-title">
+            <span class="ad-red">*</span> 再次输入密码:
+        </div>
+        <div class="register-form-cell-widget">
+            <input type="password" placeholder="请再次输入密码" id="password" name="password" data-rules="required|match=userpwd" data-error-msg="密码不一致" data-empty-msg="密码不能为空" class="input-xfat" />
+            <label class="yz-error"></label>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="register-form-cell">
+        <div class="register-form-cell-title">
+            <span class="ad-red">*</span> 手机号码:
+        </div>
+        <div class="register-form-cell-widget">
+            <input type="text" placeholder="请输入手机号码" id="mobilenumber" maxlength="11" title="手机号码" name="accountPhone" data-rules="required|mobile|maxlength=11" data-error-msg="手机格式有误" data-empty-msg="手机号码不能为空" class="input-xfat" />
+            <label class="yz-error"></label>
+            <div id="mobileError" class="sui-msg msg-error" style="display: none;">
+                <div class="msg-con">
+                    <span id="mobileErrorTip"></span>
+                </div>
+                <i class="msg-icon"></i>
+            </div>
+            <!-- <div id="businesslicenceTips" class="sui-msg msg-error" style="display: none;">
+                            <div class="msg-con">
+                                <span>请上传营业执照</span>
+                            </div>   <i class="msg-icon"></i>
+                        </div> -->
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="register-form-cell">
+        <div class="register-form-cell-title">
+            <span class="ad-red">*</span> 图文验证码:
+        </div>
+        <div class="register-form-cell-widget">
+            <input class="input-xfat ad-msg-ipt" placeholder="验证码" title="图文验证码" maxlength="4" type="text" id="imgCode" name="imgCode"/>
+            <img src="" id="CreateCheckCode" style="height:32px;" align="middle" class="check_code_img float_left" />
+            <label class="yz-error"></label>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="register-form-cell">
+        <div class="register-form-cell-title">
+            <span class="ad-red">*</span> 验证码:
+        </div>
+        <div class="register-form-cell-widget">
+            <input id="verifyCode" placeholder="验证码" name="verifyCode" type="text" class="input-xfat ad-msg-ipt" maxlength="6"/>
+            <button type="button" class="sui-btn ad-msg-btn" id="sendMsgBtn">获取验证码</button>
+            <label class="yz-error"></label>
+        </div>
+    </div>
+    <div class="register-form-cell">
+        <div class="register-form-cell-title">
+            &nbsp;
+        </div>
+        <div class="register-form-cell-widget">
+            <input type="checkbox" id="readProtocol" name="readProtocol" data-rules="required" />&nbsp;&nbsp;
+            <label for="readProtocol">我已阅读并同意<a href="javascript:void(0);" id="protocol">《一点公益联盟商注册协议》</a></label>
+            <label class="yz-error"></label>
+        </div>
+    </div>
+    <div class="register-form-cell">
+        <div class="register-form-cell-title">
+            &nbsp;
+        </div>
+        <div class="register-form-cell-widget">
+            <button type="submit" class="sui-btn btn-primary btn-large ad-register-stp-btn ad-none-btn" id="nextReg1" style="width:120px;">下一步</button>
+        </div>
+    </div>
+</div>
+</form>
 </div>
 <div id="ad-content" class="ad-register ad-register2">
-    <form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate">
-        <div class="register-nav" id="step3" style="display: none;">
-            <div class="register-nav-title">
-                <div class="circle register-nav-icon">
-                    1
-                </div>
-                <div class="register-nav-text">
-                    获得链接注册
-                </div>
-            </div>
-            <div class="register-nav-title active">
-                <div class="circle register-nav-icon">
-                    2
-                </div>
-                <div class="register-nav-text">
-                    完善资料
-                </div>
-            </div>
-            <div class="register-nav-title">
-                <div class="circle register-nav-icon">
-                    3
-                </div>
-                <div class="register-nav-text">
-                    完成注册
-                </div>
-            </div>
+<form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate">
+<div class="register-nav" id="step3" style="display: none;">
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            1
         </div>
-        <div class="register-nav register-nav2" id="step5" style="padding: 0px 20px;">
-            <div class="register-nav-title register-nav-title2" style="width: 20%;">
-                <div class="circle register-nav-icon">
-                    1
-                </div>
-                <div class="register-nav-text">
-                    获得链接注册
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title2 active" style="width: 20%;">
-                <div class="circle register-nav-icon">
-                    2
-                </div>
-                <div class="register-nav-text">
-                    完善资料
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title2" style="width: 20%;">
-                <div class="circle register-nav-icon">
-                    3
-                </div>
-                <div class="register-nav-text">
-                    上传证照
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title2" style="width: 20%;">
-                <div class="circle register-nav-icon">
-                    4
-                </div>
-                <div class="register-nav-text">
-                    设置地址
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title2" style="width: 20%;">
-                <div class="circle register-nav-icon">
-                    5
-                </div>
-                <div class="register-nav-text">
-                    完成注册
-                </div>
-            </div>
+        <div class="register-nav-text">
+            获得链接注册
         </div>
-        <div class="register-nav" id="step4" style="display: none; padding:0px 20px;">
-            <div class="register-nav-title register-nav-title3" style="width: 25%;">
-                <div class="circle register-nav-icon">
-                    1
-                </div>
-                <div class="register-nav-text">
-                    获得链接注册
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title3 active" style="width: 25%;">
-                <div class="circle register-nav-icon">
-                    2
-                </div>
-                <div class="register-nav-text">
-                    完善资料
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title3" style="width: 25%;">
-                <div class="circle register-nav-icon">
-                    3
-                </div>
-                <div class="register-nav-text">
-                    上传证照
-                </div>
-            </div>
-            <div class="register-nav-title register-nav-title3" style="width: 25%;">
-                <div class="circle register-nav-icon">
-                    4
-                </div>
-                <div class="register-nav-text">
-                    完成注册
-                </div>
-            </div>
+    </div>
+    <div class="register-nav-title active">
+        <div class="circle register-nav-icon">
+            2
         </div>
-        <div class="register-nav" id="perfect" style="display: none;">
-            <div class="register-nav-title">
-                <div class="circle register-nav-icon">
-                    1
-                </div>
-                <div class="register-nav-text">
-                    获得链接注册
-                </div>
-            </div>
-            <div class="register-nav-title">
-                <div class="circle register-nav-icon">
-                    2
-                </div>
-                <div class="register-nav-text">
-                    完善资料
-                </div>
-            </div>
-            <div class="register-nav-title">
-                <div class="circle register-nav-icon">
-                    3
-                </div>
-                <div class="register-nav-text">
-                    完成注册
-                </div>
-            </div>
+        <div class="register-nav-text">
+            完善资料
         </div>
-        <div id="register-content">
-            <div class="register-tuijianren">
-                <div>
-                    推荐人：
-                    <span id="referrerName">常颉</span>
-                </div>
-                <div>
-                    推荐人手机号：
-                    <span id="referrerMobile">18683446699</span>
-                </div>
-                <input type="hidden" value="11111" id="username" name="username" />
-                <input type="hidden" value="96e79218965eb72c92a549dd5a330112" id="userpwd" name="userpwd" />
-                <input type="hidden" value="2" id="usertype" name="usertype" />
-                <input type="hidden" value="15281178751" id="mobilenumber" name="mobilenumber" />
-                <input type="hidden" value="364427" id="referrer" name="referrer" />
-                <input type="hidden" value="18683446699" id="referrerphone" name="referrerphone" />
-            </div>
-            <div class="register-boxTitle">
-                基本信息
-            </div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 企业名称:
-                </div>
-                <div class="register-form-cell-widget-30" style="width:500px;">
-                    <input style="width:500px;" type="text" id="companyname" name="companyname" placeholder="必须和营业执照上的名称一致" data-rules="required|minlength=6|maxlength=25|companyname" data-empty-msg="企业名称不能为空" class="ad-widget222 input-xfat" />
-                </div>
-            </div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 店铺名称：
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="shopname" name="shopname" placeholder="请输入店铺名称" data-rules="required|minlength=1|maxlength=25|companyname" data-empty-msg="店铺名称不能为空" class="ad-widget222 input-xfat" />
-                </div>
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 激励模式:
-                </div>
-                <div class="register-form-cell-widget-25 controls">
+    </div>
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            3
+        </div>
+        <div class="register-nav-text">
+            完成注册
+        </div>
+    </div>
+</div>
+<div class="register-nav register-nav2" id="step5" style="padding: 0px 20px;">
+    <div class="register-nav-title register-nav-title2" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            1
+        </div>
+        <div class="register-nav-text">
+            获得链接注册
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title2 active" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            2
+        </div>
+        <div class="register-nav-text">
+            完善资料
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            3
+        </div>
+        <div class="register-nav-text">
+            上传证照
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            4
+        </div>
+        <div class="register-nav-text">
+            设置地址
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;">
+        <div class="circle register-nav-icon">
+            5
+        </div>
+        <div class="register-nav-text">
+            完成注册
+        </div>
+    </div>
+</div>
+<div class="register-nav" id="step4" style="display: none; padding:0px 20px;">
+    <div class="register-nav-title register-nav-title3" style="width: 25%;">
+        <div class="circle register-nav-icon">
+            1
+        </div>
+        <div class="register-nav-text">
+            获得链接注册
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title3 active" style="width: 25%;">
+        <div class="circle register-nav-icon">
+            2
+        </div>
+        <div class="register-nav-text">
+            完善资料
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title3" style="width: 25%;">
+        <div class="circle register-nav-icon">
+            3
+        </div>
+        <div class="register-nav-text">
+            上传证照
+        </div>
+    </div>
+    <div class="register-nav-title register-nav-title3" style="width: 25%;">
+        <div class="circle register-nav-icon">
+            4
+        </div>
+        <div class="register-nav-text">
+            完成注册
+        </div>
+    </div>
+</div>
+<div class="register-nav" id="perfect" style="display: none;">
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            1
+        </div>
+        <div class="register-nav-text">
+            获得链接注册
+        </div>
+    </div>
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            2
+        </div>
+        <div class="register-nav-text">
+            完善资料
+        </div>
+    </div>
+    <div class="register-nav-title">
+        <div class="circle register-nav-icon">
+            3
+        </div>
+        <div class="register-nav-text">
+            完成注册
+        </div>
+    </div>
+</div>
+<div id="register-content">
+<div class="register-tuijianren">
+    <div>
+        推荐人：
+        <span id="referrerName">常颉</span>
+    </div>
+    <div>
+        推荐人手机号：
+        <span id="referrerMobile">18683446699</span>
+    </div>
+    <input type="hidden" value="11111" id="username" name="username" />
+    <input type="hidden" value="96e79218965eb72c92a549dd5a330112" id="userpwd" name="userpwd" />
+    <input type="hidden" value="2" id="usertype" name="usertype" />
+    <input type="hidden" value="15281178751" id="mobilenumber" name="mobilenumber" />
+    <input type="hidden" value="364427" id="referrer" name="referrer" />
+    <input type="hidden" value="18683446699" id="referrerphone" name="referrerphone" />
+</div>
+<div class="register-boxTitle">
+    基本信息
+</div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 企业名称:
+    </div>
+    <div class="register-form-cell-widget-30" style="width:500px;">
+        <input style="width:500px;" type="text" id="companyname" name="companyname" placeholder="必须和营业执照上的名称一致" data-rules="required|minlength=6|maxlength=25|companyname" data-empty-msg="企业名称不能为空" class="ad-widget222 input-xfat" />
+        <label class="yz-error"></label>
+    </div>
+</div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 店铺名称：
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="shopname" name="shopname" placeholder="请输入店铺名称" data-rules="required|minlength=1|maxlength=25|companyname" data-empty-msg="店铺名称不能为空" class="ad-widget222 input-xfat" />
+        <label class="yz-error"></label>
+    </div>
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 激励模式:
+    </div>
+    <div class="register-form-cell-widget-25 controls">
        <span class="sui-dropdown dropdown-bordered select2"> <span class="dropdown-inner"><a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget228 input-xfat dropdown-toggle"> <input id="drivetype" value="24" name="drivetype" data-rules="required" data-empty-msg="请选择激励模式" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="drivetypeSpan">24</span></a>
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu2">
              <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="6">6%</a></li>
                        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="12">12%</a></li> -->
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="24">24</a></li>
          </ul> </span> </span>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 企业所在地:
+    </div>
+    <div class="fl" style="text-align:left;">
+        <div id="city" class="city controls">
+            <div class="info" style="position: relative">
+                <div>
+                    <select id="s_province" name="s_province"></select>  
+                    <i class="iconfont" style=" position: absolute;left:135px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                    <!--<i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>-->
+                    <select id="s_city" name="s_city"></select>  
+                    <i class="iconfont" style=" position: absolute;left:302px;top:6px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                    <select id="s_county" name="s_county" style="display: none"></select>
+                    <script class="resources library" src="../js/area.js" type="text/javascript"></script>
+                    <script type="text/javascript">_init_area();</script>
                 </div>
+                <div id="show"></div>
             </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 企业所在地:
-                </div>
-                <div class="fl" style="text-align:left;">
-                    <div id="city" class="city controls">
-        <span class="sui-dropdown dropdown-bordered select3"><span class="dropdown-inner"><a role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle  input-xfat"><input value="" id="provinceid" undefined="" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="provinceid-s">省份</span></a>
-          <ul role="menu" aria-labelledby="drop4" class="sui-dropdown-menu sui-dropdown-menu3">
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="">全部</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="110000">北京市</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="120000">天津市</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="130000">河北省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="140000">山西省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="150000">内蒙古自治区</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="210000">辽宁省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="220000">吉林省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="230000">黑龙江省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="310000">上海市</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="320000">江苏省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="330000">浙江省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="340000">安徽省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="350000">福建省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="360000">江西省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="370000">山东省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="410000">河南省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="420000">湖北省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="430000">湖南省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="440000">广东省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="450000">广西壮族自治区</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="460000">海南省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="500000">重庆市</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="510000">四川省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="520000">贵州省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="530000">云南省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="540000">西藏自治区</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="610000">陕西省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="620000">甘肃省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="630000">青海省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="640000">宁夏回族自治区</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="650000">新疆维吾尔自治区</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="710000">台湾省</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="810000">香港特别行政区</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" value="820000">澳门特别行政区</a></li>
-          </ul></span></span>
-        <span class="sui-dropdown js-ad-adCitySubSelect dropdown-bordered select4"><span class="dropdown-inner"><a role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle  input-xfat"><input value="" id="cityid" data-rules="required" data-empty-msg="请选择" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="cityid-s">城市</span></a>
-          <ul role="menu" aria-labelledby="drop4" class="sui-dropdown-menu sui-dropdown-menu4">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">全部</a></li>
-          </ul></span></span>
-                    </div>
-                </div>
-                <div class="fl" style="text-align:left;">
-                    <input type="text" id="companyaddress" name="companyaddress" placeholder="除省市外的详细地址" data-rules="required|maxlength=30" data-empty-msg="详细地址不能为空" class="input-xfat" style="width:260px;" />
-                </div>
-            </div>
-            <style>
-                #city .msg-error{display:block;}
-            </style>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 行业:
-                </div>
-                <div class="register-form-cell-widget-25 controls">
-       <span class="sui-dropdown dropdown-bordered select5"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle"> <input id="business" value="" name="business" type="hidden" data-rules="required" data-empty-msg="请选择行业" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i> <span id="businessSpan">请选择</span> </a> 
+        </div>
+        <label class="yz-error"></label>
+    </div>
+    <div class="fl" style="text-align:left;width: 1000px;margin-left: 175px;margin-bottom: 20px">
+        <input type="text" id="companyaddress" name="companyaddress" placeholder="除省市外的详细地址"  class="input-xfat" style="width:260px;" />
+        <label class="yz-error"></label>
+    </div>
+</div>
+<style>
+    #city .msg-error{display:block;}
+</style>
+<div class="clear"></div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 行业:
+    </div>
+    <div class="register-form-cell-widget-25 controls">
+       <span class="sui-dropdown dropdown-bordered select5">
+           <span class="dropdown-inner">
+               <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                   <input id="business" value="" name="business" type="hidden" data-rules="required" data-empty-msg="请选择行业" />
+                   <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i>
+                   <span id="businessSpan">请选择</span>
+               </a>
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu5">
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="计算机/互联网">计算机/互联网</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="通信/电子">通信/电子</a></li>
@@ -598,13 +681,22 @@
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="能源/原材料">能源/原材料</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="政府/非盈利机构">政府/非盈利机构</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="其他">其他</a></li>
-         </ul> </span> </span>
-                </div>
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 行业类别:
-                </div>
-                <div class="register-form-cell-widget-25 controls">
-       <span class="sui-dropdown dropdown-bordered select6" id="industrySelect"> <span class="dropdown-inner"><a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle"><input id="industryid" value="" name="industryid" data-rules="required" data-empty-msg="请选择行业类别" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="industryName">请选择</span></a>
+         </ul>
+           </span>
+             <label class="yz-error"></label>
+       </span>
+    </div>
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 行业类别:
+    </div>
+    <div class="register-form-cell-widget-25 controls">
+       <span class="sui-dropdown dropdown-bordered select6" id="industrySelect">
+           <span class="dropdown-inner">
+               <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                   <input id="industryid" value="" name="industryid" data-rules="required" data-empty-msg="请选择行业类别" type="hidden" />
+                   <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i>
+                   <span id="industryName">请选择</span>
+               </a>
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu6">
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">红木</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">珠宝</a></li>
@@ -612,55 +704,77 @@
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="4">汽车</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="5">家具</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">其它</a></li>
-         </ul></span></span>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 主营业务:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <textarea id="mainbusiness" name="mainbusiness" placeholder="必须和营业执照上的经营范围保持一致" data-rules="required|maxlength=150|mainbusiness" data-empty-msg="主营业务不能为空" class="ad-widget275 input-xfat"></textarea>
-                    <!-- <input type="text" id="mainbusiness" name="mainbusiness" placeholder="必须和营业执照上的经营范围保持一致" data-rules="required|maxlength=150"  data-empty-msg="主营业务不能为空"  class="ad-widget535 input-xfat" /> -->
-                </div>
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 企业规模:
-                </div>
-                <div class="register-form-cell-widget-25 controls">
-       <span class="sui-dropdown dropdown-bordered select7"> <span class="dropdown-inner"><a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle"> <input id="size" value="" name="size" data-rules="required" data-empty-msg="请选择企业规模" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="sizeSpan">请选择规模</span></a> 
+         </ul>
+           </span>
+            <label class="yz-error"></label>
+       </span>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 主营业务:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <textarea id="mainbusiness" name="mainbusiness" placeholder="必须和营业执照上的经营范围保持一致" class="ad-widget275 input-xfat"></textarea>
+        <!-- <input type="text" id="mainbusiness" name="mainbusiness" placeholder="必须和营业执照上的经营范围保持一致" data-rules="required|maxlength=150"  data-empty-msg="主营业务不能为空"  class="ad-widget535 input-xfat" /> -->
+        <label class="yz-error"></label>
+    </div>
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 企业规模:
+    </div>
+    <div class="register-form-cell-widget-25 controls">
+       <span class="sui-dropdown dropdown-bordered select7">
+           <span class="dropdown-inner">
+               <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                   <input id="size" value="" name="size" data-rules="required" data-empty-msg="请选择企业规模" type="hidden" />
+                   <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i>
+                   <span id="sizeSpan">请选择规模</span>
+               </a>
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu7">
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="100以下">100以下</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="100-500人">100-500人</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="500-1000人">500-1000人</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1000-10000人">1000-10000人</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10000人以上">10000人以上</a></li>
-         </ul> </span> </span>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 企业电话:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="phone" name="phone" maxlength="13" data-rules="required|tel|maxlength=13|minlength=6" onkeyup="value=value.replace(/\s/g,'')" data-error-msg="企业电话格式有误" data-empty-msg="企业电话不能为空" class="ad-widget167 input-xfat" />
-                </div>
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 营业时间:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="datetime" id="startBusinessTime" name="startBusinessTime" data-rules="required|time" data-toggle="timepicker" data-empty-msg="请填写" class="ad-widget69 input-xfat" /> -
-                    <input type="datetime" id="endBusinessTime" name="endBusinessTime" data-rules="required|time" data-toggle="timepicker" data-empty-msg="请填写" class="ad-widget69 input-xfat" />
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 开户行:
-                </div>
-                <div class="register-form-cell-widget-25 controls">
-       <span class="sui-dropdown dropdown-bordered select8" id="bankSelect"> <span class="dropdown-inner"><a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle"><input id="bankid" value="" name="bankid" data-rules="required" data-empty-msg="请选择开户行" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="bankName">请选择开户行</span></a>
+         </ul>
+           </span>
+                <label class="yz-error"></label>
+       </span>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 企业电话:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="phone" name="phone" maxlength="13" class="ad-widget167 input-xfat" />
+        <label class="yz-error"></label>
+    </div>
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 营业时间:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="datetime" id="startBusinessTime" name="startBusinessTime" class="ad-widget69 input-xfat" /> -
+        <input type="datetime" id="endBusinessTime" name="endBusinessTime" class="ad-widget69 input-xfat" />
+        <label class="yz-error"></label>
+        <label class="yz-error" style="margin-left: 50px"></label>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 开户行:
+    </div>
+    <div class="register-form-cell-widget-25 controls">
+       <span class="sui-dropdown dropdown-bordered select8" id="bankSelect">
+           <span class="dropdown-inner">
+               <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                   <input id="bankid" value="" name="bankid" data-rules="required" data-empty-msg="请选择开户行" type="hidden" />
+                   <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i>
+                   <span id="bankName">请选择开户行</span>
+               </a>
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu8">
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10001">中国工商银行</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10002">中国农业银行</a></li>
@@ -753,116 +867,139 @@
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10090">赣州银座村镇银行</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10091">微商银行股份有限公司</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10092">其他银行</a></li>
-         </ul></span></span>
-                </div>
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 开户行支行:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="subbankname" name="subbankname" data-rules="required|minlength=2|maxlength=50|subbankname" data-empty-msg="开户行支行不能为空" class="ad-widget167 input-xfat" />
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 开户名:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="acountname" name="acountname" data-rules="required|minlength=2|maxlength=25|acountname" data-empty-msg="开户名不能为空" class="ad-widget167 input-xfat" />
-                </div>
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 银行账号:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="bankNumber" name="bankNumber" maxlength="25" onkeyup="value=value.replace(/\s/g,'')" data-rules="required|number|minlength=6|maxlength=25|bankNumber" data-empty-msg="银行账户不能为空" class="ad-widget167 input-xfat" />
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 商家简介:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <textarea id="remark" name="remark" data-rules="required|maxlength=500" class="ad-widget546 input-xfat"></textarea>
-                </div>
-            </div>
-            <p> </p>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 二级密码:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="password" id="password2" name="password2" maxlength="6" title="二级密码" class="ad-widget167 input-xfat" data-rules="required|minlength=6|maxlength=6|number" data-empty-msg="二级密码不能为空" />
-                </div>
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 确认密码:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="password" id="pwd" name="pwd" maxlength="6" class="ad-widget167 input-xfat" data-rules="required|match=password2" data-error-msg="密码不一致" data-empty-msg="确认密码不能为空" />
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-boxTitle">
-                负责人信息
-            </div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 姓名:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="principal" name="principal" class="ad-widget167 input-xfat" data-rules="required|minlength=2|maxlength=10" data-error-msg="姓名必须是2-10位" data-empty-msg="姓名不能为空" />
-                </div>
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 岗位:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="position" name="position" class="ad-widget167 input-xfat" onkeyup="value=value.replace(/\s/g,'')" data-rules="required|minlength=2|maxlength=10" data-empty-msg="岗位不能为空" />
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 性别:
-                </div>
-                <div class="register-form-cell-widget-25 controls">
-       <span class="sui-dropdown dropdown-bordered select9"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle"> <input id="sex" name="sex" type="hidden" data-rules="required" data-empty-msg="请选择性别" value="" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i> <span id="sexSpan">请选择</span> </a> 
+         </ul>
+           </span>
+               <label class="yz-error"></label>
+       </span>
+    </div>
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 开户行支行:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="subbankname" name="subbankname" class="ad-widget167 input-xfat" />
+        <label class="yz-error"></label>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 开户名:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="acountname" name="acountname" class="ad-widget167 input-xfat" />
+        <label class="yz-error"></label>
+    </div>
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 银行账号:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="bankNumber" name="bankNumber" maxlength="25" class="ad-widget167 input-xfat" />
+        <label class="yz-error"></label>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 商家简介:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <textarea id="remark" name="remark" class="ad-widget546 input-xfat"></textarea>
+        <label class="yz-error"></label>
+    </div>
+</div>
+<p> </p>
+<div class="clear"></div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 二级密码:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="password" id="password2" name="password2" maxlength="6" title="二级密码" class="ad-widget167 input-xfat" />
+        <label class="yz-error"></label>
+    </div>
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 确认密码:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="password" id="pwd" name="pwd" maxlength="6" class="ad-widget167 input-xfat" />
+        <label class="yz-error"></label>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="register-boxTitle">
+    负责人信息
+</div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 姓名:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="principal" name="principal" class="ad-widget167 input-xfat" />
+        <label class="yz-error"></label>
+    </div>
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 岗位:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="position" name="position" class="ad-widget167 input-xfat" />
+        <label class="yz-error"></label>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 性别:
+    </div>
+    <div class="register-form-cell-widget-25 controls">
+       <span class="sui-dropdown dropdown-bordered select9">
+           <span class="dropdown-inner">
+               <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+                   <input id="sex" name="sex" type="hidden" data-rules="required" data-empty-msg="请选择性别" value="" />
+                   <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i>
+                   <span id="sexSpan">请选择</span>
+               </a>
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu9" style="height:80px;">
              <li role="presentation"> <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">男</a> </li>
              <li role="presentation"> <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">女</a> </li>
              <li role="presentation"> <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">保密</a> </li>
-         </ul> </span> </span>
-                </div>
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 出生日期:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="date" id="birthday" name="birthday" class="ad-widget167 input-xfat input-date" />
-                </div>
-                <div id="datePlugin"></div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 身份证号:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="idcard" name="idcard" class="ad-widget167 input-xfat" onkeyup="value=value.replace(/\s/g,'')" maxlength="18" data-rules="required|idcard|maxlength=18" data-empty-msg="身份证不能为空" />
-                </div>
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 邮箱:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="email" name="email" onkeyup="value=value.replace(/\s/g,'')" maxlength="30" class="ad-widget167 input-xfat" data-rules="required|maxlength=30|emails|email" data-error-msg="邮箱格式错误" data-empty-msg="邮箱不能为空" />
-                </div>
-            </div>
-            <div>
-                <br />
-                <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="上一步" id="lastReg2" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="下一步" id="nextReg2" />
-            </div>
-        </div>
-    </form>
+         </ul>
+           </span>
+                    <label class="yz-error"></label>
+       </span>
+    </div>
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 出生日期:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="date" id="birthday" name="birthday" class="ad-widget167 input-xfat input-date" />
+        <label class="yz-error"></label>
+    </div>
+    <div id="datePlugin"></div>
+</div>
+<div class="clear"></div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 身份证号:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="idcard" name="idcard" class="ad-widget167 input-xfat"  maxlength="18" />
+        <label class="yz-error"></label>
+    </div>
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 邮箱:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="email" name="email" maxlength="30" class="ad-widget167 input-xfat" />
+        <label class="yz-error"></label>
+    </div>
+</div>
+<div>
+    <br />
+    <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="上一步" id="lastReg2" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="下一步" id="nextReg2" />
+</div>
+</div>
+</form>
 </div>
 <div id="ad-content" class="ad-register ad-register3">
     <ul id="warp">
@@ -1001,7 +1138,7 @@
                 </div>
                 <div class="register-form-cell clearfix">
                     <div class="fl" style="margin:0px 0px 30px 30px;">
-                        <div class="fl" style="line-height:32px; font-size:14px;&gt;&lt;span class=" ad-red"="">
+                        <div class="fl" style="line-height:32px; font-size:14px;&gt;&lt;span class=">
                         *执照类型：
                     </div>
                     <div class="fl" style="width:330px;">
@@ -1177,9 +1314,8 @@
                     <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="下一步" id="nextReg3" />
                 </div>
             </div>
-</div>
-</form>
-</ul>
+        </form>
+    </ul>
 </div>
 <div id="ad-content" class="ad-register ad-register4">
     <form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate">
@@ -1315,8 +1451,8 @@
             <div class="register-map-serch">
                 <div class="register-form-cell-widget-25">
                     <div class="input-append">
-                        <input type="text" id="companyaddress" name="companyaddress" placeholder="地址" data-rules="required|maxlength=30" data-empty-msg="详细地址不能为空" class="ad-widget335 span2 input-xfat" />
-                        <input type="submit" class="sui-btn btn-primary btn-xlarge " id="search" value="搜索" />
+                        <input type="text"  placeholder="地址"  class="ad-widget335 span2 input-xfat" id="key_2"  onfocus='this.value=""'>
+                        <input id="search" type="submit" class="sui-btn btn-primary btn-xlarge " value="搜索">
                     </div>
                     <input type="hidden" id="lat" value="39.903861" />
                     <input type="hidden" id="lng" value="116.407472" />
@@ -1331,64 +1467,8 @@
                 </div>
             </div>
             <div class="clear"></div>
-            <div id="container" style="width: 100%; height: 520px; position: relative;" class="amap-container">
-                <object style="display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;" type="text/html" data="about:blank"></object>
-                <div class="amap-maps">
-                    <div class="amap-drags">
-                        <div class="amap-layers" style="transform: translateZ(0px);">
-                            <div style="position: absolute; z-index: 120; top: 90px; left: 522px;">
-                                <div class="amap-marker" style="top: 10px; left: -19px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
-                                    <div class="amap-icon" style="position: absolute; width: 19px; height: 33px; opacity: 1;">
-                                        <!--<img src="http://webapi.amap.com/theme/v1.3/markers/n/mark_bs.png" style="width: 19px; height: 33px; top: 0px; left: 0px;" />-->
-                                    </div>
-                                </div>
-                                <div class="amap-marker" style="top: 0px; left: 0px; z-index: 100; transform: rotate(0deg); transform-origin: 0px 0px 0px; display: none;">
-                                    <div class="amap-icon" style="position: absolute; width: 19px; height: 33px; opacity: 1;">
-                                        <!--<img src="http://webapi.amap.com/theme/v1.3/markers/n/mark_bs.png" style="width: 19px; height: 33px; top: 0px; left: 0px;" />-->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="amap-layer" style="position: absolute; z-index: 0; top: 90px; left: 522px;">
-                                <!--<img src="http://wprd04.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;style=7&amp;x=215836&amp;y=99335&amp;z=18&amp;scl=1&amp;ltype=3" style="position: absolute; top: 405px; left: -352px; width: 256px; height: 256px; z-index: 18;" />-->
-                                <!--<img src="http://wprd03.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;style=7&amp;x=215835&amp;y=99335&amp;z=18&amp;scl=1&amp;ltype=3" style="position: absolute; top: 405px; left: -608px; width: 256px; height: 256px; z-index: 18;" />-->
-                                <!--<img src="http://wprd01.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;style=7&amp;x=215838&amp;y=99334&amp;z=18&amp;scl=1&amp;ltype=3" style="position: absolute; top: 149px; left: 160px; width: 256px; height: 256px; z-index: 18;" />-->
-                                <!--<img src="http://wprd04.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;style=7&amp;x=215837&amp;y=99334&amp;z=18&amp;scl=1&amp;ltype=3" style="position: absolute; top: 149px; left: -96px; width: 256px; height: 256px; z-index: 18;" />-->
-                                <!--<img src="http://wprd03.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;style=7&amp;x=215836&amp;y=99334&amp;z=18&amp;scl=1&amp;ltype=3" style="position: absolute; top: 149px; left: -352px; width: 256px; height: 256px; z-index: 18;" />-->
-                                <!--<img src="http://wprd02.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;style=7&amp;x=215835&amp;y=99334&amp;z=18&amp;scl=1&amp;ltype=3" style="position: absolute; top: 149px; left: -608px; width: 256px; height: 256px; z-index: 18;" />-->
-                                <!--<img src="http://wprd02.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;style=7&amp;x=215838&amp;y=99335&amp;z=18&amp;scl=1&amp;ltype=3" style="position: absolute; top: 405px; left: 160px; width: 256px; height: 256px; z-index: 18;" />-->
-                                <!--<img src="http://wprd01.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;style=7&amp;x=215837&amp;y=99335&amp;z=18&amp;scl=1&amp;ltype=3" style="position: absolute; top: 405px; left: -96px; width: 256px; height: 256px; z-index: 18;" />-->
-                                <!--<img src="http://wprd04.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;style=7&amp;x=215838&amp;y=99333&amp;z=18&amp;scl=1&amp;ltype=3" style="position: absolute; top: -107px; left: 160px; width: 256px; height: 256px; z-index: 18;" />-->
-                                <!--<img src="http://wprd03.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;style=7&amp;x=215837&amp;y=99333&amp;z=18&amp;scl=1&amp;ltype=3" style="position: absolute; top: -107px; left: -96px; width: 256px; height: 256px; z-index: 18;" />-->
-                                <!--<img src="http://wprd02.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;style=7&amp;x=215836&amp;y=99333&amp;z=18&amp;scl=1&amp;ltype=3" style="position: absolute; top: -107px; left: -352px; width: 256px; height: 256px; z-index: 18;" />-->
-                                <!--<img src="http://wprd01.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;style=7&amp;x=215835&amp;y=99333&amp;z=18&amp;scl=1&amp;ltype=3" style="position: absolute; top: -107px; left: -608px; width: 256px; height: 256px; z-index: 18;" />-->
-                            </div>
-                            <canvas width="820" height="520" style="position: absolute; z-index: 99; height: 520px; width: 820px; top: 0px; left: 0px;"></canvas>
-                            <div class="amap-layer" style="position: absolute; z-index: 0; top: 90px; left: 522px;"></div>
-                            <canvas width="820" height="520" style="position: absolute; z-index: 1; height: 520px; width: 820px; top: 0px; left: 0px;"></canvas>
-                            <div class="amap-e" style="z-index: 11; opacity: 1;">
-                                <div class="amap-custom amap-indoor-map">
-                                    <div class="floor-outline-image-con"></div>
-                                    <div class="floor-image-con"></div>
-                                    <div class="highlight-image-con"></div>
-                                    <div class="label-image-con"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="amap-overlays"></div>
-                    </div>
-                </div>
-                <div style="display: none;"></div>
-                <div class="amap-controls">
-                    <div class="amap-indoormap-floorbar-control" style="display: none;"></div>
-                </div>
-                <a class="amap-logo" href="http://gaode.com" target="_blank">
-                    <!--<img src="http://webapi.amap.com/theme/v1.3/autonavi.png" />-->
-                </a>
-                <div class="amap-copyright" style="display: none;">
-                    <!--v1.3.19--> &copy; 2016 AutoNavi
-                    <span class="amap-mcode">- GS(2016)710号</span>
-                </div>
-            </div>
+            <div id="container" style="width: 820px;height: 520px"></div>
+
             <div>
                 <br />
                 <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="上一步" id="lastReg4" />
@@ -1561,17 +1641,10 @@
     <p>客服电话:400-9001991/400-6663502 工作时间: 9:00-21:30（法定工作日） 客服QQ ：4009001991</p>
     <p>Copyright&copy;2015-2020 深圳前海中盛一点科技有限公司版权所有 <a href="http://www.miitbeian.gov.cn/">粤ICP备15082614号-2</a></p>
 </div>
-<script type="text/javascript" src="./js/lin-js.js"></script>
+
 <script type="text/javascript">
     $(function(){
 //        下一步
-        $("#nextReg2").click(function(){
-            $(".ad-register1").css({"display":"none"});
-            $(".ad-register2").css({"display":"none"});
-            $(".ad-register4").css({"display":"none"});
-            $(".ad-register5").css({"display":"none"});
-            $(".ad-register3").css({"display":"block"})
-        });
         $("#nextReg3").click(function(){
             var businessLicensePhoto1=uploadService('/web/commons/upload','up_img_WU_FILE_0','businessLicensePhoto1');
             if(businessLicensePhoto1.statusCode!=1000){
@@ -1603,7 +1676,7 @@
             $("#recommendPersonPhoto").val(recommendPersonPhoto.result.recommendPersonPhoto.path);
             $("#donationPhoto").val(donationPhoto.result.donationPhoto.path);
             $("#storePhoto").val(storePhoto.result.storePhoto.path);
-
+            console.log($("#storePhoto").val(storePhoto.result.storePhoto.path))
             $(".ad-register1").css({"display":"none"});
             $(".ad-register2").css({"display":"none"});
             $(".ad-register3").css({"display":"none"});
@@ -1683,44 +1756,44 @@
 
 
 
+//        $(".dropdown-toggle").eq(3).click(function(){
+//
+//            $(".select3").toggleClass("open");
+//        });
+//        $(".sui-dropdown-menu3 li").click(function(){
+//            var i=$(".sui-dropdown-menu3 li").index(this);
+//            var x= $(".sui-dropdown-menu3 li a").eq(i).html();
+//            $(".sui-dropdown-menu3 li").removeClass("active");
+//            $(".sui-dropdown-menu3 li").eq(i).addClass("active");
+//            $(".select3 span span").html(x);
+//            $(".select3").removeClass("open");
+//        });
+//        $('.dropdown-inner').mouseleave(function(){
+//            $(".select3").removeClass("open");
+//        });
+//
+//
+//
+//        $(".dropdown-toggle").eq(4).click(function(){
+//
+//            $(".select4").toggleClass("open");
+//        });
+//        $(".sui-dropdown-menu4 li").click(function(){
+//            var i=$(".sui-dropdown-menu4 li").index(this);
+//            var x= $(".sui-dropdown-menu4 li a").eq(i).html();
+//            $(".sui-dropdown-menu4 li").removeClass("active");
+//            $(".sui-dropdown-menu4 li").eq(i).addClass("active");
+//            $(".select4 span span").html(x);
+//            $(".select4").removeClass("open");
+//        });
+//        $('.dropdown-inner').mouseleave(function(){
+//            $(".select4").removeClass("open");
+//        });
+
+
+
+
         $(".dropdown-toggle").eq(3).click(function(){
-
-            $(".select3").toggleClass("open");
-        });
-        $(".sui-dropdown-menu3 li").click(function(){
-            var i=$(".sui-dropdown-menu3 li").index(this);
-            var x= $(".sui-dropdown-menu3 li a").eq(i).html();
-            $(".sui-dropdown-menu3 li").removeClass("active");
-            $(".sui-dropdown-menu3 li").eq(i).addClass("active");
-            $(".select3 span span").html(x);
-            $(".select3").removeClass("open");
-        });
-        $('.dropdown-inner').mouseleave(function(){
-            $(".select3").removeClass("open");
-        });
-
-
-
-        $(".dropdown-toggle").eq(4).click(function(){
-
-            $(".select4").toggleClass("open");
-        });
-        $(".sui-dropdown-menu4 li").click(function(){
-            var i=$(".sui-dropdown-menu4 li").index(this);
-            var x= $(".sui-dropdown-menu4 li a").eq(i).html();
-            $(".sui-dropdown-menu4 li").removeClass("active");
-            $(".sui-dropdown-menu4 li").eq(i).addClass("active");
-            $(".select4 span span").html(x);
-            $(".select4").removeClass("open");
-        });
-        $('.dropdown-inner').mouseleave(function(){
-            $(".select4").removeClass("open");
-        });
-
-
-
-
-        $(".dropdown-toggle").eq(5).click(function(){
 
             $(".select5").toggleClass("open");
         });
@@ -1738,7 +1811,7 @@
 
 
 
-        $(".dropdown-toggle").eq(6).click(function(){
+        $(".dropdown-toggle").eq(4).click(function(){
 
             $(".select6").toggleClass("open");
         });
@@ -1755,7 +1828,7 @@
         });
 
 
-        $(".dropdown-toggle").eq(7).click(function(){
+        $(".dropdown-toggle").eq(5).click(function(){
 
             $(".select7").toggleClass("open");
         });
@@ -1772,7 +1845,7 @@
         });
 
 
-        $(".dropdown-toggle").eq(8).click(function(){
+        $(".dropdown-toggle").eq(6).click(function(){
 
             $(".select8").toggleClass("open");
         });
@@ -1787,7 +1860,7 @@
         $('.dropdown-inner').mouseleave(function(){
             $(".select8").removeClass("open");
         });
-        $(".dropdown-toggle").eq(9).click(function(){
+        $(".dropdown-toggle").eq(7).click(function(){
             $(".select9").toggleClass("open");
         });
         $(".sui-dropdown-menu9 li").click(function(){
@@ -1801,7 +1874,7 @@
         $('.dropdown-inner').mouseleave(function(){
             $(".select9").removeClass("open");
         });
-        $(".dropdown-toggle").eq(10).click(function(){
+        $(".dropdown-toggle").eq(8).click(function(){
 
             $(".select10").toggleClass("open");
         });
@@ -1819,5 +1892,6 @@
 
     })
 </script>
+<script type="text/javascript" src="./js/lin-js.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@ $(function(){
         $("#datePicker1").show();
         $(".zdydata").show();
     })
-    $("#salesDetailtable").on("click",".btn-fontBlue1",function(){
+    $("#salesDetailtable").on("click",".btn_xql",function(){
         $(".sui-modal").addClass("in");
         $(".sui-modal-backdrop").css("zIndex","1").addClass("in");
     });
@@ -47,7 +47,7 @@ $(function(){
         alert(result.errorMessage);
         return;
     }
-    console.log(result);
+//    console.log(result);
 
     $("#xg_page").text("共 " +result.result.pageCount+ " 页");
     $("#onpage").text("第 " +(a+1)+ " 页");
@@ -89,7 +89,7 @@ $(function(){
 //    订单详情列表
     $("#salesDetailtable").on("click",".btn_xql",(function(){
         var i = $(".btn_xql").index(this);
-        alert($(".btn_xql").eq(i).text());
+//        alert($(".btn_xql").eq(i).text());
     }))
 
 

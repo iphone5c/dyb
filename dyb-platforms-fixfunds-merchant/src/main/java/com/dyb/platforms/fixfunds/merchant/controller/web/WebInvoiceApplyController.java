@@ -76,6 +76,7 @@ public class WebInvoiceApplyController extends BaseController {
         invoiceApplyModel.setBankAccount(bankAccount);
         invoiceApplyModel.setSendAddress(sendAddress);
         invoiceApplyModel.setInvoiceApply(invoiceApply);
+        invoiceApplyModel.setAccountCode(account.getAccountCode());
         return result(invoiceApplyModel);
     }
 

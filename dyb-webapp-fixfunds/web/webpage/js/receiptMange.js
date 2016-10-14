@@ -40,7 +40,18 @@ $(function(){
         $(".select2").removeClass("open");
         $(".select3").removeClass("open");
     });
-
+    $("#table").on("click",".btn_sql",function(){
+        $(".sui-modal").addClass("in");
+        $(".sui-modal-backdrop").css("zIndex","1").addClass("in");
+    });
+    $(".sui-close").click(function(){
+        $(".sui-modal").removeClass("in");
+        $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
+    })
+    $("#cancelButton").click(function(){
+        $(".sui-modal").removeClass("in");
+        $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
+    })
 
 //    让利款发票申请列表
     var a = 0
@@ -59,19 +70,20 @@ $(function(){
 //    // 快递费
 //    private Double poundage;
 //    // 状态
+
 //    private InvoiceApplyStatus invoiceApplyStatus;
             var param={
                 //    当前页
                 pageIndex:a,
                 //        显示条数
-                pageSize:1
-            }
-            var result=invokeService('/web/merchant/invoiceapply/getAccountIncentivePageList',param)
+                pageSize:5
+            };
+            var result=invokeService('/web/merchant/invoiceapply/getInvoiceApplyPageList',param)
             if(result.statusCode!=1000){
                 alert(result.errorMessage);
                 return;
             }
-    console.log(result);
+//    console.log(result);
     $("#xg_page").text("共 " +result.result.pageCount+ " 页");
     $("#onpage").text("第 " +(a+1)+ " 页");
     for(var i =0;i<result.result.list.length;i++){
@@ -102,11 +114,13 @@ $(function(){
                 result.result.list[i].applyTime+
                 "</td>"+
                 "<td>"+
-                ""+
+                "<a class='btn_sql' id=\'"+result.result.list[i].invoiceApplyCode+"\'>"+
+                "申请发票"+
+                "</a>"+
                 "</td>"+
                 "</tr>"
-        )}
-
+        )
+    }
     //      下一页
     $("#nextBtn").click(function(){
         a++;
@@ -114,9 +128,9 @@ $(function(){
             // 当前页
             pageIndex:a,
             //每页显示条数
-            pageSize:1
+            pageSize:5
         };
-        var result = invokeService('/web/merchant/invoiceapply/getAccountIncentivePageList',param);
+        var result = invokeService('/web/merchant/invoiceapply/getInvoiceApplyPageList',param);
         if(result.statusCode!=1000){
             alert(result.errorMessage)
             return;
@@ -152,7 +166,9 @@ $(function(){
                         result.result.list[i].applyTime+
                         "</td>"+
                         "<td>"+
-                        ""+
+                        "<a class='btn_sql'>"+
+                        "申请发票"+
+                        "</a>"+
                         "</td>"+
                         "</tr>"
                 )}
@@ -172,9 +188,9 @@ $(function(){
             // 当前页
             pageIndex:a,
             //每页显示条数
-            pageSize:1
+            pageSize:5
         };
-        var result = invokeService('/web/merchant/invoiceapply/getAccountIncentivePageList',param);
+        var result = invokeService('/web/merchant/invoiceapply/getInvoiceApplyPageList',param);
         if(result.statusCode!=1000){
             alert(result.errorMessage)
             return;
@@ -210,7 +226,9 @@ $(function(){
                         result.result.list[i].applyTime+
                         "</td>"+
                         "<td>"+
-                        ""+
+                        "<a class='btn_sql'>"+
+                        "申请发票"+
+                        "</a>"+
                         "</td>"+
                         "</tr>"
                 )}
@@ -219,5 +237,69 @@ $(function(){
 
         }
     });
+//获取申请数据的Code
+    $(".btn_sql").click(function(){
+        var nice=$(".btn_sql").index(this);
+        var invoiceApplyCode = $(".btn_sql").eq(nice).attr("id");
 
-        })
+//    申请发票
+    var param={
+//        申请数据的Code
+        invoiceApplyCode:invoiceApplyCode
+    };
+
+    var result=invokeService('/web/merchant/invoiceapply/getInvoiceApplyByCode',param);
+    if(result.statusCode!=1000){
+        alert(result.errorMessage);
+        return;
+    }
+//          商家名称
+        $("#companyname").text(result.result.merchant.merchantName);
+//          商家地址
+        $("#companyaddress").text(result.result.merchant.merchantAddress);
+//        商家ID
+        $("#busernumber").text(result.result.accountCode);
+//        开户行
+        $("#bankname").text(result.result.bankAccount.bankName);
+//        开户支行
+        $("#subbankname").text(result.result.bankAccount.bankBranch);
+//        开户名
+        $("#accountname").text(result.result.bankAccount.bankAccountName);
+//        卡号
+        $("#bankacount").text(result.result.bankAccount.bankNum);
+//        年月
+        $("#yearmonth").text(result.result.invoiceApply.invoiceTime);
+//        已交让利款
+        $("#returnamount").text(result.result.invoiceApply.yetBenefitPrice);
+//        申请发票
+        $("#applyamount").val(result.result.invoiceApply.applyInvoiceMoney);
+//        快递费
+        $("#expressfee2").text(result.result.invoiceApply.poundage);
+//        收件地址
+        $("#postaddress").text(result.result.invoiceApply.address);
+//        收件人
+        $("#postname").text(result.result.invoiceApply.receiver);
+
+//          手机
+        $("#postphone").text(result.result.invoiceApply.phone);
+//  申请发票确定
+    var invoiceApplyCode2 = result.result.invoiceApply.invoiceApplyCode;
+    var countryPhone = $("#companyphone").val();
+    var taxpayers =  $("#paytaxno").val();
+    $("#okButton").click(function() {
+        var param = {
+//            申请数据的Code
+            invoiceApplyCode:invoiceApplyCode2,
+//                公司座机
+            countryPhone:countryPhone,
+//                纳税人识别号
+            taxpayers:taxpayers
+        };
+        var result = invokeService('/web/merchant/invoiceapply/getInvoiceApplyByCode', param);
+        if (result.statusCode != 1000) {
+            alert(result.errorMessage)
+            return
+        }
+    })
+    });
+});

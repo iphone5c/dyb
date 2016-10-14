@@ -82,7 +82,7 @@
               </span>
 				</div>
 				<div class="span1" style="margin-left:30px;">
-					<input type="button" id="search" class="ad-btn ad-blue-btn" value="查询"></div>
+					<input type="button" id="search" class="ad-btn" value="查询"></div>
 				<div class="clear"></div>
 			</div>
 			<div class="table-tip"></div>
@@ -138,7 +138,138 @@
 				</div>
 			</div>
 		</div>
-<script type="text/javascript" src="/webpage/js/receiptMange.js"></script>
+        <div class="sui-modal hide fade" tabindex="-1" role="dialog" id="1476357464171" data-hidetype="remove" style="width: 1010px; margin-left: -500px; margin-top: -369px; display: block;" aria-hidden="false"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button><h4 class="modal-title">申请发票</h4></div><div class="modal-body no-foot" style="height: 630px;"><div class="ad-red">
+            *为了保证您能正常收到发票，将扣取<span id="expressfee1">15</span>颗信使豆作为快递费；若审核不通过，则信使豆如数退回您的账户
+        </div>
+            <div class="table-title">
+                <span class="ad-red">申请信息</span>
+            </div>
+            <div class="ad-box">
+                <div class="spanTitle2">
+                    商家名称:
+                </div>
+                <div class="span1-2">
+                    <p id="companyname">上海银旋电器有限公司</p>
+                </div>
+                <div class="spanTitle">
+                    商家ID:
+                </div>
+                <div class="span1">
+                    <p id="busernumber">BL4673</p>
+                </div>
+                <div class="spanTitle">
+                    年月:
+                </div>
+                <div class="span1">
+                    <p id="yearmonth">2016-09</p>
+                </div>
+                <div class="clear"></div>
+                <div class="spanTitle2">
+                    <span class="ad-red">*</span>公司座机:
+                </div>
+                <div class="span1 sui-validate" novalidate="novalidate">
+                    <input id="companyphone" style="margin-top: 5px" type="text" placeholder="请填写公司座机号码" data-rules="required|tel" data-empty-msg="请填写公司座机号码" class="input-xfat">
+                </div>
+                <div class="spanTitle2">
+                    公司地址:
+                </div>
+                <div class="span2">
+                    <p id="companyaddress">上海市静安区虬江路|685号</p>
+                </div>
+                <div class="clear"></div>
+                <div class="spanTitle2">
+                    开户行:
+                </div>
+                <div class="span1">
+                    <p id="bankname">中国农业银行</p>
+                </div>
+                <div class="spanTitle2">
+                    支行:
+                </div>
+                <div class="span1">
+                    <p id="subbankname">上海大连支行</p>
+                </div>
+                <div class="clear"></div>
+                <div class="spanTitle2">
+                    户名:
+                </div>
+                <div class="span1">
+                    <p id="accountname">上海银旋电器有限公司</p>
+                </div>
+                <div class="spanTitle2">
+                    银行账号:
+                </div>
+                <div class="span1-2">
+                    <p id="bankacount">03349000040023777</p>
+                </div>
+                <div>
+                    <input class="sui-btn btn-primary btn-large" type="button" value="更改账户" id="changeAccount">
+                </div>
+                <div class="clear"></div>
+                <div class="spanTitle2">
+                    <span class="ad-red">*</span>纳税人识别号:
+                </div>
+                <div class="span2 sui-validate" novalidate="novalidate">
+                    <input id="paytaxno" type="text" style="margin-top: 5px" placeholder="请输入纳税人识别号" data-rules="required|paytaxno|maxlength=50" data-empty-msg="请输入纳税人识别号" class="input-xfat">
+                </div>
+                <div class="clear"></div>
+                <div class="spanTitle2">
+                    已交让利款:
+                </div>
+                <div class="span1">
+                    <p id="returnamount">253,320.72</p>
+                </div>
+                <div class="spanTitle2">
+                    申请发票:
+                </div>
+                <div class="span1 sui-validate" novalidate="novalidate">
+                    <input id="applyamount" type="text" style="margin-top: 5px" data-rules="required|adAmt|maxlength=16" data-empty-msg="请输入发票金额" disabled="disabled" class="input-xfat">
+                </div>
+                <div class="spanTitle">
+                    快递费:
+                </div>
+                <div class="span1">
+                    <p id="expressfee2">15 颗信使豆</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-title">
+                <span class="ad-red">邮寄信息</span>
+            </div>
+            <div class="ad-box">
+                <div class="spanTitle2">
+                    收件地址:
+                </div>
+                <div class="span2">
+                    <p id="postaddress"></p>
+                </div>
+                <div>
+                    <input class="sui-btn btn-primary btn-large" type="button" value="更改收件地址" id="changeAddress">
+                    <input type="hidden" id="addressid">
+                </div>
+                <div class="clear"></div>
+                <div class="spanTitle2">
+                    收件人:
+                </div>
+                <div class="span1">
+                    <p id="postname"></p>
+                </div>
+                <div class="clear"></div>
+                <div class="spanTitle2">
+                    手机号码:
+                </div>
+                <div class="span1">
+                    <p id="postphone"></p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div align="left">
+                <input class="ad-btn btn-primary btn-xlarge" style="margin-left: 360px;margin-bottom: 10px;margin-top: 20px;" type="button" value="取消" id="cancelButton">
+                <input class="ad-btn btn-primary btn-xlarge" style="margin-left: 50px;margin-bottom: 10px;margin-top: 20px;" type="button" value="确定" id="okButton">
+            </div></div></div></div>
+        </div>
+        <div class="sui-modal-backdrop fade" style="background:#000;z-index:-1"></div>
+        <script type="text/javascript" src="/webpage/js/receiptMange.js"></script>
 </body>
 
 </html>

@@ -44,9 +44,7 @@ public interface IInvoiceApplyService {
      * @param invoiceApplyCode 发票申请code
      * @param countryPhone 公司座机
      * @param taxpayers 纳税人识别号
-     * @param bankAccountCode 银行编号
-     * @param sendAddressCode 寄送地址编号
      * @return true表示操作成功 false表示操作失败
      */
-    public boolean invoiceApply(String invoiceApplyCode,String countryPhone,String taxpayers,String bankAccountCode,String sendAddressCode);
+    public boolean invoiceApply(String invoiceApplyCode,String countryPhone,String taxpayers);
 }

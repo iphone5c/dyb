@@ -48,4 +48,19 @@ public interface IBankAccountService {
      * @return 银行卡对象
      */
     public BankAccount getBankAccountByCode(String bankAccountCode);
+
+    /**
+     * 根据code删除银行卡信息
+     * @param bankAccountCode 银行卡code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean deleteBankAccount(String bankAccountCode);
+
+    /**
+     * 设置指定账户code的默认选中银行卡
+     * @param accountCode 账户code
+     * @param bankAccountCode 银行卡code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean setDefaultBankAccountByCode(String accountCode,String bankAccountCode);
 }

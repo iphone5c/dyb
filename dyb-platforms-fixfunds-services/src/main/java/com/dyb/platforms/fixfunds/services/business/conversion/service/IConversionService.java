@@ -1,6 +1,8 @@
 package com.dyb.platforms.fixfunds.services.business.conversion.service;
 
 import com.dyb.platforms.fixfunds.services.business.conversion.entity.Conversion;
+import com.dyb.platforms.fixfunds.services.business.conversioninvoicedetails.entity.ConversionInvoiceDetails;
+import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 
@@ -38,4 +40,24 @@ public interface IConversionService {
      * @return 对象分页列表
      */
     public PageList<Conversion> getConversionPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail);
+
+    /**
+     * 信使豆转换申请
+     * @param accountCode 申请人code
+     * @param messengerBeanType 转换类型
+     * @param messengerBean 转换的数量
+     * @param deductions 代扣税
+     * @param tradePassword 二级密码
+     * @param conversionInvoiceDetailses 发票明细
+     * @return true表示操作成功 false表示操作成功
+     */
+    public boolean messengerBeanConversion(String accountCode,MessengerBeanType messengerBeanType,Double messengerBean,Double deductions,String tradePassword,List<ConversionInvoiceDetails> conversionInvoiceDetailses);
+
+    /**
+     * 新增转换信使豆申请记录
+     * @param conversion 转换记录
+     * @param conversionInvoiceDetailses 转换发票明细
+     * @return
+     */
+    public Conversion createConversion(Conversion conversion,List<ConversionInvoiceDetails> conversionInvoiceDetailses);
 }

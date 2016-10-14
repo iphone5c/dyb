@@ -9,10 +9,19 @@ import com.dyb.platforms.fixfunds.services.business.sendaddress.entity.SendAddre
  * Created by lenovo on 2016/10/13.
  */
 public class InvoiceApplyModel {
+    private String accountCode;
     private Merchant merchant;
     private BankAccount bankAccount;
     private SendAddress sendAddress;
     private InvoiceApply invoiceApply;
+
+    public String getAccountCode() {
+        return accountCode;
+    }
+
+    public void setAccountCode(String accountCode) {
+        this.accountCode = accountCode;
+    }
 
     public Merchant getMerchant() {
         return merchant;

@@ -1,6 +1,8 @@
 package com.dyb.platforms.fixfunds.services.business.donation.service;
 
+import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.donation.entity.Donation;
+import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 
@@ -38,4 +40,21 @@ public interface IDonationService {
      * @return 对象分页列表
      */
     public PageList<Donation> getDonationPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail);
+
+    /**
+     * 直捐
+     * @param account 直捐账户
+     * @param messengerBeanType 直捐类型
+     * @param donationMessengerBean 直捐数量
+     * @param tradePassword 二级密码
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean donation(Account account,MessengerBeanType messengerBeanType,Double donationMessengerBean,String tradePassword);
+
+    /**
+     * 添加直捐记录
+     * @param donation
+     * @return
+     */
+    public Donation createDonation(Donation donation);
 }

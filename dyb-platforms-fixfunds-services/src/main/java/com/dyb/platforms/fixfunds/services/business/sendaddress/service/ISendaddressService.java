@@ -49,4 +49,12 @@ public interface ISendAddressService {
      * @return 寄送地址
      */
     public SendAddress getSendAddressByCode(String sendAddressCode);
+
+    /**
+     * 给指定用户设置默认寄送地址
+     * @param accountCode 账户code
+     * @param sendAddressCode 寄送地址code
+     * @return true表示操作成功 false表示操作成功
+     */
+    public boolean setSendAddressByDefaultChecked(String accountCode,String sendAddressCode);
 }

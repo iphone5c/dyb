@@ -1,6 +1,8 @@
 package com.dyb.platforms.fixfunds.merchant.controller.web;
 
+import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.donation.service.IDonationService;
+import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
@@ -37,6 +39,37 @@ public class WebDonationController extends BaseController {
         queryParams.addParameter("donationAccount",DybUtils.getCurrentAccount(request).getAccountCode());
         queryParams.addOrderBy("donationTime",false);
         return result(donationService.getDonationPageList(queryParams, pageIndex, pageSize, true));
+    }
+
+    /**
+     *直捐
+     * @param donationMessengerBean
+     * @param donationType
+     * @param tradePassword
+     * @return
+     */
+    public Object donation(HttpServletRequest request,Double donationMessengerBean,String donationType,String tradePassword){
+        log.info("直捐操作");
+        if (donationMessengerBean<=0)
+            return validationResult(1001,"捐赠的信使豆必须大于零");
+        if (DybUtils.isEmptyOrNull(donationType))
+            return validationResult(1001,"直捐类型不能为空");
+        MessengerBeanType donationTypeUpdate=null;
+        for (MessengerBeanType messengerBeanType:MessengerBeanType.values()){
+            if (messengerBeanType.name().equals(donationType)){
+                donationTypeUpdate=messengerBeanType;
+                break;
+            }
+        }
+        if (donationTypeUpdate==null)
+            return validationResult(1001,"直捐类型超出指定范围");
+        if (DybUtils.isEmptyOrNull(tradePassword))
+            return validationResult(1001,"二级密码不能为空");
+        Account account=DybUtils.getCurrentAccount(request);
+        boolean flag=donationService.donation(account,donationTypeUpdate,donationMessengerBean,tradePassword);
+        if (!flag)
+            return validationResult(1001,"直捐操作失败");
+        return result("直捐成功");
     }
 
 }

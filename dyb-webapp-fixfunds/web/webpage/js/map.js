@@ -170,6 +170,7 @@ $(function(){
     }
 // 逆地理编码 得到具体的地理位置
     function geocoder(x,y) {
+        alert(11);
         AMap.plugin('AMap.Geocoder',function(){
             var geocoder = new AMap.Geocoder({
 
@@ -202,7 +203,9 @@ $(function(){
     }
     AMap.event.addListener(map, 'click', getLnglat); //点击事件
     addMarker2(Number(longitude),Number(latitude));
-
+    $("#search").click(function(){
+        geocoderss();
+    })
 //    提交更改地址
     $("#mapsubmit").click(function(){
         var num=$("#lnglat").html();

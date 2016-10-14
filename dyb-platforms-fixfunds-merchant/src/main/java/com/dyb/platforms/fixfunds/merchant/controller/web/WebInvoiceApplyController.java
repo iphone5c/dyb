@@ -85,23 +85,17 @@ public class WebInvoiceApplyController extends BaseController {
      * @param invoiceApplyCode 发票申请单号
      * @param countryPhone 公司座机
      * @param taxpayers 纳税人识别号
-     * @param bankAccountCode 银行编号
-     * @param sendAddressCode 寄送地址编号
      * @return
      */
-    public Object invoiceApply(String invoiceApplyCode,String countryPhone,String taxpayers,String bankAccountCode,String sendAddressCode){
+    public Object invoiceApply(String invoiceApplyCode,String countryPhone,String taxpayers){
         if (DybUtils.isEmptyOrNull(invoiceApplyCode))
             return validationResult(1001,"申请发票code不能为空");
         if (DybUtils.isEmptyOrNull(countryPhone))
             return validationResult(1001,"公司座机不能为空");
         if (DybUtils.isEmptyOrNull(taxpayers))
             return validationResult(1001,"纳税人识别号不能为空");
-        if (DybUtils.isEmptyOrNull(bankAccountCode))
-            return validationResult(1001,"银行编号不能为空");
-        if (DybUtils.isEmptyOrNull(sendAddressCode))
-            return validationResult(1001,"寄送地址编号不能为空");
-        boolean flag=invoiceApplyService.invoiceApply(invoiceApplyCode,countryPhone,taxpayers,bankAccountCode,sendAddressCode);
-        if (flag)
+        boolean flag=invoiceApplyService.invoiceApply(invoiceApplyCode,countryPhone,taxpayers);
+        if (!flag)
             return validationResult(1001,"申请失败");
         return result("申请成功");
     }

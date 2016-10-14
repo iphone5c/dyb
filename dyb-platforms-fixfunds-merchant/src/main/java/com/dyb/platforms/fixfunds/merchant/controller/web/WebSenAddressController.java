@@ -82,4 +82,19 @@ public class WebSenAddressController extends BaseController {
         return result(sendAddressService.getSendAddressList(queryParams, 0, -1, true));
     }
 
+    /**
+     * 设置默认寄送地址
+     * @param request
+     */
+    @RequestMapping(value = "/setDefaultSendAddress")
+    public Object setDefaultSendAddress(HttpServletRequest request,String sendAddressCode){
+        log.info("设置默认寄送地址");
+        if (DybUtils.isEmptyOrNull(sendAddressCode))
+            return validationResult(1001,"设置的默认寄送地址编号不能为空");
+        boolean flag=sendAddressService.setSendAddressByDefaultChecked(DybUtils.getCurrentAccount(request).getAccountCode(),sendAddressCode);
+        if (!flag)
+            return validationResult(1001,"设置默认寄送地址失败");
+        return result("设置成功");
+    }
+
 }

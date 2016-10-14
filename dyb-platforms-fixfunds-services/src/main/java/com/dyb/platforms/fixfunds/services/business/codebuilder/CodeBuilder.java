@@ -104,4 +104,16 @@ public class CodeBuilder extends BaseService implements ICodeBuilder
         return builder.toString();
     }
 
+    /**
+     * 获取一个新的直捐编码（规则：年月日时分秒+6位序列号）
+     * @return 新的直捐编码
+     */
+    @Override
+    public String getDonationCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(DybConvert.dateToString(new Date(),DybConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.DONATION_CODE.name(),6));
+        return builder.toString();
+    }
+
 }

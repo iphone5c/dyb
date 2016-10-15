@@ -4,32 +4,31 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="../css/style1.3.19.css">
+	<link rel="stylesheet" type="text/css" href="./css/style1.3.19.css">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>一点公益</title>
 </head>
-
 <body id="ad-app" data-apptype="ad-app" class="relative">
 		<div id="content" class="ad-content2 sui-form relative" style="margin-left: 230px;">
 			<div class="table-title">您现在的位置:回购管理 - 银行账号</div>
 			<div class="banklist-box">
 				<div class="js-checkBank banklist-bank" data-bank="10001">
-					<img class="banklist-bank-img" src="../images/gongshang.png">
+					<img class="banklist-bank-img" src="./images/gongshang.png">
 					<div class="banklist-bank-title">中国工商银行</div>
 					<i class="sui-icon icon-pc-right banklist-bank-icon"></i>
 				</div>
 				<div class="js-checkBank banklist-bank" data-bank="10004">
-					<img class="banklist-bank-img" src="../images/jianshe.png">
+					<img class="banklist-bank-img" src="./images/jianshe.png">
 					<div class="banklist-bank-title">中国建设银行</div>
 					<i class="sui-icon icon-pc-right banklist-bank-icon"></i>
 				</div>
 				<div class="js-checkBank banklist-bank" data-bank="10002">
-					<img class="banklist-bank-img" src="../images/nongye.png">
+					<img class="banklist-bank-img" src="./images/nongye.png">
 					<div class="banklist-bank-title">中国农业银行</div>
 					<i class="sui-icon icon-pc-right banklist-bank-icon"></i>
 				</div>
 				<div class="js-checkBank banklist-bank" data-bank="10003">
-					<img class="banklist-bank-img" src="../images/zhongguo.png">
+					<img class="banklist-bank-img" src="./images/zhongguo.png">
 					<div class="banklist-bank-title">中国银行</div>
 					<i class="sui-icon icon-pc-right banklist-bank-icon"></i>
 				</div>
@@ -40,13 +39,15 @@
 				<div class="span1">
               <span class="sui-dropdown dropdown-bordered select1">
                 <span class="dropdown-inner">
-                  <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle">
+                  <a id="select" class="dropdown-toggle">
 					  <input id="otherbankid" value="" name="status" type="hidden">
 					  <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
-					  <span>-------------</span></a>
-                  <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
+					  <span>-------------</span>
+                  </a>
+                  <ul role="menu" class="sui-dropdown-menu sui-dropdown-menu1">
 					  <li role="presentation" class="active">
-						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="-1">-------------</a></li>
+						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="-1">-------------</a>
+                      </li>
 					  <li role="presentation">
 						  <a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10005">平安银行</a></li>
 					  <li role="presentation">
@@ -229,9 +230,15 @@
                 </span>
               </span>
 				</div>
+                <div class="spanTitle" id="div_subbank1">
+                    支行名:
+                </div>
+                <div class="span1 sui-validate" id="div_subbank2" novalidate="novalidate">
+                    <input id="subbankname" type="text" placeholder="" class="input-xfat">
+                </div>
 				<div class="spanTitle">户 名:</div>
 				<div class="span1 sui-validate" novalidate="novalidate">
-					<input id="accountname_show" disabled="disabled" type="text" data-rules="required|maxlength=50" placeholder="" class="input-xfat">
+					<input id="accountname_show" type="text" data-rules="required|maxlength=50" placeholder="" class="input-xfat">
 					<input id="accountname" style="display: none" type="text" data-rules="required|maxlength=50" placeholder="" class="input-xfat"></div>
 				<div class="clear"></div>
 				<div class="spanTitle">账 号:</div>
@@ -276,6 +283,7 @@
 				<tr>
 					<!-- <th><input id="selectAll" type="checkbox" /></th> -->
 					<th>开户行</th>
+					<th>支行</th>
 					<th>卡号</th>
 					<th>户名</th>
 					<th>设置</th>
@@ -284,24 +292,33 @@
 				<tbody></tbody>
 			</table>
 		</div>
-<script>
-	$(function(){
-		$(".dropdown-toggle").eq(0).click(function(){
-			$(".select1").toggleClass("open");
-		});
-		$(".sui-dropdown-menu1 li").click(function(){
-			var i=$(".sui-dropdown-menu1 li").index(this);
-			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
-			$(".sui-dropdown-menu1 li").removeClass("active");
-			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
-			$(".select1 span span").html(x);
-			$(".select1").removeClass("open");
-		});
-		$('.dropdown-inner').mouseleave(function(){
-			$(".select1").removeClass("open");
-		});
-	})
-</script>
+        <div class="sui-modal sui-modal1 hide fade" tabindex="-1" role="dialog" id="1476518614306" data-hidetype="remove" aria-hidden="false" style="margin-top: -130px; display: block;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">注意</h4></div>
+                    <div class="modal-body ">请选择银行！</div>
+                    <div class="modal-footer">
+                        <button type="button" class="sui-btn sui-btn1 btn-primary btn-large" data-ok="modal">确定</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="sui-modal sui-modal2 hide fade" tabindex="-1" role="dialog" id="1476520359293" data-hidetype="remove" style="width: 410px; margin-left: -200px; margin-top: -138px; display: block;" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="sui-close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">注意</h4></div>
+                    <div class="modal-body " style="height: 120px;">确定删除？</div>
+                    <div class="modal-footer">
+                        <button type="button" id="remBtn" class="sui-btn btn-primary btn-large" data-ok="modal">确定</button>
+                        <button type="button" class="sui-btn sui-btn1 btn-default btn-large" data-dismiss="modal">取消</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="sui-modal-backdrop fade" style="background:#000;z-index:-1"></div>
+<script src="./js/banklist.js"></script>
 </body>
 
 </html>

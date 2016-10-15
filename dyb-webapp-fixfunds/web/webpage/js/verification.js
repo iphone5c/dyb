@@ -1,5 +1,6 @@
 $(function(){
     var rgempty=/\S+/;
+    var regular=/^[A-Za-z0-9\u4e00-\u9fa5]+$/;
     function empty(idText,html,num){
         if(rgempty.test(idText)){
             $(".yz-error").eq(num).html("");
@@ -16,12 +17,24 @@ $(function(){
             return false;
         }
     }
+    var regular=/^[\u4E00-\u9FA5A-Za-z0-9_]+$/;
+    $("#username").on("keyup blur",function(){
+        var username=$("#username").val();
+        if(regular.test(username)){
+            $(".yz-error").eq(0).html("");
+        }else if(!rgempty.test(username)){
+            $(".yz-error").eq(0).html("用户名不能为空！");
+        }else{
+            $(".yz-error").eq(0).html("格式错误！");
+        }
+    })
     $("#nextReg1").click(function(){
-        var regular=/^[A-Za-z0-9\u4e00-\u9fa5]+$/;
         var result=new Array();
         //console.log(result.length)
         var username=$("#username").val();
         result[0] = empty(username,"用户名不能为空!",0);
+
+
         var userpwd=$("#userpwd").val();
         result[1] = empty(userpwd,"密码不能为空!",1);
         var password=$("#password").val();

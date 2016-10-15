@@ -26,6 +26,10 @@ public class DybUtils {
 
     public static String LETTER="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+    public static String SERVICE="127.0.0.1";
+
+    public static String PORT="8080";
+
     public static boolean isEmptyOrNull(String str) {
         return str == null || str.isEmpty();
     }
@@ -271,6 +275,15 @@ public class DybUtils {
             return ip;
         }
         return request.getRemoteAddr();
+    }
+
+    /**
+     * 获取项目真实路径
+     * @param path 在真实路径后加上自定义的路径
+     * @return 项目路径+自定义路径
+     */
+    public static String getServletContextRealPath(String path){
+        return ContextLoader.getCurrentWebApplicationContext().getServletContext().getRealPath(path);
     }
 
     /**

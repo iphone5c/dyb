@@ -2,6 +2,7 @@ package com.dyb.platforms.fixfunds.services.business.account.service;
 
 import com.dyb.platforms.fixfunds.services.business.account.dao.IAccountDao;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
+import com.dyb.platforms.fixfunds.services.business.account.entity.Qrcode;
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountStatus;
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.bankaccount.entity.BankAccount;
@@ -14,6 +15,7 @@ import com.dyb.platforms.fixfunds.services.business.merchant.service.IMerchantSe
 import com.dyb.platforms.fixfunds.services.business.serviceproviders.entity.ServiceProviders;
 import com.dyb.platforms.fixfunds.services.business.serviceproviders.service.IServiceProvidersService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
+import com.dyb.platforms.fixfunds.services.utils.QRCodeUtil;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
@@ -23,8 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Administrator on 2016/2/23.
@@ -110,6 +111,43 @@ public class AccountService extends BaseService implements IAccountService {
         account.setApplyRegistrationTime(new Date());
         account.setCreateTime(new Date());
         account.setReferrerLocation(account.getReferrerCode() + accountCode);
+        try {
+            Map<String,Qrcode> qrcodeMap=new HashMap<>();
+            StringBuffer url=new StringBuffer("http://").append(DybUtils.SERVICE).append(":").append(DybUtils.PORT);
+            if (account.getAccountType()==AccountType.信使){
+                StringBuffer sb=new StringBuffer();
+                Qrcode qrcode=new Qrcode();
+                sb.append(url).append("/webpage/register/xin-register.html?referrer=").append(accountCode).append("referrerType=").append(AccountType.信使.name());
+                qrcode.setUrl(sb.toString());
+                qrcode.setImagePath(QRCodeUtil.encode(sb.toString(), "/upload"));
+                qrcodeMap.put("member",qrcode);
+            }else if (account.getAccountType()==AccountType.商家){
+                StringBuffer sb=new StringBuffer();
+                Qrcode qrcode=new Qrcode();
+                sb.append(url).append("/webpage/register/xin-register.html?referrer=").append(accountCode).append("referrerType=").append(AccountType.商家.name());
+                qrcode.setUrl(sb.toString());
+                qrcode.setImagePath(QRCodeUtil.encode(sb.toString(), "/upload"));
+                qrcodeMap.put("member",qrcode);
+            }else if (account.getAccountType()==AccountType.服务商){
+                StringBuffer sb=new StringBuffer();
+                Qrcode qrcode=new Qrcode();
+                sb.append(url).append("/webpage/register/xin-register.html?referrer=").append(accountCode).append("referrerType=").append(AccountType.服务商.name());
+                qrcode.setUrl(sb.toString());
+                qrcode.setImagePath(QRCodeUtil.encode(sb.toString(), "/upload"));
+                qrcodeMap.put("member",qrcode);
+
+                sb=new StringBuffer();
+                qrcode=new Qrcode();
+                sb.append(url).append("/webpage/register/fuwu-register.html?referrer=").append(accountCode).append("referrerType=").append(AccountType.服务商.name());
+                qrcode.setUrl(sb.toString());
+                qrcode.setImagePath(QRCodeUtil.encode(sb.toString(), "/upload"));
+                qrcodeMap.put("merchant",qrcode);
+
+            }
+            account.setQrcode(DybUtils.getJsonSerialize(qrcodeMap));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         int info = accountDao.insertObject(account);
         return info>0?account:null;
     }
@@ -186,6 +224,7 @@ public class AccountService extends BaseService implements IAccountService {
         account.setAccountType(AccountType.商家);
         account.setAccountStatus(AccountStatus.待提交审核);
         account.setAccountForeignKey(tempMerchant.getMerchantCode());
+
         Account tempAccount=this.createAccount(account);
         if (tempAccount==null)
             throw new DybRuntimeException("商家注册时，账户注册失败");

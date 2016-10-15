@@ -20,10 +20,11 @@
         <result property="registrationTime" column="registrationtime" />
         <result property="applyRegistrationTime" column="applyregistrationtime" />
         <result property="createTime" column="createtime" />
+        <result property="qrcode" column="qrcode" />
     </resultMap>
 
     <sql id="baseCol">
-        accountcode, accountname, password, tradepassword, accountphone, accountstatus, accounttype, accountforeignkey, referrercode, referrerlocation, registrationtime, applyregistrationtime, createtime
+        accountcode, accountname, password, tradepassword, accountphone, accountstatus, accounttype, accountforeignkey, referrercode, referrerlocation, registrationtime, applyregistrationtime, createtime,qrcode
     </sql>
 
     <sql id="whereSql">
@@ -98,6 +99,13 @@
                     <![CDATA[ #{value} ]]>
                 </foreach>
             </if>
+            <if test="qrcode != null"><![CDATA[ and qrcode like #{qrcode} ]]></if>
+            <if test="qrcode_enum != null">
+                <![CDATA[ and qrcode in ]]>
+                <foreach collection="qrcode_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
             <if test="registrationTime != null"><![CDATA[ and registrationtime = #{registrationTime} ]]></if>
             <if test="registrationTime_r_min != null"><![CDATA[ and registrationtime >= #{registrationTime_r_min} and registrationtime < #{registrationTime_r_max} ]]></if>
             <if test="applyRegistrationTime != null"><![CDATA[ and applyregistrationtime = #{applyRegistrationTime} ]]></if>
@@ -117,6 +125,7 @@
                     <if test="item.name == 'accountForeignKey'"><![CDATA[ accountforeignkey like #{item.value} ]]></if>
                     <if test="item.name == 'referrerCode'"><![CDATA[ referrercode like #{item.value} ]]></if>
                     <if test="item.name == 'referrerLocation'"><![CDATA[ referrerlocation like #{item.value} ]]></if>
+                    <if test="item.name == 'qrcode'"><![CDATA[ qrcode like #{item.value} ]]></if>
                 </foreach>
             </if>
         </trim>
@@ -150,18 +159,20 @@
             <if test="_orderBy == 'applyRegistrationTime_asc'"><![CDATA[ applyregistrationtime, ]]></if>
             <if test="_orderBy == 'createTime_desc'"><![CDATA[ createtime desc, ]]></if>
             <if test="_orderBy == 'createTime_asc'"><![CDATA[ createtime, ]]></if>
+            <if test="_orderBy == 'qrcode_desc'"><![CDATA[ qrcode desc, ]]></if>
+            <if test="_orderBy == 'qrcode_asc'"><![CDATA[ qrcode, ]]></if>
         </trim>
     </sql>
 
     <insert id="insertObject" parameterType="com.dyb.platforms.fixfunds.services.business.account.entity.Account">
         insert into
-        dyb_account(accountcode,accountname,password,tradepassword,accountphone,accountstatus,accounttype,accountforeignkey,referrercode,referrerlocation,registrationtime,applyregistrationtime,createtime)
-        values(#{accountCode},#{accountName},#{password},#{tradePassword},#{accountPhone},#{accountStatus},#{accountType},#{accountForeignKey},#{referrerCode},#{referrerLocation},#{registrationTime},#{applyRegistrationTime},#{createTime});
+        dyb_account(accountcode,accountname,password,tradepassword,accountphone,accountstatus,accounttype,accountforeignkey,referrercode,referrerlocation,registrationtime,applyregistrationtime,createtime,qrcode)
+        values(#{accountCode},#{accountName},#{password},#{tradePassword},#{accountPhone},#{accountStatus},#{accountType},#{accountForeignKey},#{referrerCode},#{referrerLocation},#{registrationTime},#{applyRegistrationTime},#{createTime},#{qrcode});
     </insert>
 
     <update id="updateObject" parameterType="com.dyb.platforms.fixfunds.services.business.account.entity.Account">
         update dyb_account
-        set accountname=#{accountName},password=#{password},tradepassword=#{tradePassword},accountphone=#{accountPhone},accountstatus=#{accountStatus},accounttype=#{accountType},accountforeignkey=#{accountForeignKey},referrercode=#{referrerCode},referrerlocation=#{referrerLocation},registrationtime=#{registrationTime},applyregistrationtime=#{applyRegistrationTime},createtime=#{createTime}
+        set accountname=#{accountName},password=#{password},tradepassword=#{tradePassword},accountphone=#{accountPhone},accountstatus=#{accountStatus},accounttype=#{accountType},accountforeignkey=#{accountForeignKey},referrercode=#{referrerCode},referrerlocation=#{referrerLocation},registrationtime=#{registrationTime},applyregistrationtime=#{applyRegistrationTime},createtime=#{createTime},qrcode=#{qrcode}
         where accountcode=#{accountCode};
     </update>
 

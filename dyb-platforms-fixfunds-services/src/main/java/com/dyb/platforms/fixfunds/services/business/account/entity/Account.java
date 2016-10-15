@@ -56,6 +56,8 @@ public class Account implements java.io.Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 创建时间
     private Date createTime;
+    //二维码路径
+    private String qrcode;
 
     //商户详情
     private Merchant merchant;
@@ -296,6 +298,24 @@ public class Account implements java.io.Serializable {
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    /**
+     * 获取二维码
+     *
+     * @return 二维码
+     */
+    public String getQrcode() {
+        return qrcode;
+    }
+
+    /**
+     * 设置二维码
+     *
+     * @param qrcode 二维码
+     */
+    public void setQrcode(String qrcode) {
+        this.qrcode = qrcode;
     }
 
     public Merchant getMerchant() {

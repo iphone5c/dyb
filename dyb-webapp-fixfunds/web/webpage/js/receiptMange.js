@@ -284,9 +284,10 @@ $(function(){
         $("#postphone").text(result.result.invoiceApply.phone);
 //  申请发票确定
     var invoiceApplyCode2 = result.result.invoiceApply.invoiceApplyCode;
-    var countryPhone = $("#companyphone").val();
-    var taxpayers =  $("#paytaxno").val();
+
     $("#okButton").click(function() {
+        var countryPhone = $("#companyphone").val();
+        var taxpayers =  $("#paytaxno").val();
         var param = {
 //            申请数据的Code
             invoiceApplyCode:invoiceApplyCode2,
@@ -300,6 +301,9 @@ $(function(){
             alert(result.errorMessage)
             return
         }
+        alert("已发出申请")
+        $(".sui-modal").removeClass("in");
+        $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
     })
     });
 });

@@ -55,60 +55,41 @@
 						<th style="max-width:1%;">捐赠信使豆</th></tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td style="" data-key="returntime" data-line="0" data-id="">2016-09-13</td>
-						<td style="text-align:left;" data-key="beannum" data-line="0" data-id="">200.00</td>
-						<td id="table-line-0" class="dsn">{"returntime":"2016-09-13","beannum":"200.00"}</td></tr>
-					<tr>
-						<td style="" data-key="returntime" data-line="1" data-id="">2016-09-11</td>
-						<td style="text-align:left;" data-key="beannum" data-line="1" data-id="">600.00</td>
-						<td id="table-line-1" class="dsn">{"returntime":"2016-09-11","beannum":"600.00"}</td></tr>
-					<tr>
-						<td style="" data-key="returntime" data-line="2" data-id="">2016-09-08</td>
-						<td style="text-align:left;" data-key="beannum" data-line="2" data-id="">300.00</td>
-						<td id="table-line-2" class="dsn">{"returntime":"2016-09-08","beannum":"300.00"}</td></tr>
+
 					</tbody>
 				</table>
 				<div class="sui-pagination pagination-small" style="text-align:left;">
-					<ul id="table-pagination">
-						<!-- 前半部分（包括当前） -->
-						<li id="prevBtn" class="prev disabled">
-							<a>«上一页</a>
-						</li>
-						<li class="pageBtn active" data-num="1">
-							<a>1</a>
-						</li>
-						<!-- 后半部分（当前之后） -->
-						<li id="nextBtn" class="next disabled">
-							<a>下一页»</a>
-						</li>
-					</ul>
-					<div>
-						<span>共1页&nbsp;</span>
-                <span>到
-                  <input id="selectPageNum" type="text" onkeyup="this.value=this.value.replace(/\D/g,&#39;&#39;)" onafterpaste="this.value=this.value.replace(/\D/g,&#39;&#39;)" class="page-num">
-                  <button id="selectPage" class="page-confirm">确定</button>页</span></div>
-				</div>
+                    <ul id="table-pagination">
+                        <!-- 前半部分（包括当前） -->
+                        <li id="prevBtn" class="  active">
+                            <a>«上一页</a>
+                        </li>
+                        <li class="pageBtn" data-num="1">
+                            <a id="onpage"></a>
+                            <style>
+                                #onpage{
+                                    background: none !important;
+                                    color: black !important;
+                                    border: 1px solid white !important;
+                                }
+                                #onpage:hover{
+                                    background: none !important;
+                                    color: black !important;
+                                    border: 1px solid white !important;
+                                }
+                            </style>
+                        </li>
+                        <!-- 后半部分（当前之后） -->
+                        <li id="nextBtn" class="  active">
+                            <a>下一页»</a>
+                        </li>
+                    </ul>
+                    <div>
+                        <span id="xg_page"></span>
+                    </div>
 			</div>
 		</div>
-<script>
-	$(function(){
-		$(".dropdown-toggle").eq(0).click(function(){
-			$(".select1").toggleClass("open");
-		})
-		$(".sui-dropdown-menu1 li").click(function(){
-			var i=$(".sui-dropdown-menu1 li").index(this);
-			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
-			$(".sui-dropdown-menu1 li").removeClass("active");
-			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
-			$(".select1 span span").html(x);
-			$(".select1").removeClass("open");
-		})
-		$('.dropdown-inner').mouseleave(function(){
-			$(".select1").removeClass("open");
-		});
-	})
-</script>
+<script type="text/javascript" src="/webpage/js/merchantdonation.js"></script>
 </body>
 
 </html>

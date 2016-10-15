@@ -23,9 +23,9 @@
 						<p style="margin-left: 25px;" align="left">
 							<span style="color:#B63131; font-size:18px; line-height:40px;">一点公益基金会</span></p>
 						<p style="margin-left: 25px; font-size:14px; line-height:40px;" align="left">开户行：
-							<span style="">中国工商银行北京北太平庄支行</span></p>
+							<span style="" id="bankName"></span></p>
 						<p style="margin-left: 25px; font-size:14px; line-height:40px;" align="left">账号：
-							<span style="">0200010019200165335</span></p>
+							<span style="" id="bankNum"></span></p>
 						<div class="ad-box">
 							<div class="spanTitle2" style="width:17%;text-align:left;margin-left: 25px;margin-right:0px;">直捐类型：</div>
 							<div class="span1">
@@ -37,9 +37,10 @@
 							<span id="size_s">普通信使豆</span></a>
                         <ul id="donateForm-u" role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
 							<li role="presentation">
-								<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">普通信使豆</a></li>
+								<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="" id="0"></a>
+                            </li>
 							<li role="presentation">
-								<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">待缴税信使豆</a></li>
+								<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="" id="1"></a></li>
 						</ul>
                       </span>
                     </span>
@@ -65,24 +66,6 @@
 				</form>
 			</div>
 		</div>
-<script>
-	$(function(){
-		$(".dropdown-toggle").eq(0).click(function(){
-			$(".select1").toggleClass("open");
-		});
-		$(".sui-dropdown-menu1 li").click(function(){
-			var i=$(".sui-dropdown-menu1 li").index(this);
-			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
-			$(".sui-dropdown-menu1 li").removeClass("active");
-			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
-			$(".select1 span span").html(x);
-			$(".select1").removeClass("open");
-		});
-		$('.dropdown-inner').mouseleave(function(){
-			$(".select1").removeClass("open");
-		});
-	})
-</script>
 </body>
-
+<script type="text/javascript" src="/webpage/js/donate.js"></script>
 </html>

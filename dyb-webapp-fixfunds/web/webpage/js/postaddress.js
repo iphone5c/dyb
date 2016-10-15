@@ -31,16 +31,16 @@ $(function(){
                     "<td>"+data.result[i].phone+"</td>" +
                     "<td>"+data.result[i].province+""+data.result[i].city+""+data.result[i].address+"</td>" +
                     "<td>"+data.result[i].postalcode+"</td>" +
-                    "<td><a class='defaultAddress'>设为默认地址</a>&nbsp;<a class='deleteAddress' id="+data.result[i].sendAddressCode+">删除</a></td>" +
+                    "<td><a class='defaultAddress "+data.result[i].sendAddressCode+"'>设为默认地址</a>&nbsp;<a  class='deleteAddress "+data.result[i].sendAddressCode+"'>删除</a></td>" +
                     "</tr>")
             }else if(data.result[i].defaultChecked == true){
                 $("#addres tbody").html( $("#addres tbody").html()+
-                    "<tr>" +
+                    "<tr id="+data.result[i].sendAddressCode+">" +
                     "<td>"+data.result[i].receiver+"</td>" +
                     "<td>"+data.result[i].phone+"</td>" +
                     "<td>"+data.result[i].province+""+data.result[i].city+""+data.result[i].address+"</td>" +
                     "<td>"+data.result[i].postalcode+"</td>" +
-                    "<td><span style='color: #808080'>默认地址</span>&nbsp;<a class='deleteAddress' id="+data.result[i].sendAddressCode+">删除</a></td>" +
+                    "<td><span style='color: #808080'>默认地址</span>&nbsp;<a  class='deleteAddress "+data.result[i].sendAddressCode+"'>删除</a></td>" +
                     "</tr>")
             }
         }
@@ -84,16 +84,16 @@ $(function(){
                         "<td>"+data.result[i].phone+"</td>" +
                         "<td>"+data.result[i].province+""+data.result[i].city+""+data.result[i].address+"</td>" +
                         "<td>"+data.result[i].postalcode+"</td>" +
-                        "<td><a class='defaultAddress'>设为默认地址</a>&nbsp;<a class='deleteAddress' id="+data.result[i].sendAddressCode+">删除</a></td>" +
+                        "<td><a class='defaultAddress "+data.result[i].sendAddressCode+"'>设为默认地址</a>&nbsp;<a  class='deleteAddress "+data.result[i].sendAddressCode+"'>删除</a></td>" +
                         "</tr>")
                 }else if(data.result[i].defaultChecked == true){
                     $("#addres tbody").html( $("#addres tbody").html()+
-                        "<tr>" +
+                        "<tr id="+data.result[i].sendAddressCode+">" +
                         "<td>"+data.result[i].receiver+"</td>" +
                         "<td>"+data.result[i].phone+"</td>" +
                         "<td>"+data.result[i].province+""+data.result[i].city+""+data.result[i].address+"</td>" +
                         "<td>"+data.result[i].postalcode+"</td>" +
-                        "<td><span style='color: #808080'>默认地址</span>&nbsp;<a class='deleteAddress' id="+data.result[i].sendAddressCode+">删除</a></td>" +
+                        "<td><span style='color: #808080'>默认地址</span>&nbsp;<a  class='deleteAddress "+data.result[i].sendAddressCode+"'>删除</a></td>" +
                         "</tr>")
                 }
             }
@@ -119,13 +119,14 @@ $(function(){
         remi = $(".deleteAddress").index(this);
         $(".sui-modal3").addClass("in");
         $(".sui-modal-backdrop").css("zIndex","1000").addClass("in");
-        console.log(remi);
     });
     $("#rembutton").click(function(){
-        var code=  $(".deleteAddress").eq(remi).attr("id");
-        console.log(remi);
+        var code=[];
+        code =  $(".defaultAddress").eq(remi).attr("class").split(" ");
+//        $("body").find(".className").eq(2);
+//        console.log(remi);
         var param={
-            sendAddressCode:code
+            sendAddressCode:code[1]
         }
         var data = invokeService('/web/merchant/sendaddress/deleteSendAddress',param);
         console.log(data);
@@ -149,16 +150,16 @@ $(function(){
                         "<td>"+data.result[i].phone+"</td>" +
                         "<td>"+data.result[i].province+""+data.result[i].city+""+data.result[i].address+"</td>" +
                         "<td>"+data.result[i].postalcode+"</td>" +
-                        "<td><a class='defaultAddress'>设为默认地址</a>&nbsp;<a class='deleteAddress' id="+data.result[i].sendAddressCode+">删除</a></td>" +
+                        "<td><a class='defaultAddress "+data.result[i].sendAddressCode+"'>设为默认地址</a>&nbsp;<a  class='deleteAddress "+data.result[i].sendAddressCode+"'>删除</a></td>" +
                         "</tr>")
                 }else if(data.result[i].defaultChecked == true){
                     $("#addres tbody").html( $("#addres tbody").html()+
-                        "<tr>" +
+                        "<tr id="+data.result[i].sendAddressCode+">" +
                         "<td>"+data.result[i].receiver+"</td>" +
                         "<td>"+data.result[i].phone+"</td>" +
                         "<td>"+data.result[i].province+""+data.result[i].city+""+data.result[i].address+"</td>" +
                         "<td>"+data.result[i].postalcode+"</td>" +
-                        "<td><span style='color: #808080'>默认地址</span>&nbsp;<a class='deleteAddress' id="+data.result[i].sendAddressCode+">删除</a></td>" +
+                        "<td><span style='color: #808080'>默认地址</span>&nbsp;<a  class='deleteAddress "+data.result[i].sendAddressCode+"'>删除</a></td>" +
                         "</tr>")
                 }
             }
@@ -179,4 +180,58 @@ $(function(){
         $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
     });
 
+
+    // 设置默认寄送地址
+    $("#addres tbody").on("click",".defaultAddress",function(){
+        var defi = $(".defaultAddress").index(this);
+//        console.log(defi);
+        var code=[];
+        code =  $(".defaultAddress").eq(defi).attr("class").split(" ");
+        var param={
+            sendAddressCode:code[1]
+        }
+        var data = invokeService('/web/merchant/sendaddress/setDefaultSendAddress',param);
+//        console.log(data);
+        if (data.statusCode!=1000){
+            alert(data.errorMessage);
+            return;
+        }
+        var data = invokeService('/web/merchant/sendaddress/getSendAddressListByCurrent',{});
+        console.log(data);
+        if (data.statusCode!=1000){
+            alert(data.errorMessage);
+            return;
+        }
+        if(data.statusCode==1000){
+            $("#addres tbody").html("");
+            for(var i=0;i<data.result.length;i++){
+                if(data.result[i].defaultChecked == false){
+                    $("#addres tbody").html( $("#addres tbody").html()+
+                        "<tr>" +
+                        "<td>"+data.result[i].receiver+"</td>" +
+                        "<td>"+data.result[i].phone+"</td>" +
+                        "<td>"+data.result[i].province+""+data.result[i].city+""+data.result[i].address+"</td>" +
+                        "<td>"+data.result[i].postalcode+"</td>" +
+                        "<td><a class='defaultAddress "+data.result[i].sendAddressCode+"'>设为默认地址</a>&nbsp;<a  class='deleteAddress "+data.result[i].sendAddressCode+"'>删除</a></td>" +
+                        "</tr>")
+                }else if(data.result[i].defaultChecked == true){
+                    $("#addres tbody").html( $("#addres tbody").html()+
+                        "<tr id="+data.result[i].sendAddressCode+">" +
+                        "<td>"+data.result[i].receiver+"</td>" +
+                        "<td>"+data.result[i].phone+"</td>" +
+                        "<td>"+data.result[i].province+""+data.result[i].city+""+data.result[i].address+"</td>" +
+                        "<td>"+data.result[i].postalcode+"</td>" +
+                        "<td><span style='color: #808080'>默认地址</span>&nbsp;<a  class='deleteAddress "+data.result[i].sendAddressCode+"'>删除</a></td>" +
+                        "</tr>")
+                }
+            }
+
+        };
+        $(".sui-modal5").addClass("in");
+        $(".sui-modal-backdrop").css("zIndex","1000").addClass("in");
+    })
+    $("#default").click(function(){
+        $(".sui-modal5").removeClass("in");
+        $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
+    })
 })

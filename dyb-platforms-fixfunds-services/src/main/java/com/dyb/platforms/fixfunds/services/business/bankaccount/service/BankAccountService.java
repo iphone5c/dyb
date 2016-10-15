@@ -159,6 +159,8 @@ public class BankAccountService extends BaseService implements IBankAccountServi
         if (bankAccountList==null||bankAccountList.size()<=0)
             throw new DybRuntimeException("此账户目前尚未添加银行卡信息，请添加至少一张银行卡信息");
         boolean flag=false;
+        BankAccount[] bankAccounts=new BankAccount[bankAccountList.size()];
+        int i=0;
         for (BankAccount bankAccount:bankAccountList){
             if (bankAccount.getBankAccountCode().equals(bankAccountCode)){
                 bankAccount.setDefaultChecked(true);
@@ -166,10 +168,12 @@ public class BankAccountService extends BaseService implements IBankAccountServi
             }else {
                 bankAccount.setDefaultChecked(false);
             }
+            bankAccounts[i]=bankAccount;
+            i++;
         }
         if (!flag)
             throw new DybRuntimeException("没有找到此卡信息");
-        int info=bankAccountDao.updateList((BankAccount[]) bankAccountList.toArray());
+        int info=bankAccountDao.updateList(bankAccounts);
         return info>0?true:false;
     }
 }

@@ -16,7 +16,7 @@ function getbanklist(){
                     "<td>"+data.result[i].bankBranch+"</td>" +
                     "<td>"+data.result[i].bankNum+"</td>" +
                     "<td>"+data.result[i].bankAccountName+"</td>" +
-                    "<td><label class='inline checked'>" +
+                    "<td><label class='defaultChecked' id='"+data.result[i].bankAccountCode+"'>" +
                           "<input type='radio'>"+
                           "<span style='margin-left: 5px'>默认银行卡</span>"+
                     "</label></td>" +
@@ -29,7 +29,7 @@ function getbanklist(){
                     "<td>"+data.result[i].bankBranch+"</td>" +
                     "<td>"+data.result[i].bankNum+"</td>" +
                     "<td>"+data.result[i].bankAccountName+"</td>" +
-                    "<td><label class='inline checked'>"+
+                    "<td><label class='defaultChecked' id='"+data.result[i].bankAccountCode+"'>"+
                     "<input type='radio' checked='checked'>"+
                     "<span style='margin-left: 5px'>默认银行卡</span>"+
                     "</label></td>" +
@@ -107,7 +107,24 @@ $("#btn_addbank").click(function(){
         }
     });
    // 设置默认银行
-
+    $(".table-zebra tbody").on("click",".defaultChecked",function(){
+        var seti = $(".defaultChecked").index(this);
+        var code =  $(".defaultChecked").eq(seti).attr("id");
+        console.log(code);
+        var param={
+            bankAccountCode:code
+        }
+        var data = invokeService('/web/merchant/bankaccount/setDefaultBankAccount',param);
+//        console.log(data);
+        if (data.statusCode!=1000){
+            alert(data.errorMessage);
+            return;
+        }
+        if (data.statusCode==1000){
+            $(".table-zebra tbody").html("");
+            getbanklist();
+        }
+    });
     getbanklist();
 
 

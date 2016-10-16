@@ -161,8 +161,14 @@ public class ConversionService extends BaseService implements IConversionService
         MessengerBean messengerBean=messengerBeanService.getMessengerBeanByAccountCodeAndMessengerType(account.getAccountCode(),conversion.getConversionType());
         if (messengerBean==null)
             throw new DybRuntimeException("新增转换信使豆申请记录时，找不到此账户的信使豆信息");
-        messengerBean.setMessengerBean(messengerBean.getMessengerBean()-conversion.getApplyConversionNum());
-        messengerBean.setFreeze(messengerBean.getMessengerBean()+conversion.getApplyConversionNum());
+        //可用余额
+        Double mBean=messengerBean.getMessengerBean();
+        //冻结的信使豆
+        Double fBean=messengerBean.getFreeze();
+        if (mBean<conversion.getApplyConversionNum())
+            throw new DybRuntimeException("可提信使豆余额不足");
+        messengerBean.setMessengerBean(mBean-conversion.getApplyConversionNum());
+        messengerBean.setFreeze(fBean+conversion.getApplyConversionNum());
         MessengerBean updateMessengerBean=messengerBeanService.updateMessengerBean(messengerBean);
         if (updateMessengerBean==null)
             throw new DybRuntimeException("新增转换信使豆申请记录时，账户信使豆处理失败");

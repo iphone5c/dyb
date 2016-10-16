@@ -4,6 +4,7 @@
 
 
 $(function(){
+    getData();
     $(".btn_timepicki").timepicki();
     function submit(){
         var flag=$("#flag").val();
@@ -192,7 +193,7 @@ $(function(){
         content.push("<div>名称：<span>"+$("#companyname").val()+"</span></div>");
         content.push("<div>联系人：<span>"+$("#principal").val()+"</span></div>");
         content.push("<div>电话：<span>"+$("#phone").val()+"</span></div>");
-        content.push("<div>地址：<span>"+$("#s_province").val()+$("#s_city").val()+$("#companyaddress").val()+"</span></div>");
+        content.push("<div>地址：<span>"+$("#s_province option:selected").text()+$("#s_city option:selected").text()+$("#companyaddress").val()+"</span></div>");
     })
 
 

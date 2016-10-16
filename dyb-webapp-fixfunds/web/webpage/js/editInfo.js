@@ -1,4 +1,5 @@
 $(function(){
+    getData();
     // 修改当前登陆商家信息
     $("#saveMerchantInfo").click(function(){
        var param={
@@ -18,7 +19,7 @@ $(function(){
             bankBranch:$("#edit_subbankname").val(),//开户支行
             bankNum:$("#edit_bankacount").val(),//卡号
             bankAccountName:$("#edit_accountname").val()//开户名
-        }
+        };
         var data = invokeService('/web/merchant/modifyMerchantByCurrent',param);
         if (data.statusCode!=1000){
             alert(data.errorMessage);
@@ -59,45 +60,6 @@ $(function(){
     $("#edit_sexSpan").html(data.result.merchant.merchant.principalSex);
     $("#edit_idcard").val(data.result.merchant.merchant.principalIdCard);
     $("#edit_email").val(data.result.merchant.merchant.principalEmail);
-
-    // ajax请求 所在行业数据
-    var data = invokeService('/web/commons/getIndustry',{});
-    console.log(data)
-    if (data.statusCode!=1000){
-        alert(data.errorMessage);
-        return;
-    }
-    if(data.statusCode==1000){
-                for(var i=0;i<data.result.length;i++){
-                    $(".sui-dropdown-menu1").html( $(".sui-dropdown-menu1").html()+"<li><a  value='"+data.result[i].name+"'>"+data.result[i].value+"</a></li>")
-                }
-            }
-//    // ajax请求企业规模数据
-    var data = invokeService('/web/commons/getScale',{});
-    console.log(data)
-    if (data.statusCode!=1000){
-        alert(data.errorMessage);
-        return;
-    }
-    if(data.statusCode==1000){
-                for(var i=0;i<data.result.length;i++){
-                    $(".sui-dropdown-menu2").html( $(".sui-dropdown-menu2").html()+"<li><a  value='"+data.result[i].name+"'>"+data.result[i].value+"</a></li>")
-                }
-            }
-//    // ajax请求性别数据
-    var data = invokeService('/web/commons/getSex',{});
-    console.log(data)
-    if (data.statusCode!=1000){
-        alert(data.errorMessage);
-        return;
-    }
-    if(data.statusCode==1000){
-                for(var i=0;i<data.result.length;i++){
-                    $(".sui-dropdown-menu4").html( $(".sui-dropdown-menu4").html()+"<li><a  value='"+data.result[i].name+"'>"+data.result[i].value+"</a></li>")
-                }
-            }
-
-
     // 取消修改
     $("#cancleMerchantInfo").click(function(){
         window.location.reload();

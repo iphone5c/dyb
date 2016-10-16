@@ -128,11 +128,12 @@ public class WebRecommendController extends BaseController {
      */
     @RequestMapping(value = "/getRecommend")
     public Object getRecommend(HttpServletRequest request){
+        log.info("我要推荐");
         Account account=DybUtils.getCurrentAccount(request);
         String qrcode=account.getQrcode();
         Map<String,Qrcode> qrcodeMap=new HashMap<>();
         qrcodeMap= (Map<String, Qrcode>) DybUtils.getJsonDeserialize(qrcode,Map.class);
-        return result(qrcode);
+        return result(qrcodeMap);
     }
 
 }

@@ -117,28 +117,28 @@ public class AccountService extends BaseService implements IAccountService {
             if (account.getAccountType()==AccountType.信使){
                 StringBuffer sb=new StringBuffer();
                 Qrcode qrcode=new Qrcode();
-                sb.append(url).append("/webpage/register/xin-register.html?referrer=").append(accountCode).append("referrerType=").append(AccountType.信使.name());
+                sb.append(url).append("/webpage/register/xin-register.html?referrer=").append(accountCode);
                 qrcode.setUrl(sb.toString());
                 qrcode.setImagePath(QRCodeUtil.encode(sb.toString(), "/upload"));
                 qrcodeMap.put("member",qrcode);
             }else if (account.getAccountType()==AccountType.商家){
                 StringBuffer sb=new StringBuffer();
                 Qrcode qrcode=new Qrcode();
-                sb.append(url).append("/webpage/register/xin-register.html?referrer=").append(accountCode).append("referrerType=").append(AccountType.商家.name());
+                sb.append(url).append("/webpage/register/xin-register.html?referrer=").append(accountCode);
                 qrcode.setUrl(sb.toString());
                 qrcode.setImagePath(QRCodeUtil.encode(sb.toString(), "/upload"));
                 qrcodeMap.put("member",qrcode);
             }else if (account.getAccountType()==AccountType.服务商){
                 StringBuffer sb=new StringBuffer();
                 Qrcode qrcode=new Qrcode();
-                sb.append(url).append("/webpage/register/xin-register.html?referrer=").append(accountCode).append("referrerType=").append(AccountType.服务商.name());
+                sb.append(url).append("/webpage/register/xin-register.html?referrer=").append(accountCode);
                 qrcode.setUrl(sb.toString());
                 qrcode.setImagePath(QRCodeUtil.encode(sb.toString(), "/upload"));
                 qrcodeMap.put("member",qrcode);
 
                 sb=new StringBuffer();
                 qrcode=new Qrcode();
-                sb.append(url).append("/webpage/register/fuwu-register.html?referrer=").append(accountCode).append("referrerType=").append(AccountType.服务商.name());
+                sb.append(url).append("/webpage/register/fuwu-register.html?referrer=").append(accountCode);
                 qrcode.setUrl(sb.toString());
                 qrcode.setImagePath(QRCodeUtil.encode(sb.toString(), "/upload"));
                 qrcodeMap.put("merchant",qrcode);

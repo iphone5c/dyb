@@ -126,8 +126,7 @@
                     { "text": "回购记录", "url":"./publicModule/withdrawrecord.html", "leaf":"true", },
                     { "text": "银行账号", "url":"./publicModule/bankList.html", "leaf":"true", },
                     { "text": "转换信使豆", "url":"./publicModule/switchdrawre.html", "leaf":"true", },
-                    { "text": "转换记录",  "url":"./publicModule/switchdrawrecord.html", "leaf":"true", },
-                    { "text": "转移记录",  "url":"./Merchant-sj/merchantInfo.html", "leaf":"true", }
+                    { "text": "转换记录",  "url":"./publicModule/switchdrawrecord.html", "leaf":"true", }
                 ] },
                 { "text": "黑名单管理","expanded":"false","leaf":"false", "children":[
                     { "text": "黑名单查询", "url":"./publicModule/blacklist.html", "leaf":"true", }

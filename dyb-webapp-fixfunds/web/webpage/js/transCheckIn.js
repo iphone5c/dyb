@@ -140,6 +140,8 @@ $(function(){
         });
 //        确认选择
         $("#submitGoods").click(function(){
+            $(".sui-modal").removeClass("in");
+            $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
                 $("#goodsTable tbody").html("");
                 for(var i=0; i<=$('.subSelect').length; i++){
                     if($('.subSelect').eq(i).is(':checked')){
@@ -154,14 +156,14 @@ $(function(){
                                 "<td>"+
                                 result.result.list[i].specifications+
                                 "</td>"+
-                                "<td>"+
+                                "<td class='xg_price'>"+
                                 result.result.list[i].price+
                                 "</td>"+
                                 "<td>"+
-                                "<input type='number' id=\'"+result.result.list[i].commodityCode+"\' value='1' name='xg_input'>"+
+                                "<input type='number' id=\'"+result.result.list[i].commodityCode+"\' value='1' class='xg_input'>"+
                                 "</td>"+
-                                "<td>"+
-                                result.result.list[i].price+
+                                "<td class='xg_sum'>"+
+                                    result.result.list[i].price+
                                 "</td>"+
                                 "<td>"+
                                 "<a class='js-checkName del' style='display: inline-block;widtd:30%;text-align:center')>"+
@@ -172,6 +174,28 @@ $(function(){
                         );
                     }
                 }
+//          获取消费金额并赋值
+
+
+            function sun(){
+                var a=$(".xg_sum").length;
+                var k=0;parseInt(k);
+                for(var i=0;i<=a;i++){
+                    k+=Number($(".xg_sum").eq(i).text())
+                }
+                return k;
+            }
+            var tr=$("#goodsTable tbody input");
+            $("#amount").val(sun());
+//          计算总价
+            tr.blur(function(){
+                var o=tr.index(this);
+                var a=$(".xg_price").eq(o).text();//单价
+                var b=tr.eq(o).val();//数量
+                $(".xg_sum").eq(o).text(a*b);//赋值
+//                tr.eq(o).css({"border-color":"red"});
+                $("#amount").val(sun());
+            });
 
             ////		提交请求
             var orderItemList=[];
@@ -179,7 +203,7 @@ $(function(){
                 // 信使的Code或绑定手机号
                 var accountKey=$("#userNumber").val();
 //                订单明细
-                var tr=$("#goodsTable tbody input");
+
                 for(i=0;i<tr.length;i++){
                     orderItemList[i]= {
                         commodityCode:tr.eq(i).attr("id"),
@@ -199,8 +223,8 @@ $(function(){
                     alert(result.errorMessage);
                     return;
                 }
-            })
-
+            });
+//删除
                 $("#goodsTable tbody").on("click",".del",function(){
                     var l=$(".del").index(this);
                     $("#goodsTable tbody tr").eq(l).hide();
@@ -215,7 +239,7 @@ $(function(){
           $("#queryMemberBtn_close").show();
       });
     $("#queryMemberBtn_close").click(function(){
-        $("#memberInfoTip").addClass("dsn")
+        $("#memberInfoTip").addClass("dsn");
         $("#queryMemberBtn_close").hide();
     })
 });

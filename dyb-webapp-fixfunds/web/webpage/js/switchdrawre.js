@@ -19,27 +19,31 @@ $(function(){
 //    提交密码和转换数量
         $("#submitForm").click(function(){
             //    转换数量
-            var messengerBean=$("#beannum").val()
+            var messengerBean=$("#beannum").val();
             //    二级密码
-            var tradePassword=$("#password").val()
-            // 发票号
-            var invoiceNum=$("#num0").val()
-            // 发票面额
-            var invoiceMoney=$("#money0").val()
+            var tradePassword=$("#password").val();
+
+            var tr=$("#tbody .contentLine .num0")
+            var tr2=$("#tbody .contentLine .money0")
+            var conversionInvoiceDetailses=[]
+            for(var i=0;i<tr.length;i++){
+                conversionInvoiceDetailses[i]= {
+                    invoiceNum:tr.eq(i).val(),
+                    invoiceMoney:tr2.eq(i).val()
+                }
+
+            }
+
             var param={
                 messengerBeanType:messengerBeanType,
                 messengerBean:messengerBean,
                 tradePassword:tradePassword,
-                conversionInvoiceDetailses:[
-                    {invoiceNum:invoiceNum,invoiceMoney:invoiceMoney}
-                ]
+                conversionInvoiceDetailses:conversionInvoiceDetailses
 //                invoiceNum:invoiceNum,
 //                invoiceMoney:invoiceMoney
             }
-            console.log(param)
+            console.log(conversionInvoiceDetailses)
             var result=invokeService('/web/merchant/conversion/messengerBeanConversion',param);
-            console.log(result)
-            console.log(param)
             if(result.statusCode!=1000){
                 alert(result.errorMessage);
                 return;
@@ -50,15 +54,15 @@ $(function(){
     $("#Invoice-detail-add").click(function(){
         $("#tbody").html(
                 $("#tbody").html()+
-                "<tr>"+
+                "<tr class='contentLine'>"+
                 "<td>"+
-                    "<input id='num0' type='text'>"+
+                    "<input class='num0' type='text'>"+
                     "</td>"+
                 "<td>"+
-                    "<input id='money0' type='text'>"+
+                    "<input class='money0' type='text'>"+
                     "</td>"+
                 "<td>"+
-                    "<a id='Invoice-delet' onclick='deltr(this);'>"+
+                    "<a class='Invoice-delet' onclick='deltr(this);'>"+
                     "删除"+
                     "</a>"+
                 "</td>"+

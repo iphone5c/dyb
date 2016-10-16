@@ -4,7 +4,10 @@ $(function(){
     // 只能是数字，字母，汉字
     var regular=/^[\u4E00-\u9FA5A-Za-z0-9_]+$/;
     // 长度2-16
-    var regleg=/^\d{2,16}$/;
+    function regleg(m,n){
+        var regleg=/^\d{m,n}$/;
+        return regleg;
+    }
     function empty(idText,html,num){
         if(rgempty.test(idText)){
             $(".yz-error").eq(num).html("");
@@ -22,6 +25,7 @@ $(function(){
         }
     }
     $("#username").on("keyup blur change",function(){
+        var regleg=regleg(2,16);
         var username=$("#username").val();
         if(!rgempty.test(username)){
             $(".yz-error").eq(0).html("用户名不能为空!");
@@ -33,6 +37,17 @@ $(function(){
             $(".yz-error").eq(0).html("");
         }
     });
+    $("#userpwd").on("keyup blur change",function(){
+        var regleg=regleg(6,16);
+        var userpwd=$("#userpwd").val();
+        if(!rgempty.test(userpwd)){
+            $(".yz-error").eq(0).html("密码不能为空!");
+        }else if(!regleg.test(userpwd)){
+            $(".yz-error").eq(0).html("密码必须是6-16位!");
+        } else{
+            $(".yz-error").eq(0).html("");
+        }
+    })
     $("#nextReg1").click(function(){
         var result=new Array();
         //console.log(result.length)
@@ -130,7 +145,6 @@ $(function(){
                return false;
             }
         }
-
         $(".ad-register1").css({"display":"none"});
         $(".ad-register2").css({"display":"none"});
         $(".ad-register4").css({"display":"none"});

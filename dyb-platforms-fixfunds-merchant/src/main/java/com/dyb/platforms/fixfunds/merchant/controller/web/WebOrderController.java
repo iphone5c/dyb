@@ -1,5 +1,7 @@
 package com.dyb.platforms.fixfunds.merchant.controller.web;
 
+import com.alibaba.fastjson.JSON;
+import com.dyb.platforms.fixfunds.merchant.controller.web.model.OrderConsumerRegistrationParamModel;
 import com.dyb.platforms.fixfunds.merchant.controller.web.model.OrderParamModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
@@ -27,7 +29,7 @@ import java.util.List;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/web/merchant/commodity")
+@RequestMapping(value = "/web/merchant/order")
 public class WebOrderController extends BaseController {
 
     public Logger log = Logger.getLogger(WebOrderController.class);//日志
@@ -39,13 +41,17 @@ public class WebOrderController extends BaseController {
 
     /**
      * 信使消费登记
-     * @param accountKey 信使的Code或绑定手机号
-     * @param orderItemList 订单明细
      * @return 商家账户对象
      */
     @RequestMapping(value = "/consumerRegistration")
-    public Object consumerRegistration(HttpServletRequest request,HttpServletResponse response,String accountKey,List<OrderItem> orderItemList) {
+    public Object consumerRegistration(HttpServletRequest request,HttpServletResponse response) {
         log.info("信使消费登记");
+        String info=request.getParameter("orderConsumerRegistrationParam");
+        if (DybUtils.isEmptyOrNull(info))
+            throw new IllegalArgumentException("参数为空");
+        OrderConsumerRegistrationParamModel orderConsumerRegistrationParamModel= JSON.parseObject(info,OrderConsumerRegistrationParamModel.class);
+        String accountKey=orderConsumerRegistrationParamModel.getAccountKey();
+        List<OrderItem> orderItemList=orderConsumerRegistrationParamModel.getOrderItemList();
         if (DybUtils.isEmptyOrNull(accountKey))
             return validationResult(1001,"信使消费登记时，信使的Code或绑定手机号不能为空");
         if (orderItemList==null||orderItemList.size()<=0)

@@ -46,8 +46,6 @@ public class OrderItemService extends BaseService implements IOrderItemService {
             throw new DybRuntimeException("新增订单明细时，order对象不能为空");
         if (DybUtils.isEmptyOrNull(orderCode))
             throw new DybRuntimeException("新增订单明细时，所属订单不能为空");
-        if (orderService.getOrderByCode(orderCode)==null)
-            throw new DybRuntimeException("新增订单明细时，找不到此订单信息");
         if (DybUtils.isEmptyOrNull(orderItem.getCommodityCode()))
             throw new DybRuntimeException("新增订单明细时，购买的产品不能为空");
         Commodity commodity=commodityService.getCommodityByCode(orderItem.getCommodityCode());

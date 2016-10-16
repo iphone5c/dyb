@@ -192,7 +192,7 @@ $(function(){
                     orderItemList:orderItemList
                 };
 //                console.log(param)
-                var result=invokeService('/web/merchant/commodity/consumerRegistration',param);
+                var result=invokeService('/web/merchant/order/consumerRegistration',{orderConsumerRegistrationParam:JSON.stringify(param)});
 
 //                console.log(result)
                 if(result.statusCode!=1000){

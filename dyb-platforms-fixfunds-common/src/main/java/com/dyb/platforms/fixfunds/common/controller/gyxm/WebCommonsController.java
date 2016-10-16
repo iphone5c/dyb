@@ -53,11 +53,16 @@ public class WebCommonsController extends BaseController {
      * @param loginName 登陆ID
      * @param password 登陆密码
      * @param accountType 账户类型
+     * @param kaptchaCode 验证码
      * @return 账户信息
      */
     @RequestMapping(value = "/loginAccount")
-    public Object loginAccount(HttpServletRequest request,HttpServletResponse response,String loginName,String password,String accountType) {
+    public Object loginAccount(HttpServletRequest request,HttpServletResponse response,String loginName,String password,String accountType,String kaptchaCode) {
         log.info("登陆验证");
+        if (DybUtils.isEmptyOrNull(kaptchaCode))
+            return validationResult(1001,"请输入验证码");
+        if (!kaptchaCode.equalsIgnoreCase(DybUtils.getKaptchaCode(request)))
+            return validationResult(1001,"验证码输入错误");
         Account account=accountService.loginAccountForClient(loginName, password, AccountType.getAccountTypeByName(accountType));
         if (account==null){
             return validationResult(1001,"登陆失败");

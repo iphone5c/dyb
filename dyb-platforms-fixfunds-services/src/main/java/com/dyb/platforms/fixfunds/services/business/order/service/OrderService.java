@@ -62,7 +62,7 @@ public class OrderService extends BaseService implements IOrderService {
         Account merchant=accountService.getAccountByCode(order.getMerchantCode(), true);
         if (member==null||member.getAccountType()!= AccountType.信使)
             throw new DybRuntimeException("新增订单时，找不到此信使的信息");
-        if (member==null||member.getAccountType()!= AccountType.商家)
+        if (merchant==null||merchant.getAccountType()!= AccountType.商家)
             throw new DybRuntimeException("新增订单时，找不到此商家的信息");
         String orderCode=codeBuilder.getOrderCode();
         order.setOrderCode(orderCode);

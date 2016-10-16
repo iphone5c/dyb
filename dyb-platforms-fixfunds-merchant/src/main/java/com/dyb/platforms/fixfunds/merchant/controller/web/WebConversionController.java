@@ -1,5 +1,7 @@
 package com.dyb.platforms.fixfunds.merchant.controller.web;
 
+import com.alibaba.fastjson.JSON;
+import com.dyb.platforms.fixfunds.merchant.controller.web.model.MessengerBeanConversionParamModel;
 import com.dyb.platforms.fixfunds.services.business.conversion.service.IConversionService;
 import com.dyb.platforms.fixfunds.services.business.conversioninvoicedetails.entity.ConversionInvoiceDetails;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
@@ -48,14 +50,20 @@ public class WebConversionController extends BaseController {
     /**
      * 信使豆转换申请
      * @param request
-     * @param messengerBeanType 转换类型
-     * @param messengerBean 转换数量
-     * @param tradePassword 二级密码
-     * @param conversionInvoiceDetailses 发票明细
      * @return
      */
     @RequestMapping(value = "/messengerBeanConversion")
-    public Object messengerBeanConversion(HttpServletRequest request,String messengerBeanType,Double messengerBean,String tradePassword,List<ConversionInvoiceDetails> conversionInvoiceDetailses){
+    public Object messengerBeanConversion(HttpServletRequest request){
+        log.info("信使豆转换申请");
+        String info=request.getParameter("messengerBeanConversionParam");
+        if (DybUtils.isEmptyOrNull(info))
+            throw new IllegalArgumentException("参数为空");
+        MessengerBeanConversionParamModel messengerBeanConversionParamModel= JSON.parseObject(info, MessengerBeanConversionParamModel.class);
+        String messengerBeanType=messengerBeanConversionParamModel.getMessengerBeanType();
+        String tradePassword=messengerBeanConversionParamModel.getTradePassword();
+        Double messengerBean=messengerBeanConversionParamModel.getMessengerBean();
+        List<ConversionInvoiceDetails> conversionInvoiceDetailses=messengerBeanConversionParamModel.getConversionInvoiceDetailses();
+
         if (DybUtils.isEmptyOrNull(messengerBeanType))
             return validationResult(1001,"转换类型不能为空");
         MessengerBeanType conversionType=null;

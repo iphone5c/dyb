@@ -41,15 +41,15 @@ public class OrderItemDao extends IbatisDataDAOImpl<OrderItem, String> implement
 	protected IbatisBaseStatement getIbatisBaseStatement() {
 		if (ibatisBaseStatement == null) {
 			ibatisBaseStatement = new IbatisBaseStatement();
-			ibatisBaseStatement.setInsertStatementId("com.dyb.platforms.fixfunds.services.business.order.dao.IOrderDao.insertObject");
-			ibatisBaseStatement.setUpdateStatementId("com.dyb.platforms.fixfunds.services.business.order.dao.IOrderDao.updateObject");
-			ibatisBaseStatement.setDeleteStatementId("com.dyb.platforms.fixfunds.services.business.order.dao.IOrderDao.deleteObject");
-			ibatisBaseStatement.setGetHasDetailStatementId("com.dyb.platforms.fixfunds.services.business.order.dao.IOrderDao.getDetailObject");
-			ibatisBaseStatement.setGetNoDetailStatementId("com.dyb.platforms.fixfunds.services.business.order.dao.IOrderDao.getBaseObject");
-			ibatisBaseStatement.setWhereDeleteStatementId("com.dyb.platforms.fixfunds.services.business.order.dao.IOrderDao.deleteObjectByWhere");
-			ibatisBaseStatement.setQueryCountStatementId("com.dyb.platforms.fixfunds.services.business.order.dao.IOrderDao.queryCount");
-			ibatisBaseStatement.setQueryHasDetailListStatementId("com.dyb.platforms.fixfunds.services.business.order.dao.IOrderDao.queryDetailList");
-			ibatisBaseStatement.setQueryNoDetailListStatementId("com.dyb.platforms.fixfunds.services.business.order.dao.IOrderDao.queryBaseList");
+			ibatisBaseStatement.setInsertStatementId("com.dyb.platforms.fixfunds.services.business.orderitem.dao.IOrderItemDao.insertObject");
+			ibatisBaseStatement.setUpdateStatementId("com.dyb.platforms.fixfunds.services.business.orderitem.dao.IOrderItemDao.updateObject");
+			ibatisBaseStatement.setDeleteStatementId("com.dyb.platforms.fixfunds.services.business.orderitem.dao.IOrderItemDao.deleteObject");
+			ibatisBaseStatement.setGetHasDetailStatementId("com.dyb.platforms.fixfunds.services.business.orderitem.dao.IOrderItemDao.getDetailObject");
+			ibatisBaseStatement.setGetNoDetailStatementId("com.dyb.platforms.fixfunds.services.business.orderitem.dao.IOrderItemDao.getBaseObject");
+			ibatisBaseStatement.setWhereDeleteStatementId("com.dyb.platforms.fixfunds.services.business.orderitem.dao.IOrderItemDao.deleteObjectByWhere");
+			ibatisBaseStatement.setQueryCountStatementId("com.dyb.platforms.fixfunds.services.business.orderitem.dao.IOrderItemDao.queryCount");
+			ibatisBaseStatement.setQueryHasDetailListStatementId("com.dyb.platforms.fixfunds.services.business.orderitem.dao.IOrderItemDao.queryDetailList");
+			ibatisBaseStatement.setQueryNoDetailListStatementId("com.dyb.platforms.fixfunds.services.business.orderitem.dao.IOrderItemDao.queryBaseList");
 		}
 		return ibatisBaseStatement;
 	}

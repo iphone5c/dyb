@@ -31,7 +31,7 @@ public class Order implements java.io.Serializable {
     // 交易时间
     private Date tradeTime;
     // 交易总价
-    private Double price;
+    private Double price=0d;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 创建时间
@@ -41,7 +41,7 @@ public class Order implements java.io.Serializable {
     // 资料照片
     private String certificateFile;
     // 激励模式
-    private Integer incentiveMode;
+    private Integer incentiveMode=0;
 
     /** 
      * 获取订单编号 [主键]

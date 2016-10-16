@@ -2,6 +2,31 @@
  * Created by aaa on 2016/9/26.
  */
 $(function(){
+    function getQueryString(referrer) {
+        var reg = new RegExp("(^|&)" + referrer + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]); return null;
+    }
+//    getQueryString("referrer")
+    if(getQueryString("referrer")==""){
+        window.location.href='../publicModule/error404.html';
+        return
+    }
+    var param={
+        accountCode:getQueryString("referrer")
+    };
+    var data = invokeService('/web/commons/getAccountByCode',param);
+    console.log(data);
+    if (data.statusCode!=1000){
+        window.location.href='../publicModule/error404.html';
+        return;
+    }
+    if (data.statusCode==1000){
+        $("#referrerName").html(data.result.name)
+        $("#referrerMobile").html(data.result.phone)
+        return;
+    }
+
 $(".xin_submit").click(function(){
         // 账户名
         var accountName=$("#username").val();

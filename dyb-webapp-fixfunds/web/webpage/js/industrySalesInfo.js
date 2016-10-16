@@ -42,7 +42,7 @@ $(function(){
         //每页显示条数
         pageSize:5
     };
-    var result = invokeService('/web/merchant/commodity/getOrderPageList',param);
+    var result = invokeService('/web/merchant/order/getOrderPageList',param);
     if(result.statusCode!=1000){
         alert(result.errorMessage);
         return;
@@ -106,7 +106,7 @@ $(function(){
             //每页显示条数
             pageSize:5
         };
-        var result = invokeService('/web/merchant/commodity/getOrderPageList',param);
+        var result = invokeService('/web/merchant/order/getOrderPageList',param);
         if(result.statusCode!=1000){
             alert(result.errorMessage)
             return;
@@ -166,7 +166,7 @@ $(function(){
             //每页显示条数
             pageSize:5
         };
-        var result = invokeService('/web/merchant/commodity/getOrderPageList',param);
+        var result = invokeService('/web/merchant/order/getOrderPageList',param);
         if(result.statusCode!=1000){
             alert(result.errorMessage)
             return;

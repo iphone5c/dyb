@@ -5,6 +5,7 @@ import com.dyb.platforms.fixfunds.services.business.user.entity.User;
 import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
 import com.dyb.platforms.fixfunds.services.utils.core.serializes.ISerialize;
 import com.dyb.platforms.fixfunds.services.utils.core.serializes.JsonSerialize;
+import com.google.code.kaptcha.Constants;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.multipart.MultipartFile;
@@ -251,6 +252,15 @@ public class DybUtils {
     public static Account getCurrentAccountClient(String token){
         Map<String,Account> session= (Map<String, Account>) ContextLoader.getCurrentWebApplicationContext().getServletContext().getAttribute("CURRENT_ACCOUNT_CLIENT");
         return session.get(token);
+    }
+
+    /**
+     * 获取当前验证码
+     * @param request
+     * @return
+     */
+    public static String getKaptchaCode(HttpServletRequest request){
+        return (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
     }
 
     /**

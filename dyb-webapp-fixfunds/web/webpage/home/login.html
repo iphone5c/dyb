@@ -95,10 +95,10 @@
             <!-- 验证码 start-->
             <div class="check_code_div  clearfix ">
                 <div class="login-code-box">
-                    <input name="validCode" id="validCode" type="text" class="check_code_text float_left" maxlength="4"  placeholder="请输入验证码">
+                    <input name="validCode" id="kaptchaCode" type="text" class="check_code_text float_left" maxlength="4"  placeholder="请输入验证码">
                 </div>
                 <!-- src为服务器url -->
-                <img src="./images/verifyCode" id="CreateCheckCode" align="middle" onclick="myReload()" class="check_code_img float_left">
+                <img src="/web/commons/getKaptchaImage" id="CreateCheckCode" align="middle" onclick="myReload(this)" class="check_code_img float_left">
             </div>
             <!-- 验证码 end-->
             <!-- 自动登录和忘记密码 start-->
@@ -120,10 +120,10 @@
     <p>客服电话:400 666 3502 工作时间: 9:00-18:00(法定工作日)</p>
     <p>Copyright©2015-2020 深圳前海中盛一点科技有限公司版权所有 <a href="http://www.miitbeian.gov.cn/">粤ICP备15082614号-2</a></p>
 </div>
-<!--<script type="text/javascript">-->
-    <!--$.get("/side/footer.html",function(data){-->
-        <!--$("#footer").html(data);-->
-    <!--});-->
-<!--</script>-->
+<script type="text/javascript">
+    function myReload(me){
+        me.src='/web/commons/getKaptchaImage';
+    }
+</script>
 <script src="./js/login-js.js" type="text/javascript"></script>
 </body></html>

@@ -93,7 +93,7 @@ public class WebMerchantController extends BaseController {
         if (registerMerchantAccount==null){
             return validationResult(1001,"注册失败");
         }else {
-            return result("注册成功");
+            return result(registerMerchantAccount.getAccountCode());
         }
     }
 
@@ -169,6 +169,14 @@ public class WebMerchantController extends BaseController {
         }else if (tjr.getAccountType()== AccountType.服务商){
             result.put("tjrRealName",tjr.getServiceProviders().getServiceProviderName());
         }
+        if (account.getAccountType()==AccountType.商家){
+            Map<String,Object> certificateFile= (Map<String, Object>) DybUtils.getJsonDeserialize(account.getMerchant().getCertificateFile(),Map.class);
+            result.put("certificateFile",certificateFile);
+        }else if (account.getAccountType()==AccountType.服务商){
+            Map<String,Object> certificateFile= (Map<String, Object>) DybUtils.getJsonDeserialize(account.getServiceProviders().getCertificateFile(),Map.class);
+            result.put("certificateFile",certificateFile);
+        }
+
         result.put("tjrPhone",tjr.getAccountPhone());
         result.put("bank",bankAccountService.getBankAccountByDefaultChecked(account.getAccountCode()));
         return result(result);

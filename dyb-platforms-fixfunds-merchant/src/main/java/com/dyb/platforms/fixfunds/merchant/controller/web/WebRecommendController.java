@@ -3,6 +3,7 @@ package com.dyb.platforms.fixfunds.merchant.controller.web;
 import com.dyb.platforms.fixfunds.merchant.controller.web.model.RecommendIncentiveModel;
 import com.dyb.platforms.fixfunds.merchant.controller.web.model.RecommendRecordModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
+import com.dyb.platforms.fixfunds.services.business.account.entity.Qrcode;
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.RecommendIncentive;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2015/7/1.
@@ -117,6 +120,20 @@ public class WebRecommendController extends BaseController {
         recommendRecordModelPageList.setTotalSize(accountPageList.getTotalSize());
         recommendRecordModelPageList.setList(recommendRecordModelList);
         return result(recommendRecordModelPageList);
+    }
+
+    /**
+     * 我要推荐
+     * @return
+     */
+    @RequestMapping(value = "/getRecommend")
+    public Object getRecommend(HttpServletRequest request){
+        log.info("我要推荐");
+        Account account=DybUtils.getCurrentAccount(request);
+        String qrcode=account.getQrcode();
+        Map<String,Qrcode> qrcodeMap=new HashMap<>();
+        qrcodeMap= (Map<String, Qrcode>) DybUtils.getJsonDeserialize(qrcode,Map.class);
+        return result(qrcodeMap);
     }
 
 }

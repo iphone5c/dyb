@@ -191,4 +191,29 @@ public class WebCommonsController extends BaseController {
         return result(nameValueList);
     }
 
+    /**
+     * 根据账户code获取账户的名字和电话号码
+     * @param accountCode
+     * @return
+     */
+    @RequestMapping(value = "/getAccountByCode")
+    public Object getAccountByCode(String accountCode){
+        if (DybUtils.isEmptyOrNull(accountCode))
+            return validationResult(1001,"账户code不能为空");
+        Account account=accountService.getAccountByCode(accountCode,true);
+        if (account==null)
+            return validationResult(1001,"找不到此账户信息");
+        Map<String,String> tjr=new HashMap<>();
+        tjr.put("code",account.getAccountCode());
+        tjr.put("phone",account.getAccountPhone());
+        if (account.getAccountType()==AccountType.信使){
+            tjr.put("name",account.getMember().getRealName());
+        }else if (account.getAccountType()==AccountType.商家){
+            tjr.put("name",account.getMerchant().getPrincipalName());
+        }else if (account.getAccountType()==AccountType.服务商){
+            tjr.put("name",account.getServiceProviders().getServiceProviderName());
+        }
+        return result(tjr);
+    }
+
 }

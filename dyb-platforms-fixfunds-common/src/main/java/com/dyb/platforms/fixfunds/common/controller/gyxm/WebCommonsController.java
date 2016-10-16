@@ -73,24 +73,14 @@ public class WebCommonsController extends BaseController {
     }
 
     /**
-     * 获取菜单
-     * @param accountType 账户类型
+     * 退出登录
+     * @param request
      * @return
      */
-    @RequestMapping(value = "/getWebMenu")
-    public Object getWebMenu(HttpServletRequest request,HttpServletResponse response,String accountType){
-        log.info("获取账户菜单");
-        if (DybUtils.isEmptyOrNull(accountType))
-            throw new DybRuntimeException("获取菜单账户类型不能为空");
-        AccountType menuType=AccountType.getAccountTypeByName(accountType);
-        if (menuType==AccountType.信使){
-            return result(SettingConfigureationFactory.getMenuListByKey("MEMBER_MENU"));
-        }else if (menuType==AccountType.商家){
-            return result(SettingConfigureationFactory.getMenuListByKey("MERCHANT_MENU"));
-        }else if (menuType==AccountType.服务商){
-            return result(SettingConfigureationFactory.getMenuListByKey("SERVICEPROVIDERS_MENU"));
-        }else
-            return validationResult(1001,"尚未定义此账户类型的菜单");
+    @RequestMapping(value = "/signOut")
+    public Object signOut(HttpServletRequest request){
+        DybUtils.destoryCurrentAccount(request);
+        return result("注销成功");
     }
 
     @RequestMapping(value = "/getKaptchaImage")

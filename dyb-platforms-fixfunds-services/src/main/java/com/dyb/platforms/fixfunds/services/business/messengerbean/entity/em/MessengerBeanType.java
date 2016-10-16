@@ -27,10 +27,6 @@ public enum  MessengerBeanType {
      */
     注册奖励,
     /**
-     * 欠税
-     */
-    欠税,
-    /**
      * 待缴税
      */
     待缴税,

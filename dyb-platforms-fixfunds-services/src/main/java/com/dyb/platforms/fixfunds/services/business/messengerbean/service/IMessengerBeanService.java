@@ -1,5 +1,6 @@
 package com.dyb.platforms.fixfunds.services.business.messengerbean.service;
 
+import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.MessengerBean;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
@@ -57,5 +58,13 @@ public interface IMessengerBeanService {
      * @return
      */
     public MessengerBean updateMessengerBean(MessengerBean messengerBean);
+
+    /**
+     * 新建信使豆信息
+     * @param accountCode 账户code
+     * @param messengerBeanType 类型列表
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean createMessengerBeanByMessType(String accountCode,MessengerBeanType... messengerBeanType);
 
 }

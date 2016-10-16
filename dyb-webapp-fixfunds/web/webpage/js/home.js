@@ -6,10 +6,11 @@ $(function(){
         if (r != null) return decodeURI(r[2]); return null;
     }
 //    console.log(getQueryString("name"));
+    var account=invokeService('/web/account/getCurrentAccount',{});
     var param={
-        accountType:getQueryString("name")
+        accountType:account.result.accountType
     };
-    var data = invokeService('/web/commons/getWebMenu',param);
+    var data = invokeService('/web/account/getWebMenu',param);
     var fhurl=new Array();
     var addi=0;
     if (data.statusCode!=1000){

@@ -103,4 +103,14 @@ public interface IAccountService {
      */
     public PageList<Account> getAccountPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail);
 
+    /**
+     * 修改用户登录密码
+     * @param accountCode 用户code
+     * @param oldPassword 旧密码
+     * @param newPassword 新密码
+     * @param confirmPassword 确认密码
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean modifyPassword(String accountCode,String oldPassword,String newPassword,String confirmPassword);
+
 }

@@ -12,6 +12,8 @@ import com.dyb.platforms.fixfunds.services.business.member.entity.Member;
 import com.dyb.platforms.fixfunds.services.business.member.service.IMemberService;
 import com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant;
 import com.dyb.platforms.fixfunds.services.business.merchant.service.IMerchantService;
+import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
+import com.dyb.platforms.fixfunds.services.business.messengerbean.service.IMessengerBeanService;
 import com.dyb.platforms.fixfunds.services.business.serviceproviders.entity.ServiceProviders;
 import com.dyb.platforms.fixfunds.services.business.serviceproviders.service.IServiceProvidersService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
@@ -48,6 +50,8 @@ public class AccountService extends BaseService implements IAccountService {
     private IServiceProvidersService serviceProvidersService;
     @Autowired
     private IBankAccountService bankAccountService;
+    @Autowired
+    private IMessengerBeanService messengerBeanService;
 
     /**
      * 根据账户code查找账户信息
@@ -180,6 +184,12 @@ public class AccountService extends BaseService implements IAccountService {
         account.setAccountType(AccountType.信使);
         account.setAccountStatus(AccountStatus.正常);
         account.setAccountForeignKey(tempMember.getMemberCode());
+
+        //添加信使豆信息
+        boolean flag=messengerBeanService.createMessengerBeanByMessType(accountCode, MessengerBeanType.普通信使豆, MessengerBeanType.待缴税, MessengerBeanType.转换中, MessengerBeanType.注册奖励);
+        if (!flag)
+            throw new DybRuntimeException("信使注册时，添加信使豆信息失败");
+
         Account tempAccount=this.createAccount(account);
         if (tempAccount==null)
             throw new DybRuntimeException("信使注册时，账户注册失败");
@@ -216,7 +226,7 @@ public class AccountService extends BaseService implements IAccountService {
         bankAccount.setAccountCode(accountCode);
         BankAccount tempBankAccount=bankAccountService.createBankAccount(bankAccount);
         if (tempBankAccount==null)
-            throw new DybRuntimeException("信使注册时，银行账号信息注册失败");
+            throw new DybRuntimeException("商家注册时，银行账号信息注册失败");
 
         //添加账户信息
         account.setAccountCode(accountCode);
@@ -224,6 +234,11 @@ public class AccountService extends BaseService implements IAccountService {
         account.setAccountType(AccountType.商家);
         account.setAccountStatus(AccountStatus.待提交审核);
         account.setAccountForeignKey(tempMerchant.getMerchantCode());
+
+        //添加信使豆信息
+        boolean flag=messengerBeanService.createMessengerBeanByMessType(accountCode, MessengerBeanType.普通信使豆, MessengerBeanType.待提供发票, MessengerBeanType.转换中, MessengerBeanType.注册奖励);
+        if (!flag)
+            throw new DybRuntimeException("商家注册时，添加信使豆信息失败");
 
         Account tempAccount=this.createAccount(account);
         if (tempAccount==null)
@@ -269,6 +284,12 @@ public class AccountService extends BaseService implements IAccountService {
         account.setAccountType(AccountType.服务商);
         account.setAccountStatus(AccountStatus.待提交审核);
         account.setAccountForeignKey(tempServiceProviders.getServiceProviderCode());
+
+        //添加信使豆信息
+        boolean flag=messengerBeanService.createMessengerBeanByMessType(accountCode, MessengerBeanType.普通信使豆, MessengerBeanType.待缴税, MessengerBeanType.转换中, MessengerBeanType.注册奖励);
+        if (!flag)
+            throw new DybRuntimeException("信使注册时，添加信使豆信息失败");
+
         Account tempAccount=this.createAccount(account);
         if (tempAccount==null)
             throw new DybRuntimeException("服务商注册时，服务商注册失败");
@@ -389,5 +410,35 @@ public class AccountService extends BaseService implements IAccountService {
     @Override
     public PageList<Account> getAccountPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail) {
         return accountDao.queryListForPaged(wheres,pageIndex,pageSize,detail);
+    }
+
+    /**
+     * 修改用户登录密码
+     * @param accountCode 用户code
+     * @param oldPassword 旧密码
+     * @param newPassword 新密码
+     * @param confirmPassword 确认密码
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean modifyPassword(String accountCode, String oldPassword, String newPassword, String confirmPassword) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("账户code不能为空");
+        if (DybUtils.isEmptyOrNull(oldPassword))
+            throw new DybRuntimeException("旧密码不能为空");
+        if (DybUtils.isEmptyOrNull(newPassword))
+            throw new DybRuntimeException("新密码不能为空");
+        if (DybUtils.isEmptyOrNull(confirmPassword))
+            throw new DybRuntimeException("确认密码不能为空");
+        if (!newPassword.equals(confirmPassword))
+            throw new DybRuntimeException("新密码与确认密码不一致");
+        Account account=accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new DybRuntimeException("找不到此账户的信息");
+        if (!DybUtils.verifyPassword(oldPassword,account.getPassword()))
+            throw new DybRuntimeException("旧密码输入错误");
+        account.setPassword(DybUtils.encryptPassword(newPassword));
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
     }
 }

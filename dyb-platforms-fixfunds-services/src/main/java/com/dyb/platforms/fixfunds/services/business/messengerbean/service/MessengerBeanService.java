@@ -1,6 +1,7 @@
 package com.dyb.platforms.fixfunds.services.business.messengerbean.service;
 
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
+import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.dao.IMessengerBeanDao;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.MessengerBean;
@@ -132,4 +133,44 @@ public class MessengerBeanService extends BaseService implements IMessengerBeanS
         int info = messengerBeanDao.updateObject(messengerBean);
         return info>0?messengerBean:null;
     }
+
+    /**
+     * 新建信使豆信息
+     * @param accountCode 账户code
+     * @param messengerBeanType 类型列表
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean createMessengerBeanByMessType(String accountCode,MessengerBeanType... messengerBeanType) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("所属账户不能为空");
+        MessengerBean[] messengerBeans=null;
+        int i=0;
+        if (messengerBeanType==null||messengerBeanType.length<=0){
+            messengerBeans=new MessengerBean[MessengerBeanType.values().length];
+            for (MessengerBeanType temp:MessengerBeanType.values()){
+                MessengerBean messengerBean=new MessengerBean();
+                messengerBean.setMessengerBeanCode(UUID.randomUUID().toString());
+                messengerBean.setAccountCode(accountCode);
+                messengerBean.setMessengerBean(0d);
+                messengerBean.setMessengerBeanType(temp);
+                messengerBeans[i]=messengerBean;
+                i++;
+            }
+        }else {
+            messengerBeans=new MessengerBean[messengerBeanType.length];
+            for (MessengerBeanType temp:messengerBeanType){
+                MessengerBean messengerBean=new MessengerBean();
+                messengerBean.setMessengerBeanCode(UUID.randomUUID().toString());
+                messengerBean.setAccountCode(accountCode);
+                messengerBean.setMessengerBean(0d);
+                messengerBean.setMessengerBeanType(temp);
+                messengerBeans[i]=messengerBean;
+                i++;
+            }
+        }
+        int info=messengerBeanDao.insertList(messengerBeans);
+        return info>0?true:false;
+    }
+
 }

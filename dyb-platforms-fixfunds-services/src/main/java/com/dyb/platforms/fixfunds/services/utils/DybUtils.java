@@ -218,13 +218,11 @@ public class DybUtils {
     }
 
     /**
-     * 获取当前前端登陆用户
+     * 注销当前前端登录用户
      * @param request
-     * @return
      */
-    public static Account getCurrentAccountClient(HttpServletRequest request){
-        Account account= (Account) request.getSession().getAttribute("CURRENT_ACCOUNT_CLIENT");
-        return account;
+    public static void destoryCurrentAccount(HttpServletRequest request){
+        request.getSession().removeAttribute("CURRENT_ACCOUNT");
     }
 
     /**

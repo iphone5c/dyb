@@ -21,6 +21,6 @@ $(function () {
             $('#userpwd').val('')
             return;
         }
-        document.location = "../index.html?name=" + $("#usertypeSpan").text() + "";
+        document.location = "../index.html";
     })
 });

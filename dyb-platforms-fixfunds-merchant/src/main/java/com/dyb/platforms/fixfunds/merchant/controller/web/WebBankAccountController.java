@@ -97,4 +97,16 @@ public class WebBankAccountController extends BaseController {
         return result("设置成功");
     }
 
+    /**
+     * 获取当前登录用户默认银行卡信息
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "getBankAccountByDefaultChecked")
+    public Object getBankAccountByDefaultChecked(HttpServletRequest request){
+        log.info("获取当前登录用户默认银行卡信息");
+        BankAccount bankAccount=bankAccountService.getBankAccountByDefaultChecked(DybUtils.getCurrentAccount(request).getAccountCode());
+        return result(bankAccount);
+    }
+
 }

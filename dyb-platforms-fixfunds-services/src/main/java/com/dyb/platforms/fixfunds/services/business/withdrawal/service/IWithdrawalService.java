@@ -1,10 +1,13 @@
 package com.dyb.platforms.fixfunds.services.business.withdrawal.service;
 
+import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
+import com.dyb.platforms.fixfunds.services.business.withdrawal.entity.Invoice;
 import com.dyb.platforms.fixfunds.services.business.withdrawal.entity.Withdrawal;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 魏源 on 2015/6/30 0030.
@@ -38,4 +41,22 @@ public interface IWithdrawalService {
      * @return 对象分页列表
      */
     public PageList<Withdrawal> getWithdrawalPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail);
+
+    /**
+     * 回购申请
+     * @param withdrawalType 回购类型
+     * @param merssengerBean 回购数量
+     * @param tradePassword 二级密码
+     * @param withdrawalAccount 回购人code
+     * @param invoiceList 发票明细
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean withdrawalMessengerBean(MessengerBeanType withdrawalType,Double merssengerBean,String tradePassword,String withdrawalAccount,List<Invoice> invoiceList);
+
+    /**
+     * 新增回购信息
+     * @param withdrawal
+     * @return
+     */
+    public Withdrawal createWithdrawal(Withdrawal withdrawal);
 }

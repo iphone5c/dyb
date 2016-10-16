@@ -97,4 +97,16 @@ public class WebSenAddressController extends BaseController {
         return result("设置成功");
     }
 
+    /**
+     * 获取当前登录用户默认寄送地址
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/getSendAddressByDefaultChecked")
+    public Object getSendAddressByDefaultChecked(HttpServletRequest request){
+        log.info("获取当前登录用户默认寄送地址");
+        SendAddress sendAddress=sendAddressService.getSendAddressByDefaultChecked(DybUtils.getCurrentAccount(request).getAccountCode());
+        return result(sendAddress);
+    }
+
 }

@@ -21,10 +21,11 @@
         <result property="applyTime" column="applytime" />
         <result property="applyStatus" column="applystatus" />
         <result property="createTime" column="createtime" />
+        <result property="invoice" column="invoice" />
     </resultMap>
 
     <sql id="baseCol">
-        withdrawalcode, withdrawaltype, applywithdrawalnum, withdrawalnum, deductions, poundage, bankname, bankbranch, banknum, accountname, withdrawalaccount, applytime, applystatus, createtime
+        withdrawalcode, withdrawaltype, applywithdrawalnum, withdrawalnum, deductions, poundage, bankname, bankbranch, banknum, accountname, withdrawalaccount, applytime, applystatus, createtime,invoice
     </sql>
 
     <sql id="whereSql">
@@ -121,6 +122,13 @@
             </if>
             <if test="createTime != null"><![CDATA[ and createtime = #{createTime} ]]></if>
             <if test="createTime_r_min != null"><![CDATA[ and createtime >= #{createTime_r_min} and createtime < #{createTime_r_max} ]]></if>
+            <if test="invoice != null"><![CDATA[ and invoice like #{invoice} ]]></if>
+            <if test="invoice_enum != null">
+                <![CDATA[ and invoice in ]]>
+                <foreach collection="invoice_enum" item="value" open="(" separator="," close=")">
+                    <![CDATA[ #{value} ]]>
+                </foreach>
+            </if>
             <if test="_default_mulattr != null">
                 <![CDATA[ and ]]>
                 <foreach collection="_default_mulattr" item="item" open="(" separator=" or " close=")">
@@ -132,6 +140,7 @@
                     <if test="item.name == 'accountName'"><![CDATA[ accountname like #{item.value} ]]></if>
                     <if test="item.name == 'withdrawalAccount'"><![CDATA[ withdrawalaccount like #{item.value} ]]></if>
                     <if test="item.name == 'applyStatus'"><![CDATA[ applystatus like #{item.value} ]]></if>
+                    <if test="item.name == 'invoice'"><![CDATA[ invoice like #{item.value} ]]></if>
                 </foreach>
             </if>
         </trim>
@@ -167,18 +176,20 @@
             <if test="_orderBy == 'applyStatus_asc'"><![CDATA[ applystatus, ]]></if>
             <if test="_orderBy == 'createTime_desc'"><![CDATA[ createtime desc, ]]></if>
             <if test="_orderBy == 'createTime_asc'"><![CDATA[ createtime, ]]></if>
+            <if test="_orderBy == 'invoice_desc'"><![CDATA[ invoice desc, ]]></if>
+            <if test="_orderBy == 'invoice_asc'"><![CDATA[ invoice, ]]></if>
         </trim>
     </sql>
 
     <insert id="insertObject" parameterType="com.dyb.platforms.fixfunds.services.business.withdrawal.entity.Withdrawal">
         insert into
-        dyb_withdrawal(withdrawalcode,withdrawaltype,applywithdrawalnum,withdrawalnum,deductions,poundage,bankname,bankbranch,banknum,accountname,withdrawalaccount,applytime,applystatus,createtime)
-        values(#{withdrawalCode},#{withdrawalType},#{applyWithdrawalNum},#{withdrawalNum},#{deductions},#{poundage},#{bankName},#{bankBranch},#{bankNum},#{accountName},#{withdrawalAccount},#{applyTime},#{applyStatus},#{createTime});
+        dyb_withdrawal(withdrawalcode,withdrawaltype,applywithdrawalnum,withdrawalnum,deductions,poundage,bankname,bankbranch,banknum,accountname,withdrawalaccount,applytime,applystatus,createtime,invoice)
+        values(#{withdrawalCode},#{withdrawalType},#{applyWithdrawalNum},#{withdrawalNum},#{deductions},#{poundage},#{bankName},#{bankBranch},#{bankNum},#{accountName},#{withdrawalAccount},#{applyTime},#{applyStatus},#{createTime},#{invoice});
     </insert>
 
     <update id="updateObject" parameterType="com.dyb.platforms.fixfunds.services.business.withdrawal.entity.Withdrawal">
         update dyb_withdrawal
-        set withdrawaltype=#{withdrawalType},applywithdrawalnum=#{applyWithdrawalNum},withdrawalnum=#{withdrawalNum},deductions=#{deductions},poundage=#{poundage},bankname=#{bankName},bankbranch=#{bankBranch},banknum=#{bankNum},accountname=#{accountName},withdrawalaccount=#{withdrawalAccount},applytime=#{applyTime},applystatus=#{applyStatus},createtime=#{createTime}
+        set withdrawaltype=#{withdrawalType},applywithdrawalnum=#{applyWithdrawalNum},withdrawalnum=#{withdrawalNum},deductions=#{deductions},poundage=#{poundage},bankname=#{bankName},bankbranch=#{bankBranch},banknum=#{bankNum},accountname=#{accountName},withdrawalaccount=#{withdrawalAccount},applytime=#{applyTime},applystatus=#{applyStatus},createtime=#{createTime},invoice=#{invoice}
         where withdrawalcode=#{withdrawalCode};
     </update>
 

@@ -51,6 +51,8 @@ public class Withdrawal implements java.io.Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     // 创建时间
     private Date createTime;
+    //发票
+    private String invoice;
 
     /** 
      * 获取回购编号code [主键]
@@ -304,4 +306,21 @@ public class Withdrawal implements java.io.Serializable {
         this.createTime = createTime;
     }
 
+    /**
+     * 获取发票
+     *
+     * @return 发票
+     */
+    public String getInvoice() {
+        return invoice;
+    }
+
+    /**
+     * 设置发票
+     *
+     * @param invoice 发票
+     */
+    public void setInvoice(String invoice) {
+        this.invoice = invoice;
+    }
 }

@@ -188,14 +188,6 @@ public class WebCommonsController extends BaseController {
         return result(nameValueList);
     }
 
-    @RequestMapping(value = "/getDonationType")
-    public Object getDonationType(){
-        List<NameValue> nameValueList=new ArrayList<>();
-        nameValueList.add(NameValue.create(MessengerBeanType.普通信使豆.toString(),MessengerBeanType.普通信使豆.toString()));
-        nameValueList.add(NameValue.create(MessengerBeanType.待提供发票.toString(),MessengerBeanType.待提供发票.toString()));
-        return result(nameValueList);
-    }
-
     /**
      * 根据账户code获取账户的名字和电话号码
      * @param accountCode

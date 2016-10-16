@@ -140,4 +140,16 @@ public class CodeBuilder extends BaseService implements ICodeBuilder
         return builder.toString();
     }
 
+    /**
+     * 获取一个新的回购申请编码（规则：年月日时分秒+6位序列号）
+     * @return 新的回购申请
+     */
+    @Override
+    public String getWithdrawalCode() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(DybConvert.dateToString(new Date(),DybConvert.DATEFORMAT_DATA_EN_ALL));
+        builder.append(seriaNumService.getNewSerialNumByString(ECodeType.WITHDRAWAL_CODE.name(),6));
+        return builder.toString();
+    }
+
 }

@@ -2,12 +2,15 @@ package com.dyb.platforms.fixfunds.merchant.controller.web;
 
 import com.alibaba.fastjson.JSON;
 import com.dyb.platforms.fixfunds.merchant.controller.web.model.MessengerBeanConversionParamModel;
+import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
+import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.conversion.service.IConversionService;
 import com.dyb.platforms.fixfunds.services.business.conversioninvoicedetails.entity.ConversionInvoiceDetails;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
 import com.dyb.platforms.fixfunds.services.business.systemparams.entity.SystemParams;
 import com.dyb.platforms.fixfunds.services.business.systemparams.service.ISystemParamsService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
+import com.dyb.platforms.fixfunds.services.utils.core.NameValue;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -80,9 +84,9 @@ public class WebConversionController extends BaseController {
             return validationResult(1001,"二级密码不能为空");
         SystemParams systemParams=null;
         if (conversionType==MessengerBeanType.待提供发票){
-            systemParams=systemParamsService.getSystemParamsByKey("conversionTaxMerchant");
+            systemParams=systemParamsService.getSystemParamsByKey("conversionTaxInvoice");
         }else if (conversionType==MessengerBeanType.待缴税){
-            systemParams=systemParamsService.getSystemParamsByKey("conversionTaxMember");
+            systemParams=systemParamsService.getSystemParamsByKey("conversionTaxNoInvoice");
         }
         if (systemParams==null)
             return validationResult(1001,"扣税比例尚未设置");
@@ -91,6 +95,25 @@ public class WebConversionController extends BaseController {
         if (!flag)
             return validationResult(1001,"信使豆转换申请失败");
         return result("信使豆转换申请成功");
+    }
+
+    /**
+     * 获取当前登录用户的转换类型
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/getConversionTypeByCurrent")
+    public Object getConversionTypeByCurrent(HttpServletRequest request){
+        Account account=DybUtils.getCurrentAccount(request);
+        List<NameValue> nameValueList=new ArrayList<>();
+        if (account.getAccountType()== AccountType.信使){
+            nameValueList.add(NameValue.create(MessengerBeanType.待缴税.toString(),MessengerBeanType.待缴税.toString()));
+        }else if (account.getAccountType()==AccountType.商家){
+            nameValueList.add(NameValue.create(MessengerBeanType.待提供发票.toString(),MessengerBeanType.待提供发票.toString()));
+        }else if (account.getAccountType()==AccountType.服务商){
+            nameValueList.add(NameValue.create(MessengerBeanType.待缴税.toString(),MessengerBeanType.待缴税.toString()));
+        }
+        return result(nameValueList);
     }
 
 }

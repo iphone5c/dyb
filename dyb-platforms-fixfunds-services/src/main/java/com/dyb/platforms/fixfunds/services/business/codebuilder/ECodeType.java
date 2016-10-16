@@ -36,4 +36,8 @@ public enum ECodeType {
      * 转换信使豆申请编号
      */
     CONVERSION_CODE,
+    /**
+     * 回购申请编号
+     */
+    WITHDRAWAL_CODE,
 }

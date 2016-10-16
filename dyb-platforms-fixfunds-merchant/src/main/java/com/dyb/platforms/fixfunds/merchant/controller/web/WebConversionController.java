@@ -68,7 +68,7 @@ public class WebConversionController extends BaseController {
             return validationResult(1001,"转换类型不能为空");
         MessengerBeanType conversionType=null;
         for (MessengerBeanType type:MessengerBeanType.values()){
-            if (type!=MessengerBeanType.待提供发票||type!=MessengerBeanType.待缴税)
+            if (!(type==MessengerBeanType.待提供发票||type!=MessengerBeanType.待缴税))
                 continue;
             if (messengerBeanType.equals(type.name())){
                 conversionType=type;

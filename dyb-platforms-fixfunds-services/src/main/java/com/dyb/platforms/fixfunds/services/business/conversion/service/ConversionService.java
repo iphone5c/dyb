@@ -114,7 +114,7 @@ public class ConversionService extends BaseService implements IConversionService
         conversion.setConversionType(messengerBeanType);
         conversion.setApplyConversionNum(messengerBean);
         conversion.setDeductions(deductions);
-        conversion.setConversionCode(account.getAccountCode());
+        conversion.setConversionAccount(account.getAccountCode());
         Conversion temp=this.createConversion(conversion,conversionInvoiceDetailses);
         return temp==null?false:true;
     }
@@ -131,7 +131,7 @@ public class ConversionService extends BaseService implements IConversionService
             throw new DybRuntimeException("新增转换信使豆申请记录时，conversion不能为空");
         if (conversion.getConversionType()==null)
             throw new DybRuntimeException("新增转换信使豆申请记录时，转换类型不能为空");
-        if (conversion.getConversionType()!=MessengerBeanType.待提供发票||conversion.getConversionType()!=MessengerBeanType.待缴税)
+        if (!(conversion.getConversionType()==MessengerBeanType.待提供发票||conversion.getConversionType()==MessengerBeanType.待缴税))
             throw new DybRuntimeException("新增转换信使豆申请记录时，转换类型超出指定范围值");
         if (conversion.getApplyConversionNum()<=0)
             throw new DybRuntimeException("新增转换信使豆申请记录时，申请转换信使豆数量必须大于零");

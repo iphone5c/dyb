@@ -39,11 +39,8 @@ $(function(){
                 messengerBean:messengerBean,
                 tradePassword:tradePassword,
                 conversionInvoiceDetailses:conversionInvoiceDetailses
-//                invoiceNum:invoiceNum,
-//                invoiceMoney:invoiceMoney
             }
-            console.log(conversionInvoiceDetailses)
-            var result=invokeService('/web/merchant/conversion/messengerBeanConversion',param);
+            var result=invokeService('/web/merchant/conversion/messengerBeanConversion',{messengerBeanConversionParam:JSON.stringify(param)});
             if(result.statusCode!=1000){
                 alert(result.errorMessage);
                 return;

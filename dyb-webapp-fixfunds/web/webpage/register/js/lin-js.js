@@ -3,6 +3,29 @@
  */
 $(function(){
     getData();
+    function getQueryString(referrer) {
+        var reg = new RegExp("(^|&)" + referrer + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]); return null;
+    }
+//    getQueryString("referrer")
+    if(getQueryString("referrer")==""){
+        window.location.href='../publicModule/error404.html';
+        return
+    }
+    var param={
+        accountCode:getQueryString("referrer")
+    };
+    var data = invokeService('/web/commons/getAccountByCode',param);
+    console.log(data);
+    if (data.statusCode!=1000){
+        window.location.href='../publicModule/error404.html';
+        return;
+    }
+    if (data.statusCode==1000){
+        $("#referrerName").html(data.result.name)
+        $("#referrerMobile").html(data.result.phone)
+    }
     $(".btn_timepicki").timepicki();
     function submit(){
         var flag=$("#flag").val();
@@ -34,7 +57,7 @@ $(function(){
             // 省级代码
             province:provinceVal,
             // 市级代码
-            city:provinceVal+"_"+cityVal,
+            city:cityVal,
             // 主营业务
             mainBusiness:$("#mainbusiness").val(),
             // 行业类别
@@ -93,11 +116,12 @@ $(function(){
             businessCircle :$("#category input").val()
         }
         var data = invokeService('/web/merchant/registerMerchantAccount',param);
+        console.log(data);
         if (data.statusCode!=1000){
             alert(data.errorMessage);
             return;
         }
-//        alert(data.flag)
+        $("#userNumber").html(data.result);
         $(".ad-register1").css({"display":"none"});
         $(".ad-register2").css({"display":"none"});
         $(".ad-register3").css({"display":"none"});
@@ -106,7 +130,6 @@ $(function(){
     }
     $("#nextReg4").click(function(){
         submit();
-
     });
     $('#s_province').on('change',function() {
         var i=$("#s_province").index(this);

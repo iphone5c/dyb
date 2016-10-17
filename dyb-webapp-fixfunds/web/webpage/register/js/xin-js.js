@@ -2,6 +2,7 @@
  * Created by aaa on 2016/9/26.
  */
 $(function(){
+    getData();
     function getQueryString(referrer) {
         var reg = new RegExp("(^|&)" + referrer + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
@@ -24,7 +25,6 @@ $(function(){
     if (data.statusCode==1000){
         $("#referrerName").html(data.result.name)
         $("#referrerMobile").html(data.result.phone)
-        return;
     }
 
 $(".xin_submit").click(function(){
@@ -43,11 +43,11 @@ $(".xin_submit").click(function(){
             // 性别
         var sex="男";//$("#sexSpan").text();
             // 籍贯
-        var  nativePlace=$("#provinceid-s").text()+$("#cityid-s").text();
+        var  nativePlace=$("#s_province option:selected").text()+$("#s_city option:selected").text();
             // 省级代码
-        var  province=$("#provinceid-s").text();
+        var  province=$("#s_province option:selected").text();
             // 市级代码
-        var  city=$("#cityid-s").text();
+        var  city=$("#s_city option:selected").text();
             // 证件类型
         var  certificate=$("#idcardtypeSpan").text();
             // 证件号码

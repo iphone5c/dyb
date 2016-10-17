@@ -2,6 +2,7 @@ package com.dyb.platforms.fixfunds.member.controller.web;
 
 import com.dyb.platforms.fixfunds.member.controller.web.model.MemberParamModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
+import com.dyb.platforms.fixfunds.services.business.account.entity.Qrcode;
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.member.entity.Member;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2015/7/1.
@@ -67,6 +70,38 @@ public class WebMemberController extends BaseController {
         }else {
             return result(account);
         }
+    }
+
+    /**
+     * 获取当前登陆信使用户信息
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/getCurrentMember")
+    public Object getCurrentMember(HttpServletRequest request){
+        log.info("获取当前登陆信使用户信息");
+        Account account=accountService.getAccountByCode(DybUtils.getCurrentAccount(request).getAccountCode(),true);
+        Account tjr=accountService.getAccountByCode(account.getReferrerCode(),true);
+        if (account==null)
+            return validationResult(1001,"找不到此账户信息");
+        if (account.getMerchant()==null)
+            return validationResult(1001,"找不到此账户的详情信息");
+        if (account.getAccountType()!=AccountType.信使)
+            return validationResult(1001,"当前登陆用户不是信使用户");
+
+        Map<String,Object> result=new HashMap<>();
+        result.put("member",account);
+        if (tjr.getAccountType()== AccountType.信使){
+            result.put("tjrRealName",tjr.getMember().getRealName());
+        }else if (tjr.getAccountType()== AccountType.商家){
+            result.put("tjrRealName",tjr.getMerchant().getPrincipalName());
+        }else if (tjr.getAccountType()== AccountType.服务商){
+            result.put("tjrRealName",tjr.getServiceProviders().getServiceProviderName());
+        }
+        result.put("tjrPhone",tjr.getAccountPhone());
+        Map<String,Qrcode> qrcodeMap= (Map<String, Qrcode>) DybUtils.getJsonDeserialize(account.getQrcode(),Map.class);
+        result.put("qrcode",qrcodeMap);
+        return result(result);
     }
 
 }

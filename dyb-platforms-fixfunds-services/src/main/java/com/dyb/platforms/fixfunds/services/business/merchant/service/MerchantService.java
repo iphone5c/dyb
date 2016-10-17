@@ -5,6 +5,8 @@ import com.dyb.platforms.fixfunds.services.business.codebuilder.ICodeBuilder;
 import com.dyb.platforms.fixfunds.services.business.merchant.dao.IMerchantDao;
 import com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
+import com.dyb.platforms.fixfunds.services.utils.core.PageList;
+import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
 import com.dyb.platforms.fixfunds.services.utils.core.service.BaseService;
 import org.apache.log4j.Logger;
@@ -217,5 +219,18 @@ public class MerchantService extends BaseService implements IMerchantService {
             throw new DybRuntimeException("商户资料修改时，找不到此商家信息");
         int info = merchantDao.updateObject(merchant);
         return info>0?merchant:null;
+    }
+
+    /**
+     *获取对象分页列表
+     * @param wheres    条件
+     * @param pageIndex 返回的页码
+     * @param pageSize  页大小
+     * @param detail    是否返回详细信息
+     * @return 对象分页列表
+     */
+    @Override
+    public PageList<Merchant> getMerchantPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail) {
+        return merchantDao.queryListForPaged(wheres,pageIndex,pageSize,detail);
     }
 }

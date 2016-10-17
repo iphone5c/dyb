@@ -27,7 +27,7 @@ $(function(){
         $("#referrerMobile").html(data.result.phone)
     }
 
-$(".xin_submit").click(function(){
+$("#nextReg2").click(function(){
         // 账户名
         var accountName=$("#username").val();
         // 账户密码
@@ -86,22 +86,9 @@ $(".xin_submit").click(function(){
 }
     console.log(result)
     console.log(param)
-
-
-
-//    $.ajax({
-//        url:"http://192.168.0.113:8080/web/member/registerMemberAccount",
-//        type:"post",
-//        dataType: 'JSONP',
-//        jsonp: "callbackparam", //服务端用于接收callback调用的function名的参数
-//        jsonpCallback: "web", //callback的function名称,服务端会把名称和data一起传递回来
-//        data: {
-//
-//        },
-//        success: function (data) {
-//            console.log(data)
-//        }
-//    })
+    $(".ad-register1").css({"display":"none"});
+    $(".ad-register2").css({"display":"none"});
+    $(".ad-register3").css({"display":"block"})
 })
 
 

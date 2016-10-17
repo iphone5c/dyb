@@ -58,6 +58,8 @@ public class Account implements java.io.Serializable {
     private Date createTime;
     //二维码路径
     private String qrcode;
+    // 头像
+    private String headPortrait;
 
     //商户详情
     private Merchant merchant;
@@ -340,5 +342,23 @@ public class Account implements java.io.Serializable {
 
     public void setServiceProviders(ServiceProviders serviceProviders) {
         this.serviceProviders = serviceProviders;
+    }
+
+    /**
+     * 获取头像
+     *
+     * @return 头像
+     */
+    public String getHeadPortrait() {
+        return headPortrait;
+    }
+
+    /**
+     * 设置头像
+     *
+     * @param headPortrait 头像
+     */
+    public void setHeadPortrait(String headPortrait) {
+        this.headPortrait = headPortrait;
     }
 }

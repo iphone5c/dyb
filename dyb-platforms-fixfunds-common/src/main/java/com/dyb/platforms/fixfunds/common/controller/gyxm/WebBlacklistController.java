@@ -11,6 +11,7 @@ import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +39,7 @@ public class WebBlacklistController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/getBlacklistPageList")
-    public Object getBlacklistPageList(HttpServletRequest request,int pageIndex,int pageSize){
+    public Object getBlacklistPageList(HttpServletRequest request,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
         log.info("获取黑名单列表分页");
         PageList<BlacklistModel> blacklistModelPageList=new PageList<>();
         List<BlacklistModel> blacklistModelList=new ArrayList<>();

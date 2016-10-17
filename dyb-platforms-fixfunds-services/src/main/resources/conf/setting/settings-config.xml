@@ -55,7 +55,7 @@
                 ] },
                 { "text": "信使管理","expanded":"false","leaf":"false", "children":[
                     { "text": "商家查询", "url":"./publicModule/whitelist.html", "leaf":"true", },
-                    { "text": "我的爱心消费",  "url":"./Merchant-xs/expense", "leaf":"true", },
+                    { "text": "我的爱心消费",  "url":"./Merchant-xs/expense.html", "leaf":"true", },
                     { "text": "我的爱心",  "url":"./Merchant-xs/heart.html", "leaf":"true", },
                     { "text": "我的激励",  "url":"./Merchant-xs/excitation.html", "leaf":"true", }
                 ] },

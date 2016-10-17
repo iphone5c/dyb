@@ -31,7 +31,20 @@ $(function(){
     $("#idcard").html(data.result.merchant.merchant.principalIdCard);
     $("#email").html(data.result.merchant.merchant.principalEmail);
     $("#spanTitle").html(data.result.merchant.merchant.accountPhone);
-//    $("#longitude").val(data.result.merchant.merchant.longitude);
-//    $("#latitude").val(data.result.merchant.merchant.latitude);
-//    $("#address").val(data.result.merchant.merchant.merchantAddress);
+    if(data.result.certificateFile.flag==0){// 旧版营业执照
+        $("#businesslicenceNew_img").hide();
+        $("#businesslicence_img").show();
+        $("#taxregistration_img").show();
+        $("#businesslicence_img").attr("src",data.result.certificateFile.businessLicensePhoto1);
+        $("#taxregistration_img").attr("src",data.result.certificateFile.businessLicensePhoto2);
+    }else if(data.result.certificateFile.flag==1){ // 新版营业执照
+        $("#businesslicenceNew_img").show();
+        $("#businesslicence_img").hide();
+        $("#taxregistration_img").hide();
+        $("#businesslicenceNew_img").attr("src",data.result.certificateFile.businessLicensePhoto1);
+    }
+    $("#idCard_img").attr("src",data.result.certificateFile.legalPersonPhoto);// 法人身份证
+    $("#idthtree_img").attr("src",data.result.certificateFile.recommendPersonPhoto);// 推荐人身份证
+    $("#idfour_img").attr("src",data.result.certificateFile.donationPhoto);// 捐赠承诺书
+    $("#imgUrl_img").attr("src",data.result.certificateFile.storePhoto);// 店面门头照照片
 })

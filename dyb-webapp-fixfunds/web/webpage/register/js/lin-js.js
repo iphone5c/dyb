@@ -2,7 +2,6 @@
  * Created by aaa on 2016/9/26.
  */
 $(function(){
-
     getData();
     $(".btn_timepicki").timepicki();
     function submit(){

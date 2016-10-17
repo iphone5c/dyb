@@ -162,7 +162,7 @@ function getData(){
         }
     }
     // ajax 请求行业类别 industryType
-    var data = invokeService('/web/commons/getSex',{});
+    var data = invokeService('/web/commons/getIndustryType',{});
     console.log(data)
     if (data.statusCode!=1000){
         alert(data.errorMessage);

@@ -60,6 +60,7 @@ $(function(){
     $("#edit_sexSpan").html(data.result.merchant.merchant.principalSex);
     $("#edit_idcard").val(data.result.merchant.merchant.principalIdCard);
     $("#edit_email").val(data.result.merchant.merchant.principalEmail);
+    $("#imgUrlDiv img").attr("src",data.result.certificateFile.storePhoto);
     // 取消修改
     $("#cancleMerchantInfo").click(function(){
         window.location.reload();

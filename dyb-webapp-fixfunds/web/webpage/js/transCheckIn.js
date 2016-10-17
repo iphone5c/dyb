@@ -160,7 +160,7 @@ $(function(){
                                 result.result.list[i].price+
                                 "</td>"+
                                 "<td>"+
-                                "<input type='number' id=\'"+result.result.list[i].commodityCode+"\' value='1' class='xg_input'>"+
+                                "<input type='number' id=\'"+result.result.list[i].commodityCode+"\' value='1' class='xg_input' min='0'>"+
                                 "</td>"+
                                 "<td class='xg_sum'>"+
                                     result.result.list[i].price+
@@ -188,7 +188,7 @@ $(function(){
             var tr=$("#goodsTable tbody input");
             $("#amount").val(sun());
 //          计算总价
-            tr.blur(function(){
+            tr.keyup(function(){
                 var o=tr.index(this);
                 var a=$(".xg_price").eq(o).text();//单价
                 var b=tr.eq(o).val();//数量
@@ -227,12 +227,10 @@ $(function(){
 //删除
                 $("#goodsTable tbody").on("click",".del",function(){
                     var l=$(".del").index(this);
-                    $("#goodsTable tbody tr").eq(l).hide();
+                    $("#goodsTable tbody tr").eq(l).remove();
+                    $("#amount").val(sun());
                 })
             });
-
-
-
 //    查看信使资料
       $("#queryMemberBtn").click(function(){
           $("#memberInfoTip").removeClass("dsn");

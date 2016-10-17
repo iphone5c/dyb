@@ -50,11 +50,11 @@ $(function(){
         })
     }
     // 退出登录
-    $(".dropdown-bordered").mousemove(function(){
-       $(".dropdown-bordered").addClass("open");
+    $(".signOuts").mousemove(function(){
+       $(".signOuts").addClass("open");
     });
-    $(".dropdown-bordered").mouseout(function(){
-        $(".dropdown-bordered").removeClass("open");
+    $(".signOuts").mouseout(function(){
+        $(".signOuts").removeClass("open");
     });
     $("#logout").click(function(){
         $("#adAlertCover_layer").show();

@@ -6,24 +6,22 @@
             <![CDATA[
             { "type": "com.dyb.platforms.fixfunds.services.utils.core.configureations.Menu",  "list": [
                 { "text": "会员管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "信使管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "商家管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "服务商管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
-                ] },
-                { "text": "系统公共管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "公告类型管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "公告管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
+                    { "text": "信使管理", "module":"DYB_MEMBER.member.memberList", "url":"back/member/member/getMemberList", "leaf":"true", },
+                    { "text": "商家管理", "module":"DYB_MERCHANT.merchant.merchantList", "url":"/back/merchant/merchant/getMerchantList", "leaf":"true", },
+                    { "text": "服务商管理", "module":"DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList", "url":"/back/serviceProviders/serviceProviders/getServiceProvidersList", "leaf":"true", },
+                    { "text": "业务员管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
                 ] },
                 { "text": "商品管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "商品列表", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
+                    { "text": "商品列表", "module":"DYB_MERCHANT.commodity.commodityList", "url":"/back/merchant/commodity/getCommodityPageList", "leaf":"true", }
                 ] },
-                { "text": "业务订单管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "信使消费登记订单", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "回购订单", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
-                    { "text": "信使豆转换订单", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
+                { "text": "业务管理","expanded":"false","leaf":"false", "children":[
+                    { "text": "信使消费登记申请", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "信使豆回购申请", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "信使豆转换申请", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "商家审核", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "服务商审核", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
                 ] },
                 { "text": "资金管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "爱心管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
                     { "text": "信使豆管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", }
                 ] },
                 { "text": "报表统计","expanded":"false","leaf":"false", "children":[
@@ -32,9 +30,7 @@
                 ] },
                 { "text": "系统管理","expanded":"false","leaf":"false", "children":[
                     { "text": "系统参数配置", "module":"DYB_COMMON.system.systemParamsList", "url":"back/commons/systemparams/getSystemParamsList", "leaf":"true", },
-                    { "text": "管理员列表", "module":"DYB_COMMON.system.userList", "url":"back/commons/user/getUserList", "leaf":"true", },
-                    { "text": "角色管理", "module":"DYB_COMMON.system.roleList", "url":"back/commons/role/getRolePageList", "leaf":"true", },
-                    { "text": "权限列表", "module":"DYB_COMMON.system.permissionsList", "url":"back/commons/permissions/getPermissionsList", "leaf":"true", }
+                    { "text": "管理员列表", "module":"DYB_COMMON.system.userList", "url":"back/commons/user/getUserList", "leaf":"true", }
                 ] },
                 { "text": "日志管理","expanded":"false","leaf":"false", "children":[
                     { "text": "管理员操作日志", "module":"DYB_COMMON.systemlog.userLogList", "url":"back/commons/userlog/getSystemParamsList", "leaf":"true", },
@@ -219,10 +215,6 @@
                 {
                     "type": "java.util.Map",
                     "list":[
-                                {'/back/commons/permissions/createPermissions':'新增权限'},
-                                {'/back/commons/permissions/updatePermissions':'修改权限'},
-                                {'/back/commons/role/createRole':'新建角色'},
-                                {'/back/commons/role/updateRole':'更新角色'},
                                 {'/back/commons/systemparams/createSystemParams':'新建系统参数配置'},
                                 {'/back/commons/systemparams/updateSystemParams':'更新系统参数配置'},
                                 {'/back/commons/user/createUser':'新建用户'},
@@ -231,6 +223,18 @@
                                 {'/back/commons/user/removeDisableUser':'用户解除禁用'},
                                 {'/back/commons/user/updateUserPassword':'用户密码修改'},
                                 {'/back/commons/user/resetUserPassword':'重置用户密码'},
+                                {'/back/member/member/disableMember':'禁用指定信使'},
+                                {'/back/member/member/removeDisableMember':'禁用指定信使'},
+                                {'/back/member/member/resetMemberPassword':'指定信使重置登录密码'},
+                                {'/back/member/member/resetMemberTradePassword':'指定信使重置二级密码'},
+                                {'/back/merchant/merchant/disableMerchant':'禁用指定商家'},
+                                {'/back/merchant/merchant/removeDisableMerchant':'禁用指定商家'},
+                                {'/back/merchant/merchant/resetMerchantPassword':'指定商家重置登录密码'},
+                                {'/back/merchant/merchant/resetMerchantTradePassword':'指定商家重置二级密码'},
+                                {'/back/serviceProviders/serviceProviders/disableServiceProviders':'禁用指定服务商'},
+                                {'/back/serviceProviders/serviceProviders/removeDisableServiceProviders':'禁用指定服务商'},
+                                {'/back/serviceProviders/serviceProviders/resetServiceProvidersPassword':'指定服务商重置登录密码'},
+                                {'/back/serviceProviders/serviceProviders/resetServiceProvidersTradePassword':'指定服务商重置二级密码'},
                             ]
                 }
             ]]>

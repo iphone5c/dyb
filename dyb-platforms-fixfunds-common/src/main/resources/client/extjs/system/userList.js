@@ -81,12 +81,6 @@ Ext.define('DYB_COMMON.system.userList',{
                             else
                                 me.resetUserPassword(list[0].data.userCode);
                         }
-                    },
-                    {
-                        xtype: 'button', text: '修改角色',  scope: me,
-                        handler: function () {
-                            Ext.Msg.alert('操作成功',"修改成功");
-                        }
                     }
                 ]
             },

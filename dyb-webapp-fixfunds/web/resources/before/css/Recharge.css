@@ -1,0 +1,146 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "微软雅黑";
+}
+input{
+    outline: none;
+}
+.allcontent{
+    width: 1200px;
+    margin: 100px auto;
+    border: 1px solid #e6e6e6;
+}
+.left{
+    float: left;
+    background: #f6f6f6;
+    width:30%;
+    height:1499px;
+    border-right:1px solid #e6e6e6; ;
+}
+.left_div1{
+    width:100%;
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+}
+.left_div2{
+    width:100%;
+    height: 300px;
+    line-height: 300px;
+    text-align: center;
+}
+.left>ul{
+    padding: 0;
+    margin: 0;
+}
+.left>ul>li{
+    cursor: pointer;
+    width:100%;
+    border: 1px solid #e6e6e6;
+    list-style: none;
+    text-align: center;
+    height:60px;
+    line-height: 60px;
+    border-left: none;
+}
+.right{
+    width: 69.9%;
+    height: 100%;
+    float: left;
+}
+.right_top{
+    padding: 150px 0 50px 0;
+    width: 70%;
+    margin: 0 auto;
+    margin-left: 200px;
+}
+.right_bottom{
+    width: 70%;
+    margin: 0 auto;
+}
+.xg_input{
+    display: inline-block;
+    position: relative;
+    padding: 7px 26px;
+    outline: none;
+    border: 2px solid #a9a9a9;
+    background: none;
+}
+.xg_input2{
+    display: inline-block;
+    position: relative;
+    padding: 7px 26px;
+    margin-left: 30px;
+    outline: none;
+    border: 2px solid #a9a9a9;
+    background: none;
+}
+.right_top .active{
+    border: 2px solid #a5c75c;
+}
+.before{
+    display: none;
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+}
+.right2{
+    width: 69.9%;
+    height: 100%;
+    float: left;
+}
+.right2_top{
+    padding: 150px 0 50px 0;
+    width: 70%;
+    height: 300px;
+    margin: 0 auto;
+    margin-left: 200px;
+}
+.right2_bottom{
+    width: 70%;
+    margin: 0 auto;
+}
+.active>.before{
+    display: block;
+}
+.xg2_input{
+    display: inline-block;
+    position: relative;
+    padding: 7px 26px;
+    outline: none;
+    border: 2px solid #a9a9a9;
+    background: none;
+}
+.xg2_input2{
+    display: inline-block;
+    position: relative;
+    padding: 7px 26px;
+    margin-left: 30px;
+    outline: none;
+    border: 2px solid #a9a9a9;
+    background: none;
+}
+.left ul li.active{
+    background: white;
+}
+.xg_input_in{
+    cursor: pointer;
+}
+.right2_top .active{
+    border: 2px solid #a5c75c;
+}
+.right2_top .active>.before{
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+}
+.btn_ok{
+    cursor: pointer;
+    border-radius: 1px;
+    padding: 7px 40px;
+    color: white;
+    font-weight: bold;
+    background: #d29031;
+    border: 1px solid #d29031;
+}

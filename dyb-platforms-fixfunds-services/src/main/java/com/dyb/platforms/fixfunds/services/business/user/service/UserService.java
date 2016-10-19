@@ -203,4 +203,24 @@ public class UserService extends BaseService implements IUserService {
         int info=userDao.updateObject(user);
         return info>0?true:false;
     }
+
+    /**
+     * 用户登录验证
+     * @param userName 用户名
+     * @param password 密码
+     * @return User对象
+     */
+    @Override
+    public User loginUser(String userName, String password) {
+        if (DybUtils.isEmptyOrNull(userName))
+            throw new DybRuntimeException("用户名不能为空或null");
+        if (DybUtils.isEmptyOrNull(password))
+            throw new DybRuntimeException("密码不能为空或null");
+        User user=this.getUserByUserName(userName);
+        if (user==null)
+            throw new DybRuntimeException("没有此用户，请联系管理员");
+        if (!DybUtils.verifyPassword(password,user.getUserPassword()))
+            throw new DybRuntimeException("用户密码输入错误");
+        return user;
+    }
 }

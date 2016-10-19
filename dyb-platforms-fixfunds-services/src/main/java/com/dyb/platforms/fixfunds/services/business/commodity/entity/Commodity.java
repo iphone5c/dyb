@@ -5,6 +5,9 @@
 
 package com.dyb.platforms.fixfunds.services.business.commodity.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -27,6 +30,8 @@ public class Commodity implements java.io.Serializable {
     // 单价
     private double price;
     // 创建时间
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh" , timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     // 账户code（关联商家）
     private String accountCode;

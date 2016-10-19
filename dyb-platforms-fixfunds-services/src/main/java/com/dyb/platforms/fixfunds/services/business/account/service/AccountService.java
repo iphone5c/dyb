@@ -183,6 +183,7 @@ public class AccountService extends BaseService implements IAccountService {
         account.setReferrerCode(referrerCode);
         account.setAccountType(AccountType.信使);
         account.setAccountStatus(AccountStatus.正常);
+        account.setRegistrationTime(new Date());
         account.setAccountForeignKey(tempMember.getMemberCode());
 
         //添加信使豆信息
@@ -438,6 +439,84 @@ public class AccountService extends BaseService implements IAccountService {
         if (!DybUtils.verifyPassword(oldPassword,account.getPassword()))
             throw new DybRuntimeException("旧密码输入错误");
         account.setPassword(DybUtils.encryptPassword(newPassword));
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
+     * 禁用指定用户
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean disableAccount(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("禁用指定用户时，code不能为空或null");
+        return this.operationAccountStatus(accountCode,AccountStatus.禁用);
+    }
+
+    /**
+     * 将指定用户解除禁用
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean removeDisableAccount(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("解除指定用户的禁用状态时，code不能为空或null");
+        return this.operationAccountStatus(accountCode,AccountStatus.正常);
+    }
+
+    /**
+     * 操作指定用户额状态
+     * @param accountCode 用户code
+     * @param accountStatus 用户状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean operationAccountStatus(String accountCode, AccountStatus accountStatus) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("操作指定用户的状态时，code不能为空或null");
+        if (accountStatus==null)
+            throw new DybRuntimeException("操作指定用户的状态时，修改的用户状态不能为空");
+        Account account=accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new DybRuntimeException("操作指定用户的状态时，找不到此用户信息，code："+accountCode);
+        account.setAccountStatus(accountStatus);
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
+     * 将指定用户重置登录密码
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean resetAccountPassword(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("指定用户重置登录密码时，code不能为空或null");
+        Account account=accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new DybRuntimeException("指定用户重置登录密码时，找不到此用户信息，code："+accountCode);
+        account.setPassword(DybUtils.encryptPassword("ABC123"));
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
+     * 将指定用户重置二级密码
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean resetAccountTradePassword(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("指定用户重置二级密码时，code不能为空或null");
+        Account account=accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new DybRuntimeException("指定用户重置二级密码时，找不到此用户信息，code："+accountCode);
+        account.setTradePassword(DybUtils.encryptPassword("ABC123"));
         int info=accountDao.updateObject(account);
         return info>0?true:false;
     }

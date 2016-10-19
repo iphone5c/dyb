@@ -1,0 +1,30 @@
+/**
+*自定义样式库
+*created by Lynn 2015-5-19
+*/
+
+/*for widget column style*/
+.funi-edit-column{
+    background-color: #cfc;
+}
+
+.funi-row-highlight{
+    background-color:#ffa;
+}
+
+.funi-numberfield-field{
+    text-align: right;
+}
+
+.funi-mention-word{
+    font-weight: bold;
+    color: red;
+}
+.funi-mention-pass-word{
+    font-weight: bold;
+    color: green;
+}
+
+.funi-msg-box{
+    text-align: center;
+}

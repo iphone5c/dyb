@@ -1,7 +1,7 @@
 $(function(){
     // 获取当前登录商家信息
     var data = invokeService('/web/merchant/getMerchantByCurrent',{});
-    console.log(data);
+//    console.log(data);
     if (data.statusCode!=1000){
         alert(data.errorMessage);
         return;

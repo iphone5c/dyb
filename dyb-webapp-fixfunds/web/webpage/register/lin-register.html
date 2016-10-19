@@ -194,7 +194,7 @@ li {
         </div>
     </div>
 </div>
-<div id="ad-content" class="ad-register ad-register1">
+<div class="ad-register ad-register1">
     <form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate">
         <div class="register-nav" id="step3" style="display: none;">
             <div class="register-nav-title active">
@@ -353,7 +353,7 @@ li {
                     <span class="ad-red">*</span>图文验证码:</div>
                 <div class="register-form-cell-widget">
                     <input class="input-xfat ad-msg-ipt" placeholder="验证码" title="图文验证码" maxlength="4" type="text" id="imgCode" name="imgCode" />
-                    <img src="" id="CreateCheckCode" style="height:32px;" align="middle" class="check_code_img float_left" />
+                    <img src="/web/commons/getKaptchaImage" onclick="getKaptchaImage(this)" id="CreateCheckCode" style="height:32px;" align="middle" class="check_code_img float_left" />
                     <label class="yz-error"></label>
                 </div>
             </div>
@@ -384,7 +384,7 @@ li {
         </div>
     </form>
 </div>
-<div id="ad-content" class="ad-register ad-register2">
+<div class="ad-register ad-register2">
 <form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate">
 <div class="register-nav" id="step3" style="display: none;">
     <div class="register-nav-title">
@@ -895,7 +895,7 @@ li {
     <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="下一步" id="nextReg2" /></div></div>
 </form>
 </div>
-<div id="ad-content" class="ad-register ad-register3">
+<div class="ad-register ad-register3">
 <ul id="warp">
 <form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate">
 <div class="register-nav" id="step3" style="display: none;">
@@ -968,7 +968,10 @@ li {
                     <span id="businesslicenceTypeSpan ">新版营业执照</span></a>
                 <ul role="menu " aria-labelledby="drop1 " class="sui-dropdown-menu sui-dropdown-menu10 "  id="sub_xg_ul ">
                     <li role="presentation " class="btn_old sub_val "><a role="menuitem " tabindex="-1 " href="javascript:void(0); " value="2 ">旧版营业执照</a></li>
-                    <li role="presentation " class="btn_new sub_val "><a role="menuitem " tabindex="-1 " href="javascript:void(0); " value="1 ">新版营业执照</a></li></ul> </span> </span>
+                    <li role="presentation " class="btn_new sub_val "><a role="menuitem " tabindex="-1 " href="javascript:void(0); " value="1 ">新版营业执照</a></li>
+                </ul>
+                </span>
+                </span>
     </div>
 </div>
 <div class="clear "></div>
@@ -1274,7 +1277,7 @@ li {
 </form>
 </ul>
 </div>
-<div id="ad-content " class="ad-register ad-register4 ">
+<div class="ad-register ad-register4">
     <form id="content " onsubmit="return false; " class="register-centent sui-form form-horizontal sui-validate relative " novalidate="novalidate ">
         <div class="register-nav " id="step3 " style="display: none; ">
             <div class="register-nav-title ">
@@ -1431,7 +1434,7 @@ li {
         </div>
     </form>
 </div>
-<div id="ad-content " class="ad-register ad-register5 ">
+<div class="ad-register ad-register5">
     <form id="content " onsubmit="return false; " class="register-centent sui-form form-horizontal sui-validate relative " novalidate="novalidate ">
         <div class="register-nav " id="step3 " style="display: none; ">
             <div class="register-nav-title ">
@@ -1591,199 +1594,227 @@ li {
     <p>客服电话:400-9001991/400-6663502 工作时间: 9:00-21:30（法定工作日） 客服QQ ：4009001991</p>
     <p>Copyright&copy;2015-2020 深圳前海中盛一点科技有限公司版权所有 <a href="http://www.miitbeian.gov.cn/ ">粤ICP备15082614号-2</a></p></div>
 <script type="text/javascript ">
-    $(function(){
-        //        下一步
-        $("#nextReg3 ").click(function(){
-            var flag=$("#flag ").val();
-            if(flag==1){
-                var businessLicensePhoto1=uploadService('/web/commons/upload','up_img_WU_FILE_0','businessLicensePhoto1');
-                if(businessLicensePhoto1.statusCode!=1000){
-                    alert("新版营业执照图片必须上传 ");
-                    return;
-                }
-                $("#businessLicensePhoto1 ").val(businessLicensePhoto1.result.businessLicensePhoto1.path);
-            }else if(flag==2){
-                var oldBusinessLicensePhoto1=uploadService('/web/commons/upload','up_img_WU_FILE_5','oldBusinessLicensePhoto1');
-                if(oldBusinessLicensePhoto1.statusCode!=1000){
-                    alert("旧版营业执照图片必须上传 ");
-                    return;
-                }
-                var oldBusinessLicensePhoto2=uploadService('/web/commons/upload','up_img_WU_FILE_6','oldBusinessLicensePhoto2');
-                if(oldBusinessLicensePhoto2.statusCode!=1000){
-                    alert("税务登记证图片必须上传 ");
-                    return;
-                }
-                $("#oldBusinessLicensePhoto1 ").val(oldBusinessLicensePhoto1.result.oldBusinessLicensePhoto1.path);
-                $("#oldBusinessLicensePhoto2 ").val(oldBusinessLicensePhoto2.result.oldBusinessLicensePhoto2.path);
-            }
-            var legalPersonPhoto=uploadService('/web/commons/upload','up_img_WU_FILE_1','legalPersonPhoto');
-            if(legalPersonPhoto.statusCode!=1000){
-                alert("法人身份证照片必须上传 ");
+$(function() {
+    //        下一步
+    $("#nextReg3 ").click(function() {
+        var flag = $("#flag ").val();
+        if (flag == 1) {
+            var businessLicensePhoto1 = uploadService('/web/commons/upload', 'up_img_WU_FILE_0', 'businessLicensePhoto1');
+            if (businessLicensePhoto1.statusCode != 1000) {
+                alert("新版营业执照图片必须上传 ");
                 return;
             }
-            var recommendPersonPhoto=uploadService('/web/commons/upload','up_img_WU_FILE_2','recommendPersonPhoto');
-            if(recommendPersonPhoto.statusCode!=1000){
-                alert("推荐人身份证照片必须上传 ");
+            $("#businessLicensePhoto1 ").val(businessLicensePhoto1.result.businessLicensePhoto1.path);
+        } else if (flag == 2) {
+            var oldBusinessLicensePhoto1 = uploadService('/web/commons/upload', 'up_img_WU_FILE_5', 'oldBusinessLicensePhoto1');
+            if (oldBusinessLicensePhoto1.statusCode != 1000) {
+                alert("旧版营业执照图片必须上传 ");
                 return;
             }
-            var donationPhoto=uploadService('/web/commons/upload','up_img_WU_FILE_3','donationPhoto');
-            if(donationPhoto.statusCode!=1000){
-                alert("捐赠承诺书照片必须上传 ");
+            var oldBusinessLicensePhoto2 = uploadService('/web/commons/upload', 'up_img_WU_FILE_6', 'oldBusinessLicensePhoto2');
+            if (oldBusinessLicensePhoto2.statusCode != 1000) {
+                alert("税务登记证图片必须上传 ");
                 return;
             }
-            var storePhoto=uploadService('/web/commons/upload','up_img_WU_FILE_4','storePhoto');
-            if(storePhoto.statusCode!=1000){
-                alert("店面门头照片必须上传 ");
-                return;
-            }
-            $("#legalPersonPhoto ").val(legalPersonPhoto.result.legalPersonPhoto.path);
-            $("#recommendPersonPhoto ").val(recommendPersonPhoto.result.recommendPersonPhoto.path);
-            $("#donationPhoto ").val(donationPhoto.result.donationPhoto.path);
-            $("#storePhoto ").val(storePhoto.result.storePhoto.path);
-            $(".ad-register1 ").css({"display ":"none "});
-            $(".ad-register2 ").css({"display ":"none "});
-            $(".ad-register3 ").css({"display ":"none "});
-            $(".ad-register5 ").css({"display ":"none "});
-            $(".ad-register4 ").css({"display ":"block "})
+            $("#oldBusinessLicensePhoto1 ").val(oldBusinessLicensePhoto1.result.oldBusinessLicensePhoto1.path);
+            $("#oldBusinessLicensePhoto2 ").val(oldBusinessLicensePhoto2.result.oldBusinessLicensePhoto2.path);
+        }
+        var legalPersonPhoto = uploadService('/web/commons/upload', 'up_img_WU_FILE_1', 'legalPersonPhoto');
+        if (legalPersonPhoto.statusCode != 1000) {
+            alert("法人身份证照片必须上传 ");
+            return;
+        }
+        var recommendPersonPhoto = uploadService('/web/commons/upload', 'up_img_WU_FILE_2', 'recommendPersonPhoto');
+        if (recommendPersonPhoto.statusCode != 1000) {
+            alert("推荐人身份证照片必须上传 ");
+            return;
+        }
+        var donationPhoto = uploadService('/web/commons/upload', 'up_img_WU_FILE_3', 'donationPhoto');
+        if (donationPhoto.statusCode != 1000) {
+            alert("捐赠承诺书照片必须上传 ");
+            return;
+        }
+        var storePhoto = uploadService('/web/commons/upload', 'up_img_WU_FILE_4', 'storePhoto');
+        if (storePhoto.statusCode != 1000) {
+            alert("店面门头照片必须上传 ");
+            return;
+        }
+        $("#legalPersonPhoto ").val(legalPersonPhoto.result.legalPersonPhoto.path);
+        $("#recommendPersonPhoto ").val(recommendPersonPhoto.result.recommendPersonPhoto.path);
+        $("#donationPhoto ").val(donationPhoto.result.donationPhoto.path);
+        $("#storePhoto ").val(storePhoto.result.storePhoto.path);
+        $(".ad-register1 ").css({
+            "display ": "none"
         });
-        //        上一步
-        $("#lastReg2 ").click(function(){
-            $(".ad-register5 ").css({"display ":"none "});
-            $(".ad-register2 ").css({"display ":"none "});
-            $(".ad-register3 ").css({"display ":"none "});
-            $(".ad-register4 ").css({"display ":"none "});
-            $(".ad-register1 ").css({"display ":"block "})
+        $(".ad-register2 ").css({
+            "display ": "none"
         });
-        $("#lastReg3 ").click(function(){
-            $(".ad-register5 ").css({"display ":"none "});
-            $(".ad-register1 ").css({"display ":"none "});
-            $(".ad-register3 ").css({"display ":"none "});
-            $(".ad-register4 ").css({"display ":"none "});
-            $(".ad-register2 ").css({"display ":"block "})
+        $(".ad-register3 ").css({
+            "display ": "none"
         });
-        $("#lastReg4 ").click(function(){
-            $(".ad-register5 ").css({"display ":"none "});
-            $(".ad-register2 ").css({"display ":"none "});
-            $(".ad-register1 ").css({"display ":"none "});
-            $(".ad-register4 ").css({"display ":"none "});
-            $(".ad-register3 ").css({"display ":"block "})
+        $(".ad-register5 ").css({
+            "display ": "none"
         });
-        //        下拉框
-        $(".dropdown-toggle ").eq(1).click(function(){
-            $(".select1 ").toggleClass("open ");
-        });
-        $(".sui-dropdown-menu1 ").on("click ","li ",function(){
-            var i=$(".sui-dropdown-menu1 li ").index(this);
-            var x= $(".sui-dropdown-menu1 li a ").eq(i).html();
-            $(".sui-dropdown-menu1 li ").removeClass("active ");
-            $(".sui-dropdown-menu1 li ").eq(i).addClass("active ");
-            $(".select1 span span ").html(x);
-            $(".select1 ").removeClass("open ");
-        });
-        $('.dropdown-inner').mouseleave(function(){
-            $(".select1 ").removeClass("open ");
-        });
-        $(".dropdown-toggle ").eq(2).click(function(){
-            $(".select2 ").toggleClass("open ");
-        });
-        $(".sui-dropdown-menu2 ").on("click ","li ",function(){
-            var i=$(".sui-dropdown-menu2 li ").index(this);
-            var x= $(".sui-dropdown-menu2 li a ").eq(i).html();
-            $(".sui-dropdown-menu2 li ").removeClass("active ");
-            $(".sui-dropdown-menu2 li ").eq(i).addClass("active ");
-            $(".select2 span span ").html(x);
-            $(".select2 ").removeClass("open ");
-        });
-        $('.dropdown-inner').mouseleave(function(){
-            $(".select2 ").removeClass("open ");
-        });
-        $(".dropdown-toggle ").eq(3).click(function(){
-            $(".select5 ").toggleClass("open ");
-        });
-        $(".sui-dropdown-menu5 ").on("click ","li ",function(){
-            var i=$(".sui-dropdown-menu5 li ").index(this);
-            var x= $(".sui-dropdown-menu5 li a ").eq(i).html();
-            $(".sui-dropdown-menu5 li ").removeClass("active ");
-            $(".sui-dropdown-menu5 li ").eq(i).addClass("active ");
-            $(".select5 span span ").html(x);
-            $(".select5 ").removeClass("open ");
-        });
-        $('.dropdown-inner').mouseleave(function(){
-            $(".select5 ").removeClass("open ");
-        });
-        $(".dropdown-toggle ").eq(4).click(function(){
-            $(".select6 ").toggleClass("open ");
-        });
-        $(".sui-dropdown-menu6 ").on("click ","li ",function(){
-            var i=$(".sui-dropdown-menu6 li ").index(this);
-            var x= $(".sui-dropdown-menu6 li a ").eq(i).html();
-            $(".sui-dropdown-menu6 li ").removeClass("active ");
-            $(".sui-dropdown-menu6 li ").eq(i).addClass("active ");
-            $(".select6 span span ").html(x);
-            $(".select6 ").removeClass("open ");
-        });
-        $('.dropdown-inner').mouseleave(function(){
-            $(".select6 ").removeClass("open ");
-        });
-        $(".dropdown-toggle ").eq(5).click(function(){
-            $(".select7 ").toggleClass("open ");
-        });
-        $(".sui-dropdown-menu7 ").on("click ","li ",function(){
-            var i=$(".sui-dropdown-menu7 li ").index(this);
-            var x= $(".sui-dropdown-menu7 li a ").eq(i).html();
-            $(".sui-dropdown-menu7 li ").removeClass("active ");
-            $(".sui-dropdown-menu7 li ").eq(i).addClass("active ");
-            $(".select7 span span ").html(x);
-            $(".select7 ").removeClass("open ");
-        });
-        $('.dropdown-inner').mouseleave(function(){
-            $(".select7 ").removeClass("open ");
-        });
-        $(".dropdown-toggle ").eq(6).click(function(){
-            $(".select8 ").toggleClass("open ");
-        });
-        $(".sui-dropdown-menu8 ").on("click ","li ",function(){
-            var i=$(".sui-dropdown-menu8 li ").index(this);
-            var x= $(".sui-dropdown-menu8 li a ").eq(i).html();
-            $(".sui-dropdown-menu8 li ").removeClass("active ");
-            $(".sui-dropdown-menu8 li ").eq(i).addClass("active ");
-            $(".select8 span span ").html(x);
-            $(".select8 ").removeClass("open ");
-        });
-        $('.dropdown-inner').mouseleave(function(){
-            $(".select8 ").removeClass("open ");
-        });
-        $(".dropdown-toggle ").eq(7).click(function(){
-            $(".select9 ").toggleClass("open ");
-        });
-        $(".sui-dropdown-menu9 ").on("click ","li ",function(){
-            var i=$(".sui-dropdown-menu9 li ").index(this);
-            var x= $(".sui-dropdown-menu9 li a ").eq(i).html();
-            $(".sui-dropdown-menu9 li ").removeClass("active ");
-            $(".sui-dropdown-menu9 li ").eq(i).addClass("active ");
-            $(".select9 span span ").html(x);
-            $(".select9 ").removeClass("open ");
-        });
-        $('.dropdown-inner').mouseleave(function(){
-            $(".select9 ").removeClass("open ");
-        });
-        $(".dropdown-toggle ").eq(8).click(function(){
-            $(".select10 ").toggleClass("open ");
-        });
-        $(".sui-dropdown-menu10 ").on("click ","li ",function(){
-            var i=$(".sui-dropdown-menu10 li ").index(this);
-            var x= $(".sui-dropdown-menu10 li a ").eq(i).html();
-            $(".sui-dropdown-menu10 li ").removeClass("active ");
-            $(".sui-dropdown-menu10 li ").eq(i).addClass("active ");
-            $(".select10 span span ").html(x);
-            $(".select10 ").removeClass("open ");
-        });
-        $('.dropdown-inner').mouseleave(function(){
-            $(".select10 ").removeClass("open ");
-        });
-        //    新旧版切换
-        $(".btn_old ").click(function(){
-            $("#flag ").val($("#sub_xg_ul .active>a").attr("value")); $(".div_new").hide(); $(".div_old").show() }); $(".btn_new").click(function(){ $("#flag").val($("#sub_xg_ul .active>a").attr("value")); $(".div_old").hide() $(".div_new").show() }) })</script>
+        $(".ad-register4 ").css({
+            "display ": "block"
+        })
+    });
+    //        上一步
+    $("#lastReg2").click(function() {
+        $(".ad-register5").hide();
+        $(".ad-register2").hide();
+        $(".ad-register3").hide();
+        $(".ad-register4").hide();
+        $(".ad-register1").show();
+    });
+    $("#lastReg3 ").click(function() {
+        $(".ad-register5").hide();
+        $(".ad-register2").show();
+        $(".ad-register3").hide();
+        $(".ad-register4").hide();
+        $(".ad-register1").hide();
+    });
+    $("#lastReg4 ").click(function() {
+        $(".ad-register5").hide();
+        $(".ad-register2").hide();
+        $(".ad-register3").show();
+        $(".ad-register4").hide();
+        $(".ad-register1").hide();
+    });
+    //        下拉框
+    $(".dropdown-toggle ").eq(1).click(function() {
+        $(".select1 ").toggleClass("open ");
+    });
+    $(".sui-dropdown-menu1 ").on("click ", "li ",
+            function() {
+                var i = $(".sui-dropdown-menu1 li ").index(this);
+                var x = $(".sui-dropdown-menu1 li a ").eq(i).html();
+                $(".sui-dropdown-menu1 li ").removeClass("active ");
+                $(".sui-dropdown-menu1 li ").eq(i).addClass("active ");
+                $(".select1 span span ").html(x);
+                $(".select1 ").removeClass("open ");
+            });
+    $('.dropdown-inner').mouseleave(function() {
+        $(".select1 ").removeClass("open ");
+    });
+    $(".dropdown-toggle ").eq(2).click(function() {
+        $(".select2 ").toggleClass("open ");
+    });
+    $(".sui-dropdown-menu2 ").on("click ", "li ",
+            function() {
+                var i = $(".sui-dropdown-menu2 li ").index(this);
+                var x = $(".sui-dropdown-menu2 li a ").eq(i).html();
+                $(".sui-dropdown-menu2 li ").removeClass("active ");
+                $(".sui-dropdown-menu2 li ").eq(i).addClass("active ");
+                $(".select2 span span ").html(x);
+                $(".select2 ").removeClass("open ");
+            });
+    $('.dropdown-inner').mouseleave(function() {
+        $(".select2 ").removeClass("open ");
+    });
+    $(".dropdown-toggle ").eq(3).click(function() {
+        $(".select5 ").toggleClass("open ");
+    });
+    $(".sui-dropdown-menu5 ").on("click ", "li ",
+            function() {
+                var i = $(".sui-dropdown-menu5 li ").index(this);
+                var x = $(".sui-dropdown-menu5 li a ").eq(i).html();
+                $(".sui-dropdown-menu5 li ").removeClass("active ");
+                $(".sui-dropdown-menu5 li ").eq(i).addClass("active ");
+                $(".select5 span span ").html(x);
+                $(".select5 ").removeClass("open ");
+            });
+    $('.dropdown-inner').mouseleave(function() {
+        $(".select5 ").removeClass("open ");
+    });
+    $(".dropdown-toggle ").eq(4).click(function() {
+        $(".select6 ").toggleClass("open ");
+    });
+    $(".sui-dropdown-menu6 ").on("click ", "li ",
+            function() {
+                var i = $(".sui-dropdown-menu6 li ").index(this);
+                var x = $(".sui-dropdown-menu6 li a ").eq(i).html();
+                $(".sui-dropdown-menu6 li ").removeClass("active ");
+                $(".sui-dropdown-menu6 li ").eq(i).addClass("active ");
+                $(".select6 span span ").html(x);
+                $(".select6 ").removeClass("open ");
+            });
+    $('.dropdown-inner').mouseleave(function() {
+        $(".select6 ").removeClass("open ");
+    });
+    $(".dropdown-toggle ").eq(5).click(function() {
+        $(".select7 ").toggleClass("open ");
+    });
+    $(".sui-dropdown-menu7 ").on("click ", "li ",
+            function() {
+                var i = $(".sui-dropdown-menu7 li ").index(this);
+                var x = $(".sui-dropdown-menu7 li a ").eq(i).html();
+                $(".sui-dropdown-menu7 li ").removeClass("active ");
+                $(".sui-dropdown-menu7 li ").eq(i).addClass("active ");
+                $(".select7 span span ").html(x);
+                $(".select7 ").removeClass("open ");
+            });
+    $('.dropdown-inner').mouseleave(function() {
+        $(".select7 ").removeClass("open ");
+    });
+    $(".dropdown-toggle ").eq(6).click(function() {
+        $(".select8 ").toggleClass("open ");
+    });
+    $(".sui-dropdown-menu8 ").on("click ", "li ",
+            function() {
+                var i = $(".sui-dropdown-menu8 li ").index(this);
+                var x = $(".sui-dropdown-menu8 li a ").eq(i).html();
+                $(".sui-dropdown-menu8 li ").removeClass("active ");
+                $(".sui-dropdown-menu8 li ").eq(i).addClass("active ");
+                $(".select8 span span ").html(x);
+                $(".select8 ").removeClass("open ");
+            });
+    $('.dropdown-inner').mouseleave(function() {
+        $(".select8 ").removeClass("open ");
+    });
+    $(".dropdown-toggle ").eq(7).click(function() {
+        $(".select9 ").toggleClass("open ");
+    });
+    $(".sui-dropdown-menu9 ").on("click ", "li ",
+            function() {
+                var i = $(".sui-dropdown-menu9 li ").index(this);
+                var x = $(".sui-dropdown-menu9 li a ").eq(i).html();
+                $(".sui-dropdown-menu9 li ").removeClass("active ");
+                $(".sui-dropdown-menu9 li ").eq(i).addClass("active ");
+                $(".select9 span span ").html(x);
+                $(".select9 ").removeClass("open ");
+            });
+    $('.dropdown-inner').mouseleave(function() {
+        $(".select9 ").removeClass("open ");
+    });
+    $(".dropdown-toggle ").eq(8).click(function() {
+        $(".select10 ").toggleClass("open ");
+    });
+    $(".sui-dropdown-menu10 ").on("click ", "li ",
+            function() {
+                var i = $(".sui-dropdown-menu10 li ").index(this);
+                var x = $(".sui-dropdown-menu10 li a ").eq(i).html();
+                $(".sui-dropdown-menu10 li ").removeClass("active ");
+                $(".sui-dropdown-menu10 li ").eq(i).addClass("active ");
+                $(".select10 span span ").html(x);
+                $(".select10 ").removeClass("open ");
+            });
+    $('.dropdown-inner').mouseleave(function() {
+        $(".select10 ").removeClass("open ");
+    });
+    //    新旧版切换
+    $(".btn_old ").click(function() {
+        $("#flag ").val($("#sub_xg_ul .active>a").attr("value"));
+        $(".div_new").hide();
+        $(".div_old").show()
+    });
+    $(".btn_new").click(function() {
+        $("#flag").val($("#sub_xg_ul .active>a").attr("value"));
+        $(".div_old").hide();
+        $(".div_new").show()
+    })
+})
+</script>
 <script type="text/javascript" src="./js/lin-js.js"></script>
 </body>
 

@@ -84,7 +84,7 @@ public class WebMemberController extends BaseController {
         Account tjr=accountService.getAccountByCode(account.getReferrerCode(),true);
         if (account==null)
             return validationResult(1001,"找不到此账户信息");
-        if (account.getMerchant()==null)
+        if (account.getMember()==null)
             return validationResult(1001,"找不到此账户的详情信息");
         if (account.getAccountType()!=AccountType.信使)
             return validationResult(1001,"当前登陆用户不是信使用户");

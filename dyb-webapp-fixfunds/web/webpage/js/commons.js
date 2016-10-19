@@ -107,6 +107,14 @@ function uploadSyncService(url,id,name,success,fail){
 }
 
 /**
+ * 获取图片验证码
+ * @param me img标签对象
+ */
+function getKaptchaImage(me){
+    me.src='/web/commons/getKaptchaImage';
+}
+
+/**
  * 拼接url全路径
  * @param url
  * @returns {string}
@@ -127,7 +135,7 @@ function getServiceParams (param) {
 function getData(){
     // ajax请求 所在行业数据 industry
     var data = invokeService('/web/commons/getIndustry',{});
-    console.log(data)
+//    console.log(data)
     if (data.statusCode!=1000){
         alert(data.errorMessage);
         return;
@@ -139,7 +147,7 @@ function getData(){
     }
 //    // ajax请求企业规模数据 scale
     var data = invokeService('/web/commons/getScale',{});
-    console.log(data)
+//    console.log(data)
     if (data.statusCode!=1000){
         alert(data.errorMessage);
         return;
@@ -151,7 +159,7 @@ function getData(){
     }
 //    // ajax请求性别数据 gender
     var data = invokeService('/web/commons/getSex',{});
-    console.log(data)
+//    console.log(data)
     if (data.statusCode!=1000){
         alert(data.errorMessage);
         return;
@@ -163,7 +171,7 @@ function getData(){
     }
     // ajax 请求行业类别 industryType
     var data = invokeService('/web/commons/getIndustryType',{});
-    console.log(data)
+//    console.log(data)
     if (data.statusCode!=1000){
         alert(data.errorMessage);
         return;

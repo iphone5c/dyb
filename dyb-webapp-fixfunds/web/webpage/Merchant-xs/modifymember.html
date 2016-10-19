@@ -54,7 +54,7 @@
 				<div class="ad-box">
 					<div class="spanTitle1">姓名:</div>
 					<div class="span1">
-						<p id="realname">李志鹏</p></div>
+						<p id="realname"></p></div>
 					<div class="clear"></div>
 					<div class="spanTitle1">性别:</div>
 					<div class="span1">
@@ -63,14 +63,9 @@
                     <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
 						<input id="sex" value="0" name="sex" data-rules="required" data-empty-msg="请选择性别" type="hidden">
 						<i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
-						<span id="edit_sexSpan">男</span></a>
-                    <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">男</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">女</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">保密</a></li>
+						<span id="edit_sexSpan"></span></a>
+                    <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1 gender">
+
 					</ul>
                   </span>
                 </span>
@@ -80,7 +75,7 @@
 				<div class="ad-box">
 					<div class="spanTitle1">籍贯:</div>
 					<div class="span2">
-						<div id="subCity" data-city="410000,河南省" data-area="155,郑州市">
+						<div id="subCity">
 							<div class="info" style="position: relative">
 								<div>
 									<select id="s_province" name="s_province"></select>  
@@ -105,13 +100,13 @@
 				<div class="ad-box">
 					<div class="spanTitle1">证照号码:</div>
 					<div class="span1">
-						<p id="idcard" class="">411024199005010793</p></div>
+						<p id="idcard" class=""></p></div>
 					<div class="clear"></div>
 				</div>
 				<div class="ad-box">
 					<div class="spanTitle1">个人邮箱:</div>
 					<div class="span1">
-						<p id="email">819148946@qq.com</p></div>
+						<p id="email"></p></div>
 					<div class="clear"></div>
 				</div>
 				<div class="ad-box">
@@ -122,41 +117,10 @@
                     <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
 						<input id="industry" value="" name="business" type="hidden" data-rules="required" data-empty-msg="请选择行业">
 						<i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
-						<span id="edit_businessSpan"></span>
+						<span id="edit_businessSpan">请选择行业</span>
 					</a>
-                    <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu4">
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="计算机/互联网">计算机/互联网</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="通信/电子">通信/电子</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="金融">金融</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="贸易/制造">贸易/制造</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="医疗">医疗</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="广告/媒体">广告/媒体</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="房地产/建筑">房地产/建筑</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="教育/培训">游戏</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="旅游">旅游</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="娱乐">娱乐</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="餐饮">餐饮</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="休闲/服务业">休闲/服务业</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="物流/交通/航空">物流/交通/航空</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="能源/原材料">能源/原材料</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="政府/非盈利机构">政府/非盈利机构</a></li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="javascript:void(0);" value="其他">其他</a></li>
+                    <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu4 industry">
+
 					</ul>
                   </span>
                 </span>
@@ -292,45 +256,7 @@
 	</div>
 			</div></div></div></div>
 <div class="sui-modal-backdrop fade" style="background:#000;z-index:-1"></div>
-
-<script type="text/javascript">
-	$(function(){
-		$("#modifypicture").click(function(){
-			$(".sui-modal").addClass("in");
-			$(".sui-modal-backdrop").css("zIndex","1").addClass("in");
-		});
-		$(".sui-close").click(function(){
-			$(".sui-modal").removeClass("in");
-			$(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
-		})
-		$(".dropdown-toggle").eq(0).click(function(){
-			$(".select1").toggleClass("open");
-		});
-		$(".sui-dropdown-menu1 li").click(function(){
-			var i=$(".sui-dropdown-menu1 li").index(this);
-			var x= $(".sui-dropdown-menu1 li a").eq(i).html();
-			$(".sui-dropdown-menu1 li").removeClass("active");
-			$(".sui-dropdown-menu1 li").eq(i).addClass("active");
-			$(".select1 span span").html(x);
-			$(".select1").removeClass("open");
-		});
-		$(".dropdown-toggle").eq(1).click(function(){
-			$(".select4").toggleClass("open");
-		});
-		$(".sui-dropdown-menu4 li").click(function(){
-			var i=$(".sui-dropdown-menu4 li").index(this);
-			var x= $(".sui-dropdown-menu4 li a").eq(i).html();
-			$(".sui-dropdown-menu4 li").removeClass("active");
-			$(".sui-dropdown-menu4 li").eq(i).addClass("active");
-			$(".select4 span span").html(x);
-			$(".select4").removeClass("open");
-		});
-		$('.dropdown-inner').mouseleave(function(){
-			$(".select1").removeClass("open");
-			$(".select2").removeClass("open");
-		});
-	})
-</script>
+<script src="./js/xsmodifymember.js" type="text/javascript"></script>
 </body>
 
 </html>

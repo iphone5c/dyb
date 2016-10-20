@@ -243,6 +243,8 @@
                                 {'/back/commons/order/cancelOrder':'指定订单撤销业务'},
                                 {'/back/commons/withdrawal/approvedWithdrawal':'指定回购单审核通过业务'},
                                 {'/back/commons/withdrawal/cancelWithdrawal':'指定回购单审核不通过业务'},
+                                {'/back/commons/conversion/approvedConversion':'指定审核通过转换申请业务'},
+                                {'/back/commons/conversion/cancelConversion':'指定审核不通过转换申请业务'},
                             ]
                 }
             ]]>

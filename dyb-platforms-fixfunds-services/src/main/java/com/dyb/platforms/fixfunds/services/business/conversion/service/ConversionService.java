@@ -176,4 +176,84 @@ public class ConversionService extends BaseService implements IConversionService
         return info>0?conversion:null;
     }
 
+    /**
+     * 操作指定转换状态
+     * @param conversionCode 转换code
+     * @param applyStatus 申请状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean operationConversionStatus(String conversionCode, ApplyStatus applyStatus) {
+        if (DybUtils.isEmptyOrNull(conversionCode))
+            throw new DybRuntimeException("操作指定转换状态时，code不能为空或null");
+        if (applyStatus==null)
+            throw new DybRuntimeException("操作指定转换状态时，修改的申请状态不能为空");
+        Conversion conversion=conversionDao.getObject(conversionCode,true);
+        if (conversion==null)
+            throw new DybRuntimeException("操作指定转换状态时，找不到此转换信息，code："+conversion);
+        conversion.setApplyStatus(applyStatus);
+        int info=conversionDao.updateObject(conversion);
+        return info>0?true:false;
+    }
+
+    /**
+     * 审核通过转换
+     * @param conversionCode 转换编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean approvedConversion(String conversionCode) {
+        if (DybUtils.isEmptyOrNull(conversionCode))
+            throw new DybRuntimeException("审核通过转换时，code不能为空或null");
+        Conversion conversion=conversionDao.getObject(conversionCode,true);
+        if (conversion==null)
+            throw new DybRuntimeException("没有找到此转换订单信息");
+        MessengerBean messengerBean=messengerBeanService.getMessengerBeanByAccountCodeAndMessengerType(conversion.getConversionAccount(),conversion.getConversionType());
+        if (messengerBean==null)
+            throw new DybRuntimeException("沒有找到此信使豆类型");
+        //冻结的信使豆
+        Double fBean=messengerBean.getFreeze();
+        messengerBean.setFreeze(fBean-conversion.getApplyConversionNum());
+        MessengerBean updateMessengerBean=messengerBeanService.updateMessengerBean(messengerBean);
+        if (updateMessengerBean==null)
+            throw new DybRuntimeException("账户信使豆处理失败");
+        messengerBean=messengerBeanService.getMessengerBeanByAccountCodeAndMessengerType(conversion.getConversionAccount(),MessengerBeanType.普通信使豆);
+        if (messengerBean==null)
+            throw new DybRuntimeException("沒有找到此账户普通信使豆信息");
+        //可用余额
+        Double mBean=messengerBean.getMessengerBean();
+        messengerBean.setMessengerBean(mBean+conversion.getApplyConversionNum());
+        updateMessengerBean=messengerBeanService.updateMessengerBean(messengerBean);
+        if (updateMessengerBean==null)
+            throw new DybRuntimeException("账户信使豆处理失败");
+        return this.operationConversionStatus(conversionCode,ApplyStatus.审批通过);
+    }
+
+    /**
+     * 审核不通过
+     * @param conversionCode 转换编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean cancelConversion(String conversionCode) {
+        if (DybUtils.isEmptyOrNull(conversionCode))
+            throw new DybRuntimeException("审核不通过转换时，code不能为空或null");
+        Conversion conversion=conversionDao.getObject(conversionCode,true);
+        if (conversion==null)
+            throw new DybRuntimeException("没有找到此转换订单信息");
+        MessengerBean messengerBean=messengerBeanService.getMessengerBeanByAccountCodeAndMessengerType(conversion.getConversionAccount(),conversion.getConversionType());
+        if (messengerBean==null)
+            throw new DybRuntimeException("沒有找到此信使豆类型");
+        //可用余额
+        Double mBean=messengerBean.getMessengerBean();
+        //冻结的信使豆
+        Double fBean=messengerBean.getFreeze();
+        messengerBean.setMessengerBean(mBean+conversion.getApplyConversionNum());
+        messengerBean.setFreeze(fBean-conversion.getApplyConversionNum());
+        MessengerBean updateMessengerBean=messengerBeanService.updateMessengerBean(messengerBean);
+        if (updateMessengerBean==null)
+            throw new DybRuntimeException("账户信使豆处理失败");
+        return this.operationConversionStatus(conversionCode,ApplyStatus.审批不通过);
+    }
+
 }

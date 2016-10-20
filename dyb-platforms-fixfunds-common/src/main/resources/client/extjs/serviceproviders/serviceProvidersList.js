@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/2/26.
  */
-Ext.define('DYB_MEMBER.member.memberList',{
+Ext.define('DYB_COMMON.serviceproviders.serviceProvidersList',{
     extend: 'Ext.grid.Panel',
     // ====入口参数定义===================================================================
     /**
@@ -10,7 +10,7 @@ Ext.define('DYB_MEMBER.member.memberList',{
     config: {},
 
     // ====基类属性重写、属性定义==========================================================
-    title: '信使列表',
+    title: '服务商列表',
     frame: false,
     border: false,
     header: false,
@@ -33,7 +33,7 @@ Ext.define('DYB_MEMBER.member.memberList',{
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.disableMember(list[0].data.accountCode);
+                                me.disableServiceProviders(list[0].data.accountCode);
                         }
                     },
                     {
@@ -43,7 +43,7 @@ Ext.define('DYB_MEMBER.member.memberList',{
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.removeDisableMember(list[0].data.accountCode);
+                                me.removeDisableServiceProviders(list[0].data.accountCode);
                         }
                     },
                     {
@@ -53,7 +53,7 @@ Ext.define('DYB_MEMBER.member.memberList',{
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.resetMemberPassword(list[0].data.accountCode);
+                                me.resetServiceProvidersPassword(list[0].data.accountCode);
                         }
                     },
                     {
@@ -63,22 +63,22 @@ Ext.define('DYB_MEMBER.member.memberList',{
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.resetMemberTradePassword(list[0].data.accountCode);
+                                me.resetServiceProvidersTradePassword(list[0].data.accountCode);
                         }
                     }
                 ]
             },
             columns: [
-                { header: '信使编号',  dataIndex: 'accountCode',width:153 },
+                { header: '服务商编号',  dataIndex: 'accountCode',width:153 },
                 { header: '账户名', dataIndex: 'accountName',width:120 },
                 { header: '绑定手机号', dataIndex: 'accountPhone',width:120 },
                 { header: '账户状态', dataIndex: 'accountStatus',width:120 },
                 { header: '推荐人code', dataIndex: 'referrerCode',width:180 },
                 { header: '注册时间', dataIndex: 'registrationTime',width:140 },
-                { header: '真实姓名', dataIndex: 'realName',width:140 },
-                { header: '证件类型', dataIndex: 'certificate',width:140 },
-                { header: '证件号码', dataIndex: 'certificateNumber',width:140 },
-                { header: '个人邮箱', dataIndex: 'memberEmail',width:140 },
+                { header: '服务商名称', dataIndex: 'serviceProviderName',width:140 },
+                { header: '邮箱地址', dataIndex: 'email',width:140 },
+                { header: '服务商地址', dataIndex: 'address',width:140 },
+                { header: '身份证号码', dataIndex: 'idCard',width:140 },
                 { flex: 1 }
             ],
             dockedItems: [
@@ -120,13 +120,13 @@ Ext.define('DYB_MEMBER.member.memberList',{
                 {name: 'accountStatus', mapping: 'accountStatus'},
                 {name: 'referrerCode', mapping: 'referrerCode'},
                 {name: 'registrationTime', mapping: 'registrationTime'},
-                {name: 'realName', mapping: 'member.realName'},
-                {name: 'certificate', mapping: 'member.certificate'},
-                {name: 'certificateNumber', mapping: 'member.certificateNumber'},
-                {name: 'memberEmail', mapping: 'member.memberEmail'},
+                {name: 'serviceProviderName', mapping: 'serviceProviders.serviceProviderName'},
+                {name: 'email', mapping: 'serviceProviders.email'},
+                {name: 'address', mapping: 'serviceProviders.address'},
+                {name: 'idCard', mapping: 'serviceProviders.idCard'}
             ],
             proxy: {
-                url: '/back/member/member/getMemberList',
+                url: '/back/commons/serviceProviders/getServiceProvidersList',
                 type: 'ajax',
                 extraParams: {pageIndex:0,pageSize:20},
                 reader: {
@@ -142,11 +142,11 @@ Ext.define('DYB_MEMBER.member.memberList',{
     },
 
     /**
-     * 禁用信使
-     * @param accountCode 信使code
+     * 禁用服务商
+     * @param accountCode 服务商code
      */
-    disableMember:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/member/member","/disableMember", {accountCode: accountCode});
+    disableServiceProviders:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/commons/serviceProviders","/disableServiceProviders", {accountCode: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -157,10 +157,10 @@ Ext.define('DYB_MEMBER.member.memberList',{
 
     /**
      * 解除禁用
-     * @param accountCode 信使code
+     * @param accountCode 服务商code
      */
-    removeDisableMember:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/member/member","/removeDisableMember", {accountCode: accountCode});
+    removeDisableServiceProviders:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/commons/serviceProviders","/removeDisableServiceProviders", {accountCode: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -171,10 +171,10 @@ Ext.define('DYB_MEMBER.member.memberList',{
 
     /**
      * 重置登录密码
-     * @param accountCode 信使code
+     * @param accountCode 服务商code
      */
-    resetMemberPassword:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/member/member","/resetMemberPassword", {accountCode: accountCode});
+    resetServiceProvidersPassword:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/commons/serviceProviders","/resetServiceProvidersPassword", {accountCode: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -185,10 +185,10 @@ Ext.define('DYB_MEMBER.member.memberList',{
 
     /**
      * 重置二级密码
-     * @param accountCode 信使code
+     * @param accountCode 服务商code
      */
-    resetMemberTradePassword:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/member/member","/resetMemberTradePassword", {accountCode: accountCode});
+    resetServiceProvidersTradePassword:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/commons/serviceProviders","/resetServiceProvidersTradePassword", {accountCode: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{

@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/2/26.
  */
-Ext.define('DYB_MERCHANT.commodity.commodityList',{
+Ext.define('DYB_COMMON.member.memberList',{
     extend: 'Ext.grid.Panel',
     // ====入口参数定义===================================================================
     /**
@@ -10,7 +10,7 @@ Ext.define('DYB_MERCHANT.commodity.commodityList',{
     config: {},
 
     // ====基类属性重写、属性定义==========================================================
-    title: '商品列表',
+    title: '信使列表',
     frame: false,
     border: false,
     header: false,
@@ -33,7 +33,7 @@ Ext.define('DYB_MERCHANT.commodity.commodityList',{
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.disableMerchant(list[0].data.accountCode);
+                                me.disableMember(list[0].data.accountCode);
                         }
                     },
                     {
@@ -43,7 +43,7 @@ Ext.define('DYB_MERCHANT.commodity.commodityList',{
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.removeDisableMerchant(list[0].data.accountCode);
+                                me.removeDisableMember(list[0].data.accountCode);
                         }
                     },
                     {
@@ -53,7 +53,7 @@ Ext.define('DYB_MERCHANT.commodity.commodityList',{
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.resetMerchantPassword(list[0].data.accountCode);
+                                me.resetMemberPassword(list[0].data.accountCode);
                         }
                     },
                     {
@@ -63,20 +63,22 @@ Ext.define('DYB_MERCHANT.commodity.commodityList',{
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.resetMerchantTradePassword(list[0].data.accountCode);
+                                me.resetMemberTradePassword(list[0].data.accountCode);
                         }
                     }
                 ]
             },
             columns: [
-                { header: 'code',  dataIndex: 'commodityCode',width:153 },
-                { header: '商品名称', dataIndex: 'name',width:120 },
-                { header: '商品编号', dataIndex: 'commodityNum',width:120 },
-                { header: '型号/规格', dataIndex: 'specifications',width:120 },
-                { header: '单价', dataIndex: 'price',width:180 },
-                { header: '创建时间', dataIndex: 'createTime',width:140 },
-                { header: '商家ID', dataIndex: 'accountCode',width:140 },
-                { header: '商家', dataIndex: 'merchantName',width:140 },
+                { header: '信使编号',  dataIndex: 'accountCode',width:153 },
+                { header: '账户名', dataIndex: 'accountName',width:120 },
+                { header: '绑定手机号', dataIndex: 'accountPhone',width:120 },
+                { header: '账户状态', dataIndex: 'accountStatus',width:120 },
+                { header: '推荐人code', dataIndex: 'referrerCode',width:180 },
+                { header: '注册时间', dataIndex: 'registrationTime',width:140 },
+                { header: '真实姓名', dataIndex: 'realName',width:140 },
+                { header: '证件类型', dataIndex: 'certificate',width:140 },
+                { header: '证件号码', dataIndex: 'certificateNumber',width:140 },
+                { header: '个人邮箱', dataIndex: 'memberEmail',width:140 },
                 { flex: 1 }
             ],
             dockedItems: [
@@ -112,17 +114,19 @@ Ext.define('DYB_MERCHANT.commodity.commodityList',{
             autoLoad: true,
             pageSize:20,
             fields: [
-                {name: 'commodityCode', mapping: 'commodity.commodityCode'},
-                {name: 'name', mapping: 'commodity.name'},
-                {name: 'commodityNum', mapping: 'commodity.commodityNum'},
-                {name: 'specifications', mapping: 'commodity.specifications'},
-                {name: 'price', mapping: 'commodity.price'},
-                {name: 'createTime', mapping: 'commodity.createTime'},
-                {name: 'accountCode', mapping: 'commodity.accountCode'},
-                {name: 'merchantName', mapping: 'account.merchant.merchantName'}
+                {name: 'accountCode', mapping: 'accountCode'},
+                {name: 'accountName', mapping: 'accountName'},
+                {name: 'accountPhone', mapping: 'accountPhone'},
+                {name: 'accountStatus', mapping: 'accountStatus'},
+                {name: 'referrerCode', mapping: 'referrerCode'},
+                {name: 'registrationTime', mapping: 'registrationTime'},
+                {name: 'realName', mapping: 'member.realName'},
+                {name: 'certificate', mapping: 'member.certificate'},
+                {name: 'certificateNumber', mapping: 'member.certificateNumber'},
+                {name: 'memberEmail', mapping: 'member.memberEmail'},
             ],
             proxy: {
-                url: '/back/merchant/commodity/getCommodityPageList',
+                url: '/back/commons/member/getMemberList',
                 type: 'ajax',
                 extraParams: {pageIndex:0,pageSize:20},
                 reader: {
@@ -138,11 +142,11 @@ Ext.define('DYB_MERCHANT.commodity.commodityList',{
     },
 
     /**
-     * 禁用商品
-     * @param accountCode 商品code
+     * 禁用信使
+     * @param accountCode 信使code
      */
-    disableMerchant:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commodity/commodity","/disableMerchant", {accountCode: accountCode});
+    disableMember:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/commons/member","/disableMember", {accountCode: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -153,10 +157,10 @@ Ext.define('DYB_MERCHANT.commodity.commodityList',{
 
     /**
      * 解除禁用
-     * @param accountCode 商品code
+     * @param accountCode 信使code
      */
-    removeDisableMerchant:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commodity/commodity","/removeDisableMerchant", {accountCode: accountCode});
+    removeDisableMember:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/commons/member","/removeDisableMember", {accountCode: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -167,10 +171,10 @@ Ext.define('DYB_MERCHANT.commodity.commodityList',{
 
     /**
      * 重置登录密码
-     * @param accountCode 商品code
+     * @param accountCode 信使code
      */
-    resetMerchantPassword:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commodity/commodity","/resetMerchantPassword", {accountCode: accountCode});
+    resetMemberPassword:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/commons/member","/resetMemberPassword", {accountCode: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -181,10 +185,10 @@ Ext.define('DYB_MERCHANT.commodity.commodityList',{
 
     /**
      * 重置二级密码
-     * @param accountCode 商品code
+     * @param accountCode 信使code
      */
-    resetMerchantTradePassword:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commodity/commodity","/resetMerchantTradePassword", {accountCode: accountCode});
+    resetMemberTradePassword:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/commons/member","/resetMemberTradePassword", {accountCode: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{

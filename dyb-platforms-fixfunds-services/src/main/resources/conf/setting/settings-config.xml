@@ -6,13 +6,13 @@
             <![CDATA[
             { "type": "com.dyb.platforms.fixfunds.services.utils.core.configureations.Menu",  "list": [
                 { "text": "会员管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "信使管理", "module":"DYB_MEMBER.member.memberList", "url":"back/member/member/getMemberList", "leaf":"true", },
-                    { "text": "商家管理", "module":"DYB_MERCHANT.merchant.merchantList", "url":"/back/merchant/merchant/getMerchantList", "leaf":"true", },
-                    { "text": "服务商管理", "module":"DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList", "url":"/back/serviceProviders/serviceProviders/getServiceProvidersList", "leaf":"true", },
-                    { "text": "业务员管理", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "信使管理", "module":"DYB_COMMON.member.memberList", "url":"back/commons/member/getMemberList", "leaf":"true", },
+                    { "text": "商家管理", "module":"DYB_COMMON.merchant.merchantList", "url":"/back/commons/merchant/getMerchantList", "leaf":"true", },
+                    { "text": "服务商管理", "module":"DYB_COMMON.serviceproviders.serviceProvidersList", "url":"/back/commons/serviceProviders/getServiceProvidersList", "leaf":"true", },
+                    { "text": "业务员管理", "module":"DYB_COMMON.accountList", "url":"user/getUserList", "leaf":"true", },
                 ] },
                 { "text": "商品管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "商品列表", "module":"DYB_MERCHANT.commodity.commodityList", "url":"/back/merchant/commodity/getCommodityPageList", "leaf":"true", }
+                    { "text": "商品列表", "module":"DYB_COMMON.commodity.commodityList", "url":"/back/commons/commodity/getCommodityPageList", "leaf":"true", }
                 ] },
                 { "text": "业务管理","expanded":"false","leaf":"false", "children":[
                     { "text": "信使消费登记申请", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
@@ -223,18 +223,18 @@
                                 {'/back/commons/user/removeDisableUser':'用户解除禁用'},
                                 {'/back/commons/user/updateUserPassword':'用户密码修改'},
                                 {'/back/commons/user/resetUserPassword':'重置用户密码'},
-                                {'/back/member/member/disableMember':'禁用指定信使'},
-                                {'/back/member/member/removeDisableMember':'禁用指定信使'},
-                                {'/back/member/member/resetMemberPassword':'指定信使重置登录密码'},
-                                {'/back/member/member/resetMemberTradePassword':'指定信使重置二级密码'},
-                                {'/back/merchant/merchant/disableMerchant':'禁用指定商家'},
-                                {'/back/merchant/merchant/removeDisableMerchant':'禁用指定商家'},
-                                {'/back/merchant/merchant/resetMerchantPassword':'指定商家重置登录密码'},
-                                {'/back/merchant/merchant/resetMerchantTradePassword':'指定商家重置二级密码'},
-                                {'/back/serviceProviders/serviceProviders/disableServiceProviders':'禁用指定服务商'},
-                                {'/back/serviceProviders/serviceProviders/removeDisableServiceProviders':'禁用指定服务商'},
-                                {'/back/serviceProviders/serviceProviders/resetServiceProvidersPassword':'指定服务商重置登录密码'},
-                                {'/back/serviceProviders/serviceProviders/resetServiceProvidersTradePassword':'指定服务商重置二级密码'},
+                                {'/back/commons/member/disableMember':'禁用指定信使'},
+                                {'/back/commons/member/removeDisableMember':'禁用指定信使'},
+                                {'/back/commons/member/resetMemberPassword':'指定信使重置登录密码'},
+                                {'/back/commons/member/resetMemberTradePassword':'指定信使重置二级密码'},
+                                {'/back/commons/merchant/disableMerchant':'禁用指定商家'},
+                                {'/back/commons/merchant/removeDisableMerchant':'禁用指定商家'},
+                                {'/back/commons/merchant/resetMerchantPassword':'指定商家重置登录密码'},
+                                {'/back/commons/merchant/resetMerchantTradePassword':'指定商家重置二级密码'},
+                                {'/back/commons/serviceProviders/disableServiceProviders':'禁用指定服务商'},
+                                {'/back/commons/serviceProviders/removeDisableServiceProviders':'禁用指定服务商'},
+                                {'/back/commons/serviceProviders/resetServiceProvidersPassword':'指定服务商重置登录密码'},
+                                {'/back/commons/serviceProviders/resetServiceProvidersTradePassword':'指定服务商重置二级密码'},
                             ]
                 }
             ]]>

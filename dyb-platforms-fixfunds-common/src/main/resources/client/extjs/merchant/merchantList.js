@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/2/26.
  */
-Ext.define('DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList',{
+Ext.define('DYB_COMMON.merchant.merchantList',{
     extend: 'Ext.grid.Panel',
     // ====入口参数定义===================================================================
     /**
@@ -10,7 +10,7 @@ Ext.define('DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList',{
     config: {},
 
     // ====基类属性重写、属性定义==========================================================
-    title: '服务商列表',
+    title: '商家列表',
     frame: false,
     border: false,
     header: false,
@@ -33,7 +33,7 @@ Ext.define('DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList',{
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.disableServiceProviders(list[0].data.accountCode);
+                                me.disableMerchant(list[0].data.accountCode);
                         }
                     },
                     {
@@ -43,7 +43,7 @@ Ext.define('DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList',{
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.removeDisableServiceProviders(list[0].data.accountCode);
+                                me.removeDisableMerchant(list[0].data.accountCode);
                         }
                     },
                     {
@@ -53,7 +53,7 @@ Ext.define('DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList',{
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.resetServiceProvidersPassword(list[0].data.accountCode);
+                                me.resetMerchantPassword(list[0].data.accountCode);
                         }
                     },
                     {
@@ -63,22 +63,24 @@ Ext.define('DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList',{
                             if (list.length != 1)
                                 Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
                             else
-                                me.resetServiceProvidersTradePassword(list[0].data.accountCode);
+                                me.resetMerchantTradePassword(list[0].data.accountCode);
                         }
                     }
                 ]
             },
             columns: [
-                { header: '服务商编号',  dataIndex: 'accountCode',width:153 },
+                { header: '商家编号',  dataIndex: 'accountCode',width:153 },
                 { header: '账户名', dataIndex: 'accountName',width:120 },
                 { header: '绑定手机号', dataIndex: 'accountPhone',width:120 },
                 { header: '账户状态', dataIndex: 'accountStatus',width:120 },
                 { header: '推荐人code', dataIndex: 'referrerCode',width:180 },
                 { header: '注册时间', dataIndex: 'registrationTime',width:140 },
-                { header: '服务商名称', dataIndex: 'serviceProviderName',width:140 },
-                { header: '邮箱地址', dataIndex: 'email',width:140 },
-                { header: '服务商地址', dataIndex: 'address',width:140 },
-                { header: '身份证号码', dataIndex: 'idCard',width:140 },
+                { header: '商家名称', dataIndex: 'merchantName',width:140 },
+                { header: '激励模式', dataIndex: 'incentiveMode',width:140 },
+                { header: '店铺名称', dataIndex: 'shopName',width:140 },
+                { header: '商家地址', dataIndex: 'merchantAddress',width:140 },
+                { header: '负责人姓名', dataIndex: 'principalName',width:140 },
+                { header: '公司电话', dataIndex: 'countryPhone',width:140 },
                 { flex: 1 }
             ],
             dockedItems: [
@@ -120,13 +122,16 @@ Ext.define('DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList',{
                 {name: 'accountStatus', mapping: 'accountStatus'},
                 {name: 'referrerCode', mapping: 'referrerCode'},
                 {name: 'registrationTime', mapping: 'registrationTime'},
-                {name: 'serviceProviderName', mapping: 'serviceProviders.serviceProviderName'},
-                {name: 'email', mapping: 'serviceProviders.email'},
-                {name: 'address', mapping: 'serviceProviders.address'},
-                {name: 'idCard', mapping: 'serviceProviders.idCard'}
+
+                {name: 'merchantName', mapping: 'merchant.merchantName'},
+                {name: 'incentiveMode', mapping: 'merchant.incentiveMode'},
+                {name: 'shopName', mapping: 'merchant.shopName'},
+                {name: 'merchantAddress', mapping: 'merchant.merchantAddress'},
+                {name: 'principalName', mapping: 'merchant.principalName'},
+                {name: 'countryPhone', mapping: 'merchant.countryPhone'}
             ],
             proxy: {
-                url: '/back/serviceProviders/serviceProviders/getServiceProvidersList',
+                url: '/back/commons/merchant/getMerchantList',
                 type: 'ajax',
                 extraParams: {pageIndex:0,pageSize:20},
                 reader: {
@@ -142,11 +147,11 @@ Ext.define('DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList',{
     },
 
     /**
-     * 禁用服务商
-     * @param accountCode 服务商code
+     * 禁用商家
+     * @param accountCode 商家code
      */
-    disableServiceProviders:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/serviceProviders/serviceProviders","/disableServiceProviders", {accountCode: accountCode});
+    disableMerchant:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/commons/merchant","/disableMerchant", {accountCode: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -157,10 +162,10 @@ Ext.define('DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList',{
 
     /**
      * 解除禁用
-     * @param accountCode 服务商code
+     * @param accountCode 商家code
      */
-    removeDisableServiceProviders:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/serviceProviders/serviceProviders","/removeDisableServiceProviders", {accountCode: accountCode});
+    removeDisableMerchant:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/commons/merchant","/removeDisableMerchant", {accountCode: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -171,10 +176,10 @@ Ext.define('DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList',{
 
     /**
      * 重置登录密码
-     * @param accountCode 服务商code
+     * @param accountCode 商家code
      */
-    resetServiceProvidersPassword:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/serviceProviders/serviceProviders","/resetServiceProvidersPassword", {accountCode: accountCode});
+    resetMerchantPassword:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/commons/merchant","/resetMerchantPassword", {accountCode: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -185,10 +190,10 @@ Ext.define('DYB_SERVICEPROVIDERS.serviceproviders.serviceProvidersList',{
 
     /**
      * 重置二级密码
-     * @param accountCode 服务商code
+     * @param accountCode 商家code
      */
-    resetServiceProvidersTradePassword:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/serviceProviders/serviceProviders","/resetServiceProvidersTradePassword", {accountCode: accountCode});
+    resetMerchantTradePassword:function(accountCode){
+        var result = Ext.appContext.invokeService("/back/commons/merchant","/resetMerchantTradePassword", {accountCode: accountCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{

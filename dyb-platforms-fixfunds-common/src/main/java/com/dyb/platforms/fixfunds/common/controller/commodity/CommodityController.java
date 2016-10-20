@@ -1,6 +1,6 @@
-package com.dyb.platforms.fixfunds.merchant.controller.back;
+package com.dyb.platforms.fixfunds.common.controller.commodity;
 
-import com.dyb.platforms.fixfunds.merchant.controller.back.model.CommodityModel;
+import com.dyb.platforms.fixfunds.common.controller.commodity.model.CommodityModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.commodity.entity.Commodity;
@@ -24,7 +24,7 @@ import java.util.List;
  * Created by Administrator on 2015/7/1.
  */
 @RestController
-@RequestMapping(value = "/back/merchant/commodity")
+@RequestMapping(value = "/back/commons/commodity")
 public class CommodityController extends BaseController {
 
     public Logger log = Logger.getLogger(CommodityController.class);//日志

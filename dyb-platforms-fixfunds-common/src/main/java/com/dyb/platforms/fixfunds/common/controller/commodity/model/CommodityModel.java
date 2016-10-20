@@ -1,4 +1,4 @@
-package com.dyb.platforms.fixfunds.merchant.controller.back.model;
+package com.dyb.platforms.fixfunds.common.controller.commodity.model;
 
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.commodity.entity.Commodity;

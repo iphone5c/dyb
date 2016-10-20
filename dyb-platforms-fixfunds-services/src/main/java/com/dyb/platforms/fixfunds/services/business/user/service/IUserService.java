@@ -87,4 +87,12 @@ public interface IUserService {
      * @return true表示操作成功 false表示操作失败
      */
     public boolean modifyUserPassword(String userCode,String oldPassword,String newPassword,String confirmPassword);
+
+    /**
+     * 用户登录验证
+     * @param userName 用户名
+     * @param password 密码
+     * @return User对象
+     */
+    public User loginUser(String userName,String password);
 }

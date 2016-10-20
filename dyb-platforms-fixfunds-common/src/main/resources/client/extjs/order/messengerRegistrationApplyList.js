@@ -27,43 +27,27 @@ Ext.define('DYB_COMMON.order.messengerRegistrationApplyList',{
                 xtype: 'toolbar', scope: me,
                 items:[
                     {
-                        xtype: 'button', text: '禁用',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.disableMember(list[0].data.accountCode);
+                        xtype: 'textfield',
+                        name: 'keyWord',
+                        itemId: 'keyWord',
+                        labelWidth: 80,
+                        width:300,
+                        fieldLabel: '查询关键字',
+                        emptyText:'订单编号、信使ID、商家ID',
+                        listeners: {
+                            specialkey: function(field, e){
+                                if (e.getKey() == e.ENTER) {
+                                    var val = me.down('#keyWord').getValue();
+                                    me.reload({  keyWord:val,pageIndex: 0} )
+                                }
+                            }
                         }
                     },
                     {
-                        xtype: 'button', text: '解除禁用',  scope: me,
+                        xtype: 'button', text: '查询', glyph: 0xf002, scope: me,
                         handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.removeDisableMember(list[0].data.accountCode);
-                        }
-                    },
-                    {
-                        xtype: 'button', text: '重置登录密码',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.resetMemberPassword(list[0].data.accountCode);
-                        }
-                    },
-                    {
-                        xtype: 'button', text: '重置二级密码',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.resetMemberTradePassword(list[0].data.accountCode);
+                            var val = me.down('#keyWord').getValue();
+                            me.reload({  keyWord:val,pageIndex: 0} )
                         }
                     }
                 ]

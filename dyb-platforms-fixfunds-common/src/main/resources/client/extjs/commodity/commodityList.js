@@ -49,7 +49,7 @@ Ext.define('DYB_COMMON.commodity.commodityList',{
                             var val = me.down('#keyWord').getValue();
                             me.reload({  keyWord:val,pageIndex: 0} )
                         }
-                    },
+                    }
                 ]
             },
             columns: [

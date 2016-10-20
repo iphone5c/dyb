@@ -1,12 +1,12 @@
 package com.dyb.platforms.fixfunds.services.business.messengerbean.service;
 
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
-import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.dao.IMessengerBeanDao;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.MessengerBean;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
+import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.exception.DybRuntimeException;
 import com.dyb.platforms.fixfunds.services.utils.core.service.BaseService;
@@ -171,6 +171,19 @@ public class MessengerBeanService extends BaseService implements IMessengerBeanS
         }
         int info=messengerBeanDao.insertList(messengerBeans);
         return info>0?true:false;
+    }
+
+    /**
+     *获取分页列表
+     * @param wheres    条件
+     * @param pageIndex 返回的页码
+     * @param pageSize  页大小
+     * @param detail    是否返回详细信息
+     * @return 对象分页列表
+     */
+    @Override
+    public PageList<MessengerBean> getMessengerBeanPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail) {
+        return messengerBeanDao.queryListForPaged(wheres,pageIndex,pageSize,detail);
     }
 
 }

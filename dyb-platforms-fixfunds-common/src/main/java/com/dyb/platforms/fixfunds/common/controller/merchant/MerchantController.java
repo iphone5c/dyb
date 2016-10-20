@@ -42,6 +42,21 @@ public class MerchantController extends BaseController {
         return result(accountPageList);
     }
 
+    @RequestMapping(value = "/getMerchantAuditList")
+    public Object getMerchantAuditList(@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
+        log.info("获取商家审核列表");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addOrderBy("registrationTime",true);
+        queryParams.addMulAttrParameter("accountStatus", AccountStatus.审核中.name());
+        queryParams.addParameter("accountType", AccountType.商家);
+        PageList<Account> accountPageList=accountService.getAccountPageList(queryParams,pageIndex,pageSize,true);
+        for (Account account:accountPageList.getList()){
+            Account temp=accountService.getAccountByCode(account.getAccountCode(),true);
+            account.setMerchant(temp.getMerchant());
+        }
+        return result(accountPageList);
+    }
+
     /**
      * 禁用指定商家
      * @param accountCode

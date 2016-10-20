@@ -41,6 +41,21 @@ public class ServiceProvidersController extends BaseController {
         return result(accountPageList);
     }
 
+    @RequestMapping(value = "/getServiceProvidersAuditList")
+    public Object getServiceProvidersAuditList(int pageIndex,int pageSize){
+        log.info("获取服务商审核列表");
+        QueryParams queryParams=new QueryParams();
+        queryParams.addOrderBy("registrationTime",true);
+        queryParams.addMulAttrParameter("accountStatus", AccountStatus.审核中.name());
+        queryParams.addParameter("accountType", AccountType.服务商);
+        PageList<Account> accountPageList=accountService.getAccountPageList(queryParams,pageIndex,pageSize,true);
+        for (Account account:accountPageList.getList()){
+            Account temp=accountService.getAccountByCode(account.getAccountCode(),true);
+            account.setServiceProviders(temp.getServiceProviders());
+        }
+        return result(accountPageList);
+    }
+
     /**
      * 禁用指定服务商
      * @param accountCode

@@ -1,4 +1,4 @@
-package com.dyb.platforms.fixfunds.common.controller.withdrawal;
+package com.dyb.platforms.fixfunds.common.controller.withdrawal.model;
 
 import com.dyb.platforms.fixfunds.services.business.withdrawal.entity.Withdrawal;
 

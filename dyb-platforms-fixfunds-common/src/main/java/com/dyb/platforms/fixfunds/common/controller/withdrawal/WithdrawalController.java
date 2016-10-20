@@ -1,5 +1,6 @@
 package com.dyb.platforms.fixfunds.common.controller.withdrawal;
 
+import com.dyb.platforms.fixfunds.common.controller.withdrawal.model.WithdrawalModel;
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.account.service.IAccountService;

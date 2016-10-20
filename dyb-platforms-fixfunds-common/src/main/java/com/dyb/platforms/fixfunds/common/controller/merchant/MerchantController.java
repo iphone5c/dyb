@@ -11,6 +11,7 @@ import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -26,7 +27,7 @@ public class MerchantController extends BaseController {
     private IAccountService accountService;
 
     @RequestMapping(value = "/getMerchantList")
-    public Object getMerchantList(int pageIndex,int pageSize){
+    public Object getMerchantList(@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
         log.info("获取商家列表");
         QueryParams queryParams=new QueryParams();
         queryParams.addOrderBy("registrationTime",true);

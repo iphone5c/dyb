@@ -9,6 +9,7 @@ import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountSta
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.member.entity.Member;
 import com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant;
+import com.dyb.platforms.fixfunds.services.business.salesman.entity.Salesman;
 import com.dyb.platforms.fixfunds.services.business.serviceproviders.entity.ServiceProviders;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -67,6 +68,8 @@ public class Account implements java.io.Serializable {
     private Member member;
     //服务商详情
     private ServiceProviders serviceProviders;
+    //业务员
+    private Salesman salesman;
 
     /** 
      * 获取账号code [主键]
@@ -342,6 +345,14 @@ public class Account implements java.io.Serializable {
 
     public void setServiceProviders(ServiceProviders serviceProviders) {
         this.serviceProviders = serviceProviders;
+    }
+
+    public Salesman getSalesman() {
+        return salesman;
+    }
+
+    public void setSalesman(Salesman salesman) {
+        this.salesman = salesman;
     }
 
     /**

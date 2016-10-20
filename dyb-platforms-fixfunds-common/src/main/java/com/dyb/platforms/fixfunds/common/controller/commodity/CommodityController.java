@@ -58,12 +58,17 @@ public class CommodityController extends BaseController {
      * @param response
      */
     @RequestMapping(value = "/getCommodityPageList")
-    public Object getCommodityPageList(HttpServletRequest request,HttpServletResponse response, @RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
+    public Object getCommodityPageList(HttpServletRequest request,HttpServletResponse response, @RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize,String keyWord){
         log.info("获取分页商品列表");
         PageList<CommodityModel> commodityModelPageList=new PageList<>();
         List<CommodityModel> commodityModelList=new ArrayList<>();
         QueryParams queryParams=new QueryParams();
         queryParams.addOrderBy("createTime",true);
+        if (!DybUtils.isEmptyOrNull(keyWord)){
+            queryParams.addMulAttrParameter("accountCode","%"+keyWord+"%");
+            queryParams.addMulAttrParameter("name","%"+keyWord+"%");
+            queryParams.addMulAttrParameter("commodityNum","%"+keyWord+"%");
+        }
         PageList<Commodity> commodityPageList=commodityService.getCommodityPageList(queryParams,pageIndex,pageSize,true);
         for (Commodity commodity:commodityPageList.getList()){
             CommodityModel commodityModel=new CommodityModel();

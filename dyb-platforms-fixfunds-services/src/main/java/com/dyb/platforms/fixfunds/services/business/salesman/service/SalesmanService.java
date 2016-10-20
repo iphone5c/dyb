@@ -67,6 +67,9 @@ public class SalesmanService extends BaseService implements ISalesmanService {
             throw new DybRuntimeException("业务员添加时，邮箱地址不能为空");
         if (DybUtils.isEmptyOrNull(salesman.getAccountCode()))
             throw new DybRuntimeException("业务员添加时，业务员所属账户不能为空");
+        if (DybUtils.isEmptyOrNull(salesman.getIncentiveProportion()))
+            throw new DybRuntimeException("业务员添加时，激励比例不能为空");
+
         salesman.setSalesmanCode(UUID.randomUUID().toString());
         int info = salesmanDao.insertObject(salesman);
         return info>0?salesman:null;

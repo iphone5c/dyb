@@ -15,7 +15,7 @@
                     { "text": "商品列表", "module":"DYB_COMMON.commodity.commodityList", "url":"/back/commons/commodity/getCommodityPageList", "leaf":"true", }
                 ] },
                 { "text": "业务管理","expanded":"false","leaf":"false", "children":[
-                    { "text": "信使消费登记申请", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
+                    { "text": "信使消费登记申请", "module":"DYB_COMMON.order.messengerRegistrationApplyList", "url":"/back/commons/order/getMessengerRegistrationApply", "leaf":"true", },
                     { "text": "信使豆回购申请", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
                     { "text": "信使豆转换申请", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },
                     { "text": "商家审核", "module":"YC_CORESYSTEM_ACCOUNT.accountList", "url":"user/getUserList", "leaf":"true", },

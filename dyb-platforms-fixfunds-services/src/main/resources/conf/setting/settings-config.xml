@@ -239,6 +239,10 @@
                                 {'/back/commons/salesman/removeDisableSalesman':'解除禁用指定业务员'},
                                 {'/back/commons/salesman/resetSalesmanPassword':'指定业务员重置登录密码'},
                                 {'/back/commons/salesman/resetSalesmanTradePassword':'指定业务员重置二级密码'},
+                                {'/back/commons/order/approvedOrder':'指定订单审核通过业务'},
+                                {'/back/commons/order/cancelOrder':'指定订单撤销业务'},
+                                {'/back/commons/withdrawal/approvedWithdrawal':'指定回购单审核通过业务'},
+                                {'/back/commons/withdrawal/cancelWithdrawal':'指定回购单审核不通过业务'},
                             ]
                 }
             ]]>

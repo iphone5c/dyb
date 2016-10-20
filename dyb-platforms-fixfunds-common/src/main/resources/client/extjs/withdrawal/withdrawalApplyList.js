@@ -27,43 +27,27 @@ Ext.define('DYB_COMMON.withdrawal.withdrawalApplyList',{
                 xtype: 'toolbar', scope: me,
                 items:[
                     {
-                        xtype: 'button', text: '禁用',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.disableMerchant(list[0].data.accountCode);
+                        xtype: 'textfield',
+                        name: 'keyWord',
+                        itemId: 'keyWord',
+                        labelWidth: 80,
+                        width:300,
+                        fieldLabel: '查询关键字',
+                        emptyText:'回购单号、回购人code',
+                        listeners: {
+                            specialkey: function(field, e){
+                                if (e.getKey() == e.ENTER) {
+                                    var val = me.down('#keyWord').getValue();
+                                    me.reload({  keyWord:val,pageIndex: 0} )
+                                }
+                            }
                         }
                     },
                     {
-                        xtype: 'button', text: '解除禁用',  scope: me,
+                        xtype: 'button', text: '查询', glyph: 0xf002, scope: me,
                         handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.removeDisableMerchant(list[0].data.accountCode);
-                        }
-                    },
-                    {
-                        xtype: 'button', text: '重置登录密码',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.resetMerchantPassword(list[0].data.accountCode);
-                        }
-                    },
-                    {
-                        xtype: 'button', text: '重置二级密码',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.resetMerchantTradePassword(list[0].data.accountCode);
+                            var val = me.down('#keyWord').getValue();
+                            me.reload({  keyWord:val,pageIndex: 0} )
                         }
                     }
                 ]
@@ -83,6 +67,13 @@ Ext.define('DYB_COMMON.withdrawal.withdrawalApplyList',{
                 { header: '申请人姓名', dataIndex: 'applyAccountName',width:140 },
                 { header: '申请状态', dataIndex: 'applyStatus',width:140 },
                 { header: '申请时间', dataIndex: 'applyTime',width:140 },
+                { text: '操作',dataIndex: 'withdrawalCode', width:170,
+                    renderer:function(val){
+                        var url='<a href="javascript:;" onclick="javascript:Ext.getCmp(\'' + me.getId()  + '\').approvedWithdrawal(\'' + (val)  + '\')">'+'通过'+'</a>&nbsp; &nbsp;';
+                        url+='<a href="javascript:;" onclick="javascript:Ext.getCmp(\'' + me.getId()  + '\').cancelWithdrawal(\'' + (val)  + '\')">'+'不通过'+'</a>&nbsp; &nbsp;';
+                        return url;
+                    }
+                },
                 { flex: 1 }
             ],
             dockedItems: [
@@ -150,11 +141,11 @@ Ext.define('DYB_COMMON.withdrawal.withdrawalApplyList',{
     },
 
     /**
-     * 禁用回购申请
-     * @param accountCode 回购申请code
+     * 审核通过
+     * @param withdrawalCode 回购单code
      */
-    disableMerchant:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commons/merchant","/disableMerchant", {accountCode: accountCode});
+    approvedWithdrawal:function(withdrawalCode){
+        var result = Ext.appContext.invokeService("back/commons/withdrawal","/approvedWithdrawal", {withdrawalCode: withdrawalCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -164,39 +155,11 @@ Ext.define('DYB_COMMON.withdrawal.withdrawalApplyList',{
     },
 
     /**
-     * 解除禁用
-     * @param accountCode 回购申请code
+     * 审核不通过
+     * @param withdrawalCode 回购单code
      */
-    removeDisableMerchant:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commons/merchant","/removeDisableMerchant", {accountCode: accountCode});
-        if(result.statusCode!=1000){
-            Ext.Msg.alert('操作失败', result.errorMessage);
-        }else{
-            Ext.Msg.alert('成功', result.result);
-            this.reload();
-        }
-    },
-
-    /**
-     * 重置登录密码
-     * @param accountCode 回购申请code
-     */
-    resetMerchantPassword:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commons/merchant","/resetMerchantPassword", {accountCode: accountCode});
-        if(result.statusCode!=1000){
-            Ext.Msg.alert('操作失败', result.errorMessage);
-        }else{
-            Ext.Msg.alert('成功', result.result);
-            this.reload();
-        }
-    },
-
-    /**
-     * 重置二级密码
-     * @param accountCode 回购申请code
-     */
-    resetMerchantTradePassword:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commons/merchant","/resetMerchantTradePassword", {accountCode: accountCode});
+    cancelWithdrawal:function(withdrawalCode){
+        var result = Ext.appContext.invokeService("back/commons/withdrawal","/cancelWithdrawal", {withdrawalCode: withdrawalCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{

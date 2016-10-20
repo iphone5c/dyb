@@ -68,4 +68,36 @@ public class OrderController extends BaseController {
         return result(orderModelPageList);
     }
 
+    /**
+     * 审核订单通过
+     * @param orderCode 订单code
+     * @return
+     */
+    @RequestMapping(value = "/approvedOrder")
+    public Object approvedOrder(String orderCode){
+        log.info("审核订单通过");
+        if (DybUtils.isEmptyOrNull(orderCode))
+            return validationResult(1001,"订单编号不能为空");
+        boolean flag=orderService.approvedOrder(orderCode);
+        if (!flag)
+            return validationResult(1001,"审核失败");
+        return result("审核成功");
+    }
+
+    /**
+     * 撤销订单
+     * @param orderCode 订单code
+     * @return
+     */
+    @RequestMapping(value = "/cancelOrder")
+    public Object cancelOrder(String orderCode){
+        log.info("撤销订单");
+        if (DybUtils.isEmptyOrNull(orderCode))
+            return validationResult(1001,"订单编号不能为空");
+        boolean flag=orderService.cancelOrder(orderCode);
+        if (!flag)
+            return validationResult(1001,"撤销失败");
+        return result("撤销成功");
+    }
+
 }

@@ -245,6 +245,10 @@
                                 {'/back/commons/withdrawal/cancelWithdrawal':'指定回购单审核不通过业务'},
                                 {'/back/commons/conversion/approvedConversion':'指定审核通过转换申请业务'},
                                 {'/back/commons/conversion/cancelConversion':'指定审核不通过转换申请业务'},
+                                {'/back/commons/merchant/approvedMerchant':'指定商家审核通过业务'},
+                                {'/back/commons/merchant/cancelMerchant':'指定商家审核不通过业务'},
+                                {'/back/commons/serviceProviders/approvedServiceProviders':'指定服务商审核通过业务'},
+                                {'/back/commons/serviceProviders/cancelServiceProviders':'指定服务商审核不通过业务'},
                             ]
                 }
             ]]>

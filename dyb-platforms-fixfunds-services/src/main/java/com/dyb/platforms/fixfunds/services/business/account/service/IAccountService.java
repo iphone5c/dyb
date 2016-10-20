@@ -158,4 +158,18 @@ public interface IAccountService {
      * @return true表示操作成功 false表示操作失败
      */
     public boolean resetAccountTradePassword(String accountCode);
+
+    /**
+     * 指定用户审核通过
+     * @param accountCode 账户编号code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean approvedAccount(String accountCode);
+
+    /**
+     * 指定用户审核不通过
+     * @param accountCode 账户编号code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean cancelAccount(String accountCode);
 }

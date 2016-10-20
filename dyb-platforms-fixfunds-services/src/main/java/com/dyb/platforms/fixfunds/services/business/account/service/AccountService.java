@@ -253,7 +253,7 @@ public class AccountService extends BaseService implements IAccountService {
         account.setAccountCode(accountCode);
         account.setReferrerCode(referrerCode);
         account.setAccountType(AccountType.商家);
-        account.setAccountStatus(AccountStatus.待提交审核);
+        account.setAccountStatus(AccountStatus.审核中);
         account.setRegistrationTime(new Date());
         account.setAccountForeignKey(tempMerchant.getMerchantCode());
 
@@ -583,5 +583,29 @@ public class AccountService extends BaseService implements IAccountService {
         account.setTradePassword(DybUtils.encryptPassword("ABC123"));
         int info=accountDao.updateObject(account);
         return info>0?true:false;
+    }
+
+    /**
+     * 指定用户审核通过
+     * @param accountCode 账户编号code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean approvedAccount(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("指定用户审核通过时，code不能为空或null");
+        return this.operationAccountStatus(accountCode,AccountStatus.正常);
+    }
+
+    /**
+     * 指定用户审核不通过
+     * @param accountCode 账户编号code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean cancelAccount(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("指定用户审核不通过时，code不能为空或null");
+        return this.operationAccountStatus(accountCode,AccountStatus.审核未通过);
     }
 }

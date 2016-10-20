@@ -11,6 +11,7 @@ import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -26,7 +27,7 @@ public class ServiceProvidersController extends BaseController {
     private IAccountService accountService;
 
     @RequestMapping(value = "/getServiceProvidersList")
-    public Object getServiceProvidersList(int pageIndex,int pageSize){
+    public Object getServiceProvidersList(@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
         log.info("获取服务商列表");
         QueryParams queryParams=new QueryParams();
         queryParams.addOrderBy("registrationTime",true);
@@ -42,18 +43,54 @@ public class ServiceProvidersController extends BaseController {
     }
 
     @RequestMapping(value = "/getServiceProvidersAuditList")
-    public Object getServiceProvidersAuditList(int pageIndex,int pageSize){
+    public Object getServiceProvidersAuditList(@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize,String keyWord){
         log.info("获取服务商审核列表");
         QueryParams queryParams=new QueryParams();
         queryParams.addOrderBy("registrationTime",true);
         queryParams.addMulAttrParameter("accountStatus", AccountStatus.审核中.name());
         queryParams.addParameter("accountType", AccountType.服务商);
+        if (!DybUtils.isEmptyOrNull(keyWord)){
+            queryParams.addMulAttrParameter("accountCode","%"+keyWord+"%");
+            queryParams.addMulAttrParameter("accountPhone","%"+keyWord+"%");
+        }
         PageList<Account> accountPageList=accountService.getAccountPageList(queryParams,pageIndex,pageSize,true);
         for (Account account:accountPageList.getList()){
             Account temp=accountService.getAccountByCode(account.getAccountCode(),true);
             account.setServiceProviders(temp.getServiceProviders());
         }
         return result(accountPageList);
+    }
+
+    /**
+     * 审核通过服务商申请
+     * @param serviceProvidersCode
+     * @return
+     */
+    @RequestMapping(value = "/approvedServiceProviders")
+    public Object approvedServiceProviders(String serviceProvidersCode){
+        log.info("审核通过服务商申请");
+        if (DybUtils.isEmptyOrNull(serviceProvidersCode))
+            return validationResult(1001,"服务商编号不能为空");
+        boolean flag=accountService.approvedAccount(serviceProvidersCode);
+        if (!flag)
+            return validationResult(1001,"审核失败");
+        return result("审核成功");
+    }
+
+    /**
+     * 审核不通过
+     * @param serviceProvidersCode
+     * @return
+     */
+    @RequestMapping(value = "/cancelServiceProviders")
+    public Object cancelServiceProviders(String serviceProvidersCode){
+        log.info("审核不通过服务商申请");
+        if (DybUtils.isEmptyOrNull(serviceProvidersCode))
+            return validationResult(1001,"服务商编号不能为空");
+        boolean flag=accountService.cancelAccount(serviceProvidersCode);
+        if (!flag)
+            return validationResult(1001,"审核失败");
+        return result("审核成功");
     }
 
     /**

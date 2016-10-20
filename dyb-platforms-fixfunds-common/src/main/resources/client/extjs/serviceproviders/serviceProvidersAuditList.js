@@ -27,43 +27,27 @@ Ext.define('DYB_COMMON.serviceproviders.serviceProvidersAuditList',{
                 xtype: 'toolbar', scope: me,
                 items:[
                     {
-                        xtype: 'button', text: '禁用',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.disableServiceProviders(list[0].data.accountCode);
+                        xtype: 'textfield',
+                        name: 'keyWord',
+                        itemId: 'keyWord',
+                        labelWidth: 80,
+                        width:300,
+                        fieldLabel: '查询关键字',
+                        emptyText:'服务商编号、绑定手机号',
+                        listeners: {
+                            specialkey: function(field, e){
+                                if (e.getKey() == e.ENTER) {
+                                    var val = me.down('#keyWord').getValue();
+                                    me.reload({  keyWord:val,pageIndex: 0} )
+                                }
+                            }
                         }
                     },
                     {
-                        xtype: 'button', text: '解除禁用',  scope: me,
+                        xtype: 'button', text: '查询', glyph: 0xf002, scope: me,
                         handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.removeDisableServiceProviders(list[0].data.accountCode);
-                        }
-                    },
-                    {
-                        xtype: 'button', text: '重置登录密码',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.resetServiceProvidersPassword(list[0].data.accountCode);
-                        }
-                    },
-                    {
-                        xtype: 'button', text: '重置二级密码',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.resetServiceProvidersTradePassword(list[0].data.accountCode);
+                            var val = me.down('#keyWord').getValue();
+                            me.reload({  keyWord:val,pageIndex: 0} )
                         }
                     }
                 ]
@@ -79,6 +63,13 @@ Ext.define('DYB_COMMON.serviceproviders.serviceProvidersAuditList',{
                 { header: '邮箱地址', dataIndex: 'email',width:140 },
                 { header: '服务商地址', dataIndex: 'address',width:140 },
                 { header: '身份证号码', dataIndex: 'idCard',width:140 },
+                { text: '操作',dataIndex: 'accountCode', width:170,
+                    renderer:function(val){
+                        var url='<a href="javascript:;" onclick="javascript:Ext.getCmp(\'' + me.getId()  + '\').approvedServiceProviders(\'' + (val)  + '\')">'+'通过'+'</a>&nbsp; &nbsp;';
+                        url+='<a href="javascript:;" onclick="javascript:Ext.getCmp(\'' + me.getId()  + '\').cancelServiceProviders(\'' + (val)  + '\')">'+'不通过'+'</a>&nbsp; &nbsp;';
+                        return url;
+                    }
+                },
                 { flex: 1 }
             ],
             dockedItems: [
@@ -142,11 +133,11 @@ Ext.define('DYB_COMMON.serviceproviders.serviceProvidersAuditList',{
     },
 
     /**
-     * 禁用服务商
-     * @param accountCode 服务商code
+     * 审核通过
+     * @param serviceProvidersCode 服务商code
      */
-    disableServiceProviders:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commons/serviceProviders","/disableServiceProviders", {accountCode: accountCode});
+    approvedServiceProviders:function(serviceProvidersCode){
+        var result = Ext.appContext.invokeService("back/commons/serviceProviders","/approvedServiceProviders", {serviceProvidersCode: serviceProvidersCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -156,39 +147,11 @@ Ext.define('DYB_COMMON.serviceproviders.serviceProvidersAuditList',{
     },
 
     /**
-     * 解除禁用
-     * @param accountCode 服务商code
+     * 审核不通过
+     * @param serviceProvidersCode 服务商code
      */
-    removeDisableServiceProviders:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commons/serviceProviders","/removeDisableServiceProviders", {accountCode: accountCode});
-        if(result.statusCode!=1000){
-            Ext.Msg.alert('操作失败', result.errorMessage);
-        }else{
-            Ext.Msg.alert('成功', result.result);
-            this.reload();
-        }
-    },
-
-    /**
-     * 重置登录密码
-     * @param accountCode 服务商code
-     */
-    resetServiceProvidersPassword:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commons/serviceProviders","/resetServiceProvidersPassword", {accountCode: accountCode});
-        if(result.statusCode!=1000){
-            Ext.Msg.alert('操作失败', result.errorMessage);
-        }else{
-            Ext.Msg.alert('成功', result.result);
-            this.reload();
-        }
-    },
-
-    /**
-     * 重置二级密码
-     * @param accountCode 服务商code
-     */
-    resetServiceProvidersTradePassword:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commons/serviceProviders","/resetServiceProvidersTradePassword", {accountCode: accountCode});
+    cancelServiceProviders:function(serviceProvidersCode){
+        var result = Ext.appContext.invokeService("back/commons/serviceProviders","/cancelServiceProviders", {serviceProvidersCode: serviceProvidersCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{

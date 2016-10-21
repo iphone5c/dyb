@@ -14,6 +14,10 @@ import com.dyb.platforms.fixfunds.services.business.messengerbean.service.IMesse
 import com.dyb.platforms.fixfunds.services.business.order.entity.Order;
 import com.dyb.platforms.fixfunds.services.business.order.entity.em.OrderStatus;
 import com.dyb.platforms.fixfunds.services.business.order.service.IOrderService;
+import com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.RecommendIncentive;
+import com.dyb.platforms.fixfunds.services.business.recommendincentive.service.IRecommendIncentiveService;
+import com.dyb.platforms.fixfunds.services.business.systemparams.entity.SystemParams;
+import com.dyb.platforms.fixfunds.services.business.systemparams.service.ISystemParamsService;
 import com.dyb.platforms.fixfunds.services.business.turnover.entity.Turnover;
 import com.dyb.platforms.fixfunds.services.business.turnover.entity.em.BenefitPriceStatus;
 import com.dyb.platforms.fixfunds.services.business.turnover.service.ITurnoverService;
@@ -50,6 +54,11 @@ public class TimeService implements ITimeService {
     private IAccountIncentiveService accountIncentiveService;
     @Autowired
     private IMessengerBeanService messengerBeanService;
+    @Autowired
+    private ISystemParamsService systemParamsService;
+    @Autowired
+    private IRecommendIncentiveService recommendIncentiveService;
+
 
     /**
      * 启动
@@ -187,6 +196,8 @@ public class TimeService implements ITimeService {
             QueryParams queryParams=new QueryParams();
             queryParams.addParameter("incentiveMode",i);
             List<Merchant> merchantList=merchantService.getMerchantList(queryParams,0,-1,true);
+            if (merchantList==null||merchantList.size()<=0)
+                continue;
             //计算营业总额和爱心数量
             for (Merchant merchant:merchantList){
                 queryParams=new QueryParams();
@@ -199,8 +210,13 @@ public class TimeService implements ITimeService {
                     loveNum+=turnover.getTurnoverPrice()/500;
                 }
             }
+            SystemParams systemParams=systemParamsService.getSystemParamsByKey(String.valueOf(i));
+            if (systemParams==null)
+                throw new DybRuntimeException("二次分配比例系统参数没有配置，激励模型："+i+"%");
+            String[] computerParam=systemParams.getSystemParamsValue().split(",");
+            Double proportion=Double.parseDouble(computerParam[2]);
             //计算爱心单价
-            lovePrice=(turnoverPrice*i/100)/loveNum;
+            lovePrice=(turnoverPrice*proportion/100)/loveNum;
 
             AccountIncentive[] accountIncentives=new AccountIncentive[merchantList.size()];
             MessengerBean[] messengerBeans=new MessengerBean[merchantList.size()];
@@ -240,6 +256,66 @@ public class TimeService implements ITimeService {
 
         }
 
+    }
+
+    /**
+     * 推荐激励计算
+     * @param date
+     * @throws Exception
+     */
+    @Override
+    public void recommendIncentive(Date date) throws Exception {
+        Date min = DybConvert.toDate(DybConvert.dateToString(date, DybConvert.DATEFORMAT_DATA_EN_LONG) + " 00:00:00", DybConvert.DATEFORMAT_DATETIME_EN_LONG);
+        Date max = DybConvert.toDate(DybConvert.dateToString(date, DybConvert.DATEFORMAT_DATA_EN_LONG) + " 23:59:59", DybConvert.DATEFORMAT_DATETIME_EN_LONG);
+
+        QueryParams queryParams=new QueryParams();
+        queryParams.addParameter("status", OrderStatus.已结算);
+        queryParams.addParameterByRange("tradeTime",min,max);
+        List<Order> orderList=orderService.getOrderList(queryParams,0,-1,true);
+        RecommendIncentive[] recommendMembers=new RecommendIncentive[orderList.size()];
+        RecommendIncentive[] recommendMerchants=new RecommendIncentive[orderList.size()];
+        int i=0;
+        for (Order order:orderList){
+            //第一步  推荐信使
+            Account member=accountService.getAccountByCode(order.getMemberCode(),false);
+            if (member==null)
+                throw new DybRuntimeException("找不到此信使信息");
+            SystemParams systemParams=systemParamsService.getSystemParamsByKey(order.getIncentiveMode().toString());
+            if (systemParams==null)
+                throw new DybRuntimeException("二次分配比例系统参数没有配置，激励模型："+order.getIncentiveMode()+"%");
+            String[] computerParam=systemParams.getSystemParamsValue().split(",");
+            Double proportion=Double.parseDouble(computerParam[3]);
+            RecommendIncentive recommendMember=new RecommendIncentive();
+            recommendMember.setRecommendIncentiveTime(date);
+            recommendMember.setRecommendAccountCode(member.getAccountCode());
+            recommendMember.setMessengerBean(order.getPrice()*proportion);
+            recommendMember.setIncentiveType(order.getIncentiveMode());
+            recommendMember.setIncentiveSources(AccountType.信使);
+            recommendMember.setAccountCode(member.getReferrerCode());
+
+            //第二部  推荐商家
+            Account merchant=accountService.getAccountByCode(order.getMerchantCode(),false);
+            if (member==null)
+                throw new DybRuntimeException("找不到此商家信息");
+            proportion=Double.parseDouble(computerParam[5]);
+            RecommendIncentive recommendMerchant=new RecommendIncentive();
+            recommendMerchant.setRecommendIncentiveTime(date);
+            recommendMerchant.setRecommendAccountCode(merchant.getAccountCode());
+            recommendMerchant.setMessengerBean(order.getPrice()*proportion);
+            recommendMerchant.setIncentiveType(order.getIncentiveMode());
+            recommendMerchant.setIncentiveSources(AccountType.商家);
+            recommendMerchant.setAccountCode(merchant.getReferrerCode());
+
+            recommendMembers[i]=recommendMember;
+            recommendMerchants[i]=recommendMerchant;
+            i++;
+        }
+        boolean memberFlag=recommendIncentiveService.createRecommendIncentiveList(recommendMembers);
+        if (!memberFlag)
+            throw new DybRuntimeException("推荐信使激励记录添加失败");
+        boolean merchantFlag=recommendIncentiveService.createRecommendIncentiveList(recommendMerchants);
+        if (!memberFlag)
+            throw new DybRuntimeException("推荐商家激励记录添加失败");
     }
 
 

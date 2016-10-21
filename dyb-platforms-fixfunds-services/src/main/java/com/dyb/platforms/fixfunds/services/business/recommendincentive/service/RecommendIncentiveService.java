@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Administrator on 2016/2/23.
@@ -63,6 +64,34 @@ public class RecommendIncentiveService extends BaseService implements IRecommend
     @Override
     public PageList<RecommendIncentive> getRecommendIncentivePageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail) {
         return recommendIncentiveDao.queryListForPaged(wheres,pageIndex,pageSize,detail);
+    }
+
+    /**
+     * 批量插入推荐激励记录
+     * @param recommendIncentives
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean createRecommendIncentiveList(RecommendIncentive[] recommendIncentives) {
+        if (recommendIncentives==null||recommendIncentives.length<=0)
+            throw new DybRuntimeException("批量插入推荐激励记录不能为空");
+        for (RecommendIncentive recommendIncentive:recommendIncentives){
+            if (recommendIncentive.getRecommendIncentiveTime()==null)
+                throw new DybRuntimeException("激励日期不能为空");
+            if (DybUtils.isEmptyOrNull(recommendIncentive.getRecommendAccountCode()))
+                throw new DybRuntimeException("被推荐人不能为空");
+            if (recommendIncentive.getMessengerBean()<0)
+                throw new DybRuntimeException("激励信使豆必须是正数");
+            if (recommendIncentive.getIncentiveType()<0||recommendIncentive.getIncentiveType()>30)
+                throw new DybRuntimeException("激励类型只能在1--30之间");
+            if (recommendIncentive.getIncentiveSources()==null)
+                throw new DybRuntimeException("激励来源不能为空");
+            if (DybUtils.isEmptyOrNull(recommendIncentive.getAccountCode()))
+                throw new DybRuntimeException("推荐人不能为空");
+            recommendIncentive.setRecommendIncentiveCode(UUID.randomUUID().toString());
+        }
+        int info=recommendIncentiveDao.insertList(recommendIncentives);
+        return info>0?true:false;
     }
 
 }

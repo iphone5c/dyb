@@ -32,4 +32,11 @@ public interface ITimeService {
      * @throws Exception
      */
     public void merchantIncentive(Date date) throws Exception;
+
+    /**
+     * 推荐激励计算
+     * @param date
+     * @throws Exception
+     */
+    public void recommendIncentive(Date date) throws Exception;
 }

@@ -3,6 +3,7 @@ package com.dyb.platforms.fixfunds.services.business.conversion.service;
 import com.dyb.platforms.fixfunds.services.business.conversion.entity.Conversion;
 import com.dyb.platforms.fixfunds.services.business.conversioninvoicedetails.entity.ConversionInvoiceDetails;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
+import com.dyb.platforms.fixfunds.services.business.withdrawal.entity.em.ApplyStatus;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 
@@ -60,4 +61,26 @@ public interface IConversionService {
      * @return
      */
     public Conversion createConversion(Conversion conversion,List<ConversionInvoiceDetails> conversionInvoiceDetailses);
+
+    /**
+     * 操作指定转换状态
+     * @param conversionCode 转换code
+     * @param applyStatus 申请状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean operationConversionStatus(String conversionCode,ApplyStatus applyStatus);
+
+    /**
+     * 审核通过转换
+     * @param conversionCode 转换编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean approvedConversion(String conversionCode);
+
+    /**
+     * 审核不通过
+     * @param conversionCode 转换编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean cancelConversion(String conversionCode);
 }

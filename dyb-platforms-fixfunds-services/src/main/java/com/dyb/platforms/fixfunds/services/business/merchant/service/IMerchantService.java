@@ -1,6 +1,8 @@
 package com.dyb.platforms.fixfunds.services.business.merchant.service;
 
 import com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant;
+import com.dyb.platforms.fixfunds.services.utils.core.PageList;
+import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 
 /**
  * Created by 魏源 on 2015/6/30 0030.
@@ -37,4 +39,14 @@ public interface IMerchantService {
      * @return 商家对象
      */
     public Merchant updateMerchantByCode(Merchant merchant);
+
+    /**
+     *获取对象分页列表
+     * @param wheres    条件
+     * @param pageIndex 返回的页码
+     * @param pageSize  页大小
+     * @param detail    是否返回详细信息
+     * @return 对象分页列表
+     */
+    public PageList<Merchant> getMerchantPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail);
 }

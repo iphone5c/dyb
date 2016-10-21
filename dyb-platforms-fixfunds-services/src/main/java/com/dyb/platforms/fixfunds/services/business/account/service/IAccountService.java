@@ -1,11 +1,12 @@
 package com.dyb.platforms.fixfunds.services.business.account.service;
 
 import com.dyb.platforms.fixfunds.services.business.account.entity.Account;
+import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountStatus;
 import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.bankaccount.entity.BankAccount;
 import com.dyb.platforms.fixfunds.services.business.member.entity.Member;
 import com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant;
-import com.dyb.platforms.fixfunds.services.business.recommendincentive.entity.RecommendIncentive;
+import com.dyb.platforms.fixfunds.services.business.salesman.entity.Salesman;
 import com.dyb.platforms.fixfunds.services.business.serviceproviders.entity.ServiceProviders;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
@@ -58,6 +59,15 @@ public interface IAccountService {
      * @return 账户信息
      */
     public Account registerServiceProviders(Account account,ServiceProviders serviceProviders,BankAccount bankAccount,String referrerCode);
+
+    /**
+     * 注册业务员
+     * @param account 账户对象
+     * @param salesman 业务员对象
+     * @param referrerCode 推荐人code
+     * @return 账户信息
+     */
+    public Account registerSalesman(Account account,Salesman salesman ,String referrerCode);
 
     /**
      * 验证绑定手机号是否存在
@@ -113,4 +123,53 @@ public interface IAccountService {
      */
     public boolean modifyPassword(String accountCode,String oldPassword,String newPassword,String confirmPassword);
 
+    /**
+     * 禁用指定用户
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean disableAccount(String accountCode);
+
+    /**
+     * 将指定用户解除禁用
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean removeDisableAccount(String accountCode);
+
+    /**
+     * 操作指定用户额状态
+     * @param accountCode 用户code
+     * @param accountStatus 用户状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean operationAccountStatus(String accountCode,AccountStatus accountStatus);
+
+    /**
+     * 将指定用户重置密码
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean resetAccountPassword(String accountCode);
+
+    /**
+     * 将指定用户重置密码
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean resetAccountTradePassword(String accountCode);
+
+    /**
+     * 指定用户审核通过
+     * @param accountCode 账户编号code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean approvedAccount(String accountCode);
+
+    /**
+     * 指定用户审核不通过
+     * @param accountCode 账户编号code
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean cancelAccount(String accountCode);
 }

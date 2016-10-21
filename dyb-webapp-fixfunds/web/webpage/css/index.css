@@ -160,14 +160,14 @@ table.center tr td,table.center tr th{
     margin: 0 auto;
 }
 .equal{
-	background: url(../images/login/equal.png) no-repeat center center;
+	background: url(../images/equal.png) no-repeat center center;
 	width: 35px;
 	height: 25px;
     margin: 0 10px;
     margin-top:86px;
 }
 .minus{
-	background: url(../images/login/minus.png) no-repeat center center;
+	background: url(../images/minus.png) no-repeat center center;
 	width: 35px;
 	height: 7px;
     margin: 0 10px;

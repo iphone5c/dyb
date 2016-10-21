@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by Administrator on 2015/7/1.
  */
@@ -187,6 +189,39 @@ public class UserController extends BaseController {
             return result("重置成功");
         }else{
             return validationResult(1001,"重置失败");
+        }
+    }
+
+    /**
+     * 后台系统登陆验证
+     * @param request
+     * @param loginName 用户名
+     * @param password 密码
+     * @return
+     */
+    @RequestMapping(value = "/loginBack")
+    public Object loginBack(HttpServletRequest request ,String loginName,String password){
+        log.info("后台系统登陆验证");
+        User user=userService.loginUser(loginName, password);
+        if (user==null){
+            return validationResult(1001,"登陆失败");
+        }else {
+            request.getSession().setAttribute("CURRENT_USER",user);
+            return result("登录成功");
+        }
+    }
+
+    /**
+     * 登录验证
+     * @return
+     */
+    @RequestMapping(value = "/loginStatus")
+    public Object loginStatus(HttpServletRequest request){
+        User user=DybUtils.getCurrentUser(request);
+        if (user!=null){
+            return result("已经登录");
+        }else{
+            return validationResult(1001,"尚未登录");
         }
     }
 

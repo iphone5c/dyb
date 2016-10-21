@@ -1,0 +1,723 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "微软雅黑";
+}
+.guessbox{
+    position: relative;
+    width: 100%;
+    min-width: 1200px;
+    overflow: hidden;
+}
+.navboxs{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    min-width: 1200px;
+    z-index: 999;
+
+    background-color: white;
+    -webkit-box-shadow: 1px 3px 3px;
+    -moz-box-shadow: 1px 3px 3px;
+    box-shadow: 1px 3px 3px;
+}
+.navbox{
+    width: 1200px;
+    height: 50px;
+    line-height: 50px;
+    margin: 0 auto;
+
+}
+.navbox img{
+    vertical-align: middle;
+}
+.portrait span{
+    display: inline-block;
+    color: black;
+    margin-left: 20px;
+    font-size: 14px;
+}
+.link{
+    float: left;
+    display: inline-block;
+    width: 1px;
+    height: 30px;
+    background-color: #C2C2C2;
+    margin-top: 10px;
+    margin-left: 100px;
+}
+.portrait{
+    float: left;
+}
+.account{
+    float: left;
+    display: inline-block;
+}
+.integral{
+    display: inline-block;
+    margin-left: 30px;
+}
+.integral h4{
+    display: inline-block;
+    font-weight: 100;
+}
+.integralText{
+    margin-left: 0px !important;
+    color: #D9A670 !important;
+}
+.contentbox{
+    width: 100%;
+    min-width: 1200px;
+}
+.guessing{
+    float: left;
+    margin-left: 60px;
+    color: #000000;
+}
+.guessing span{
+    margin-left: 10px;
+}
+.pension{
+    float: left;
+    margin-left: 60px;
+    color: #000000;
+}
+.pension span{
+    margin-left: 10px;
+}
+.win{
+    float: left;
+    margin-left: 60px;
+    color: #000000;
+}
+.win span{
+    margin-left: 10px;
+}
+.guessingRecord{
+    float: left;
+    width: 130px;
+    height: 26px;
+    line-height: 26px;
+    margin-top: 12px;
+    margin-left: 50px;
+    background-color: #DFA558;
+    color: #7F5915;
+    text-align: center;
+    border-radius: 50px;
+}
+.guessingRecord:hover{
+    cursor: pointer;
+}
+.instantRecharge{
+    float: left;
+    width: 100px;
+    height: 26px;
+    line-height: 26px;
+    margin-top: 12px;
+    margin-left: 30px;
+    background-color: #B81904;
+    color: white;
+    text-align: center;
+    border-radius: 50px;
+}
+.instantRecharge:hover{
+    cursor: pointer;
+}
+.banner{
+    position: relative;
+    width: 100%;
+    height: auto;
+    font-size: 0px;
+    overflow: hidden;
+}
+.banner .bannerImg{
+    width: 100%;
+}
+.title{
+    width: 85%;
+    position: absolute;
+    top: 25%;
+    left: 14%;
+}
+.exitImg{
+    position: absolute;
+    top: 75%;
+    right: 28%;
+}
+.exitImg:hover{
+    cursor: pointer;
+}
+.registerImg{
+    position: absolute;
+    top: 75%;
+    right: 28%;
+}
+.registerImg:hover{
+    cursor: pointer;
+}
+.loginImg{
+    position: absolute;
+    top: 75%;
+    left: 28%;
+}
+.loginImg:hover{
+    cursor: pointer;
+}
+.rechargeImg{
+    position: absolute;
+    top: 75%;
+    left: 28%;
+}
+.rechargeImg:hover{
+    cursor: pointer;
+}
+.content-steptwo{
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 3349px;
+    background: url("/resources/before/img/bg.jpg") 100% no-repeat;
+    margin-top: -2px;
+}
+.choice{
+    width: 100%;
+    background-color: rgba(0,0,0,0.4);
+    min-width: 1200px;
+    text-align: center;
+    font-size: 0px;
+}
+.choice img{
+    display: inline-block;
+}
+.choiceText{
+    width: 1200px;
+    margin: 0 auto;
+    padding:120px 0px;
+}
+.choiceTeam{
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+.gameplayText{
+    width: 1200px;
+    margin: 0 auto;
+    padding:80px 0px;
+}
+.gameplayText img{
+    width: 100%;
+}
+.gameplayOne{
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    height: 350px;
+    background-color: #1A1408;
+}
+
+.gameplayLink{
+    width: 100%;
+    height: 3px;
+    background-color: #BA9032;
+}
+.gameplayOne ul{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.gameplayOne>ul li{
+    float: left;
+    list-style: none;
+    width: 133px;
+    height: 50px;
+    background-color: #2D230E;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
+.gameplayOne>ul li:nth-of-type(9){
+    width: 136px;
+}
+.gameplayTwo>ul li{
+    float: left;
+    list-style: none;
+    width: 133px;
+    height: 50px;
+    background-color: #2D230E;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
+.gameplayOne>ul li:hover{
+    cursor: pointer;
+}
+.active1{
+    background-color:transparent !important;
+}
+.active2{
+    background-color:#FFD972;
+    color: black !important;
+    border:1px solid transparent ;
+}
+.gameTitle{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+}
+.concretePlay{
+    display: none;
+    width: 100%;
+    margin-top: 50px;
+}
+.gameOne div{
+    display: inline-block;
+    width: 128px;
+    margin-left: 18px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    float: left;
+    color: white;
+    border: 1px solid #FFD972;
+    border-radius: 5px;
+    margin-top: 40px;
+}
+.concretePlay div div:hover{
+    cursor: pointer;
+}
+.gameTwo div{
+    display: inline-block;
+    width: 200px;
+    margin-left: 266px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    float: left;
+    color: white;
+    border: 1px solid #FFD972;
+    border-radius: 5px;
+    margin-top: 40px;
+}
+.gameThree div{
+    display: inline-block;
+    width: 150px;
+    margin-left: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    float: left;
+    color: white;
+    border: 1px solid #FFD972;
+    border-radius: 5px;
+    margin-top: 40px;
+    letter-spacing:10px;
+}
+.gameFour div{
+    display: inline-block;
+    width: 200px;
+    margin-left: 75px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    float: left;
+    color: white;
+    border: 1px solid #FFD972;
+    border-radius: 5px;
+    margin-top: 60px;
+}
+.gameFive div{
+    display: inline-block;
+    width: 200px;
+    margin-left: 90px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    float: left;
+    color: white;
+    border: 1px solid #FFD972;
+    border-radius: 5px;
+    margin-top: 60px;
+}
+.confirmText{
+    width: 1200px;
+    margin: 0 auto;
+    padding:120px 0px;
+}
+.confirmTeam{
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+.confirm{
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 50px !important;
+    text-align: center;
+}
+.confirm img:hover{
+    cursor: pointer;
+}
+.content-stepone{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 3349px;
+    background: url("/resources/before/img/bg.jpg") 100% no-repeat;
+    margin-top: -2px;
+}
+.firstround{
+    position: relative;
+    width: 1210px;
+    height: 2000px;
+    margin: 0 auto;
+    margin-top: 180px;
+    background: url("/resources/before/img/timepanel.png") no-repeat;
+    background-size: 100% auto;
+}
+.time1{
+    position: absolute;
+    top: -120px;
+    left: 125px;
+}
+.time2{
+    position: absolute;
+    top: -120px;
+    left: 325px;
+}
+.time3{
+    position: absolute;
+    top: -120px;
+    left: 525px;
+}
+.time4{
+    position: absolute;
+    top: -120px;
+    left: 725px;
+}
+.time5{
+    position: absolute;
+    top: -120px;
+    left: 925px;
+}
+.time1,.time2,.time3,.time4,.time5:hover{
+    cursor: pointer;
+}
+.firstroundText{
+    display: inline-block;
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+.firstroundText img{
+    width: 100%;
+}
+.timeText{
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 40px;
+}
+.timeText span{
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    border-radius: 50px;
+    border: 1px solid #E6C375;
+    line-height: 40px;
+    color: #E6C375;
+}
+.teamsOne{
+    width: 1200px;
+    margin: 0 auto;
+}
+.teamsOne div{
+    display: inline-block;
+    float: left;
+    width: 150px;
+    text-align: center;
+    height: 100px;
+    border: 2px solid #160E02;
+    margin-left: 40px;
+    margin-top: 50px;
+}
+.teamsOne div img{
+    width: 50px;
+    height: 50px;
+    margin-top: 23px;
+}
+.teamsOne div span{
+    display: inline-block;
+    width: 100%;
+    color: #B28247;
+}
+.vsText{
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.vsText img{
+    width: 100%;
+}
+.teamsTwo{
+    width: 1200px;
+    margin: 0 auto;
+}
+.teamsTwo div{
+    display: inline-block;
+    float: left;
+    width: 150px;
+    text-align: center;
+    height: 100px;
+    border: 2px solid #160E02;
+    margin-left: 40px;
+    margin-top: 50px;
+}
+.teamsTwo div img{
+    width: 50px;
+    height: 50px;
+    margin-top: 23px;
+}
+.teamsTwo div span{
+    display: inline-block;
+    width: 100%;
+    color: #B28247;
+}
+.choiceTexts{
+    display: inline-block;
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 60px;
+}
+.teamsOne div:hover{
+    cursor: pointer;
+}
+.teamsTwo div:hover{
+    cursor: pointer;
+}
+.choiceTexts img:hover{
+    cursor: pointer;
+}
+.bettingBg{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.3);
+    z-index: 99;
+}
+.betting{
+    position: relative;
+    width: 40%;
+    height:400px;
+    margin-top: 10%;
+    margin-left: 30%;
+    background-color: white;
+    text-align: center;
+}
+.bettingTop{
+    width: 100%;
+    height: 50px;
+    background-color: #DB9E3B;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+    color: white;
+}
+.bettingTop img{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 10px;
+    top: 10px;
+}
+.bettingTop img:hover{
+    cursor: pointer;
+}
+.betting h4{
+    text-align: center;
+    padding: 40px 0;
+    color: #000000;
+}
+.bettingIntegral{
+    width: 80%;
+    height: 50px;
+    border: 1px solid #DB9E3B;
+    border-radius: 5px;
+    margin-left: 10%
+}
+.bettingIntegral span{
+    float: left;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #DB9E3B;
+}
+.bettingIntegral div{
+    float: left;
+    width: 1px;
+    height: 40px;
+    margin-top: 5px;
+    background-color: #DB9E3B;
+}
+.bettingIntegral input{
+    float: left;
+    width: 300px;
+    height: 48px;
+    border: none;
+    outline-style: none;
+    padding-left: 20px;
+}
+.bettingEstimate{
+    color: black;
+    margin-left: 10%;
+    margin-top: 20px;
+    text-align: left;
+}
+.bettingEstimate span{
+    color: #C2841F;
+    display: inline-block;
+    padding-left: 5px;
+}
+.bettingText{
+    color: black;
+    margin-left: 10%;
+    margin-top: 20px;
+    text-align: left;
+}
+.bettingText span{
+    display: inline-block;
+    padding-left: 5px;
+}
+.bettingQr{
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    background-color: #DB9E3B;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    margin-top: 50px;
+}
+.bettingQr:hover{
+    cursor: pointer;
+}
+.num{
+    position: relative;
+    display: inline-block;
+    float: left;
+    width: 100px;
+    height: 60px;
+    border: 1px solid #FFD972;
+    border-radius: 5px;
+    margin-top: 60px;
+    margin-left: 100px;
+}
+.num1{
+    float: left;
+    display: inline-block;
+    width: 70px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color: white;
+}
+.num2{
+    float: left;
+    display: inline-block;
+    width: 1px;
+    height: 60px;
+    background-color: #FFD972;
+}
+.num3{
+    float: left;
+    display: inline-block;
+    width: 29px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.num3:hover{
+    cursor: pointer;
+}
+.num3 img{
+    width: 20px;
+    margin-top: 20px;
+}
+.num4{
+    display: none;
+    position: absolute;
+    top:60px;
+    left: 0px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #FFD972;
+    border-radius: 5px;
+    padding: 5px 0;
+    z-index: 999;
+    background-color: #1A1408;
+}
+.num4 ul li{
+    width: 100px;
+    /*height: 20px;*/
+    background: none;
+    color: white;
+    text-align: center;
+    list-style: none;
+}
+.num4 ul li:hover{
+    background-color: #FFD972;
+    cursor: pointer;
+}
+.timeXz{
+    display: none;
+}
+.bombBoxbg{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.3);
+    z-index: 99;
+}
+.bombBox{
+    position: relative;
+    width: 20%;
+    height: 20%;
+    margin-top: 15%;
+    margin-left: 40%;
+    background-color: white;
+    text-align: center;
+}
+.bombBoxTop{
+    width: 100%;
+    height: 50px;
+    background-color: #DB9E3B;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+    color: white;
+}
+.bombBoxTop img{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 10px;
+    top: 10px;
+}
+.bombBoxText{
+    position: relative;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    margin-top: 50px;
+}

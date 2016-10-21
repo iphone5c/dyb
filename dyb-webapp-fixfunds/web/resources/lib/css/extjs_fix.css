@@ -1,0 +1,25 @@
+/******首页-菜单 去掉滑动条********/
+.home-navigator-panel .x-grid-body .x-tree-view{
+    overflow: hidden !important;
+}
+
+/******360极速模式 错误提示信息调整********/
+.yc-tip-style{
+    width: auto !important;
+}
+.yc-tip-style .x-tip-header{
+    width: auto !important;
+}
+.yc-tip-style .x-tip-body{
+    width: auto !important;
+}
+.yc-tip-style .x-tip-body .x-autocontainer-outerCt{
+    width: auto !important;
+}
+.content-homepage-panel .x-panel-header{
+    background-color: #D6F2F7 !important;
+}
+.content-homepage-panel .x-panel-header .x-title-text {
+    color:blue !important;
+    font-size: 18px;
+}

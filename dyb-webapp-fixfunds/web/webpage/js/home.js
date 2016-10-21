@@ -49,4 +49,30 @@ $(function(){
             $("#ad-content").html(data);
         })
     }
+    // 退出登录
+    $(".signOuts").mousemove(function(){
+       $(".signOuts").addClass("open");
+    });
+    $(".signOuts").mouseout(function(){
+        $(".signOuts").removeClass("open");
+    });
+    $("#logout").click(function(){
+        $("#adAlertCover_layer").show();
+        $("#adAlert").show();
+    });
+    $("#adAlertOKBtn").click(function(){
+        var data = invokeService('/web/commons/signOut',{});
+        if (data.statusCode!=1000){
+            alert(data.errorMessage);
+            return;
+        }
+        if (data.statusCode==1000){
+            window.location.href='./home/login.html';
+        }
+    })
+    $("#adAlertCancelBtn").click(function(){
+        $("#adAlertCover_layer").hide();
+        $("#adAlert").hide();
+    })
+
 })

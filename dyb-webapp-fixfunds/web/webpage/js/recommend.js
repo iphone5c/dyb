@@ -6,7 +6,7 @@ function getrecommend(){
         return;
     }
     if (data.statusCode == 1000){
-        $(".tuijian-cont1").attr("src",data.result.member.imagePath);
+        $("#wxQrCode img").attr("src",data.result.member.imagePath);
         $("#copyLink").val(data.result.member.url);
     }
 }

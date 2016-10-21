@@ -9,10 +9,12 @@ import com.dyb.platforms.fixfunds.services.business.bankaccount.service.IBankAcc
 import com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant;
 import com.dyb.platforms.fixfunds.services.business.merchant.service.IMerchantService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
+import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -159,6 +161,8 @@ public class WebMerchantController extends BaseController {
             return validationResult(1001,"找不到此账户信息");
         if (account.getMerchant()==null)
             return validationResult(1001,"找不到此账户的详情信息");
+        if (account.getAccountType()!=AccountType.商家)
+            return validationResult(1001,"当前登陆用户不是商家用户");
 
         Map<String,Object> result=new HashMap<>();
         result.put("merchant",account);
@@ -169,14 +173,8 @@ public class WebMerchantController extends BaseController {
         }else if (tjr.getAccountType()== AccountType.服务商){
             result.put("tjrRealName",tjr.getServiceProviders().getServiceProviderName());
         }
-        if (account.getAccountType()==AccountType.商家){
-            Map<String,Object> certificateFile= (Map<String, Object>) DybUtils.getJsonDeserialize(account.getMerchant().getCertificateFile(),Map.class);
-            result.put("certificateFile",certificateFile);
-        }else if (account.getAccountType()==AccountType.服务商){
-            Map<String,Object> certificateFile= (Map<String, Object>) DybUtils.getJsonDeserialize(account.getServiceProviders().getCertificateFile(),Map.class);
-            result.put("certificateFile",certificateFile);
-        }
-
+        Map<String,Object> certificateFile= (Map<String, Object>) DybUtils.getJsonDeserialize(account.getMerchant().getCertificateFile(),Map.class);
+        result.put("certificateFile",certificateFile);
         result.put("tjrPhone",tjr.getAccountPhone());
         result.put("bank",bankAccountService.getBankAccountByDefaultChecked(account.getAccountCode()));
         return result(result);
@@ -227,6 +225,20 @@ public class WebMerchantController extends BaseController {
         if (result==null)
             return validationResult(1001,"商户修改资料失败");
         return result("商户修改资料成功");
+    }
+
+    /**
+     * 获取商家列表
+     * @param request
+     * @param pageIndex 当前页
+     * @param pageSize 页大小
+     * @return
+     */
+    @RequestMapping(value = "/getMerchantPageList")
+    public Object getMerchantPageList(HttpServletRequest request,@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
+        log.info("获取商家列表");
+        QueryParams queryParams=new QueryParams();
+        return result(merchantService.getMerchantPageList(queryParams,pageIndex,pageSize,true));
     }
 
 }

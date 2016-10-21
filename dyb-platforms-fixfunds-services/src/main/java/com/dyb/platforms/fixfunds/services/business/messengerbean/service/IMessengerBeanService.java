@@ -1,8 +1,8 @@
 package com.dyb.platforms.fixfunds.services.business.messengerbean.service;
 
-import com.dyb.platforms.fixfunds.services.business.account.entity.em.AccountType;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.MessengerBean;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
+import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 
 import java.util.List;
@@ -66,5 +66,15 @@ public interface IMessengerBeanService {
      * @return true表示操作成功 false表示操作失败
      */
     public boolean createMessengerBeanByMessType(String accountCode,MessengerBeanType... messengerBeanType);
+
+    /**
+     *获取分页列表
+     * @param wheres    条件
+     * @param pageIndex 返回的页码
+     * @param pageSize  页大小
+     * @param detail    是否返回详细信息
+     * @return 对象分页列表
+     */
+    public PageList<MessengerBean> getMessengerBeanPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail);
 
 }

@@ -3,11 +3,11 @@ package com.dyb.platforms.fixfunds.services.business.withdrawal.service;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
 import com.dyb.platforms.fixfunds.services.business.withdrawal.entity.Invoice;
 import com.dyb.platforms.fixfunds.services.business.withdrawal.entity.Withdrawal;
+import com.dyb.platforms.fixfunds.services.business.withdrawal.entity.em.ApplyStatus;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by 魏源 on 2015/6/30 0030.
@@ -59,4 +59,26 @@ public interface IWithdrawalService {
      * @return
      */
     public Withdrawal createWithdrawal(Withdrawal withdrawal);
+
+    /**
+     * 操作指定回购状态
+     * @param withdrawalCode 回购code
+     * @param applyStatus 申请状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean operationWithdrawalStatus(String withdrawalCode,ApplyStatus applyStatus);
+
+    /**
+     * 审核通过回购
+     * @param withdrawalCode 回购编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean approvedWithdrawal(String withdrawalCode);
+
+    /**
+     * 审核不通过
+     * @param withdrawalCode 回购编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean cancelWithdrawal(String withdrawalCode);
 }

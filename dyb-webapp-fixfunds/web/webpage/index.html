@@ -39,7 +39,7 @@
 			<div class="headMenu-msg-no" id="unreadMsgCount" style=" width: 20px;height: 20px;background: red;-moz-border-radius: 10px;-webkit-border-radius: 10px; border-radius: 20px;right:-6px;top:-8px;">0</div>
 		</div>
 		<div id="headMenu-touxiang" class="headMenu-touxiang-box">
-          <span class="sui-dropdown dropdown-bordered">
+          <span class="sui-dropdown dropdown-bordered signOuts">
             <span class="dropdown-inner" style="border:0;">
               <a role="button" href="javascript:void(0);" data-toggle="dropdown" data-trigger="hover" class="">
 				  <i class="iconfont" style="color:#f00;">&#xe60c;</i>
@@ -128,6 +128,25 @@
 	<p>客服电话:400 666 3502 工作时间: 9:00-18:00(法定工作日)</p>
 	<p>Copyright©2015-2020 深圳前海中盛一点科技有限公司版权所有
 		<a>粤ICP备15082614号-2</a></p>
+</div>
+<div id="adAlertCover_layer" class="adCover_layer" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 9999999; display: none;"></div>
+<div class="Pop_layer" id="adAlert" style="width: 550px; z-index: 99999999; position: absolute; left: 677.5px; top: 188px; display: none;">
+    <div class="Pop_layer_box">
+        <!-- 弹出框标题 start -->
+        <div class="Pop_layer_box_top">
+            <span id="adAlertTitle">一点公益</span></div>
+        <!-- 弹出框标题 end -->
+        <!-- 弹出框内容 start -->
+        <div class="Pop_layer_box_center" id="adPop_context">
+            <div id="adAlertMsg" style="font-size: 22px; line-height: 25px; padding-top: 47.5px;">确认退出吗?</div></div>
+        <!-- 弹出框内容 end -->
+        <!-- 弹出框按钮 start -->
+        <div class="Pop_layer_box_bottom">
+            <div>
+                <input id="adAlertOKBtn" class="Pop_layer_box_bottom_btn" type="button" value="确定">
+                <input id="adAlertCancelBtn" class=" Pop_layer_box_bottom_btn" type="button" value="取消"></div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

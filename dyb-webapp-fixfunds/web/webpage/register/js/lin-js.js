@@ -2,8 +2,30 @@
  * Created by aaa on 2016/9/26.
  */
 $(function(){
-
     getData();
+    function getQueryString(referrer) {
+        var reg = new RegExp("(^|&)" + referrer + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]); return null;
+    }
+//    getQueryString("referrer")
+    if(getQueryString("referrer")==""){
+        window.location.href='../publicModule/error404.html';
+        return
+    }
+    var param={
+        accountCode:getQueryString("referrer")
+    };
+    var data = invokeService('/web/commons/getAccountByCode',param);
+    console.log(data);
+    if (data.statusCode!=1000){
+        window.location.href='../publicModule/error404.html';
+        return;
+    }
+    if (data.statusCode==1000){
+        $("#referrerName").html(data.result.name)
+        $("#referrerMobile").html(data.result.phone)
+    }
     $(".btn_timepicki").timepicki();
     function submit(){
         var flag=$("#flag").val();
@@ -35,7 +57,7 @@ $(function(){
             // 省级代码
             province:provinceVal,
             // 市级代码
-            city:provinceVal+"_"+cityVal,
+            city:cityVal,
             // 主营业务
             mainBusiness:$("#mainbusiness").val(),
             // 行业类别
@@ -94,11 +116,12 @@ $(function(){
             businessCircle :$("#category input").val()
         }
         var data = invokeService('/web/merchant/registerMerchantAccount',param);
+        console.log(data);
         if (data.statusCode!=1000){
             alert(data.errorMessage);
             return;
         }
-//        alert(data.flag)
+        $("#userNumber").html(data.result);
         $(".ad-register1").css({"display":"none"});
         $(".ad-register2").css({"display":"none"});
         $(".ad-register3").css({"display":"none"});
@@ -106,9 +129,18 @@ $(function(){
         $(".ad-register5").css({"display":"block"});
     }
     $("#nextReg4").click(function(){
+       var iptVal = $("#category input").val();
+        if(iptVal == ""){
+            $(".sui-modal1").addClass("in");
+            $(".sui-modal-backdrop").css("zIndex","1000").addClass("in");
+            return;
+        }
         submit();
-
     });
+    $(".sui-btn1,.sui-close1").click(function(){
+        $(".sui-modal1").removeClass("in");
+        $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
+    })
     $('#s_province').on('change',function() {
         var i=$("#s_province").index(this);
         provinceVal = $('#s_province').eq(i).val();
@@ -117,8 +149,6 @@ $(function(){
         var i=$("#s_city").index(this);
         cityVal = $('#s_city').eq(i).val();
     });
-
-
     var lngX;
     var latY;
     var provinceVal;
@@ -179,6 +209,7 @@ $(function(){
             infoWindow.open(map, marker.getPosition());
         });
     }
+
     //实例化信息窗体
     var title;
     content = [];
@@ -193,18 +224,25 @@ $(function(){
         content.push("<div>联系人：<span>"+$("#principal").val()+"</span></div>");
         content.push("<div>电话：<span>"+$("#phone").val()+"</span></div>");
         content.push("<div>地址：<span>"+$("#s_province option:selected").text()+$("#s_city option:selected").text()+$("#companyaddress").val()+"</span></div>");
-    })
-
+    });
+    $("#lastReg4").click(function(){
+        content = [];
+        $(".ad-register5").css({"display":"none"});
+        $(".ad-register2").css({"display":"none"});
+        $(".ad-register1").css({"display":"none"});
+        $(".ad-register4").css({"display":"none"});
+        $(".ad-register3").css({"display":"block"})
+    });
 
     var data = invokeService('/web/commons/getBusinessCircle',{});
-    console.log(data)
+//    console.log(data)
     if (data.statusCode!=1000){
         alert(data.errorMessage);
         return;
     }
 
     var categoryText;
-    categoryText+="<div id='categorybox'><div id='category' style='margin-top: 0px;position: absolute;top: 40px;left: 5px'>关键字：<input value='' style='width: 130px' type='text' placeholder='选择或输入类目'>" +
+    categoryText+="<div id='categorybox'><div id='category' style='margin-top: 0px;position: absolute;top: 40px;left: 5px'><span style='color: #ff0000'>关键字</span>：<input value='' style='width: 130px' type='text' placeholder='选择或输入类目'>" +
     "<i class='iconfont' style='position: absolute;left:170px;top:3px;line-height: 1.5;font-size: 12px'></i>" +
 //        ""+categoryText+""+
     "</div>"

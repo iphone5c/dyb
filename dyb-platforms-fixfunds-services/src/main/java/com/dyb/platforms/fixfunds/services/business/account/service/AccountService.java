@@ -14,6 +14,8 @@ import com.dyb.platforms.fixfunds.services.business.merchant.entity.Merchant;
 import com.dyb.platforms.fixfunds.services.business.merchant.service.IMerchantService;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.entity.em.MessengerBeanType;
 import com.dyb.platforms.fixfunds.services.business.messengerbean.service.IMessengerBeanService;
+import com.dyb.platforms.fixfunds.services.business.salesman.entity.Salesman;
+import com.dyb.platforms.fixfunds.services.business.salesman.service.ISalesmanService;
 import com.dyb.platforms.fixfunds.services.business.serviceproviders.entity.ServiceProviders;
 import com.dyb.platforms.fixfunds.services.business.serviceproviders.service.IServiceProvidersService;
 import com.dyb.platforms.fixfunds.services.utils.DybUtils;
@@ -52,6 +54,8 @@ public class AccountService extends BaseService implements IAccountService {
     private IBankAccountService bankAccountService;
     @Autowired
     private IMessengerBeanService messengerBeanService;
+    @Autowired
+    private ISalesmanService salesmanService;
 
     /**
      * 根据账户code查找账户信息
@@ -64,6 +68,8 @@ public class AccountService extends BaseService implements IAccountService {
         if (DybUtils.isEmptyOrNull(accountCode))
             throw new DybRuntimeException("根据code查找账户信息时，code不能为空");
         Account account = accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new DybRuntimeException("根据code查找账户信息时,找不到此账户信息,code:"+accountCode);
         if (DybUtils.isEmptyOrNull(account.getAccountForeignKey()))
             throw new DybRuntimeException("根据code查找账户信息时，此账户没有其详情信息,code:"+accountCode);
         if (account.getAccountType()==null)
@@ -72,6 +78,7 @@ public class AccountService extends BaseService implements IAccountService {
             account.setMember(memberService.getMemberByCode(account.getAccountForeignKey()));
             account.setMerchant(merchantService.getMerchantByCode(account.getAccountForeignKey()));
             account.setServiceProviders(serviceProvidersService.getServiceProvidersByCode(account.getAccountForeignKey()));
+            account.setSalesman(salesmanService.getSalesmanByCode(account.getAccountForeignKey()));
         }
         return account;
     }
@@ -147,6 +154,21 @@ public class AccountService extends BaseService implements IAccountService {
                 qrcode.setImagePath(QRCodeUtil.encode(sb.toString(), "/upload"));
                 qrcodeMap.put("merchant",qrcode);
 
+            }else if (account.getAccountType()==AccountType.业务员){
+                StringBuffer sb=new StringBuffer();
+                Qrcode qrcode=new Qrcode();
+                sb.append(url).append("/webpage/register/xin-register.html?referrer=").append(accountCode);
+                qrcode.setUrl(sb.toString());
+                qrcode.setImagePath(QRCodeUtil.encode(sb.toString(), "/upload"));
+                qrcodeMap.put("member",qrcode);
+
+                sb=new StringBuffer();
+                qrcode=new Qrcode();
+                sb.append(url).append("/webpage/register/fuwu-register.html?referrer=").append(accountCode);
+                qrcode.setUrl(sb.toString());
+                qrcode.setImagePath(QRCodeUtil.encode(sb.toString(), "/upload"));
+                qrcodeMap.put("merchant",qrcode);
+
             }
             account.setQrcode(DybUtils.getJsonSerialize(qrcodeMap));
         } catch (Exception e) {
@@ -183,6 +205,7 @@ public class AccountService extends BaseService implements IAccountService {
         account.setReferrerCode(referrerCode);
         account.setAccountType(AccountType.信使);
         account.setAccountStatus(AccountStatus.正常);
+        account.setRegistrationTime(new Date());
         account.setAccountForeignKey(tempMember.getMemberCode());
 
         //添加信使豆信息
@@ -232,7 +255,8 @@ public class AccountService extends BaseService implements IAccountService {
         account.setAccountCode(accountCode);
         account.setReferrerCode(referrerCode);
         account.setAccountType(AccountType.商家);
-        account.setAccountStatus(AccountStatus.待提交审核);
+        account.setAccountStatus(AccountStatus.审核中);
+        account.setRegistrationTime(new Date());
         account.setAccountForeignKey(tempMerchant.getMerchantCode());
 
         //添加信使豆信息
@@ -283,17 +307,60 @@ public class AccountService extends BaseService implements IAccountService {
         account.setReferrerCode(referrerCode);
         account.setAccountType(AccountType.服务商);
         account.setAccountStatus(AccountStatus.待提交审核);
+        account.setRegistrationTime(new Date());
         account.setAccountForeignKey(tempServiceProviders.getServiceProviderCode());
 
         //添加信使豆信息
         boolean flag=messengerBeanService.createMessengerBeanByMessType(accountCode, MessengerBeanType.普通信使豆, MessengerBeanType.待缴税, MessengerBeanType.转换中, MessengerBeanType.注册奖励);
         if (!flag)
-            throw new DybRuntimeException("信使注册时，添加信使豆信息失败");
+            throw new DybRuntimeException("服务商注册时，添加信使豆信息失败");
 
         Account tempAccount=this.createAccount(account);
         if (tempAccount==null)
             throw new DybRuntimeException("服务商注册时，服务商注册失败");
         account.setServiceProviders(tempServiceProviders);
+        return account;
+    }
+
+    /**
+     * 注册业务员
+     * @param account 账户对象
+     * @param salesman 业务员对象
+     * @param referrerCode 推荐人code
+     * @return 账户信息
+     */
+    @Override
+    public Account registerSalesman(Account account, Salesman salesman , String referrerCode) {
+        if (account==null)
+            throw new DybRuntimeException("业务员注册时，account对象不能为空或null");
+        if (salesman==null)
+            throw new DybRuntimeException("业务员注册时，salesman对象不能为空或null");
+        if (DybUtils.isEmptyOrNull(referrerCode))
+            throw new DybRuntimeException("业务员注册时，推荐人不能为空或null");
+        String accountCode=codeBuilder.getAccountCode();
+        //添加服务商详情
+        salesman.setAccountCode(accountCode);
+        Salesman tempSalesman= salesmanService.createSalesman(salesman);
+        if (tempSalesman==null)
+            throw new DybRuntimeException("业务员注册时，业务员详情信息注册失败");
+
+        //添加账户信息
+        account.setAccountCode(accountCode);
+        account.setReferrerCode(referrerCode);
+        account.setAccountType(AccountType.业务员);
+        account.setAccountStatus(AccountStatus.正常);
+        account.setRegistrationTime(new Date());
+        account.setAccountForeignKey(tempSalesman.getSalesmanCode());
+
+        //添加信使豆信息
+        boolean flag=messengerBeanService.createMessengerBeanByMessType(accountCode, MessengerBeanType.待转赠, MessengerBeanType.转换中, MessengerBeanType.注册奖励);
+        if (!flag)
+            throw new DybRuntimeException("业务员注册时，添加信使豆信息失败");
+
+        Account tempAccount=this.createAccount(account);
+        if (tempAccount==null)
+            throw new DybRuntimeException("业务员注册时，业务员注册失败");
+        account.setSalesman(tempSalesman);
         return account;
     }
 
@@ -440,5 +507,107 @@ public class AccountService extends BaseService implements IAccountService {
         account.setPassword(DybUtils.encryptPassword(newPassword));
         int info=accountDao.updateObject(account);
         return info>0?true:false;
+    }
+
+    /**
+     * 禁用指定用户
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean disableAccount(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("禁用指定用户时，code不能为空或null");
+        return this.operationAccountStatus(accountCode,AccountStatus.禁用);
+    }
+
+    /**
+     * 将指定用户解除禁用
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean removeDisableAccount(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("解除指定用户的禁用状态时，code不能为空或null");
+        return this.operationAccountStatus(accountCode,AccountStatus.正常);
+    }
+
+    /**
+     * 操作指定用户额状态
+     * @param accountCode 用户code
+     * @param accountStatus 用户状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean operationAccountStatus(String accountCode, AccountStatus accountStatus) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("操作指定用户的状态时，code不能为空或null");
+        if (accountStatus==null)
+            throw new DybRuntimeException("操作指定用户的状态时，修改的用户状态不能为空");
+        Account account=accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new DybRuntimeException("操作指定用户的状态时，找不到此用户信息，code："+accountCode);
+        account.setAccountStatus(accountStatus);
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
+     * 将指定用户重置登录密码
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean resetAccountPassword(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("指定用户重置登录密码时，code不能为空或null");
+        Account account=accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new DybRuntimeException("指定用户重置登录密码时，找不到此用户信息，code："+accountCode);
+        account.setPassword(DybUtils.encryptPassword("ABC123"));
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
+     * 将指定用户重置二级密码
+     * @param accountCode 用户code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean resetAccountTradePassword(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("指定用户重置二级密码时，code不能为空或null");
+        Account account=accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new DybRuntimeException("指定用户重置二级密码时，找不到此用户信息，code："+accountCode);
+        account.setTradePassword(DybUtils.encryptPassword("ABC123"));
+        int info=accountDao.updateObject(account);
+        return info>0?true:false;
+    }
+
+    /**
+     * 指定用户审核通过
+     * @param accountCode 账户编号code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean approvedAccount(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("指定用户审核通过时，code不能为空或null");
+        return this.operationAccountStatus(accountCode,AccountStatus.正常);
+    }
+
+    /**
+     * 指定用户审核不通过
+     * @param accountCode 账户编号code
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean cancelAccount(String accountCode) {
+        if (DybUtils.isEmptyOrNull(accountCode))
+            throw new DybRuntimeException("指定用户审核不通过时，code不能为空或null");
+        return this.operationAccountStatus(accountCode,AccountStatus.审核未通过);
     }
 }

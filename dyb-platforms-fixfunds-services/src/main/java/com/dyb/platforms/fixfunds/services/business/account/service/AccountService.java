@@ -68,6 +68,8 @@ public class AccountService extends BaseService implements IAccountService {
         if (DybUtils.isEmptyOrNull(accountCode))
             throw new DybRuntimeException("根据code查找账户信息时，code不能为空");
         Account account = accountDao.getObject(accountCode,true);
+        if (account==null)
+            throw new DybRuntimeException("根据code查找账户信息时,找不到此账户信息,code:"+accountCode);
         if (DybUtils.isEmptyOrNull(account.getAccountForeignKey()))
             throw new DybRuntimeException("根据code查找账户信息时，此账户没有其详情信息,code:"+accountCode);
         if (account.getAccountType()==null)

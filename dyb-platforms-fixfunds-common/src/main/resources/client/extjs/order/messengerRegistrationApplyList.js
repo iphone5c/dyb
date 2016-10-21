@@ -3,6 +3,9 @@
  */
 Ext.define('DYB_COMMON.order.messengerRegistrationApplyList',{
     extend: 'Ext.grid.Panel',
+    requires: [
+        'DYB.utils.LinkButton'
+    ],
     // ====入口参数定义===================================================================
     /**
      * 入口参数
@@ -27,43 +30,27 @@ Ext.define('DYB_COMMON.order.messengerRegistrationApplyList',{
                 xtype: 'toolbar', scope: me,
                 items:[
                     {
-                        xtype: 'button', text: '禁用',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.disableMember(list[0].data.accountCode);
+                        xtype: 'textfield',
+                        name: 'keyWord',
+                        itemId: 'keyWord',
+                        labelWidth: 80,
+                        width:300,
+                        fieldLabel: '查询关键字',
+                        emptyText:'订单编号、信使ID、商家ID',
+                        listeners: {
+                            specialkey: function(field, e){
+                                if (e.getKey() == e.ENTER) {
+                                    var val = me.down('#keyWord').getValue();
+                                    me.reload({  keyWord:val,pageIndex: 0} )
+                                }
+                            }
                         }
                     },
                     {
-                        xtype: 'button', text: '解除禁用',  scope: me,
+                        xtype: 'button', text: '查询', glyph: 0xf002, scope: me,
                         handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.removeDisableMember(list[0].data.accountCode);
-                        }
-                    },
-                    {
-                        xtype: 'button', text: '重置登录密码',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.resetMemberPassword(list[0].data.accountCode);
-                        }
-                    },
-                    {
-                        xtype: 'button', text: '重置二级密码',  scope: me,
-                        handler: function () {
-                            var list = me.getSelection();
-                            if (list.length != 1)
-                                Ext.Msg.alert('提示', '必须并且只能选中一行数据.');
-                            else
-                                me.resetMemberTradePassword(list[0].data.accountCode);
+                            var val = me.down('#keyWord').getValue();
+                            me.reload({  keyWord:val,pageIndex: 0} )
                         }
                     }
                 ]
@@ -77,8 +64,15 @@ Ext.define('DYB_COMMON.order.messengerRegistrationApplyList',{
                 { header: '交易时间', dataIndex: 'tradeTime',width:140 },
                 { header: '交易总价', dataIndex: 'price',width:140 },
                 { header: '订单状态', dataIndex: 'status',width:140 },
-                { header: '激励模式', dataIndex: 'incentiveMode',width:140 },
+                { header: '激励模式(%)', dataIndex: 'incentiveMode',width:140 },
                 { header: '创建时间', dataIndex: 'createTime',width:140 },
+                { text: '操作',dataIndex: 'orderCode', width:170,
+                    renderer:function(val){
+                        var url='<a href="javascript:;" onclick="javascript:Ext.getCmp(\'' + me.getId()  + '\').approvedOrder(\'' + (val)  + '\')">'+'通过'+'</a>&nbsp; &nbsp;';
+                        url+='<a href="javascript:;" onclick="javascript:Ext.getCmp(\'' + me.getId()  + '\').cancelOrder(\'' + (val)  + '\')">'+'撤销'+'</a>&nbsp; &nbsp;';
+                        return url;
+                    }
+                },
                 { flex: 1 }
             ],
             dockedItems: [
@@ -142,11 +136,11 @@ Ext.define('DYB_COMMON.order.messengerRegistrationApplyList',{
     },
 
     /**
-     * 禁用信使消费登记申请
-     * @param accountCode 信使消费登记申请code
+     * 审核通过
+     * @param orderCode 订单code
      */
-    disableMember:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commons/member","/disableMember", {accountCode: accountCode});
+    approvedOrder:function(orderCode){
+        var result = Ext.appContext.invokeService("/back/commons/order","/approvedOrder", {orderCode: orderCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -156,39 +150,11 @@ Ext.define('DYB_COMMON.order.messengerRegistrationApplyList',{
     },
 
     /**
-     * 解除禁用
-     * @param accountCode 信使消费登记申请code
+     * 撤销订单
+     * @param orderCode 订单code
      */
-    removeDisableMember:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commons/member","/removeDisableMember", {accountCode: accountCode});
-        if(result.statusCode!=1000){
-            Ext.Msg.alert('操作失败', result.errorMessage);
-        }else{
-            Ext.Msg.alert('成功', result.result);
-            this.reload();
-        }
-    },
-
-    /**
-     * 重置登录密码
-     * @param accountCode 信使消费登记申请code
-     */
-    resetMemberPassword:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commons/member","/resetMemberPassword", {accountCode: accountCode});
-        if(result.statusCode!=1000){
-            Ext.Msg.alert('操作失败', result.errorMessage);
-        }else{
-            Ext.Msg.alert('成功', result.result);
-            this.reload();
-        }
-    },
-
-    /**
-     * 重置二级密码
-     * @param accountCode 信使消费登记申请code
-     */
-    resetMemberTradePassword:function(accountCode){
-        var result = Ext.appContext.invokeService("/back/commons/member","/resetMemberTradePassword", {accountCode: accountCode});
+    cancelOrder:function(orderCode){
+        var result = Ext.appContext.invokeService("/back/commons/order","/cancelOrder", {orderCode: orderCode});
         if(result.statusCode!=1000){
             Ext.Msg.alert('操作失败', result.errorMessage);
         }else{
@@ -196,4 +162,5 @@ Ext.define('DYB_COMMON.order.messengerRegistrationApplyList',{
             this.reload();
         }
     }
+
 })

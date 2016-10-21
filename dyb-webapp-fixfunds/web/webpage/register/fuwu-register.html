@@ -16,10 +16,15 @@
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/side.css" />
     <link rel="stylesheet" href="./css/register.css" />
+    <script type="text/javascript" src="/webpage/js/commons.js"></script>
 </head>
 <style>
     .ad-register2,.ad-register3{
         display: none;
+    }
+    .yz-error{
+        color:red;
+        line-height: 30px;;
     }
 </style>
 <body id="ad-app" data-apptype="pcRegister" class="relative">
@@ -179,39 +184,14 @@
             <div id="topageDiv" style="display: none;">
                 <input type="button" id="topage" value="跳转" />
             </div>
-            <div class="register-form-cell regAgentType" style="">
-                <div class="register-form-cell-title">
-                    <span class="ad-red">*</span> 服务商分类:
-                </div>
-                <div class="register-form-cell-widget controls">
-       <span class="sui-dropdown dropdown-bordered select1"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget110 input-xfat dropdown-toggle" style="width: 146px;"> <input id="ispersonal" value="" name="ispersonal" data-rules="required" data-empty-msg="请选择类别" type="hidden" /><i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i><span id="ispersonalSapn">请选择类别</span></a>
-         <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
-             <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">企业服务商</a></li>
-             <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">个人服务商</a></li>
-         </ul> </span> </span>
-                    <span class="help-inline1" style="display: none; white-space:nowrap; color:#999; padding-left:10px; max-width:500px;">注:若选择企业服务商需提供营业执照、身份证照片</span>
-                </div>
-            </div>
-            <div class="register-form-cell regMerchantType" style="display: none;">
-                <div class="register-form-cell-title">
-                    <span class="ad-red">*</span> 商户分类:
-                </div>
-                <div class="register-form-cell-widget controls">
-       <span class="sui-dropdown dropdown-bordered select"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget110 input-xfat dropdown-toggle" style="width: 146px;"> <input id="merchantType" value="29" name="merchantType" data-rules="required" data-empty-msg="请选择类别" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i><span id="merchantTypeSapn">零售商</span></a>
-         <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu ">
-             <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="29">零售商</a></li>
-             <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="28">贸易商</a></li>
-             <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="27">制造商</a></li>
-         </ul> </span> </span>
-                </div>
-            </div>
             <div class="clear"></div>
             <div class="register-form-cell">
                 <div class="register-form-cell-title">
                     <span class="ad-red">*</span> 用户名:
                 </div>
                 <div class="register-form-cell-widget">
-                    <input type="text" placeholder="请输入用户名" id="username" name="username" data-rules="required|minlength=2|maxlength=16|username" data-empty-msg="用户名不能为空" class="input-xfat" />
+                    <input type="text" placeholder="请输入用户名" id="username" name="username"  class="input-xfat input-xfat1"/>
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="clear"></div>
@@ -220,7 +200,8 @@
                     <span class="ad-red">*</span> 密码:
                 </div>
                 <div class="register-form-cell-widget">
-                    <input type="password" placeholder="请输入6-16位密码" id="userpwd" name="userpwd" data-rules="required|minlength=6|maxlength=16" data-error-msg="密码必须是6-16位" data-empty-msg="密码不能为空" class="input-xfat" />
+                    <input type="password" placeholder="请输入6-16位密码" id="userpwd" name="userpwd" data-rules="required|minlength=6|maxlength=16" data-error-msg="密码必须是6-16位" data-empty-msg="密码不能为空" class="input-xfat input-xfat1" />
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="clear"></div>
@@ -229,7 +210,8 @@
                     <span class="ad-red">*</span> 再次输入密码:
                 </div>
                 <div class="register-form-cell-widget">
-                    <input type="password" placeholder="请再次输入密码" id="password" name="password" data-rules="required|match=userpwd" data-error-msg="密码不一致" data-empty-msg="密码不能为空" class="input-xfat" />
+                    <input type="password" placeholder="请再次输入密码" id="password" name="password" data-rules="required|match=userpwd" data-error-msg="密码不一致" data-empty-msg="密码不能为空" class="input-xfat input-xfat1" />
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="clear"></div>
@@ -238,7 +220,8 @@
                     <span class="ad-red">*</span> 手机号码:
                 </div>
                 <div class="register-form-cell-widget">
-                    <input type="text" placeholder="请输入手机号码" id="mobilenumber" maxlength="11" title="手机号码" name="mobilenumber" data-rules="required|mobile|maxlength=11" data-error-msg="手机格式有误" data-empty-msg="手机号码不能为空" class="input-xfat" />
+                    <input type="text" placeholder="请输入手机号码" id="mobilenumber" maxlength="11" title="手机号码" name="mobilenumber" data-rules="required|mobile|maxlength=11" data-error-msg="手机格式有误" data-empty-msg="手机号码不能为空" class="input-xfat input-xfat1" />
+                    <br/><label class="yz-error"></label>
                     <div id="mobileError" class="sui-msg msg-error" style="display: none;">
                         <div class="msg-con">
                             <span id="mobileErrorTip"></span>
@@ -258,8 +241,9 @@
                     <span class="ad-red">*</span> 图文验证码:
                 </div>
                 <div class="register-form-cell-widget">
-                    <input class="input-xfat ad-msg-ipt" placeholder="验证码" title="图文验证码" maxlength="4" type="text" id="imgCode" name="imgCode" data-rules="required|minlength=4|maxlength=4" data-empty-msg="图文验证码不能为空" />
+                    <input class="input-xfat input-xfat1 ad-msg-ipt" placeholder="验证码" title="图文验证码" maxlength="4" type="text" id="imgCode" name="imgCode" data-rules="required|minlength=4|maxlength=4" data-empty-msg="图文验证码不能为空" />
                     <img src="" id="CreateCheckCode" style="height:32px;" align="middle" class="check_code_img float_left" />
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="clear"></div>
@@ -267,9 +251,10 @@
                 <div class="register-form-cell-title">
                     <span class="ad-red">*</span> 验证码:
                 </div>
-                <div class="input-append register-form-cell-widget">
-                    <input id="verifyCode" placeholder="验证码" name="verifyCode" type="text" class="input-xfat ad-msg-ipt" maxlength="6" data-rules="required|prefill=mobilenumber|prefill=imgCode" data-empty-msg="手机验证码不能为空" />
+                <div class=" register-form-cell-widget">
+                    <input id="verifyCode" placeholder="验证码" name="verifyCode" type="text" class="input-xfat input-xfat1 ad-msg-ipt" maxlength="6" data-rules="required|prefill=mobilenumber|prefill=imgCode" data-empty-msg="手机验证码不能为空" />
                     <button type="button" class="sui-btn ad-msg-btn" id="sendMsgBtn">获取验证码</button>
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="register-form-cell">
@@ -277,8 +262,9 @@
                     &nbsp;
                 </div>
                 <div class="register-form-cell-widget">
-                    <input type="checkbox" id="readProtocol" name="readProtocol" data-rules="required" />&nbsp;&nbsp;
+                    <input type="checkbox" id="readProtocol" name="readProtocol" data-rules="required" class="input-xfat1" />&nbsp;&nbsp;
                     <label for="readProtocol">我已阅读并同意<a href="javascript:void(0);" id="protocol">《一点公益服务商注册协议》</a></label>
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="register-form-cell">
@@ -293,125 +279,106 @@
     </form>
 </div>
 <div id="ad-content" class="ad-register ad-register2">
-    <form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate"><div class="register-nav" id="step3">
-        <div class="register-nav-title"><div class="circle register-nav-icon">1</div> <div class="register-nav-text">获得链接注册</div></div>
-        <div class="register-nav-title active"><div class="circle register-nav-icon">2</div> <div class="register-nav-text">完善资料</div></div>
-        <div class="register-nav-title"><div class="circle register-nav-icon">3</div> <div class="register-nav-text">完成注册</div></div>
+<form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate"><div class="register-nav" id="step3">
+    <div class="register-nav-title"><div class="circle register-nav-icon">1</div> <div class="register-nav-text">获得链接注册</div></div>
+    <div class="register-nav-title active"><div class="circle register-nav-icon">2</div> <div class="register-nav-text">完善资料</div></div>
+    <div class="register-nav-title"><div class="circle register-nav-icon">3</div> <div class="register-nav-text">完成注册</div></div>
+</div>
+<div class="register-nav register-nav2" id="step5" style="display: none; padding:0px 20px;">
+    <div class="register-nav-title register-nav-title2" style="width: 20%;"><div class="circle register-nav-icon">1</div> <div class="register-nav-text">获得链接注册</div></div>
+    <div class="register-nav-title register-nav-title2 active" style="width: 20%;"><div class="circle register-nav-icon">2</div> <div class="register-nav-text">完善资料</div></div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;"><div class="circle register-nav-icon">3</div> <div class="register-nav-text">上传证照</div></div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;"><div class="circle register-nav-icon">4</div> <div class="register-nav-text">设置地址</div></div>
+    <div class="register-nav-title register-nav-title2" style="width: 20%;"><div class="circle register-nav-icon">5</div> <div class="register-nav-text">完成注册</div></div>
+</div>
+<div class="register-nav" id="step4" style="display: none; padding:0px 20px;">
+    <div class="register-nav-title register-nav-title3" style="width: 25%;"><div class="circle register-nav-icon">1</div> <div class="register-nav-text">获得链接注册</div></div>
+    <div class="register-nav-title register-nav-title3 active" style="width: 25%;"><div class="circle register-nav-icon">2</div> <div class="register-nav-text">完善资料</div></div>
+    <div class="register-nav-title register-nav-title3" style="width: 25%;"><div class="circle register-nav-icon">3</div> <div class="register-nav-text">上传证照</div></div>
+    <div class="register-nav-title register-nav-title3" style="width: 25%;"><div class="circle register-nav-icon">4</div> <div class="register-nav-text">完成注册</div></div>
+</div>
+<div class="register-nav" id="perfect" style="display: none;">
+    <div class="register-nav-title"><div class="circle register-nav-icon">1</div> <div class="register-nav-text">获得链接注册</div></div>
+    <div class="register-nav-title"><div class="circle register-nav-icon">2</div> <div class="register-nav-text">完善资料</div></div>
+    <div class="register-nav-title"><div class="circle register-nav-icon">3</div> <div class="register-nav-text">完成注册</div></div>
+</div>
+<div id="register-content"><div class="register-tuijianren">
+    <div>
+        推荐人：<span id="referrerName">四川中盛加鸿一点信息科技有限公司</span>
     </div>
-        <div class="register-nav register-nav2" id="step5" style="display: none; padding:0px 20px;">
-            <div class="register-nav-title register-nav-title2" style="width: 20%;"><div class="circle register-nav-icon">1</div> <div class="register-nav-text">获得链接注册</div></div>
-            <div class="register-nav-title register-nav-title2 active" style="width: 20%;"><div class="circle register-nav-icon">2</div> <div class="register-nav-text">完善资料</div></div>
-            <div class="register-nav-title register-nav-title2" style="width: 20%;"><div class="circle register-nav-icon">3</div> <div class="register-nav-text">上传证照</div></div>
-            <div class="register-nav-title register-nav-title2" style="width: 20%;"><div class="circle register-nav-icon">4</div> <div class="register-nav-text">设置地址</div></div>
-            <div class="register-nav-title register-nav-title2" style="width: 20%;"><div class="circle register-nav-icon">5</div> <div class="register-nav-text">完成注册</div></div>
-        </div>
-        <div class="register-nav" id="step4" style="display: none; padding:0px 20px;">
-            <div class="register-nav-title register-nav-title3" style="width: 25%;"><div class="circle register-nav-icon">1</div> <div class="register-nav-text">获得链接注册</div></div>
-            <div class="register-nav-title register-nav-title3 active" style="width: 25%;"><div class="circle register-nav-icon">2</div> <div class="register-nav-text">完善资料</div></div>
-            <div class="register-nav-title register-nav-title3" style="width: 25%;"><div class="circle register-nav-icon">3</div> <div class="register-nav-text">上传证照</div></div>
-            <div class="register-nav-title register-nav-title3" style="width: 25%;"><div class="circle register-nav-icon">4</div> <div class="register-nav-text">完成注册</div></div>
-        </div>
-        <div class="register-nav" id="perfect" style="display: none;">
-            <div class="register-nav-title"><div class="circle register-nav-icon">1</div> <div class="register-nav-text">获得链接注册</div></div>
-            <div class="register-nav-title"><div class="circle register-nav-icon">2</div> <div class="register-nav-text">完善资料</div></div>
-            <div class="register-nav-title"><div class="circle register-nav-icon">3</div> <div class="register-nav-text">完成注册</div></div>
-        </div>
-        <div id="register-content"><div class="register-tuijianren">
-            <div>
-                推荐人：<span id="referrerName">四川中盛加鸿一点信息科技有限公司</span>
-            </div>
-            <div>
-                推荐人手机号：<span id="referrerMobile">18523066694</span>
-            </div>
+    <div>
+        推荐人手机号：<span id="referrerMobile">18523066694</span>
+    </div>
+</div>
 
-            <input type="hidden" value="1111" id="username" name="username">
-            <input type="hidden" value="96e79218965eb72c92a549dd5a330112" id="userpwd" name="userpwd">
-            <input type="hidden" value="3" id="usertype" name="usertype">
-            <input type="hidden" value="15281178751" id="mobilenumber" name="mobilenumber">
 
-            <input type="hidden" value="363623" id="referrer" name="referrer">
-            <input type="hidden" value="18523066694" id="referrerphone" name="referrerphone">
+<div class="register-boxTitle">
+    基本信息
+</div>
+    <div class="register-form-cell">
+        <div id="agentGroupDiv">
+            <div class="register-form-cell-7"><span class="ad-red">*</span>联合群组号:</div>
+            <div class="register-form-cell-widget-25" id="agentGroupNumber">
+                <input type="text" id="groupno" name="groupno" class="input-xfat input-xfat1 ad-widget107" data-rules="required" data-empty-msg="群组号不能为空">
+                <br/><label class="yz-error"></label>
+            </div>
+            <div class="register-form-cell-4" id="agentGroup" style="display: none;"><span id="groupname"></span></div>
+        </div>
+    </div>
+
+    <div class="register-form-cell">
+        <div class="register-form-cell-7">
+            <span class="ad-red">*</span>
+            姓名:
+        </div>
+        <div class="register-form-cell-widget-25">
+            <input type="text" id="realname" name="realname" class="ad-widget167 input-xfat input-xfat1" data-rules="required|minlength=2|maxlength=10" data-error-msg="姓名必须是2-10位" data-empty-msg="姓名不能为空">
+            <br/><label class="yz-error"></label>
         </div>
 
-
-            <div class="register-boxTitle">
-                基本信息
-            </div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span>
-                    类型:
-                </div>
-                <div class="register-form-cell-widget-20 controls">
-    	<span class="sui-dropdown dropdown-bordered select2">
-            <span class="dropdown-inner">
-            	<a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget110 input-xfat dropdown-toggle" style="width: 116px;">
-                    <input id="agenttype" value="3" name="agenttype" data-rules="required" data-empty-msg="请选择类型" type="hidden"> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i><span>联合服务商</span></a>
-                <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu2">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="3">联合服务商</a></li>
-                </ul>
-            </span>
-        </span>
-                </div>
-
-                <div id="agentGroupDiv">
-                    <div class="register-form-cell-5"><span class="ad-red">*</span>联合群组号：</div>
-                    <div class="register-form-cell-6" id="agentGroupNumber">
-                        <input type="text" id="groupno" name="groupno" class="input-xfat ad-widget107" data-rules="required" data-empty-msg="群组号不能为空">
-                    </div>
-                    <div class="register-form-cell-4" id="agentGroup" style="display: none;"><span id="groupname"></span></div>
-                </div>
-            </div>
-
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span>
-                    姓名:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="realname" name="realname" class="ad-widget167 input-xfat" data-rules="required|minlength=2|maxlength=10" data-error-msg="姓名必须是2-10位" data-empty-msg="姓名不能为空">
-                </div>
-
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 性别:
-                </div>
-                <div class="register-form-cell-widget-25 controls">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 性别:
+    </div>
+    <div class="register-form-cell-widget-25 controls">
 		<span class="sui-dropdown dropdown-bordered select3">
 			<span class="dropdown-inner">
-				<a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+				<a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat input-xfat1 dropdown-toggle">
                     <input id="sex" name="sex" type="hidden" data-rules="required" value="">
-                     <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                    <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
                     <span id="sexSpan">请选择</span>
                 </a>
 				<ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu3" style="height:80px;">
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">男</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">女</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">保密</a></li>
-                </ul> </span>
+                </ul>
+            <label class="yz-error"></label>
+            </span>
 		</span>
-                </div>
-            </div>
-            <div class="clear"></div>
+    </div>
+</div>
+<div class="clear"></div>
 
-            <div class="register-form-cell">
+<div class="register-form-cell">
 
 
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 出生日期:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="date" id="birthday" name="birthday" class="ad-widget167 input-xfat input-date" data-rules="required|date" data-error-msg="出生日期格式错误" data-empty-msg="出生日期不能为空" data-toggle="datepicker">
-                </div>
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 出生日期:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="date" id="birthday" name="birthday" class="ad-widget167 input-xfat input-xfat1 input-date" data-rules="required|date" data-error-msg="出生日期格式错误" data-empty-msg="出生日期不能为空" data-toggle="datepicker">
+        <br/><label class="yz-error"></label>
+    </div>
 
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 行业:
-                </div>
-                <div class="register-form-cell-widget-25 controls">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 行业:
+    </div>
+    <div class="register-form-cell-widget-25 controls">
 		<span class="sui-dropdown dropdown-bordered select4">
 			<span class="dropdown-inner">
-				<a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle">
+				<a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat input-xfat1 dropdown-toggle">
                     <input id="industry" value="" name="industry" type="hidden" data-rules="required" data-empty-msg="请选择行业">
-                     <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
+                    <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
                     <span id="industrySpan">请选择</span>
                 </a>
 				<ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu4">
@@ -431,160 +398,171 @@
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="能源/原材料">能源/原材料</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="政府/非盈利机构">政府/非盈利机构</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="其他">其他</a></li>
-                </ul> </span>
+                </ul>
+            <label class="yz-error"></label>
+            </span>
 		</span>
-                </div>
-
-
-            </div>
-            <div class="clear"></div>
-
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span> 身份证号:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="idcard" name="idcard" class="ad-widget167 input-xfat" onkeyup="value=value.replace(/\s/g,'')" maxlength="18" data-rules="required|idcard|maxlength=18" data-empty-msg="身份证不能为空">
-                </div>
-
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span>
-                    邮箱:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="email" name="email" class="ad-widget167 input-xfat" maxlength="30" data-rules="required|email|maxlength=30" data-error-msg="邮箱格式错误" data-empty-msg="邮箱不能为空">
-                </div>
-            </div>
-            <div class="clear"></div>
-
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span>
-                    地址:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <div id="city" class="city controls"><span class="sui-dropdown dropdown-bordered select5"><span class="dropdown-inner"><a role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle  input-xfat"><input value="" id="provinceid" undefined="" type="hidden"> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i><span id="provinceid-s">省份</span></a><ul role="menu" aria-labelledby="drop4" class="sui-dropdown-menu sui-dropdown-menu5"><li role="presentation"><a role="menuitem" tabindex="-1" value="">全部</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="110000">北京市</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="120000">天津市</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="130000">河北省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="140000">山西省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="150000">内蒙古自治区</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="210000">辽宁省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="220000">吉林省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="230000">黑龙江省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="310000">上海市</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="320000">江苏省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="330000">浙江省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="340000">安徽省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="350000">福建省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="360000">江西省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="370000">山东省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="410000">河南省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="420000">湖北省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="430000">湖南省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="440000">广东省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="450000">广西壮族自治区</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="460000">海南省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="500000">重庆市</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="510000">四川省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="520000">贵州省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="530000">云南省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="540000">西藏自治区</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="610000">陕西省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="620000">甘肃省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="630000">青海省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="640000">宁夏回族自治区</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="650000">新疆维吾尔自治区</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="710000">台湾省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="810000">香港特别行政区</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="820000">澳门特别行政区</a></li></ul></span></span><span class="sui-dropdown js-ad-adCitySubSelect dropdown-bordered select6"><span class="dropdown-inner"><a role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle  input-xfat"><input value="" id="cityid" data-rules="required" data-empty-msg="请选择" type="hidden"> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i><span id="cityid-s">城市</span></a><ul role="menu" aria-labelledby="drop4" class="sui-dropdown-menu sui-dropdown-menu6"><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">全部</a></li></ul></span></span></div>
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="address" name="address" placeholder="除省市外的详细地址" data-rules="required|maxlength=30" data-empty-msg="详细地址不能为空" class="ad-widget335 input-xfat">
-                </div>
-            </div>
-            <div class="clear"></div>
-
-            <div class="register-form-cell">
-
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span>
-                    开户行:
-                </div>
-                <div class="register-form-cell-widget-25 controls">
-    	<span class="sui-dropdown dropdown-bordered select7" id="bankSelect">
-    	<span class="dropdown-inner"><a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle"><input id="bankid" value="" name="bankid" data-rules="required" data-empty-msg="请选择开户行" type="hidden"> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i><span id="bankName">请选择开户行</span></a><ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu7"><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10001">中国工商银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10002">中国农业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10003">中国银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10004">中国建设银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10005">平安银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10006">交通银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10007">中信银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10008">兴业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10009">光大银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10010">中国民生银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10011">中国邮政储蓄银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10012">华夏银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10013">招商银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10014">广发银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10015">上海浦东发展银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10016">汇丰银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10017">渣打银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10018">农商银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10019">济宁银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10020">齐鲁银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10021">农村信用合作联社</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10022">东营银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10023">东莞银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10024">莱商银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10025">东亚银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10026">华润银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10027">重庆银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10028">桂林银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10029">北部湾银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10030">泰安银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10031">民泰商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10032">上海银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10033">圣泰农业合作银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10034">紫金农商银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10035">贵阳银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10036">莱芜珠江村镇银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10037">广州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10038">重庆北碚稠州村镇银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10039">宁夏银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10040">长沙银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10041">临商银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10042">广州市商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10043">烟台银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10044">贵州银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10045">长沙银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10046">东源泰业村镇银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10047">杭州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10048">东营银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10049">长沙银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10050">贵州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10051">农村信用合作联社</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10053">江苏银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10054">枣庄银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10055">青岛银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10056">威海银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10057">南充市商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10058">赣州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10059">华兴银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10060">德州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10061">柳州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10062">浙商银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10063">成都银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10064">兰州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10065">北京银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10066">大连银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10067">乌鲁木齐银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10068">深圳农村商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10069">宁波银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10070">浙江稠州商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10071">昆仑银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10072">德阳银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10073">宜宾市商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10074">哈尔滨银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10075">锦州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10076">韩亚银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10077">盛京银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10078">温州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10079">台州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10080">恒丰银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10081">农村银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10082">广东南粤银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10083">新疆天山农村商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10084">新疆昌吉农村商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10085">新疆汇和银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10086">威海市商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10087">丹东银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10088">重庆三峡银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10089">江西银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10090">赣州银座村镇银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10091">微商银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10092">其他银行</a></li></ul></span></span>
-                </div>
-
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span>
-                    开户名:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="acountname" name="acountname" data-rules="required|minlength=2|maxlength=20|acountname" data-empty-msg="开户名不能为空" class="ad-widget167 input-xfat">
-                </div>
-
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span>
-                    银行账号:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="text" id="bankNumber" name="bankNumber" onkeyup="value=value.replace(/\s/g,'')" maxlength="25" data-rules="required|number|minlength=6|maxlength=25" data-empty-msg="银行账户不能为空" class="ad-widget167 input-xfat">
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span>
-                    二级密码:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="password" id="password2" name="password2" maxlength="6" title="二级密码" class="ad-widget167 input-xfat" data-rules="required|minlength=6|maxlength=6|number" data-empty-msg="二级密码不能为空">
-                </div>
-
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span>
-                    确认密码:
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <input type="password" id="pwd" name="pwd" maxlength="6" class="ad-widget167 input-xfat" data-rules="required|match=password2" data-error-msg="密码不一致" data-empty-msg="确认密码不能为空">
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="register-boxTitle">
-                证件资料
-            </div>
-            <div class="register-form-cell">
-                <div class="register-form-cell-7">
-                    <span class="ad-red">*</span>
-                    法人身份证:<br>(彩色)
-                </div>
-                <div class="register-form-cell-widget-25">
-                    <div id="idcardPicDiv" class="idcardPicTips">
-                        <script type="text/javascript" src="./js/uploadPreview.js"></script>
-                        <style>
-                            .xg-input{
-                                cursor: pointer;
-                                display: block;
-                                width: 160px !important;
-                                height: 160px !important;
-                                background: red;
-                                position: absolute;
-                                left: 0;
-                                top: 0;
-                                opacity: 0;
-                            }
-                            .xg-img{
-                                cursor: pointer;
-                                width: 160px;
-                                height: 160px;
-                                position: absolute;
-                                left: 0;
-                                top: 0;
-                            }
-                            .idcardPicTips{
-                                position: relative;
-                                width:160px;
-                                height: 160px;
-                            }
-                            li{
-                            list-style: none;
-                            }
-                        </style>
-                        <ul id="warp">
-                            <li>
-                                <img id="imgShow_WU_FILE_0" width="100" height="100" class="xg-img" src="./images/sc.png"/><br/>
-                                <input type="file" id="up_img_WU_FILE_0" class="xg-input"/>
-                            </li>
-                        </ul>
-                    <div id="idcardPicTips" class="sui-msg msg-error" style="display: none;">
-                        <div class="msg-con">
-                            <span>请上传法人身份证</span>
-                        </div>   <i class="msg-icon"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <!-- <div class="register-form-cell">
-            <div class="register-form-cell-text">提示：</div>
-            <div class="register-form-cell-text">1.身份证上传请上传手持人身份证照片。</div>
-            </div> -->
-            <div>
-                <br>
-                <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="上一步" id="lastReg2">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="fu_submit sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="下一步" id="nextReg2">
-            </div></div></form>
     </div>
+
+
+</div>
+<div class="clear"></div>
+
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span> 身份证号:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="idcard" name="idcard" class="ad-widget167 input-xfat input-xfat1" onkeyup="value=value.replace(/\s/g,'')" maxlength="18" data-rules="required|idcard|maxlength=18" data-empty-msg="身份证不能为空">
+        <br/><label class="yz-error"></label>
+    </div>
+
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span>
+        邮箱:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="email" name="mail" class="ad-widget167 input-xfat input-xfat1" maxlength="30" data-rules="required|email|maxlength=30" data-error-msg="邮箱格式错误" data-empty-msg="邮箱不能为空">
+        <br/><label class="yz-error"></label>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span>
+        地址:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <div id="city" class="city controls"><span class="sui-dropdown dropdown-bordered select5"><span class="dropdown-inner"><a role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle  input-xfat input-xfat1"><input value="" id="provinceid" undefined="" type="hidden"> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i><span id="provinceid-s">省份</span></a><ul role="menu" aria-labelledby="drop4" class="sui-dropdown-menu sui-dropdown-menu5"><li role="presentation"><a role="menuitem" tabindex="-1" value="">全部</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="110000">北京市</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="120000">天津市</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="130000">河北省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="140000">山西省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="150000">内蒙古自治区</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="210000">辽宁省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="220000">吉林省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="230000">黑龙江省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="310000">上海市</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="320000">江苏省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="330000">浙江省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="340000">安徽省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="350000">福建省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="360000">江西省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="370000">山东省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="410000">河南省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="420000">湖北省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="430000">湖南省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="440000">广东省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="450000">广西壮族自治区</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="460000">海南省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="500000">重庆市</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="510000">四川省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="520000">贵州省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="530000">云南省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="540000">西藏自治区</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="610000">陕西省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="620000">甘肃省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="630000">青海省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="640000">宁夏回族自治区</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="650000">新疆维吾尔自治区</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="710000">台湾省</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="810000">香港特别行政区</a></li><li role="presentation"><a role="menuitem" tabindex="-1" value="820000">澳门特别行政区</a></li></ul></span></span><span class="sui-dropdown js-ad-adCitySubSelect dropdown-bordered select6"><span class="dropdown-inner"><a role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle  input-xfat"><input value="" id="cityid" data-rules="required" data-empty-msg="请选择" type="hidden"> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i><span id="cityid-s">城市</span></a><ul role="menu" aria-labelledby="drop4" class="sui-dropdown-menu sui-dropdown-menu6"><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">全部</a></li></ul></span></span></div>
+        <label class="yz-error"></label>
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="address" name="address" placeholder="除省市外的详细地址" data-rules="required|maxlength=30" data-empty-msg="详细地址不能为空" class="ad-widget335 input-xfat input-xfat1">
+        <br/><label class="yz-error"></label>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div class="register-form-cell">
+
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span>
+        开户行:
+    </div>
+    <div class="register-form-cell-widget-25 controls">
+    	<span class="sui-dropdown dropdown-bordered select7" id="bankSelect">
+    	<span class="dropdown-inner"><a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat input-xfat1 dropdown-toggle"><input id="bankid" value="" name="bankid" data-rules="required" data-empty-msg="请选择开户行" type="hidden"> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i><span id="bankName">请选择开户行</span></a><ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu7"><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10001">中国工商银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10002">中国农业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10003">中国银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10004">中国建设银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10005">平安银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10006">交通银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10007">中信银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10008">兴业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10009">光大银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10010">中国民生银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10011">中国邮政储蓄银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10012">华夏银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10013">招商银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10014">广发银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10015">上海浦东发展银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10016">汇丰银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10017">渣打银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10018">农商银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10019">济宁银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10020">齐鲁银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10021">农村信用合作联社</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10022">东营银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10023">东莞银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10024">莱商银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10025">东亚银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10026">华润银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10027">重庆银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10028">桂林银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10029">北部湾银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10030">泰安银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10031">民泰商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10032">上海银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10033">圣泰农业合作银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10034">紫金农商银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10035">贵阳银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10036">莱芜珠江村镇银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10037">广州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10038">重庆北碚稠州村镇银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10039">宁夏银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10040">长沙银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10041">临商银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10042">广州市商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10043">烟台银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10044">贵州银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10045">长沙银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10046">东源泰业村镇银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10047">杭州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10048">东营银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10049">长沙银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10050">贵州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10051">农村信用合作联社</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10053">江苏银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10054">枣庄银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10055">青岛银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10056">威海银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10057">南充市商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10058">赣州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10059">华兴银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10060">德州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10061">柳州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10062">浙商银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10063">成都银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10064">兰州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10065">北京银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10066">大连银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10067">乌鲁木齐银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10068">深圳农村商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10069">宁波银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10070">浙江稠州商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10071">昆仑银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10072">德阳银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10073">宜宾市商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10074">哈尔滨银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10075">锦州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10076">韩亚银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10077">盛京银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10078">温州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10079">台州银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10080">恒丰银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10081">农村银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10082">广东南粤银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10083">新疆天山农村商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10084">新疆昌吉农村商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10085">新疆汇和银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10086">威海市商业银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10087">丹东银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10088">重庆三峡银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10089">江西银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10090">赣州银座村镇银行</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10091">微商银行股份有限公司</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="10092">其他银行</a></li></ul>
+        <label class="yz-error"></label>
+        </span></span>
+    </div>
+
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span>
+        开户名:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="acountname" name="acountname" data-rules="required|minlength=2|maxlength=20|acountname" data-empty-msg="开户名不能为空" class="ad-widget167 input-xfat input-xfat1">
+        <br/><label class="yz-error"></label>
+    </div>
+
+</div>
+<div class="clear"></div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span>
+        银行账号:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="text" id="bankNumber" name="bankNumber"  maxlength="25" data-rules="required|number|minlength=6|maxlength=25" data-empty-msg="银行账户不能为空" class="ad-widget167 input-xfat input-xfat1">
+        <br/><label class="yz-error"></label>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span>
+        二级密码:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="password" id="password2" name="password2" maxlength="6" title="二级密码" class="ad-widget167 input-xfat input-xfat1" data-rules="required|minlength=6|maxlength=6|number" data-empty-msg="二级密码不能为空">
+        <br/><label class="yz-error"></label>
+    </div>
+
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span>
+        确认密码:
+    </div>
+    <div class="register-form-cell-widget-25">
+        <input type="password" id="pwd" name="pwd" maxlength="6" class="ad-widget167 input-xfat input-xfat1" data-rules="required|match=password2" data-error-msg="密码不一致" data-empty-msg="确认密码不能为空">
+        <br/><label class="yz-error"></label>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="register-boxTitle">
+    证件资料
+</div>
+<div class="register-form-cell">
+    <div class="register-form-cell-7">
+        <span class="ad-red">*</span>
+        法人身份证:<br>(彩色)
+    </div>
+    <div class="register-form-cell-widget-25">
+        <div id="idcardPicDiv" class="idcardPicTips">
+            <script type="text/javascript" src="./js/uploadPreview.js"></script>
+            <style>
+                .xg-input{
+                    cursor: pointer;
+                    display: block;
+                    width: 160px !important;
+                    height: 160px !important;
+                    background: red;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    opacity: 0;
+                }
+                .xg-img{
+                    cursor: pointer;
+                    width: 160px;
+                    height: 160px;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+                .idcardPicTips{
+                    position: relative;
+                    width:160px;
+                    height: 160px;
+                }
+                li{
+                    list-style: none;
+                }
+            </style>
+            <ul id="warp">
+                <li style="background: url(./images/sc.png);width: 161px;height:161px;" >
+                    <img id="imgShow_WU_FILE_0" width="100" height="100" class="xg-img" src=""/><br/>
+                    <input type="file" id="up_img_WU_FILE_0" class="xg-input"/>
+                </li>
+            </ul>
+            <div id="idcardPicTips" class="sui-msg msg-error" style="display: none;">
+                <div class="msg-con">
+                    <span>请上传法人身份证</span>
+                </div>   <i class="msg-icon"></i>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <!-- <div class="register-form-cell">
+    <div class="register-form-cell-text">提示：</div>
+    <div class="register-form-cell-text">1.身份证上传请上传手持人身份证照片。</div>
+    </div> -->
+    <div>
+        <br>
+        <input class="sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="上一步" id="lastReg2">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input class="fu_submit sui-btn ad-register-stp-btn ad-none-btn" type="submit" value="下一步" id="nextReg2">
+    </div></div></form>
 </div>
 <div id="ad-content" class="ad-register ad-register3">
     <form id="content" onsubmit="return false;" class="register-centent sui-form form-horizontal sui-validate relative" novalidate="novalidate"><div class="register-nav" id="step3">
@@ -644,21 +622,11 @@
     <p>Copyright&copy;2015-2020 深圳前海中盛一点科技有限公司版权所有 <a href="http://www.miitbeian.gov.cn/">粤ICP备15082614号-2</a></p>
 </div>
 </body>
-<script type="text/javascript" src="./js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/fuwu-js.js"></script>
 <Script type="text/javascript">
     $(function(){
-//        下一步
-        $("#nextReg1").click(function(){
-            $(".ad-register1").css({"display":"none"});
-            $(".ad-register3").css({"display":"none"});
-            $(".ad-register2").css({"display":"block"})
-        });
-        $("#nextReg2").click(function(){
-            $(".ad-register1").css({"display":"none"});
-            $(".ad-register2").css({"display":"none"});
-            $(".ad-register3").css({"display":"block"})
-        });
+
 //        上一步
         $("#lastReg2").click(function(){
             $(".ad-register2").css({"display":"none"});
@@ -681,10 +649,6 @@
         $('.dropdown-inner').mouseleave(function(){
             $(".select1").removeClass("open");
         });
-
-
-
-
         $(".dropdown-toggle").eq(2).click(function(){
 
             $(".select2").toggleClass("open");
@@ -703,7 +667,7 @@
 
 
 
-        $(".dropdown-toggle").eq(3).click(function(){
+        $(".dropdown-toggle").eq(0).click(function(){
 
             $(".select3").toggleClass("open");
         });
@@ -721,7 +685,7 @@
 
 
 
-        $(".dropdown-toggle").eq(4).click(function(){
+        $(".dropdown-toggle").eq(1).click(function(){
 
             $(".select4").toggleClass("open");
         });
@@ -737,10 +701,7 @@
             $(".select4").removeClass("open");
         });
 
-
-
-
-        $(".dropdown-toggle").eq(5).click(function(){
+        $(".dropdown-toggle").eq(2).click(function(){
 
             $(".select5").toggleClass("open");
         });
@@ -758,7 +719,7 @@
 
 
 
-        $(".dropdown-toggle").eq(6).click(function(){
+        $(".dropdown-toggle").eq(3).click(function(){
 
             $(".select6").toggleClass("open");
         });
@@ -775,7 +736,7 @@
         });
 
 
-                $(".dropdown-toggle").eq(7).click(function(){
+                $(".dropdown-toggle").eq(4).click(function(){
 
             $(".select7").toggleClass("open");
         });

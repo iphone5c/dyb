@@ -22,7 +22,11 @@ public enum AccountType {
     /**
      * 服务商
      */
-    服务商;
+    服务商,
+    /**
+     * 业务员
+     */
+    业务员;
 
     public static AccountType getAccountTypeByName(String name){
         AccountType result = null;

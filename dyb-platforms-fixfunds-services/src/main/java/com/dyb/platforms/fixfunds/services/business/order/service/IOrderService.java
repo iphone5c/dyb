@@ -2,6 +2,7 @@ package com.dyb.platforms.fixfunds.services.business.order.service;
 
 
 import com.dyb.platforms.fixfunds.services.business.order.entity.Order;
+import com.dyb.platforms.fixfunds.services.business.order.entity.em.OrderStatus;
 import com.dyb.platforms.fixfunds.services.business.orderitem.entity.OrderItem;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
@@ -54,5 +55,27 @@ public interface IOrderService {
      * @return
      */
     public List<Order> getOrderByMerchantAccount(String merchantAccount,Date min,Date max);
+
+    /**
+     * 操作指定订单状态
+     * @param orderCode 订单code
+     * @param orderStatus 用户状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean operationOrderStatus(String orderCode,OrderStatus orderStatus);
+
+    /**
+     * 审核通过订单
+     * @param orderCode 订单编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean approvedOrder(String orderCode);
+
+    /**
+     * 撤销订单
+     * @param orderCode 订单编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean cancelOrder(String orderCode);
 
 }

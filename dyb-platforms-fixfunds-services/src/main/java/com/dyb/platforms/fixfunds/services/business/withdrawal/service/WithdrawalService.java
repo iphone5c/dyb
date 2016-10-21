@@ -26,7 +26,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2016/2/23.
@@ -206,6 +205,77 @@ public class WithdrawalService extends BaseService implements IWithdrawalService
         withdrawal.setApplyStatus(ApplyStatus.未审核);
         int info=withdrawalDao.insertObject(withdrawal);
         return info>0?withdrawal:null;
+    }
+
+    /**
+     * 操作指定回购状态
+     * @param withdrawalCode 回购code
+     * @param applyStatus 申请状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean operationWithdrawalStatus(String withdrawalCode, ApplyStatus applyStatus) {
+        if (DybUtils.isEmptyOrNull(withdrawalCode))
+            throw new DybRuntimeException("操作指定回购状态时，code不能为空或null");
+        if (applyStatus==null)
+            throw new DybRuntimeException("操作指定回购状态时，修改的申请状态不能为空");
+        Withdrawal withdrawal=withdrawalDao.getObject(withdrawalCode,true);
+        if (withdrawal==null)
+            throw new DybRuntimeException("操作指定回购状态时，找不到此回购信息，code："+withdrawal);
+        withdrawal.setApplyStatus(applyStatus);
+        int info=withdrawalDao.updateObject(withdrawal);
+        return info>0?true:false;
+    }
+
+    /**
+     * 审核通过回购
+     * @param withdrawalCode 回购编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean approvedWithdrawal(String withdrawalCode) {
+        if (DybUtils.isEmptyOrNull(withdrawalCode))
+            throw new DybRuntimeException("审核通过回购时，code不能为空或null");
+        Withdrawal withdrawal=withdrawalDao.getObject(withdrawalCode,true);
+        if (withdrawal==null)
+            throw new DybRuntimeException("没有找到此回购订单信息");
+        MessengerBean messengerBean=messengerBeanService.getMessengerBeanByAccountCodeAndMessengerType(withdrawal.getWithdrawalAccount(),withdrawal.getWithdrawalType());
+        if (messengerBean==null)
+            throw new DybRuntimeException("沒有找到此信使豆类型");
+        //冻结的信使豆
+        Double fBean=messengerBean.getFreeze();
+        messengerBean.setFreeze(fBean-withdrawal.getApplyWithdrawalNum());
+        MessengerBean updateMessengerBean=messengerBeanService.updateMessengerBean(messengerBean);
+        if (updateMessengerBean==null)
+            throw new DybRuntimeException("账户信使豆处理失败");
+        return this.operationWithdrawalStatus(withdrawalCode,ApplyStatus.审批通过);
+    }
+
+    /**
+     * 审核不通过
+     * @param withdrawalCode 回购编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean cancelWithdrawal(String withdrawalCode) {
+        if (DybUtils.isEmptyOrNull(withdrawalCode))
+            throw new DybRuntimeException("审核不通过回购时，code不能为空或null");
+        Withdrawal withdrawal=withdrawalDao.getObject(withdrawalCode,true);
+        if (withdrawal==null)
+            throw new DybRuntimeException("没有找到此回购订单信息");
+        MessengerBean messengerBean=messengerBeanService.getMessengerBeanByAccountCodeAndMessengerType(withdrawal.getWithdrawalAccount(),withdrawal.getWithdrawalType());
+        if (messengerBean==null)
+            throw new DybRuntimeException("沒有找到此信使豆类型");
+        //可用余额
+        Double mBean=messengerBean.getMessengerBean();
+        //冻结的信使豆
+        Double fBean=messengerBean.getFreeze();
+        messengerBean.setMessengerBean(mBean+withdrawal.getApplyWithdrawalNum());
+        messengerBean.setFreeze(fBean-withdrawal.getApplyWithdrawalNum());
+        MessengerBean updateMessengerBean=messengerBeanService.updateMessengerBean(messengerBean);
+        if (updateMessengerBean==null)
+            throw new DybRuntimeException("账户信使豆处理失败");
+        return this.operationWithdrawalStatus(withdrawalCode,ApplyStatus.审批不通过);
     }
 
 }

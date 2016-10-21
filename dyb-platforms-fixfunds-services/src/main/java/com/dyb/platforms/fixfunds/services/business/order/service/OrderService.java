@@ -140,4 +140,48 @@ public class OrderService extends BaseService implements IOrderService {
         return orderDao.queryList(queryParams,0,-1,true);
     }
 
+    /**
+     * 操作指定订单状态
+     * @param orderCode 订单code
+     * @param orderStatus 用户状态
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean operationOrderStatus(String orderCode, OrderStatus orderStatus) {
+        if (DybUtils.isEmptyOrNull(orderCode))
+            throw new DybRuntimeException("操作指定订单状态时，code不能为空或null");
+        if (orderStatus==null)
+            throw new DybRuntimeException("操作指定订单状态时，修改的订单状态不能为空");
+        Order order=orderDao.getObject(orderCode,true);
+        if (order==null)
+            throw new DybRuntimeException("操作指定订单状态时，找不到此订单信息，code："+order);
+        order.setStatus(orderStatus);
+        int info=orderDao.updateObject(order);
+        return info>0?true:false;
+    }
+
+    /**
+     * 审核通过订单
+     * @param orderCode 订单编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean approvedOrder(String orderCode) {
+        if (DybUtils.isEmptyOrNull(orderCode))
+            throw new DybRuntimeException("审核通过订单时，code不能为空或null");
+        return this.operationOrderStatus(orderCode,OrderStatus.待提交资料);
+    }
+
+    /**
+     * 撤销订单
+     * @param orderCode 订单编号
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean cancelOrder(String orderCode) {
+        if (DybUtils.isEmptyOrNull(orderCode))
+            throw new DybRuntimeException("撤销订单时，code不能为空或null");
+        return this.operationOrderStatus(orderCode,OrderStatus.已撤销);
+    }
+
 }

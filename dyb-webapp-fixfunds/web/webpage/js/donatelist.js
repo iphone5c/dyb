@@ -3,7 +3,7 @@ function getdonatelist(pageIndex){
 //    var pageArray=[];
     var param={
         pageIndex:pageIndex,
-        pageSize:1
+        pageSize:5
     }
     var data = invokeService('/web/merchant/donation/getDonationPageList',param);
 //    console.log(data)

@@ -53,13 +53,16 @@ $(function(){
     })
 
 
+
+})
 //    我要推荐   推荐记录表
-    var a =0;
+
+function getdonatelist(pageIndex){
     var param={
 //        当前页
-        pageIndex:a,
+        pageIndex:pageIndex,
 //        请求数据条数
-        pageSize:5
+        pageSize:1
     };
     var result=invokeService('/web/merchant/recommend/getRecommendRecordPageList',param);
 
@@ -67,9 +70,8 @@ $(function(){
         alert(result.errorMessage);
         return;
     };
-//    console.log(result);
-    $("#xg_page").text("共 " +result.result.pageCount+ " 页");
-    $("#onpage").text("第 " +(a+1)+ " 页");
+    var pageCount=result.result.pageCount;
+    $("#table1>table>tbody").html("");
     for(var i =0;i<result.result.list.length;i++){
         $("#table1>table>tbody").html($("#table1>table>tbody").html()+
                 "<tr>"+
@@ -92,107 +94,42 @@ $(function(){
                 result.result.list[i].email+
                 "</td>"+
                 "</tr>"
-        )}
-
-//    下一页
-    $("#nextBtn").click(function(){
-        a++;
-        var param={
-            // 当前页
-            pageIndex:a,
-            //每页显示条数
-            pageSize:5
-        };
-        var result = invokeService('/web/merchant/recommend/getRecommendRecordPageList',param);
-        if(result.statusCode!=1000){
-            alert(result.errorMessage)
+        )
+    }
+    return pageCount;
+}
+$(function() {
+    var pageIndex = 0;
+    var pageCount = getdonatelist(pageIndex);
+    page("excit", pageCount, pageIndex);
+    // 下一頁
+    $("#excit").on("click", "#nextBtn", function () {
+        if (pageIndex + 1 >= pageCount) {
             return;
         }
-        if(a<result.result.pageCount){
-            $("#onpage").text("第 " +(a+1)+ " 页");
-            $("#table1>table>tbody").html("");
-            for(var i =0;i<result.result.list.length;i++){
-                $("#table1>table>tbody").html($("#table1>table>tbody").html()+
-                        "<tr>"+
-                        "<td>"+
-                        result.result.list[i].realName+
-                        "</td>"+
-                        "<td>" +
-                        result.result.list[i].account.accountPhone+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].address+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].industry+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].account.createTime+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].email+
-                        "</td>"+
-                        "</tr>"
-                )}
-        }
-        else{
-            a=result.result.pageCount;
-            a--;
-        }
-    });
-//				//		上一页
-    $("#prevBtn").click(function(){
-        a--;
-        if(a<0){
-            a=0;
-        }
-        var param={
-            // 当前页
-            pageIndex:a,
-            //每页显示条数
-            pageSize:5
-        };
-        var result = invokeService('/web/merchant/recommend/getRecommendRecordPageList',param);
-        if(result.statusCode!=1000){
-            alert(result.errorMessage)
+        pageIndex++;
+        getdonatelist(pageIndex);
+        page("excit", pageCount, pageIndex);
+    })
+    // 上一頁
+    $("#excit").on("click", "#prevBtn", function () {
+        if (pageIndex == 0) {
             return;
         }
-        if(a>=0){
-            $("#onpage").text("第 " +(a+1)+ " 页");
-            $("#table1>table>tbody").html("");
-            for(var i =0;i<result.result.list.length;i++){
-                $("#table1>table>tbody").html($("#table1>table>tbody").html()+
-                        "<tr>"+
-                        "<td>"+
-                        result.result.list[i].realName+
-                        "</td>"+
-                        "<td>" +
-                        result.result.list[i].account.accountPhone+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].address+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].industry+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].account.createTime+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].email+
-                        "</td>"+
-                        "</tr>"
-                )}
-        }
-        else{
-
+        pageIndex--;
+        getdonatelist(pageIndex);
+        page("excit", pageCount, pageIndex);
+    })
+    // 點擊調頁
+    $("#excit").on("click", "#selectPage", function () {
+        var valIndex = $("#selectPageNum").val() - 1;
+        if (valIndex >= 0 && valIndex + 1 <= pageCount) {
+            pageIndex = valIndex;
+            getdonatelist(pageIndex);
+            page("excit", pageCount, pageIndex);
+        } else {
+            $("#selectPageNum").val("");
+            return;
         }
     })
-
-
-
-
-
-
-
 })

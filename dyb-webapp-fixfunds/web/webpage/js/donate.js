@@ -22,19 +22,18 @@ $(function(){
 //    获取银行信息
     var param={};
     var result=invokeService('/web/commons/getFoundation',param);
-
     $("#bankName").text(result.result.bankName);
     $("#bankNum").text(result.result.bankNum);
 //    获取信使豆类型
     var param={};
-    var result=invokeService('/web/commons/getDonationType',param);
+    var result=invokeService('/web/merchant/messengerbean/getMessengerBeanTypeByCurrent',param);
     $("#0").text(result.result[0].value);
     $("#1").text(result.result[1].value);
 //提交捐赠豆和二级密码
     $("#submitForm").click(function(){
-        var donationType=$("#size_s").text()
-        var donationMessengerBean=$("#beannum").val()
-        var tradePassword=$("#password").val()
+        var donationType=$("#size_s").text();
+        var donationMessengerBean=$("#beannum").val();
+        var tradePassword=$("#password").val();
         var param={
             donationMessengerBean:donationMessengerBean,
             donationType:donationType,
@@ -42,7 +41,7 @@ $(function(){
         };
         var result=invokeService('/web/commons/getDonationType',param);
         if(result.statusCode!=1000){
-            alert(result.errorMessage)
+            alert(result.errorMessage);
             return;
         }
         alert("捐赠成功")

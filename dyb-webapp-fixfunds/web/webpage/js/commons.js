@@ -183,3 +183,13 @@ function getData(){
     }
 }
 
+/**
+ * 判断是否为空
+ * @param info
+ */
+function empty(info){
+    if(info==''||info==undefined||info==null){
+        return true;
+    }
+    return false;
+}

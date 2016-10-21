@@ -7,6 +7,7 @@ import com.dyb.platforms.fixfunds.services.business.account.service.IAccountServ
 import com.dyb.platforms.fixfunds.services.business.withdrawal.entity.Withdrawal;
 import com.dyb.platforms.fixfunds.services.business.withdrawal.entity.em.ApplyStatus;
 import com.dyb.platforms.fixfunds.services.business.withdrawal.service.IWithdrawalService;
+import com.dyb.platforms.fixfunds.services.utils.DybUtils;
 import com.dyb.platforms.fixfunds.services.utils.core.PageList;
 import com.dyb.platforms.fixfunds.services.utils.core.QueryParams;
 import com.dyb.platforms.fixfunds.services.utils.core.controller.BaseController;
@@ -34,16 +35,20 @@ public class WithdrawalController extends BaseController {
     private IAccountService accountService;
 
     @RequestMapping(value = "/getWithdrawalApply")
-    public Object getWithdrawalApply(@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize){
+    public Object getWithdrawalApply(@RequestParam(required=false,defaultValue="0")int pageIndex,@RequestParam(required=false,defaultValue="20")int pageSize,String keyWord){
         log.info("获取回购申请列表");
         PageList<WithdrawalModel> orderModelPageList=new PageList<>();
         List<WithdrawalModel> withdrawalModelList=new ArrayList<>();
         QueryParams queryParams=new QueryParams();
         queryParams.addOrderBy("createTime", true);
         queryParams.addParameter("applyStatus", ApplyStatus.未审核);
+        if (!DybUtils.isEmptyOrNull(keyWord)){
+            queryParams.addMulAttrParameter("withdrawalCode","%"+keyWord+"%");
+            queryParams.addMulAttrParameter("withdrawalAccount","%"+keyWord+"%");
+        }
         PageList<Withdrawal> withdrawalPageList=withdrawalService.getWithdrawalPageList(queryParams, pageIndex, pageSize, true);
         for (Withdrawal withdrawal:withdrawalPageList.getList()){
-            Account account=accountService.getAccountByCode(withdrawal.getWithdrawalCode(),true);
+            Account account=accountService.getAccountByCode(withdrawal.getWithdrawalAccount(),true);
             if(account==null)
                 return validationResult(1001,"找不到此申请人信息");
             WithdrawalModel withdrawalModel=new WithdrawalModel();
@@ -64,5 +69,39 @@ public class WithdrawalController extends BaseController {
         orderModelPageList.setList(withdrawalModelList);
         return result(orderModelPageList);
     }
+
+    /**
+     * 审核通过回购申请
+     * @param withdrawalCode
+     * @return
+     */
+    @RequestMapping(value = "/approvedWithdrawal")
+    public Object approvedWithdrawal(String withdrawalCode){
+        log.info("审核通过回购申请");
+        if (DybUtils.isEmptyOrNull(withdrawalCode))
+            return validationResult(1001,"回购编号不能为空");
+        boolean flag=withdrawalService.approvedWithdrawal(withdrawalCode);
+        if (!flag)
+            return validationResult(1001,"审核失败");
+        return result("审核成功");
+    }
+
+    /**
+     * 审核不通过
+     * @param withdrawalCode
+     * @return
+     */
+    @RequestMapping(value = "/cancelWithdrawal")
+    public Object cancelWithdrawal(String withdrawalCode){
+        log.info("审核不通过回购申请");
+        if (DybUtils.isEmptyOrNull(withdrawalCode))
+            return validationResult(1001,"回购编号不能为空");
+        boolean flag=withdrawalService.cancelWithdrawal(withdrawalCode);
+        if (!flag)
+            return validationResult(1001,"审核失败");
+        return result("审核成功");
+    }
+
+
 
 }

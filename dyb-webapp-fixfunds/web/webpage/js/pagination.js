@@ -13,7 +13,6 @@ function page(pageId,pageCount,pageIndex){
                  "<button id='selectPage' class='page-confirm'>确定</button>页"+
                  "</span>"+
             "</div>"
-
     $("#"+pageId+"").append(paging);
     if(pageIndex+1 >= pageCount){
         $("#nextBtn").addClass("disabled");

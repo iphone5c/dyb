@@ -4,12 +4,15 @@
 
 
 $(function(){
+
+
+
     $("#Invoice-detail").show();
 
 //   获取转换类型
-    var param={}
-    var result=invokeService('/web/commons/getDonationType',param)
-    $("#converttype-v").text(result.result[1].value);
+    var param={};
+    var result=invokeService('/web/merchant/conversion/getConversionTypeByCurrent',param)
+    $("#converttype-v").text(result.result[0].value);
 
 
 //    转换类型
@@ -65,7 +68,7 @@ $(function(){
                 "</td>"+
                 "</tr>"
         )})
-//    $(arguments[0]).parent().parent().remove()
+//   删除发票条数
     deltr=function(obj)
     {
             $(arguments[0]).parent().parent().remove();

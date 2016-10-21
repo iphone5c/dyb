@@ -16,13 +16,11 @@ $(function(){
     $('.dropdown-inner').mouseleave(function(){
         $(".select1").removeClass("open");
     });
-
-
-
-    var a =0;
+})
+function getdonatelist(pageIndex){
     var param={
 //        当前页
-        pageIndex:a,
+        pageIndex:pageIndex,
 //        请求数据条数
         pageSize:5
     }
@@ -31,8 +29,8 @@ $(function(){
         alert(result.errorMessage);
         return;
     }
-    $("#xg_page").text("共 " +result.result.pageCount+ " 页");
-    $("#onpage").text("第 " +(a+1)+ " 页");
+    var pageCount=result.result.pageCount;
+    $("#table>table>tbody").html("");
     for(var i =0;i<result.result.list.length;i++){
         $("#table>table>tbody").html($("#table>table>tbody").html()+
                 "<tr>"+
@@ -50,89 +48,41 @@ $(function(){
                 "</td>"+
                 "</tr>"
         )
+        return pageCount;
     }
-//          下一页
-    $("#nextBtn").click(function(){
-        a++;
-        var param={
-            // 当前页
-            pageIndex:a,
-            //每页显示条数
-            pageSize:5
-        };
-        var result = invokeService('/web/merchant/transfer/getTransferGivingPageList',param);
-        if(result.statusCode!=1000){
-            alert(result.errorMessage);
+}
+$(function(){
+    var pageIndex=0;
+    var pageCount = getdonatelist(pageIndex);
+    page("excit",pageCount,pageIndex);
+    // 下一頁
+    $("#excit").on("click","#nextBtn",function(){
+        if(pageIndex+1 >= pageCount){
             return;
         }
-        if(a<result.result.pageCount){
-            $("#onpage").text("第 " +(a+1)+ " 页");
-            $("#table>table>tbody").html("");
-            for(var i =0;i<result.result.list.length;i++){
-                $("#table>table>tbody").html($("#table>table>tbody").html()+
-                        "<tr>"+
-                        "<td>"+
-                        result.result.list[i].transfer.transferTime+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].gainAccountName+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].transfer.gainAccount+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].transfer.messengerBean+
-                        "</td>"+
-                        "</tr>"
-                )
-            }
-        }
-        else{
-            a=result.result.pageCount;
-            a--;
-        }
-    });
-    //		上一页
-    $("#prevBtn").click(function(){
-        a--;
-        if(a<0){
-            a=0;
-        }
-        var param={
-            // 当前页
-            pageIndex:a,
-            //每页显示条数
-            pageSize:5
-        };
-        var result = invokeService('/web/merchant/transfer/getTransferGivingPageList',param);
-        if(result.statusCode!=1000){
-            alert(result.errorMessage)
+        pageIndex++;
+        getdonatelist(pageIndex);
+        page("excit",pageCount,pageIndex);
+    })
+    // 上一頁
+    $("#excit").on("click","#prevBtn",function(){
+        if(pageIndex == 0){
             return;
         }
-        if(a>=0){
-            $("#onpage").text("第 " +(a+1)+ " 页");
-            $("#table>table>tbody").html("");
-            for(var i =0;i<result.result.list.length;i++){
-                $("#table>table>tbody").html($("#table>table>tbody").html()+
-                        "<tr>"+
-                        "<td>"+
-                        result.result.list[i].transfer.transferTime+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].gainAccountName+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].transfer.gainAccount+
-                        "</td>"+
-                        "<td>"+
-                        result.result.list[i].transfer.messengerBean+
-                        "</td>"+
-                        "</tr>"
-                )
-            }
-        }
-        else{
-
+        pageIndex--;
+        getdonatelist(pageIndex);
+        page("excit",pageCount,pageIndex);
+    })
+    // 點擊調頁
+    $("#excit").on("click","#selectPage",function(){
+        var valIndex=$("#selectPageNum").val()-1;
+        if(valIndex >= 0 && valIndex+1 <= pageCount){
+            pageIndex=valIndex;
+            getdonatelist(pageIndex);
+            page("excit",pageCount,pageIndex);
+        }else{
+            $("#selectPageNum").val("");
+            return;
         }
     });
 })

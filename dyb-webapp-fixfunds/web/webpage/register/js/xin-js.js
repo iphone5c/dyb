@@ -1,7 +1,168 @@
 /**
  * Created by aaa on 2016/9/26.
  */
+
 $(function(){
+//        下一步
+//清除
+    var err=$(".yz-error");
+    $("#ad-content .input-xfat1").focus(function(){
+        var a = $("#ad-content .input-xfat1").index(this);
+        err.eq(a).text("")
+    })
+    $("#nextReg1").click(function () {
+//        用户名
+        var username = $("#username").val();
+        if(username==""){
+            err.eq(0).text("用户名不能为空")
+        }else if(username.length<2){
+            err.eq(0).text("用户名长度不能少于2")
+        }
+//      密码
+        var userpwd = $("#userpwd").val();
+        if(userpwd==""){
+            err.eq(1).text("密码不能为空")
+        }else if(userpwd.length<6){
+            err.eq(1).text("密码长度不能少于6")
+        }
+//        确认密码
+        var password = $("#password").val();
+        if(password==""){
+            err.eq(2).text("密码不能为空");
+            return false;
+        }else if(password.length<6){
+            err.eq(2).text("密码长度不能少于6");
+            return false;
+        }else if(password!=userpwd){
+            err.eq(2).text("两次密码不一致");
+            return false;
+        }
+//        手机号
+        var mobilenumber = $("#mobilenumber").val();
+        if(mobilenumber==""){
+            err.eq(3).text("手机号不能为空");
+            return false;
+        }
+        else if(!(/0?(13|14|15|18)[0-9]{9}/.test(mobilenumber))){
+            /0?(13|14|15|18)[0-9]{9}/
+           err.eq(3).text("手机格式不正确");
+           return false;
+       }
+//        图文验证码
+        var imgCode = $("#imgCode").val();
+        if(imgCode==""){
+            err.eq(4).text("图文验证不能为空");
+            return false;
+        }else if(imgCode.length<4){
+            err.eq(4).text("图文验证是长度是4");
+            return false;
+        }
+//        手机验证码
+        var verifyCode = $("#verifyCode").val();
+        if(verifyCode==""){
+            err.eq(5).text("验证码不能为空");
+            return false;
+        }
+//        协议书
+        if ($('#readProtocol').is(':checked') == false) {
+            $(".yz-error").eq(6).html("请选择!");
+            return false;
+        }
+        for (var i = 0; i < err.length; i++) {
+            if (err[i] == false) {
+                return false;
+            }
+        }
+        $(".ad-register1").css({"display": "none"});
+        $(".ad-register3").css({"display": "none"});
+        $(".ad-register2").css({"display": "block"})
+    });
+    $("#nextReg2").click(function () {
+       //真是姓名
+        var realname = $("#realname").val();
+        if(realname==""){
+            err.eq(7).text("真实姓名不能为空")
+            return false;
+        }
+//        性别
+        var sexSpan = $("#sexSpan").text();
+        if(sexSpan=="请选择"){
+            err.eq(8).text("请选择性别")
+            return false;
+        }
+//        出生日期
+        var birthday = $("#birthday").val();
+        if(birthday==""){
+            err.eq(9).text("出生日期不能为空")
+            return false;
+        }
+//      证件类型
+        var idcardtypeSpan = $("#idcardtypeSpan").text();
+        if(idcardtypeSpan=="请选择"){
+            err.eq(11).text("请选择证件")
+            return false;
+        }
+//        证件号码
+        var idcard = $("#idcard").val();
+        if(idcard==""){
+            err.eq(12).text("证件号码不能为空")
+            return false;
+        }
+//      行业
+        var industrySpan = $("#industrySpan").text();
+        if(idcardtypeSpan=="请选择"){
+            err.eq(13).text("请选择行业")
+            return false;
+        }
+//    邮箱
+        var email = $("#email").val();
+        var szReg=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+(\.[a-zA-Z]{2,3})+$/;
+        if(email==""){
+            err.eq(14).text("邮箱不能为空")
+            return false;
+        }else if(!szReg.test(email)){
+            err.eq(14).text("邮箱格式不正确")
+            return false;
+        }
+//        二级密码
+        var password2 = $("#password2").val();
+        if(password2==""){
+            err.eq(15).text("密码不能为空")
+            return false;
+        }else if(password2.length<6){
+            err.eq(15).text("密码长度不能少于6")
+            return false;
+        }
+//        二级密码确认
+        var pwd = $("#pwd").val();
+        if(pwd==""){
+            err.eq(16).text("密码不能为空");
+            return false;
+        }else if(pwd.length<6){
+            err.eq(16).text("密码长度不能少于6");
+            return false;
+        }else if(pwd!=password2){
+            err.eq(16).text("两次密码不一致");
+            return false;
+        }
+//        城市
+        if($("#provinceid-s").text()=="省份"||$("#provinceid-s").text()=="全部"||$("#cityid-s").text()=="城市"||$("#cityid-s").text()=="全部"){
+            err.eq(10).text("请选择城市");
+            return false;
+        }
+        for (var i = 0; i < err.length; i++) {
+            if (err[i] == false) {
+                return false;
+            }
+        }
+        xin_submit();
+    });
+//        上一步
+    $("#lastReg2").click(function () {
+        $(".ad-register2").css({"display": "none"});
+        $(".ad-register3").css({"display": "none"});
+        $(".ad-register1").css({"display": "block"})
+    });
     function getQueryString(referrer) {
         var reg = new RegExp("(^|&)" + referrer + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
@@ -16,7 +177,6 @@ $(function(){
         accountCode:getQueryString("referrer")
     };
     var data = invokeService('/web/commons/getAccountByCode',param);
-    console.log(data);
     if (data.statusCode!=1000){
         window.location.href='../publicModule/error404.html';
         return;
@@ -27,7 +187,7 @@ $(function(){
         return;
     }
 
-$(".xin_submit").click(function(){
+function xin_submit(){
         // 账户名
         var accountName=$("#username").val();
         // 账户密码
@@ -83,30 +243,13 @@ $(".xin_submit").click(function(){
      if (result.statusCode!=1000){
         alert(result.errorMessage);
             return;
+    }
+
+    $(".ad-register1").css({"display": "none"});
+    $(".ad-register2").css({"display": "none"});
+    $(".ad-register3").css({"display": "block"})
+
 }
-    console.log(result)
-    console.log(param)
-
-
-
-//    $.ajax({
-//        url:"http://192.168.0.113:8080/web/member/registerMemberAccount",
-//        type:"post",
-//        dataType: 'JSONP',
-//        jsonp: "callbackparam", //服务端用于接收callback调用的function名的参数
-//        jsonpCallback: "web", //callback的function名称,服务端会把名称和data一起传递回来
-//        data: {
-//
-//        },
-//        success: function (data) {
-//            console.log(data)
-//        }
-//    })
 })
 
 
-
-
-
-
-})

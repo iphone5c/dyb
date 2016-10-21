@@ -9,6 +9,8 @@
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
     <meta http-equiv="expires" content="0" />
     <title>一点公益</title>
+
+
     <link rel="stylesheet" href="./css/sui.min.css" />
     <link rel="stylesheet" href="./css/sui-append.min.css" />
     <link rel="stylesheet" href="./css/adAlert.css" />
@@ -20,6 +22,10 @@
     <style>
         .ad-register2,.ad-register3{
             display: none;
+        }
+        .yz-error{
+            color:red;
+            line-height: 30px;;
         }
     </style>
 </head>
@@ -185,7 +191,7 @@
                     <span class="ad-red">*</span> 服务商分类:
                 </div>
                 <div class="register-form-cell-widget controls">
-       <span class="sui-dropdown dropdown-bordered select1"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget110 input-xfat dropdown-toggle" style="width: 146px;"> <input id="ispersonal" value="" name="ispersonal" data-rules="required" data-empty-msg="请选择类别" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="ispersonalSapn">请选择类别</span></a> 
+       <span class="sui-dropdown dropdown-bordered select1"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget110 input-xfat dropdown-toggle" style="width: 146px;"> <input id="ispersonal" value="" name="ispersonal" data-rules="required" data-empty-msg="请选择类别" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="ispersonalSapn">请选择类别</span></a>
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu1">
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">企业服务商</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">个人服务商</a></li>
@@ -198,7 +204,7 @@
                     <span class="ad-red">*</span> 商户分类:
                 </div>
                 <div class="register-form-cell-widget controls">
-       <span class="sui-dropdown dropdown-bordered select2"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget110 input-xfat dropdown-toggle" style="width: 146px;"> <input id="merchantType" value="29" name="merchantType" data-rules="required" data-empty-msg="请选择类别" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="merchantTypeSapn">零售商</span></a> 
+       <span class="sui-dropdown dropdown-bordered select2"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget110 input-xfat dropdown-toggle" style="width: 146px;"> <input id="merchantType" value="29" name="merchantType" data-rules="required" data-empty-msg="请选择类别" type="hidden" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="merchantTypeSapn">零售商</span></a>
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu2">
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="29">零售商</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="28">贸易商</a></li>
@@ -212,7 +218,8 @@
                     <span class="ad-red">*</span> 用户名:
                 </div>
                 <div class="register-form-cell-widget">
-                    <input type="text" placeholder="请输入用户名" id="username" name="username" data-rules="required|minlength=2|maxlength=16|username" data-empty-msg="用户名不能为空" class="input-xfat" />
+                    <input type="text" placeholder="请输入用户名" id="username" name="username"  data-empty-msg="用户名不能为空" class="input-xfat input-xfat1" />
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="clear"></div>
@@ -221,7 +228,8 @@
                     <span class="ad-red">*</span> 密码:
                 </div>
                 <div class="register-form-cell-widget">
-                    <input type="password" placeholder="请输入6-16位密码" id="userpwd" name="userpwd" data-rules="required|minlength=6|maxlength=16" data-error-msg="密码必须是6-16位" data-empty-msg="密码不能为空" class="input-xfat" />
+                    <input type="password" placeholder="请输入6-16位密码" id="userpwd" name="userpwd" data-rules="required|minlength=6|maxlength=16" data-error-msg="密码必须是6-16位" data-empty-msg="密码不能为空" class="input-xfat input-xfat1" />
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="clear"></div>
@@ -230,7 +238,8 @@
                     <span class="ad-red">*</span> 再次输入密码:
                 </div>
                 <div class="register-form-cell-widget">
-                    <input type="password" placeholder="请再次输入密码" id="password" name="password" data-rules="required|match=userpwd" data-error-msg="密码不一致" data-empty-msg="密码不能为空" class="input-xfat" />
+                    <input type="password" placeholder="请再次输入密码" id="password" name="password" data-rules="required|match=userpwd" data-error-msg="密码不一致" data-empty-msg="密码不能为空" class="input-xfat input-xfat1" />
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="clear"></div>
@@ -239,18 +248,9 @@
                     <span class="ad-red">*</span> 手机号码:
                 </div>
                 <div class="register-form-cell-widget">
-                    <input type="text" placeholder="请输入手机号码" id="mobilenumber" maxlength="11" title="手机号码" name="mobilenumber" data-rules="required|mobile|maxlength=11" data-error-msg="手机格式有误" data-empty-msg="手机号码不能为空" class="input-xfat" />
-                    <div id="mobileError" class="sui-msg msg-error" style="display: none;">
-                        <div class="msg-con">
-                            <span id="mobileErrorTip"></span>
-                        </div>
-                        <i class="msg-icon"></i>
-                    </div>
-                    <!-- <div id="businesslicenceTips" class="sui-msg msg-error" style="display: none;">
-                                                   <div class="msg-con">
-                                                       <span>请上传营业执照</span>
-                                                   </div>   <i class="msg-icon"></i>
-                                               </div> -->
+                    <input type="text" placeholder="请输入手机号码" id="mobilenumber" class="input-xfat input-xfat1" />
+                    <br/><label class="yz-error"></label>
+
                 </div>
             </div>
             <div class="clear"></div>
@@ -259,8 +259,9 @@
                     <span class="ad-red">*</span> 图文验证码:
                 </div>
                 <div class="register-form-cell-widget">
-                    <input class="input-xfat ad-msg-ipt" placeholder="验证码" title="图文验证码" maxlength="4" type="text" id="imgCode" name="imgCode" data-rules="required|minlength=4|maxlength=4" data-empty-msg="图文验证码不能为空" />
+                    <input class="input-xfat input-xfat1 ad-msg-ipt" placeholder="验证码" title="图文验证码" maxlength="4" type="text" id="imgCode" name="imgCode" data-rules="required|minlength=4|maxlength=4" data-empty-msg="图文验证码不能为空" />
                     <img src="" id="CreateCheckCode" style="height:32px;" align="middle" class="check_code_img float_left" />
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="clear"></div>
@@ -268,20 +269,24 @@
                 <div class="register-form-cell-title">
                     <span class="ad-red">*</span> 验证码:
                 </div>
-                <div class="input-append register-form-cell-widget">
-                    <input id="verifyCode" placeholder="验证码" name="verifyCode" type="text" class="input-xfat ad-msg-ipt" maxlength="6" data-rules="required|prefill=mobilenumber|prefill=imgCode" data-empty-msg="手机验证码不能为空" />
+                <div class="register-form-cell-widget">
+                    <input id="verifyCode" placeholder="验证码" name="verifyCode" type="text" class="input-xfat input-xfat1 ad-msg-ipt" maxlength="6" data-rules="required|prefill=mobilenumber|prefill=imgCode" data-empty-msg="手机验证码不能为空" />
                     <button type="button" class="sui-btn ad-msg-btn" id="sendMsgBtn">获取验证码</button>
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
+            <div class="clear"></div>
             <div class="register-form-cell">
                 <div class="register-form-cell-title">
                     &nbsp;
                 </div>
                 <div class="register-form-cell-widget">
-                    <input type="checkbox" id="readProtocol" name="readProtocol" data-rules="required" />&nbsp;&nbsp;
+                    <input type="checkbox" id="readProtocol" name="readProtocol" data-rules="required" class="input-xfat1"/>&nbsp;&nbsp;
                     <label for="readProtocol">我已阅读并同意<a href="javascript:void(0);" id="protocol">《一点公益信使注册协议》</a></label>
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
+            <div class="clear"></div>
             <div class="register-form-cell">
                 <div class="register-form-cell-title">
                     &nbsp;
@@ -436,7 +441,7 @@
                 <input type="hidden" value="111111" id="username" name="username" />
                 <input type="hidden" value="96e79218965eb72c92a549dd5a330112" id="userpwd" name="userpwd" />
                 <input type="hidden" value="1" id="usertype" name="usertype" />
-                <input type="hidden" value="18308466997" id="mobilenumber" name="mobilenumber" />
+                <input type="hidden" value="18308466997" id="" name="mobilenumber" />
                 <input type="hidden" value="578658" id="referrer" name="referrer" />
                 <input type="hidden" value="15892345677" id="referrerphone" name="referrerphone" />
             </div>
@@ -448,18 +453,21 @@
                     <span class="ad-red">*</span> 真实姓名:
                 </div>
                 <div class="register-form-cell-widget-25">
-                    <input type="text" id="realname" name="realname" class="ad-widget167 input-xfat" data-rules="required|minlength=2|maxlength=16|realname" data-empty-msg="姓名不能为空" />
+                    <input type="text" id="realname" name="realname" class="ad-widget167 input-xfat input-xfat1" data-rules="required|minlength=2|maxlength=16|realname" data-empty-msg="姓名不能为空" />
+                    <br/><label class="yz-error"></label>
                 </div>
                 <div class="register-form-cell-5">
                     <span class="ad-red">*</span> 性别:
                 </div>
                 <div class="register-form-cell-widget-25 controls">
-       <span class="sui-dropdown dropdown-bordered select3"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle"> <input id="sex" name="sex" type="hidden" data-rules="required" data-empty-msg="请选择性别" value="" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i> <span id="sexSpan">请选择</span> </a> 
+       <span class="sui-dropdown dropdown-bordered select3"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat input-xfat1 dropdown-toggle"> <input id="sex" name="sex" type="hidden" data-rules="required" data-empty-msg="请选择性别" value="" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i> <span id="sexSpan">请选择</span> </a>
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu3" style="height:80px;">
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">男</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">女</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">保密</a></li>
-         </ul> </span> </span>
+         </ul>
+         <label class="yz-error"></label>
+       </span> </span>
                 </div>
             </div>
             <div class="clear"></div>
@@ -468,14 +476,15 @@
                     <span class="ad-red">*</span> 出生日期:
                 </div>
                 <div class="register-form-cell-widget-25">
-                    <input type="date" id="birthday" name="birthday"  class="ad-widget167 input-xfat input-date" data-rules="required|date" data-error-msg="出生日期格式错误" data-empty-msg="出生日期不能为空" data-toggle="datepicker" />
+                    <input type="date" id="birthday" name="birthday"  class="ad-widget167 input-xfat input-xfat1 input-date"/>
+                    <br/><label class="yz-error"></label>
                 </div>
                 <div class="register-form-cell-5">
                     <span class="ad-red">*</span> 籍贯:
                 </div>
                 <div class="">
                     <div id="city" class="city controls">
-        <span class="sui-dropdown dropdown-bordered select4"><span class="dropdown-inner"> <a role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle  input-xfat">
+        <span class="sui-dropdown dropdown-bordered select4"><span class="dropdown-inner"> <a role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle  input-xfat input-xfat1">
             <input value="" id="provinceid" undefined="" type="hidden" /><i class="iconfont" style="float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i>
             <span id="provinceid-s">省份</span></a>
           <ul role="menu" aria-labelledby="drop4" class="sui-dropdown-menu sui-dropdown-menu4">
@@ -518,8 +527,12 @@
         <span class="sui-dropdown js-ad-adCitySubSelect dropdown-bordered select5"><span class="dropdown-inner"><a role="button" href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle  input-xfat"><input value="" id="cityid" data-rules="required" data-empty-msg="请选择" type="hidden" /><i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i><span id="cityid-s">城市</span></a>
           <ul role="menu" aria-labelledby="drop4" class="sui-dropdown-menu sui-dropdown-menu5">
               <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="0">全部</a></li>
-          </ul></span></span>
+          </ul></span>
+
+        </span>
+                        <br/><label class="yz-error" style="font-size: 12px;"></label>
                     </div>
+
                 </div>
             </div>
             <div class="clear"></div>
@@ -528,19 +541,21 @@
                     <span class="ad-red">*</span> 证件类型:
                 </div>
                 <div class="register-form-cell-widget-25">
-       <span class="sui-dropdown dropdown-bordered select6"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle"> <input id="idcardtype" name="idcardtype" value="1" type="hidden" data-rules="required" data-empty-msg="请选择证件类型" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i> <span id="idcardtypeSpan">大陆身份证</span> </a>
+       <span class="sui-dropdown dropdown-bordered select6"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat input-xfat1 dropdown-toggle"> <input id="idcardtype" name="idcardtype" value="1" type="hidden" data-rules="required" data-empty-msg="请选择证件类型" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i> <span id="idcardtypeSpan">请选择</span> </a>
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu6">
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="1">大陆身份证</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="2">境外身份证</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="3">境外护照</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="4">境外回乡证</a></li>
          </ul> </span> </span>
+                    <br/><label class="yz-error"></label>
                 </div>
                 <div class="register-form-cell-5">
                     <span class="ad-red">*</span> 证件号码:
                 </div>
                 <div class="register-form-cell-widget-25">
-                    <input type="text" id="idcard" name="idcard" class="ad-widget167 input-xfat" maxlength="18" data-rules="required|idcard|maxlength=18" data-empty-msg="身份证不能为空" />
+                    <input type="text" id="idcard" name="idcard" class="ad-widget167 input-xfat input-xfat1" maxlength="18" data-rules="required|idcard|maxlength=18" data-empty-msg="身份证不能为空" />
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="clear"></div>
@@ -549,7 +564,7 @@
                     <span class="ad-red">*</span> 行业:
                 </div>
                 <div class="register-form-cell-widget-25 controls">
-       <span class="sui-dropdown dropdown-bordered select7"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat dropdown-toggle"> <input id="industry" value="" name="industry" type="hidden" data-rules="required" data-empty-msg="请选择行业" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i> <span id="industrySpan">请选择</span> </a>
+       <span class="sui-dropdown dropdown-bordered select7"> <span class="dropdown-inner"> <a id="select" role="button" href="javascript:void(0);" data-toggle="dropdown" class="ad-widget167 input-xfat input-xfat1 dropdown-toggle"> <input id="industry" value="" name="industry" type="hidden" data-rules="required" data-empty-msg="请选择行业" /> <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px"></i> <span id="industrySpan">请选择</span> </a>
          <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu7">
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="计算机/互联网">计算机/互联网</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="通信/电子">通信/电子</a></li>
@@ -568,12 +583,14 @@
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="政府/非盈利机构">政府/非盈利机构</a></li>
              <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="其他">其他</a></li>
          </ul> </span> </span>
+                    <br/><label class="yz-error"></label>
                 </div>
                 <div class="register-form-cell-5">
                     <span class="ad-red">*</span> 邮箱:
                 </div>
                 <div class="register-form-cell-widget-25">
-                    <input type="text" id="email" name="email" class="ad-widget167 input-xfat" data-rules="required|email|maxlength=50" data-error-msg="邮箱格式错误" data-empty-msg="邮箱不能为空" />
+                    <input type="text" id="email" name="email" class="ad-widget167 input-xfat input-xfat1" data-rules="required|email|maxlength=50" data-error-msg="邮箱格式错误" data-empty-msg="邮箱不能为空" />
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="clear"></div>
@@ -582,13 +599,15 @@
                     <span class="ad-red">*</span> 二级密码:
                 </div>
                 <div class="register-form-cell-widget-25">
-                    <input type="password" id="password2" name="password2" maxlength="6" title="二级密码" class="ad-widget167 input-xfat" data-rules="required|minlength=6|maxlength=6|number" data-empty-msg="二级密码不能为空" />
+                    <input type="password" id="password2" name="password2" maxlength="6" title="二级密码" class="ad-widget167 input-xfat input-xfat1 " data-rules="required|minlength=6|maxlength=6|number" data-empty-msg="二级密码不能为空" />
+                    <br/><label class="yz-error"></label>
                 </div>
                 <div class="register-form-cell-5">
                     <span class="ad-red">*</span> 确认密码:
                 </div>
                 <div class="register-form-cell-widget-25">
-                    <input type="password" id="pwd" name="pwd" maxlength="6" class="ad-widget167 input-xfat" data-rules="required|match=password2" data-error-msg="二级密码不一致" data-empty-msg="确认密码不能为空" />
+                    <input type="password" id="pwd" name="pwd" maxlength="6" class="ad-widget167 input-xfat input-xfat1" data-rules="required|match=password2" data-error-msg="二级密码不一致" data-empty-msg="确认密码不能为空" />
+                    <br/><label class="yz-error"></label>
                 </div>
             </div>
             <div class="clear"></div>
@@ -767,27 +786,6 @@
 <script type="text/javascript" src="./js/xin-js.js"></script>
 <script type="text/javascript">
     $(function(){
-
-//        下一步
-        $("#nextReg1").click(function(){
-            $(".ad-register1").css({"display":"none"});
-            $(".ad-register3").css({"display":"none"});
-            $(".ad-register2").css({"display":"block"})
-        });
-        $("#nextReg2").click(function(){
-            $(".ad-register1").css({"display":"none"});
-            $(".ad-register2").css({"display":"none"});
-            $(".ad-register3").css({"display":"block"})
-        });
-//        上一步
-        $("#lastReg2").click(function(){
-            $(".ad-register2").css({"display":"none"});
-            $(".ad-register3").css({"display":"none"});
-            $(".ad-register1").css({"display":"block"})
-        });
-
-
-
         $(".dropdown-toggle").eq(2).click(function(){
 
             $(".select3").toggleClass("open");
@@ -836,9 +834,6 @@
         $('.dropdown-inner').mouseleave(function(){
             $(".select5").removeClass("open");
         });
-
-
-
 
         $(".dropdown-toggle").eq(5).click(function(){
 

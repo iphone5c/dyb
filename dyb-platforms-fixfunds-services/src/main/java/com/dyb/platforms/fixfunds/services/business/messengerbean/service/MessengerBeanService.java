@@ -135,6 +135,27 @@ public class MessengerBeanService extends BaseService implements IMessengerBeanS
     }
 
     /**
+     * 批量修改信使豆信息
+     * @param messengerBeans
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean updateMessengerBeanList(MessengerBean[] messengerBeans) {
+        if (messengerBeans==null||messengerBeans.length<=0)
+            throw new DybRuntimeException("批量修改信使豆信息不能为空");
+        for (MessengerBean messengerBean:messengerBeans){
+            if (DybUtils.isEmptyOrNull(messengerBean.getMessengerBeanCode()))
+                throw new DybRuntimeException("信使豆编号不能为空");
+            if (messengerBean.getMessengerBeanType()==null)
+                throw new DybRuntimeException("新增信使豆信息时,信使豆类型不能为空");
+            if (DybUtils.isEmptyOrNull(messengerBean.getAccountCode()))
+                throw new DybRuntimeException("新增信使豆信息时,所属账户不能为空");
+        }
+        int info=messengerBeanDao.updateList(messengerBeans);
+        return info>0?true:false;
+    }
+
+    /**
      * 新建信使豆信息
      * @param accountCode 账户code
      * @param messengerBeanType 类型列表

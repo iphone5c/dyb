@@ -23,7 +23,7 @@ $(function(){
         return;
     }
     if (data.statusCode==1000){
-        $("#referrerName").html(data.result.name)
+        $("#referrerName").html(data.result.name);
         $("#referrerMobile").html(data.result.phone)
     }
     $(".btn_timepicki").timepicki();

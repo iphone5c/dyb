@@ -6,7 +6,7 @@ $(function(){
     // 长度2-16
     var regleg1=/^.{2,16}$/;
     // 长度6-16
-    var regleg2=/^\w{6,16}$/;
+    var regleg2=/^.{6,16}$/;
     // 长度4
     var regleg3=/^.{4}$/;
     // 长度6-25
@@ -187,7 +187,6 @@ $(function(){
                return false;
             }
         }
-
         $(".ad-register1").css({"display":"none"});
         $(".ad-register3").css({"display":"none"});
         $(".ad-register4").css({"display":"none"});
@@ -573,8 +572,8 @@ $(function(){
         result[20] = empty(birthday,"出生日期不能为空!",28);
         result[21] =idcards();
         result[22] =emails();
-        var s_province=$("#s_province").val();
-        var s_city=$("#s_city").val();
+        var s_province=$("#s_province").text();
+        var s_city=$("#s_city").text();
         result[23] = layoutData();
         result[24] = layoutSex();
         if(s_province=="省份" || s_city=="地级市"){

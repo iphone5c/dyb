@@ -80,11 +80,15 @@
                         <div class="clear"></div> -->
 						<div class="spanTitle">主营业务：</div>
 						<div class="span3 sui-validate" novalidate="novalidate">
-							<input type="text" class="input-xfat input-xxlarge" id="edit_mainbusiness" name="mainbusiness" placeholder="必须和营业执照上的名称一致" maxlength="150"></div>
+							<input type="text" class="input-xfat input-xxlarge" id="edit_mainbusiness" name="mainbusiness" placeholder="必须和营业执照上的名称一致" maxlength="150">
+                           <br> <label class="edit_error"></label>
+                        </div>
 						<div class="clear"></div>
 						<div class="spanTitle">联系电话:</div>
 						<div class="span1 sui-validate" novalidate="novalidate">
-							<input id="edit_phone" type="text" class="input-xfat" data-rules="required|tel|maxlength=14"></div>
+							<input id="edit_phone" type="text" class="input-xfat" data-rules="required|tel|maxlength=14">
+                            <br><label class="edit_error"></label>
+                        </div>
 						<div class="spanTitle">开户行:</div>
 						<div class="span1">
                   <span class="sui-dropdown dropdown-bordered select3" id="bankSelect">
@@ -93,6 +97,7 @@
 						  <!--<input id="bankid" value="10002" name="bankid" data-rules="required" data-empty-msg="请选择开户行" type="hidden">-->
 						  <i class="iconfont" style="    float: right;margin-left: 4px;line-height: 1.5;font-size: 12px">&#xe68b;</i>
 						  <span id="bankName"></span>
+
 					  </a>
                       <ul role="menu" aria-labelledby="drop1" class="sui-dropdown-menu sui-dropdown-menu3">
 						  <li role="presentation">
@@ -284,14 +289,20 @@
 						<div class="clear"></div>
 						<div class="spanTitle">开户支行:</div>
 						<div class="span1 sui-validate" novalidate="novalidate">
-							<input id="edit_subbankname" type="text" class="input-xfat" data-rules="required|maxlength=50"></div>
+							<input id="edit_subbankname" type="text" class="input-xfat" data-rules="required|maxlength=50">
+                            <br><label class="edit_error"></label>
+                        </div>
 						<div class="spanTitle">开户名:</div>
 						<div class="span1 sui-validate" novalidate="novalidate">
-							<input id="edit_accountname" type="text" class="input-xfat" data-rules="required|maxlength=40"></div>
+							<input id="edit_accountname" type="text" class="input-xfat" data-rules="required|maxlength=40">
+                            <br><label class="edit_error"></label>
+                        </div>
 						<div class="clear"></div>
 						<div class="spanTitle">银行账号:</div>
 						<div class="span1 sui-validate" novalidate="novalidate">
-							<input id="edit_bankacount" type="text" class="input-xfat" data-rules="required|number|maxlength=30"></div>
+							<input id="edit_bankacount" type="text" class="input-xfat" data-rules="required|number|maxlength=30">
+                            <br><label class="edit_error"></label>
+                        </div>
 						<div class="spanTitle">营业时间:</div>
 						<div class="span1">
 							<input type="text" id="edit_startBusinessTime" class="input-xfat" style="width:30%;">-
@@ -300,7 +311,9 @@
 						<div class="clear"></div>
 						<div class="spanTitle">商家简介:</div>
 						<div class="span1 sui-validate" novalidate="novalidate">
-							<input type="text" class="input-xfat input-xxlarge" id="edit_remark" name="remark" placeholder="" data-empty-msg="" data-rules="required|maxlength=500"></div>
+							<input type="text" class="input-xfat input-xxlarge" id="edit_remark" name="remark" placeholder="" data-empty-msg="" data-rules="required|maxlength=500">
+                            <br><label class="edit_error"></label>
+                        </div>
 						<div class="clear"></div>
 						<div class="spanTitle isEdit" style="display: none;">店铺名称:</div>
 						<div class="span1 isEdit styleEdit" style="display: none;">
@@ -312,10 +325,14 @@
 					<div class="ad-box">
 						<div class="spanTitle">姓名:</div>
 						<div class="span1 sui-validate" novalidate="novalidate">
-							<input id="edit_principal" type="text" class="input-xfat" data-empty-msg="姓名不能为空" data-error-msg="格式不对" data-rules="required|minlength=2|maxlength=10"></div>
+							<input id="edit_principal" type="text" class="input-xfat" data-empty-msg="姓名不能为空" data-error-msg="格式不对" data-rules="required|minlength=2|maxlength=10">
+                            <br><label class="edit_error"></label>
+                        </div>
 						<div class="spanTitle">岗位:</div>
 						<div class="span1 sui-validate" novalidate="novalidate">
-							<input id="edit_position" type="text" maxlength="10" class="input-xfat" data-empty-msg="岗位不能为空" data-error-msg="格式不对" data-rules="required|maxlength=10"></div>
+							<input id="edit_position" type="text" maxlength="10" class="input-xfat" data-empty-msg="岗位不能为空" data-error-msg="格式不对" data-rules="required|maxlength=10">
+                            <br><label class="edit_error"></label>
+                        </div>
 						<div class="clear"></div>
 						<div class="spanTitle">性别:</div>
 						<div class="span1">
@@ -333,11 +350,15 @@
 						</div>
 						<div class="spanTitle">身份证号码:</div>
 						<div class="span1 sui-validate" novalidate="novalidate">
-							<input type="text" id="edit_idcard" name="idcard" class="ad-widget167 input-xfat" onkeyup="value=value.replace(/\s/g,&#39;&#39;)" maxlength="18" data-rules="required|idcard|maxlength=18" data-empty-msg="身份证不能为空"></div>
+							<input type="text" id="edit_idcard" name="idcard" class="ad-widget167 input-xfat">
+                            <br><label class="edit_error"></label>
+                        </div>
 						<div class="clear"></div>
 						<div class="spanTitle">邮箱:</div>
 						<div class="span1 sui-validate" novalidate="novalidate">
-							<input type="text" id="edit_email" name="email" class="ad-widget167 input-xfat" data-rules="required|email" data-error-msg="邮箱格式错误" data-empty-msg="邮箱不能为空"></div>
+							<input type="text" id="edit_email" name="email" class="ad-widget167 input-xfat">
+                            <br><label class="edit_error"></label>
+                        </div>
 						<div class="clear"></div>
 					</div>
 					<div class="table-title">

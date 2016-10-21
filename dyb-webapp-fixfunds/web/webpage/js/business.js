@@ -17,7 +17,7 @@ $(function(){
     $("#industry").html(data.result.merchant.merchant.industryType);
     $("#business").html(data.result.merchant.merchant.industry);
     $("#size").html(data.result.merchant.merchant.scale);
-    $("#phone").html(data.result.merchant.merchant.countryPhone);
+    $("#phone").html(data.result.merchant.merchant.accountPhone);
     $("#bankname").html(data.result.bank.bankName);
     $("#accountname").html(data.result.bank.bankAccountName);
     $("#bankacount").html(data.result.bank.bankNum);
@@ -30,7 +30,7 @@ $(function(){
     $("#sex").html(data.result.merchant.merchant.principalSex);
     $("#idcard").html(data.result.merchant.merchant.principalIdCard);
     $("#email").html(data.result.merchant.merchant.principalEmail);
-    $("#spanTitle").html(data.result.merchant.merchant.accountPhone);
+    $("#mobilenumber").html(data.result.merchant.merchant.countryPhone);
     if(data.result.certificateFile.flag==0){// 旧版营业执照
         $("#businesslicenceNew_img").hide();
         $("#businesslicence_img").show();
@@ -47,4 +47,4 @@ $(function(){
     $("#idthtree_img").attr("src",data.result.certificateFile.recommendPersonPhoto);// 推荐人身份证
     $("#idfour_img").attr("src",data.result.certificateFile.donationPhoto);// 捐赠承诺书
     $("#imgUrl_img").attr("src",data.result.certificateFile.storePhoto);// 店面门头照照片
-})
+});

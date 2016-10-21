@@ -7,6 +7,9 @@ body {
 	min-width: 1258px;
 	height: 100%;
 }
+.msg_error{
+    color: #ea4a36;
+}
 @font-face {font-family: 'iconfont';
 	src: url('../fonts/iconfont.eot'); /* IE9*/
 	src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */

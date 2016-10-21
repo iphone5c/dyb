@@ -4,20 +4,36 @@ $(function(){
         $(".sui-modal1").addClass("in");
         $(".sui-modal-backdrop").css("zIndex","1000").addClass("in");
     });
-    $(".sui-close").click(function(){
+    $(".sui-close,#cancelButton").click(function(){
         $(".sui-modal1").removeClass("in");
-        $(".sui-modal2").removeClass("in");
         $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
+        $(':input','#insertForm')
+            .not(':button, :submit, :reset, :hidden')
+            .val('')
+            .removeAttr('checked')
+            .removeAttr('selected');
+        $("#s_province option:selected").text("省份");
+        $("#s_city option:selected").text("地级市");
     });
 
+    // 使用商家资料的地址
+    $("#useDefaultAddress").click(function(){
+        var data = invokeService('/web/merchant/getMerchantByCurrent',{});
+//    console.log(data);
+        if (data.statusCode!=1000){
+            alert(data.errorMessage);
+            return;
+        }
+        $("#s_province option:selected").text("四川省");
+        $("#s_city option:selected").text("成都市");
+        var a = $("#s_province option:selected").text()+ $("#s_city option:selected").text();
+        var str=data.result.merchant.merchant.merchantAddress
+        str = str.replace(new RegExp(a),'');
+        $("#detailaddress").val(str);
+    });
     // 獲取寄送地址列表
-//    var param={
-//        receiver:$("#iAddress").html(),
-//        longitude:longitude,
-//        latitude:latitude
-//    }
     var data = invokeService('/web/merchant/sendaddress/getSendAddressListByCurrent',{});
-        console.log(data);
+//        console.log(data);
     if (data.statusCode!=1000){
         alert(data.errorMessage);
         return;
@@ -45,7 +61,103 @@ $(function(){
             }
         }
     }
+    // 非空
+    var rgempty=/\S+/;
+    // 长度2-14
+    var regleg1=/^.{2,14}$/;
+    // 长度30
+    var regleg2=/.{30}$/;
+    // 长度100
+    var regleg3=/.{100}$/;
+    // 邮政编码
+    var regPostcode=/^[1-9][0-9]{5}$/;
+    // 手机
+    var regphone = /0?(13|14|15|18)[0-9]{9}/;
+    function names(){
+        var name=$("#name").val();
+        if(!rgempty.test(name)){
+            $(".msg_error").eq(0).html("请填写收件人名!");
+            return false;
+        }else if(regleg2.test(name)){
+            $(".msg_error").eq(0).html("长度不能超过30!");
+        }
+        else{
+            $(".msg_error").eq(0).html("");
+        }
+    }
+    function citys(){
+        var s_province=$("#s_province").text();
+        var s_city=$("#s_city").text();
+        if(s_province=="省份" || s_city=="地级市"){
+            $(".msg_error").eq(1).html("请选择!");
+            return false;
+        }else {
+            $(".msg_error").eq(1).html("");
+        }
+    }
+    function detailaddresss(){
+        var detailaddress=$("#detailaddress").val();
+        if(!rgempty.test(detailaddress)){
+            $(".msg_error").eq(2).html("请填写详细地址!");
+            return false;
+        }else if(regleg3.test(detailaddress)){
+            $(".msg_error").eq(2).html("长度不能超过100!");
+        }
+        else{
+            $(".msg_error").eq(2).html("");
+        }
+    }
+    function Postcodes(){
+        var zip=$("#zip").val();
+        if(!rgempty.test(zip)){
+            $(".msg_error").eq(3).html("请填写邮政编码!");
+            return false;
+        }else if(!regPostcode.test(zip)){
+            $(".msg_error").eq(3).html("请填写正确的邮编!");
+        }
+        else{
+            $(".msg_error").eq(3).html("");
+        }
+    }
+    function mobiles(){
+        var mobile=$("#mobile").val();
+        if(!rgempty.test(mobile)){
+            $(".msg_error").eq(4).html("请填写手机号码!");
+            return false;
+        }else if(!regphone.test(mobile)){
+            $(".msg_error").eq(4).html("请填写正确的手机号码!");
+        }
+        else{
+            $(".msg_error").eq(4).html("");
+        }
+    }
+    $("#name").on("keyup blur change",function(){
+        names();
+    });
+    $('#s_city').on('change',function() {
+        $(".msg_error").eq(1).html("");
+    });
+    $("#detailaddress").on("keyup blur change",function(){
+        detailaddresss();
+    });
+    $("#zip").on("keyup blur change",function(){
+        Postcodes();
+    });
+    $("#mobile").on("keyup blur change",function(){
+        mobiles();
+    });
     $("#insertButton").click(function(){
+        var result=new Array();
+        result[0] = names();
+        result[1] = citys();
+        result[2] = detailaddresss();
+        result[3] = Postcodes();
+        result[4] = mobiles();
+        for(var i=0;i<result.length;i++){
+            if(result[i]==false){
+                return false;
+            }
+        }
         // 添加寄送地址
         var defaultChecked;
         if($('#detaultState').is(':checked')==true){
@@ -55,8 +167,8 @@ $(function(){
         }
         var param={
             receiver:$("#name").val(),//收件人姓名
-            province:$("#s_province").val(),//省份
-            city:$("#s_city").val(),
+            province:$("#s_province option:selected").text(),//省份
+            city:$("#s_city option:selected").text(),
             address:$("#detailaddress").val(),
             postalcode:$("#zip").val(),
             phone:$("#mobile").val(),
@@ -107,12 +219,14 @@ $(function(){
             .val('')
             .removeAttr('checked')
             .removeAttr('selected');
-    })
+        $("#s_province option:selected").text("省份");
+        $("#s_city option:selected").text("地级市");
+    });
     // 確認添加按鈕
     $("#confirm").click(function(){
         $(".sui-modal2").removeClass("in");
         $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
-    })
+    });
     // 刪除寄送地址
     var remi;
     $("#addres tbody").on("click",".deleteAddress",function(){
@@ -121,15 +235,14 @@ $(function(){
         $(".sui-modal-backdrop").css("zIndex","1000").addClass("in");
     });
     $("#rembutton").click(function(){
+        console.log(remi);
         var code=[];
-        code =  $(".defaultAddress").eq(remi).attr("class").split(" ");
-//        $("body").find(".className").eq(2);
-//        console.log(remi);
+        var code =  $(".deleteAddress").eq(0).attr("class").split(" ");
         var param={
             sendAddressCode:code[1]
         }
         var data = invokeService('/web/merchant/sendaddress/deleteSendAddress',param);
-        console.log(data);
+//        console.log(data);
         if (data.statusCode!=1000){
             alert(data.errorMessage);
             return;
@@ -197,7 +310,7 @@ $(function(){
             return;
         }
         var data = invokeService('/web/merchant/sendaddress/getSendAddressListByCurrent',{});
-        console.log(data);
+//        console.log(data);
         if (data.statusCode!=1000){
             alert(data.errorMessage);
             return;

@@ -1,7 +1,206 @@
 $(function(){
     getData();
+    // 非空
+    var rgempty=/\S+/;
+    // 长度2-14
+    var regleg1=/^.{2,14}$/;
+    // 长度6
+    var regleg2=/.{14}$/;
+    // 长度50
+    var regleg3=/.{50}$/;
+    // 长度30
+    var regleg4=/.{30}$/;
+    // 长度500
+    var regleg5=/.{500}$/;
+    // 长度2-10
+    var regleg6=/^.{2,10}$/;
+    // 电话
+    var regtelephone=/[0-9-()（）]{6,18}/;
+    // 数字
+    var regnum=/^([+-]?)\d*\.?\d+$/;
+    // 身份证
+    var regcard=/^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/;
+    // 邮箱
+    var regemail=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+(\.[a-zA-Z]{2,3})+$/;
+    $(".edit_error").css("color","#ea4a36");
     // 修改当前登陆商家信息
+    // 主营业务格式验证
+    function mainbusinesss(){
+        var edit_mainbusiness=$("#edit_mainbusiness").val();
+        if(!rgempty.test(edit_mainbusiness)){
+            $(".edit_error").eq(0).html("主营业务不能为空!");
+            return false;
+        }else{
+            $(".edit_error").eq(0).html("");
+        }
+    }
+    // 电话格式验证
+    function phones(){
+        var edit_phone=$("#edit_phone").val();
+        if(!rgempty.test(edit_phone)){
+            $(".edit_error").eq(1).html("请填写!");
+            return false;
+        }else if(!regtelephone.test(edit_phone)){
+            $(".edit_error").eq(1).html("电话格式错误!");
+            return false;
+        }else if(regleg2.test(edit_phone)){
+            $(".edit_error").eq(1).html("长度不能超过14!");
+            return false;
+        }else{
+            $(".edit_error").eq(1).html("");
+        }
+    }
+    // 开户支行格式验证
+    function subbanknames(){
+        var edit_subbankname=$("#edit_subbankname").val();
+        if(!rgempty.test(edit_subbankname)){
+            $(".edit_error").eq(2).html("请填写!");
+            return false;
+        }else if(regleg3.test(edit_subbankname)){
+            $(".edit_error").eq(2).html("长度不能超过50!");
+            return false;
+        }else{
+            $(".edit_error").eq(2).html("");
+        }
+    }
+    // 开户名格式验证
+    function accountnames(){
+        var edit_accountname=$("#edit_accountname").val();
+        if(!rgempty.test(edit_accountname)){
+            $(".edit_error").eq(3).html("请填写!");
+            return false;
+        }else if(regleg3.test(edit_accountname)){
+            $(".edit_error").eq(3).html("长度不能超过50!");
+            return false;
+        }else{
+            $(".edit_error").eq(3).html("");
+        }
+    }
+    // 银行账号格式验证
+    function bankacounts(){
+        var edit_bankacount=$("#edit_bankacount").val();
+        if(!rgempty.test(edit_bankacount)){
+            $(".edit_error").eq(4).html("请填写!");
+            return false;
+        }else if(!regnum.test(edit_bankacount)){
+            $(".edit_error").eq(4).html("请输入数字!");
+            return false;
+        }else if(regleg4.test(edit_bankacount)){
+            $(".edit_error").eq(4).html("长度不能超过30!");
+            return false;
+        }else{
+            $(".edit_error").eq(4).html("");
+        }
+    }
+    // 商家简介格式验证
+    function remarks(){
+        var edit_remark=$("#edit_remark").val();
+        if(!rgempty.test(edit_remark)){
+            $(".edit_error").eq(5).html("请填写!");
+            return false;
+        }else if(regleg5.test(edit_remark)){
+            $(".edit_error").eq(5).html("长度不能超过500!");
+            return false;
+        }else{
+            $(".edit_error").eq(5).html("");
+        }
+    }
+    // 姓名格式验证
+    function principals(){
+        var edit_principal=$("#edit_principal").val();
+        if(!rgempty.test(edit_principal)){
+            $(".edit_error").eq(6).html("姓名不能为空!");
+            return false;
+        }else if(!regleg6.test(edit_principal)){
+            $(".edit_error").eq(6).html("格式错误!");
+            return false;
+        }else{
+            $(".edit_error").eq(6).html("");
+        }
+    }
+    // 岗位格式验证
+    function positions(){
+        var edit_position=$("#edit_position").val();
+        if(!rgempty.test(edit_position)){
+            $(".edit_error").eq(7).html("岗位不能为空!");
+            return false;
+        }else{
+            $(".edit_error").eq(7).html("");
+        }
+    }
+    // 身份证格式验证
+    function idcards(){
+        var edit_idcard=$("#edit_idcard").val();
+        if(!rgempty.test(edit_idcard)){
+            $(".edit_error").eq(8).html("身份证不能为空!");
+            return false;
+        }else if(!regcard.test(edit_idcard)){
+            $(".edit_error").eq(8).html("身份证格式错误!");
+            return false;
+        }else{
+            $(".edit_error").eq(8).html("");
+        }
+    }
+    // 邮箱格式验证
+    function emails(){
+        var edit_email=$("#edit_email").val();
+        if(!rgempty.test(edit_email)){
+            $(".edit_error").eq(9).html("邮箱不能为空!");
+            return false;
+        }else if(!regemail.test(edit_email)){
+            $(".edit_error").eq(9).html("邮箱格式错误!");
+            return false;
+        }else{
+            $(".edit_error").eq(9).html("");
+        }
+    }
+    $("#edit_mainbusiness").on("keyup blur change",function(){
+        mainbusinesss();
+    });
+    $("#edit_phone").on("keyup blur change",function(){
+        phones();
+    });
+    $("#edit_subbankname").on("keyup blur change",function(){
+        subbanknames();
+    });
+    $("#edit_accountname").on("keyup blur change",function(){
+        accountnames();
+    });
+    $("#edit_bankacount").on("keyup blur change",function(){
+        bankacounts();
+    });
+    $("#edit_remark").on("keyup blur change",function(){
+        remarks();
+    });
+    $("#edit_principal").on("keyup blur change",function(){
+        principals();
+    });
+    $("#edit_position").on("keyup blur change",function(){
+        positions();
+    });
+    $("#edit_idcard").on("keyup blur change",function(){
+        idcards();
+    });
+    $("#edit_email").on("keyup blur change",function(){
+        emails();
+    });
     $("#saveMerchantInfo").click(function(){
+        var result=new Array();
+        result[0] = mainbusinesss();
+        result[1] = phones();
+        result[2] = subbanknames();
+        result[3] = accountnames();
+        result[4] = bankacounts();
+        result[5] = remarks();
+        result[6] = principals();
+        result[7] = positions();
+        result[8] = idcards();
+        result[9] = emails();
+        for(var i=0;i<result.length;i++){
+            if(result[i]==false){
+                return false;
+            }
+        }
        var param={
             businessStartTime:$("#edit_startBusinessTime").val(),//营业开始时间
             businessEndTime:$("#edit_endBusinessTime").val(),//营业结束时间
@@ -37,7 +236,7 @@ $(function(){
     })
     // 获取当前登陆商家信息
     var data = invokeService('/web/merchant/getMerchantByCurrent',{});
-    console.log(data)
+//    console.log(data)
     if (data.statusCode!=1000){
         alert(data.errorMessage);
         return;

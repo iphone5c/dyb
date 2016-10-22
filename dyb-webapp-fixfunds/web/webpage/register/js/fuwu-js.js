@@ -78,7 +78,7 @@ $(function(){
         $(".ad-register3").css({"display":"none"});
         $(".ad-register2").css({"display":"block"})
     });
-        $("#nextReg2").click(function(){
+        $(".fu_submit").click(function(){
 //            联合群组号
             var groupno = $("#groupno").val();
             if(groupno==""){
@@ -179,95 +179,95 @@ $(function(){
                     return false;
                 }
             }
-
+            fuwu_submit();
     });
-         function fuwu_submit(){
-        // 账户名
-        var accountName=$("#username").val();
-        // 账户密码
-        var password=$("#userpwd").val();
-        // 二级密码
-        var tradePassword=$("#password2").val();
-        // 绑定手机号
-        var accountPhone=$("#mobilenumber").val();
-        // 推荐人code
-        var referrerCode="111";
-        // 姓名
-        var serviceProviderName=$("#realname").val();
-        // 所属行业
-        varindustry=$("#industrySpan").text();
-        // 性别
-        var sex=$("#sexSpan").text();
-        // 出生日期
-        var birthday=$("#birthday").val();
-        // 邮箱地址
-        var email=$("#email").val();
-        // 地址
-//        var address=$("#provinceid-s").text()+$("#cityid-s").text()+$("#address").val();
-//        省级代码
-//        var province=$("#provinceid-s").text();
-//        市级代码
-//        var city=$("#cityid-s").text();
-        // 证件资料
-//        var certificateFile="img";
-        // 身份证号码
-        var idCard=$("#idcard").val();
-        // 开户行
-        var bankName=$("#bankName").text();
-        // 卡号
-        var bankNum=$("#bankNumber").val();
-        // 开户名称
-        var bankAccountName=$("#acountname").val();
-        // 默认设置选定
-        var defaultChecked="111";
-        var param={
-            // 账户名
-            accountName:accountName,
-            // 账户密码
-            password:password,
-            // 二级密码
-            tradePassword:tradePassword,
-            // 绑定手机号
-            accountPhone:accountPhone,
-            // 推荐人code
-            referrerCode:referrerCode,
-            // 姓名
-            serviceProviderName:serviceProviderName,
-            // 所属行业
-            industry:industry,
-            // 性别
-            sex:sex,
-            // 出生日期
-            birthday:birthday,
-            // 邮箱地址
-            email:email,
-            // 地址
-            address:address,
-            // 省级代码
-            province:province,
-            // 市级代码
-            city:city,
-            // 证件资料
-            certificateFile:certificateFile,
-            // 身份证号码
-            idCard:idCard,
-            // 开户行
-            bankName:bankName,
-            // 卡号
-            bankNum:bankNum,
-            // 开户名称
-            bankAccountName:bankAccountName,
-            // 默认设置选定
-            defaultChecked:defaultChecked
-        };
-             alert(111)
-        var result=invokeService('/web/serviceproviders/registerServiceProvidersAccount',param)
-        if (result.statusCode!=1000){
-            alert(result.errorMessage);
-            return;
-        }
-        $(".ad-register1").css({"display":"none"});
-        $(".ad-register2").css({"display":"none"});
-        $(".ad-register3").css({"display":"block"})
-    }
+
 })
+function fuwu_submit(){
+    // 账户名
+    var accountName=$("#username").val();
+    // 账户密码
+    var password=$("#userpwd").val();
+    // 二级密码
+    var tradePassword=$("#password2").val();
+    // 绑定手机号
+    var accountPhone=$("#mobilenumber").val();
+    // 推荐人code
+    var referrerCode="111";
+    // 姓名
+    var serviceProviderName=$("#realname").val();
+    // 所属行业
+    varindustry=$("#industrySpan").text();
+    // 性别
+    var sex=$("#sexSpan").text();
+    // 出生日期
+    var birthday=$("#birthday").val();
+    // 邮箱地址
+    var email=$("#email").val();
+    // 地址
+    var address=$("#provinceid-s").text()+$("#cityid-s").text()+$("#address").val();
+//        省级代码
+    var province=$("#provinceid-s").text();
+//        市级代码
+    var city=$("#cityid-s").text();
+//        证件资料
+    var certificateFile="img";
+    // 身份证号码
+    var idCard=$("#idcard").val();
+    // 开户行
+    var bankName=$("#bankName").text();
+    // 卡号
+    var bankNum=$("#bankNumber").val();
+    // 开户名称
+    var bankAccountName=$("#acountname").val();
+    // 默认设置选定
+    var defaultChecked="111";
+    var param={
+        // 账户名
+        accountName:accountName,
+        // 账户密码
+        password:password,
+        // 二级密码
+        tradePassword:tradePassword,
+        // 绑定手机号
+        accountPhone:accountPhone,
+        // 推荐人code
+        referrerCode:referrerCode,
+        // 姓名
+        serviceProviderName:serviceProviderName,
+        // 所属行业
+        industry:industry,
+        // 性别
+        sex:sex,
+        // 出生日期
+        birthday:birthday,
+        // 邮箱地址
+        email:email,
+        // 地址
+        address:address,
+        // 省级代码
+        province:province,
+        // 市级代码
+        city:city,
+        // 证件资料
+        certificateFile:certificateFile,
+        // 身份证号码
+        idCard:idCard,
+        // 开户行
+        bankName:bankName,
+        // 卡号
+        bankNum:bankNum,
+        // 开户名称
+        bankAccountName:bankAccountName,
+        // 默认设置选定
+        defaultChecked:defaultChecked
+    };
+    var result=invokeService('/web/serviceproviders/registerServiceProvidersAccount',param)
+    if (result.statusCode!=1000){
+        alert(result.errorMessage);
+        return;
+    }
+    $(".ad-register1").css({"display":"none"});
+    $(".ad-register2").css({"display":"none"});
+    $(".ad-register3").css({"display":"block"})
+}

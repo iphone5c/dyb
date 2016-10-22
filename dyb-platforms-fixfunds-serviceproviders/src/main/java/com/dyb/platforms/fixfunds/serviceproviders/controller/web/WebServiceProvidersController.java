@@ -41,7 +41,7 @@ public class WebServiceProvidersController extends BaseController {
         if (account==null)
             return validationResult(1001,"商家注册时，账户信息不能为空");
         if (serviceProviders==null)
-            return validationResult(1001,"商家注册时，商家资料不能为空");
+            return validationResult(1001,"   ，商家资料不能为空");
         if (bankAccount==null)
             return validationResult(1001,"商家注册时，银行账户信息不能为空");
         if (DybUtils.isEmptyOrNull(tjrCode))

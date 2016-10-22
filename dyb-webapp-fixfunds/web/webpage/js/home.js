@@ -74,5 +74,4 @@ $(function(){
         $("#adAlertCover_layer").hide();
         $("#adAlert").hide();
     })
-
 })

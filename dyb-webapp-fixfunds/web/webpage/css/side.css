@@ -354,7 +354,7 @@ ul.menu ul {
   padding: 0;
   width: 180px;	
   text-align: left;
-  padding-left: 30px;
+  padding-left: 0px;
 }
 .ad-icon {
 	margin: 0 5px;
@@ -397,7 +397,7 @@ ul.menu li a:hover, ul.menu li a.current{
 ul.menu li ul li a {
 clear: both;
   color: #F4ACAB;
-  padding-left: 15px;
+  padding-left: 45px;
   font-size: 14px;
   font-weight: normal;
   border-bottom: 1px dashed #C03737;

@@ -37,7 +37,7 @@ $(function(){
             $(".js-subMenu-absolute").eq(i).show(500);
             s=true;
         }
-    })
+    });
     var n=true;
     $("#menuZoom").click(function(){
         if(n==true){
@@ -57,4 +57,9 @@ $(function(){
             n=true;
         }
     })
+    $("#leftmenu").on("click",".js-subActive",function(){
+        var ss= $(".js-subActive").index(this);
+        $(".js-subActive").removeClass("subActive");
+        $(".js-subActive").eq(ss).addClass("subActive");
+    });
 })

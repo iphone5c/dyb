@@ -170,7 +170,6 @@ $(function(){
     }
 // 逆地理编码 得到具体的地理位置
     function geocoder(x,y) {
-        alert(11);
         AMap.plugin('AMap.Geocoder',function(){
             var geocoder = new AMap.Geocoder({
 
@@ -224,5 +223,11 @@ $(function(){
             alert(data.errorMessage);
             return;
         }
+        $(".sui-modal").addClass("in");
+        $(".sui-modal-backdrop").css("zIndex","1000").addClass("in");
+    });
+    $(".sui-close,.btn-large").click(function(){
+        $(".sui-modal").removeClass("in");
+        $(".sui-modal-backdrop").css("zIndex","-1").removeClass("in");
     })
 })

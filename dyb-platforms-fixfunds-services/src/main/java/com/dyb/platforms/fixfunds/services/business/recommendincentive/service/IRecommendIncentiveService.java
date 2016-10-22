@@ -38,4 +38,11 @@ public interface IRecommendIncentiveService {
      * @return 对象分页列表
      */
     public PageList<RecommendIncentive> getRecommendIncentivePageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail);
+
+    /**
+     * 批量插入推荐激励记录
+     * @param recommendIncentives
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean createRecommendIncentiveList(RecommendIncentive[] recommendIncentives);
 }

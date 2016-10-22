@@ -60,6 +60,13 @@ public interface IMessengerBeanService {
     public MessengerBean updateMessengerBean(MessengerBean messengerBean);
 
     /**
+     * 批量修改信使豆信息
+     * @param messengerBeans
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean updateMessengerBeanList(MessengerBean[] messengerBeans);
+
+    /**
      * 新建信使豆信息
      * @param accountCode 账户code
      * @param messengerBeanType 类型列表

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Administrator on 2016/2/23.
@@ -63,6 +64,34 @@ public class AccountIncentiveService extends BaseService implements IAccountInce
     @Override
     public PageList<AccountIncentive> getAccountIncentivePageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail) {
         return accountIncentiveDao.queryListForPaged(wheres,pageIndex,pageSize,detail);
+    }
+
+    /**
+     * 批量插入账户激励
+     * @param accountIncentives
+     * @return true表示操作成功 false表示操作失败
+     */
+    @Override
+    public boolean createAccountIncentiveList(AccountIncentive[] accountIncentives) {
+        if (accountIncentives==null||accountIncentives.length<=0)
+            throw new DybRuntimeException("批量插入账户激励不能为空");
+        for (AccountIncentive accountIncentive:accountIncentives){
+            if (accountIncentive.getAccountIncentiveTime()==null)
+                throw new DybRuntimeException("激励日期不能为空");
+            if (accountIncentive.getLoveNum()<0)
+                throw new DybRuntimeException("爱心数量必须是正数");
+            if (accountIncentive.getLovePrice()<0)
+                throw new DybRuntimeException("爱心单价必须是正数");
+            if (accountIncentive.getMessengerBean()<0)
+                throw new DybRuntimeException("激励信使豆必须是正数");
+            if (DybUtils.isEmptyOrNull(accountIncentive.getAccountCode()))
+                throw new DybRuntimeException("账户code不能为空");
+            if (accountIncentive.getIncentiveMode()<0||accountIncentive.getIncentiveMode()>30)
+                throw new DybRuntimeException("激励模式必须在1——30之间");
+            accountIncentive.setAccountIncentiveCode(UUID.randomUUID().toString());
+        }
+        int info = accountIncentiveDao.insertList(accountIncentives);
+        return info>0?true:false;
     }
 
 }

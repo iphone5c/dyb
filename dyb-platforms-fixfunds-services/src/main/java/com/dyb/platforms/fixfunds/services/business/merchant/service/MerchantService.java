@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -232,5 +233,19 @@ public class MerchantService extends BaseService implements IMerchantService {
     @Override
     public PageList<Merchant> getMerchantPageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail) {
         return merchantDao.queryListForPaged(wheres,pageIndex,pageSize,detail);
+    }
+
+    /**
+     * 查询对象列表
+     *
+     * @param wheres 条件
+     * @param skip   在结果是跳过的数目
+     * @param size   返回的最大数目,小于0则返回所有记录
+     * @param detail 是还返回对象详细信息
+     * @return 对象列表
+     */
+    @Override
+    public List<Merchant> getMerchantList(QueryParams wheres, int skip, int size, boolean detail) {
+        return merchantDao.queryList(wheres,skip,size,detail);
     }
 }

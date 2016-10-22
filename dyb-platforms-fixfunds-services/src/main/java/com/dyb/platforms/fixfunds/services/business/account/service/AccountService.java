@@ -480,6 +480,20 @@ public class AccountService extends BaseService implements IAccountService {
     }
 
     /**
+     * 查询对象列表
+     *
+     * @param wheres 条件
+     * @param skip   在结果是跳过的数目
+     * @param size   返回的最大数目,小于0则返回所有记录
+     * @param detail 是还返回对象详细信息
+     * @return 对象列表
+     */
+    @Override
+    public List<Account> getAccountList(QueryParams wheres, int skip, int size, boolean detail) {
+        return accountDao.queryList(wheres,skip,size,detail);
+    }
+
+    /**
      * 修改用户登录密码
      * @param accountCode 用户code
      * @param oldPassword 旧密码

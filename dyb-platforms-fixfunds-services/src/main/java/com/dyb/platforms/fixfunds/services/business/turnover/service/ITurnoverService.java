@@ -36,4 +36,11 @@ public interface ITurnoverService {
      */
     public List<Turnover> getTurnoverList(QueryParams wheres);
 
+    /**
+     * 批量插入营业额
+     * @param turnovers
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean createTurnoverList(Turnover[] turnovers);
+
 }

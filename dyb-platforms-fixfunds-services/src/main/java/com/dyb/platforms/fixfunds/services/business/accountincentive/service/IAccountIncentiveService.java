@@ -38,4 +38,11 @@ public interface IAccountIncentiveService {
      * @return 对象分页列表
      */
     public PageList<AccountIncentive> getAccountIncentivePageList(QueryParams wheres, int pageIndex, int pageSize, boolean detail);
+
+    /**
+     * 批量插入账户激励
+     * @param accountIncentives
+     * @return true表示操作成功 false表示操作失败
+     */
+    public boolean createAccountIncentiveList(AccountIncentive[] accountIncentives);
 }
